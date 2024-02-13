@@ -1,4 +1,4 @@
-; Definition of fight screen
+﻿; Definition of fight screen
 
 ; *** DO NOT MODIFY OR OVERWRITE THIS FILE ***
 ; To customize, make a copy of this file in a subdirectory of your
@@ -29,15 +29,9 @@ localcoord = 320,240 ;Local coordinate space width and height
 [Files]
 sff = fight.sff
 snd = fight.snd
-font1 = font/timer.fnt
-font2 = font/middle.fnt		;color  �� 17
-font3 = font/name.fnt
-;font4 = font/name.fnt
-font5 = font/Ex.fnt			;color  �� 17
-font6 = font/rush.fnt
-font7 = font/p1.fnt
-font8 = font/p2.fnt
-font9 = font/name.fnt
+font1 = jg.fnt
+font2 = num1.fnt
+font3 = name1.fnt
 fightfx.sff = fightfx.sff; legacy mugen hitsparks
 fightfx.air = fightfx.air
 common.snd = common.snd
@@ -50,105 +44,73 @@ scale = 1
 ;-----------------------------------------------------------
 [Lifebar]
 ;Player 1
-p1.pos    = 138,20
-p1.range.x  = 0,-106
-
-p1.bg0.spr = 11,0
-p1.bg0.layerno = 2
-
-p1.bg1.spr = 15,0
-p1.bg1.offset = 7,-12
-p1.bg1.layerno = 2
-
+p1.pos    = 140,12
+p1.bg0.anim = 10
+p1.bg1.spr = 11,0
 p1.mid.spr = 12,0
-p1.mid.layerno = 2
-
-p1.front.spr = 10,0
-p1.front.layerno = 2
-
+p1.front.spr = 13,0
+p1.shift.spr = 13,10   ;Ikemen feature
+p1.range.x  = 0,-127
 ;Player 2
-p2.pos    = 181,20
-p2.range.x = 0,106
-
-p2.bg0.spr = 11,3
-p2.bg0.facing = 1
-p2.bg0.layerno = 2
-
+p2.pos    = 178,12
+p2.bg0.anim = 10
+p2.bg0.facing = -1
+p2.bg1.spr = 11,0
+p2.bg1.facing = -1
 p2.mid.spr = 12,0
 p2.mid.facing = -1
-p2.mid.layerno = 2
-
-p2.front.spr = 10,0
+p2.front.spr = 13,0
 p2.front.facing = -1
-p2.front.layerno = 2
+p2.shift.spr = 13,10   ;Ikemen feature
+p2.shift.facing = -1   ;Ikemen feature
+p2.range.x = 0,127
 
 [Begin Action 10] ;Darkened lifebar background 
 10,0, 0,0, 1, , S
 
-;-----------------------------------------------------------
 [Simul Lifebar]
 ;Player 1
-p1.pos    = 138,20
-p1.range.x  = -52,0
-
-p1.bg0.spr = 11,0
-p1.bg0.layerno = 2
-
-p1.bg1.spr = 15,0
-p1.bg1.offset = 7,-12
-p1.bg1.layerno = 2
-
-p1.mid.spr = 12,0
-p1.mid.layerno = 2
-
-p1.front.spr = 10,0
-p1.front.layerno = 2
-
+p1.pos    = 140,12
+p1.bg0.anim = 20
+p1.bg1.spr = 21,0
+p1.mid.offset = 0,-1
+p1.mid.spr = 22,0
+p1.front.offset = 0,-1
+p1.front.spr = 23,0
+p1.shift.offset = 0,-1 ;Ikemen feature
+p1.shift.spr = 23,10   ;Ikemen feature
+p1.range.x  = 0,-127
 ;Player 2
-p2.pos    = 181,20
-p2.range.x = 52,0
-
-p2.bg0.spr = 11,0
+p2.pos    = 178,12
+p2.bg0.anim = 20
 p2.bg0.facing = -1
-p2.bg0.layerno = 2
-
-p2.mid.spr = 12,0
+p2.bg1.spr = 21,0
+p2.bg1.facing = -1
+p2.mid.offset = 0,-1
+p2.mid.spr = 22,0
 p2.mid.facing = -1
-p2.mid.layerno = 2
-
-p2.front.spr = 10,0
+p2.front.offset = 0,-1
+p2.front.spr = 23,0
 p2.front.facing = -1
-p2.front.layerno = 2
-
+p2.shift.offset = 0,-1 ;Ikemen feature
+p2.shift.spr = 23,10   ;Ikemen feature
+p2.shift.facing = -1   ;Ikemen feature
+p2.range.x = 0,127
 ;Player 3
-p3.pos    = 138,20
-p3.range.x = -54,-105
-			
-p3.bg0.spr = 11,1
-p3.bg0.layerno = 2
-
-p3.mid.spr = 12,0
-p3.mid.layerno = 2
-
-p3.front.spr = 10,0
-p3.front.offset = 0,0
-p3.front.layerno = 2
-
+p3.pos    = 140,15
+p3.mid.spr = 22,0
+p3.front.spr = 23,0
+p3.shift.spr = 23,10   ;Ikemen feature
+p3.range.x  = 0,-127
 ;Player 4
-p4.pos    = 181,20
-p4.range.x = 54,105
-
-p4.bg0.spr = 11,1
-p4.bg0.facing = -1
-p4.bg0.layerno = 2
-
-p4.mid.spr = 12,0
+p4.pos    = 178,15
+p4.mid.spr = 22,0
 p4.mid.facing = -1
-p4.mid.layerno = 2
-
-p4.front.spr = 10,0
+p4.front.spr = 23,0
 p4.front.facing = -1
-p4.front.layerno = 2
+p4.shift.spr = 23,10   ;Ikemen feature
+p4.shift.facing = -1   ;Ikemen feature
+p4.range.x = 0,127
 
 [Begin Action 20] ;Darkened lifebar background (team)
 20,0, 0,0, 1, , S
@@ -522,145 +484,64 @@ p8.shift.spr = 37,10   ;Ikemen feature
 p8.shift.facing = -1   ;Ikemen feature
 p8.range.x = 0,127
 
-;-----------------------------------------------------------
 [Turns Lifebar]
 ;Player 1
-p1.pos    = 138,20
-p1.range.x  = 0,-106
-
-p1.bg0.spr = 11,0
-p1.bg0.layerno = 2
-
-p1.bg1.spr = 15,0
-p1.bg1.offset = 7,-12
-p1.bg1.layerno = 2
-
+p1.pos    = 140,12
+p1.bg0.anim = 10
+p1.bg1.spr = 11,0
 p1.mid.spr = 12,0
-p1.mid.layerno = 2
-
-p1.front.spr = 10,0
-p1.front.layerno = 2
-
+p1.front.spr = 13,0
+p1.shift.spr = 13,10   ;Ikemen feature
+p1.range.x  = 0,-127
 ;Player 2
-p2.pos    = 181,20
-p2.range.x = 0,106
-
-p2.bg0.spr = 11,3
-p2.bg0.facing = 1
-p2.bg0.layerno = 2
-
+p2.pos    = 178,12
+p2.bg0.anim = 10
+p2.bg0.facing = -1
+p2.bg1.spr = 11,0
+p2.bg1.facing = -1
 p2.mid.spr = 12,0
 p2.mid.facing = -1
-p2.mid.layerno = 2
-
-p2.front.spr = 10,0
+p2.front.spr = 13,0
 p2.front.facing = -1
-p2.front.layerno = 2
+p2.shift.spr = 13,10   ;Ikemen feature
+p2.shift.facing = -1   ;Ikemen feature
+p2.range.x = 0,127
 
 ;-----------------------------------------------------------
 [Powerbar]
 ;Player 1
-p1.pos    = 118,225
-
+p1.pos    = 140,22
 p1.bg0.anim = 40
-p1.bg0.layerno = 2
-
-p1.bg1.anim = 41
-p1.bg1.layerno = 2
-p1.bg2.anim = 43
-p1.bg2.layerno = 2
-
-p1.front.anim = 42
-p1.front.layerno = 2
-
-p1.range.x = 0,-85
-p1.counter.offset = -46,4
-p1.counter.font = 7,0, 0
-p1.counter.layerno = 2
+p1.bg1.spr = 41,0
+;p1.mid.spr = 42,0
+p1.front.spr = 43,0
+p1.range.x = 0,-107
+p1.counter.offset = -108,6
+p1.counter.font = 1,0, 0
+p1.levelbars = 0       ;Ikemen feature
 
 ;Player 2
-p2.pos    = 203,225
-
-p2.bg0.anim = 45
-p2.bg0.layerno = 2
+p2.pos    = 178,22
+p2.bg0.anim = 40
 p2.bg0.facing = -1
-
-p2.bg1.anim = 41
-p2.bg1.layerno = 2
+p2.bg1.spr = 41,0
 p2.bg1.facing = -1
-p2.bg2.anim = 43
-p2.bg2.layerno = 2
-p2.bg2.facing = -1
-
-p2.front.anim = 42
-p2.front.layerno = 2
+;p2.mid.spr = 42,0
+;p2.mid.facing = -1
+p2.front.spr = 43,0
 p2.front.facing = -1
-
-p2.range.x  = 0,85
-p2.counter.offset = 46,4
-p2.counter.font = 8,0, 0
-p2.counter.layerno = 2
+p2.range.x  = 0,107
+p2.counter.offset = 109,6
+p2.counter.font = 1,0, 0
+p2.levelbars = 0       ;Ikemen feature
 
 ; --level sounds---
 level1.snd = 21,0
 level2.snd = 21,0
 level3.snd = 21,0
-level4.snd = 21,0
-level5.snd = 21,0
-level6.snd = 21,0
-level7.snd = 21,0
-level8.snd = 21,0
-level9.snd = 21,0
 
 [Begin Action 40] ;Darkened powerbar background 
-40,0,0,0,2
-40,1,0,0,2
-40,2,0,0,2
-40,3,0,0,2
-40,4,0,0,2
-40,1,0,0,2
-40,5,0,0,2
-40,3,0,0,2
-
-[Begin Action 45]
-40,10,0,0,2
-40,11,0,0,2
-40,12,0,0,2
-40,13,0,0,2
-40,14,0,0,2
-40,11,0,0,2
-40,15,0,0,2
-40,13,0,0,2
-
-[Begin Action 41]
-41,0,0,0,3
-41,1,0,0,3
-41,2,0,0,3
-41,3,0,0,3
-41,4,0,0,3
-41,5,0,0,3
-41,6,0,0,3
-41,7,0,0,3
-
-[Begin Action 42]
-42,0,0,0,3
-42,1,0,0,3
-42,2,0,0,3
-42,3,0,0,3
-42,4,0,0,3
-42,5,0,0,3
-42,6,0,0,3
-42,7,0,0,3
-
-[Begin Action 43]
-43,0,0,0,1
-43,1,0,0,2
-43,2,0,0,3
-43,3,0,0,4
-43,4,0,0,10
-43,3,0,0,2
-43,2,0,0,1
-43,1,0,0,1
+40,0, 0,0, 1, , S
 
 ;-----------------------------------------------------------
 ;Ikemen feature
@@ -673,71 +554,48 @@ level9.snd = 21,0
 ;-----------------------------------------------------------
 [Face]
 ;Player 1
-p1.pos    = 6,-3
-;p1.bg.spr = 50,0
-p1.bg.offset = -1,9
-p1.bg.layerno = 2
-
+p1.pos    = 2,12
+p1.bg.spr = 50,0
 p1.face.spr = 9000,0
-p1.face.offset = 0,14
-p1.face.layerno = 1
-
+p1.face.facing = 1
+p1.face.offset = 0,10
 ;Player 2
-p2.pos    = 313,-3
-;p2.bg.spr = 50,0
-p2.bg.offset = 1,9
+p2.pos    = 316,12
+p2.bg.spr = 50,0
 p2.bg.facing = -1
-p2.bg.layerno = 2
-
 p2.face.spr = 9000,0
 p2.face.facing = -1
-p2.face.offset = 0,14
-p2.face.layerno = 1
+p2.face.offset = 0,10
 
 [Simul Face]
 ;Player 1
-p1.pos    = 6,-3
-;p1.bg.spr = 50,0
-p1.bg.offset = -1,9
-p1.bg.layerno = 2
-
+p1.pos    = 2,12
+p1.bg.spr = 50,0
 p1.face.spr = 9000,0
-p1.face.offset = 0,14
-p1.face.layerno = 1
-
+p1.face.facing = 1
+p1.face.offset = 0,10
 ;Player 2
-p2.pos    = 313,-3
-;p2.bg.spr = 50,0
-p2.bg.offset = 1,9
+p2.pos    = 316,12
+p2.bg.spr = 50,0
 p2.bg.facing = -1
-p2.bg.layerno = 2
-
 p2.face.spr = 9000,0
 p2.face.facing = -1
-p2.face.offset = 0,14
-p2.face.layerno = 1
-
+p2.face.offset = 0,10
 ;Player 3
-p3.pos    = 1,17
-p3.bg.spr = 50,0
-p3.bg.offset = -1,9
-p3.bg.layerno = 1
-
+p3.pos = 30,30
+p3.bg.spr = 70,0
 p3.face.spr = 9000,0
-p3.face.offset = 0,10
-p3.face.layerno = 0
-
+p3.face.scale = 0.64,0.64
+p3.face.facing = 1
+p3.face.offset = 1,1
 ;Player 4
-p4.pos    = 318,17
-p4.bg.spr = 50,0
-p4.bg.offset = 1,9
+p4.pos = 288,30
+p4.bg.spr = 70,0
 p4.bg.facing = -1
-p4.bg.layerno = 1
-
 p4.face.spr = 9000,0
+p4.face.scale = 0.64,0.64
 p4.face.facing = -1
-p4.face.offset = 0,10
-p4.face.layerno = 0
+p4.face.offset = -1,1
 
 ; Ikemen feature
 [Simul_3P Face]
@@ -918,78 +776,65 @@ p8.face.offset = -1,1
 
 [Turns Face]
 ;Player 1
-p1.pos    = 6,-2
-;p1.bg.spr = 50,0
-p1.bg.offset = -1,9
-p1.bg.layerno = 2
-
+p1.pos    = 2,12
+p1.bg.spr = 50,0
 p1.face.spr = 9000,0
-p1.face.offset = 0,14
-p1.face.layerno = 1
-
-p1.teammate.pos = 34,1
-p1.teammate.spacing = 17,0
-p1.teammate.ko.anim = 700
-p1.teammate.ko.offset = 0,2
-p1.teammate.ko.layerno = 2
-
+p1.face.facing = 1
+p1.face.offset = 0,10
+p1.teammate.pos = 30,30
+p1.teammate.spacing = 20,0
+p1.teammate.bg.spr = 70,0
+p1.teammate.ko.spr = 71,0
 p1.teammate.face.spr = 9000,0
 p1.teammate.face.scale = 0.64,0.64
-p1.teammate.layerno = 2
-
+p1.teammate.face.facing = 1
+p1.teammate.face.offset = 1,1
 ;Player 2
-p2.pos    = 313,-3
-;p2.bg.spr = 50,0
-p2.bg.offset = 1,9
+p2.pos    = 316,12
+p2.bg.spr = 50,0
 p2.bg.facing = -1
-p2.bg.layerno = 2
-
 p2.face.spr = 9000,0
 p2.face.facing = -1
-p2.face.offset = 0,14
-p2.face.layerno = 1
-
-p2.teammate.pos = 285,1
-p2.teammate.spacing = -17,0
+p2.face.offset = 0,10
+p2.teammate.pos = 288,30
+p2.teammate.spacing = -20,0
+p2.teammate.bg.spr = 70,0
 p2.teammate.bg.facing = -1
-p2.teammate.ko.anim = 700
-p2.teammate.ko.offset = -15,2
-p2.teammate.ko.facing = 1
-p2.teammate.ko.layerno = 2
-
+p2.teammate.ko.spr = 71,0
+p2.teammate.ko.facing = -1
 p2.teammate.face.spr = 9000,0
 p2.teammate.face.scale = 0.64,0.64
 p2.teammate.face.facing = -1
-p2.teammate.layerno = 2
+p2.teammate.face.offset = -1,1
 
 ;-----------------------------------------------------------
 [Name]
 ;Player 1
-p1.pos = 134,39
-p1.name.font = 9,0, -1
-p1.name.layerno = 2
+p1.pos = 14,10
+;p1.bg. =
+p1.name.font = 3,0, 1
 ;Player 2
-p2.pos = 184,39
-p2.name.font = 9,0, 1
-p2.name.layerno = 2
+p2.pos = 305,10
+;p2.bg. =
+p2.name.font = 3,0, -1
 
 [Simul Name]
 ;Player 1
-p1.pos = 134,39
-p1.name.font = 9,0, -1
-p1.name.layerno = 2
+p1.pos = 14,10
+;p1.bg. =
+p1.name.font = 3,0, 1
 ;Player 2
-p2.pos = 184,39
-p2.name.font = 9,0, 1
-p2.name.layerno = 2
+p2.pos = 305,10
+;p2.bg. =
+p2.name.font = 3,0, -1
 ;Player 3
-p3.pos = 36,16
-p3.name.font = 9,0, 1
-p3.name.layerno = 2
+p3.pos = 14,20
+;p3.bg. =
+p3.name.font = 3,0, 1
 ;Player 4
-p4.pos = 283,16
-p4.name.font = 9,0, -1
-p4.name.layerno = 2
+p4.pos = 305,20
+;p4.bg. =
+p4.name.font = 3,0, -1
 
 ; Ikemen feature
 [Simul_3P Name]
@@ -1026,37 +871,27 @@ p2.name.font = 3,0, -1
 
 [Turns Name]
 ;Player 1
-p1.pos = 134,39
-p1.name.font = 9,0, -1
-p1.name.layerno = 2
+p1.pos = 14,10
+;p1.bg. =
+p1.name.font = 3,0, 1
 ;Player 2
-p2.pos = 184,39
-p2.name.font = 9,0, 1
-p2.name.layerno = 2
+p2.pos = 305,10
+;p2.bg. =
+p2.name.font = 3,0, -1
 
 ;-----------------------------------------------------------
 [Time]
-pos = 160,36
+pos = 160,23
 ; Uncomment the following line to use a bg component
 ;bg.spr = 
 ; Time count display
 counter.offset = 0,0
-counter.font = 1,0, 0
-counter.layerno = 2
+counter.font = 2,0, 0
 ; Ticks for each count
 framespercount = 60
 
 ;-----------------------------------------------------------
 [Combo]
-pos = 26,71       
-start.x = -30       
-counter.font = 6,0,0
-counter.shake = 1   
-text.text = A
-text.font = 6,0,-1
-text.offset = 3,0   
-displaytime = 90    
-
 team1.pos = 10,80         ;Coords to show
 team1.start.x = -40       ;Starting x-coords
 team1.counter.layerno = 2
@@ -1148,129 +983,67 @@ pos = 0,0
 
 ; ROUND X
 round.time = 0              ;Time to show round display
-;anim
-round.default.offset = 71, 56
-round.default.anim = 70
-round.default.displaytime = 68
-
-round1.anim = 71
-round1.offset = 71, 56
-round1.displaytime = 68
-
-round2.anim = 72
-round2.offset = 71, 56
-round2.displaytime = 68
-
-round3.anim = 73
-round3.offset = 71, 56
-round3.displaytime = 68
-
-round4.anim = 74
-round4.offset = 71, 56
-round4.displaytime = 68
-
-round5.anim = 75
-round5.offset = 71, 56
-round5.displaytime = 68
-
-round6.anim = 76
-round6.offset = 71, 56
-round6.displaytime = 68
-
-round7.anim = 77
-round7.offset = 71, 56
-round7.displaytime = 68
-
-round8.anim = 78
-round8.offset = 71, 56
-round8.displaytime = 68
-
-round9.anim = 79
-round9.offset = 71, 56
-round9.displaytime = 68
-
+round.default.offset = 160, 100
 ; Default component to show for each round. Text can include a %i to
 ; the round number. Use "round.default.anim" for animation instead of
 ; text.
-;Text
-;round.default.offset = 160, 100
-;round.default.font = 2,17
-;round.default.text = Round %i
-;round.default.displaytime = 50
-
+round.default.font = 1,0, 0
+round.default.text = Round %i
+round.default.displaytime = 60
 ; Sounds to play for each round (optional, specify up to round 9)
 round1.snd = 0,1
 round2.snd = 0,2
 round3.snd = 0,3
-round4.snd = 0,4
-round5.snd = 0,5
-round6.snd = 0,6
-round7.snd = 0,7
-round8.snd = 0,8
-round9.snd = 0,9
-round.default.snd = 0,10		;not work		
 round.sndtime = 0           ;Time to play the sounds
 ; Components to show for each round (optional, specify up to round 9)
 ; Uncomment to use
 ;round1.offset = 160, 100
 ;round1.anim = 
 
-;-----------------------------------------------------------
 ; FIGHT
 fight.time = 0              ;Time to show FIGHT component
-fight.offset = 161, 105     ;Component for FIGHT display
+fight.offset = 160, 110     ;Component for FIGHT display
+fight.anim = 80             ;.
+fight.snd = 1,0             ;Sound to play
 fight.sndtime = 0           ;Time to play sound
 
-fight.anim = 80             
-fight.snd = 1,0             
-fight.displaytime = 50
+callfight.time = 60         ;Ikemen feature: Time to wait before starting fight
 ctrl.time = 30              ;Time players get control after starting fight
 
-;-----------------------------------------------------------
 ; KO
 KO.time    = 0              ;Time to show KO component
-KO.offset  = 160, 120       ;Component for KO display
-KO.anim    = 200			;Flash
-;KO.anim    = 201         		;No Flash               
+KO.offset  = 160, 70        ;Component for KO display
+KO.anim    = 200            ;.
 KO.snd     = 2,0            ;Sound to play for KO announcement
-
 ; Double KO
-DKO.offset = 160, 120
-DKO.anim    = 210			;Flash
-;DKO.anim    = 211         		;No Flash               
+DKO.offset = 160, 70
+DKO.font   = 1,5
+DKO.text   = Double K.O.
+DKO.displaytime = 60
 DKO.snd    = 2,1
-DKO.displaytime = -1
-
 ; Time Over
-TO.offset = 163, 152
-TO.font    = 5,17
+TO.offset  = 160, 70
+TO.font    = 1,5
 TO.text    = Time Over
 TO.displaytime = 60
 TO.snd     = 2,2
 KO.sndtime = 0             ;Time to play sound for KO, DKO and TO.
 
-slow.time  = 5 ;Total KO slowdown length (in ticks)
-over.waittime = 20     ;Time to wait after KO before player control is stopped
+slow.time = 60             ;Total KO slowdown length (in ticks)
+slow.fadetime = 45         ;Ikemen feature: KO slowdown fade length (default: 75% of slow.time)
+slow.speed = 0.25          ;Ikemen feature: KO slowdown game speed adjustment (default: 0.25)
+
+over.waittime = 45         ;Time to wait after KO before player control is stopped
 over.hittime = 10          ;Time after KO that players can still damage each other (for double KO)
-over.wintime = 30          ;Time to wait before players change to win states
-over.time = 210            ;Time to wait before round ends
-win.time = 100
+over.wintime = 45          ;Time to wait before players change to win states
+over.time = 270            ;Time to wait before round ends
 
 ; Win text
-win.snd     = 2,4				;not work
-win.displaytime = -1
-win2.displaytime = -1
-
-win2.offset = 160, 103
-win2.anim = 230
-
-;WINNER animation
-;win.offset = 160, 103
-;win.anim = 230
-
-win.offset = 160, 90
-win.font = 2,0			
+win.time = 60              ;Time to wait before showing win/draw message
+win.offset = 160, 70
+win.font = 1,0
 win.text = %s Wins
+win.displaytime = 540
 ; 2-player win text
 win2.offset = 160, 70
 win2.font = 1,0
@@ -1287,11 +1060,10 @@ win4.font = 1,0
 win4.text = Team %s Wins
 win4.displaytime = 540
 ; Draw text
-draw.offset = 161, 152
-draw.font    = 5,17
-draw.text    = ��
-draw.displaytime = -1
-draw.snd     = 2,3				;not work
+draw.offset = 160, 70
+draw.font = 1,0
+draw.text = Draw Game
+draw.displaytime = 540
 
 ; Fade
 fadein.time = 30           ;Ikemen feature: round start fade time (default: 30)
@@ -1301,505 +1073,103 @@ fadeout.col = 0, 0, 0      ;Ikemen feature: round end fade color (default: 0,0,0
 shutter.time = 15          ;Ikemen feature: skip intro fade time (default: 15, whole anim is twice as long)
 shutter.col = 0, 0, 0      ;Ikemen feature: skip intro fade color (default: 0,0,0)
 
-;-----------------------------------------------------------
-;"Round" Animation
-[Begin Action 70]
-70,2,187,0,1
-70,3,175,0,1
-70,2,162,0,1
-70,3,150,0,1
-70,2,137,0,1
-70,3,125,0,1
-
-70,4,112,0,1
-70,5,100,0,1
-70,4,87,0,1
-70,5,75,0,1
-70,4,62,0,1
-70,5,50,0,1
-
-70,0,37,0,1
-70,1,25,0,1
-70,0,12,0,1
-70,1,00,0,1
-70,0,00,0,-1
-
-;"1" Animation
-[Begin Action 71]
-71,2,187,0,1
-71,3,175,0,1
-71,2,162,0,1
-71,3,150,0,1
-71,2,137,0,1
-71,3,125,0,1
-
-71,4,112,0,1
-71,5,100,0,1
-71,4,87,0,1
-71,5,75,0,1
-71,4,62,0,1
-71,5,50,0,1
-
-71,0,37,0,1
-71,1,25,0,1
-71,0,12,0,1
-71,1,00,0,1
-71,0,00,0,-1
-
-;"2" Animation
-[Begin Action 72]
-72,2,187,0,1
-72,3,175,0,1
-72,2,162,0,1
-72,3,150,0,1
-72,2,137,0,1
-72,3,125,0,1
-
-72,4,112,0,1
-72,5,100,0,1
-72,4,87,0,1
-72,5,75,0,1
-72,4,62,0,1
-72,5,50,0,1
-
-72,0,37,0,1
-72,1,25,0,1
-72,0,12,0,1
-72,1,00,0,1
-72,0,00,0,-1
-
-;"3" Animation
-[Begin Action 73]
-73,2,187,0,1
-73,3,175,0,1
-73,2,162,0,1
-73,3,150,0,1
-73,2,137,0,1
-73,3,125,0,1
-
-73,4,112,0,1
-73,5,100,0,1
-73,4,87,0,1
-73,5,75,0,1
-73,4,62,0,1
-73,5,50,0,1
-
-73,0,37,0,1
-73,1,25,0,1
-73,0,12,0,1
-73,1,00,0,1
-73,0,00,0,-1
-
-;"4" Animation
-[Begin Action 74]
-74,2,187,0,1
-74,3,175,0,1
-74,2,162,0,1
-74,3,150,0,1
-74,2,137,0,1
-74,3,125,0,1
-
-74,4,112,0,1
-74,5,100,0,1
-74,4,87,0,1
-74,5,75,0,1
-74,4,62,0,1
-74,5,50,0,1
-
-74,0,37,0,1
-74,1,25,0,1
-74,0,12,0,1
-74,1,00,0,1
-74,0,00,0,-1
-
-;"5" Animation
-[Begin Action 75]
-75,2,187,0,1
-75,3,175,0,1
-75,2,162,0,1
-75,3,150,0,1
-75,2,137,0,1
-75,3,125,0,1
-
-75,4,112,0,1
-75,5,100,0,1
-75,4,87,0,1
-75,5,75,0,1
-75,4,62,0,1
-75,5,50,0,1
-
-75,0,37,0,1
-75,1,25,0,1
-75,0,12,0,1
-75,1,00,0,1
-75,0,00,0,-1
-
-;"6" Animation
-[Begin Action 76]
-76,2,187,0,1
-76,3,175,0,1
-76,2,162,0,1
-76,3,150,0,1
-76,2,137,0,1
-76,3,125,0,1
-
-76,4,112,0,1
-76,5,100,0,1
-76,4,87,0,1
-76,5,75,0,1
-76,4,62,0,1
-76,5,50,0,1
-
-76,0,37,0,1
-76,1,25,0,1
-76,0,12,0,1
-76,1,00,0,1
-76,0,00,0,-1
-
-;"7" Animation
-[Begin Action 77]
-77,2,187,0,1
-77,3,175,0,1
-77,2,162,0,1
-77,3,150,0,1
-77,2,137,0,1
-77,3,125,0,1
-
-77,4,112,0,1
-77,5,100,0,1
-77,4,87,0,1
-77,5,75,0,1
-77,4,62,0,1
-77,5,50,0,1
-
-77,0,37,0,1
-77,1,25,0,1
-77,0,12,0,1
-77,1,00,0,1
-77,0,00,0,-1
-
-;"8" Animation
-[Begin Action 78]
-78,2,187,0,1
-78,3,175,0,1
-78,2,162,0,1
-78,3,150,0,1
-78,2,137,0,1
-78,3,125,0,1
-
-78,4,112,0,1
-78,5,100,0,1
-78,4,87,0,1
-78,5,75,0,1
-78,4,62,0,1
-78,5,50,0,1
-
-78,0,37,0,1
-78,1,25,0,1
-78,0,12,0,1
-78,1,00,0,1
-78,0,00,0,-1
-
-;"9" Animation
-[Begin Action 79]
-79,2,187,0,1
-79,3,175,0,1
-79,2,162,0,1
-79,3,150,0,1
-79,2,137,0,1
-79,3,125,0,1
-
-79,4,112,0,1
-79,5,100,0,1
-79,4,87,0,1
-79,5,75,0,1
-79,4,62,0,1
-79,5,50,0,1
-
-79,0,37,0,1
-79,1,25,0,1
-79,0,12,0,1
-79,1,00,0,1
-79,0,00,0,-1
-
 ;"Fight!" Animation
 [Begin Action 80]
 80,0, 0,0, 1
+80,6, 0,0, 1
+80,7, 0,0, 1
+80,6, 0,0, 1
+80,0, 0,0, 30
 80,1, 0,0, 1
 80,2, 0,0, 1
 80,3, 0,0, 1
 80,4, 0,0, 1
 80,5, 0,0, 1
-80,6, 0,0, 1
-80,7, 0,0, 1
-80,8, 0,0, 1
-
-80, 9, 0,0, 1
-80,10, 0,0, 1
-80,11, 0,0, 1
-80, 9, 0,0, 1
-80,10, 0,0, 1
-80,11, 0,0, 1
-80, 9, 0,0, 1
-80,10, 0,0, 1
-80,11, 0,0, 1
-
-
-80,12, 0,0, 1
-80,13, 0,0, 1
-80,14, 0,0, 2
-80,15, 0,0, 3
-80,8, 0,0, -1
 
 ;"K.O." Animation
 [Begin Action 200]
-200,0,0,0,4
-200,1,0,0,1
-200,2,0,0,1		
-200,0,0,0,4
-200,3,0,0,60
-
-;"K.O." Animation - No Flash
-[Begin Action 201]
-200,1,0,0,5
-200,2,0,0,5		
-200,3,0,0,60
-
-;"D.K.O." Animation
-[Begin Action 210]
-200,0,0,0,4
--1,-1,0,0,2
-200,0,0,0,4
--1,-1,0,0,65
-210,0,0,0,-1
-
-;"D.K.O." Animation - No Flash
-[Begin Action 211]
--1,-1,0,0,75
-210,0,0,0,-1
-
-;"WINNER" Animation 
-[Begin Action 230]
-230,0,0,0,2
-230,1,0,0,2
-230,2,0,0,2
-230,3,0,0,2
-230,4,0,0,2
-230,5,0,0,2
-230,6,0,0,2
-230,7,0,0,2
-230,8,0,0,2
-230,9,0,0,2
-230,10,0,0,2
-230,11,0,0,2
-230,12,0,0,2
-230,13,0,0,2
-230,14,0,0,2
-230,15,0,0,2
-
-;"k.o icon"
-[Begin Action 700]
-700,0,0,0,4
-700,1,0,0,4
+-1,-1, 0,0, 5
+200,2, 0,0, 2, ,A1
+200,1, 0,0, 2, ,A
+200,2, 0,0, 2, ,A
+200,2, 0,0, 18, ,A1
+200,4, 0,0, 2, ,A1
+200,3, 0,0, 2, ,A
+200,4, 0,0, 2, ,A
+200,4, 0,0, 18, ,A1
+200,0, 0,0, 2, ,A1
+200,5, 0,0, 2, ,A1
+200,5, 0,0, 2, ,A
+200,5, 0,0, 2, ,A1
+200,0, 0,0, 2, ,A1
+200,0, 0,0, 50
+200,6, 0,0, 1, ,A1
+200,7, 0,0, 1, ,A1
+200,8, 0,0, 1, ,A1
+200,9, 0,0, 1, ,A1
+200,10, 0,0, 1, ,A1
 
 ;-----------------------------------------------------------
 [WinIcon]
-p1.pos = 22,5    
-p2.pos = 266,5   
+p1.pos = 136,34
+p2.pos = 182,34
 ; Offset for next icon (x,y)
-p1.iconoffset = 21,0  
-p2.iconoffset = -21,0
+p1.iconoffset = -8,0  
+p2.iconoffset = 8,0
 ; Counter text font and offset for representing wins
-p1.counter.offset = 112,11
-p1.counter.font = 6,0,-1
-p2.counter.offset = -80,11
-p2.counter.font = 6,0,1
-
+p1.counter.offset = 0,0
+p1.counter.font = 2,1
+p1.counter.scale = 0.5,0.5
+p2.counter.offset = 0,0
+p2.counter.font = 2,1
+p2.counter.scale = 0.5,0.5
 ; Win by normal
-p1.n.anim = 100
-p1.n.layerno = 1
-p2.n.anim = 100
-p2.n.layerno = 1
+p1.n.spr = 100,0
+p1.n.scale = 0.5,0.5
+p2.n.spr = 100,0
+p2.n.scale = 0.5,0.5
 ; Win by special
-p1.s.anim = 102
-p1.s.layerno = 1
-p2.s.anim = 102
-p2.s.layerno = 1
+p1.s.spr = 101,0
+p1.s.scale = 0.5,0.5
+p2.s.spr = 101,0
+p2.s.scale = 0.5,0.5
 ; Win by hyper (super)
-p1.h.anim = 103
-p1.h.layerno = 1
-p2.h.anim = 103
-p2.h.layerno = 1
+p1.h.spr = 102,0
+p1.h.scale = 0.5,0.5
+p2.h.spr = 102,0
+p2.h.scale = 0.5,0.5
 ; Win by normal throw
-p1.throw.anim = 105
-p1.throw.layerno = 1
-p2.throw.anim = 105
-p2.throw.layerno = 1
+p1.throw.spr = 103,0
+p1.throw.scale = 0.5,0.5
+p2.throw.spr = 103,0
+p2.throw.scale = 0.5,0.5
 ; Win by cheese
-p1.c.anim = 101
-p1.c.layerno = 1
-p2.c.anim = 101
-p2.c.layerno = 1
+p1.c.spr = 104,0
+p1.c.scale = 0.5,0.5
+p2.c.spr = 104,0
+p2.c.scale = 0.5,0.5
 ; Win by time over
-p1.t.anim = 106
-p1.t.layerno = 1
-p2.t.anim = 106
-p2.t.layerno = 1
-
+p1.t.spr = 105,0
+p1.t.scale = 0.5,0.5
+p2.t.spr = 105,0
+p2.t.scale = 0.5,0.5
 ; Win by suicide (here's a fun one)
-p1.suicide.anim = 101
-p1.suicide.layerno = 1
-p2.suicide.anim = 101
-p2.suicide.layerno = 1
-
+p1.suicide.spr = 106,0
+p1.suicide.scale = 0.5,0.5
+p2.suicide.spr = 106,0
+p2.suicide.scale = 0.5,0.5
 ; Opponent beaten by his own teammate (another fun one)
-p1.teammate.anim = 101
-p1.teammate.layerno = 1
-p2.teammate.anim = 101
-p2.teammate.layerno = 1
-
+p1.teammate.spr = 107,0
+p1.teammate.scale = 0.5,0.5
+p2.teammate.spr = 107,0
+p2.teammate.scale = 0.5,0.5
 ; Win by perfect (overlay icon)
-p1.perfect.anim = 110
-p1.perfect.layerno = 1
-p2.perfect.anim = 110
-p2.perfect.layerno = 1
-
+p1.perfect.spr = 110,0
+p1.perfect.scale = 0.5,0.5
+p2.perfect.spr = 110,0
+p2.perfect.scale = 0.5,0.5
+; Use icons up until this number of wins
 useiconupto = 4
-
-;nomal finish
-[Begin Action 100]
-100,0,0,0,2
-100,1,0,0,2
-100,0,0,0,2
-100,1,0,0,2
-100,0,0,0,2
-100,1,0,0,-1
-
-;nomal finish Super
-[Begin Action 1000]
-100,0,0,0,2
-100,2,0,0,2
-100,0,0,0,2
-100,2,0,0,2
-100,0,0,0,2
-100,2,0,0,-1
-
-;super finish 
-[Begin Action 101]
-101,0,0,0,2
-101,1,0,0,2
-101,0,0,0,2
-101,1,0,0,2
-101,0,0,0,2
-101,1,0,0,-1
-
-;super finish Super
-[Begin Action 1010]
-101,0,0,0,2
-101,2,0,0,2
-101,0,0,0,2
-101,2,0,0,2
-101,0,0,0,2
-101,2,0,0,-1
-
-;Ex finish 
-[Begin Action 102]
-102,0,0,0,2
-102,1,0,0,2
-102,0,0,0,2
-102,1,0,0,2
-102,0,0,0,2
-102,1,0,0,-1
-
-;Ex finish Super
-[Begin Action 1020]
-102,0,0,0,2
-102,2,0,0,2
-102,0,0,0,2
-102,2,0,0,2
-102,0,0,0,2
-102,2,0,0,-1
-
-;DokiDoki finish 
-[Begin Action 103]
-103,0,0,0,2
-103,1,0,0,2
-103,0,0,0,2
-103,1,0,0,2
-103,0,0,0,2
-103,1,0,0,-1
-
-;DokiDoki finish Super
-[Begin Action 1030]
-103,0,0,0,2
-103,2,0,0,2
-103,0,0,0,2
-103,2,0,0,2
-103,0,0,0,2
-103,2,0,0,-1
-
-;HaraHara finish 
-[Begin Action 104]
-104,0,0,0,2
-104,1,0,0,2
-104,0,0,0,2
-104,1,0,0,2
-104,0,0,0,2
-104,1,0,0,-1
-
-;HaraHara finish Super
-[Begin Action 1040]
-104,0,0,0,2
-104,2,0,0,2
-104,0,0,0,2
-104,2,0,0,2
-104,0,0,0,2
-104,2,0,0,-1
-
-;Throw finish 
-[Begin Action 105]
-105,0,0,0,2
-105,1,0,0,2
-105,0,0,0,2
-105,1,0,0,2
-105,0,0,0,2
-105,1,0,0,-1
-
-;Throw finish Super
-[Begin Action 1050]
-105,0,0,0,2
-105,2,0,0,2
-105,0,0,0,2
-105,2,0,0,2
-105,0,0,0,2
-105,2,0,0,-1
-
-;Time Up 
-[Begin Action 106]
-106,0,0,0,2
-106,1,0,0,2
-106,0,0,0,2
-106,1,0,0,2
-106,0,0,0,2
-106,1,0,0,-1
-
-;Draw
-[Begin Action 107]
-107,0,0,0,2
-107,1,0,0,2
-107,0,0,0,2
-107,1,0,0,2
-107,0,0,0,2
-107,1,0,0,-1
-
-;Perfect
-[Begin Action 110]
-110,0,0,0,2
-110,1,0,0,2
-110,0,0,0,2
-110,1,0,0,2
-110,0,0,0,2
-110,1,0,0,-1
 
 ;-----------------------------------------------------------
 ; Ikemen feature

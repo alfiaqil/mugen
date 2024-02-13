@@ -195,24 +195,8 @@
 
 kfmZ, stages/kfm.def
 kfm720, stages/kfm.def, order=0
-RANDOMSELECT  
-RANDOMSELECT 
-RANDOMSELECT 
-RANDOMSELECT 
-RANDOMSELECT
-RANDOMSELECT
-RANDOMSELECT  
-RANDOMSELECT
-RANDOMSELECT
-RANDOMSELECT
-RANDOMSELECT
-RANDOMSELECT
-RANDOMSELECT
-RANDOMSELECT
-RANDOMSELECT
-RANDOMSELECT
-RANDOMSELECT
-RANDOMSELECT
+randomselect
+
 ;-------------------------------------------------------------------------------
 [ExtraStages]
  ;Put extra stages here. They will be available in modes that allow selecting
@@ -288,12 +272,10 @@ stages/stage0-720.def
  ;'maxmatches' parameter in [Characters] section)
 
  ;Maximum number of matches to fight before game ends in Arcade single mode.
-arcade.maxmatches = 8,1,1
+arcade.maxmatches = 6,1,1,0,0,0,0,0,0,0
 
  ;Like arcade.maxmatches, but applies to Arcade team modes (sans 'Ratio').
-team.maxmatches = 8,1,1
-team.arcade.maxmatches = 8,1,1
-team.versus.maxmatches = 8,1,1
+team.maxmatches = 4,1,1,0,0,0,0,0,0,0
 
  ;Maximum number of matches to fight before game ends in Time Attack mode.
 timeattack.maxmatches = 6,1,1,0,0,0,0,0,0,0
