@@ -1,0 +1,839 @@
+[Statedef -2]
+
+;[State -2,]
+;type = SelfState
+;triggerall = alive
+;triggerall = roundstate = 2
+;trigger1 = movetype = H
+;trigger1 = anim = 5100+(anim%10)
+;value = 870
+
+[State -3, Jumping Sound]
+type = PlaySnd
+triggerall = Time = 1
+trigger1 = stateno = 40 ;Jump
+value = S41,41
+
+[State -3, Landing Sound]
+type = PlaySnd
+triggerall = Time = 1
+trigger1 = stateno = 52 ;Land
+trigger2 = stateno = 106 ;Land
+value = S51,51
+
+;意味：
+;	常時実行されるstate
+;	※今回は使用されていないがこういったstateもあります
+;やられボイス弱
+[State -2]
+type = varrandom
+triggerall = alive = 1
+triggerall = time = 0
+trigger1 = stateno = 5000
+trigger2 = stateno = 5010
+v = 1
+range = 0,6
+
+[State -2 ,2]
+type = PlaySnd
+triggerall = alive = 1
+triggerall = time = 1
+triggerall = var(1) = 0
+trigger1 = stateno = 5000
+trigger1 = anim    = [5000,5002] 
+trigger2 = stateno = 5000
+trigger2 = anim    = [5010,5012]
+trigger3 = stateno = 5000
+trigger3 = anim    = [5020,5022]
+trigger4 = stateno = 5010
+trigger4 = anim    = [5000,5002]
+trigger5 = stateno = 5010
+trigger5 = anim    = [5010,5012]
+trigger6 = stateno = 5010
+trigger6 = anim    = [5020,5022]
+value = 5001, 0
+channel = 1
+
+[State -2 ,2]
+type = PlaySnd
+triggerall = alive = 1
+triggerall = time = 1
+triggerall = var(1) = 1
+trigger1 = stateno = 5000
+trigger1 = anim    = [5000,5002] 
+trigger2 = stateno = 5000
+trigger2 = anim    = [5010,5012]
+trigger3 = stateno = 5000
+trigger3 = anim    = [5020,5022]
+trigger4 = stateno = 5010
+trigger4 = anim    = [5000,5002]
+trigger5 = stateno = 5010
+trigger5 = anim    = [5010,5012]
+trigger6 = stateno = 5010
+trigger6 = anim    = [5020,5022]
+value = 5001, 1
+channel = 1
+
+[State -2 ,2]
+type = PlaySnd
+triggerall = alive = 1
+triggerall = time = 1
+triggerall = var(1) = 2
+trigger1 = stateno = 5000
+trigger1 = anim    = [5000,5002] 
+trigger2 = stateno = 5000
+trigger2 = anim    = [5010,5012]
+trigger3 = stateno = 5000
+trigger3 = anim    = [5020,5022]
+trigger4 = stateno = 5010
+trigger4 = anim    = [5000,5002]
+trigger5 = stateno = 5010
+trigger5 = anim    = [5010,5012]
+trigger6 = stateno = 5010
+trigger6 = anim    = [5020,5022]
+value = 5001, 2
+channel = 1
+
+[State -2 ,2]
+type = PlaySnd
+triggerall = alive = 1
+triggerall = time = 1
+triggerall = var(1) = 3
+trigger1 = stateno = 5000
+trigger1 = anim    = [5000,5002] 
+trigger2 = stateno = 5000
+trigger2 = anim    = [5010,5012]
+trigger3 = stateno = 5000
+trigger3 = anim    = [5020,5022]
+trigger4 = stateno = 5010
+trigger4 = anim    = [5000,5002]
+trigger5 = stateno = 5010
+trigger5 = anim    = [5010,5012]
+trigger6 = stateno = 5010
+trigger6 = anim    = [5020,5022]
+value = 5001, 3
+channel = 1
+
+[State -2 ,2]
+type = poweradd
+triggerall = alive = 1
+triggerall = time = 1
+trigger1 = stateno = 5000
+trigger1 = anim    = 5000 || anim    = 5010 || anim    = 5020
+trigger2 = stateno = 5010
+trigger2 = anim    = 5000 || anim    = 5010 || anim    = 5020
+value = 10
+
+[State -2 ,2]
+type = poweradd
+triggerall = alive = 1
+triggerall = time = 1
+trigger1 = stateno = 5000
+trigger1 = anim    = 5001 || anim    = 5011 || anim    = 5021
+trigger2 = stateno = 5010
+trigger2 = anim    = 5001 || anim    = 5011 || anim    = 5021
+value = 20
+
+[State -2 ,1]
+type = poweradd
+triggerall = alive = 1
+triggerall = time = 1
+trigger1 = stateno = 5000
+trigger1 = anim   != [5000,5001] 
+trigger1 = anim   != [5010,5011]
+trigger1 = anim   != [5020,5021]
+trigger2 = stateno = 5010
+trigger2 = anim   != [5000,5001] 
+trigger2 = anim   != [5010,5011]
+trigger2 = anim   != [5020,5021]
+value =30
+
+[State -2 ,1]
+type = poweradd
+triggerall = alive = 1
+triggerall = time = 1
+trigger1 = stateno = 5020
+value = 20
+
+;-----------------------------------------------------------------------------------------------
+;やられボイス空中
+[State -2]
+type = VarRandom
+triggerall = alive = 1
+triggerall = Time = 0
+trigger1 = stateno = 5020
+v = 1
+range = 0, 6
+ignorehitpause = 1
+
+[State -2 ,1]
+type = PlaySnd
+triggerall = alive = 1
+triggerall = time = 1
+triggerall = var(1) = 0
+trigger1 = stateno = 5020
+value = 5001, 0
+channel = 1
+
+[State -2 ,1]
+type = PlaySnd
+triggerall = alive = 1
+triggerall = time = 1
+triggerall = var(1) = 1
+trigger1 = stateno = 5020
+value = 5001, 1
+channel = 1
+
+[State -2 ,1]
+type = PlaySnd
+triggerall = alive = 1
+triggerall = time = 1
+triggerall = var(1) = 2
+trigger1 = stateno = 5020
+value = 5001, 2
+channel = 1
+
+[State -2 ,1]
+type = PlaySnd
+triggerall = alive = 1
+triggerall = time = 1
+triggerall = var(1) = 3
+trigger1 = stateno = 5020
+value = 5001, 3
+channel = 1
+;-------------------------------------------------------------------------------------------
+;つまづきボイス
+[State -2]
+type = varrandom
+triggerall = alive = 1
+triggerall = var(12) <= 1
+trigger1 = anim = 5070
+v = 1
+range = 0,3
+
+[State -2 ,2]
+type = PlaySnd
+triggerall = alive = 1
+triggerall = var(1) = 0
+triggerall = var(12) = 1
+trigger1 = anim = 5070
+value = 5001, 0
+
+[State -2 ,2]
+type = PlaySnd
+triggerall = alive = 1
+triggerall = var(1) = 1
+triggerall = var(12) = 1
+trigger1 = anim = 5070
+value = 5001, 1
+
+[State -2 ,2]
+type = PlaySnd
+triggerall = alive = 1
+triggerall = var(1) = 2
+triggerall = var(12) = 1
+trigger1 = anim = 5070
+value = 5001, 2
+
+[State -2 ,2]
+type = PlaySnd
+triggerall = alive = 1
+triggerall = var(1) = 3
+triggerall = var(12) = 1
+trigger1 = anim = 5070
+value = 5001, 3
+
+;-----------------------------------------------------------------------------------------
+;死に声
+[State -2]
+type = varrandom
+trigger1 = alive != 1
+trigger1 = var(12) <= 1
+trigger1 = stateno != 199
+v = 1
+range = 0,1
+
+[State -2 ,2]
+type = PlaySnd
+trigger1 = alive != 1
+trigger1 = var(1) = 0
+trigger1 = var(12) = 1
+trigger1 = stateno != 199
+value = 11, 1
+
+[State -2 ,2]
+type = PlaySnd
+trigger1 = alive != 1
+trigger1 = var(1) = 1
+trigger1 = var(12) = 1
+trigger1 = stateno != 199
+value = 11, 2
+
+;-----------------------------------------------------------------------------------------------
+;アニメ指定音声用var
+[State -2,0]
+type = varadd
+trigger1 = anim = 5070
+trigger2 = alive != 1
+v = 12
+value = 1
+persistent = 1
+ignorehitpause = 1
+
+[State -2,0]
+type = varset
+trigger1 = anim != 5070
+trigger1 = alive = 1
+v = 12
+value = 0
+persistent = 1
+ignorehitpause = 1
+
+;-------------------------------------------------------------------------------------------
+[State -2, stopsnd] ;ダッシュ開始音消し
+type = stopsnd
+trigger1 = stateno != 100
+channel = 10
+persistent = 1
+ignorehitpause = 1
+
+;-----------------------------------------------------------------------------------------
+;エフェクト消し
+[State 1510, 2]
+type = RemoveExplod
+trigger1 = stateno != 200
+id = 202
+ignorehitpause = 1
+
+[State 1510, 2]
+type = RemoveExplod
+trigger1 = stateno != 200
+id = 204
+ignorehitpause = 1
+
+[State 1510, 2]
+type = RemoveExplod
+trigger1 = stateno != 210
+id = 212
+ignorehitpause = 1
+
+[State 1510, 2]
+type = RemoveExplod
+trigger1 = stateno != 210
+id = 214
+ignorehitpause = 1
+
+[State 1510, 2]
+type = RemoveExplod
+trigger1 = stateno != 210
+id = 216
+ignorehitpause = 1
+
+[State 1510, 2]
+type = RemoveExplod
+trigger1 = stateno != 210
+id = 217
+ignorehitpause = 1
+
+[State 1510, 2]
+type = RemoveExplod
+trigger1 = stateno != 215
+trigger1 = stateno != 360
+id = 221
+ignorehitpause = 1
+
+[State 1510, 2]
+type = RemoveExplod
+trigger1 = stateno != 215
+trigger1 = stateno != 360
+id = 223
+ignorehitpause = 1
+
+[State 1510, 2]
+type = RemoveExplod
+trigger1 = stateno != 230
+id = 232
+ignorehitpause = 1
+
+[State 1510, 2]
+type = RemoveExplod
+trigger1 = stateno != 230
+id = 234
+ignorehitpause = 1
+
+[State 1510, 2]
+type = RemoveExplod
+trigger1 = stateno != 230
+id = 236
+ignorehitpause = 1
+
+[State 1510, 2]
+type = RemoveExplod
+trigger1 = stateno != 230
+id = 238
+ignorehitpause = 1
+
+[State 1510, 2]
+type = RemoveExplod
+trigger1 = stateno != 230
+id = 240
+ignorehitpause = 1
+
+[State 1510, 2]
+type = RemoveExplod
+trigger1 = stateno != 235
+id = 252
+ignorehitpause = 1
+
+[State 1510, 2]
+type = RemoveExplod
+trigger1 = stateno != 235
+id = 255
+ignorehitpause = 1
+
+[State 1510, 2]
+type = RemoveExplod
+trigger1 = stateno != 235
+id = 258
+ignorehitpause = 1
+
+[State 1510, 2]
+type = RemoveExplod
+trigger1 = stateno != 235
+id = 261
+ignorehitpause = 1
+
+[State 1510, 2]
+type = RemoveExplod
+trigger1 = stateno != 400
+id = 402
+ignorehitpause = 1
+
+[State 1510, 2]
+type = RemoveExplod
+trigger1 = stateno != 410
+id = 412
+ignorehitpause = 1
+
+[State 1510, 2]
+type = RemoveExplod
+trigger1 = stateno != 410
+id = 413
+ignorehitpause = 1
+
+[State 1510, 2]
+type = RemoveExplod
+trigger1 = stateno != 610
+id = 611
+ignorehitpause = 1
+
+[State 1510, 2]
+type = RemoveExplod
+trigger1 = stateno != 610
+id = 612
+ignorehitpause = 1
+
+[State 1510, 2]
+type = RemoveExplod
+trigger1 = stateno != 610
+id = 613
+ignorehitpause = 1
+
+[State 1510, 2]
+type = RemoveExplod
+trigger1 = stateno != 610
+id = 614
+ignorehitpause = 1
+
+[State 1510, 2]
+type = RemoveExplod
+trigger1 = stateno != 610
+id = 615
+ignorehitpause = 1
+
+[State 1510, 2]
+type = RemoveExplod
+trigger1 = stateno != 610
+id = 616
+ignorehitpause = 1
+
+[State 1510, 2]
+type = RemoveExplod
+trigger1 = stateno != 630
+id = 631
+ignorehitpause = 1
+
+[State 1510, 2]
+type = RemoveExplod
+trigger1 = stateno != 630
+id = 632
+ignorehitpause = 1
+
+[State 1510, 2]
+type = RemoveExplod
+trigger1 = stateno != 630
+id = 633
+ignorehitpause = 1
+
+[State 1510, 2]
+type = RemoveExplod
+trigger1 = stateno != 630
+id = 634
+
+[State 1510, 2]
+type = RemoveExplod
+trigger1 = stateno != 630
+id = 635
+ignorehitpause = 1
+
+[State 1510, 2]
+type = RemoveExplod
+trigger1 = stateno != 630
+id = 636
+ignorehitpause = 1
+
+[State 1510, 2]
+type = RemoveExplod
+trigger1 = stateno != 630
+id = 637
+ignorehitpause = 1
+
+[State 1510, 2]
+type = RemoveExplod
+trigger1 = stateno != 630
+id = 638
+ignorehitpause = 1
+
+[State 1510, 2]
+type = RemoveExplod
+trigger1 = stateno != 630
+id = 639
+ignorehitpause = 1
+
+[State 1510, 2];白百合
+type = RemoveExplod
+trigger1 = stateno != 1001
+id = 1004
+[State 1510, 2]
+type = RemoveExplod
+trigger1 = stateno != 1001
+id = 1005
+ignorehitpause = 1
+[State 1510, 2]
+type = RemoveExplod
+trigger1 = stateno != 1001
+id = 1006
+ignorehitpause = 1
+[State 1510, 2]
+type = RemoveExplod
+trigger1 = stateno != 1001
+id = 1007
+ignorehitpause = 1
+[State 1510, 2]
+type = RemoveExplod
+trigger1 = stateno != 1001
+id = 1008
+ignorehitpause = 1
+[State 1510, 2]
+type = RemoveExplod
+trigger1 = stateno != 1001
+id = 1009
+ignorehitpause = 1
+[State 1510, 2]
+type = RemoveExplod
+trigger1 = stateno != 1001
+id = 1010
+ignorehitpause = 1
+[State 1510, 2];白百合
+type = RemoveExplod
+trigger1 = stateno != 1011 && stateno != 1021
+id = 1014
+[State 1510, 2]
+type = RemoveExplod
+trigger1 = stateno != 1011 && stateno != 1021
+id = 1015
+ignorehitpause = 1
+[State 1510, 2]
+type = RemoveExplod
+trigger1 = stateno != 1011 && stateno != 1021
+id = 1016
+ignorehitpause = 1
+[State 1510, 2]
+type = RemoveExplod
+trigger1 = stateno != 1011 && stateno != 1021
+id = 1017
+ignorehitpause = 1
+[State 1510, 2]
+type = RemoveExplod
+trigger1 = stateno != 1011 && stateno != 1021
+id = 1018
+ignorehitpause = 1
+[State 1510, 2]
+type = RemoveExplod
+trigger1 = stateno != 1011 && stateno != 1021
+id = 1019
+ignorehitpause = 1
+
+[State -2, 0];撫子下段
+type = RemoveExplod
+trigger1 = stateno != 1050
+id = 1051
+ignorehitpause = 1
+[State -2, 0]
+type = RemoveExplod
+trigger1 = stateno != 1050
+id = 1052
+ignorehitpause = 1
+[State -2, 0]
+type = RemoveExplod
+trigger1 = stateno != 1050
+id = 1053
+ignorehitpause = 1
+[State -2, 0]
+type = RemoveExplod
+trigger1 = stateno != 1050
+id = 1054
+ignorehitpause = 1
+[State -2, 0];撫子中段
+type = RemoveExplod
+trigger1 = stateno != 1060
+id = 1061
+ignorehitpause = 1
+[State -2, 0]
+type = RemoveExplod
+trigger1 = stateno != 1060
+id = 1062
+ignorehitpause = 1
+[State -2, 0]
+type = RemoveExplod
+trigger1 = stateno != 1060
+id = 1063
+ignorehitpause = 1
+[State -2, 0]
+type = RemoveExplod
+trigger1 = stateno != 1060
+id = 1064
+ignorehitpause = 1
+[State -2, 0];撫子上段
+type = RemoveExplod
+trigger1 = stateno != 1070
+id = 1071
+ignorehitpause = 1
+[State -2, 0]
+type = RemoveExplod
+trigger1 = stateno != 1070
+id = 1072
+ignorehitpause = 1
+[State -2, 0]
+type = RemoveExplod
+trigger1 = stateno != 1070
+id = 1073
+ignorehitpause = 1
+[State -2, 0]
+type = RemoveExplod
+trigger1 = stateno != 1070
+id = 1074
+ignorehitpause = 1
+
+[State -2, 0];牡丹
+type = RemoveExplod
+trigger1 = stateno != 1100
+id = 1110
+ignorehitpause = 1
+[State -2, 0]
+type = RemoveExplod
+trigger1 = stateno != 1100
+id = 1111
+ignorehitpause = 1
+[State -2, 0]
+type = RemoveExplod
+trigger1 = stateno != 1100
+id = 1112
+ignorehitpause = 1
+[State -2, 0]
+type = RemoveExplod
+trigger1 = stateno != 1100
+id = 1113
+ignorehitpause = 1
+
+[State 1510, 2];椿
+type = RemoveExplod
+trigger1 = stateno != 1151 && stateno != 1161
+id = 1153
+[State 1510, 2];椿
+type = RemoveExplod
+trigger1 = stateno != 1152 && stateno != 1162
+id = 1154
+[State 1510, 2];椿
+type = RemoveExplod
+trigger1 = stateno != 1162
+id = 1163
+[State 1510, 2];椿
+type = RemoveExplod
+trigger1 = stateno != 1162
+id = 1164
+[State 1510, 2];椿
+type = RemoveExplod
+trigger1 = stateno != 1162
+id = 1165
+[State 1510, 2];椿
+type = RemoveExplod
+trigger1 = stateno != 1162
+id = 1166
+
+[State 1510, 2];朝顔
+type = RemoveExplod
+trigger1 = stateno = 1253 && time <= 10
+trigger2 = stateno = 1263 && time <= 10
+trigger3 = stateno = 1273 && time <= 10
+trigger4 = stateno != [1250,1273]
+id = 1280
+[State 1510, 2];朝顔
+type = RemoveExplod
+trigger1 = stateno = 1253 && time <= 10
+trigger2 = stateno = 1263 && time <= 10
+trigger3 = stateno = 1273 && time <= 10
+trigger4 = stateno != [1250,1273]
+id = 1281
+[State 1510, 2];朝顔
+type = RemoveExplod
+trigger1 = stateno = 1253 && time <= 10
+trigger2 = stateno = 1263 && time <= 10
+trigger3 = stateno = 1273 && time <= 10
+trigger4 = stateno != [1250,1280]
+id = 1282
+[State 1510, 2];朝顔
+type = RemoveExplod
+trigger1 = stateno = 1253 && time <= 10
+trigger2 = stateno = 1263 && time <= 10
+trigger3 = stateno = 1273 && time <= 10
+trigger4 = stateno != [1250,1273]
+id = 1283
+[State 1510, 2];朝顔
+type = RemoveExplod
+trigger1 = stateno = 1253 && time <= 10
+trigger2 = stateno = 1263 && time <= 10
+trigger3 = stateno = 1273 && time <= 10
+trigger4 = stateno != [1250,1273]
+id = 1284
+[State 1510, 2];朝顔
+type = RemoveExplod
+trigger1 = stateno = 1253 && time <= 10
+trigger2 = stateno = 1263 && time <= 10
+trigger3 = stateno = 1273 && time <= 10
+trigger4 = stateno != [1250,1273]
+id = 1285
+[State 1510, 2];朝顔
+type = RemoveExplod
+trigger1 = stateno = 1253 && time <= 10
+trigger2 = stateno = 1263 && time <= 10
+trigger3 = stateno = 1273 && time <= 10
+trigger4 = stateno != [1250,1273]
+id = 1286
+[State 1510, 2];朝顔
+type = RemoveExplod
+trigger1 = stateno = 1253 && time <= 10
+trigger2 = stateno = 1263 && time <= 10
+trigger3 = stateno = 1273 && time <= 10
+trigger4 = stateno != [1250,1273]
+id = 1287
+[State 1510, 2];朝顔
+type = RemoveExplod
+trigger1 = stateno = 1253 && time <= 10
+trigger2 = stateno = 1263 && time <= 10
+trigger3 = stateno = 1273 && time <= 10
+trigger4 = stateno != [1250,1273]
+id = 1288
+[State 1510, 2];朝顔
+type = RemoveExplod
+trigger1 = stateno = 1253 && time <= 10
+trigger2 = stateno = 1263 && time <= 10
+trigger3 = stateno = 1273 && time <= 10
+trigger4 = stateno != [1250,1273]
+id = 1289
+[State 1510, 2];朝顔
+type = RemoveExplod
+trigger1 = stateno = 1253 && time <= 10
+trigger2 = stateno = 1263 && time <= 10
+trigger3 = stateno = 1273 && time <= 10
+trigger4 = stateno != [1250,1273]
+id = 1290
+[State 1510, 2];朝顔
+type = RemoveExplod
+trigger1 = stateno = 1253 && time <= 10
+trigger2 = stateno = 1263 && time <= 10
+trigger3 = stateno = 1273 && time <= 10
+trigger4 = stateno != [1250,1273]
+id = 1294
+
+;[State -2, 0];遊蝶花
+;type = RemoveExplod
+;trigger1 = stateno != 1301
+;trigger1 = Numexplod(1310) >= 1
+;id = 1310
+;[State -2, 0];遊蝶花
+;type = RemoveExplod
+;trigger1 = stateno != 1301
+;trigger1 = Numexplod(1311) >= 1
+;id = 1311
+;[State -2, 0];遊蝶花
+;type = RemoveExplod
+;trigger1 = stateno != 1301
+;trigger1 = Numexplod(1312) >= 1
+;id = 1312
+;[State -2, 0];遊蝶花
+;trigger1 = stateno != 1301
+;trigger1 = Numexplod(1313) >= 1
+;id = 1313
+
+;---------------------------------------------------------------------------------------
+;朝顔相打ちの時相手解放
+[State -2, 0] 
+type = targetstate
+trigger1 = movetype = H
+trigger1 = Numtarget(1250) >= 1
+trigger1 = target(1250), stateno = 1290 || target(1250), stateno = 1291 
+value = 1293
+ignorehitpause = 1
+ID = 1250
+[State -2, 0] 
+type = targetstate
+trigger1 = movetype = H
+trigger1 = Numtarget(1251) >= 1
+trigger1 = target(1251), stateno = 1290 || target(1251), stateno = 1291 
+value = 1293
+ignorehitpause = 1
+ID = 1251
+[State -2, 0] 
+type = targetstate
+trigger1 = movetype = H
+trigger1 = Numtarget(1252) >= 1
+trigger1 = target(1252), stateno = 1290 || target(1252), stateno = 1291 
+value = 1293
+ignorehitpause = 1
+ID = 1252
+[State -2, 0] 
+type = targetstate
+trigger1 = movetype = H
+trigger1 = Numtarget(1253) >= 1
+trigger1 = target(1253), stateno = 1290 || target(1253), stateno = 1291 
+value = 1293
+ignorehitpause = 1
+ID = 1253
+[State -2, 0] 
+type = targetstate
+trigger1 = movetype = H
+trigger1 = Numtarget(1254) >= 1
+trigger1 = target(1254), stateno = 1290 || target(1254), stateno = 1291 
+value = 1293
+ignorehitpause = 1
+ID = 1254
+
+;---------------------------------------------------------------------------------------
+;ダメージ調整用var
+[State -2, 0]
+type = Varset
+trigger1 = 1
+fvar(6) = 0.6
+ignorehitpause = 1
+persistent = 1

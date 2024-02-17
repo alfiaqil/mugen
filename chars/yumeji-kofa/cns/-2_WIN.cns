@@ -1,0 +1,1790 @@
+;---------------------------------------------------------------------------
+; States that are always executed (use statedef -2)
+;---------------------------------------------------------------------------
+[Statedef -2]
+;----------------------------------------------
+;varと相対距離のチェック用。
+;面倒な処理しだすとかなり助かります。
+;--------------------------------------------------------------------------------------------
+
+;--------------------------------------------------------------------------------------------
+[State 191, 0];自決 補助
+type = AssertSpecial
+trigger1 = numhelper(9600) = 1
+flag = invisible
+;--------------------------------------- 死亡
+[State -2,]
+Type = VarSet
+trigger1 = statetype = A
+trigger1 = alive = 1
+v = 32
+Value = 0
+
+[State -2,]
+Type = VarSet
+trigger1 = statetype != A
+trigger1 = alive = 1
+v = 32
+Value = 1
+
+[State -2];WIN版対策
+Type = VarSet
+trigger1 = alive = 0
+trigger1 = prevstateno = [130,139]
+fvar(22) = 1.0
+
+[State -2]
+type = ChangeState
+triggerall = var(30)= 0
+triggerall = var(32)= 1
+triggerall = fvar(22) = 1.0
+triggerall = var(11) = 1
+triggerall = prevstateno = [130,139]
+triggerall = alive = 0
+trigger1 = stateno != 5950
+trigger1 = stateno != 5150
+ignorehitpause = 1
+value = 5950
+;------------------------------- 斬殺勝利
+[State -2,]
+Type = VarSet
+trigger1 = roundstate = 2
+v = 17
+Value = 0
+[State -2,]
+Type = VarSet
+triggerall = roundstate = 3
+triggerall = var(30)= 0
+trigger1 = p2stateno = 5950
+v = 17
+Value = 1
+
+;返り血
+[State 10000, effect]
+type = Explod
+triggerall = NumExplod(5961)= 0
+triggerall = p2stateno = 5950
+triggerall = p2bodydist X <= 150
+triggerall = stateno = 0
+triggerall = anim = 5960
+trigger1 = var(59)= 1
+trigger1 = Time = 65
+trigger2 = var(59)= 0
+trigger2 = Time = 5
+anim = 5961
+ID = 5961
+pos = 0,0
+sprpriority = 2
+postype = p1
+removetime = -1
+bindtime = -1
+Pausemovetime=-1
+ownpal = 1
+;---------------------------------------
+[State -2,];ON
+type = Varset
+trigger1 = movetype != H
+v = 58
+value = 0
+
+[State -2, kesu]
+type = AssertSpecial
+trigger1 = RoundState = [3,4]
+flag = nowalk
+flag2 = noautoturn
+;flag3 = 
+
+[State -2, kesu]
+type = removeExplod
+trigger1 = movetype != H
+id = 9998
+[State -2, kesu]
+type = removeExplod
+trigger1 = movetype != H
+id = 9997
+[State -2, kesu]
+type = removeExplod
+trigger1 = movetype != H
+id = 5005
+[State -2, kesu]
+type = removeExplod
+trigger1 = movetype != H
+id = 9991
+
+[State -2, kesu]
+type = removeExplod
+trigger1 = stateno != 2500
+id = 2501
+
+[State -2,エフェクト消去]
+type = removeExplod
+trigger1 = stateno !=[2500,2529]
+id = 2540
+[State -2,エフェクト消去]
+type = removeExplod
+trigger1 = stateno !=[2500,2529]
+id = 2541
+[State -2,エフェクト消去]
+type = removeExplod
+trigger1 = stateno !=[2500,2529]
+id = 2542
+[State -2,エフェクト消去]
+type = removeExplod
+trigger1 = stateno !=[2500,2529]
+id = 2543
+
+[State -2,]; 絶命奥義
+type = Varset
+trigger1 = p2name = "Yumeji Kurokouchi"&& enemy,AuthorName = "taruse"
+trigger2 = p2name = "Sankuro Yorozu"&& enemy,AuthorName = "taruse"
+trigger3 = p2name = "Poppy_ZERO"&& enemy,AuthorName = "taruse"
+v = 59
+value = 1
+
+[State -2, kesu];同キャラの勝利画面でゲージ類を消去
+type = removeExplod
+trigger1 = var(59) = 1
+trigger1 = p2stateno = 189 || p2stateno = 14000
+
+
+;------------------------------  デモ中は消す
+[State -2, kesu]
+type = removeExplod
+trigger1 = numhelper(1710)= 1
+id = 20000
+[State -2, kesu]
+type = removeExplod
+trigger1 = numhelper(1710)= 1
+id = 21000
+[State -2, kesu]
+type = removeExplod
+trigger1 = numhelper(1710)= 1
+id = 21150
+;------------------------------  デモ中は消す
+
+;------------------------------------------- 肌の変化
+;[State 330, 1];怒り度合い
+;type = PalFX
+;trigger1 = (GameTime%5) =1
+;trigger1 = movetype != H
+;time = 3
+;add = var(15)+0,0,0
+;ignorehitpause = 1
+
+[State 330, 1];MAX
+type = PalFX
+trigger1 = numhelper(25000)= 1
+trigger1 = (GameTime%3) =1
+trigger1 = movetype != H
+time = 1
+add = 80,0,0
+ignorehitpause = 1
+
+[State 330, 1];爆発
+type = PalFX
+trigger1 = numhelper(12600)= 1
+trigger1 = (GameTime%3) =1
+trigger1 = movetype != H
+time = 1
+add = 200,0,0
+;color = 0
+ignorehitpause = 1
+
+[State 330, 1];無の境地
+type = PalFX
+trigger1 = numhelper(12100)= 1
+time = 1
+add = 40,40,40
+ignorehitpause = 1
+;-------------------------------------------
+;[State -2,]; 絶命奥義の残虐度（0で３　50で１）
+;type = Varset
+;trigger1 = 1
+;v = 44
+;value = 0;50
+
+[State -2,]; CPUデモ有り
+type = Varset
+trigger1 = PalNo =[7,12]
+v = 30
+value = 1
+
+[State -2,];
+type = Varset
+trigger1 = var(18) >= 64
+v = 18
+value = 64
+
+[State -2,];ＳＰグラフィック用変数
+type = Varset
+trigger1 = var(30) = 0
+v = 46
+value = 5000
+
+[State -2];剣気減少
+Type = Varadd
+triggerall = var(41) = 1
+;triggerall = stateno !=[3300,3314]
+;triggerall = p2stateno !=[3320,3323]
+;triggerall = movetype = A
+trigger1 = fvar(11) >= p2life
+fvar(10) =(fvar(10)-(fvar(11)-p2life))*0.002
+ignorehitpause = 1
+
+[State -2,];2Pの体力値
+type = Varset
+trigger1 = 1
+fvar(11) = p2life
+ignorehitpause = 1
+;--------------------------------------------------------------------------------------------
+;ＢＯＳＳ補正
+;--------------------------------------------------------------------------------------------  
+[State -2,];100%　零スペシャルモード
+type = Varset
+trigger1 = var(30) = 0
+fvar(2) = 1.0
+ignorehitpause = 1
+;------------------------------------
+[State -2,];125% ボスモード
+type = Varset
+trigger1 = var(30) = 1
+fvar(2) = 1.25
+ignorehitpause = 1
+;------------------------------------
+[State -2,]; ノーマルモード
+type = Varset
+trigger1 = var(30) = 0
+v = 43
+value = 22
+;--------------------------------------------------------------------------------------------  カウンター補正
+[State -2,];カウンターＯＮ
+type = Varset
+Trigger1 = P2MoveType = A
+Trigger2 = P2stateno = 100
+Trigger3 = P2stateno = 105
+fvar(15) = fvar(3)+(var(42)/10)
+ignorehitpause = 1
+
+[State -2,];カウンターＯＦＦ
+type = Varset
+Trigger1 = P2MoveType != A
+Trigger2 = P2stateno != 100
+Trigger3 = P2stateno != 105
+fvar(15) = 1
+ignorehitpause = 1
+
+[State 2100, 2];アタックカウンターＯＮ
+type = Helper
+triggerall = numhelper(8888)= 0
+Trigger1 = P2MoveType = A
+Persistent = 0
+IgnoreHitPause = 1
+helpertype = normal
+name = "counter !"
+pos =0,0
+postype = p1
+stateno = 8888
+ID = 8888
+pausemovetime = 9999
+supermovetime = 9999
+bindtime = 1
+keyctrl = 0
+ownpal = 1
+
+[State 2100, 2];ダッシュカウンターＯＮ
+type = Helper
+triggerall = numhelper(8888)= 0
+Trigger1 = P2stateno = 100
+Persistent = 0
+IgnoreHitPause = 1
+helpertype = normal
+name = "counter !"
+pos =0,0
+postype = p1
+stateno = 8887
+ID = 8888
+pausemovetime = 9999
+supermovetime = 9999
+bindtime = 1
+keyctrl = 0
+ownpal = 1
+
+[State 2100, 2];バックダッシュカウンターＯＮ
+type = Helper
+triggerall = numhelper(8888)= 0
+Trigger1 = P2stateno = 105
+Persistent = 0
+IgnoreHitPause = 1
+helpertype = normal
+name = "counter !"
+pos =0,0
+postype = p1
+stateno = 8886
+ID = 8888
+pausemovetime = 9999
+supermovetime = 9999
+bindtime = 1
+keyctrl = 0
+ownpal = 1
+
+[State -2,]; 初期値セット
+type = Varset
+trigger1 = RoundState = 1
+v = 25
+value = -2
+ignorehitpause = 1
+
+[State -2,];カウントダウン
+type = Varadd
+triggerall = RoundState = 2
+trigger1 = (GameTime%60) =1
+v = 25
+value = 1
+ignorehitpause = 1
+
+;---------------------------
+[State 205, 3]
+type = VarRandom
+trigger1 = 1
+v = 42
+range = 0,15
+;------------------------------------
+[State -2,];170%
+type = Varset
+trigger1 = var(25) = [-2,3]
+fvar(3) = 1.7
+ignorehitpause = 1
+
+[State -2,];160%
+type = Varset
+trigger1 = var(25) = [4,7]
+fvar(3) = 1.6
+ignorehitpause = 1
+
+[State -2,];150%
+type = Varset
+trigger1 = var(25) = [8,11]
+fvar(3) = 1.5
+ignorehitpause = 1
+
+[State -2,];140%
+type = Varset
+trigger1 = var(25) = [12,15]
+fvar(3) = 1.4
+ignorehitpause = 1
+
+[State -2,];130%
+type = Varset
+trigger1 = var(25) = [16,19]
+fvar(3) = 1.3
+ignorehitpause = 1
+
+[State -2,];120%
+type = Varset
+trigger1 = var(25) = [20,23]
+fvar(3) = 1.2
+ignorehitpause = 1
+
+[State -2,];110%
+type = Varset
+trigger1 = var(25) = [24,27]
+fvar(3) = 1.1
+ignorehitpause = 1
+
+[State -2,];100%
+type = Varset
+trigger1 = var(25) >= 28
+fvar(3) = 1.0
+ignorehitpause = 1
+;------------------------------------
+;--------------------------------------------------------------------------------------------  連続技補正
+[State -2,];境地中
+type = Varset
+trigger1 = numhelper(12100)= 1
+fvar(1) = 0.70
+ignorehitpause = 1
+
+[State -2,];1HIT=*1.0
+type = Varset
+triggerall = numhelper(12100)= 0
+trigger1 = var(26) = 0
+fvar(1) = 1
+ignorehitpause = 1
+
+[State -2,];2HIT=*0.75
+type = Varset
+triggerall = numhelper(12100)= 0
+trigger1 = var(26) = 1
+fvar(1) = 0.75
+ignorehitpause = 1
+
+[State -2,];3HIT=*0.65
+type = Varset
+triggerall = numhelper(12100)= 0
+trigger1 = var(26) = 2
+fvar(1) = 0.65
+ignorehitpause = 1
+
+[State -2,];4HIT=*0.50
+type = Varset
+triggerall = numhelper(12100)= 0
+trigger1 = var(26) = 3
+fvar(1) = 0.50
+ignorehitpause = 1
+
+[State -2,];5HIT=*0.45
+type = Varset
+triggerall = numhelper(12100)= 0
+trigger1 = var(26) = 4
+fvar(1) = 0.45
+ignorehitpause = 1
+
+[State -2,];6HIT=*0.40
+type = Varset
+triggerall = numhelper(12100)= 0
+trigger1 = var(26) = 5
+fvar(1) = 0.44
+ignorehitpause = 1
+
+[State -2,];7HIT=*0.38
+type = Varset
+triggerall = numhelper(12100)= 0
+trigger1 = var(26) = 6
+fvar(1) = 0.38
+ignorehitpause = 1
+
+[State -2,];8HIT=*0.35
+type = Varset
+triggerall = numhelper(12100)= 0
+trigger1 = var(26) = 7
+fvar(1) = 0.35
+ignorehitpause = 1
+
+[State -2,];9HIT~=*0.33
+type = Varset
+triggerall = numhelper(12100)= 0
+trigger1 = var(26) >= 8
+fvar(1) = 0.33
+ignorehitpause = 1
+;--------------------------------------------------------------------------------------------
+;武器飛ばし技
+;--------------------------------------------------------------------------------------------
+[State -2, 3]
+type = varset
+triggerall = NumPartner = 0 && enemy,NumPartner = 0
+triggerall = var(6) = 0
+triggerall = movetype = H
+trigger1 = P2name = "Yumeji Kurokouchi" && enemy,authorname = "taruse"
+trigger1 = stateno = 4561 && enemy,stateno = 4523 || stateno = 10550 && enemy,stateno = 10397 || stateno = 4731 && enemy,stateno = 4721
+trigger2 = P2name = "nakoruruss0" && enemy,authorname = "Warusaki3"
+trigger2 = stateno = 5000 && prevstateno = 3051
+trigger3 = P2name = "kusaregedo" && enemy,authorname = "H”"
+trigger3 = stateno = 5000 && enemy,stateno = 3100 || stateno = 3061 && enemy,stateno = 3050
+trigger4 = P2name = "Yoshitora Tokugawa" && enemy,authorname = "MEKA"
+trigger4 = stateno = 1102 && enemy,stateno = 3001
+trigger5 = P2name = "Kafuin Gaira" && enemy,authorname = "FUJY"
+trigger5 = stateno = 5030 && enemy,stateno = 3002 || stateno = 5030 && enemy,stateno = 3102
+trigger6 = P2name = "Haohmaru" && enemy,authorname = "Capuchino"
+trigger6 = stateno = 251 && enemy,stateno = 3200 || stateno = 5030 && enemy,stateno = 3001 || stateno = 5030 && enemy,stateno = 3030 || stateno = 11150 && enemy,stateno = 3106
+trigger7 = P2name = "Kibagami Genjuro" && enemy,authorname = "Capuchino"
+trigger7 = stateno = 5030 && enemy,stateno = 3005
+trigger8 = P2name = "Reika Murasame" && enemy,authorname = "taruse"
+trigger8 = stateno = 7251 && enemy,stateno = 7220
+trigger9 = P2name = "Shizumaru Hisame" && enemy,authorname = "Capuchino"
+trigger9 = stateno = 5030 && enemy,stateno = 3204 || stateno = 5030 && enemy,stateno = 3001 || stateno = 5030 && enemy,stateno = 3103
+trigger10 = P2name = "zankuro" && enemy,authorname = "yuto"
+trigger10 = stateno = 821 && enemy,stateno = 3001 || stateno = 821 && enemy,stateno = 4600 || stateno = 3020 && enemy,stateno = 4001 || stateno = 4991 && enemy,stateno = 4504
+var(6) = 10000
+
+[State -2, 3]
+type = Helper
+triggerall = NumPartner = 0 && enemy,NumPartner = 0
+triggerall = NumHelper(11000) = 0
+triggerall = movetype = H
+trigger1 = P2name = "Yumeji Kurokouchi" && enemy,authorname = "taruse"
+trigger1 = stateno = 4561 && enemy,stateno = 4523 || stateno = 10550 && enemy,stateno = 10397 || stateno = 4731 && enemy,stateno = 4721
+trigger2 = P2name = "nakoruruss0" && enemy,authorname = "Warusaki3"
+trigger2 = stateno = 5000 && prevstateno = 3051
+trigger3 = P2name = "kusaregedo" && enemy,authorname = "H”"
+trigger3 = stateno = 5000 && enemy,stateno = 3100 || stateno = 3061 && enemy,stateno = 3050
+trigger4 = P2name = "Yoshitora Tokugawa" && enemy,authorname = "MEKA"
+trigger4 = stateno = 1102 && enemy,stateno = 3001
+trigger5 = P2name = "Kafuin Gaira" && enemy,authorname = "FUJY"
+trigger5 = stateno = 5030 && enemy,stateno = 3002 || stateno = 5030 && enemy,stateno = 3102
+trigger6 = P2name = "Haohmaru" && enemy,authorname = "Capuchino"
+trigger6 = stateno = 251 && enemy,stateno = 3200 || stateno = 5030 && enemy,stateno = 3001 || stateno = 5030 && enemy,stateno = 3030 || stateno = 11150 && enemy,stateno = 3106
+trigger7 = P2name = "Kibagami Genjuro" && enemy,authorname = "Capuchino"
+trigger7 = stateno = 5030 && enemy,stateno = 3005
+trigger8 = P2name = "Reika Murasame" && enemy,authorname = "taruse"
+trigger8 = stateno = 7251 && enemy,stateno = 7220
+trigger9 = P2name = "Shizumaru Hisame" && enemy,authorname = "Capuchino"
+trigger9 = stateno = 5030 && enemy,stateno = 3204 || stateno = 5030 && enemy,stateno = 3001 || stateno = 5030 && enemy,stateno = 3103
+trigger10 = P2name = "zankuro" && enemy,authorname = "yuto"
+trigger10 = stateno = 821 && enemy,stateno = 3001 || stateno = 821 && enemy,stateno = 4600 || stateno = 3020 && enemy,stateno = 4001 || stateno = 4991 && enemy,stateno = 4504
+helpertype = normal
+name = "wepon"
+ID = 11000
+stateno = 11005
+postype = p1
+pos = 0, 0
+facing = 1
+keyctrl = 0
+ownpal = 1
+
+
+[State -2, 3];その２
+type = varset
+triggerall = NumPartner = 0 && enemy,NumPartner = 0
+triggerall = var(6) = 0
+triggerall = movetype = H
+trigger1 = P2name = "rera" && enemy,authorname = "Roque"
+trigger1 = stateno = 5030 && enemy,stateno = 3220
+trigger2 = P2name = "mina" && enemy,authorname = "PriPri Man"
+trigger2 = stateno = 5000 && enemy,stateno = 3001
+trigger3 = P2name = "Sankuro Yorozu" && enemy,authorname = "taruse"
+trigger3 = stateno = 4520 && enemy,stateno = 4500 || stateno = 10550 && enemy,stateno = 10397
+trigger4 = P2name = "Poppy_ZERO" && enemy,authorname = "taruse"
+trigger4 = stateno = 3323 && enemy,stateno = 13313 || stateno = 10611 && enemy,stateno = 4501
+var(6) = 10000
+
+
+[State -2, 3];その２
+type = Helper
+triggerall = NumPartner = 0 && enemy,NumPartner = 0
+triggerall = NumHelper(11000) = 0
+triggerall = movetype = H
+trigger1 = P2name = "rera" && enemy,authorname = "Roque"
+trigger1 = stateno = 5030 && enemy,stateno = 3220
+trigger2 = P2name = "mina" && enemy,authorname = "PriPri Man"
+trigger2 = stateno = 5000 && enemy,stateno = 3001
+trigger3 = P2name = "Sankuro Yorozu" && enemy,authorname = "taruse"
+trigger3 = stateno = 4520 && enemy,stateno = 4500 || stateno = 10550 && enemy,stateno = 10397
+trigger4 = P2name = "Poppy_ZERO" && enemy,authorname = "taruse"
+trigger4 = stateno = 3323 && enemy,stateno = 13313 || stateno = 10611 && enemy,stateno = 4501
+helpertype = normal
+name = "wepon"
+ID = 11000
+stateno = 11005
+postype = p1
+pos = 0, 0
+facing = 1
+keyctrl = 0
+ownpal = 1
+
+;-----------------------------------------------------------------
+
+[State 2100, 2]
+type = Helper
+triggerall = NumPartner = 0 && enemy,NumPartner = 0
+triggerall = p2stateno != 27170
+triggerall = numHelper(11000) = 0
+triggerall = numhelper(9600) = 0
+triggerall = var(11) = 1
+triggerall = Statetype != L
+trigger1 = Life = 0
+helpertype = normal
+name = "wepon_end"
+ID = 11000
+stateno = 10999
+pos = 0,0
+postype = p1
+keyctrl = 0
+ownpal = 1
+
+[State 2100, 2]
+type = Helper
+triggerall = NumPartner = 0 && enemy,NumPartner = 0
+triggerall = numHelper(11004) = 0
+triggerall = var(6) = 0
+trigger1 = P2name = "Yumeji Kurokouchi" && enemy,authorname = "taruse"
+trigger1 = p2stateno = 27100
+trigger2 = P2name = "Sankuro Yorozu" && enemy,authorname = "taruse"
+trigger2 = p2stateno = 27100
+trigger3 = P2name = "Poppy_ZERO" && enemy,authorname = "taruse"
+trigger3 = p2stateno = 27100
+helpertype = normal
+name = "wepon_FINAL"
+ID = 11004
+stateno = 11004
+;Pausemovetime= -1
+;supermovetime = -1
+pos = 0,0
+postype = p1
+keyctrl = 0
+ownpal = 1
+
+[State -2,];Of
+type = Varset
+triggerall = NumPartner = 0 && enemy,NumPartner = 0
+trigger1 = P2name = "Yumeji Kurokouchi" && enemy,authorname = "taruse"
+trigger1 = p2stateno = 27101
+trigger2 = P2name = "Sankuro Yorozu" && enemy,authorname = "taruse"
+trigger2 = p2stateno = 27101
+trigger3 = P2name = "Poppy_ZERO" && enemy,authorname = "taruse"
+trigger3 = p2stateno = 27101
+trigger4 = stateno = 0
+trigger4 = numHelper(11000) = 0
+trigger4 = numHelper(11004) = 0
+v = 6
+value = 0
+
+[State -2,];ON
+type = Varset
+triggerall = NumPartner = 0 && enemy,NumPartner = 0
+trigger1 = P2name = "Yumeji Kurokouchi" && enemy,authorname = "taruse"
+trigger1 = stateno = [27997,27999]
+trigger2 = P2name = "Sankuro Yorozu" && enemy,authorname = "taruse"
+trigger2 = stateno = [27997,27999]
+trigger3 = P2name = "Poppy_ZERO" && enemy,authorname = "taruse"
+trigger3 = stateno = [27997,27999]
+v = 6
+value = 10000
+;--------------------------------------------------------------------
+[State -2, 3]
+type = AfterImageTime
+trigger1 = MoveType = H
+time = 0
+
+[State -2]
+type = AssertSpecial
+trigger1 = 1
+;trigger1 = var(30)= 1
+;trigger2 = var(6)= 10000
+;trigger3 = stateno = 105
+flag = NoAirGuard
+;--------------------------------------------------------------------
+[State -2];怒り上昇
+Type = Varadd
+triggerall = var(58)= 0
+triggerall = stateno != 9500
+trigger1 =var(21) >= life
+Persistent = 0
+IgnoreHitPause = 1
+V = 15
+Value = ceil((var(21)-life) / 13)
+
+[State -2,]; １Pの体力値
+type = Varset
+trigger1 = 1
+v = 21
+value = life
+;--------------------------------------------------------------------
+
+;----------------------------------------------------------------
+[State -2,];キャラ判別（心眼）
+type = Varset
+triggerall = NumPartner = 0 && enemy,NumPartner = 0
+;triggerall = P2name != "Yumeji Kurokouchi" && enemy,authorname = "taruse"
+;triggerall = P2name != "Yashaoh" && enemy,authorname = "NHK"
+;triggerall = P2name != "Reika Murasame" && enemy,authorname = "taruse"
+;triggerall = P2name != "mina" && enemy,authorname = "PriPri Man"
+;triggerall = P2name != "Yoshitora Tokugawa" && enemy,authorname = "MEKA"
+;triggerall = P2name != "kusaregedo" && enemy,authorname = "H”"
+;triggerall = P2name != "rera" && enemy,authorname = "Roque"
+triggerall = P2name != "Yumeji Kurokouchi" && P2name != "Reika Murasame" && P2name != "Yashaoh"
+triggerall = P2name != "mina" && P2name != "Yoshitora Tokugawa" && P2name != "kusaregedo" && P2name != "rera" && P2name != "Sankuro Yorozu"
+trigger1 = stateno     = [3400,3419]
+trigger2 = stateno     =  8040
+v = 27
+value =60
+
+[State -2,];キャラ判別（心眼）
+type = Varset
+triggerall = NumPartner = 0 && enemy,NumPartner = 0
+;triggerall = stateno     = [3400,3419]
+triggerall = stateno     =  8040
+trigger1 = P2name = "mina"&& enemy,authorname = "PriPri Man"
+trigger2 = P2name = "Yoshitora Tokugawa" && enemy,authorname = "MEKA"
+trigger3 = P2name = "kusaregedo" && enemy,authorname = "H”"
+trigger4 = P2name = "rera"&& enemy,authorname = "Roque"
+v = 27
+value =22
+
+[State -2,];キャラ判別（心眼）  チーム戦時
+type = Varset
+triggerall = NumPartner != 0 || enemy,NumPartner != 0
+trigger1 = stateno     = [3400,3419]
+trigger2 = stateno     =  8040
+v = 27
+value =60
+
+[State -2,];キャラ判別 （白羽取り）
+type = Varset
+triggerall = P2name != "Yumeji Kurokouchi" && P2name != "Reika Murasame" && P2name != "Yashaoh" && P2name != "Sankuro Yorozu"
+trigger1 = stateno     = [10395,10399]
+v = 27
+value =30
+;----------------------------------------------------------------
+
+;------------------------------------------
+[State -2,];バックアタックＯＮ
+type = Varset
+trigger1 = p2bodydist X < 0
+v = 28
+value = 10
+
+[State -2,];バックアタックOFF
+type = Varset
+trigger1 = p2bodydist X > 0
+trigger1 = p2MoveType = I
+v = 28
+value = 0
+;------------------------------------------
+[State -2,];強攻撃連斬判定ＯＮ
+type = Varset
+triggerall = movehit != 0
+trigger1 = stateno = 210
+trigger2 = stateno = 430
+trigger3 = stateno = 610
+trigger4 = stateno = 620
+v = 29
+value = 1
+
+[State -2,];強攻撃連斬判定ＯＦＦ
+type = Varset
+trigger1 = p2MoveType != H
+trigger2 = stateno     = [200,699]
+trigger2 = stateno != 210
+trigger2 = stateno != 230
+trigger2 = stateno != 410
+trigger2 = stateno != 430
+trigger2 = stateno != 610
+trigger2 = stateno != 620
+v = 29
+value = 0
+;------------------------------------------
+;無の境地
+[State 3000, Super A]
+type = Pause
+triggerall = P2name != "Yumeji Kurokouchi";&& enemy,authorname != "taruse"
+triggerall = P2name != "Sankuro Yorozu";&& enemy,authorname != "taruse"
+triggerall = P2name != "Poppy_ZERO";&& enemy,authorname != "taruse"
+triggerall = numhelper(12100)= 1
+triggerall = (GameTime%4) =1
+trigger1 = stateno   !=[3310,3314];モズ落とし
+trigger1 = p2stateno !=[3320,3323];モズ相手
+trigger1 = stateno   !=[3401,3410];柳生心眼刀・相破
+trigger1 = stateno   !=[1300,1399];細雪・閃　ヒット時
+trigger1 = stateno   != 150
+trigger1 = stateno   !=[800,899]
+trigger1 = p2stateno !=[815,819]
+trigger1 = p2stateno !=[5101,5120]
+trigger1 = p2stateno != 5050
+trigger1 = p2stateno != 5035
+trigger1 = p2stateno !=[5070,5071]
+movetime=3
+time=3
+
+;無の境地 （夢路用）
+[State 3000, Super A]
+type = Pause
+triggerall = P2name = "Yumeji Kurokouchi" && enemy,authorname = "taruse"
+triggerall = numhelper(12100)= 1
+triggerall = (GameTime%4) =1
+triggerall = p2stateno !=[27000,27003]
+triggerall = p2stateno !=13000
+triggerall = p2stateno !=12500
+trigger1 = stateno   !=[3310,3314];モズ落とし
+trigger1 = p2stateno !=[3320,3323];モズ相手
+trigger1 = stateno   !=[3401,3410];柳生心眼刀・相破
+trigger1 = stateno   !=[1300,1399];細雪・閃　ヒット時
+trigger1 = stateno   != 150
+trigger1 = stateno   !=[800,899]
+trigger1 = p2stateno !=[815,819]
+trigger1 = p2stateno !=[5101,5120]
+trigger1 = p2stateno != 5050
+trigger1 = p2stateno != 5035
+trigger1 = p2stateno !=[5070,5071]
+movetime=3
+time=3
+
+;無の境地 （三九六用）
+[State 3000, Super A]
+type = Pause
+triggerall = P2name = "Sankuro Yorozu" && enemy,authorname = "taruse"
+triggerall = numhelper(12100)= 1
+triggerall = (GameTime%4) =1
+triggerall = p2stateno !=[27000,27003]
+triggerall = p2stateno !=13000
+triggerall = p2stateno !=12500
+trigger1 = stateno   !=[3310,3314];モズ落とし
+trigger1 = p2stateno !=[3320,3323];モズ相手
+trigger1 = stateno   !=[3401,3410];柳生心眼刀・相破
+trigger1 = stateno   !=[1300,1399];細雪・閃　ヒット時
+trigger1 = stateno   != 150
+trigger1 = stateno   !=[800,899]
+trigger1 = p2stateno !=[815,819]
+trigger1 = p2stateno !=[5101,5120]
+trigger1 = p2stateno != 5050
+trigger1 = p2stateno != 5035
+trigger1 = p2stateno !=[5070,5071]
+movetime=3
+time=3
+
+;無の境地 （パピー用）
+[State 3000, Super A]
+type = Pause
+triggerall = P2name = "Poppy_ZERO" && enemy,authorname = "taruse"
+triggerall = numhelper(12100)= 1
+triggerall = (GameTime%4) =1
+triggerall = p2stateno !=[27000,27003]
+triggerall = p2stateno !=13000
+triggerall = p2stateno !=12500
+trigger1 = stateno   !=[3310,3314];モズ落とし
+trigger1 = p2stateno !=[3320,3323];モズ相手
+trigger1 = stateno   !=[3401,3410];柳生心眼刀・相破
+trigger1 = stateno   !=[1300,1399];細雪・閃　ヒット時
+trigger1 = stateno   != 150
+trigger1 = stateno   !=[800,899]
+trigger1 = p2stateno !=[815,819]
+trigger1 = p2stateno !=[5101,5120]
+trigger1 = p2stateno != 5050
+trigger1 = p2stateno != 5035
+trigger1 = p2stateno !=[5070,5071]
+movetime=3
+time=3
+;------------------------------------------
+[State -2,];修正
+type = Varset
+trigger1 = numhelper(12100)= 1
+v = 23
+value = 12
+
+[State -2,];修正解除
+type = Varset
+trigger1 = numhelper(12100)= 0
+v = 23
+value = 0
+
+[State -2,]; 一閃ダメージ
+type = Varset
+trigger1 = 1
+v = 24
+value =var(18)*10
+
+[State -2,];ヒットカウンター
+type = Varset
+Trigger1 = P2MoveType != H
+v = 26
+value = 0
+;------------------------------------------
+[State -2,エフェクト消去]
+type = removeExplod
+triggerall = 1
+trigger1 = stateno != 13000
+id = 13010
+
+[State -2,]; エフェクト消去
+type = Varset
+trigger1 = stateno != [13000,13050]
+v = 13
+value = 0
+
+
+[State -2,];ポーズタイム0
+type = Varset
+trigger1 = numhelper(12100)= 0
+v = 4
+value = 0
+
+[State -2,];ポーズタイム9999
+type = Varset
+trigger1 = numhelper(12100)= 1
+v = 4
+value = 9999
+
+[State -2,];ささめゆき判定
+type = Varset
+trigger1 = stateno != [1200,1399]
+v = 7
+value = 0
+
+
+[State -2];怒り上限値設定
+Type = Varset
+Trigger1 = var(15) >= 63
+V = 15
+Value = 63
+
+[State -2];怒り最低値設定
+Type = Varset
+Trigger1 = var(15) <= 0
+trigger2 = stateno  = 191
+V = 15
+Value = 0
+
+[State -2,];怒り値リセット
+type = Varset
+Trigger1 = var(35) = 1
+v = 15
+value = 0
+
+[State -2,エフェクト消去]
+type = removeExplod
+Trigger1 = var(16) = 1
+id = 20010
+
+;-------------------------------------------------
+[State -2, EX_-1]; 攻撃力上昇
+type = AttackMulSet
+Trigger1 = var(16) != 0
+value = 1.2
+
+[State -2, EX_-1]; 攻撃力低下
+type = AttackMulSet
+Trigger1 = var(16) = 0
+value = 1
+;------------------------------  断空裂斬
+;特殊効果 元に戻す
+[State -2]
+type = DefenceMulSet
+Trigger1 = var(6) = 0
+value = 1.0
+
+;特殊効果　防御力ダウン
+[State -2]
+type = DefenceMulSet
+Trigger1 = var(6) != 0
+value = 1.2
+;------------------------------  断空裂斬
+
+;---------------------------------------------------------------------------------------------------------------
+;剣気関係
+;---------------------------------------------------------------------------------------------------------------
+
+
+;-------------------------------  剣気システム
+[State -2 kihon];剣気ゲージ（通常最大値
+Type = Varset
+triggerall = var(16) = 0
+Trigger1 = fvar(10) > .78
+fvar(10) = .78
+ignorehitpause = 1
+[State -2 kihon];剣気ゲージ（MAX最大値
+Type = Varset
+triggerall = var(16) = 1
+Trigger1 = fvar(10) > 1.02
+fvar(10) = 1.02
+ignorehitpause = 1
+[State -2 kihon];剣気ゲージ（爆発最大値
+Type = Varset
+triggerall = var(16) = 2
+Trigger1 = fvar(10) > 1.18
+fvar(10) = 1.18
+ignorehitpause = 1
+[State -2 kihon];剣気ゲージ（最低値
+Type = Varset
+Trigger1 = fvar(10) < 0
+fvar(10) = 0.01
+ignorehitpause = 1
+
+;------------------------------------------------------------  回復
+[State -2,rika];通常
+type = Varadd
+;triggerall = roundstate != 4
+triggerall = var(16) = 0
+triggerall = StateNo != 100
+triggerall = StateNo != 105
+triggerall = StateNo != 12000
+triggerall = fvar(10) < .78
+trigger1 = movetype != A
+trigger2 = var(30) = 0
+trigger2 = StateNo = 812
+trigger3 = var(30) = 0
+trigger3 = StateNo = 822
+trigger4 = var(30) = 0
+trigger4 = StateNo = 832
+fvar(10) = .01-(fvar(10)/79)
+
+[State -2,rika];怒りMAX
+type = Varadd
+;triggerall = roundstate != 4
+triggerall = var(16) = 1
+triggerall = StateNo != 100
+triggerall = StateNo != 105
+triggerall = fvar(10) < 1.02
+trigger1 = movetype != A
+trigger2 = var(30) = 0
+trigger2 = StateNo = 812
+trigger3 = var(30) = 0
+trigger3 = StateNo = 822
+trigger4 = var(30) = 0
+trigger4 = StateNo = 832
+fvar(10) = .01-(fvar(10)/103)
+
+[State -2,rika];怒り爆発
+type = Varadd
+;triggerall = roundstate != 4
+triggerall = var(16) = 2
+triggerall = StateNo != 100
+triggerall = StateNo != 105
+triggerall = fvar(10) < 1.18
+trigger1 = movetype != A
+trigger2 = var(30) = 0
+trigger2 = StateNo = 812
+trigger3 = var(30) = 0
+trigger3 = StateNo = 822
+trigger4 = var(30) = 0
+trigger4 = StateNo = 832
+fvar(10) = .01-(fvar(10)/119)
+
+;------------------------------------------剣気MAXボーナス
+[State -2,pulas];ボーナスＯＮ
+type = Varset
+trigger1 = var(16) = 0
+Trigger1 = fvar(10) = .78
+trigger2 = var(16) = 1
+Trigger2 = fvar(10) = 1.02
+trigger3 = var(16) = 2
+Trigger3 = fvar(10) = 1.18
+fvar(5) = 1.3
+ignorehitpause = 1
+
+[State -2,pulas];ボーナスOFF
+type = Varset
+trigger1 = var(16) = 0
+Trigger1 = fvar(10) != .78
+trigger2 = var(16) = 1
+Trigger2 = fvar(10) != 1.02
+trigger3 = var(16) = 2
+Trigger3 = fvar(10) != 1.18
+fvar(5) = 1
+ignorehitpause = 1
+;------------------------------------------
+
+
+;---------------------------------------------------------------------------
+[State -2,エフェクト消去]
+type = removeExplod
+triggerall = 1
+trigger1 = stateno = 52 ;Jump land
+trigger2 = stateno = 59 ;Jump land
+;trigger2 = Pos Y < 10
+id = 980
+
+[State -2,エフェクト消去]
+type = removeExplod
+triggerall = 1
+trigger1 = stateno = 52 ;Jump land
+trigger2 = stateno = 59 ;Jump land
+;trigger2 = Pos Y < 10
+id = 985
+
+[State -2,エフェクト消去]
+type = removeExplod
+triggerall = 1
+trigger1 = stateno = 52 ;Jump land
+trigger2 = stateno = 59 ;Jump land
+;trigger2 = Pos Y < 10
+id = 990
+
+[State -2,エフェクト消去]
+type = removeExplod
+triggerall = 1
+trigger1 = stateno = 52 ;Jump land
+trigger2 = stateno = 59 ;Jump land
+;trigger2 = Pos Y < 10
+id = 991
+
+;-------------------------
+[State -2, kesu]
+type = removeExplod
+trigger1 = stateno =[700,799]
+id = 900
+
+[State -2, kesu]
+type = removeExplod
+trigger1 = stateno =[700,799]
+id = 901
+
+[State -2, kesu]
+type = removeExplod
+trigger1 = stateno =[700,799]
+id = 910
+
+[State -2, kesu]
+type = removeExplod
+trigger1 = stateno =[700,799]
+id = 911
+
+[State -2, kesu]
+type = removeExplod
+trigger1 = stateno =[700,799]
+id = 925
+
+[State -2, kesu]
+type = removeExplod
+trigger1 = stateno =[700,799]
+id = 926
+
+[State -2, kesu]
+type = removeExplod
+trigger1 = stateno =[700,799]
+id = 930
+
+[State -2, kesu]
+type = removeExplod
+trigger1 = stateno =[700,799]
+id = 931
+
+[State -2, kesu]
+type = removeExplod
+trigger1 = stateno =[700,799]
+id = 932
+;---------------------------------------------
+[State -2, kesu]
+type = removeExplod
+trigger1 = stateno =[700,799]
+id = 940
+
+[State -2, kesu]
+type = removeExplod
+trigger1 = stateno =[700,799]
+id = 941
+
+[State -2, kesu]
+type = removeExplod
+trigger1 = stateno =[700,799]
+id = 950
+
+[State -2, kesu]
+type = removeExplod
+trigger1 = stateno =[700,799]
+id = 951
+
+[State -2, kesu]
+type = removeExplod
+trigger1 = stateno =[700,799]
+id = 960
+
+[State -2, kesu]
+type = removeExplod
+trigger1 = stateno =[700,799]
+id = 961
+
+[State -2, kesu]
+type = removeExplod
+trigger1 = stateno =[700,799]
+id = 970
+
+[State -2, kesu]
+type = removeExplod
+trigger1 = stateno =[700,799]
+id = 971
+
+[State -2, kesu]
+type = removeExplod
+trigger1 = stateno =[700,799]
+id = 972
+
+;--------------------------------  一閃用エフェクト消去
+[State -2, kesu]
+type = removeExplod
+trigger1 = stateno = 13000
+id = 1410
+
+[State -2, kesu]
+type = removeExplod
+trigger1 = stateno = 13000
+id = 1411
+
+[State -2, kesu]
+type = removeExplod
+trigger1 = stateno = 13000
+id = 1412
+
+[State -2, kesu]
+type = removeExplod
+trigger1 = stateno = 13000
+id = 1413
+;--------------------------------  キャンセル時のエフェクト消去
+[State -2, kesu]
+type = removeExplod
+trigger1 = stateno != 200
+id = 900
+[State -2, kesu]
+type = removeExplod
+trigger1 = stateno != 200
+id = 901
+[State -2, kesu]
+type = removeExplod
+trigger1 = stateno != 205
+id = 905
+[State -2, kesu]
+type = removeExplod
+trigger1 = stateno != 205
+id = 906
+[State -2, kesu]
+type = removeExplod
+trigger1 = stateno != 210
+id = 910
+[State -2, kesu]
+type = removeExplod
+trigger1 = stateno != 210
+id = 911
+;----------------------------
+[State -2, kesu]
+type = removeExplod
+trigger1 = stateno != 225
+id = 925
+[State -2, kesu]
+type = removeExplod
+trigger1 = stateno != 226
+id = 926
+[State -2, kesu]
+type = removeExplod
+trigger1 = stateno != 230
+id = 930
+[State -2, kesu]
+type = removeExplod
+trigger1 = stateno != 230
+id = 931
+[State -2, kesu]
+type = removeExplod
+trigger1 = stateno != 230
+id = 932
+;----------------------------
+[State -2, kesu]
+type = removeExplod
+trigger1 = stateno != 410
+id = 970
+[State -2, kesu]
+type = removeExplod
+trigger1 = stateno != 410
+id = 971
+[State -2, kesu]
+type = removeExplod
+trigger1 = stateno != 410
+id = 972
+;----------------------------
+[State -2, kesu]
+type = removeExplod
+trigger1 = stateno != 420
+id = 940
+[State -2, kesu]
+type = removeExplod
+trigger1 = stateno != 420
+id = 941
+[State -2, kesu]
+type = removeExplod
+trigger1 = stateno != 425
+id = 950
+[State -2, kesu]
+type = removeExplod
+trigger1 = stateno != 425
+id = 951
+[State -2, kesu]
+type = removeExplod
+trigger1 = stateno != 430
+id = 960
+[State -2, kesu]
+type = removeExplod
+trigger1 = stateno != 430
+id = 961
+;----------------------------
+[State -2, kesu]
+type = removeExplod
+trigger1 = stateno != 1500
+id = 1501
+[State -2, kesu]
+type = removeExplod
+trigger1 = stateno != 1500
+id = 1502
+[State -2, kesu]
+type = removeExplod
+trigger1 = stateno != 1505
+id = 1506
+[State -2, kesu]
+type = removeExplod
+trigger1 = stateno != 1505
+id = 1507
+[State -2, kesu]
+type = removeExplod
+trigger1 = stateno != 1510
+id = 1511
+[State -2, kesu]
+type = removeExplod
+trigger1 = stateno != 1510
+id = 1512
+
+
+[State -2, kesu]
+type = removeExplod
+trigger1 = stateno != 3800
+id = 3850
+
+;----------------------------
+;--------------------------------  怒りゲージ＆無のゲージ消滅
+[State -2,エフェクト消去]
+type = removeExplod
+trigger1 = var(35) = 1
+trigger2 = numhelper(1710)= 1
+trigger3 = numhelper(1711)= 1
+id = 20000
+
+[State -2,エフェクト消去]
+type = removeExplod
+trigger1 = var(35) = 1
+trigger2 = numhelper(1710)= 1
+trigger3 = numhelper(1711)= 1
+id = 20010
+
+[State -2,エフェクト消去]
+type = removeExplod
+trigger1 = var(35) = 1
+trigger2 = stateno = 11111
+trigger3 = stateno = 11113
+trigger4 = numhelper(1710)= 1
+trigger5 = numhelper(1711)= 1
+id = 24000+var(18)
+
+;------------------------------------  瞑想エフェクト
+[State -2,エフェクト消去]
+type = removeExplod
+triggerall = 1
+trigger1 = stateno != 360
+id = 4100
+
+
+;-------------------------
+[State 100 , 最速起き上がり]
+type = selfState
+triggerall =stateno = 5110
+trigger1 = Time >=3
+trigger1 = Command = "holdup"
+value = 5120
+
+[State 100 , 前転]
+type = ChangeState
+triggerall =stateno = 5120
+trigger1 = Time >=3
+trigger1 = Time <=10
+trigger1 = Command = "holdfwd"
+value = 310
+
+[State 100 , 後転]
+type = ChangeState
+triggerall =stateno = 5120
+trigger1 = Time >=3
+trigger1 = Time <=10
+trigger1 = Command = "holdback"
+value = 320
+
+
+
+
+[State -2]; 処理
+Type = Varset
+Trigger1 = MoveType != H
+trigger1 = stateno  != 5120 
+V = 20
+Value = 0
+
+[State -2]; 処理
+Type = Varset
+Trigger1 = anim = 5070
+V = 20
+Value = 1
+
+;---------------------------------------------------------------  -2エフェクト処理
+
+[State 2100, 2]; 煙エフェクト挿入
+type = Explod
+triggerall = Time = 1
+trigger1 = stateno = 52 ;Jump land
+trigger2 = stateno = 106 ;Run-back land
+trigger3 = stateno = 101
+trigger4 = stateno = 5110
+trigger5 = stateno = 59
+trigger6 = stateno = 4530
+trigger7 = stateno = 280
+trigger8 = stateno = 1620 ;
+trigger9 = stateno = 855 ;
+trigger10 = stateno = 865 ;
+trigger11 = stateno = 3710
+trigger12 = stateno = 10865
+trigger13 = stateno = 11500
+trigger14 = stateno = 100
+trigger15 = stateno = 1500
+trigger16 = stateno = 1505
+trigger17 = stateno = 1510
+trigger18 = stateno = 1515
+trigger19 = stateno = 11500
+trigger20 = stateno = 11501
+helpertype = normal
+name = "en_efe"
+ID = 4050
+anim = 4050
+pos = 25,0
+sprpriority = 3
+postype = p1
+Pausemovetime=var(4)
+supermovetime = 9999
+removetime =18
+bindtime = 1
+keyctrl = 0
+ownpal = 1
+
+[State 2100, 2]; 瞑想エフェクト挿入
+type = Explod
+triggerall = NumExplod(4100)= 0
+trigger1 = stateno = 360
+helpertype = normal
+name = "meisou_efe"
+ID = 4100
+anim = 4100
+pos = 0,0
+sprpriority = 3
+postype = p1
+Pausemovetime=var(4)
+;supermovetime = 9999
+removetime =-1
+bindtime = -1
+keyctrl = 0
+ownpal = 1
+
+
+
+;------------------------------------------------------
+;境地バグ
+;------------------------------------------------------
+[State -2,]; 境地バグ　カウント
+type = Varadd
+trigger1 = var(51) != 0
+v = 51
+value = -1
+[State -2,]; 境地バグ解除
+type = Varset
+Trigger1 = MoveType = H
+Trigger2 = MoveType = A
+v = 51
+value = 0
+;---------------------------------------------------------------------------
+; States that are executed when in self's state file (use statedef -3)
+;---------------------------------------------------------------------------
+[Statedef -3]
+
+;This controller plays a sound everytime KFM lands from a jump, or
+;from his back-dash.
+[State -3, Landing Sound]
+type = PlaySnd
+triggerall = Time = 1
+trigger1 = stateno = 52 || stateno = 59 ;Jump land;Jump land
+trigger2 = stateno = 106 ;Run-back land
+trigger3 = stateno = 390 ;
+trigger4 = stateno = 1620 ;
+trigger5 = stateno = 855 ;
+trigger6 = stateno = 865 ;
+trigger7 = stateno = 3710
+trigger8 = stateno = 10865
+value = 40, 0
+
+[State -3,ジャンプ音]
+type = PlaySnd
+triggerall =  time = 1
+trigger1 = stateno = 50
+trigger2 = stateno = 105
+trigger3 = stateno = 380
+trigger4 = stateno = 330
+trigger5 = stateno = 335
+trigger6 = stateno = 850 ;
+trigger7 = stateno = 860 ;
+trigger8 = stateno = 10860
+value = s41,41
+
+[State -2,ダッシュＳＥ]
+type = PlaySnd
+trigger1 = stateno = 100
+trigger1 = (GameTime%15) =1
+value = s6,0
+channel = 2
+
+[State -2, ダッシュＳＥ]
+type = StopSnd
+trigger1 = prevstateno = 100
+trigger1 = stateno != 100
+trigger2 = movetype = H
+channel = 2
+
+[State -2　ダウンＳＥ]
+type = PlaySnd
+triggerall = Time = 1
+trigger1 = stateno = 5100
+trigger2 = PrevStateNo != 5081
+trigger2 = stateno = 5110
+trigger3 = stateno = 5105
+trigger4 = stateno = 3910
+trigger5 = stateno = 3960
+value =  s100,0
+
+[State 191, 4] 
+type = EnvShake
+triggerall = Time = 1
+trigger1 = stateno = 5100
+trigger2 = PrevStateNo != 5081
+trigger2 = stateno = 5110
+trigger3 = stateno = 5105
+time = 30
+ampl = 5
+freq = 60
+phase = 45
+
+
+;---------------------------
+[State 205, 3]
+type = VarRandom
+trigger1 = 1
+v = 2
+range = 0,1
+;---------------------------
+
+;---------------------------
+[State 205, 3]
+type = VarRandom
+triggerall = stateno !=14000
+trigger1 = 1
+v = 3
+range = 3,7
+;---------------------------
+
+;------------------------------------------------------------------------------------------------------
+;通常攻撃とダメージボイス集
+;------------------------------------------------------------------------------------------------------
+[State 205, 3]
+type = VarRandom
+trigger1 = 1
+v = 12
+range = 0,100
+;---------------------------
+
+[State -3, 1]
+type = PlaySnd
+triggerall = Time = 1
+triggerall = var(30) = 0
+trigger1 = stateno = 300
+value = 200,2
+channel = 5
+
+;----------------------------------　攻撃
+[State -3, 1]
+type = PlaySnd
+triggerall = Time = 1
+triggerall = var(12) = [0,20]
+trigger1 = stateno = [200,299]
+trigger2 = stateno = [400,499]
+trigger3 = stateno = [600,699]
+trigger4 = stateno = 10200 || stateno = 10400
+trigger5 = stateno = 812 || stateno = 822
+trigger6 = stateno = [1600,1603]
+trigger7 = stateno = 10200 || stateno = 10400 || stateno = 10600
+trigger8 = stateno = [1500,1515]
+trigger9 = stateno = [11500,11501]
+value = 200,0
+channel = 5
+
+[State -3, 1]
+type = PlaySnd
+triggerall = Time = 1
+triggerall = var(12) = [21,40]
+trigger1 = stateno = [200,299]
+trigger2 = stateno = [400,499]
+trigger3 = stateno = [600,699]
+trigger4 = stateno = 10200 || stateno = 10400
+trigger5 = stateno = 812 || stateno = 822
+trigger6 = stateno = [1600,1603]
+trigger7 = stateno = 10200 || stateno = 10400 || stateno = 10600
+trigger8 = stateno = [1500,1515]
+trigger9 = stateno = [11500,11501]
+value = 200,1
+channel = 5
+
+[State -3, 1]
+type = PlaySnd
+triggerall = Time = 1
+triggerall = var(12) = [41,60]
+trigger1 = stateno = [200,299]
+trigger2 = stateno = [400,499]
+trigger3 = stateno = [600,699]
+trigger4 = stateno = 10200 || stateno = 10400
+trigger5 = stateno = 812 || stateno = 822
+trigger6 = stateno = [1600,1603]
+trigger7 = stateno = 10200 || stateno = 10400 || stateno = 10600
+trigger8 = stateno = [1500,1515]
+trigger9 = stateno = [11500,11501]
+value = 200,2
+channel = 5
+
+[State -3, 1]
+type = PlaySnd
+triggerall = Time = 1
+triggerall = var(12) = [61,80]
+trigger1 = stateno = [200,299]
+trigger2 = stateno = [400,499]
+trigger3 = stateno = [600,699]
+trigger4 = stateno = 10200 || stateno = 10400
+trigger5 = stateno = 812 || stateno = 822
+trigger6 = stateno = [1600,1603]
+trigger7 = stateno = 10200 || stateno = 10400 || stateno = 10600
+trigger8 = stateno = [1500,1515]
+trigger9 = stateno = [11500,11501]
+value = 200,4
+channel = 5
+
+[State -3, 1]
+type = PlaySnd
+triggerall = Time = 1
+triggerall = var(12) = [81,100]
+trigger1 = stateno = [200,299]
+trigger2 = stateno = [400,499]
+trigger3 = stateno = [600,699]
+trigger4 = stateno = 10200 || stateno = 10400
+trigger5 = stateno = 812 || stateno = 822
+trigger6 = stateno = [1600,1603]
+trigger7 = stateno = 10200 || stateno = 10400 || stateno = 10600
+trigger8 = stateno = [1500,1515]
+trigger9 = stateno = [11500,11501]
+value = 200,5
+channel = 5
+;----------------------------------
+
+;----------------------------------　ダメージ
+[State -2, 4]
+type = PlaySnd
+triggerall = Time = 1
+triggerall = var(12) = [0,15]
+triggerall = alive = 1
+trigger1 = stateno = 5000
+trigger2 = stateno = 5010
+;trigger3 = stateno = 5100
+trigger3 = stateno = 5070
+trigger4 = stateno = 3900
+trigger5 = stateno = 3950
+value =300,0
+channel = 5
+
+[State -2, 4]
+type = PlaySnd
+triggerall = Time = 1
+triggerall = var(12) = [16,30]
+triggerall = alive = 1
+trigger1 = stateno = 5000
+trigger2 = stateno = 5010
+;trigger3 = stateno = 5100
+trigger3 = stateno = 5070
+trigger4 = stateno = 3900
+trigger5 = stateno = 3950
+value = 300,1
+channel = 5
+
+[State -2, 4]
+type = PlaySnd
+triggerall = Time = 1
+triggerall = var(12) = [31,45]
+triggerall = alive = 1
+trigger1 = stateno = 5000
+trigger2 = stateno = 5010
+;trigger3 = stateno = 5100
+trigger3 = stateno = 5070
+trigger4 = stateno = 3900
+trigger5 = stateno = 3950
+value = 300,2
+channel = 5
+
+[State -2, 4]
+type = PlaySnd
+triggerall = Time = 1
+triggerall = var(12) = [46,60]
+triggerall = alive = 1
+trigger1 = stateno = 5000
+trigger2 = stateno = 5010
+;trigger3 = stateno = 5100
+trigger3 = stateno = 5070
+trigger4 = stateno = 3900
+trigger5 = stateno = 3950
+value = 300,3
+channel = 5
+;----------------------------------
+
+;[State 210, 5]
+;type = ChangeState
+;triggerall = Stateno != 28100
+;trigger1 = p2Stateno = 27999
+;trigger1 = p2life = 0
+;value = 180
+
+[State 640, 3]
+type = Screenbound
+trigger1 = numhelper(28000)= 1
+value = 0
+
+[State 640, 3]
+type = Changeanim
+trigger1 = numhelper(28000)= 1
+trigger1 = Stateno = 0
+value = 28101
+
+[State -2,]; デバック時　無の境地即使用可能措置
+type = ChangeState
+triggerall = statetype != A
+;triggerall = Stateno = 0
+triggerall = ctrl
+trigger1 = var(45) = 1
+trigger1 = var(35) = 1
+trigger1 = numhelper(12600)= 0
+trigger1 = numhelper(22100)= 0
+trigger1 = numhelper(12100)= 0
+trigger1 = numhelper(22200)= 0
+value = 11112
+
+[State -2,]; デバック時　無の境地即使用可能措置
+type = lifeset
+trigger1 = var(45) = 1
+value = 500
+
+[State -2,]; デバック時　無の境地即使用可能措置
+type = varset
+trigger1 = RoundState != 2
+trigger2 = Stateno = 189
+trigger3 = Stateno = 14000
+v = 45
+value = 0
+
+[State -2,エフェクト消去]
+type = removeExplod
+trigger1 = var(45) = 0
+id = 11111
+
+[State -2,]; デバック時
+type = varset
+triggerall = var(45) = 1
+trigger1 = var(15) = 0
+v = 15
+value = 63
+
+;---------------------------------------------------------------------------------------------------------------
+;絶命レベル表示
+;---------------------------------------------------------------------------------------------------------------
+;
+
+[State -2,エフェクト消去]
+type = removeExplod
+trigger1 = numhelper(29000)= 0
+id = 28105
+
+[State -2,エフェクト消去]
+type = removeExplod
+trigger1 = numhelper(29000)= 0
+trigger2 = p2Stateno = 27258
+trigger3 = p2Stateno = 13061
+id = 28106
+
+[State -2,エフェクト消去]
+type = removeExplod
+trigger1 = Stateno != [13000,13050]
+id = 28107
+
+[State -2,エフェクト消去]
+type = removeExplod
+trigger1 = Stateno != [13000,13050]
+id = 28108
+
