@@ -1,0 +1,187 @@
+[Statedef 50000]
+type = S
+anim = 9999
+
+;△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△
+;オプション
+
+
+[State 空中ガード];空中ガードのあり・なしを設定します
+type = VarSet
+trigger1 = 1
+var(0) = 1    ;   0:OFF  1:ON 
+
+
+[State ガードクラッシュ];ガードクラッシュのあり・なしを設定します
+type = VarSet
+trigger1 = 1
+var(1) = 1    ;   0:OFF  1:ON 
+
+
+[State ジャストディフェンス];ジャストディフェンスのあり・なしを設定します
+type = VarSet
+trigger1 = 1
+var(2) = 0    ;   0:OFF  1:ON
+
+
+[State 避け];避け動作のあり・なしを設定します
+type = VarSet
+trigger1 = 1
+var(3) = 1    ;   0:OFF  1:ON 
+
+
+[State 避け攻撃];避け攻撃のあり・なしを設定します
+type = VarSet
+trigger1 = 1
+var(21) = 1    ;   0:OFF  1:ON 
+
+
+[State 回り込み];回り込みのあり・なしを設定します
+type = VarSet
+trigger1 = 1
+var(4) = 1    ;   0:OFF  1:ON 
+
+
+[State カウンターヒット];カウンターヒットのあり・なしを設定します
+type = VarSet
+trigger1 = 1
+var(5) = 1    ;   0:OFF  1:ON 
+
+
+[State カウンターヒットダメージ補正];カウンターヒット時のダメージ上昇率を設定します(0.1～)
+type = VarSet
+trigger1 = 1
+fvar(0) = 1.2
+
+
+[State ガードキャンセル攻撃];ガードキャンセル攻撃のあり・なしを設定します(1ゲージ消費)
+type = VarSet
+trigger1 = 1
+var(6) = 1    ;   0:OFF  1:ON 
+
+
+[State ガードキャンセルステップ];ガードキャンセルステップのあり・なしを設定します(1ゲージ消費)
+type = VarSet
+trigger1 = 1
+var(7) = 1    ;   0:OFF  1:ON 
+
+
+[State 地上チェーンコンボ];地上技でチェーンコンボができます
+type = VarSet
+trigger1 = 1
+var(8) = 0    ;   0:OFF  1:ON 
+
+
+[State 空中チェーンコンボ];ジャンプ技でチェーンコンボができます
+type = VarSet
+trigger1 = 1
+var(9) = 0    ;   0:OFF  1:ON 
+
+
+[State 全通常技がキャンセル可能];すべての通常技がキャンセル可能になります
+type = VarSet
+trigger1 = 1
+var(10) = 0    ;   0:OFF  1:ON 
+
+
+[State 全通常技からジャンプ可能];すべての通常技がジャンプでキャンセル可能になります
+type = VarSet
+trigger1 = 1
+var(11) = 0    ;   0:OFF  1:ON 
+
+
+[State 全必殺技からジャンプ可能];すべての必殺技がジャンプでキャンセル可能になります
+type = VarSet
+trigger1 = 1
+var(20) = 0    ;   0:OFF  1:ON 
+
+
+[State 全通常技からダッシュ可能];すべての通常技がダッシュでキャンセル可能になります
+type = VarSet
+trigger1 = 1
+var(12) = 0    ;   0:OFF  1:ON 
+
+
+[State 必殺技→必殺技or超必殺技];必殺技から必殺技、または超必殺技へキャンセルすることができます
+type = VarSet
+trigger1 = 1
+var(13) = 0   ;   0:OFF  1:ON 
+
+
+[State EX必殺技];EX必殺技のあり・なしを設定します
+type = VarSet
+trigger1 = 1
+var(22) = 1    ;   0:OFF  1:ON 
+
+
+[State 援護攻撃];援護攻撃のあり・なしを設定します
+type = VarSet
+trigger1 = 1
+var(14) = 1    ;   0:OFF  1:ON 
+
+
+[State 投げから追撃可能];投げから必殺技で追撃することができます(ゲージ消費技のみ)
+type = VarSet
+trigger1 = 1
+var(15) = 0    ;   0:OFF  1:ON 
+
+
+[State スタン];気絶のあり・なしを設定します
+type = VarSet
+trigger1 = 1
+var(16) = 1    ;   0:OFF  1:ON 
+
+
+[State ＡＩ];ＡＩのあり・なしを設定します
+type = VarSet
+trigger1 = 1
+var(17) = 1   ;   0:OFF  1:ON 
+
+
+[State カットイン];カットインのあり・なしを設定します
+type = VarSet
+trigger1 = 1
+var(23) = 1    ;   0:OFF  1:ON 
+
+
+[State メッセージアイコン];メッセージアイコンのあり・なしを設定します
+type = VarSet
+trigger1 = 1
+var(18) = 1   ;   0:OFF  1:ON 
+
+
+[State メッセージアイコンy軸];数値を大きくするとアイコンは下の方へ移動します
+type = VarSet
+trigger1 = 1
+var(19) = 60
+
+
+[State ３倍ゲージx軸]
+type = VarSet
+trigger1 = 1
+var(30) = 50  ; 数値を大きくするとゲージは右の方へ移動します。(2P側は左右逆)
+
+
+[State ３倍ゲージy軸]
+type = VarSet
+trigger1 = 1
+var(31) = 50  ; 数値を大きくするとゲージは下の方へ移動します。
+
+
+[State ジーン暴走確率(％)]
+type = VarSet
+trigger1 = 1
+var(40) = 30  ; 数値を大きくするとジーンが暴走する確率が上がります(0～100)
+
+
+[State アシストゲージy軸]
+type = VarSet
+trigger1 = 1
+var(41) = 218 ; 数値を大きくするとゲージは下の方へ移動します。
+
+
+[State 真・赤い彗星モード];ジオン脅威のメカニズム
+type = VarSet
+trigger1 = 1
+var(50) = 0   ;   0:OFF  1:ON 
+
