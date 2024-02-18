@@ -1,0 +1,202 @@
+;絹とシロといろいろ?基?デ??、通常技、?2，?3,  kinubasic.cns
+;var(0) システ??約 var(10)??ハハ攻撃命令 var(10) シロ攻撃命令
+;fvar(0)=攻撃係数?7.8125 / 4
+
+[Data]  
+life = 1500  ;体力ゲ?ジの初期値
+attack = 100  
+defence = 100
+power = 3000
+fall.defence_up = 55  ;コン?をくらっている時にあがる防御力
+liedown.time = 60  ;?れてから起上がるまでのフレ??数
+airjuggle = 20  ;空中でどれだけコン?が繋がるか
+sparkno = s30002  ;hitdefで設定していない時の基?ヒットスパ?クナンバ?
+guard.sparkno = S30040  ;設定してない時のガ?ドナンバ?）
+KO.echo = 0           ;KOした時に声にエコ?をかけるか（１でＯＮ
+volume = 50
+IntPersistIndex = 60
+FloatPersistIndex = 40
+
+[Size]
+xscale = 1.04           ;水平方向の縮尺（通常１）
+yscale = 1.04           ;垂直方向の縮尺（通常１）
+ground.back = 15     ;キャラの幅(後方,地上)
+ground.front = 16    ;キャラの幅(前方,地上)
+air.back = 13        ;キャラの幅(後方,空中)
+air.front = 13       ;キャラの幅(前方,空中)
+height = 60          ;キャラの高さ
+attack.dist = 160    ;攻撃をした時相手がガ?ド体制に入る最低距離
+proj.attack.dist = 90;攻撃をした時相手がガ?ド体制に入る最低距離（飛び道具）
+proj.doscale = 0     ;上で設定した縮尺を飛び道具にも適用するか（１でＯＮ）   
+head.pos = -5, -85   ;頭の大体の座標
+mid.pos = -5, -60    ;体の中心の大体の座標
+shadowoffset = 0     ;影の垂直方向のオフセット
+draw.offset = 0,0    ;使用しない
+
+[Velocity]
+walk.fwd  = 1.8      ;前進の速度
+walk.back = -1.9     ;後退の速度
+run.fwd  = 3.8, 0    ;前?ッシュの速度（ホップする時はyを-にする）
+run.back = -3.7,-4.1 ;後?ッシュの速度（ホップする時はyを-にする）
+jump.neu = 0,-11.4    ;垂直ジャンプの速度
+jump.back = -3.00    ;後ジャンプの速度
+jump.fwd = 3.00       ;前ジャンプの速度
+runjump.back = -4.5;後?ッシュしながらのジャンプ速度(オプション)
+runjump.fwd = 4.5      ;前?ッシュしながらのジャンプ速度(オプション)
+airjump.neu = 0,-9.4      ;２段ジャンプ以?の垂直ジャンプの速度(オプション)
+airjump.back = -3.00      ;２段ジャンプ以?の後ジャンプの速度(オプション)
+airjump.fwd = 3.00         ;２段ジャンプ以?の前ジャンプの速度
+
+[Movement]
+airjump.num = 1      ;空中でジャンプする回数
+airjump.height = 35  ;空中でジャンプする最低限の高さ
+yaccel = 0.54         ;重力
+stand.friction = .82  ;立ち状態の?擦係数
+crouch.friction = .80 ;屈み状態の?擦係数
+
+;---------------------------------------------------------------------------
+; ステイトの解説
+; [Statedef STATENO]
+; type = ?      S/C/A/L  Ｓ：立ち/Ｃ：屈み/?：空中/Ｌ：?ウン
+; movetype = ?  I/A/H    Ｉ：通常状態/?：攻撃状態/Ｈ：?メ?ジをくらってる状態
+; physics = ?   S/C/A/N  Ｓ：立ち/Ｃ：屈み/?：空中/Ｎ：無し
+; juggle = ?             その攻撃に使うジャグル数
+;
+
+;---------------------------------------------------------------------------
+; ?イ?オ?バ?で負けた時
+[Statedef 170]
+type = S
+ctrl = 0
+anim = 170
+velset = 0,0
+
+[State 170, 1]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+time = 1
+
+;---------------------------------------------------------------------------
+; 勝った動作 start staet
+[Statedef 180]
+type = S
+
+[State 180, 1];
+type = ChangeState
+trigger1 = time = 0
+value = 181 + random % 2
+
+;---------------------------------------------------------------------------
+; 勝ち??ズ 1s181,win1_1
+;;お辞儀
+[Statedef 181]
+type = S
+ctrl = 0
+anim = 180
+velset = 0,0
+
+[State 181, 1]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+time = 1
+
+[State 181, 4]
+type = AssertSpecial
+trigger1 = Time  <= 160
+flag = RoundNotOver
+
+;---------------------------------------------------------------------------
+; 勝ち??ズ ２,win1_2
+;
+[Statedef 182]
+type = S
+ctrl = 0
+anim = 192
+velset = 0,0
+
+[State 183, 1]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+time = 1
+
+[State 183, 4]
+type = AssertSpecial
+trigger1 = Time  <= 160
+flag = RoundNotOver
+
+;---------------------------------------------------------------------------
+; 開始前の動作; PREINTRO override common190
+[Statedef 190]
+type = S
+ctrl = 0
+velset = 0,0
+
+[State 190, 1]
+type = ChangeAnim
+triggerall = 0
+trigger1 = SelfAnimExist(190)
+value = 190
+
+[State 190, 2] ;Go straight to intro.
+type = ChangeState
+trigger1 = Time = 0
+value = 191
+
+;----以下イントロ1---
+[Statedef 191]
+type = S
+ctrl = 0
+anim = 190
+velset = 0,0
+
+[State 191, 1] 
+type = ChangeAnim
+trigger1 = RoundState = 0
+value = 190
+
+[State 191, 2] 
+type = AssertSpecial
+trigger1 = 1
+flag = Intro
+
+[state 191,]
+type = playsnd
+trigger1 = animelem = 2
+value = 190,0
+
+[State 191, 4] 
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+
+;---------------------------------------------------------------------------
+; 挑発の動作   ;泣く
+[Statedef 195]
+type = S
+ctrl = 0
+anim = 195
+velset = 0,0
+movetype = I
+physics = S
+sprpriority = 2
+
+[State 3300x, atack voice wmk]
+type = PlaySnd
+trigger1 =  animelem = 1
+value = s1600,1
+channel = 1
+
+[State 195, 1]
+type = CtrlSet
+trigger1 = Time = 40
+value = 1
+
+[State 195, 2]
+type = ChangeState
+trigger1 = Time > 60
+value = 0
+ctrl = 1
+
