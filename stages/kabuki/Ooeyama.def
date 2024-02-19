@@ -1,0 +1,121 @@
+;Ooeyama, Kinu's stage from Kabuki Klash, by Phantom.of.the.Server
+
+[Info]
+name = "Pedesaan";jambu;"Ooeyama"
+author = "Phantom.of.the.Server"
+versiondate = 2023
+mugenversion = 1.0
+round1def = Ooeyama.def
+round2def = Ooeyama.def
+round3def = Togakushi.def
+
+[Music]
+bgmusic = Ooeyama.mp3
+bgmvolume = 100
+
+[Camera]
+startx = 0
+starty = 0
+boundleft = -81;jambu;-151
+boundright = 81;jambu;151
+boundhigh = -67
+boundlow = -5;jambu;0
+verticalfollow = 0.5
+floortension = 88
+tension = 60
+overdrawhigh = 0
+overdrawlow = 0
+cuthigh = 54
+cutlow = 6
+startzoom = 1
+zoomout = 0.7;jambu;1
+zoomin = 1
+
+[PlayerInfo]
+p1startx = -70
+p1starty = 0
+p1facing = 1
+
+p2startx = 70
+p2starty = 0
+p2facing = -1
+
+leftbound = -1000
+rightbound = 1000
+
+[Bound]
+screenleft = 15
+screenright = 15
+
+[StageInfo]
+zoffset = 216
+autoturn = 1
+resetBG = 0
+;localcoord = 427;jambu;320, 240
+xscale = 1
+yscale = 1
+
+[Shadow]
+intensity = 80
+color = 0, 0, 0
+yscale = 0.33
+fade.range = -240, 0
+
+
+;=====<MAIN BG DEFINITION>=====
+[BGdef]
+spr = Ooeyama.sff
+debugbg = 0
+
+[BG sky]
+type = normal
+spriteno = 2, 0
+layerno = 0
+start = 152, 0
+delta = 0.33, 0.95522388
+tile = 1, 0
+tilespacing = 0, 0
+mask = 1
+ID = 2
+
+[BG landscape]
+type = normal
+spriteno = 1, 0
+layerno = 0
+start = 0, 0
+delta = 0.73355263, 0.95522388
+mask = 1
+
+[BG floor]
+type = anim
+actionno = 0
+layerno = 0
+start = 0, 0
+delta = 1, 1
+
+
+;=====<BGCTRLDEFs>=====
+[BGctrldef 1]
+ctrlid = 2
+
+[BGCtrl 2, enable]
+type = enable
+time = 0
+value = 1
+
+[BGCtrl 2, vel]
+type = velset
+time = 0
+x = 0.075
+y = 0
+
+
+;=====<ACTIONS>=====
+[Begin Action 0]
+0, 0, 0, 0, 9, ,
+0, 1, 0, 0, 9, ,
+0, 2, 0, 0, 9, ,
+0, 3, 0, 0, 9, ,
+
+[Begin Action 9000]
+9000,1, 0,0, 1
