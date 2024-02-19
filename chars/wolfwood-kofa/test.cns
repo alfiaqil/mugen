@@ -1,0 +1,196 @@
+;---------------------------------------------------------------------------------------------
+;null
+[Statedef 888888888]
+type    = S
+movetype= A
+physics = N
+juggle  = 1
+anim = 0
+ctrl = 0
+
+[State 888888888, next]
+type = null;Changestate
+trigger1 = !time = 0
+value = 0
+;---------------------------------------------------------------------------------------------
+;---------------------------------------------------------------------------------------------
+
+;---------------------------------------------------------------------------
+;速いカンフー突き手：相手側１（ヒット硬直）
+[Statedef 1525]
+type    = A
+movetype= H
+physics = N
+velset = 0,0
+
+[State 1525, 相手のアニメ変更]
+type = ChangeAnim2
+trigger1 = 1
+value = 1514
+
+[State 1525, ステート変更]
+type = ChangeState
+trigger1 = HitShakeOver = 1 ;ヒット硬直が解けたら
+value = 1526
+
+;---------------------------------------------------------------------------
+;速いカンフー突き手：相手側２（吹っ飛び）
+[Statedef 1526]
+type    = A
+movetype= H
+physics = N
+
+[State 1526, 食らい中の速度]
+type = HitVelSet
+trigger1 = Time = 0
+x = 35
+y = 1
+
+[State 1526, 速度加算];重力
+type = VelAdd
+trigger1 = time >= 1
+x = -0.5
+
+[State 1526, 速度加算];重力
+type = VelAdd
+trigger1 = 1
+y = .45
+
+[State 1526, スクロール]
+type = ScreenBound
+triggerall = Pos y < -15
+trigger1 = BackEdgeBodyDist < 65
+trigger2 = FrontEdgeBodyDist < 65
+value = 1         ;画面スクロールの影響を受けるか否か。0=受けない・1=受ける
+movecamera = 1,1  ;カメラの動きをキャラに依存させるか否か。0=させない・1=させる（Ｘ軸,Ｙ軸）
+
+[State 1526, ステート変更];壁に激突するステートへ
+type = ChangeState
+triggerall = Pos y < -15
+trigger1 = BackEdgeBodyDist <= 20
+trigger2 = FrontEdgeBodyDist <= 20
+value = 1527
+
+[State 1526, 相手ステートに戻す]
+type = SelfState
+trigger1 = (Vel y > 0) && (Pos y >= 0)
+value = 5100
+
+;---------------------------------------------------------------------------
+;速いカンフー突き手：相手側３（壁に激突）
+[Statedef 1527]
+type    = A
+movetype= H
+physics = N
+
+[State 1527, 振り返る]
+type = Turn
+trigger1 = (Time = 0) && (FrontEdgeBodyDist <= 30)
+
+[State 1527, 軸位置移動]
+type = PosAdd
+trigger1 = Time = 0
+x = 15 - BackEdgeBodyDist
+
+[State 1527, 位置固定]
+type = PosFreeze
+trigger1 = 1
+x = 1
+y = 1
+
+[State 1527, Spark]
+type = Explod
+trigger1 = Time = 0
+anim = F72
+pos = 0, floor (screenpos y) - 50
+postype = back
+sprpriority = 3
+
+[State 1527]
+type = EnvShake
+trigger1 = time = 0
+time = 30
+freq = 100
+ampl = -10
+phase = 10
+
+[State 1527, No scroll]
+type = ScreenBound
+trigger1 = 1
+value = 1
+movecamera = 0,0
+
+[State 1527, 相手のアニメ変更]
+type = ChangeAnim2
+trigger1 = Time = 0
+value = 1513
+
+[State 1527, 音を鳴らす]
+type = PlaySnd
+trigger1 = Time = 1
+value = s11,3
+volume = 200
+
+[State 1527, ステート変更]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 1528
+
+;---------------------------------------------------------------------------
+;速いカンフー突き手：相手側４（壁からのバウンド）
+[Statedef 1528]
+type    = A
+movetype= H
+physics = N
+
+[State 1527, 音を鳴らす]
+type = PlaySnd
+trigger1 = Time = 0
+value = s11,3
+volume = 200
+
+[State 1528, 移動速度]
+type = VelSet
+trigger1 = Time = 0
+y = -2
+x = 3
+
+[State 1528, 速度加算];重力
+type = VelAdd
+trigger1 = 1
+y = .35
+
+[State 1528, アニメ変更]
+type = ChangeAnim
+trigger1 = Time = 0
+trigger1 = !SelfAnimExist(5052) ;「!」が付いてるので、[Begin Action 5052]が無い場合
+value = 5050
+
+[State 1528, アニメ変更]
+type = ChangeAnim
+trigger1 = Time = 0
+trigger1 = SelfAnimExist(5052)  ;airファイルに[Begin Action 5052]が存在してれば
+value = 5052
+
+[State 1528, アニメ変更]
+type = ChangeAnim
+trigger1 = Vel Y > -2
+trigger1 = Anim = 5050
+trigger1 = SelfAnimExist(5060)
+persistent = 0
+value = 5060
+
+[State 1528, アニメ変更]
+type = ChangeAnim
+trigger1 = Vel Y > -2
+trigger1 = Anim = 5052
+trigger1 = SelfAnimExist(5062)
+persistent = 0
+value = 5062
+
+[State 1528, 相手ステートに戻す]
+type = SelfState
+trigger1 = (Vel y > 0) && (Pos y >= 0)
+value = 5100
+
+;---------------------------------------------------------------------------

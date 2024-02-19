@@ -1,0 +1,68 @@
+;---------------------------------------------------------------
+;Alpha counter FX
+[Statedef 8350]
+type=S
+anim=9741
+velset=0,0
+
+[State 8350, BG PalFX]
+type=bgpalfx
+trigger1= 1
+time=1
+add=ceil(-255+17.1*time),ceil(-128+8.5*time),ceil(-32+2.1*time)
+color=17*time
+
+[State 8350, sound]
+type = playsnd
+trigger1 = time =1
+value = s750,0
+
+[State 8350, Dust]
+type=explod
+trigger1= !time
+anim=8510
+sprpriority=-3
+postype=p1
+pos=0,-ceil(pos y)
+scale=1.5,1.5
+supermovetime=-1
+ownpal=1
+
+[State 8350, thunder]
+type=explod
+trigger1= !time
+anim=8350
+ID=8350
+sprpriority=-2
+postype=p1
+pos=0,-ceil(pos y)
+supermovetime=-1
+ownpal=1
+
+[State 8350, Circle]
+type=explod
+trigger1= !time
+anim=8351
+ID=8351
+sprpriority=5
+postype=p1
+removetime=15
+supermovetime=-1
+ownpal=1
+
+[State 8350, Circle]
+type=modifyexplod
+trigger1= numexplod(8351)
+ID=8351
+scale=.2+(.12*time),.2+(.12*time)
+trans=addalpha
+alpha=(256-17*time),256
+
+[State 8350, No Shadow]
+type=assertspecial
+trigger1= 1
+flag=invisible
+flag2=noshadow
+[State 8350, End]
+type=destroyself
+trigger1= time>=15
