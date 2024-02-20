@@ -1,70 +1,70 @@
-;Œ¦‚ÆƒVƒ‚Æ‚¢‚ë‚¢‚ë?Šî?ƒf??A’Êí‹ZA?2C?3,  kinubasic.cns
-;var(0) ƒVƒXƒe??–ñ var(10)??ƒnƒnUŒ‚–½—ß var(10) ƒVƒUŒ‚–½—ß
-;fvar(0)=UŒ‚ŒW”?7.8125 / 4
+;ï¿½ï¿½ï¿½ÆƒVï¿½ï¿½ï¿½Æ‚ï¿½ï¿½ë‚¢ï¿½ï¿½?ï¿½ï¿½?ï¿½f??ï¿½Aï¿½Êï¿½Zï¿½A?2ï¿½C?3,  kinubasic.cns
+;var(0) ï¿½Vï¿½Xï¿½e??ï¿½ï¿½ var(10)??ï¿½nï¿½nï¿½Uï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ var(10) ï¿½Vï¿½ï¿½ï¿½Uï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+;fvar(0)=ï¿½Uï¿½ï¿½ï¿½Wï¿½ï¿½?7.8125 / 4
 
 [Data]  
-life = 1500  ;‘Ì—ÍƒQ?ƒW‚Ì‰Šú’l
+life = 1500  ;ï¿½Ì—ÍƒQ?ï¿½Wï¿½Ìï¿½ï¿½ï¿½ï¿½l
 attack = 100  
 defence = 100
-power = 3000
-fall.defence_up = 55  ;ƒRƒ“?‚ð‚­‚ç‚Á‚Ä‚¢‚éŽž‚É‚ ‚ª‚é–hŒä—Í
-liedown.time = 60  ;?‚ê‚Ä‚©‚ç‹Nã‚ª‚é‚Ü‚Å‚ÌƒtƒŒ??”
-airjuggle = 20  ;‹ó’†‚Å‚Ç‚ê‚¾‚¯ƒRƒ“?‚ªŒq‚ª‚é‚©
-sparkno = s30002  ;hitdef‚ÅÝ’è‚µ‚Ä‚¢‚È‚¢Žž‚ÌŠî?ƒqƒbƒgƒXƒp?ƒNƒiƒ“ƒo?
-guard.sparkno = S30040  ;Ý’è‚µ‚Ä‚È‚¢Žž‚ÌƒK?ƒhƒiƒ“ƒo?j
-KO.echo = 0           ;KO‚µ‚½Žž‚Éº‚ÉƒGƒR?‚ð‚©‚¯‚é‚©i‚P‚Å‚n‚m
+power = 7000;jambu; = 3000
+fall.defence_up = 55  ;ï¿½Rï¿½ï¿½?ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½éŽžï¿½É‚ï¿½ï¿½ï¿½ï¿½ï¿½hï¿½ï¿½ï¿½
+liedown.time = 60  ;?ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½Nï¿½ã‚ªï¿½ï¿½Ü‚Å‚Ìƒtï¿½ï¿½??ï¿½ï¿½
+airjuggle = 20  ;ï¿½ó’†‚Å‚Ç‚ê‚¾ï¿½ï¿½ï¿½Rï¿½ï¿½?ï¿½ï¿½ï¿½qï¿½ï¿½ï¿½é‚©
+sparkno = s30002  ;hitdefï¿½ÅÝ’è‚µï¿½Ä‚ï¿½ï¿½È‚ï¿½ï¿½ï¿½ï¿½ÌŠï¿½?ï¿½qï¿½bï¿½gï¿½Xï¿½p?ï¿½Nï¿½iï¿½ï¿½ï¿½o?
+guard.sparkno = S30040  ;ï¿½Ý’è‚µï¿½Ä‚È‚ï¿½ï¿½ï¿½ï¿½ÌƒK?ï¿½hï¿½iï¿½ï¿½ï¿½o?ï¿½j
+KO.echo = 0           ;KOï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Éï¿½ï¿½ÉƒGï¿½R?ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½é‚©ï¿½iï¿½Pï¿½Å‚nï¿½m
 volume = 50
 IntPersistIndex = 60
 FloatPersistIndex = 40
 
 [Size]
-xscale = 1.04           ;…•½•ûŒü‚ÌkŽÚi’Êí‚Pj
-yscale = 1.04           ;‚’¼•ûŒü‚ÌkŽÚi’Êí‚Pj
-ground.back = 15     ;ƒLƒƒƒ‰‚Ì•(Œã•û,’nã)
-ground.front = 16    ;ƒLƒƒƒ‰‚Ì•(‘O•û,’nã)
-air.back = 13        ;ƒLƒƒƒ‰‚Ì•(Œã•û,‹ó’†)
-air.front = 13       ;ƒLƒƒƒ‰‚Ì•(‘O•û,‹ó’†)
-height = 60          ;ƒLƒƒƒ‰‚Ì‚‚³
-attack.dist = 160    ;UŒ‚‚ð‚µ‚½Žž‘ŠŽè‚ªƒK?ƒh‘Ì§‚É“ü‚éÅ’á‹——£
-proj.attack.dist = 90;UŒ‚‚ð‚µ‚½Žž‘ŠŽè‚ªƒK?ƒh‘Ì§‚É“ü‚éÅ’á‹——£i”ò‚Ñ“¹‹ïj
-proj.doscale = 0     ;ã‚ÅÝ’è‚µ‚½kŽÚ‚ð”ò‚Ñ“¹‹ï‚É‚à“K—p‚·‚é‚©i‚P‚Å‚n‚mj   
-head.pos = -5, -85   ;“ª‚Ì‘å‘Ì‚ÌÀ•W
-mid.pos = -5, -60    ;‘Ì‚Ì’†S‚Ì‘å‘Ì‚ÌÀ•W
-shadowoffset = 0     ;‰e‚Ì‚’¼•ûŒü‚ÌƒIƒtƒZƒbƒg
-draw.offset = 0,0    ;Žg—p‚µ‚È‚¢
+xscale = 1.04           ;ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ìkï¿½Úiï¿½Êï¿½Pï¿½j
+yscale = 1.04           ;ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ìkï¿½Úiï¿½Êï¿½Pï¿½j
+ground.back = 15     ;ï¿½Lï¿½ï¿½ï¿½ï¿½ï¿½Ì•ï¿½(ï¿½ï¿½ï¿½,ï¿½nï¿½ï¿½)
+ground.front = 16    ;ï¿½Lï¿½ï¿½ï¿½ï¿½ï¿½Ì•ï¿½(ï¿½Oï¿½ï¿½,ï¿½nï¿½ï¿½)
+air.back = 13        ;ï¿½Lï¿½ï¿½ï¿½ï¿½ï¿½Ì•ï¿½(ï¿½ï¿½ï¿½,ï¿½ï¿½)
+air.front = 13       ;ï¿½Lï¿½ï¿½ï¿½ï¿½ï¿½Ì•ï¿½(ï¿½Oï¿½ï¿½,ï¿½ï¿½)
+height = 60          ;ï¿½Lï¿½ï¿½ï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½
+attack.dist = 160    ;ï¿½Uï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½è‚ªï¿½K?ï¿½hï¿½Ìï¿½ï¿½É“ï¿½ï¿½ï¿½Å’á‹—ï¿½ï¿½
+proj.attack.dist = 90;ï¿½Uï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½è‚ªï¿½K?ï¿½hï¿½Ìï¿½ï¿½É“ï¿½ï¿½ï¿½Å’á‹—ï¿½ï¿½ï¿½iï¿½ï¿½Ñ“ï¿½ï¿½ï¿½j
+proj.doscale = 0     ;ï¿½ï¿½ÅÝ’è‚µï¿½ï¿½ï¿½kï¿½Ú‚ï¿½ï¿½Ñ“ï¿½ï¿½ï¿½É‚ï¿½ï¿½Kï¿½pï¿½ï¿½ï¿½é‚©ï¿½iï¿½Pï¿½Å‚nï¿½mï¿½j   
+head.pos = -5, -85   ;ï¿½ï¿½ï¿½Ì‘ï¿½Ì‚Ìï¿½ï¿½W
+mid.pos = -5, -60    ;ï¿½Ì‚Ì’ï¿½ï¿½Sï¿½Ì‘ï¿½Ì‚Ìï¿½ï¿½W
+shadowoffset = 0     ;ï¿½eï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÌƒIï¿½tï¿½Zï¿½bï¿½g
+draw.offset = 0,0    ;ï¿½gï¿½pï¿½ï¿½ï¿½È‚ï¿½
 
 [Velocity]
-walk.fwd  = 1.8      ;‘Oi‚Ì‘¬“x
-walk.back = -1.9     ;Œã‘Þ‚Ì‘¬“x
-run.fwd  = 3.8, 0    ;‘O?ƒbƒVƒ…‚Ì‘¬“xiƒzƒbƒv‚·‚éŽž‚Íy‚ð-‚É‚·‚éj
-run.back = -3.7,-4.1 ;Œã?ƒbƒVƒ…‚Ì‘¬“xiƒzƒbƒv‚·‚éŽž‚Íy‚ð-‚É‚·‚éj
-jump.neu = 0,-11.4    ;‚’¼ƒWƒƒƒ“ƒv‚Ì‘¬“x
-jump.back = -3.00    ;ŒãƒWƒƒƒ“ƒv‚Ì‘¬“x
-jump.fwd = 3.00       ;‘OƒWƒƒƒ“ƒv‚Ì‘¬“x
-runjump.back = -4.5;Œã?ƒbƒVƒ…‚µ‚È‚ª‚ç‚ÌƒWƒƒƒ“ƒv‘¬“x(ƒIƒvƒVƒ‡ƒ“)
-runjump.fwd = 4.5      ;‘O?ƒbƒVƒ…‚µ‚È‚ª‚ç‚ÌƒWƒƒƒ“ƒv‘¬“x(ƒIƒvƒVƒ‡ƒ“)
-airjump.neu = 0,-9.4      ;‚Q’iƒWƒƒƒ“ƒvˆÈ?‚Ì‚’¼ƒWƒƒƒ“ƒv‚Ì‘¬“x(ƒIƒvƒVƒ‡ƒ“)
-airjump.back = -3.00      ;‚Q’iƒWƒƒƒ“ƒvˆÈ?‚ÌŒãƒWƒƒƒ“ƒv‚Ì‘¬“x(ƒIƒvƒVƒ‡ƒ“)
-airjump.fwd = 3.00         ;‚Q’iƒWƒƒƒ“ƒvˆÈ?‚Ì‘OƒWƒƒƒ“ƒv‚Ì‘¬“x
+walk.fwd  = 1.8      ;ï¿½Oï¿½iï¿½Ì‘ï¿½ï¿½x
+walk.back = -1.9     ;ï¿½ï¿½Þ‚Ì‘ï¿½ï¿½x
+run.fwd  = 3.8, 0    ;ï¿½O?ï¿½bï¿½Vï¿½ï¿½ï¿½Ì‘ï¿½ï¿½xï¿½iï¿½zï¿½bï¿½vï¿½ï¿½ï¿½éŽžï¿½ï¿½yï¿½ï¿½-ï¿½É‚ï¿½ï¿½ï¿½j
+run.back = -3.7,-4.1 ;ï¿½ï¿½?ï¿½bï¿½Vï¿½ï¿½ï¿½Ì‘ï¿½ï¿½xï¿½iï¿½zï¿½bï¿½vï¿½ï¿½ï¿½éŽžï¿½ï¿½yï¿½ï¿½-ï¿½É‚ï¿½ï¿½ï¿½j
+jump.neu = 0,-11.4    ;ï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½ï¿½ï¿½ï¿½ï¿½vï¿½Ì‘ï¿½ï¿½x
+jump.back = -3.00    ;ï¿½ï¿½Wï¿½ï¿½ï¿½ï¿½ï¿½vï¿½Ì‘ï¿½ï¿½x
+jump.fwd = 3.00       ;ï¿½Oï¿½Wï¿½ï¿½ï¿½ï¿½ï¿½vï¿½Ì‘ï¿½ï¿½x
+runjump.back = -4.5;ï¿½ï¿½?ï¿½bï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½È‚ï¿½ï¿½ï¿½ÌƒWï¿½ï¿½ï¿½ï¿½ï¿½vï¿½ï¿½ï¿½x(ï¿½Iï¿½vï¿½Vï¿½ï¿½ï¿½ï¿½)
+runjump.fwd = 4.5      ;ï¿½O?ï¿½bï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½È‚ï¿½ï¿½ï¿½ÌƒWï¿½ï¿½ï¿½ï¿½ï¿½vï¿½ï¿½ï¿½x(ï¿½Iï¿½vï¿½Vï¿½ï¿½ï¿½ï¿½)
+airjump.neu = 0,-9.4      ;ï¿½Qï¿½iï¿½Wï¿½ï¿½ï¿½ï¿½ï¿½vï¿½ï¿½?ï¿½Ìï¿½ï¿½ï¿½ï¿½Wï¿½ï¿½ï¿½ï¿½ï¿½vï¿½Ì‘ï¿½ï¿½x(ï¿½Iï¿½vï¿½Vï¿½ï¿½ï¿½ï¿½)
+airjump.back = -3.00      ;ï¿½Qï¿½iï¿½Wï¿½ï¿½ï¿½ï¿½ï¿½vï¿½ï¿½?ï¿½ÌŒï¿½Wï¿½ï¿½ï¿½ï¿½ï¿½vï¿½Ì‘ï¿½ï¿½x(ï¿½Iï¿½vï¿½Vï¿½ï¿½ï¿½ï¿½)
+airjump.fwd = 3.00         ;ï¿½Qï¿½iï¿½Wï¿½ï¿½ï¿½ï¿½ï¿½vï¿½ï¿½?ï¿½Ì‘Oï¿½Wï¿½ï¿½ï¿½ï¿½ï¿½vï¿½Ì‘ï¿½ï¿½x
 
 [Movement]
-airjump.num = 1      ;‹ó’†‚ÅƒWƒƒƒ“ƒv‚·‚é‰ñ”
-airjump.height = 35  ;‹ó’†‚ÅƒWƒƒƒ“ƒv‚·‚éÅ’áŒÀ‚Ì‚‚³
-yaccel = 0.54         ;d—Í
-stand.friction = .82  ;—§‚¿ó‘Ô‚Ì?ŽCŒW”
-crouch.friction = .80 ;‹ü‚Ýó‘Ô‚Ì?ŽCŒW”
+airjump.num = 1      ;ï¿½ó’†‚ÅƒWï¿½ï¿½ï¿½ï¿½ï¿½vï¿½ï¿½ï¿½ï¿½ï¿½
+airjump.height = 35  ;ï¿½ó’†‚ÅƒWï¿½ï¿½ï¿½ï¿½ï¿½vï¿½ï¿½ï¿½ï¿½Å’ï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½
+yaccel = 0.54         ;ï¿½dï¿½ï¿½
+stand.friction = .82  ;ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô‚ï¿½?ï¿½Cï¿½Wï¿½ï¿½
+crouch.friction = .80 ;ï¿½ï¿½ï¿½Ýï¿½Ô‚ï¿½?ï¿½Cï¿½Wï¿½ï¿½
 
 ;---------------------------------------------------------------------------
-; ƒXƒeƒCƒg‚Ì‰ðà
+; ï¿½Xï¿½eï¿½Cï¿½gï¿½Ì‰ï¿½ï¿½
 ; [Statedef STATENO]
-; type = ?      S/C/A/L  ‚rF—§‚¿/‚bF‹ü‚Ý/?F‹ó’†/‚kF?ƒEƒ“
-; movetype = ?  I/A/H    ‚hF’Êíó‘Ô/?FUŒ‚ó‘Ô/‚gF?ƒ?ƒW‚ð‚­‚ç‚Á‚Ä‚éó‘Ô
-; physics = ?   S/C/A/N  ‚rF—§‚¿/‚bF‹ü‚Ý/?F‹ó’†/‚mF–³‚µ
-; juggle = ?             ‚»‚ÌUŒ‚‚ÉŽg‚¤ƒWƒƒƒOƒ‹”
+; type = ?      S/C/A/L  ï¿½rï¿½Fï¿½ï¿½ï¿½ï¿½/ï¿½bï¿½Fï¿½ï¿½ï¿½ï¿½/?ï¿½Fï¿½ï¿½/ï¿½kï¿½F?ï¿½Eï¿½ï¿½
+; movetype = ?  I/A/H    ï¿½hï¿½Fï¿½Êï¿½ï¿½ï¿½/?ï¿½Fï¿½Uï¿½ï¿½ï¿½ï¿½ï¿½/ï¿½gï¿½F?ï¿½ï¿½?ï¿½Wï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½
+; physics = ?   S/C/A/N  ï¿½rï¿½Fï¿½ï¿½ï¿½ï¿½/ï¿½bï¿½Fï¿½ï¿½ï¿½ï¿½/?ï¿½Fï¿½ï¿½/ï¿½mï¿½Fï¿½ï¿½ï¿½ï¿½
+; juggle = ?             ï¿½ï¿½ï¿½ÌUï¿½ï¿½ï¿½ÉŽgï¿½ï¿½ï¿½Wï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½ï¿½
 ;
 
 ;---------------------------------------------------------------------------
-; ?ƒC?ƒI?ƒo?‚Å•‰‚¯‚½Žž
+; ?ï¿½C?ï¿½I?ï¿½o?ï¿½Å•ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 [Statedef 170]
 type = S
 ctrl = 0
@@ -78,7 +78,7 @@ value = SCA
 time = 1
 
 ;---------------------------------------------------------------------------
-; Ÿ‚Á‚½“®ì start staet
+; ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ start staet
 [Statedef 180]
 type = S
 
@@ -88,8 +88,8 @@ trigger1 = time = 0
 value = 181 + random % 2
 
 ;---------------------------------------------------------------------------
-; Ÿ‚¿??ƒY 1s181,win1_1
-;;‚¨Ž«‹V
+; ï¿½ï¿½ï¿½ï¿½??ï¿½Y 1s181,win1_1
+;;ï¿½ï¿½ï¿½ï¿½ï¿½V
 [Statedef 181]
 type = S
 ctrl = 0
@@ -108,7 +108,7 @@ trigger1 = Time  <= 160
 flag = RoundNotOver
 
 ;---------------------------------------------------------------------------
-; Ÿ‚¿??ƒY ‚Q,win1_2
+; ï¿½ï¿½ï¿½ï¿½??ï¿½Y ï¿½Q,win1_2
 ;
 [Statedef 182]
 type = S
@@ -128,7 +128,7 @@ trigger1 = Time  <= 160
 flag = RoundNotOver
 
 ;---------------------------------------------------------------------------
-; ŠJŽn‘O‚Ì“®ì; PREINTRO override common190
+; ï¿½Jï¿½nï¿½Oï¿½Ì“ï¿½ï¿½ï¿½; PREINTRO override common190
 [Statedef 190]
 type = S
 ctrl = 0
@@ -145,7 +145,7 @@ type = ChangeState
 trigger1 = Time = 0
 value = 191
 
-;----ˆÈ‰ºƒCƒ“ƒgƒ1---
+;----ï¿½È‰ï¿½ï¿½Cï¿½ï¿½ï¿½gï¿½ï¿½1---
 [Statedef 191]
 type = S
 ctrl = 0
@@ -173,7 +173,7 @@ trigger1 = AnimTime = 0
 value = 0
 
 ;---------------------------------------------------------------------------
-; ’§”­‚Ì“®ì   ;‹ƒ‚­
+; ï¿½ï¿½ï¿½ï¿½ï¿½Ì“ï¿½ï¿½ï¿½   ;ï¿½ï¿½ï¿½ï¿½
 [Statedef 195]
 type = S
 ctrl = 0

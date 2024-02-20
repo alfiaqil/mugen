@@ -1,6 +1,6 @@
 [Data]
 life = 1500
-power = 3000
+power = 7000;jambu; = 3000
 attack = 100
 defence = 100
 fall.defence_up   = 30
@@ -677,7 +677,7 @@ ctrl = 1
 
 ;=======================================================================================================================================
 
-;-----------------------------Ç°¹ö¶¯----------------------------
+;-----------------------------Ç°ï¿½ï¿½ï¿½ï¿½----------------------------
 [Statedef 700]
 type     = S
 movetype = I
@@ -692,26 +692,26 @@ trigger1 = AnimElem = 3
 value = 105,0
 
 ;---------------------------------------------------
-[State 700, PalFX];ÉíÉÏ°×¹â
+[State 700, PalFX];ï¿½ï¿½ï¿½Ï°×¹ï¿½
 type = PalFX
 triggerall = (Time = 0 || Time = 3 || Time = 6)
 trigger1 = prevstateno = [150,153]
 time = 1
 add = 0,0,255
 
-[State 701, PowerAdd];ÄÜÁ¿
+[State 701, PowerAdd];ï¿½ï¿½ï¿½ï¿½
 type = PowerAdd
 trigger1 = prevstateno = [150,153]
 trigger1 = time = 0
 value = -1000   
 
-[State 700, NotHitBy];ÎŞµĞ
+[State 700, NotHitBy];ï¿½Şµï¿½
 type = NotHitBy
 trigger1 = prevstateno = [150,153]
 trigger1 = 1
 value = SCA
 
-[State 700, EnvColor];ÉÁ°×
+[State 700, EnvColor];ï¿½ï¿½ï¿½ï¿½
 type = EnvColor
 triggerall = time = 0
 trigger1 = prevstateno = [150,153]
@@ -719,7 +719,7 @@ value = 255,255,255
 time = 1
 under = 1
 
-[State 700, Explod];ÉÁ¹â
+[State 700, Explod];ï¿½ï¿½ï¿½ï¿½
 type = Explod
 trigger1 = prevstateno = [150,153]
 trigger1 = time = 0
@@ -733,7 +733,7 @@ pausemovetime = 999999
 supermovetime = 999999
 supermove = 1
 
-[State 700, Pause];¾²Ö¹
+[State 700, Pause];ï¿½ï¿½Ö¹
 type = Pause
 trigger1 = prevstateno = [150,153]
 trigger1 = time = 0
@@ -741,7 +741,7 @@ time = 6
 movetime = 6
 ignorehitpause = 1
 
-[State 700, AfterImage];²ĞÓ°
+[State 700, AfterImage];ï¿½ï¿½Ó°
 type = AfterImage
 triggerall = time = 0
 trigger1 = prevstateno = [150,153]
@@ -782,7 +782,7 @@ trigger1 = AnimTime = 0
 value = 0
 ctrl = 1
 
-;-----------------------------ºó¹ö¶¯----------------------------
+;-----------------------------ï¿½ï¿½ï¿½ï¿½ï¿½----------------------------
 
 [Statedef 710]
 type     = S
@@ -798,26 +798,26 @@ trigger1 = AnimElem = 3
 value = 105,0
 
 ;---------------------------------------------------
-[State 700, PalFX];ÉíÉÏ°×¹â
+[State 700, PalFX];ï¿½ï¿½ï¿½Ï°×¹ï¿½
 type = PalFX
 triggerall = (Time = 0 || Time = 3 || Time = 6)
 trigger1 = prevstateno = [150,153]
 time = 1
 add = 0,0,255
 
-[State 701, PowerAdd];ÄÜÁ¿
+[State 701, PowerAdd];ï¿½ï¿½ï¿½ï¿½
 type = PowerAdd
 trigger1 = prevstateno = [150,153]
 trigger1 = time = 0
 value = -1000   
 
-[State 700, NotHitBy];ÎŞµĞ
+[State 700, NotHitBy];ï¿½Şµï¿½
 type = NotHitBy
 trigger1 = prevstateno = [150,153]
 trigger1 = 1
 value = SCA
 
-[State 700, EnvColor];ÉÁ°×
+[State 700, EnvColor];ï¿½ï¿½ï¿½ï¿½
 type = EnvColor
 triggerall = time = 0
 trigger1 = prevstateno = [150,153]
@@ -825,7 +825,7 @@ value = 255,255,255
 time = 1
 under = 1
 
-[State 700, Explod];ÉÁ¹â
+[State 700, Explod];ï¿½ï¿½ï¿½ï¿½
 type = Explod
 trigger1 = prevstateno = [150,153]
 trigger1 = time = 0
@@ -839,7 +839,7 @@ pausemovetime = 999999
 supermovetime = 999999
 supermove = 1
 
-[State 700, Pause];¾²Ö¹
+[State 700, Pause];ï¿½ï¿½Ö¹
 type = Pause
 trigger1 = prevstateno = [150,153]
 trigger1 = time = 0
@@ -847,7 +847,7 @@ time = 6
 movetime = 6
 ignorehitpause = 1
 
-[State 700, AfterImage];²ĞÓ°
+[State 700, AfterImage];ï¿½ï¿½Ó°
 type = AfterImage
 triggerall = time = 0
 trigger1 = prevstateno = [150,153]
@@ -948,7 +948,7 @@ ctrl = 1
 
 
 ;==============================================================================
-;ÆÕÍ¨È­½Å¹¥»E
+;ï¿½ï¿½Í¨È­ï¿½Å¹ï¿½ï¿½ï¿½E
 ;==============================================================================
 [Statedef 200]
 type    = S                      
@@ -1600,7 +1600,7 @@ air.velocity = -2,-4
 ;---------------------------------------------------------------------------
 
 ;==============================================================================
-;³¬ÖØÈ­½Å¹¥»E
+;ï¿½ï¿½ï¿½ï¿½È­ï¿½Å¹ï¿½ï¿½ï¿½E
 ;==============================================================================
 
 ;---------------------------------------------------------------------------
@@ -1670,26 +1670,26 @@ anim = 255
 poweradd = 0
 
 ;---------------------------------------------------
-[State 700, PalFX];ÉíÉÏ°×¹â
+[State 700, PalFX];ï¿½ï¿½ï¿½Ï°×¹ï¿½
 type = PalFX
 triggerall = (Time = 0 || Time = 3 || Time = 6)
 trigger1 = prevstateno = [150,153]
 time = 1
 add = 0,0,255
 
-[State 701, PowerAdd];ÄÜÁ¿
+[State 701, PowerAdd];ï¿½ï¿½ï¿½ï¿½
 type = PowerAdd
 trigger1 = prevstateno = [150,153]
 trigger1 = time = 0
 value = -1000   
 
-[State 700, NotHitBy];ÎŞµĞ
+[State 700, NotHitBy];ï¿½Şµï¿½
 type = NotHitBy
 trigger1 = prevstateno = [150,153]
 trigger1 = 1
 value = SCA
 
-[State 700, EnvColor];ÉÁ°×
+[State 700, EnvColor];ï¿½ï¿½ï¿½ï¿½
 type = EnvColor
 triggerall = time = 0
 trigger1 = prevstateno = [150,153]
@@ -1697,7 +1697,7 @@ value = 255,255,255
 time = 1
 under = 1
 
-[State 700, Explod];ÉÁ¹â
+[State 700, Explod];ï¿½ï¿½ï¿½ï¿½
 type = Explod
 trigger1 = prevstateno = [150,153]
 trigger1 = time = 0
@@ -1711,7 +1711,7 @@ pausemovetime = 999999
 supermovetime = 999999
 supermove = 1
 
-[State 700, Pause];¾²Ö¹
+[State 700, Pause];ï¿½ï¿½Ö¹
 type = Pause
 trigger1 = prevstateno = [150,153]
 trigger1 = time = 0
@@ -1719,7 +1719,7 @@ time = 6
 movetime = 6
 ignorehitpause = 1
 
-[State 700, AfterImage];²ĞÓ°
+[State 700, AfterImage];ï¿½ï¿½Ó°
 type = AfterImage
 triggerall = time = 0
 trigger1 = prevstateno = [150,153]
@@ -2013,13 +2013,13 @@ trigger2 = stateno = 106 ;Land
 value = S51,51
 
 ;===============================================================================
-;----ÅÜ²½ÉùÖÕÖ¹------
+;----ï¿½Ü²ï¿½ï¿½ï¿½ï¿½ï¿½Ö¹------
 [State -2, 1]
 type = stopSnd
 trigger1 = stateno != 100
 channel = 1
 ;----------------------------------------------
-;---ÊÜ»÷ÈËÉùÉè¶¨----
+;---ï¿½Ü»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½è¶¨----
 [State -2,PlaySnd]
 type =PlaySnd
 triggerall = Alive && Random%2 = 0
@@ -2075,7 +2075,7 @@ trigger1 = !alive && var(4)= 1 && time=2
 var(4) = 2
 ignorehitpause = 1
 
-;KOÉùĞ§
+;KOï¿½ï¿½Ğ§
 [State -2,PlaySnd]
 type =PlaySnd
 trigger1 = roundstate = 3

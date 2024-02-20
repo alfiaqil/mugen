@@ -30,7 +30,7 @@ life = 1500;jambu;2500
 ;attack power (more is stronger)
 ;??????
 attack = 100;jambu;130
-power = 5000
+power = 7000;jambu; = 5000
 ;defensive power (more is stronger)
 ;?????
 defence = 100
@@ -12816,9 +12816,10 @@ value = 1,2
 ;jambu; recover hp
 [State -3, LifeAdd]
 type = LifeAdd
-trigger1 = life <= 1200
-trigger1 = gametime%6=0
-value = 1
+trigger1 = life <= 1500
+trigger1 = Power > 1000
+trigger1 = gametime%10=0
+value = (Power/1000)
 
 [State 0, RemoveExplod]
 type = RemoveExplod

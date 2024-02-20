@@ -1,6 +1,6 @@
 [Data]
 life = 1500
-power = 3000
+power = 7000;jambu; = 3000
 attack = 100
 defence = 100
 fall.defence_up   = 30
@@ -279,7 +279,7 @@ type = PlaySnd
 trigger1 = Time = 0
 value = f47,0+(StageVar(info.author) = "water")
 
-[State 106, 3];Ğ¡»Ò³¾
+[State 106, 3];Ğ¡ï¿½Ò³ï¿½
 type = GameMakeAnim
 triggerall = StageVar(info.author) != "water"
 trigger1 = Time = 2
@@ -288,7 +288,7 @@ pos = -5,-2
 under = 0
 spacing = 1
 
-[State 0];Ğ¡Ë®»¨
+[State 0];Ğ¡Ë®ï¿½ï¿½
 type = GameMakeAnim
 triggerall = StageVar(info.author) = "water"
 trigger1 = Time = 1
@@ -550,7 +550,7 @@ trigger1 = animtime = 0
 value = 5805
 ctrl = 0
 ;---------------------------------------------------------------------------
-; Saíndo de Agarrão
+; Saï¿½ndo de Agarrï¿½o
 [Statedef 890]
 type    = S
 movetype= I
@@ -1563,26 +1563,26 @@ sprpriority = 2
 poweradd = 0
 
 ;---------------------------------------------------
-[State 700, PalFX];ÉíÉÏ°×¹â
+[State 700, PalFX];ï¿½ï¿½ï¿½Ï°×¹ï¿½
 type = PalFX
 triggerall = (Time = 0 || Time = 3 || Time = 6)
 trigger1 = prevstateno = [150,153]
 time = 1
 add = 0,0,255
 
-[State 701, PowerAdd];ÄÜÁ¿
+[State 701, PowerAdd];ï¿½ï¿½ï¿½ï¿½
 type = PowerAdd
 trigger1 = prevstateno = [150,153]
 trigger1 = time = 0
 value = -1000   
 
-[State 700, NotHitBy];ÎŞµĞ
+[State 700, NotHitBy];ï¿½Şµï¿½
 type = NotHitBy
 trigger1 = prevstateno = [150,153]
 trigger1 = 1
 value = SCA
 
-[State 700, EnvColor];ÉÁ°×
+[State 700, EnvColor];ï¿½ï¿½ï¿½ï¿½
 type = EnvColor
 triggerall = time = 0
 trigger1 = prevstateno = [150,153]
@@ -1590,7 +1590,7 @@ value = 255,255,255
 time = 1
 under = 1
 
-[State 700, Explod];ÉÁ¹â
+[State 700, Explod];ï¿½ï¿½ï¿½ï¿½
 type = Explod
 trigger1 = prevstateno = [150,153]
 trigger1 = time = 0
@@ -1604,7 +1604,7 @@ pausemovetime = 999999
 supermovetime = 999999
 supermove = 1
 
-[State 700, Pause];¾²Ö¹
+[State 700, Pause];ï¿½ï¿½Ö¹
 type = Pause
 trigger1 = prevstateno = [150,153]
 trigger1 = time = 0
@@ -1612,7 +1612,7 @@ time = 6
 movetime = 6
 ignorehitpause = 1
 
-[State 700, AfterImage];²ĞÓ°
+[State 700, AfterImage];ï¿½ï¿½Ó°
 type = AfterImage
 triggerall = time = 0
 trigger1 = prevstateno = [150,153]
@@ -2858,26 +2858,26 @@ ctrl = 0
 poweradd = 0
 
 ;---------------------------------------------------
-[State 700, PalFX];ÉíÉÏ°×¹â
+[State 700, PalFX];ï¿½ï¿½ï¿½Ï°×¹ï¿½
 type = PalFX
 triggerall = (Time = 0 || Time = 3 || Time = 6)
 trigger1 = prevstateno = [150,153]
 time = 1
 add = 0,0,255
 
-[State 701, PowerAdd];ÄÜÁ¿
+[State 701, PowerAdd];ï¿½ï¿½ï¿½ï¿½
 type = PowerAdd
 trigger1 = prevstateno = [150,153]
 trigger1 = time = 0
 value = -1000   
 
-[State 700, NotHitBy];ÎŞµĞ
+[State 700, NotHitBy];ï¿½Şµï¿½
 type = NotHitBy
 trigger1 = prevstateno = [150,153]
 trigger1 = 1
 value = SCA
 
-[State 700, EnvColor];ÉÁ°×
+[State 700, EnvColor];ï¿½ï¿½ï¿½ï¿½
 type = EnvColor
 triggerall = time = 0
 trigger1 = prevstateno = [150,153]
@@ -2885,7 +2885,7 @@ value = 255,255,255
 time = 1
 under = 1
 
-[State 700, Explod];ÉÁ¹â
+[State 700, Explod];ï¿½ï¿½ï¿½ï¿½
 type = Explod
 trigger1 = prevstateno = [150,153]
 trigger1 = time = 0
@@ -2899,7 +2899,7 @@ pausemovetime = 999999
 supermovetime = 999999
 supermove = 1
 
-[State 700, Pause];¾²Ö¹
+[State 700, Pause];ï¿½ï¿½Ö¹
 type = Pause
 trigger1 = prevstateno = [150,153]
 trigger1 = time = 0
@@ -2907,7 +2907,7 @@ time = 6
 movetime = 6
 ignorehitpause = 1
 
-[State 700, AfterImage];²ĞÓ°
+[State 700, AfterImage];ï¿½ï¿½Ó°
 type = AfterImage
 triggerall = time = 0
 trigger1 = prevstateno = [150,153]
@@ -2976,26 +2976,26 @@ ctrl = 0
 poweradd = 0
 
 ;---------------------------------------------------
-[State 700, PalFX];ÉíÉÏ°×¹â
+[State 700, PalFX];ï¿½ï¿½ï¿½Ï°×¹ï¿½
 type = PalFX
 triggerall = (Time = 0 || Time = 3 || Time = 6)
 trigger1 = prevstateno = [150,153]
 time = 1
 add = 0,0,255
 
-[State 701, PowerAdd];ÄÜÁ¿
+[State 701, PowerAdd];ï¿½ï¿½ï¿½ï¿½
 type = PowerAdd
 trigger1 = prevstateno = [150,153]
 trigger1 = time = 0
 value = -1000   
 
-[State 700, NotHitBy];ÎŞµĞ
+[State 700, NotHitBy];ï¿½Şµï¿½
 type = NotHitBy
 trigger1 = prevstateno = [150,153]
 trigger1 = 1
 value = SCA
 
-[State 700, EnvColor];ÉÁ°×
+[State 700, EnvColor];ï¿½ï¿½ï¿½ï¿½
 type = EnvColor
 triggerall = time = 0
 trigger1 = prevstateno = [150,153]
@@ -3003,7 +3003,7 @@ value = 255,255,255
 time = 1
 under = 1
 
-[State 700, Explod];ÉÁ¹â
+[State 700, Explod];ï¿½ï¿½ï¿½ï¿½
 type = Explod
 trigger1 = prevstateno = [150,153]
 trigger1 = time = 0
@@ -3017,7 +3017,7 @@ pausemovetime = 999999
 supermovetime = 999999
 supermove = 1
 
-[State 700, Pause];¾²Ö¹
+[State 700, Pause];ï¿½ï¿½Ö¹
 type = Pause
 trigger1 = prevstateno = [150,153]
 trigger1 = time = 0
@@ -3025,7 +3025,7 @@ time = 6
 movetime = 6
 ignorehitpause = 1
 
-[State 700, AfterImage];²ĞÓ°
+[State 700, AfterImage];ï¿½ï¿½Ó°
 type = AfterImage
 triggerall = time = 0
 trigger1 = prevstateno = [150,153]
@@ -3122,7 +3122,7 @@ ID = 41001
 pos = 0,0
 postype = p1
 stateno = 41001
-name = "×ª×Ó"
+name = "×ªï¿½ï¿½"
 sprpriority = 10
 helpertype = normal
 keyctrl = 0
@@ -3256,14 +3256,14 @@ air.fall = 1
 id = 1000
 air.juggle = 0
 fall.recovertime = 25
-afterimage.time = 9999      ;*****²ĞÓ°Ê±¼ä Ò»°ã¶¼ÊÇÈ«Ê±¼ä²ĞÓ°-1¾ÍĞĞÁË****
-afterimage.length = 7    ;*****²ĞÓ°×î¶à±£´æµÄÊıÁ¿*****
-afterimage.palbright = 0,0,0 ;*****Õâ¸öÒ»°ã0,0,0¾ÍĞĞÁË*****
-afterimage.palcontrast = 100,100,100  ;******Èı¸öÖµºìÂÌÀ¶ ²ĞÓ°¸Õ¸Õ³öÏÖµÄÑÕÉ«*****
-afterimage.paladd =  0,0,0 ;Õâ¸ö0,0,0¾ÍĞĞÁË Ä¬ÈÏÖµ10,10,25
+afterimage.time = 9999      ;*****ï¿½ï¿½Ó°Ê±ï¿½ï¿½ Ò»ï¿½ã¶¼ï¿½ï¿½È«Ê±ï¿½ï¿½ï¿½Ó°-1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½****
+afterimage.length = 7    ;*****ï¿½ï¿½Ó°ï¿½ï¿½à±£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*****
+afterimage.palbright = 0,0,0 ;*****ï¿½ï¿½ï¿½Ò»ï¿½ï¿½0,0,0ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*****
+afterimage.palcontrast = 100,100,100  ;******ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ó°ï¿½Õ¸Õ³ï¿½ï¿½Öµï¿½ï¿½ï¿½É«*****
+afterimage.paladd =  0,0,0 ;ï¿½ï¿½ï¿½0,0,0ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ä¬ï¿½ï¿½Öµ10,10,25
 afterimage.palmul = .75,.75,.75 
 afterimage.timegap = 1  
-afterimage.framegap = 2   ;²ĞÓ°Ã¿Ò»ÕÅ¶¯»­Í¼Æ¬¶¼´æÒ»ÕÅ
+afterimage.framegap = 2   ;ï¿½ï¿½Ó°Ã¿Ò»ï¿½Å¶ï¿½ï¿½ï¿½Í¼Æ¬ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½
 afterimage.trans = add
 
 [State 210, 5]
@@ -3357,7 +3357,7 @@ ID = 41001
 pos = 0,0
 postype = p1
 stateno = 41001
-name = "×ª×Ó"
+name = "×ªï¿½ï¿½"
 sprpriority = 10
 helpertype = normal
 keyctrl = 0
@@ -3435,15 +3435,15 @@ air.fall = 1
 Id = 1010
 air.juggle = 0
 fall.recovertime = 25
-afterimage.time = 9999      ;*****²ĞÓ°Ê±¼ä Ò»°ã¶¼ÊÇÈ«Ê±¼ä²ĞÓ°-1¾ÍĞĞÁË****
-afterimage.length = 7    ;*****²ĞÓ°×î¶à±£´æµÄÊıÁ¿*****
-afterimage.palbright = 0,0,0 ;*****Õâ¸öÒ»°ã0,0,0¾ÍĞĞÁË*****
-afterimage.palcontrast = 100,100,100  ;******Èı¸öÖµºìÂÌÀ¶ ²ĞÓ°¸Õ¸Õ³öÏÖµÄÑÕÉ«*****
-afterimage.paladd =  0,0,0 ;Õâ¸ö0,0,0¾ÍĞĞÁË Ä¬ÈÏÖµ10,10,25
+afterimage.time = 9999      ;*****ï¿½ï¿½Ó°Ê±ï¿½ï¿½ Ò»ï¿½ã¶¼ï¿½ï¿½È«Ê±ï¿½ï¿½ï¿½Ó°-1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½****
+afterimage.length = 7    ;*****ï¿½ï¿½Ó°ï¿½ï¿½à±£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*****
+afterimage.palbright = 0,0,0 ;*****ï¿½ï¿½ï¿½Ò»ï¿½ï¿½0,0,0ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*****
+afterimage.palcontrast = 100,100,100  ;******ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ó°ï¿½Õ¸Õ³ï¿½ï¿½Öµï¿½ï¿½ï¿½É«*****
+afterimage.paladd =  0,0,0 ;ï¿½ï¿½ï¿½0,0,0ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ä¬ï¿½ï¿½Öµ10,10,25
 afterimage.palmul = .75,.75,.75
-afterimage.timegap = 1   ;²ĞÓ°Ã¿1ticks¶¼´æÒ»ÕÅ
-afterimage.framegap = 2   ;²ĞÓ°Ã¿Ò»ÕÅ¶¯»­Í¼Æ¬¶¼´æÒ»ÕÅ
-afterimage.trans = add;Í¸Ã÷ÀàĞÍÒ»°ã¶¼ÊÇADD
+afterimage.timegap = 1   ;ï¿½ï¿½Ó°Ã¿1ticksï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½
+afterimage.framegap = 2   ;ï¿½ï¿½Ó°Ã¿Ò»ï¿½Å¶ï¿½ï¿½ï¿½Í¼Æ¬ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½
+afterimage.trans = add;Í¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ã¶¼ï¿½ï¿½ADD
 
 [State 0, Projectile]
 type = Projectile
@@ -3500,15 +3500,15 @@ air.fall = 1
 Id = 1010
 air.juggle = 15
 fall.recovertime = 25
-afterimage.time = 9999      ;*****²ĞÓ°Ê±¼ä Ò»°ã¶¼ÊÇÈ«Ê±¼ä²ĞÓ°-1¾ÍĞĞÁË****
-afterimage.length = 7    ;*****²ĞÓ°×î¶à±£´æµÄÊıÁ¿*****
-afterimage.palbright = 0,0,0 ;*****Õâ¸öÒ»°ã0,0,0¾ÍĞĞÁË*****
-afterimage.palcontrast = 100,100,100  ;******Èı¸öÖµºìÂÌÀ¶ ²ĞÓ°¸Õ¸Õ³öÏÖµÄÑÕÉ«*****
-afterimage.paladd =  0,0,0 ;Õâ¸ö0,0,0¾ÍĞĞÁË Ä¬ÈÏÖµ10,10,25
+afterimage.time = 9999      ;*****ï¿½ï¿½Ó°Ê±ï¿½ï¿½ Ò»ï¿½ã¶¼ï¿½ï¿½È«Ê±ï¿½ï¿½ï¿½Ó°-1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½****
+afterimage.length = 7    ;*****ï¿½ï¿½Ó°ï¿½ï¿½à±£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*****
+afterimage.palbright = 0,0,0 ;*****ï¿½ï¿½ï¿½Ò»ï¿½ï¿½0,0,0ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*****
+afterimage.palcontrast = 100,100,100  ;******ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ó°ï¿½Õ¸Õ³ï¿½ï¿½Öµï¿½ï¿½ï¿½É«*****
+afterimage.paladd =  0,0,0 ;ï¿½ï¿½ï¿½0,0,0ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ä¬ï¿½ï¿½Öµ10,10,25
 afterimage.palmul = .75,.75,.75
-afterimage.timegap = 1   ;²ĞÓ°Ã¿1ticks¶¼´æÒ»ÕÅ
-afterimage.framegap = 2   ;²ĞÓ°Ã¿Ò»ÕÅ¶¯»­Í¼Æ¬¶¼´æÒ»ÕÅ
-afterimage.trans = add;Í¸Ã÷ÀàĞÍÒ»°ã¶¼ÊÇADD
+afterimage.timegap = 1   ;ï¿½ï¿½Ó°Ã¿1ticksï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½
+afterimage.framegap = 2   ;ï¿½ï¿½Ó°Ã¿Ò»ï¿½Å¶ï¿½ï¿½ï¿½Í¼Æ¬ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½
+afterimage.trans = add;Í¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ã¶¼ï¿½ï¿½ADD
 ;--------------------------------------
 [State 0, Projectile]
 type = Projectile
@@ -3565,15 +3565,15 @@ air.fall = 1
 Id = 1010
 air.juggle = 0
 fall.recovertime = 25
-afterimage.time = 9999      ;*****²ĞÓ°Ê±¼ä Ò»°ã¶¼ÊÇÈ«Ê±¼ä²ĞÓ°-1¾ÍĞĞÁË****
-afterimage.length = 7    ;*****²ĞÓ°×î¶à±£´æµÄÊıÁ¿*****
-afterimage.palbright = 0,0,0 ;*****Õâ¸öÒ»°ã0,0,0¾ÍĞĞÁË*****
-afterimage.palcontrast = 100,100,100  ;******Èı¸öÖµºìÂÌÀ¶ ²ĞÓ°¸Õ¸Õ³öÏÖµÄÑÕÉ«*****
-afterimage.paladd =  0,0,0 ;Õâ¸ö0,0,0¾ÍĞĞÁË Ä¬ÈÏÖµ10,10,25
+afterimage.time = 9999      ;*****ï¿½ï¿½Ó°Ê±ï¿½ï¿½ Ò»ï¿½ã¶¼ï¿½ï¿½È«Ê±ï¿½ï¿½ï¿½Ó°-1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½****
+afterimage.length = 7    ;*****ï¿½ï¿½Ó°ï¿½ï¿½à±£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*****
+afterimage.palbright = 0,0,0 ;*****ï¿½ï¿½ï¿½Ò»ï¿½ï¿½0,0,0ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*****
+afterimage.palcontrast = 100,100,100  ;******ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ó°ï¿½Õ¸Õ³ï¿½ï¿½Öµï¿½ï¿½ï¿½É«*****
+afterimage.paladd =  0,0,0 ;ï¿½ï¿½ï¿½0,0,0ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ä¬ï¿½ï¿½Öµ10,10,25
 afterimage.palmul = .75,.75,.75
-afterimage.timegap = 1   ;²ĞÓ°Ã¿1ticks¶¼´æÒ»ÕÅ
-afterimage.framegap = 2   ;²ĞÓ°Ã¿Ò»ÕÅ¶¯»­Í¼Æ¬¶¼´æÒ»ÕÅ
-afterimage.trans = add;Í¸Ã÷ÀàĞÍÒ»°ã¶¼ÊÇADD
+afterimage.timegap = 1   ;ï¿½ï¿½Ó°Ã¿1ticksï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½
+afterimage.framegap = 2   ;ï¿½ï¿½Ó°Ã¿Ò»ï¿½Å¶ï¿½ï¿½ï¿½Í¼Æ¬ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½
+afterimage.trans = add;Í¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ã¶¼ï¿½ï¿½ADD
 
 [State 0, Projectile]
 type = Projectile
@@ -3630,15 +3630,15 @@ air.fall = 1
 Id = 1010
 air.juggle = 0
 fall.recovertime = 25
-afterimage.time = 9999      ;*****²ĞÓ°Ê±¼ä Ò»°ã¶¼ÊÇÈ«Ê±¼ä²ĞÓ°-1¾ÍĞĞÁË****
-afterimage.length = 7    ;*****²ĞÓ°×î¶à±£´æµÄÊıÁ¿*****
-afterimage.palbright = 0,0,0 ;*****Õâ¸öÒ»°ã0,0,0¾ÍĞĞÁË*****
-afterimage.palcontrast = 100,100,100  ;******Èı¸öÖµºìÂÌÀ¶ ²ĞÓ°¸Õ¸Õ³öÏÖµÄÑÕÉ«*****
-afterimage.paladd =  0,0,0 ;Õâ¸ö0,0,0¾ÍĞĞÁË Ä¬ÈÏÖµ10,10,25
+afterimage.time = 9999      ;*****ï¿½ï¿½Ó°Ê±ï¿½ï¿½ Ò»ï¿½ã¶¼ï¿½ï¿½È«Ê±ï¿½ï¿½ï¿½Ó°-1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½****
+afterimage.length = 7    ;*****ï¿½ï¿½Ó°ï¿½ï¿½à±£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*****
+afterimage.palbright = 0,0,0 ;*****ï¿½ï¿½ï¿½Ò»ï¿½ï¿½0,0,0ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*****
+afterimage.palcontrast = 100,100,100  ;******ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ó°ï¿½Õ¸Õ³ï¿½ï¿½Öµï¿½ï¿½ï¿½É«*****
+afterimage.paladd =  0,0,0 ;ï¿½ï¿½ï¿½0,0,0ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ä¬ï¿½ï¿½Öµ10,10,25
 afterimage.palmul = .75,.75,.75
-afterimage.timegap = 1   ;²ĞÓ°Ã¿1ticks¶¼´æÒ»ÕÅ
-afterimage.framegap = 2   ;²ĞÓ°Ã¿Ò»ÕÅ¶¯»­Í¼Æ¬¶¼´æÒ»ÕÅ
-afterimage.trans = add;Í¸Ã÷ÀàĞÍÒ»°ã¶¼ÊÇADD
+afterimage.timegap = 1   ;ï¿½ï¿½Ó°Ã¿1ticksï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½
+afterimage.framegap = 2   ;ï¿½ï¿½Ó°Ã¿Ò»ï¿½Å¶ï¿½ï¿½ï¿½Í¼Æ¬ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½
+afterimage.trans = add;Í¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ã¶¼ï¿½ï¿½ADD
 ;--------------------------------------
 [State 0, Projectile]
 type = Projectile
@@ -3695,15 +3695,15 @@ air.fall = 1
 Id = 1010
 air.juggle = 15
 fall.recovertime = 25
-afterimage.time = 9999      ;*****²ĞÓ°Ê±¼ä Ò»°ã¶¼ÊÇÈ«Ê±¼ä²ĞÓ°-1¾ÍĞĞÁË****
-afterimage.length = 7    ;*****²ĞÓ°×î¶à±£´æµÄÊıÁ¿*****
-afterimage.palbright = 0,0,0 ;*****Õâ¸öÒ»°ã0,0,0¾ÍĞĞÁË*****
-afterimage.palcontrast = 100,100,100  ;******Èı¸öÖµºìÂÌÀ¶ ²ĞÓ°¸Õ¸Õ³öÏÖµÄÑÕÉ«*****
-afterimage.paladd =  0,0,0 ;Õâ¸ö0,0,0¾ÍĞĞÁË Ä¬ÈÏÖµ10,10,25
+afterimage.time = 9999      ;*****ï¿½ï¿½Ó°Ê±ï¿½ï¿½ Ò»ï¿½ã¶¼ï¿½ï¿½È«Ê±ï¿½ï¿½ï¿½Ó°-1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½****
+afterimage.length = 7    ;*****ï¿½ï¿½Ó°ï¿½ï¿½à±£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*****
+afterimage.palbright = 0,0,0 ;*****ï¿½ï¿½ï¿½Ò»ï¿½ï¿½0,0,0ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*****
+afterimage.palcontrast = 100,100,100  ;******ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ó°ï¿½Õ¸Õ³ï¿½ï¿½Öµï¿½ï¿½ï¿½É«*****
+afterimage.paladd =  0,0,0 ;ï¿½ï¿½ï¿½0,0,0ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ä¬ï¿½ï¿½Öµ10,10,25
 afterimage.palmul = .75,.75,.75
-afterimage.timegap = 1   ;²ĞÓ°Ã¿1ticks¶¼´æÒ»ÕÅ
-afterimage.framegap = 2   ;²ĞÓ°Ã¿Ò»ÕÅ¶¯»­Í¼Æ¬¶¼´æÒ»ÕÅ
-afterimage.trans = add;Í¸Ã÷ÀàĞÍÒ»°ã¶¼ÊÇADD
+afterimage.timegap = 1   ;ï¿½ï¿½Ó°Ã¿1ticksï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½
+afterimage.framegap = 2   ;ï¿½ï¿½Ó°Ã¿Ò»ï¿½Å¶ï¿½ï¿½ï¿½Í¼Æ¬ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½
+afterimage.trans = add;Í¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ã¶¼ï¿½ï¿½ADD
 [State 0, Projectile]
 type = Projectile
 Triggerall = Var(30) = -1
@@ -3759,15 +3759,15 @@ air.fall = 1
 Id = 1010
 air.juggle = 15
 fall.recovertime = 25
-afterimage.time = 9999      ;*****²ĞÓ°Ê±¼ä Ò»°ã¶¼ÊÇÈ«Ê±¼ä²ĞÓ°-1¾ÍĞĞÁË****
-afterimage.length = 7    ;*****²ĞÓ°×î¶à±£´æµÄÊıÁ¿*****
-afterimage.palbright = 0,0,0 ;*****Õâ¸öÒ»°ã0,0,0¾ÍĞĞÁË*****
-afterimage.palcontrast = 100,100,100  ;******Èı¸öÖµºìÂÌÀ¶ ²ĞÓ°¸Õ¸Õ³öÏÖµÄÑÕÉ«*****
-afterimage.paladd =  0,0,0 ;Õâ¸ö0,0,0¾ÍĞĞÁË Ä¬ÈÏÖµ10,10,25
+afterimage.time = 9999      ;*****ï¿½ï¿½Ó°Ê±ï¿½ï¿½ Ò»ï¿½ã¶¼ï¿½ï¿½È«Ê±ï¿½ï¿½ï¿½Ó°-1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½****
+afterimage.length = 7    ;*****ï¿½ï¿½Ó°ï¿½ï¿½à±£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*****
+afterimage.palbright = 0,0,0 ;*****ï¿½ï¿½ï¿½Ò»ï¿½ï¿½0,0,0ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*****
+afterimage.palcontrast = 100,100,100  ;******ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ó°ï¿½Õ¸Õ³ï¿½ï¿½Öµï¿½ï¿½ï¿½É«*****
+afterimage.paladd =  0,0,0 ;ï¿½ï¿½ï¿½0,0,0ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ä¬ï¿½ï¿½Öµ10,10,25
 afterimage.palmul = .75,.75,.75  
-afterimage.timegap = 1   ;²ĞÓ°Ã¿1ticks¶¼´æÒ»ÕÅ
-afterimage.framegap = 2   ;²ĞÓ°Ã¿Ò»ÕÅ¶¯»­Í¼Æ¬¶¼´æÒ»ÕÅ
-afterimage.trans = add;Í¸Ã÷ÀàĞÍÒ»°ã¶¼ÊÇADD
+afterimage.timegap = 1   ;ï¿½ï¿½Ó°Ã¿1ticksï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½
+afterimage.framegap = 2   ;ï¿½ï¿½Ó°Ã¿Ò»ï¿½Å¶ï¿½ï¿½ï¿½Í¼Æ¬ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½
+afterimage.trans = add;Í¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ã¶¼ï¿½ï¿½ADD
 [State 210, 5]
 type = ChangeState
 trigger1 = AnimTime = 0
@@ -3819,7 +3819,7 @@ ID = 41101
 pos = 0,0
 postype = p1
 stateno = 41101
-name = "×ª×Ó"
+name = "×ªï¿½ï¿½"
 sprpriority = 3
 helpertype = normal
 keyctrl = 0
@@ -4004,7 +4004,7 @@ ID = 41111
 pos = 0,0
 postype = p1
 stateno = 41111
-name = "×ª×Ó"
+name = "×ªï¿½ï¿½"
 sprpriority = 3
 helpertype = normal
 keyctrl = 0
@@ -4410,7 +4410,7 @@ ID = 41221
 pos = 0,0
 postype = p1
 stateno = 41221
-name = "×ª×Ó"
+name = "×ªï¿½ï¿½"
 sprpriority = 3
 helpertype = normal
 keyctrl = 0
@@ -5424,7 +5424,7 @@ ID = 41221
 pos = 10,-10
 postype = p1
 stateno = 41221
-name = "×ª×Ó"
+name = "×ªï¿½ï¿½"
 sprpriority = 3
 helpertype = normal
 keyctrl = 0
@@ -5576,7 +5576,7 @@ ID = 41221
 pos = 10,-10
 postype = p1
 stateno = 41221
-name = "×ª×Ó"
+name = "×ªï¿½ï¿½"
 sprpriority = 3
 helpertype = normal
 keyctrl = 0
@@ -5652,7 +5652,7 @@ trigger1 = AnimTime = 0
 value = 0
 ctrl = 1
 ;---------------------------------------------------------------------------
-;³¬±ØÉ±ÇøÓò
+;ï¿½ï¿½ï¿½ï¿½É±ï¿½ï¿½ï¿½ï¿½
 ;---------------------------------------------------------------------------
 [Statedef 3000]
 type    = S
@@ -6059,7 +6059,7 @@ ID = 43005
 pos = 15,0
 postype = p1
 stateno = 43005
-name = "×ª×Ó3"
+name = "×ªï¿½ï¿½3"
 sprpriority = 3
 helpertype = normal
 keyctrl = 0
@@ -6767,7 +6767,7 @@ ID = 41221
 pos = 0,0
 postype = p1
 stateno = 41221
-name = "×ª×Ó"
+name = "×ªï¿½ï¿½"
 sprpriority = 3
 helpertype = normal
 keyctrl = 0
@@ -7074,7 +7074,7 @@ ID = 41221
 pos = 0,0
 postype = p1
 stateno = 41221
-name = "×ª×Ó"
+name = "×ªï¿½ï¿½"
 sprpriority = 3
 helpertype = normal
 keyctrl = 0
@@ -7155,7 +7155,7 @@ ctrl = 0
 ctrl = 1
 ;======================================================================
 ;======================================================================
-;¾‹ó˜T‰å
+;ï¿½ï¿½ï¿½ï¿½Tï¿½ï¿½
 [Statedef 3100]
 type = S
 movetype = A
@@ -7250,7 +7250,7 @@ ID = 41001
 pos = 0,0
 postype = p1
 stateno = 41001
-name = "×ª×Ó"
+name = "×ªï¿½ï¿½"
 sprpriority = 10
 helpertype = normal
 keyctrl = 0
@@ -7291,15 +7291,15 @@ air.velocity = -2.5,-2.5
 ground.cornerpush.veloff = 0
 guard.cornerpush.veloff = 0
 air.cornerpush.veloff = 0
-afterimage.time = 9999      ;*****²ĞÓ°Ê±¼ä Ò»°ã¶¼ÊÇÈ«Ê±¼ä²ĞÓ°-1¾ÍĞĞÁË****
-afterimage.length = 10    ;*****²ĞÓ°×î¶à±£´æµÄÊıÁ¿*****
-afterimage.palbright = 0,0,0 ;*****Õâ¸öÒ»°ã0,0,0¾ÍĞĞÁË*****
-afterimage.palcontrast = 100,100,100  ;******Èı¸öÖµºìÂÌÀ¶ ²ĞÓ°¸Õ¸Õ³öÏÖµÄÑÕÉ«*****
-afterimage.paladd =  0,0,0 ;Õâ¸ö0,0,0¾ÍĞĞÁË Ä¬ÈÏÖµ10,10,25
-afterimage.palmul = .75,.75,.75  ;*****Õâ¸öÊÇÖ÷ÒªÈÃ²ĞÓ°ÑÕÉ«±äµ­µÄ²ÎÊı ±äµ­µÄ»°Èı¸öÖµÒ»¶¨Òª±È1Ğ¡ ÀıÈçÄ¬ÈÏÖµ0.65,0.65,0.75*****
-afterimage.timegap = 1   ;²ĞÓ°Ã¿1ticks¶¼´æÒ»ÕÅ
-afterimage.framegap = 2   ;²ĞÓ°Ã¿Ò»ÕÅ¶¯»­Í¼Æ¬¶¼´æÒ»ÕÅ
-afterimage.trans = add;Í¸Ã÷ÀàĞÍÒ»°ã¶¼ÊÇADD
+afterimage.time = 9999      ;*****ï¿½ï¿½Ó°Ê±ï¿½ï¿½ Ò»ï¿½ã¶¼ï¿½ï¿½È«Ê±ï¿½ï¿½ï¿½Ó°-1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½****
+afterimage.length = 10    ;*****ï¿½ï¿½Ó°ï¿½ï¿½à±£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*****
+afterimage.palbright = 0,0,0 ;*****ï¿½ï¿½ï¿½Ò»ï¿½ï¿½0,0,0ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*****
+afterimage.palcontrast = 100,100,100  ;******ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ó°ï¿½Õ¸Õ³ï¿½ï¿½Öµï¿½ï¿½ï¿½É«*****
+afterimage.paladd =  0,0,0 ;ï¿½ï¿½ï¿½0,0,0ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ä¬ï¿½ï¿½Öµ10,10,25
+afterimage.palmul = .75,.75,.75  ;*****ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½Ã²ï¿½Ó°ï¿½ï¿½É«ï¿½äµ­ï¿½Ä²ï¿½ï¿½ï¿½ ï¿½äµ­ï¿½Ä»ï¿½ï¿½ï¿½ï¿½ï¿½ÖµÒ»ï¿½ï¿½Òªï¿½ï¿½1Ğ¡ ï¿½ï¿½ï¿½ï¿½Ä¬ï¿½ï¿½Öµ0.65,0.65,0.75*****
+afterimage.timegap = 1   ;ï¿½ï¿½Ó°Ã¿1ticksï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½
+afterimage.framegap = 2   ;ï¿½ï¿½Ó°Ã¿Ò»ï¿½Å¶ï¿½ï¿½ï¿½Í¼Æ¬ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½
+afterimage.trans = add;Í¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ã¶¼ï¿½ï¿½ADD
 
 [State 2100, 3]
 type = Explod
@@ -7317,7 +7317,7 @@ type = ChangeState
 trigger1 = AnimTime = 0
 value = 3101
 
-;¾‹ó˜T‰å2
+;ï¿½ï¿½ï¿½ï¿½Tï¿½ï¿½2
 [Statedef 3101]
 type = S
 movetype = A
@@ -7371,15 +7371,15 @@ air.velocity = -2.5,-2.5
 ground.cornerpush.veloff = 0
 guard.cornerpush.veloff = 0
 air.cornerpush.veloff = 0
-afterimage.time = 9999      ;*****²ĞÓ°Ê±¼ä Ò»°ã¶¼ÊÇÈ«Ê±¼ä²ĞÓ°-1¾ÍĞĞÁË****
-afterimage.length = 10    ;*****²ĞÓ°×î¶à±£´æµÄÊıÁ¿*****
-afterimage.palbright = 0,0,0 ;*****Õâ¸öÒ»°ã0,0,0¾ÍĞĞÁË*****
-afterimage.palcontrast = 100,100,100  ;******Èı¸öÖµºìÂÌÀ¶ ²ĞÓ°¸Õ¸Õ³öÏÖµÄÑÕÉ«*****
-afterimage.paladd =  0,0,0 ;Õâ¸ö0,0,0¾ÍĞĞÁË Ä¬ÈÏÖµ10,10,25
-afterimage.palmul = .75,.75,.75  ;*****Õâ¸öÊÇÖ÷ÒªÈÃ²ĞÓ°ÑÕÉ«±äµ­µÄ²ÎÊı ±äµ­µÄ»°Èı¸öÖµÒ»¶¨Òª±È1Ğ¡ ÀıÈçÄ¬ÈÏÖµ0.65,0.65,0.75*****
-afterimage.timegap = 1   ;²ĞÓ°Ã¿1ticks¶¼´æÒ»ÕÅ
-afterimage.framegap = 2   ;²ĞÓ°Ã¿Ò»ÕÅ¶¯»­Í¼Æ¬¶¼´æÒ»ÕÅ
-afterimage.trans = add;Í¸Ã÷ÀàĞÍÒ»°ã¶¼ÊÇADD
+afterimage.time = 9999      ;*****ï¿½ï¿½Ó°Ê±ï¿½ï¿½ Ò»ï¿½ã¶¼ï¿½ï¿½È«Ê±ï¿½ï¿½ï¿½Ó°-1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½****
+afterimage.length = 10    ;*****ï¿½ï¿½Ó°ï¿½ï¿½à±£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*****
+afterimage.palbright = 0,0,0 ;*****ï¿½ï¿½ï¿½Ò»ï¿½ï¿½0,0,0ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*****
+afterimage.palcontrast = 100,100,100  ;******ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ó°ï¿½Õ¸Õ³ï¿½ï¿½Öµï¿½ï¿½ï¿½É«*****
+afterimage.paladd =  0,0,0 ;ï¿½ï¿½ï¿½0,0,0ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ä¬ï¿½ï¿½Öµ10,10,25
+afterimage.palmul = .75,.75,.75  ;*****ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½Ã²ï¿½Ó°ï¿½ï¿½É«ï¿½äµ­ï¿½Ä²ï¿½ï¿½ï¿½ ï¿½äµ­ï¿½Ä»ï¿½ï¿½ï¿½ï¿½ï¿½ÖµÒ»ï¿½ï¿½Òªï¿½ï¿½1Ğ¡ ï¿½ï¿½ï¿½ï¿½Ä¬ï¿½ï¿½Öµ0.65,0.65,0.75*****
+afterimage.timegap = 1   ;ï¿½ï¿½Ó°Ã¿1ticksï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½
+afterimage.framegap = 2   ;ï¿½ï¿½Ó°Ã¿Ò»ï¿½Å¶ï¿½ï¿½ï¿½Í¼Æ¬ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½
+afterimage.trans = add;Í¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ã¶¼ï¿½ï¿½ADD
 
 
 [State 1000, 9]
@@ -7387,7 +7387,7 @@ type = ChangeState
 trigger1 = AnimTime = 0
 value = 3102
 
-;¾‹ó˜T‰å
+;ï¿½ï¿½ï¿½ï¿½Tï¿½ï¿½
 [Statedef 3102]
 type = S
 movetype = A
@@ -7418,7 +7418,7 @@ ID = 41001
 pos = 0,0
 postype = p1
 stateno = 41001
-name = "×ª×Ó"
+name = "×ªï¿½ï¿½"
 sprpriority = 10
 helpertype = normal
 keyctrl = 0
@@ -7459,15 +7459,15 @@ air.velocity = -2.5,-2.5
 ground.cornerpush.veloff = 0
 guard.cornerpush.veloff = 0
 air.cornerpush.veloff = 0
-afterimage.time = 9999      ;*****²ĞÓ°Ê±¼ä Ò»°ã¶¼ÊÇÈ«Ê±¼ä²ĞÓ°-1¾ÍĞĞÁË****
-afterimage.length = 10    ;*****²ĞÓ°×î¶à±£´æµÄÊıÁ¿*****
-afterimage.palbright = 0,0,0 ;*****Õâ¸öÒ»°ã0,0,0¾ÍĞĞÁË*****
-afterimage.palcontrast = 100,100,100  ;******Èı¸öÖµºìÂÌÀ¶ ²ĞÓ°¸Õ¸Õ³öÏÖµÄÑÕÉ«*****
-afterimage.paladd =  0,0,0 ;Õâ¸ö0,0,0¾ÍĞĞÁË Ä¬ÈÏÖµ10,10,25
+afterimage.time = 9999      ;*****ï¿½ï¿½Ó°Ê±ï¿½ï¿½ Ò»ï¿½ã¶¼ï¿½ï¿½È«Ê±ï¿½ï¿½ï¿½Ó°-1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½****
+afterimage.length = 10    ;*****ï¿½ï¿½Ó°ï¿½ï¿½à±£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*****
+afterimage.palbright = 0,0,0 ;*****ï¿½ï¿½ï¿½Ò»ï¿½ï¿½0,0,0ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*****
+afterimage.palcontrast = 100,100,100  ;******ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ó°ï¿½Õ¸Õ³ï¿½ï¿½Öµï¿½ï¿½ï¿½É«*****
+afterimage.paladd =  0,0,0 ;ï¿½ï¿½ï¿½0,0,0ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ä¬ï¿½ï¿½Öµ10,10,25
 afterimage.palmul = .75,.75,.75
-afterimage.timegap = 1   ;²ĞÓ°Ã¿1ticks¶¼´æÒ»ÕÅ
-afterimage.framegap = 2   ;²ĞÓ°Ã¿Ò»ÕÅ¶¯»­Í¼Æ¬¶¼´æÒ»ÕÅ
-afterimage.trans = add;Í¸Ã÷ÀàĞÍÒ»°ã¶¼ÊÇADD
+afterimage.timegap = 1   ;ï¿½ï¿½Ó°Ã¿1ticksï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½
+afterimage.framegap = 2   ;ï¿½ï¿½Ó°Ã¿Ò»ï¿½Å¶ï¿½ï¿½ï¿½Í¼Æ¬ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½
+afterimage.trans = add;Í¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ã¶¼ï¿½ï¿½ADD
 
 [State 2100, 3]
 type = Explod
@@ -7485,7 +7485,7 @@ type = ChangeState
 trigger1 = AnimTime = 0
 value = 3103
 
-;‹­@¾‹óEi“ñ”­–Új
+;ï¿½ï¿½ï¿½@ï¿½ï¿½ï¿½ï¿½Eï¿½iï¿½ñ”­–Új
 [Statedef 3103]
 type = S
 movetype = A
@@ -7540,15 +7540,15 @@ air.velocity = -2.5,-2.5
 ground.cornerpush.veloff = 0
 guard.cornerpush.veloff = 0
 air.cornerpush.veloff = 0
-afterimage.time = 9999      ;*****²ĞÓ°Ê±¼ä Ò»°ã¶¼ÊÇÈ«Ê±¼ä²ĞÓ°-1¾ÍĞĞÁË****
-afterimage.length = 10    ;*****²ĞÓ°×î¶à±£´æµÄÊıÁ¿*****
-afterimage.palbright = 0,0,0 ;*****Õâ¸öÒ»°ã0,0,0¾ÍĞĞÁË*****
-afterimage.palcontrast = 100,100,100  ;******Èı¸öÖµºìÂÌÀ¶ ²ĞÓ°¸Õ¸Õ³öÏÖµÄÑÕÉ«*****
-afterimage.paladd =  0,0,0 ;Õâ¸ö0,0,0¾ÍĞĞÁË Ä¬ÈÏÖµ10,10,25
+afterimage.time = 9999      ;*****ï¿½ï¿½Ó°Ê±ï¿½ï¿½ Ò»ï¿½ã¶¼ï¿½ï¿½È«Ê±ï¿½ï¿½ï¿½Ó°-1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½****
+afterimage.length = 10    ;*****ï¿½ï¿½Ó°ï¿½ï¿½à±£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*****
+afterimage.palbright = 0,0,0 ;*****ï¿½ï¿½ï¿½Ò»ï¿½ï¿½0,0,0ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*****
+afterimage.palcontrast = 100,100,100  ;******ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ó°ï¿½Õ¸Õ³ï¿½ï¿½Öµï¿½ï¿½ï¿½É«*****
+afterimage.paladd =  0,0,0 ;ï¿½ï¿½ï¿½0,0,0ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ä¬ï¿½ï¿½Öµ10,10,25
 afterimage.palmul = .75,.75,.75
-afterimage.timegap = 1   ;²ĞÓ°Ã¿1ticks¶¼´æÒ»ÕÅ
-afterimage.framegap = 2   ;²ĞÓ°Ã¿Ò»ÕÅ¶¯»­Í¼Æ¬¶¼´æÒ»ÕÅ
-afterimage.trans = add;Í¸Ã÷ÀàĞÍÒ»°ã¶¼ÊÇADD
+afterimage.timegap = 1   ;ï¿½ï¿½Ó°Ã¿1ticksï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½
+afterimage.framegap = 2   ;ï¿½ï¿½Ó°Ã¿Ò»ï¿½Å¶ï¿½ï¿½ï¿½Í¼Æ¬ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½
+afterimage.trans = add;Í¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ã¶¼ï¿½ï¿½ADD
 
 [State 1000, 9]
 type = ChangeState
@@ -7572,7 +7572,7 @@ trigger1 = AnimTime = 0
 value = 0
 ctrl = 1
 
-;¾‹ó˜T‰å
+;ï¿½ï¿½ï¿½ï¿½Tï¿½ï¿½
 [Statedef 3104]
 type = S
 movetype = A
@@ -7587,7 +7587,7 @@ type = ChangeState
 trigger1 = animtime = 0
 value = 3105
 
-;¾‹ó˜T‰åiƒ‰ƒ“ƒjƒ“ƒOj
+;ï¿½ï¿½ï¿½ï¿½Tï¿½ï¿½iï¿½ï¿½ï¿½ï¿½ï¿½jï¿½ï¿½ï¿½Oï¿½j
 [Statedef 3105]
 type = S
 movetype = A
@@ -7676,7 +7676,7 @@ type = ChangeState
 trigger1 = time >= 23
 value = 101
 
-;˜T‰åi‘Ì“–‚½‚èj
+;ï¿½Tï¿½ï¿½iï¿½Ì“ï¿½ï¿½ï¿½ï¿½ï¿½j
 [Statedef 3106]
 type = S
 movetype = A
@@ -7708,7 +7708,7 @@ trigger1 = time = 12
 trigger2 = p2stateno = 8272
 value = 3107
 
-;ƒK[ƒh•s”\UŒ‚
+;ï¿½Kï¿½[ï¿½hï¿½sï¿½\ï¿½Uï¿½ï¿½
 [Statedef 3107]
 type    = S
 movetype= A
@@ -7769,7 +7769,7 @@ type = ChangeState
 trigger1 = time = 54
 value = 3108
 
-;ƒK[ƒh•s”\UŒ‚
+;ï¿½Kï¿½[ï¿½hï¿½sï¿½\ï¿½Uï¿½ï¿½
 [Statedef 3108]
 type    = S
 movetype= A
@@ -8004,7 +8004,7 @@ air.fall = 1
 fall.animtype = up
 
 
-[State 9010, ^˜T‰å]
+[State 9010, ï¿½^ï¿½Tï¿½ï¿½]
 type = ChangeState
 trigger1 = var(40) = 1
 trigger1 = Time = 15
@@ -8027,7 +8027,7 @@ value = 0
 ctrl = 1
 
 ;---------------------------------------------------
-;‹­˜AnaO”­–Ú‚â‚ç‚ê
+;ï¿½ï¿½ï¿½Aï¿½nï¿½aï¿½Oï¿½ï¿½ï¿½Ú‚ï¿½ï¿½ï¿½
 [Statedef 8160]
 type = A
 movetype = H
@@ -8051,7 +8051,7 @@ type = ChangeState
 trigger1 = HitShakeOver = 1
 value = 8161
 
-;‹­˜AnaO”­–Ú‚â‚ç‚ê
+;ï¿½ï¿½ï¿½Aï¿½nï¿½aï¿½Oï¿½ï¿½ï¿½Ú‚ï¿½ï¿½ï¿½
 [Statedef 8161]
 type    = A
 movetype= H
@@ -8110,7 +8110,7 @@ trigger1 = Vel Y > 0 && Pos Y >= 0
 	pos = 0, 0
 	under = sysvar(1) <= 14
 
-[State 0];µôµØ½¦ÆğµÄË®»¨
+[State 0];ï¿½ï¿½ï¿½Ø½ï¿½ï¿½ï¿½ï¿½Ë®ï¿½ï¿½
 	type = GameMakeAnim
 trigger1 = StageVar(info.author) = "water"
 trigger1 = Vel Y > 0 && Pos Y >= 0
@@ -8118,7 +8118,7 @@ trigger1 = Vel Y > 0 && Pos Y >= 0
 	pos = 0, 0
 	under = 0;sysvar(1) <= 14
 
-[State 0];µôµØ½¦ÆğµÄË®»¨ÉùĞ§
+[State 0];ï¿½ï¿½ï¿½Ø½ï¿½ï¿½ï¿½ï¿½Ë®ï¿½ï¿½ï¿½ï¿½Ğ§
 	type = PlaySnd
 trigger1 = StageVar(info.author) = "water"
 trigger1 = Vel Y > 0 && Pos Y >= 0
@@ -8135,7 +8135,7 @@ type = ChangeState
 trigger1 = Vel Y > 0 && Pos Y >= 0
 value = 8162
 
-;‹­˜AnaO”­–Ú‚â‚ç‚ê
+;ï¿½ï¿½ï¿½Aï¿½nï¿½aï¿½Oï¿½ï¿½ï¿½Ú‚ï¿½ï¿½ï¿½
 [Statedef 8162]
 type = L
 movetype = H
@@ -8181,7 +8181,7 @@ value = 5120
 
 
 
-;‚Á”ò‚Ñ@‚â‚ç‚ê@–³“G‚È‚µ
+;ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ@ï¿½ï¿½ï¿½ï¿½@ï¿½ï¿½ï¿½Gï¿½È‚ï¿½
 [Statedef 8243]
 type = A
 movetype = H
@@ -8203,7 +8203,7 @@ type = ChangeState
 trigger1 = HitShakeOver = 1
 value = 8244
 
-;‚Á”ò‚Ñ@‚â‚ç‚ê
+;ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ@ï¿½ï¿½ï¿½ï¿½
 [Statedef 8244]
 type    = A
 movetype= H
@@ -8263,7 +8263,7 @@ trigger1 = Vel Y > 0
 	pos = 0, 0
 	under = sysvar(1) <= 14
 
-[State 0];µôµØ½¦ÆğµÄË®»¨
+[State 0];ï¿½ï¿½ï¿½Ø½ï¿½ï¿½ï¿½ï¿½Ë®ï¿½ï¿½
 	type = GameMakeAnim
 trigger1 = StageVar(info.author) = "water"
 trigger1 = Pos Y >= 0
@@ -8272,7 +8272,7 @@ trigger1 = Vel Y > 0
 	pos = 0, 0
 	under = 0;sysvar(1) <= 14
 
-[State 0];µôµØ½¦ÆğµÄË®»¨ÉùĞ§
+[State 0];ï¿½ï¿½ï¿½Ø½ï¿½ï¿½ï¿½ï¿½Ë®ï¿½ï¿½ï¿½ï¿½Ğ§
 	type = PlaySnd
 trigger1 = StageVar(info.author) = "water"
 trigger1 = Pos Y >= 0
@@ -8293,7 +8293,7 @@ trigger1 = Vel Y > 0
 value = 5100
 
 ;------------------------------------------------
-;’ÊíUŒ‚@‹ó’†ƒqƒbƒg—p
+;ï¿½Êï¿½Uï¿½ï¿½ï¿½@ï¿½ó’†ƒqï¿½bï¿½gï¿½p
 [Statedef 9910]
 type = A
 movetype = H
@@ -8315,7 +8315,7 @@ type = ChangeState
 trigger1 = HitShakeOver = 1
 value = 9920
 
-;’ÊíUŒ‚@‹ó’†ƒqƒbƒg—p
+;ï¿½Êï¿½Uï¿½ï¿½ï¿½@ï¿½ó’†ƒqï¿½bï¿½gï¿½p
 [Statedef 9920]
 type = A
 movetype = H
@@ -8375,7 +8375,7 @@ trigger1 = Pos Y >= 0
 trigger1 = Vel Y > 0
 value = 9930
 
-; ’ÊíUŒ‚@‹ó’†ƒqƒbƒg—pi’…’nj
+; ï¿½Êï¿½Uï¿½ï¿½ï¿½@ï¿½ó’†ƒqï¿½bï¿½gï¿½pï¿½iï¿½ï¿½ï¿½nï¿½j
 [Statedef 9930]
 type = S
 movetype = I
@@ -8412,7 +8412,7 @@ value = 52
 
 
 
-;‹­R‚è‚â‚ç‚ê
+;ï¿½ï¿½ï¿½Rï¿½ï¿½ï¿½ï¿½ï¿½
 [Statedef 8271]
 type    = S
 movetype= H
@@ -8462,7 +8462,7 @@ trigger1 = time >= 1
 trigger1 = backedgedist <= 5
 value = 8272
 
-;’µ‚Ë•Ô‚è
+;ï¿½ï¿½ï¿½Ë•Ô‚ï¿½
 [Statedef 8272]
 type    = A
 movetype= H
@@ -8512,7 +8512,7 @@ trigger1 = Pos Y > 15
 value = 5100
 ;========================================================
 ;========================================================
-; —•‘‰œ‹`
+; ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½`
 [Statedef 3400]
 type = S
 movetype = I
@@ -8734,7 +8734,7 @@ mul = 900,900,900
 add = -250,-250,-250
 ignorehitpause = 1
 
-[State 3000,ºÚÉ«µ×É«]
+[State 3000,ï¿½ï¿½É«ï¿½ï¿½É«]
 type = Envcolor
 trigger1 = 1
 persistent = 0
@@ -8755,7 +8755,7 @@ type = ChangeState
 trigger1 = animtime = 0
 value = 14010
 
-;ƒIƒŠƒWƒiƒ‹(—­‚ß)
+;ï¿½Iï¿½ï¿½ï¿½Wï¿½iï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½)
 [Statedef 14001]
 type = S
 movetype = A
@@ -8782,7 +8782,7 @@ type = ChangeState
 trigger1 = AnimTime = 0
 value = 14011
 
-;ƒIƒŠƒWƒiƒ‹(ƒ_ƒbƒVƒ…)
+;ï¿½Iï¿½ï¿½ï¿½Wï¿½iï¿½ï¿½(ï¿½_ï¿½bï¿½Vï¿½ï¿½)
 [Statedef 14010]
 type = S
 movetype = A
@@ -8903,7 +8903,7 @@ trigger1 = AnimTime = 0
 value = 0
 ctrl = 1
 
-;ƒIƒŠƒWƒiƒ‹(ƒ_ƒbƒVƒ…(–³“G))
+;ï¿½Iï¿½ï¿½ï¿½Wï¿½iï¿½ï¿½(ï¿½_ï¿½bï¿½Vï¿½ï¿½(ï¿½ï¿½ï¿½G))
 [Statedef 14011]
 type = S
 movetype = A
@@ -8991,7 +8991,7 @@ trigger1 = AnimTime = 0
 value = 0
 ctrl = 1
 
-;ƒIƒŠƒWƒiƒ‹iƒqƒbƒgŒãj
+;ï¿½Iï¿½ï¿½ï¿½Wï¿½iï¿½ï¿½ï¿½iï¿½qï¿½bï¿½gï¿½ï¿½j
 [Statedef 14020]
 type = S
 movetype = A
@@ -9396,7 +9396,7 @@ trigger1 = animTime = 0
 value = 0
 ctrl = 1
 
-;ƒIƒŠƒWƒiƒ‹ P2
+;ï¿½Iï¿½ï¿½ï¿½Wï¿½iï¿½ï¿½ P2
 [Statedef 4050]
 type = S
 movetype = H
@@ -9448,7 +9448,7 @@ type = ChangeState
 trigger1 = AnimTime = 0
 value = 5950  ;ifelse(anim = 5950,5100)
 
-;ƒIƒŠƒWƒiƒ‹ P2
+;ï¿½Iï¿½ï¿½ï¿½Wï¿½iï¿½ï¿½ P2
 [Statedef 4051]
 type = L
 movetype = H
@@ -9485,7 +9485,7 @@ type = SelfState
 trigger1 = Time = 100
 value = 5120
 
-;—‚êáŒ‰Ôi¸”sj
+;ï¿½ï¿½ï¿½ï¿½áŒï¿½Ôiï¿½ï¿½ï¿½sï¿½j
 [Statedef 12020]
 type = S
 movetype = I
@@ -9546,7 +9546,7 @@ type = selfState
 trigger1 = HitShakeOver = 1
 value = 4391
 
-;ƒ_ƒEƒ“
+;ï¿½_ï¿½Eï¿½ï¿½
 [Statedef 4391]
 type = S
 movetype= H
@@ -9585,7 +9585,7 @@ type = ChangeState
 trigger1 = animtime = 0
 value = 4392
 
-;ƒ_ƒEƒ“
+;ï¿½_ï¿½Eï¿½ï¿½
 [Statedef 4392]
 type    = L
 movetype= H
@@ -10280,7 +10280,7 @@ trigger2 = stateno = 5020
 trigger3 = stateno = 5070
 value = ifelse(GetHitVar(animtype) < 2,20,40)
 
-[State -2, Spray Anim P1];µØÃæË®»¨
+[State -2, Spray Anim P1];ï¿½ï¿½ï¿½ï¿½Ë®ï¿½ï¿½
 type = Explod
 triggerall = StageVar(info.author) = "water"
 triggerall = pos Y = 0
@@ -10297,12 +10297,12 @@ removetime = 16
 pausemovetime = 999999
 supermovetime = 999999
 
-[State -2, 1];µØÃæË®»¨ÒÆ³ı
+[State -2, 1];ï¿½ï¿½ï¿½ï¿½Ë®ï¿½ï¿½ï¿½Æ³ï¿½
 type = removeexplod
 trigger1 = pos Y != 0
 ID = 20
 
-[State -3, ÂäµØË®»¨]
+[State -3, ï¿½ï¿½ï¿½Ë®ï¿½ï¿½]
 type = Explod
 triggerall = StageVar(info.author) = "water"
 triggerall = Time = 1
@@ -10318,14 +10318,14 @@ removetime = -2
 pausemovetime = 999999
 supermovetime = 999999
 
-[State -3 , ÂäµØÉùĞ§]
+[State -3 , ï¿½ï¿½ï¿½ï¿½ï¿½Ğ§]
 type = PlaySnd
 triggerall = Time = 1
 trigger1 = stateno = 5200
 value = F47,(0+(StageVar(info.author) = "water"))
 
 ;--------------------------------------------------
-;varƒŠƒZƒbƒg
+;varï¿½ï¿½ï¿½Zï¿½bï¿½g
 [State -2, 0]
 type = VarSet
 trigger1 = Stateno != 1600
@@ -10430,7 +10430,7 @@ trigger1 = p2movetype != H
 var(49) = 0
 
 ;--------------------------------------------------
-;—•‘‰œ‹`—p
+;ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½`ï¿½p
 [State -2, 0]
 type = VarAdd
 trigger1 = var(50) > 0
@@ -10734,7 +10734,7 @@ v = 11
 value = 0
 
 
-[State -2, 4];ÌøÔ¾ÏµÍ³Ïà¹Ø
+[State -2, 4];ï¿½ï¿½Ô¾ÏµÍ³ï¿½ï¿½ï¿½
 type = varadd
 trigger1 = 1
 v = 43
@@ -10746,7 +10746,7 @@ value = -1
 ;===========================================================================
 ;---------------------------------------------------------------------------
 
-[State -3, 2];ÌøÔ¾ÏµÍ³Ïà¹Ø(ÆÕÍ¨Ìø)
+[State -3, 2];ï¿½ï¿½Ô¾ÏµÍ³ï¿½ï¿½ï¿½(ï¿½ï¿½Í¨ï¿½ï¿½)
 type = PlaySnd
 triggerall = time = 1
 trigger1 = stateno = 40 
@@ -10754,7 +10754,7 @@ trigger1 = var(43) <= 0
 value = f40, 0
 channel = 13
 
-[State -3, 2];ÌøÔ¾ÏµÍ³Ïà¹Ø£¨´óÌø/Ğ¡Ìø£©
+[State -3, 2];ï¿½ï¿½Ô¾ÏµÍ³ï¿½ï¿½Ø£ï¿½ï¿½ï¿½ï¿½ï¿½/Ğ¡ï¿½ï¿½ï¿½ï¿½
 type = PlaySnd
 triggerall = time = 1
 trigger1 = stateno = 40 
@@ -10763,7 +10763,7 @@ value = f40, 1
 channel = 13
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; AH´óÉñµÄ´óÌøÏµÍ³
+; AHï¿½ï¿½ï¿½ï¿½Ä´ï¿½ï¿½ï¿½ÏµÍ³
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 [State -3, 5]
 type = varset

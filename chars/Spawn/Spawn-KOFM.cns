@@ -26,7 +26,6 @@
 ; Var(34) - Guard Spark (8000 = Normal; 8001 = Special)
 ; Var(35) - Spark xPos
 ; Var(36) - Spark yPos
-; Var(38) - Throw (0 = Allowed; 1 = Not Allowed)
 ; Var(58) - Game Time
 
 ;--------------------- Float Variable List ----------------------
@@ -39,7 +38,6 @@
 
 [Data]
 life = 1500			;Amount of life to start with
-power = 7000;jambu;
 attack = 100		;attack power (more is stronger)
 defence = 100		;defensive power (more is stronger)
 fall.defence_up = 50	;Percentage to increase defense everytime player is knocked down
@@ -48,17 +46,17 @@ airjuggle = 0		;Number of points for juggling
 sparkno = s8010			;Default hit spark number for HitDefs
 guard.sparkno = s8000	;Default guard spark number
 KO.echo = 0			;1 to enable echo on KO
-volume = 200			;Volume offset (negative for softer)
+volume = 180			;Volume offset (negative for softer)
 IntPersistIndex = 58	;Variables with this index and above will not have their values
 FloatPersistIndex = 40  ;reset to 0 between rounds or matches. There are 60 int variables,
-  				;indexed from 0 to 59, and 40 float variables, indexed from 0 to 39.
+power = 7000;jambu;5000  			;indexed from 0 to 59, and 40 float variables, indexed from 0 to 39.
   				;If omitted, then it defaults to 60 and 40 for integer and float
   				;variables repectively, meaning that none are persistent, i.e. all
   				;are reset. If you want your variables to persist between matches,
   				;you need to override state 5900 from common1.cns.
 
 [Size]
-xscale = 1           ;Horizontal scaling factor.
+xscale = .85           ;Horizontal scaling factor.
 yscale = 1.1;jambu;1           ;Vertical scaling factor.
 ground.back = 15     ;Player width (back, ground)
 ground.front = 16    ;Player width (front, ground)
@@ -76,14 +74,14 @@ draw.offset = 0,0    ;Player drawing offset in pixels (x, y)
 [Velocity]
 walk.fwd  = 3      ;Walk forward
 walk.back = -2.8     ;Walk backward
-run.fwd  = 4.75, 0    ;Run forward (x, y)
+run.fwd  = 6, -4    ;Run forward (x, y)
 run.back = -5,-4 ;Hop backward (x, y)
 jump.neu = 0,-11    ;Neutral jumping velocity (x, y)
 jump.back = -3.5    ;Jump back Speed (x, y)
 jump.fwd = 3.5       ;Jump forward Speed (x, y)
 runjump.back = -4.5,-11.85 ;Running jump speeds (opt)
 runjump.fwd = 4.5,-11.85      ;.
-airjump.neu = 0,-11;jambu;0,-8.1      ;.
+airjump.neu = 0,-8.1      ;.
 airjump.back = -2.55      ;Air jump speeds (opt)
 airjump.fwd = 2.5         ;.
 
@@ -94,6 +92,43 @@ yaccel = .58         ;Vertical acceleration
 stand.friction = .85  ;Friction coefficient when standing
 crouch.friction = .82 ;Friction coefficient when crouching
 
+;Default language victory quotes **MUGEN 1.0**
+;The default language victory quotes must be implemented in English.
+[Quotes]
+; Up to 100 victory quotes can be specified per language (victory0 - victory99)
+victory1 = "You remind me of the destroyer of Hellspawns"; (vs. Sophitia)
+victory2 = "Ninja weapons can't hurt me!"; (vs. Taki)
+victory3 = "your light is evident, nothing stops you"; (vs. Cassandra)
+victory4 = "grace in every move, the opposite of me"; (vs. Xianghua)
+victory5 = "your energy reminds me of a young Hall Simmons"; (vs. Kilik)
+victory6 = "Hmp! so impetuous, but stupidly blind"; (vs. Mitsurugi)
+victory7 = "Your mystical connection is similar to my infernal connection"; (vs. Talim)
+victory8 = "you stink of devil! but you are just a walking tool"; (vs. Nightmare)
+victory9 = "Answer to me!!"; (vs. Raphael)
+victory10 = "It seems you didn't read the small print ..."; (vs. Cervantes)
+victory11 = "You have the bearing of Overkill, but you are rougher"; (vs. Rock)
+victory12 = "mending old sins is what I do too"; (vs. Siegfried)
+victory13 = "you can't control that power for long"; (vs. Ivy)
+victory14 = "so there is also more like you, I am not the first"; (vs. Yoshimitsu)
+victory15 = "That weapon is from the 20th century, how did you get it?"; (vs. Maxi)
+victory16 = "there are crazy people in my world, but you are not ..."; (vs. Voldo)
+victory17 = "Angel, it's her name, someday we'll face each other again"; (vs. Seong Mi-Na)
+victory18 = "You stink of Malebolgia !! you are a puppet only"; (vs. Astaroth)
+victory19 = "Your power and mine are different, but I am superior"; (vs. Algol)
+victory20 = "Your dance of death will be the last thing you do"; (vs. Tira)
+victory21 = "You're a damn alien, I thought they were a government secret"; (vs. Charade)
+victory22 = "brothers!? it seems that we come from the same time and space in this timeline"; (vs. Necrid)
+victory23 = "Yes, I am from the future, it seems that you are not a liar like the many I know"; (vs. Viola)
+victory24 = "you are extinct thousands of years ago"; (vs. Lizardman)
+victory25 = "you know my sword is the creation of my curse, yours is metal"; (vs. Yun-seong)
+victory26 = "I know your father, he's a distracted man"; (vs. Amy)
+victory27 = "those slapstick will not help you beat me or others"; (vs. Dampierre)
+victory28 = "I feel a power as strong as that of Malebolgia"; (vs. Pyrrha)
+victory29 = "So you are another destroyer of evil ... well, what will you do against a Hellspawn?"; (vs. Elysium)
+victory30 = "So this is Soul Edge ... it's something those bastards are looking for ..."; (vs. Inferno)
+victory31 = "A curse from the past lashes at you, you are the only one who can break that curse ... I can feel it"; (vs. chuchoryu)
+victory32 = "I know many "warriors" in hell, but you, you are truly honorable"; (vs. Haohmaru)
+victory33 = "In my time, women settle for nothing, you are a visionary"; (vs. Hilde)
 
 ;---------------------------------------------------------------------------
 ; Lose by Time Over
@@ -139,8 +174,8 @@ velset = 0,0
 
 [State 181, Voice]
 type = PlaySnd
-trigger1 = Time = 0
-value = 192,0
+trigger1 = AnimElem = 1
+value =192,0+random%2
 channel = 0
 
 [State 181, AssertSpecial]
@@ -156,10 +191,10 @@ ctrl = 0
 anim = 182
 velset = 0,0
 
-[State 182, Voice]
+[State 181, Voice]
 type = PlaySnd
-trigger1 = Time = 0
-value = 192,0
+trigger1 = AnimElem = 1
+value =192,0+random%2
 channel = 0
 
 [State 182, AssertSpecial]
@@ -177,7 +212,7 @@ velset = 0,0
 
 [State 183, Voice]
 type = PlaySnd
-trigger1 = Time = 0
+trigger1 = AnimElem = 3
 value = 192,0
 channel = 0
 
@@ -185,6 +220,7 @@ channel = 0
 type = AssertSpecial
 trigger1 = time = [0, 250]
 flag = roundnotover
+
 ;-------------------------------------------------------------
 ;INITIALIZE
 [Statedef 5900]
@@ -200,43 +236,18 @@ type = varrangeset
 trigger1 = !roundsexisted
 fvalue = 0
 
-[State 5900, Intro vs Kung Fu Girl]
+[State 5900, Intro vs Rival]
 type = ChangeState
 triggerAll = NumEnemy
 triggerAll = RoundNo = 1 || (!(Enemy, RoundsExisted) && !(TeamMode = Simul) && !(Enemy, TeamMode = Simul))
-trigger1 = Enemy, Name = "Kung Fu Girl" && enemy,authorname = "DivineWolf" || Enemy, Name = "Another Kung Fu Girl"
+trigger1 = Enemy, Name = "Inferno" && enemy,authorname = "chuchoryu"
 value = 193
 
-[State 5900, Ladies' Man Intro]
+[State 5900, Intro vs Rival]
 type = ChangeState
 triggerAll = NumEnemy
 triggerAll = RoundNo = 1 || (!(Enemy, RoundsExisted) && !(TeamMode = Simul) && !(Enemy, TeamMode = Simul))
-trigger1 = Enemy, Name = "Chun-Li" && enemy,authorname = "Jmorphman" || Enemy, Name = "cvschunli" || Enemy, Name = "Chun Li" || Enemy, Name = "Chun-Li"
-trigger2 = Enemy, Name = "Mai Shiranui" && enemy,authorname = "DivineWolf" || Enemy, Name = "cvsmai" || Enemy, Name = "Mai" || Enemy, Name = "Mai Shiranui"
-trigger3 = Enemy, Name = "Cammy" && enemy,authorname = "Phantom.of.the.Server" || Enemy, Name = "cvscammy" || Enemy, Name = "Cammy" || Enemy, Name = "Cammy White"
-trigger4 = Enemy, Name = "Nakoruru" && enemy,authorname = "Phantom.of.the.Server" || Enemy, Name = "cvsnakoruru" || Enemy, Name = "Nakoruru"
-trigger5 = Enemy, Name = "Yuri Sakazaki" && enemy,authorname = "Phantom.of.the.Server" || Enemy, Name = "cvsyuri" || Enemy, Name = "Yuri" || Enemy, Name = "Yuri Sakazaki"
-trigger6 = Enemy, Name = "Genryusai Maki" && enemy,authorname = "H�h" || Enemy, Name = "Maki" || Enemy, Name = "cvsmaki"
-trigger7 = Enemy, Name = "Sakura Kasugano" && enemy,authorname = "Phantom.of.the.Server" || Enemy, Name = "cvssakura" || Enemy, Name = "cvssakura_normal" || Enemy, Name = "Sakura" || Enemy, Name = "Sakura Kasugano"
-trigger8 = Enemy, Name = "Morrigan Aensland" && enemy,authorname = "Phantom.of.the.Server" || Enemy, Name = "cvsmorrigan" || Enemy, Name = "Morrigan"  || Enemy, Name = "Morrigan Aensland"
-trigger9 = Enemy, Name = "cvsathena" || Enemy, Name = "Athena"
-trigger10 = Enemy, Name = "cvsjill" || Enemy, Name = "Jill" || Enemy, Name = "Jill Valentine"
-trigger11 = Enemy, Name = "cvsyoko" || Enemy, Name = "Yoko"
-trigger12 = Enemy, Name = "cvsmika" || Enemy, Name = "R.Mika"
-trigger13 = Enemy, Name = "cvsjuni" || Enemy, Name = "Juni"
-trigger14 = Enemy, Name = "cvsjuli" || Enemy, Name = "Juli" || Enemy, Name = "Juli+"
-trigger15 = Enemy, Name = "Karin Kanzuki" && enemy,authorname = "Phantom.of.the.Server" || Enemy, Name = "cvskarin" || Enemy, Name = "Karin" || Enemy, Name = "Karin Kanzuki"
-trigger16 = Enemy, Name = "cvshotaru" || Enemy, Name = "Hotaru"
-trigger17 = Enemy, Name = "cvsking" || Enemy, Name = "King"
-trigger18 = Enemy, Name = "cvsvice" || Enemy, Name = "Vice"
-trigger19 = Enemy, Name = "cvshibiki" || Enemy, Name = "Hibiki" || Enemy, Name = "Hibiki Takane"
-trigger20 = Enemy, Name = "RajaaLilith" && enemy,authorname = "RajaaBoy" || Enemy, Name = "cvslilith" || Enemy, Name = "Lilith" 
-trigger21 = Enemy, Name = "Ingrid" && enemy,authorname = "CrazyKoopa" || Enemy, Name = "cvsingrid" || Enemy, Name = "Ingrid"
-trigger22 = Enemy, Name = "Angel"
-trigger23 = Enemy, Name = "Makoto"
-trigger24 = Enemy, Name = "cvsfelicia" && enemy,authorname = "Jesuszilla" || Enemy, Name = "Felicia"
-trigger25 = Enemy, Name = "Kasumi Todo" || Enemy, Name = "Kasumi"
-trigger26 = Enemy,SelfAnimExist(8055002) && Enemy,SelfAnimExist(8055012) || Enemy,SelfAnimExist(8055002) && Enemy,SelfAnimExist(8055013) || Enemy,SelfAnimExist(8055002) && Enemy,SelfAnimExist(8055014)
+trigger1 = Enemy, Name = "SCORPION_MK11" && enemy,authorname = "chuchoryu"
 value = 194
 
 [State 5900, Turns Intro]
@@ -259,72 +270,56 @@ value = 0
 ; Introduction
 ; CNS difficulty: basic
 [Statedef 191]
-type = A
-anim = 190
-velset = 0, 0
+type = S
 ctrl = 0
+anim = 190
+velset = 0,0
 
 [State 191, Voice]
 type = PlaySnd
-trigger1 = Time = 0
-value = s190,0
+trigger1 = AnimElem = 1
+value = 182,0+random%3
 channel = 0
 
-[State 6900, Intro]
-type = assertspecial
-trigger1 = 1
-flag = intro
+[State 191, 1] ;Freeze animation until PreIntro is over
+type = ChangeAnim
+trigger1 = RoundState = 0
+value = 190
 
-[State 6900, Camera]
-type = screenbound
+[State 191, 2] ;Assert this until you want "round 1, fight" to begin
+type = AssertSpecial
 trigger1 = 1
+flag = Intro
+
+[State 191, 3] ;Change to stand state when done
+type = ChangeState
+trigger1 = !AnimTime
 value = 0
-movecamera = 0, 0
-
-[State 6900, Camera]
-type = helper
-trigger1 = !numhelper(8999)
-helpertype = normal
-stateno = 8999
-ID = 8999
-name = "Camera"
-postype = p1
-
-[State 6900, Pos]
-type = posset
-trigger1 = !time
-x = (-320 + abs(pos x)) * facing
-
-[State 6900, Vel]
-type = velset
-trigger1 = !time
-x = (helper(8999), rootdist x) / -40.0
-y = -10.25
-
-[State 6900, Vel]
-type = veladd
-trigger1 = 1
-y = 0.5
-
-[State 6900, End]
-type = changestate
-trigger1 = time
-trigger1 = pos y > -vel y
-value = 6901
 
 ;---------------------------
-;Intro vs Kung Fu Girl
-;Had to swap the statedef #'s because of the Messatsu trait stuff
+;Intro vs Rival
 [Statedef 193]
 type = S
 ctrl = 0
-anim = 194
-velset = 0, 0
+anim = 193
+velset = 0,0
+
+[State 3000, 1]
+type = AssertSpecial
+trigger1 = 1
+flag = nobardisplay
+ignorehitpause = 1
 
 [State 193, Voice]
 type = PlaySnd
-trigger1 = AnimElem = 12
-value = 183, 0
+trigger1 = AnimElem = 2
+value = 193,0
+channel = 0
+
+[State 193, Voice]
+type = PlaySnd
+trigger1 = AnimElem = 4
+value = 193,1
 channel = 0
 
 [State 193, Intro Assert]
@@ -332,24 +327,61 @@ type = AssertSpecial
 trigger1 = 1
 flag = Intro
 
-[State 193, End]
+[State 191, 3] ;Change to stand state when done
 type = ChangeState
 trigger1 = !AnimTime
 value = 0
 
 ;---------------------------
-;Ladies' Man Intro
+;Intro vs Rival Scorpion
 ;Had to swap the statedef #'s because of the Messatsu trait stuff
 [Statedef 194]
 type = S
 ctrl = 0
-anim = 193
+anim = 194
 velset = 0, 0
 
 [State 194, Voice]
 type = PlaySnd
-trigger1 = AnimElem = 1
-value = 182, 0
+trigger1 = AnimElem = 2
+value = 180,0
+channel = 0
+
+[State 194, Voice]
+type = PlaySnd
+trigger1 = AnimElem = 4
+value = 180,1
+channel = 0
+
+[State 194, Intro Assert]
+type = AssertSpecial
+trigger1 = 1
+flag = Intro
+
+[State 194, End]
+type = ChangeState
+trigger1 = !AnimTime
+value = 0
+
+;---------------------------
+;Intro vs Kyo
+;Had to swap the statedef #'s because of the Messatsu trait stuff
+[Statedef 194]
+type = S
+ctrl = 0
+anim = 194
+velset = 0, 0
+
+[State 194, Voice]
+type = PlaySnd
+trigger1 = AnimElem = 2
+value = 180,0
+channel = 0
+
+[State 194, Voice]
+type = PlaySnd
+trigger1 = AnimElem = 4
+value = 180,1
 channel = 0
 
 [State 194, Intro Assert]
@@ -461,152 +493,13 @@ movetype = I
 physics = S
 sprpriority = 2
 
+[State 181, Voice]
+type = PlaySnd
+trigger1 = AnimElem = 1
+value =192,1
+channel = 0
+
 [State 195, End]
-type = ChangeState
-trigger1 = !AnimTime
-value = 0
-ctrl = 1
-
-;=========<DODGE>=============
-[Statedef 700]
-type    = S
-movetype= I
-physics = S
-juggle  = 0
-velset = 0,0
-ctrl = 0
-anim = 700
-sprpriority = -1
-
-[State 700, SFX]
-type = Playsnd
-trigger1 = time = 3
-value = 1,3
-volume = 255
-
-[State 700, Voice]
-type = Playsnd
-trigger1 = time = 3
-value = 0,1
-volume = 255
-channel = 1
-
-[State 700, PlayerPush]
-type = PlayerPush
-trigger1 = 1
-value = 0
-
-[State 700, HitBy]
-type = HitBy
-trigger1 = 1
-value = SCA,AT
-time = 1
-
-[State 700, Attack]
-type = ChangeState
-trigger1 = Time = [15,25]
-trigger1 = command = "x" || command = "y" || command = "z" || command = "a" || command = "b" || command = "c"
-value = ifElse((command = "x" || command = "y" || command = "z"), 221, 240)
-
-[State 700, End]
-type = ChangeState
-trigger1 = !AnimTime
-value = 0
-ctrl = 1
-
-;=========<ROLLING>===========
-[StateDef 710]
-type = S
-physics = N
-moveType = I
-anim = 710
-ctrl = 0
-velSet = 0,0
-sprPriority = 1
-
-[State 710, PlayerPush]
-type = PlayerPush
-trigger1 = 1
-value = 0
-
-[State 710, HitBy]
-type = HitBy
-trigger1 = 1
-value = SCA,AT
-time = 1
-
-[State 710, Voice]
-type = PlaySnd
-trigger1 = AnimElem = 1
-value = 0, ifElse(Random < 500, 0, 1)
-channel = 0
-
-[State 710, Roll Sound]
-type = PlaySnd
-trigger1 = Time = 1
-value = 110,0
-channel = 1
-
-[State 710, Start Roll]
-type = VelSet
-trigger1 = AnimElem = 1
-x = 5
-
-[State 710, End Roll]
-type = VelSet
-trigger1 = AnimElem = 6
-x = 0
-
-[State 710, End]
-type = ChangeState
-trigger1 = !AnimTime
-value = 0
-ctrl = 1
-
-;Roll Back
-[StateDef 715]
-type = S
-physics = N
-moveType = I
-anim = 715
-ctrl = 0
-velSet = 0,0
-sprPriority = 1
-
-[State 715, PlayerPush]
-type = PlayerPush
-trigger1 = 1
-value = 0
-
-[State 715, HitBy]
-type = HitBy
-trigger1 = 1
-value = SCA,AT
-time = 1
-
-[State 715, Voice]
-type = PlaySnd
-trigger1 = AnimElem = 1
-value = 0, ifElse(Random < 500, 0, 1)
-channel = 0
-
-[State 715, Roll Sound]
-type = PlaySnd
-trigger1 = Time = 1
-value = 110,0
-channel = 1
-
-[State 715, Start Roll]
-type = VelSet
-trigger1 = AnimElem = 1
-x = -5
-
-[State 715, Stop Roll]
-type = VelSet
-trigger1 = AnimElem = 6
-x = 0
-
-[State 715, End]
 type = ChangeState
 trigger1 = !AnimTime
 value = 0
@@ -1419,67 +1312,63 @@ ctrl = 1
 ;=============<Running>====================
 [Statedef 100]
 type    = S
-movetype = I
 physics = S
+anim = 100
+sprpriority = 1
 ctrl = 0
-VelSet = 0,0
 
-[State 100, ChangeAnim]
-type = ChangeAnim
-trigger1 = !Time
-value = 100
+[State 0, CtrlSet]
+type = CtrlSet
+trigger1 = var(59) <= 0
+value = 1
+;ignorehitpause = 
+;persistent = 
 
-[State 100, Velocity]
+[State 100, 1]
 type = VelSet
-trigger1 = AnimElem = 2 >= 0
-x = Const(velocity.run.fwd.x)
+trigger1 = AnimElemtime(1) >= 0
+x = const(velocity.run.fwd.x)
 
-[State 100, Change to Run Stop]
-type = ChangeState
-trigger1 = Command != "holdfwd" && Time >= 10
-value = 101
-ctrl = 1
-
-[State 100, Able to Jump]
-type = ChangeState
-trigger1 = Command = "holdupfwd"
-value = 40
-
-[State 110, Dust Helper]
-type = Helper
-trigger1 = AnimElem = 2
-helperType = Normal
-stateNo = 8103
-ID = 8100
-name = "Dash Dust"
-posType = P1
-pauseMoveTime = 255
-superMoveTime = 255
-ownPal = 1
-
-[State 105, Starting Step snd]
-type = PlaySnd
-trigger1 = !Time
-value = 102, 0
-channel = 5
-
-[State 105, Step1 snd]
+[State 105, Dash Back Snd]
 type = PlaySnd
 trigger1 = AnimElem = 2
 value = 100, 0
-channel = 5
 
-[State 105, Step2 snd]
-type = PlaySnd
-trigger1 = AnimElem = 5
-value = 100, 1
-channel = 5
+[State 105, VelAdd]
+type = VelSet
+trigger1 = AnimElem = 2 > 0
+trigger1 = Vel Y > 0 && Pos Y >= 0
+x = 0
 
-[State 100, No Walk During Run]
+[State 105, On Ground]
+type = PosSet
+trigger1 = AnimElem = 2 > 0
+trigger1 = Vel Y > 0 && Pos Y >= 0
+y = 0
+
+[State 100,]
+type = StopSnd
+trigger1 = var(59) <= 0
+trigger1 = command != "holdfwd"
+trigger2 = Anim != 100
+channel = 6
+
+[State 100, 2] ;Prevent run from canceling into walk
 type = AssertSpecial
 trigger1 = 1
 flag = NoWalk
 
+[State 100, 3] ;Prevent from turning
+type = AssertSpecial
+trigger1 = 1
+flag = NoAutoTurn
+
+[State 100, 4]
+type = ChangeState
+trigger1 = var(59) <= 0
+trigger1 = command != "holdfwd"
+value = 0
+;--------------------------------------------------------
 ;Run Stop
 [Statedef 101]
 type = S
@@ -2261,63 +2150,6 @@ type = SelfState
 trigger1 = 1
 value = ifElse(pos y < -20, 5210, 5200)
 
-;==========<FALL RECOVERY>==========
-[StateDef 5200]
-type = A
-moveType = H
-physics = N
-
-[State 5200, ChangeAnim]
-type = ChangeAnim
-trigger1 = anim = 5035 && !AnimTime
-value = 5050
-
-[State 5200, VelAdd]
-type = VelAdd
-trigger1 = 1
-y = GetHitVar(yAccel)
-
-[State 5200, End]
-type = SelfState
-trigger1 = vel y > 0 && pos y >= 10
-value = 5201
-
-[StateDef 5201]
-type = S
-moveType = I
-physics = N
-anim = 5200
-ctrl = 0
-faceP2 = 1
-
-[State 5201, PosSet]
-type = PosSet
-trigger1 = 1
-y = 0
-
-[State 5201, VelSet]
-type = VelSet
-trigger1 = !Time
-x = -8
-y = 0
-
-[State 5201, VelMul]
-type = VelMul
-trigger1 = 1
-x = 0.9
-
-[State 5201, Voice]
-type = PlaySnd
-trigger1 = !Time
-value = 0,13
-channel = 0
-
-[State 5201, Recover Sound]
-type = PlaySnd
-trigger1 = !Time
-value = 5200,0
-channel = 1
-
 [State 5201, Flash]
 type = PalFX
 trigger1 = !Time
@@ -2349,75 +2181,6 @@ type = ChangeState
 trigger1 = !AnimTime
 value = 0
 ctrl = 1
-
-
-;Air Recover
-[StateDef 5210]
-type = A
-moveType = I
-physics = N
-anim = 5210
-ctrl = 0
-faceP2 = 1
-
-[State 5210, VelAdd]
-type = VelAdd
-trigger1 = 1
-y = 0.6
-
-[State 5210, VelSet]
-type = VelSet
-trigger1 = !Time
-x = ifElse((command = "holdfwd" && command != "holdback"), 0, ifElse((command != "holdfwd" && command = "holdback"), -4, -2))
-y = -7.55
-
-[State 5210, Voice]
-type = PlaySnd
-trigger1 = !Time
-value = 0,13
-channel = 0
-
-[State 5210, Recover Sound]
-type = PlaySnd
-trigger1 = !Time
-value  = 5200,0
-channel = 1
-
-[State 5210, Flash]
-type = PalFX
-trigger1 = !Time
-add = 255,255,255
-sinAdd = -255,-255,-255,40
-time = 10
-
-[State 5210, Recover FX]
-type = Helper
-trigger1 = !Time
-helperType = Normal
-stateNo = 8200
-ID = 8200
-name = "Recover FX"
-posType = P1
-pos = 0, ceil(-66 * const(size.yScale))
-size.xScale = 1
-size.yScale = 1
-ownPal = 1
-
-[State 5210, NotHitBy]
-type = NotHitBy
-trigger1 = AnimElemTime(8) < 0
-value = SCA
-time = 1
-
-[State 5210, CtrlSet]
-type = CtrlSet
-trigger1 = AnimElemTime(8) >= 0
-value = 1
-
-[State 5210, Land]
-type = ChangeState
-trigger1 = pos y > -vel y
-value = 52
 
 ;============<CONTINUE?>==============
 [Statedef 5500]
@@ -2523,10 +2286,616 @@ trigger3 = vel y > 0 && pos y >= 10
 trigger4 = !Time
 trigger4 = Anim != 5035
 value = 5050
+
 ;---------------------------------------------------------------------------
 ; States that are always executed (use statedef -2)
 ;---------------------------------------------------------------------------
 [Statedef -2]
+
+;-------------------------------------------------------------------------------
+;Extra Carteles KOF MEMORIAL LEVEL 2
+;-------------------------------------------------------------------------------
+;Perfect p1
+[State 1000, Explod]
+type = Explod
+triggerall = numexplod(7000) <= 0 && teamside = 1
+trigger1 = win = 1 && Life >= LifeMax
+trigger1 = stateno != [180,189]
+anim = f7000
+ID = 7000
+pos = -70,85
+postype = left
+bindtime = -1
+removetime = -2
+sprpriority = 9
+ontop = 1
+supermove = 1
+pausemove = 1
+pausemovetime = 99999
+supermovetime = 99999
+ignorehitpause = 1
+ownpal = 1
+
+;Perfect p2
+[State 1000, Explod]
+type = Explod
+triggerall = numexplod(7000) <= 0 && teamside = 2
+trigger1 = win = 1 && Life >= LifeMax
+trigger1 = stateno != [180,189]
+anim = f7000
+ID = 7000
+pos = -390,85
+postype = right
+bindtime = -1
+removetime = -2
+sprpriority = 9
+ontop = 1
+supermove = 1
+pausemove = 1
+pausemovetime = 99999
+supermovetime = 99999
+ignorehitpause = 1
+ownpal = 1
+
+;Lose cartel p1
+[State 1000, Explod]
+type = Explod
+triggerall = numexplod(7010) <= 0 && teamside = 1
+triggerall = win = 1 && stateno = [180,189]
+trigger1 = time = 0
+anim = f7010
+ID = 7010
+pos = 200,70
+postype = left
+bindtime = -1
+removetime = -2
+sprpriority = 9
+ontop = 1
+ownpal = 1
+
+;Lose cartel p2
+[State 1000, Explod]
+type = Explod
+triggerall = numexplod(7010) <= 0 && teamside = 2
+triggerall = win = 1 && stateno = [180,189]
+trigger1 = time = 0
+anim = f7010
+ID = 7010
+pos = 25,70
+postype = left
+bindtime = -1
+removetime = -2
+sprpriority = 9
+ontop = 1
+ownpal = 1
+
+;Winner p1
+[State 1000, Explod]
+type = Explod
+triggerall = numexplod(7015) <= 0 && teamside = 1
+triggerall = win = 1 && stateno = [180,189]
+trigger1 = time = 0
+anim = f7015
+ID = 7015
+pos = -310,200
+postype = left
+bindtime = -1
+removetime = -2
+sprpriority = 9
+ontop = 1
+ownpal = 1
+;Winner p1 Estatico
+[State 1000, Explod]
+type = Explod
+triggerall = numexplod(7020) <= 0 && teamside = 1
+triggerall = win = 1 && stateno = [180,189]
+trigger1 = time = 0
+anim = f7020
+ID = 7020
+pos = -8,202
+postype = left
+bindtime = -1
+removetime = -2
+sprpriority = 9
+ontop = 1
+ownpal = 1
+
+;Winner p2
+[State 1000, Explod]
+type = Explod
+triggerall = numexplod(7015) <= 0 && teamside = 2
+triggerall = win = 1 && stateno = [180,189]
+trigger1 = time = 0
+anim = f7016
+ID = 7015
+pos = -120,200
+postype = left
+bindtime = -1
+removetime = -2
+sprpriority = 9
+ontop = 1
+ownpal = 1
+
+;Winner p2 Estatico
+[State 1000, Explod]
+type = Explod
+triggerall = numexplod(7020) <= 0 && teamside = 2
+triggerall = win = 1 && stateno = [180,189]
+trigger1 = time = 0
+anim = f7021
+ID = 7020
+pos = 182,202
+postype = left
+bindtime = -1
+removetime = -2
+sprpriority = 9
+ontop = 1
+ownpal = 1
+;--------------------------------------------------------------------
+;Hyper Available
+[State -2, Hyper Available]
+type = Explod
+triggerall = numexplod(4190) <= 0 && teamside = 1
+trigger1 = life <= 1200
+ignorehitpause = 1
+persistent = 0
+anim = f4190
+id = 4190
+pos = 4,196
+postype = left
+bindtime = -1
+ontop = 1
+ownpal = 1
+
+[State -2, Hyper Available]
+type = Explod
+triggerall = numexplod(4190) <= 0 && teamside = 2
+trigger1 = life <= 1200
+ignorehitpause = 1
+persistent = 0
+anim = f4190
+id = 4190
+pos = -116,196
+postype = right
+bindtime = -1
+ontop = 1
+ownpal = 1
+;-------------------------------------------------------------------------------
+;Life Danger
+[State -2, Life Danger]
+type = Explod
+triggerall = numexplod(4180) <= 0 && teamside = 1
+trigger1 = Life <= LifeMax/4.7
+ignorehitpause = 1
+persistent = 0
+anim = f4180
+id = 4180
+pos = 4,196
+postype = left
+bindtime = -1
+ontop = 1
+ownpal = 1
+supermove = 1
+pausemove = 1
+supermovetime = 99999
+pausemovetime = 99999
+
+[State -2, Life Danger]
+type = Explod
+triggerall = numexplod(4180) <= 0 && teamside = 2
+trigger1 = Life <= LifeMax/4.7
+ignorehitpause = 1
+persistent = 0
+anim = f4180
+id = 4180
+pos = -55,196
+postype = right
+bindtime = -1
+ontop = 1
+ownpal = 1
+supermove = 1
+pausemove = 1
+supermovetime = 99999
+pausemovetime = 99999
+;-------------------------------------------------------------------------------
+;First Attack
+[State -2, First Attack]
+type = Explod
+triggerall = numexplod(4170) <= 0 && teamside = 1
+triggerall = enemy,numexplod(4170) <= 0
+triggerall = p2movetype = H && p2stateno = [800,5070]
+trigger1 = NumPartner
+trigger1 = partner,numexplod(4170) <= 0
+trigger2 = !NumPartner
+ignorehitpause = 1
+persistent = 9
+anim = f4170
+id = 4170
+pos = 4,196
+postype = left
+bindtime = -1
+removetime = -2
+ontop = 1
+ownpal = 1
+supermove = 1
+pausemove = 1
+supermovetime = 99999
+pausemovetime = 99999
+
+[State -2, First Attack]
+type = Explod
+triggerall = numexplod(4170) <= 0 && teamside = 2
+triggerall = enemy,numexplod(4170) <= 0
+triggerall = p2movetype = H && p2stateno = [800,5070]
+trigger1 = NumPartner
+trigger1 = partner,numexplod(4170) <= 0
+trigger2 = !NumPartner
+ignorehitpause = 1
+persistent = 9
+anim = f4170
+id = 4170
+pos = -92,196
+postype = right
+bindtime = -1
+removetime = -2
+ontop = 1
+ownpal = 1
+supermove = 1
+pausemove = 1
+supermovetime = 99999
+pausemovetime = 99999
+;-------------------------------------------------------------------------------
+;Counter Hits
+[State -2, Counter Hit1]
+type = VarSet
+trigger1 = enemy, movetype = A
+ignorehitpause = 1
+var(15) = 1
+
+[State -2, Counter Hit2]
+type = VarSet
+trigger1 = enemy, movetype = I || var(16) >= 1
+ignorehitpause = 1
+var(15) = 0
+
+[State -2, Counter Hit3]
+type = VarSet
+trigger1 = var(16) > 10 && enemy, movetype = H
+ignorehitpause = 1
+var(15) = 0
+
+[State -2, Counter Hit4]
+type = VarSet
+trigger1 = var(15) = 1 && movehit
+ignorehitpause = 1
+var(16) = 1
+
+[State -2, Counter Hit5]
+type = Varadd
+trigger1 = var(16) >= 1
+ignorehitpause = 1
+var(16) = 1
+
+[State -2, Counter Hit6]
+type = VarSet
+trigger1 = p2movetype != H
+trigger2 = var(16) > 22
+trigger3 = p2statetype = L
+trigger4 = var(16) > 30 && movehit
+ignorehitpause = 1
+var(16) = 0
+
+[State -2, Counter Hit7]
+type = Assertspecial
+trigger1 = var(15) = 1 && numexplod(4150) <= 1
+flag = Nojugglecheck
+
+[State -2, EnvColor]
+type = EnvColor
+trigger1 = var(16) = [1,2]
+value = 255,255,255
+time = 1
+ignorehitpause = 1
+under = 1
+
+[State -2, Counter Explod1]
+type = Explod
+triggerall = var(15) = 1 && numexplod(4150) <= 0 && teamside = 2
+trigger1 = movehit
+trigger2 = Projhit >= 1
+ignorehitpause = 1
+persistent = 0
+anim = f4150
+id = 4150
+pos = -62,206
+postype = right
+bindtime = -1
+ontop = 1
+ownpal = 1
+supermove = 1
+pausemove = 1
+supermovetime = 99999
+pausemovetime = 99999
+
+[State -2, Counter Explod2]
+type = Explod
+triggerall = var(15) = 1 && numexplod(4150) <= 0 && teamside = 1
+trigger1 = movehit
+trigger2 = Projhit >= 1
+ignorehitpause = 1
+persistent = 0
+anim = f4150
+id = 4150
+pos = 4,206
+postype = left
+bindtime = -1
+ontop = 1
+ownpal = 1
+supermove = 1
+pausemove = 1
+supermovetime = 99999
+pausemovetime = 99999
+
+;-------------------------------------------------------------------------------
+;Final KO Effect
+[State -2, Helper]
+type = Helper
+triggerall = numhelper(9920) <= 0
+Trigger1 = Teammode = Single || Teammode = Turns
+trigger1 = Roundstate = 3 && Win && matchover
+helpertype = normal
+name = "Winpose"
+Id = 9920
+stateno = 9920
+pos = 0,0
+postype = p1
+facing = 1
+ignorehitpause = 1
+pausemovetime = 99999
+supermovetime = 99999
+ownpal = 1
+
+[State -2, ChangeState]
+type = ChangeState
+Triggerall = Teammode = Single || Teammode = Turns
+Triggerall = stateno = 180
+trigger1 = matchover
+value = 9925
+ctrl = 0
+ignorehitpause = 1
+;-------------------------------------------------------------------------------
+;KO Flash Effect
+[State -2, Helper]
+type = Helper
+triggerall = numhelper(9910) <= 0
+trigger1 = winKo = 1 && movehit && stateno = [899,4999]
+trigger2 = winko = 1 && Projhittime(1000) >= 0 && Projhittime(1000) <= 1
+trigger3 = winko = 1 && Projhittime(2000) >= 0 && Projhittime(2000) <= 1
+trigger4 = Numhelper(1000)
+trigger4 = win && (Helper(1000),Numtarget || Helper(1000),Movehit)
+trigger5 = Numhelper(2000)
+trigger5 = win && (Helper(2000),Numtarget || Helper(2000),Movehit)
+trigger6 = Numhelper(2001)
+trigger6 = win && (Helper(2001),Numtarget || Helper(2001),Movehit)
+trigger7 = winKo = 1 && stateno = 2090 && p2stateno = [5000,5050]
+helpertype = normal
+name = "KO Flash"
+Id = 9910
+stateno = 9910
+pos = 0,0
+postype = p1
+facing = 1
+ignorehitpause = 1
+supermove = 1
+pausemove = 1
+pausemovetime = 99999
+supermovetime = 99999
+ownpal = 1
+
+[state -2, PlaySound]
+type = playsnd
+trigger1 = WinKO
+trigger1 = RoundState = 3
+trigger1 = var(12) = 0
+IgnoreHitPause = 1
+persistent = 0
+value = f5200,0
+volumescale = 255
+
+[state -2, varset]
+type = varset
+trigger1 = RoundState = 3
+IgnoreHitPause = 1
+v = 12
+value = 1
+
+[state -2, varset]
+type = varset
+trigger1 = RoundState = 2
+IgnoreHitPause = 1
+v = 12
+value = 0
+
+[State -2, EnvColor]
+type = EnvColor
+trigger1 = Projhittime(2000) >= 0 && Projhittime(2000) <= 1
+value = 255,255,255
+time = 1
+under = 1
+;-------------------------------------------------------------------------------
+;Intro and K.O. no Lifebars
+[State -2]
+type = assertspecial
+trigger1 = roundstate != 2
+trigger2 = Ctrl = 0 && (Anim = [0,2]) && MoveType != H
+flag = NoBarDisplay
+ignorehitpause = 1
+;===================================================================================;
+
+[State -2, VictoryQuote]
+type = VictoryQuote
+trigger1 = Enemy, Name ="Sophitia"
+value = 1
+
+[State -2, VictoryQuote]
+type = VictoryQuote
+trigger1 = Enemy, Name ="Taki"
+value = 2
+
+[State -2, VictoryQuote]
+type = VictoryQuote
+trigger1 = Enemy, Name ="Cassandra"
+value = 3
+
+[State -2, VictoryQuote]
+type = VictoryQuote
+trigger1 = Enemy, Name ="Xianghua"
+value = 4
+
+[State -2, VictoryQuote]
+type = VictoryQuote
+trigger1 = Enemy, Name ="Kilik"
+value = 5
+
+[State -2, VictoryQuote]
+type = VictoryQuote
+trigger1 = Enemy, Name ="Mitsurugi"
+value = 6
+
+[State -2, VictoryQuote]
+type = VictoryQuote
+trigger1 = Enemy, Name ="Talim"
+value = 7
+
+[State -2, VictoryQuote]
+type = VictoryQuote
+trigger1 = Enemy, Name ="Nightmare"
+value = 8
+
+[State -2, VictoryQuote]
+type = VictoryQuote
+trigger1 = Enemy, Name ="Raphael"
+value = 9
+
+[State -2, VictoryQuote]
+type = VictoryQuote
+trigger1 = Enemy, Name ="Cervantes"
+value = 10
+
+[State -2, VictoryQuote]
+type = VictoryQuote
+trigger1 = Enemy, Name ="Rock"
+value = 11
+
+[State -2, VictoryQuote]
+type = VictoryQuote
+trigger1 = Enemy, Name ="Siegfried"
+value = 12
+
+[State -2, VictoryQuote]
+type = VictoryQuote
+trigger1 = Enemy, Name ="Ivy"
+value = 13
+
+[State -2, VictoryQuote]
+type = VictoryQuote
+trigger1 = Enemy, Name ="Yoshimitsu"
+value = 14
+
+[State -2, VictoryQuote]
+type = VictoryQuote
+trigger1 = Enemy, Name ="Maxi"
+value = 15
+
+[State -2, VictoryQuote]
+type = VictoryQuote
+trigger1 = Enemy, Name ="Voldo"
+value = 16
+
+[State -2, VictoryQuote]
+type = VictoryQuote
+trigger1 = Enemy, Name ="Seong Mi-Na"
+value = 17
+
+[State -2, VictoryQuote]
+type = VictoryQuote
+trigger1 = Enemy, Name ="Astaroth"
+value = 18
+
+[State -2, VictoryQuote]
+type = VictoryQuote
+trigger1 = Enemy, Name ="Algol"
+value = 19
+
+[State -2, VictoryQuote]
+type = VictoryQuote
+trigger1 = Enemy, Name ="Tira"
+value = 20
+
+[State -2, VictoryQuote]
+type = VictoryQuote
+trigger1 = Enemy, Name ="Charade"
+value = 21
+
+[State -2, VictoryQuote]
+type = VictoryQuote
+trigger1 = Enemy, Name ="Necrid"
+value = 22
+
+[State -2, VictoryQuote]
+type = VictoryQuote
+trigger1 = Enemy, Name ="Viola"
+value = 23
+
+[State -2, VictoryQuote]
+type = VictoryQuote
+trigger1 = Enemy, Name ="Lizardman"
+value = 24
+
+[State -2, VictoryQuote]
+type = VictoryQuote
+trigger1 = Enemy, Name ="Yun-seong"
+value = 25
+
+[State -2, VictoryQuote]
+type = VictoryQuote
+trigger1 = Enemy, Name ="Amy"
+value = 26
+
+[State -2, VictoryQuote]
+type = VictoryQuote
+trigger1 = Enemy, Name ="Dampierre"
+value = 27
+
+[State -2, VictoryQuote]
+type = VictoryQuote
+trigger1 = Enemy, Name ="Pyrrha"
+value = 28
+
+[State -2, VictoryQuote]
+type = VictoryQuote
+trigger1 = Enemy, Name ="Elysium"
+value = 29
+
+[State -2, VictoryQuote]
+type = VictoryQuote
+trigger1 = Enemy, Name ="Inferno"
+value = 30
+
+[State -2, VictoryQuote]
+type = VictoryQuote
+trigger1 = Enemy, Name ="chuchoryu"
+value = 31
+
+[State -2, VictoryQuote]
+type = VictoryQuote
+trigger1 = Enemy, Name ="Haohmaru"
+value = 32
+
+[State -2, VictoryQuote]
+type = VictoryQuote
+trigger1 = Enemy, Name ="Hilde"
+value = 33
 
 [State -2, Updated Hit Count];special thanks to 20S
 type = VarAdd
@@ -2694,21 +3063,6 @@ last = 36
 value = -1
 ignoreHitPause = 1
 
-[State -2, Throws Allowed]
-type = VarSet
-trigger1 = 1
-var(38) = 0
-
-[State -2, Throws Disallowed]
-type = VarSet
-trigger1 = (EnemyNear, StateNo = [150,155])
-trigger2 = (EnemyNear, MoveType = H && EnemyNear, StateType != A) && !var(21) && !var(22)
-trigger3 = (EnemyNear, StateNo = [5020,5040]) && !(EnemyNear, HitFall)
-trigger4 = ((EnemyNear, StateNo = 0) || (EnemyNear, StateNo = 52)) && (EnemyNear, PrevStateNo = [5000,5040]) && ((EnemyNear, Time <= 0) || !(EnemyNear, Ctrl))
-trigger5 = (EnemyNear, StateNo = 0) && (EnemyNear, PrevStateNo = 52) && ((EnemyNear, Time <= 0) || !(EnemyNear, Ctrl))
-trigger6 = (EnemyNear, StateNo = 40) && (EnemyNear, Time >= 1 || EnemyNear, PrevStateNo = 0 || EnemyNear, PrevStateNo = 52)
-var(38) = 1
-
 [State -2, Dampener]
 type = VarSet
 trigger1 = 1
@@ -2834,6 +3188,29 @@ ownPal = 1
 
 [Statedef -3]
 
+[State -3, AI]
+type=varset
+trigger1= alive && ishometeam
+trigger1= teamside=2 || matchno>1
+var(59)=1
+[State -3, AI Helper]
+type=helper
+trigger1= !var(59) && !numhelper(9741)
+trigger1= alive && roundstate=2
+helpertype=normal
+name="Shin Gouki's AI"
+ID=9741
+pos=99999,99999
+stateno=9741
+keyctrl=1
+pausemovetime=65535
+supermovetime=65535
+[State -3, Gametime Var]
+type=varset
+trigger1= 1
+var(58)=gametime
+ignorehitpause=1
+
 [State -3, GameTime]
 type = VarSet
 trigger1 = 1
@@ -2845,64 +3222,6 @@ ignoreHitPause = 1
 ;triggerAll = var(18)
 ;trigger1 = 
 ;var(18) = 0
-
-[State -3, Parry Detection]
-type = Helper
-triggerAll = RoundState = 2 && !NumHelper(765) ;&& !var(20)
-triggerAll = (MoveType = I && ctrl) || (StateNo = [760,762]) || StateNo = 5120
-triggerAll = (command != "rlsfwd" && command != "rlsback" && command != "rlsup" && command != "rlsdown")
-trigger1 = (StateType = S || StateType = C || StateNo = 5120) && (command = "fwd" || command = "down")
-trigger2 = StateType = A && (var(3) != 1 && var(3) != 2) && command = "fwd"
-helperType = Normal
-stateNo = 765
-ID = 765
-name = "Parry Detection"
-posType = P1
-pauseMoveTime = 65535
-superMoveTime = 65535
-
-[State -3, Parry Attacks]
-type = ChangeState
-trigger1 = (StateNo != [760,762]) && NumHelper(765)
-trigger1 = Helper(765), StateNo = 766
-value = ifElse((Helper(765), Anim = 767), 762, ifElse((Helper(765), Anim = 766), 761, 760))
-ignoreHitPause = 1
-
-[State -3, Parry Projectiles]
-type = HitOverride
-trigger1 = (StateNo != [760,762]) && NumHelper(765)
-trigger1 = !(Helper(765), var(0)) && (Helper(765), Anim = 765)
-attr = SA, AP
-stateNo = 760
-slot = 0
-time = 1
-ignoreHitPause = 1
-
-[State -3, Parry Projectiles]
-type = HitOverride
-trigger1 = (StateNo != [760,762]) && NumHelper(765)
-trigger1 = !(Helper(765), var(0)) && (Helper(765), Anim = 766)
-attr = C, AP
-stateNo = 761
-slot = 0
-time = 1
-ignoreHitPause = 1
-
-[State -3, Parry Projectiles]
-type = HitOverride
-trigger1 = (StateNo != [760,762]) && NumHelper(765)
-trigger1 = !(Helper(765), var(0)) && (Helper(765), Anim = 767)
-attr = SCA, AP
-stateNo = 762
-slot = 0
-time = 1
-ignoreHitPause = 1
-
-[State -3, Assert: NoWalk after Parry]
-type = AssertSpecial
-trigger1 = var(26) > 0
-trigger1 = var(26) := (var(26)-1)
-flag = NoWalk
 
 [State -3, Corner Push]
 type = VarSet
@@ -3139,22 +3458,9 @@ trigger1 = StateNo = 3000 || StateNo = 3050 ;|| StateNo = 300
 trigger2 = Stateno = 3100 || StateNo = 3101
 time = 0
 
-[State -3, Super Finish]
-type = Helper
-triggerAll = WinKO && RoundState = 3 && !NumHelper(8600)
-trigger1 = MoveHit = 1 && (StateNo = [3000,4999])
-trigger1 = var(23) := StateNo
-trigger2 = (StateNo = [3000,3050])
-trigger2 = var(23) := 3000
-trigger3 = StateNo = 3100
-trigger3 = var(23) := 3100
-helperType = Normal
-stateNo = 8600
-ID = 8600
-name = "Super Finish"
-posType = left
-pos = 160,-120
-ownPal = 1
-pauseMoveTime = 255
-superMoveTime = 255
-ignoreHitPause = 1
+;jambu; recover hp
+[State -3, LifeAdd]
+type = LifeAdd
+trigger1 = life <= 300
+trigger1 = gametime % 6=0
+value = 1

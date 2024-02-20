@@ -16,12 +16,13 @@
 ;Var (21) = Combo Mute
 ;Var (28) = Taunt
 ;Var (30) = Recovery Roll
-;Var (40) = ƒpƒŠƒB(’Êí)
-;Var (41) = ƒpƒŠƒB(‹ü)
+;Var (40) = ï¿½pï¿½ï¿½ï¿½B(ï¿½Êï¿½)
+;Var (41) = ï¿½pï¿½ï¿½ï¿½B(ï¿½ï¿½)
 ;Var (59) = AI On
 
 [Data]
 life = 1500
+power = 7000;jambu;
 attack = 100
 defence = 100
 fall.defence_up = 50
@@ -76,16 +77,16 @@ air.friction = .80
 
 
 ;---------------------------------------------------------------------------
-;ƒ^ƒCƒ€ƒI[ƒo[i•‰‚¯‚½j
+;ï¿½^ï¿½Cï¿½ï¿½ï¿½Iï¿½[ï¿½oï¿½[ï¿½iï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½j
 [Statedef 170]
 type = S
 ctrl = 0
 anim = 170
 velset = 0,0
 
-[State 170, –³“G]
+[State 170, ï¿½ï¿½ï¿½G]
 type = NotHitBy
-trigger1 = 1 ;ƒgƒŠƒK[‚ğ‰½‚à‘‚©‚¸u1v‚É‚·‚é–‚É‚æ‚èAw–³ğŒ‚Åí‚ÉÀs‚³‚¹‚é–½—ßx‚É‚È‚éB
+trigger1 = 1 ;ï¿½gï¿½ï¿½ï¿½Kï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½u1ï¿½vï¿½É‚ï¿½ï¿½é–ï¿½É‚ï¿½ï¿½Aï¿½wï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Åï¿½Éï¿½ï¿½sï¿½ï¿½ï¿½ï¿½ï¿½é–½ï¿½ßxï¿½É‚È‚ï¿½B
 value = SCA
 time = 1
 ;---------------------------------------------------------------------------------------------
@@ -116,7 +117,7 @@ trigger1 = Var(1) = [201,500]
 value = 183
 
 ;---------------------------------------------------------------------------------------------
-;Win Pose 1i”w‚ğŒü‚¯‚éj
+;Win Pose 1ï¿½iï¿½wï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½j
 
 [Statedef 181]
 type = S
@@ -194,17 +195,17 @@ anim = 190
 velset = 0,0
 spriority = 0
 
-[State 191, ‰¹‚ğ–Â‚ç‚·]
+[State 191, ï¿½ï¿½ï¿½ï¿½Â‚ç‚·]
 type = PlaySnd
 trigger1 = Time = 10
 value = s4, 1
 
-[State 191, ƒAƒjƒ•ÏX]
+[State 191, ï¿½Aï¿½jï¿½ï¿½ï¿½ÏX]
 type = ChangeAnim
 trigger1 = RoundState = 0
 value = 190
 
-[State 191, “ÁêŒø‰Ê]
+[State 191, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½]
 type = AssertSpecial
 trigger1 = 1
 flag = Intro
@@ -775,7 +776,7 @@ trigger1 = Anim != 42
 x = 0.25
 
 ;-----------------------------------------------------------------------------
-;ƒuƒƒbƒLƒ“ƒOi—§‚¿j
+;ï¿½uï¿½ï¿½ï¿½bï¿½Lï¿½ï¿½ï¿½Oï¿½iï¿½ï¿½ï¿½ï¿½ï¿½j
 [Statedef 4000]
 type = S
 movetype = I
@@ -801,12 +802,12 @@ trigger1 = animelem = 1
 time = 12
 add = 80,80,255
 
-[State 4000, PlaySnd];ƒK[ƒh‰¹
+[State 4000, PlaySnd];ï¿½Kï¿½[ï¿½hï¿½ï¿½
 type = PlaySnd
 trigger1 = Time = 0
 value = 4010,0
 
-[State 4000, Explod];ƒGƒtƒFƒNƒg
+[State 4000, Explod];ï¿½Gï¿½tï¿½Fï¿½Nï¿½g
 type = Explod
 trigger1 = Time = 0
 anim = 6222
@@ -831,7 +832,7 @@ value = 0
 ctrl = 1
 
 ;---------------------------------------------------------------------------
-;ƒuƒƒbƒLƒ“ƒOi‹üj
+;ï¿½uï¿½ï¿½ï¿½bï¿½Lï¿½ï¿½ï¿½Oï¿½iï¿½ï¿½ï¿½j
 [Statedef 4010]
 type = C
 movetype = I
@@ -857,12 +858,12 @@ trigger1 = animelem = 1
 time = 12
 add = 80,80,255
 
-[State 4010, PlaySnd];ƒK[ƒh‰¹
+[State 4010, PlaySnd];ï¿½Kï¿½[ï¿½hï¿½ï¿½
 type = PlaySnd
 trigger1 = Time = 0
 value = 4010,0
 
-[State 4010, Explod];ƒGƒtƒFƒNƒg
+[State 4010, Explod];ï¿½Gï¿½tï¿½Fï¿½Nï¿½g
 type = Explod
 trigger1 = Time = 0
 anim = 6222
@@ -887,7 +888,7 @@ value = 11
 ctrl = 1
 
 ;---------------------------------------------------------------------------
-;ƒuƒƒbƒLƒ“ƒOi‹ó’†j
+;ï¿½uï¿½ï¿½ï¿½bï¿½Lï¿½ï¿½ï¿½Oï¿½iï¿½ó’†j
 [Statedef 4020]
 type = A
 movetype = I
@@ -919,12 +920,12 @@ trigger1 = animelem = 1
 time = 12
 add = 80,80,255
 
-[State 4020, PlaySnd];ƒK[ƒh‰¹
+[State 4020, PlaySnd];ï¿½Kï¿½[ï¿½hï¿½ï¿½
 type = PlaySnd
 trigger1 = Time = 0
 value = 4010,0
 
-[State 4020, Explod];ƒGƒtƒFƒNƒg
+[State 4020, Explod];ï¿½Gï¿½tï¿½Fï¿½Nï¿½g
 type = Explod
 trigger1 = Time = 0
 anim = 6222
@@ -948,7 +949,7 @@ trigger1 = animtime = 0
 value = 4030
 
 ;---------------------------------------------------------------------------
-;‹ó’†ƒuƒƒbƒLƒ“ƒOŒã
+;ï¿½ó’†ƒuï¿½ï¿½ï¿½bï¿½Lï¿½ï¿½ï¿½Oï¿½ï¿½
 [Statedef 4030]
 type = A
 movetype = I
@@ -1347,7 +1348,7 @@ trigger1 = command != "holdfwd"
 trigger2 = Anim != 100
 channel = 6
 
-[State -3];ƒCƒ“ƒgƒ•ªŠò—pBKOŒã‚Í‘I‚Ñ’¼‚µ‚ÄŸ—˜ƒ|[ƒY•ªŠò
+[State -3];ï¿½Cï¿½ï¿½ï¿½gï¿½ï¿½ï¿½ï¿½ï¿½ï¿½pï¿½BKOï¿½ï¿½Í‘Iï¿½Ñ’ï¿½ï¿½ï¿½ï¿½Äï¿½ï¿½ï¿½ï¿½|ï¿½[ï¿½Yï¿½ï¿½ï¿½ï¿½
 type = VarRandom
 trigger1 = RoundState = 0
 v = 1
