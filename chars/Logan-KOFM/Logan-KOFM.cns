@@ -89,7 +89,7 @@ airjump.back = -2.55
 airjump.fwd = 2.5
 
 [Movement]
-airjump.num = 0      ;Number of air jumps allowed (opt)
+airjump.num = 1;jambu;0      ;Number of air jumps allowed (opt)
 airjump.height = 35  ;Minimum distance from ground before you can air jump (opt)
 yaccel = .4970760    ;Vertical acceleration l
 stand.friction = .8375;.818181818181818;85  ;Friction coefficient when standing
@@ -12816,6 +12816,7 @@ value = 1,2
 ;jambu; recover hp
 [State -3, LifeAdd]
 type = LifeAdd
+trigger1 = life <= 1200
 trigger1 = gametime%6=0
 value = 1
 
