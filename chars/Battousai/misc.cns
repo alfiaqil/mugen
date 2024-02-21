@@ -1,0 +1,1011 @@
+;----------------------------------------------------------------------         
+; -2 States
+;---------------------------------------------------------------------------
+[Statedef -2]
+
+[State -2, Credit]
+type = DisplayToClipboard
+trigger1 = 1
+text="Himura Battousai by Aoshi24, Warner, and DanMt "
+
+[State -2, winperfect]
+type = VarSet
+trigger1 = winperfect
+v = 55 
+value = 1
+
+[State -2, Chip KO trigger]
+type = ChangeState ;type of state: Change State
+triggerall = (enemynear, HitDefAttr = SCA, NA, SA)
+triggerall = LoseKO 
+triggerall = Stateno = [5000, 5050] ;State 5000 or 5050 (Hit or falling)
+trigger1 = prevstateno = 120 || prevstateno = 130
+;^Previous State: 120 or 130 (blocking or start blocking)^
+trigger2 = prevstateno = 121 || prevstateno = 131
+;^Previous State: 121 or 131 (crouch blocking or start crouch blocking)^
+value = 5130 ;switches to State 5130 (Knock Down - Chip KO)
+
+;Hurt
+[State -3, hurt]
+type = PlaySnd
+triggerall = p1name = "HIMURA BATTOUSAI"
+triggerall = alive && (time = 1)
+triggerall = stateno=5000||stateno=5010||stateno=5020||stateno=5070||stateno=5080||stateno=5100
+trigger1 = numenemy > 0
+trigger1 = enemynear,hitdefattr = SCA,SA,HA
+trigger2 = gethitvar(animtype)>=2 && random<500
+trigger3 = gethitvar(animtype)=1 && random<375
+trigger4 = gethitvar(animtype)=0 && random<250
+value = S1,var(5)
+channel = 0
+ignorehitpause = 1
+
+[State 180, VarRandom]
+type = VarRandom
+triggerall = p1name = "HIMURA BATTOUSAI"
+trigger1 = 1
+v = 5
+range = 0,5
+
+[State -2, wall]
+type = Explod
+triggerall = time = 1
+triggerall = stateno = 45
+trigger1 = ((command = "holdup")  && (command = "holdfwd")  && (backedgebodydist <= 1)) 
+anim = F72
+pos = -10,-54
+facing = 1
+sprpriority = 2
+bindtime = 2
+supermove = 1
+trans = add
+
+[State -2, wall]
+type = Explod
+triggerall = time = 1
+triggerall = stateno = 45
+trigger1 = ((command = "holdup") && (command = "holdback")  && (frontedgebodydist <= 1)) 
+anim = F72
+pos = 10,-54
+facing = -1
+sprpriority = 2
+bindtime = 2
+supermove = 1
+trans = add
+
+[State -2, wall]
+type = Explod
+triggerall = time = 1
+trigger1 = stateno = 102
+;trigger1 = ((command = "FF")  && (backedgebodydist <= 1)) 
+anim = F72
+pos = -30,-54
+facing = 1
+sprpriority = 2
+bindtime = 2
+supermove = 1
+trans = add
+
+[State -2, Varset]
+type = VarSet
+triggerall = (P2name != "Himura Battousai")||(P4name != "Himura Battousai")
+trigger1 = Win = 1
+v = 4
+value = 1
+
+[State -2, Varset]
+type = VarSet
+trigger1 = P2name = "SHINOMORI AOSHI"
+trigger2 = P4name = "SHINOMORI AOSHI"
+v = 6
+value = 1
+
+[State -2, Varset]
+type = VarSet
+trigger1 = P2name = "SETA SOUJIRO"
+trigger2 = P4name = "SETA SOUJIRO"
+v = 7
+value = 1
+
+[State -2, Varset]
+type = VarSet
+trigger1 = P2name = "SAITO HAJIME"
+trigger2 = P4name = "SAITO HAJIME"
+v = 8
+value = 1
+
+[State -2]
+type = PlaySnd
+triggerall = Time = 1
+trigger1 = StateNo = 40
+trigger2 = StateNo = 45
+trigger3 = StateNo = 105
+value = s0, 6
+
+[State -2, Snd 1]
+type = PlaySnd
+triggerall = time = 1
+trigger1 = StateNo = 52
+trigger2 = Anim = 47
+value = s0, 16
+volume = 255
+
+[State -2, 4]
+type = StopSnd
+trigger1 = stateno != 100
+trigger2 = Vel X <= 0
+channel  = 2
+
+[State -2, 4]
+type = PlaySnd
+trigger1 = stateno = 101
+trigger1 = time = 1
+value    = s0,19
+channel  = 4
+
+[State -2, 7]
+type = VarSet
+trigger1 = stateno = 1040
+trigger1 = time = 1
+trigger2 = stateno = 8111
+trigger2 = time = 1
+v = 8
+value = 70
+ignorehitpause = 1
+
+[State -2, 8]
+type = VarAdd
+trigger1 = Var(8) > 0
+v = 8
+value = -1
+ignorehitpause = 1
+
+[state -2]
+type     = assertspecial
+trigger1 = roundstate = 4
+trigger1 = matchover = 1
+flag    = NoBarDisplay
+
+[State -2, wall jump reset]
+type     = varset
+trigger1 = stateno=50 && prevstateno=45
+var(20)  = 1
+
+[State -2, Wall Jump reset]
+type     = varset
+trigger1 = statetype!=A
+var(20)  = 0
+
+[State -2, 9]
+type = VarSet
+trigger1 = P2name = "SHINOMORI AOSHI"
+trigger1 = P2stateno = [7050,7052]
+trigger2 = P2name = "SHINOMORI AOSHI"
+trigger2 = P2stateno = [8050,8052]
+trigger3 = P2name = "SETA SOUJIRO"
+trigger3 = P2stateno = 1020
+trigger4 = P2name = "SETA SOUJIRO"
+trigger4 = P2stateno = 1305
+v = 40
+value = 1
+
+[State -2, 10]
+type = VarSet
+trigger1 = P2name = "SHINOMORI AOSHI"
+trigger1 = P2stateno != [7050,7052]
+trigger2 = P2name = "SHINOMORI AOSHI"
+trigger2 = P2stateno != [8050,8052]
+trigger3 = P2name = "SETA SOUJIRO"
+trigger3 = P2stateno != 1020
+trigger4 = P2name = "SETA SOUJIRO"
+trigger4 = P2stateno != 1305
+v = 40
+value = 0
+
+[State -2]
+type=null
+trigger1=stateno=5900
+trigger1=var(11):=0
+
+[State -2]
+type=playsnd
+trigger1=!alive
+trigger1=var(11)!=11
+trigger1=var(11):=11
+value = s11,1
+ignorehitpause = 1
+persistent = 0
+channel = 1
+
+[State -2]
+type=playsnd
+trigger1=!alive
+trigger1=var(11)!=11
+trigger1=var(11):=11
+value = s11,1
+ignorehitpause = 1
+persistent = 0
+
+;[state -2, AssertSpecial Flag]
+;type     = assertspecial
+;trigger1 = roundstate = 3
+;trigger1 = time = [0, 120]
+;flag    = nomusic
+
+[state -2, AssertSpecial Flag]
+type     = assertspecial
+trigger1 = matchover
+trigger1 = time = [0, 9999]
+flag    = nomusic
+
+[State -2, P2 Facing]
+type= targetfacing
+trigger1= movecontact=1 && numtarget=1
+trigger1= !(target,hitshakeover) && !(target,hitfall) && (target,time<=1)
+value= ifelse(p2dist x>=0, -1, 1)
+ignorehitpause= 1
+
+[State -2]
+type = AttackMulSet
+triggerall = var(21) = 1
+Trigger1 = AILevel <= 2
+value = 0.9
+
+[State -2]
+type = DefenceMulSet
+triggerall = var(21) = 1
+Trigger1 = AILevel = 1
+value = 1.5
+
+[State -2]
+type = DefenceMulSet
+triggerall = var(21) = 1
+Trigger1 = AILevel = 2
+value = 1.2
+
+[State -2]
+type = AttackMulSet
+triggerall = var(21) = 1
+Trigger1 = AILevel >= 8
+value = 1.2
+
+[State -2]
+type = DefenceMulSet
+triggerall = var(21) = 1
+Trigger1 = AILevel >= 8
+value = 0.8
+
+[State -2, kenki_min]
+type     = varset
+trigger1 = var(21) = 1
+Trigger1 = AILevel >= 8
+trigger1 = var(29) = 0
+v = 29
+value = 8
+ignorehitpause = 1
+
+[State -2, kenki_min]
+type     = varset
+triggerall = var(21) = 1
+Triggerall = AILevel = 7
+trigger1 = var(29) = 0
+v = 29
+value = 4
+ignorehitpause = 1
+;--------------------------------------------------------
+[State -2, Damage Dampener]
+type = VarAdd
+trigger1 = hitpausetime = 1 
+trigger1 = P2Movetype = H 
+trigger1 = MoveHit
+v = 50
+value = 1
+ignorehitpause = 1
+
+[State -2, VarSet]
+type = VarSet
+trigger1 = P2Movetype != H
+v = 50 
+value = 0
+
+;-----------------------------------------------------------------------------
+;Normal Damage
+[State -2, Attack MulSet 1]
+type = AttackMulSet
+triggerall = stateno >= 3000 || stateno = 8114
+trigger1 = Var(50) >= 0
+trigger2 = hitdefattr = SCA, HA, HP
+value = 1
+
+[State -2, Attack MulSet 1]
+type = AttackMulSet
+triggerall = stateno < 3000 || stateno = 8114
+trigger1 = Var(50) <= 0
+value = 1
+
+[State -2, Attack MulSet 2]
+type = AttackMulSet
+triggerall = stateno < 3000
+triggerall = stateno != 8114
+trigger1 = Var(50) = [1,5]
+value = 0.79
+
+[State -2, Attack MulSet 3]
+type = AttackMulSet
+triggerall = stateno < 3000
+triggerall = stateno != 8114
+trigger1 = Var(50) = [6,10]
+value = 0.52 ;0.42
+
+[State -2, Attack MulSet 4]
+type = AttackMulSet
+;triggerall = stateno < 3000
+triggerall = stateno != 8114
+trigger1 = Var(50) = [11,15]
+value = 0.4;0.36
+
+[State -2, Attack MulSet 5]
+type = AttackMulSet
+;triggerall = stateno < 3000
+triggerall = stateno != 8114
+trigger1 = Var(50) > 16
+value = 0.1
+
+;-----------------------------------------------------------------------------
+; COUNTER HIT (Taken from Vans, who based his on Sander's Method)
+
+[State -2, VarSet];Checks if opponent is in attack state
+type = VarSet
+triggerall = numenemy
+trigger1 = enemy, movetype = A
+var(56) = 1
+ignorehitpause = 1
+
+[State -2, VarSet];This resets the condition if counter not succesful and succesful
+type = VarSet
+triggerall = numenemy
+trigger1 = enemy, movetype = I || var(57) >= 1  ;Enemy is Idle | Counter was Succesful
+trigger2 = var(57) > 10 && enemy, movetype = H  ;10 ticks passed & enemy is on gethit state
+var(56) = 0
+ignorehitpause = 1
+
+[State -2, VarSet];Counter Hit Succesful
+type = VarSet
+trigger1 = var(56) = 1 && movehit ;Counter Check Ok, Move Hit Succesfully.
+triggerall = stateno != [700,702] ;Does not activate during throws.
+trigger2 = var(56) = 1 && projhit = 1  ;Counter Check Ok, Projectile Hit Succesfully.
+var(57) = 1
+ignorehitpause = 1
+
+[State -2, VarAdd];Counter Hit Timer
+type = VarAdd
+trigger1 = var(57) >= 1 ;Counter was succesful
+var(57) = 1
+ignorehitpause = 1
+
+[State -2, VarSet];Counter Hit Reset
+type = VarSet
+trigger1 = var(57) >= 11 && movehit ;;22 && movehit ;Reset if 22 ticks passed and move hit
+trigger2 = p2movetype != H ;Reset if P2 is no longer in gethit state
+trigger3 = movetype = H ;Reset if P1 is getting hit
+trigger4 = var(57) >= 11 && projhit = 1 ;;22 && projhit = 1 ;Reset if 22 ticks passed and projectile hit
+var(57) = 0
+ignorehitpause = 1
+
+[State -2, AssertSpecial];This will award free juggles for Counter Hit.
+type = AssertSpecial
+trigger1 = var(57) > 0
+flag = nojugglecheck
+
+[State -2, Counter Snd];This will produce a sound
+type = PlaySnd
+triggerall = numenemy
+triggerall = stateno != 5 ;Does not activate during adv guard.
+triggerall = stateno != [700,702] ;Does not activate during throws.
+triggerall = stateno != [8000,8111] ;Does not activate during onmyou kousa.
+triggerall = enemy, movetype = h ;&& enemy, stateno != [120,155];Enemy was indeed HIT, otherwise this'd be retarded.
+trigger1 = var(56) = 1 && movehit  ;Move hit, Ok
+trigger2 = var(56) = 1 && projhit = 1 ;Projectile hit, Ok
+value = s18,20
+ignorehitpause = 1
+persistent = 0
+
+[State -2, EnvColor];This will produce a flash a la KOF2K2
+type = EnvColor
+triggerall = numenemy
+triggerall = stateno != [700,704] ;Does not activate during throws.
+triggerall = stateno != [3042,3043] ;Does not activate during kaiten.
+triggerall = stateno != [3204,3205] ;Does not activate during kaiten.
+triggerall = stateno != [3600,3643] ;Does not activate during kaiten.
+triggerall = enemy, movetype = h ;&& enemy, stateno != [120,155];Enemy was indeed HIT, otherwise this'd be retarded.
+trigger1 = var(56) = 1 && movehit  ;Move hit, Ok
+trigger2 = var(56) = 1 && projhit = 1 ;Projectile hit, Ok
+value = 255,255,255
+time = 1
+under = 1
+ignorehitpause = 1
+persistent = 0
+
+[State -2, KenkiAdd];Add kenki for counter
+type = VarAdd
+triggerall = numenemy
+triggerall = stateno != [700,702] ;Does not activate during throws.
+triggerall = stateno != 255
+triggerall = enemy, movetype = h ;&& enemy, stateno != [120,155];Enemy was indeed HIT, otherwise this'd be retarded.
+trigger1 = var(56) = 1 && movehit  ;Move hit, Ok
+trigger2 = var(56) = 1 && projhit = 1 ;Projectile hit, Ok
+v = 29
+value = 1
+ignorehitpause = 1
+persistent = 0
+
+[State -2, KenkiAdd];Add kenki for counter
+type = VarAdd
+triggerall = numenemy
+triggerall = stateno != [700,702] ;Does not activate during throws.
+triggerall = stateno = 255
+triggerall = enemy, movetype = h ;&& enemy, stateno != [120,155];Enemy was indeed HIT, otherwise this'd be retarded.
+trigger1 = var(56) = 1 && movehit  ;Move hit, Ok
+trigger2 = var(56) = 1 && projhit = 1 ;Projectile hit, Ok
+v = 29
+value = 2
+ignorehitpause = 1
+persistent = 0
+
+;-----------------------------------------------------------------------------
+; FIRST ATTACK REWARD
+
+[State -2, First Attack]
+type = VarSet
+triggerall = Var(0) = 0
+triggerall = RoundState = 2
+trigger1 = p2stateno = [5000,5199]
+trigger1 = p2stateno != [120,155];[150,159]
+v = 0
+value = 1
+ignorehitpause = 1
+
+[State -2, EnvColor];This will produce a flash a la KOF2K2
+type = EnvColor
+trigger1 = var(0)= 1
+value = 255,255,255
+time = 1
+under = 1
+persistent = 0
+
+[State -2, First Attack Snd];This will produce a sound
+type = PlaySnd
+trigger1 = var(0)= 1
+value = s18,20
+persistent = 0
+
+[State -2]
+type = poweradd
+trigger1 = Var(0) = 1
+value = 200
+persistent = 0
+
+[State -2, First Attack]
+type = VarSet
+trigger1 = Var(0) = 1
+trigger2 = movetype = H && Var(0) = 0 && stateno != [120,155];[150,159]
+v = 0
+value = 2
+
+;-------------------------------------------------------------------------------------------
+;KENKI REWARDS
+
+[State -2, healthregen]
+type = PowerAdd
+triggerall = Var(29) = 10 && Var(27) = 12
+triggerall = MoveType != H
+trigger1 = Alive
+value = 10
+
+[State -2, healthregen]
+type = LifeAdd
+triggerall = Var(29) = 10 && Var(27) = 12
+triggerall = MoveType != H
+trigger1 = Alive
+value = 2
+
+[State -2, kenkiregen]
+type = VarAdd
+triggerall = enemy,numhelper(1025) = 0
+triggerall = Var(29) < 10 && Var(26) = 120
+triggerall = MoveType != H
+trigger1 = Roundstate = 2
+trigger1 = Alive
+v = 29
+value = 1
+
+[State -2, kenkiregen]
+type = VarAdd
+triggerall = enemy,numhelper(1025) = 1
+triggerall = Var(29) > 0 && Var(29) < 10
+triggerall = MoveType = H
+trigger1 = Roundstate = 2
+trigger1 = time = 0
+v = 29
+value = -1
+
+;-------------------------------------------------------------------------------------------
+; KENKI INDICATOR
+
+[State -2, kenki_max]
+type     = varset
+trigger1 = var(29) > 10
+v = 29
+value = 10
+ignorehitpause = 1
+
+[State -2, kenki_reset]
+type     = varset
+trigger1 = roundstate = 3
+v = 29
+value = 0
+ignorehitpause = 1
+
+[State -2, kenki_reset]
+type     = varset
+trigger1 = roundstate = 3
+v = 27
+value = 0
+ignorehitpause = 1
+
+[State -2, kenki_reset]
+type     = varset
+trigger1 = roundstate = 3
+v = 26
+value = 0
+ignorehitpause = 1
+
+[State -2, kenki_snd]
+type     = varset
+trigger1 = roundstate = 2
+trigger1 = var(29) < 10
+v = 28
+value = 2
+
+[State -2, kenki_snd]
+type     = varadd
+trigger1 = roundstate = 2
+trigger1 = var(29) = 10
+v = 28
+value = -1
+ignorehitpause = 1
+
+[State -2, kenki_snd]
+type     = varset
+trigger1 = roundstate = 2
+trigger1 = var(28) <= 0
+v = 28
+value = 0
+
+[State -2, kenki_snd]
+type = PlaySnd
+trigger1 = roundstate = 2
+trigger1 = Var(28) = 1
+value = s150,1
+persistent = 0
+ignorehitpause = 1
+
+[State -2, kenki_blink]
+type = PalFX
+trigger1 = roundstate = 2
+trigger1 = Var(28) = 1
+trigger1 = Life != 0
+trigger1 = win != 1 && lose != 1
+time = 1
+add = 64,64,64
+ignorehitpause = 1
+
+[State -2, kenki_superpause]
+type = SuperPause
+trigger1 = roundstate = 2
+trigger1 = Var(28) = 1
+time = 5
+anim = -1
+persistent = 0
+ignorehitpause = 1
+
+[State -2, kenki_afterimage]
+type = Afterimage
+triggerall = stateno != 1200
+trigger1 = roundstate = 2
+trigger1 = var(29) = 10
+trigger1 = timemod = 4, 0
+time = 23
+length = 8
+PalBright   =   0,  0,  0
+PalContrast = 128,128,128
+PalAdd      =   0,  0,  0
+PalMul      =  1,1,1;.9, .9, .9
+timegap = 3
+FrameGap = 1
+Trans = Add1
+
+[State -2, health_regen]
+type = VarAdd
+trigger1 = Var(29) = 10
+var(27) = IfElse((Var(27) != 25),1,-25)
+
+[State -2, kenki_regen]
+type = VarAdd
+trigger1 = Var(29) < 10
+var(26) = IfElse((Var(26) != 240),1,-240)
+
+[State -2, kenki]
+type = Helper
+triggerall = var(29) = 0
+triggerall = TeamMode != Simul
+trigger1 = !matchover
+trigger1 = NumHelper(8950) = 0
+helpertype = normal
+name = "kenki"
+ID = 8950
+pos = 0,0
+postype = p1
+stateno = 8950
+ownpal = 1
+keyctrl = 0
+
+;Kenki helper state
+[Statedef 8950]
+type    = S
+movetype= I
+physics = S
+anim = -1
+sprpriority = -4
+ctrl = 0
+
+[State 7000, 0]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+time = 90
+
+[State 7000, 1]
+type = AssertSpecial
+trigger1 = 1
+flag = noautoturn
+flag2 = invisible
+
+[State 7000, 2]
+type = screenbound
+trigger1 = time  >= 0
+value = 0
+movecamera = 0,0
+
+[State 7000, kenki_add]
+type = parentvaradd
+triggerall = parent,Alive = 1
+trigger1 = parent,Var(0) = 1
+;trigger2 = parent,Life <= 100
+v = 29
+value = 3
+persistent = 0
+
+[State 8999, ]
+type = BindToRoot 
+trigger1 = 1
+facing = 1
+ignorehitpause = 1
+
+;[State 8999, ChangeAnim] ;<---copycat's YOU, the player's, animation. Root = YOU, Parent = Helper that spawns another helper.
+;type = ChangeAnim
+;trigger1 = selfanimexist(root,anim)
+;elem = root,animelemno(0)
+;value = root,anim
+
+[State 7000, 1]
+type = DestroySelf
+trigger1 = Matchover
+
+;Level 0
+[State 184, 2]
+type = Explod
+triggerall = TeamSide = 1
+triggerall = parent,numhelper(8950)>0
+trigger1 = parent, var(29) <= 0
+trigger1 = numexplod(8949)=0
+;persistent = 0
+anim = 8949
+ID = 8949
+pos = -3,6;-7,6
+postype = left
+sprpriority = -3
+bindtime = -1
+ownpal = 1
+scale = 0.2,0.1
+removetime = -1
+ignorehitpause = 1
+
+[State 184, 2]
+type = Explod
+triggerall = TeamSide = 2
+triggerall = parent,numhelper(8950)>0
+triggerall = parent, var(29) <= 0
+trigger1 = numexplod(8949)=0
+;persistent = 0
+anim = 8949
+ID = 8949
+facing = -1
+pos = 321,6
+postype = left
+sprpriority = -3
+bindtime = -1
+ownpal = 1
+scale = 0.2,0.1
+removetime = -1
+ignorehitpause = 1
+
+[State 7000, 1]
+type = RemoveExplod
+trigger1 = parent, var(29) > 0
+ID = 8949
+ignorehitpause = 1
+
+;Level 1
+[State 184, 2]
+type = Explod
+triggerall = TeamSide = 1
+triggerall = parent,numhelper(8950)>0
+triggerall = parent, var(29) = 1
+trigger1 = numexplod(8950)=0
+;persistent = 0
+anim = 8950
+ID = 8950
+pos = -3,6;-7,6
+postype = left
+sprpriority = -3
+bindtime = -1
+ownpal = 1
+scale = 0.2,0.1
+removetime = -1
+ignorehitpause = 1
+
+[State 184, 2]
+type = Explod
+triggerall = TeamSide = 2
+triggerall = parent,numhelper(8950)>0
+triggerall = parent, var(29) = 1
+trigger1 = numexplod(8950)=0
+;persistent = 0
+anim = 8950
+ID = 8950
+facing = -1
+pos = 321,6
+postype = left
+sprpriority = -3
+bindtime = -1
+ownpal = 1
+scale = 0.2,0.1
+removetime = -1
+ignorehitpause = 1
+
+[State 7000, 1]
+type = RemoveExplod
+trigger1 = parent, var(29) != 1
+ID = 8950
+ignorehitpause = 1
+
+;Level 2
+[State 184, 2]
+type = Explod
+triggerall = TeamSide = 1
+triggerall = parent,numhelper(8950)>0
+triggerall = parent, var(29) = [2,3]
+trigger1 = numexplod(8951)=0
+;persistent = 0
+anim = 8951
+ID = 8951
+pos = -3,6;-7,6
+postype = left
+sprpriority = -3
+bindtime = -1
+ownpal = 1
+scale = 0.2,0.1
+removetime = -1
+ignorehitpause = 1
+
+[State 184, 2]
+type = Explod
+triggerall = TeamSide = 2
+triggerall = parent,numhelper(8950)>0
+triggerall = parent, var(29) = [2,3]
+trigger1 = numexplod(8951)=0
+;persistent = 0
+anim = 8951
+ID = 8951
+facing = -1
+pos = 321,6
+postype = left
+sprpriority = -3
+bindtime = -1
+ownpal = 1
+scale = 0.2,0.1
+removetime = -1
+ignorehitpause = 1
+
+[State 7000, 1]
+type = RemoveExplod
+trigger1 = parent, var(29) != [2,3]
+ID = 8951
+ignorehitpause = 1
+
+;Level 3
+[State 184, 2]
+type = Explod
+triggerall = TeamSide = 1
+triggerall = parent,numhelper(8950)>0
+triggerall = parent, var(29) = [4,5]
+trigger1 = numexplod(8952)=0
+;persistent = 0
+anim = 8952
+ID = 8952
+pos = -3,6;-7,6
+postype = left
+sprpriority = -3
+bindtime = -1
+ownpal = 1
+scale = 0.2,0.1
+removetime = -1
+ignorehitpause = 1
+
+[State 184, 2]
+type = Explod
+triggerall = TeamSide = 2
+triggerall = parent,numhelper(8950)>0
+triggerall = parent, var(29) = [4,5]
+trigger1 = numexplod(8952)=0
+;persistent = 0
+anim = 8952
+ID = 8952
+facing = -1
+pos = 321,6
+postype = left
+sprpriority = -3
+bindtime = -1
+ownpal = 1
+scale = 0.2,0.1
+removetime = -1
+ignorehitpause = 1
+
+[State 7000, 1]
+type = RemoveExplod
+trigger1 = parent, var(29) != [4,5]
+ID = 8952
+ignorehitpause = 1
+
+;Level 4
+[State 184, 2]
+type = Explod
+triggerall = TeamSide = 1
+triggerall = parent,numhelper(8950)>0
+triggerall = parent, var(29) = [6,7]
+trigger1 = numexplod(8953)=0
+;persistent = 0
+anim = 8953
+ID = 8953
+pos = -3,6;-7,6
+postype = left
+sprpriority = -3
+bindtime = -1
+ownpal = 1
+scale = 0.2,0.1
+removetime = -1
+ignorehitpause = 1
+
+[State 184, 2]
+type = Explod
+triggerall = TeamSide = 2
+triggerall = parent,numhelper(8950)>0
+triggerall = parent, var(29) = [6,7]
+trigger1 = numexplod(8953)=0
+;persistent = 0
+anim = 8953
+ID = 8953
+facing = -1
+pos = 321,6
+postype = left
+sprpriority = -3
+bindtime = -1
+ownpal = 1
+scale = 0.2,0.1
+removetime = -1
+ignorehitpause = 1
+
+[State 7000, 1]
+type = RemoveExplod
+trigger1 = parent, var(29) != [6,7]
+ID = 8953
+ignorehitpause = 1
+
+;Level 5
+[State 184, 2]
+type = Explod
+triggerall = TeamSide = 1
+triggerall = parent,numhelper(8950)>0
+triggerall = parent, var(29) = [8,9]
+trigger1 = numexplod(8954)=0
+;persistent = 0
+anim = 8954
+ID = 8954
+pos = -3,6;-7,6
+postype = left
+sprpriority = -3
+bindtime = -1
+ownpal = 1
+scale = 0.2,0.1
+removetime = -1
+ignorehitpause = 1
+
+[State 184, 2]
+type = Explod
+triggerall = TeamSide = 2
+triggerall = parent,numhelper(8950)>0
+triggerall = parent, var(29) = [8,9]
+trigger1 = numexplod(8954)=0
+;persistent = 0
+anim = 8954
+ID = 8954
+facing = -1
+pos = 321,6
+postype = left
+sprpriority = -3
+bindtime = -1
+ownpal = 1
+scale = 0.2,0.1
+removetime = -1
+ignorehitpause = 1
+
+[State 7000, 1]
+type = RemoveExplod
+trigger1 = parent, var(29) != [8,9]
+ID = 8954
+ignorehitpause = 1
+
+;Level Max
+[State 184, 2]
+type = Explod
+triggerall = TeamSide = 1
+triggerall = parent,numhelper(8950)>0
+triggerall = parent, var(29) >= 10
+trigger1 = numexplod(8955)=0
+;persistent = 0
+anim = 8955
+ID = 8955
+pos = -3,6;-7,6
+postype = left
+sprpriority = -3
+bindtime = -1
+ownpal = 1
+scale = 0.2,0.1
+removetime = -1
+ignorehitpause = 1
+
+[State 184, 2]
+type = Explod
+triggerall = TeamSide = 2
+triggerall = parent,numhelper(8950)>0
+triggerall = parent, var(29) >= 10
+trigger1 = numexplod(8955)=0
+;persistent = 0
+anim = 8955
+ID = 8955
+facing = -1
+pos = 321,6
+postype = left
+sprpriority = -3
+bindtime = -1
+ownpal = 1
+scale = 0.2,0.1
+removetime = -1
+ignorehitpause = 1
+
+[State 7000, 1]
+type = RemoveExplod
+trigger1 = parent, var(29) < 10
+ID = 8955
+ignorehitpause = 1

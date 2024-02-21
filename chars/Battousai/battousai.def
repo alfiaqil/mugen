@@ -1,0 +1,54 @@
+[Info]
+name    =  "Himura Battousai"  
+displayname = "Battousai"             
+versiondate = 01,13,2013
+mugenversion = 1.0    
+author = "Aoshi24, Warner, and DanMt"
+pal.defaults = 1,2,3,4,5,6
+;localcoord = 320,240
+localcoord   = 427;jambu
+
+[Files]
+cmd      = battousai.cmd     
+cns      = battousai.cns     
+st       = battousai.cns      
+st2      = supers1.cns
+st3      = misc.cns
+stcommon = common1.cns    
+sprite   = battousai.sff     
+anim     = battousai.air         
+sound    = battousai.snd
+pal1     = battousai.act    
+pal2     = battousai2.act  
+pal3     = battousai3.act    
+pal4     = battousai4.act 
+pal5     = battousai5.act    
+pal6     = battousai6.act 
+pal7     = Musashi.act    
+pal8    = Musashi2.act
+pal9    = Amano.act    
+pal10    = Setsuna.act
+pal11    = Soujiro.act
+pal12    = Kenshin.act 
+
+; Maps character selection buttons to palette numbers.
+[Palette Keymap]
+x = 1 ;Press button X to select palette 1, etc.
+y = 2
+z = 3
+a = 4
+b = 5
+c = 6
+x2 = 7 ;Hold Start and press button X for palette 7, etc.
+y2 = 8
+z2 = 9
+a2 = 10
+b2 = 11
+c2 = 12
+
+
+; Arcade mode
+[Arcade]
+intro.storyboard = intro.def  
+ending.storyboard = ending.def  
+

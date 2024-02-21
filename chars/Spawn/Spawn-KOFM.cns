@@ -39,7 +39,7 @@
 [Data]
 life = 1500			;Amount of life to start with
 attack = 100		;attack power (more is stronger)
-defence = 100		;defensive power (more is stronger)
+defence = 120;jambu;100		;defensive power (more is stronger)
 fall.defence_up = 50	;Percentage to increase defense everytime player is knocked down
 liedown.time = 50		;Time which player lies down for, before getting up
 airjuggle = 0		;Number of points for juggling
@@ -3457,10 +3457,3 @@ triggerAll = Time <= 1
 trigger1 = StateNo = 3000 || StateNo = 3050 ;|| StateNo = 300
 trigger2 = Stateno = 3100 || StateNo = 3101
 time = 0
-
-;jambu; recover hp
-[State -3, LifeAdd]
-type = LifeAdd
-trigger1 = life <= 300
-trigger1 = gametime % 6=0
-value = 1
