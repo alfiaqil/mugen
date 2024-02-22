@@ -1,0 +1,455 @@
+
+;---------------------------------------------------------------------------
+;---------------------------------------------------------------------------
+;��{�f�[�^����
+[Data]
+life              = 1000;jambu;1000  ;�̗̓Q�[�W�̍ő�l�����߂܂�
+power             = 7000;jambu;3000  ;�p���[�Q�[�W�ő�l�i�f�t�H���g�� 3000 = Lv.3 �ɂȂ�܂��E�I�v�V�����j
+attack            = 100   ;�U���̓p�[�Z���e�[�W�i�f�t�H���g�� 100% �ɂȂ�܂��j
+defence           = 100   ;�h��̓p�[�Z���e�[�W�i�f�t�H���g�� 100% �ɂȂ�܂��j
+fall.defence_up   = 50    ;�ꎞ�I�ɏ㏸����_�E�����̖h��̓p�[�Z���e�[�W
+liedown.time      = 40    ;�|��Ă���N���オ��܂ł̎���
+airjuggle         = 15    ;�W���O���|�C���g���E�l�@���P
+sparkno           = 2     ;�f�t�H���g�̃q�b�g�X�p�[�N�ԍ��ifightfx.air���A�L������air����Ăяo���j
+guard.sparkno     = 40    ;�f�t�H���g�̃K�[�h�X�p�[�N�ԍ��ifightfx.air���A�L������air����Ăяo���j
+KO.echo           = 0     ;�j�n���̐��ɃG�R�[���|���邩�ǂ����i0=���Ȃ��E1=����j
+volume            = 128   ;�L�����̉��ʁ@255���ō�
+intpersistindex   = 11    ;Var�����̃��E���h�֎����z�����\ (�ŏ�=0, �ő�=59)  ���Q
+floatpersistindex = 40    ;FVar�����̃��E���h�֎����z�����\ (�ŏ�=0, �ő�=39) ���Q
+
+;---------------------------------------------------------------------------
+;�T�C�Y�ݒ�
+[Size]
+xscale           = 0.90     ;�L�����摜�̉��̃X�P�[��
+yscale           = 1;jambu;0.90     ;�L�����摜�̏c�̃X�P�[��
+ground.back      = 15       ;�L�����̕��i�n�����j
+ground.front     = 15       ;�L�����̕��i�n��O���j
+air.back         = 12       ;�L�����̕��i�󒆌���j
+air.front        = 12       ;�L�����̕��i�󒆑O���j
+height           = 60       ;���щz������̂��߂̃L�����̍���
+attack.dist      = 140      ;�U�����o�������ɑ��肪�K�[�h�̐��ɓ���Œ�̋���
+proj.attack.dist = 90       ;���肪�K�[�h�̐��ɓ��锭�˕��Ƃ̍Œ�̋���
+proj.doscale     = 1        ;xscale��yscale�����˕��̃X�P�[���ɂ��e�����邩�ǂ����i0=���Ȃ��E1=����j
+head.pos         = -2, -75  ;BindToTarget�̎��ɕK�v�ȓ��̍��W
+mid.pos          = -3, -50  ;BindToTarget�̎��ɕK�v�ȑ̒��S�̍��W
+shadowoffset     = 0        ;�e�̐��������̈ʒu
+draw.offset      = 0,0      ;�L�����`��\���ʒu�i�w��,�x���j
+
+;---------------------------------------------------------------------------
+;�ړ����x�ݒ�
+[Velocity]
+walk.fwd     = 3.6         ;�O�i���s���x
+walk.back    = -3.0        ;��ޕ��s���x
+run.fwd      = 6.5, 0      ;�O�ɑ��鎞�̑��x�i�w��,�x���j
+run.back     = -5.5, 0     ;���ɑ��鎞�̑��x�i�w��,�x���j
+jump.neu     = 0,-12.0     ;�����W�����v���x�i�w��,�x���j
+jump.back    = -5.0        ;��W�����v���x
+jump.fwd     = 4.5         ;�O�W�����v���x
+runjump.back = -2.5,-8.0   ;���ɑ���Ȃ���̃W�����v���x�i�I�v�V�����j
+runjump.fwd  = 4,-8.0      ;�O�ɑ���Ȃ���̃W�����v���x�i�I�v�V�����j
+airjump.neu  = 0,-8.1;jambu;0,-6.0      ;�󒆐����W�����v���x�i�I�v�V�����j
+airjump.back = -2.8        ;�󒆌�W�����v���x�i�I�v�V�����j
+airjump.fwd  = 2.5         ;�󒆑O�W�����v���x�i�I�v�V�����j
+
+;---------------------------------------------------------------------------
+;����ݒ�
+[Movement]
+airjump.num     = 1;jambu;0      ;�󒆃W�����v���o����񐔁i�I�v�V�����j
+airjump.height  = 35     ;�󒆃W�����v���邽�߂ɕK�v�ȍŒ���̍����i�I�v�V�����j
+yaccel          = .70    ;�d�́i�������~�����x�j
+stand.friction  = .83    ;������Ԃ̖��C�W��
+crouch.friction = .82    ;���Ⴊ�ݏ�Ԃ̖��C�W��
+
+;---------------------------------------------------------------------------
+; Var�̎g�p��
+; �����Ɏ������g����var���������Ă����Ƃ��낢��ƍD�s���ł��B
+; var(1)  - �R���{�p
+; var(2)  - ����
+; var(3)  - �U���͕␳
+; var(4)  - �r�[�X�g�Q�[�W
+; var(5)  - ���W�����v
+; var(6)  - �R���{�p�����Z
+; var(7)  - �j���[�g�������f
+; var(8)  - �����_��
+
+; var(10) - �J�E���^�[����
+; var(11) - �b�_�L��
+; var(12) - �b�_�Z���N�g
+; var(13) - �b�_�ʏ��Ԋm�F�i�o�b�N�X�e�b�v����p�j
+
+; var(20) - �����Z�q�b�g��
+; var(21) - �����Z�_���[�W
+
+; var(53) - �_�E���U���q�b�g���f�Z�b�g
+; var(54) - ��U�蔻�f�Z�b�g
+; var(55) - �^�b�O���̐����m�F
+; var(56) - �n���炢�J�E���g
+; var(57) - �_�E���U����U�蔻�f�Z�b�g
+; var(58) - �������Z�b�g
+; var(59) - AI�p
+
+; fvar(1) - �r�[�X�g�z�[�~���O
+; fvar(2) - �r�[�X�g�z�[�~���O
+; fvar(3) - �^�b�O����
+
+;---------------------------------------------------------------------------
+; ��{�s���̃X�e�[�g
+;---------------------------------------------------------------------------
+; �^�C���I�[�o�[��
+
+[Statedef 170]
+type = S
+ctrl = 0
+anim = 170
+velset = 0,0
+
+[State 170, ���G]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+time = 1
+
+;---------------------------------------------------------------------------
+; �����|�[�Y����
+
+[Statedef 180]
+type = S
+
+[State 180, �����|�[�Y1]
+type = ChangeState
+trigger1 = Time = 1
+trigger1 = var(11) = 0
+trigger2 = RoundState = 0    ;�G���f�B���O���͂�������g��
+value = 181
+
+[State 180, �����_���ɕϐ���I��]
+type = VarRandom
+trigger1 = 1
+v = 8
+range = 0,2
+
+[State 180, �����|�[�Y2];�r�[�X�g������
+type = ChangeState
+triggerall = RoundState != 0 ;�G���f�B���O�΍�
+trigger1 = Time = 1
+trigger1 = var(8) != 0
+trigger1 = var(11) = 1
+value = 182
+
+[State 180, �����|�[�Y3];�r�[�X�g������(�P�񂵎��s)
+type = ChangeState
+triggerall = RoundState != 0
+trigger1 = Time = 1
+trigger1 = var(8) = 0
+trigger1 = var(11) = 1
+value = 183
+
+;---------------------------------------------------------------------------
+; �����|�[�Y1
+
+[Statedef 181]
+type = S
+ctrl = 0
+anim = 181
+velset = 0,0
+
+[State 181, ���G]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+time = 1
+
+[State 181, �{�C�X]
+type = PlaySnd
+triggerall = Alive
+trigger1 = AnimElem = 3
+trigger2 = AnimElem = 8
+value = 8, 2
+channel = 0
+
+[State 181, �{�C�X]
+type = PlaySnd
+triggerall = Alive
+trigger1 = AnimElem = 15
+value = 8, 3
+channel = 0
+
+[state 181, AssertSpecial]
+type = AssertSpecial
+trigger1 = matchover = 1
+trigger1 = Time >= 0
+trigger1 = Time <= 150
+flag = RoundNotOver
+
+[state 181, �������o]
+type = Changestate
+trigger1 = Time = 150
+trigger1 = Matchover = 1
+Trigger1 = (TeamMode = single) || (TeamMode = turns)
+value = 20180
+
+;---------------------------------------------------------------------------
+; �����|�[�Y2 �r�[�X�g������
+
+[Statedef 182]
+type = S
+ctrl = 0
+anim = 182
+velset = 0,0
+
+[State 182, ���G]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+time = 1
+
+[State 182, Explod];�iRabbit�j
+type = Explod
+trigger1 = AnimelemTime(1) = 0
+anim = 184
+ID = 185
+scale = const(size.xscale),const(size.yscale)
+pos = ceil(const(size.xscale)*0),ceil(const(size.yscale)*0)
+postype = p1
+bindtime = 9999999
+supermovetime = 9999999
+sprpriority = -1
+removetime = 999
+removeongethit = 1
+
+[State 182, �{�C�X]
+type = PlaySnd
+triggerall = Alive
+trigger1 = AnimElem = 4
+value = 8, 4
+channel = 0
+
+[state 182, AssertSpecial]
+type = AssertSpecial
+trigger1 = matchover = 1
+trigger1 = Time >= 0
+trigger1 = Time <= 150
+flag = RoundNotOver
+
+[state 182, �������o]
+type = Changestate
+trigger1 = Time = 150
+trigger1 = Matchover = 1
+Trigger1 = (TeamMode = single) || (TeamMode = turns)
+value = 20180
+
+;---------------------------------------------------------------------------
+; �����|�[�Y3 �r�[�X�g������(�P�񂵎��s)
+
+[Statedef 183]
+type = S
+ctrl = 0
+anim = 183
+velset = 0,0
+
+[State 183, ���G]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+time = 1
+
+[State 183, Explod];�iRabbit�j
+type = Explod
+trigger1 = AnimelemTime(1) = 0
+anim = 185
+ID = 185
+scale = const(size.xscale),const(size.yscale)
+pos = ceil(const(size.xscale)*0),ceil(const(size.yscale)*0)
+postype = p1
+bindtime = 9999999
+supermovetime = 9999999
+sprpriority = -1
+removetime = 999
+removeongethit = 1
+
+[State 183, �{�C�X]
+type = PlaySnd
+triggerall = Alive
+trigger1 = AnimElem = 4
+value = 8, 4
+channel = 0
+
+[State 183, �{�C�X]
+type = PlaySnd
+triggerall = Alive
+trigger1 = AnimElem = 21
+value = 8, 5
+channel = 0
+
+[state 183, AssertSpecial]
+type = AssertSpecial
+trigger1 = matchover = 1
+trigger1 = Time >= 0
+trigger1 = Time <= 250
+flag = RoundNotOver
+
+[state 183, �������o]
+type = Changestate
+trigger1 = Time = 250
+trigger1 = Matchover = 1
+Trigger1 = (TeamMode = single) || (TeamMode = turns)
+value = 20180
+
+;---------------------------------------------------------------------------
+; �������o
+
+[Statedef 20180]
+type = S
+ctrl = 0
+velset = 0,0
+
+[State 20180];�r�[�X�g������
+type = RemoveExplod
+trigger1 = NumExplod(185) != 0
+trigger1 = Time >= 0
+ID = 185
+ignorehitpause = 1
+
+[State 20180, AssertSpecial]
+type = AssertSpecial
+trigger1 = Time >= 0
+trigger1 = Time <= 500
+flag = RoundNotOver
+
+[State 20180, AssertSpecial]
+type = AssertSpecial
+trigger1 = Time >= 0
+trigger1 = Time <= 600
+flag = nobardisplay
+flag2 = globalnoshadow
+;flag3 = noBG
+
+[State 20180, AssertSpecial]
+type = AssertSpecial
+trigger1 = Time >= 0
+trigger1 = time <= 600
+flag = nomusic
+flag2 = invisible
+flag3 = noFG
+
+[State 20180, ����炷]
+type = PlaySnd
+trigger1 = Time = 5
+value = 12, 0
+
+[State 20180, �{�C�X]
+type = PlaySnd
+trigger1 = Time = 5
+value = 12, 1
+
+[State 20180, Explod]
+type = Explod
+trigger1 = Time = 0
+anim = 20180
+pos = 0,0
+postype = left
+sprpriority = 7
+ownpal = 1
+removetime = -1
+ontop = 1
+
+;---------------------------------------------------------------------------
+; �C���g��
+
+[Statedef 190]
+type = S
+ctrl = 0
+anim = 190
+velset = 0,0
+
+[State 190, �A�j���ύX]
+type = ChangeAnim
+trigger1 = RoundState = 0
+value = 190
+
+[State 190, �������]
+type = AssertSpecial
+trigger1 = 1
+flag = Intro
+
+[State 190, �p���[�Q�[�W��1000��] 
+type = powerset
+trigger1 = Time = 0
+trigger1 = power < 1000
+value = 1000
+
+[State 190, var���Z�b�g] 
+type = varset
+trigger1 = var(12) > 0
+trigger1 = Time = 0
+var(12) = 0
+
+[State 190, Explod];�iRabbit�j
+type = Explod
+trigger1 = AnimelemTime(5) = 0
+anim = 191
+ID = 191
+scale = const(size.xscale),const(size.yscale)
+pos = ceil(const(size.xscale)*0),ceil(const(size.yscale)*0)
+postype = p1
+bindtime = 9999999
+supermovetime = 9999999
+sprpriority = -1
+removetime = -2
+removeongethit = 1
+
+[State 190, ����炷]
+type = PlaySnd
+trigger1 = Animelem = 7
+value = 0, 2
+
+[State 190, �{�C�X]
+type = PlaySnd
+trigger1 = Animelem = 5
+value = 8, 9
+channel = 0
+
+[State 190, �X�e�[�g�ύX]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+
+;---------------------------------------------------------------------------
+; ����
+
+[Statedef 195]
+type     = S
+movetype = I
+physics  = S
+anim     = 195
+velset   = 0,0
+ctrl     = 0
+sprpriority = 2
+facep2 = 1
+
+[State 195, �p���[�����܂�]
+type = PowerAdd
+trigger1 = Time = 34
+value = ifelse(var(11),0,125)
+
+[State 195, �R���g���[����]
+type = CtrlSet
+trigger1 = Time = 35
+value = 1
+
+[State 195, �{�C�X]
+type = PlaySnd
+trigger1 = AnimElem = 4
+value = 8, 7
+channel = 0
+
+[State 195, �X�e�[�g�ύX]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+
+;���̉��A��s�ȏ�󂯂鎖�I
+
+

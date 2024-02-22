@@ -1,0 +1,2395 @@
+
+;---------------------------------------------------------------------------
+;Rabbit
+;---------------------------------------------------------------------------
+; 召喚
+
+[Statedef 10000]
+type     = A
+movetype = I
+physics  = N
+anim     = 10000
+;velset   = 0,0
+sprpriority = -1
+
+[State 10000, 影無し]
+type = Assertspecial
+trigger1 = 1
+flag = Noshadow
+ignorehitpause = 1
+
+[State 10000, 基準に位置を固定]
+type = BindToRoot
+trigger1 = 1
+time = 1
+facing = 1
+pos = ceil(const(size.xscale)*0),ceil(const(size.yscale)*0)
+
+[State 10000, ステート変更、魂珠・兎衝波を出すため消滅]
+type = ChangeState
+trigger1 = (Root,stateno = 3000) && (Root,Time = 1)
+trigger1 = Root,MoveType != H
+value = 10060
+
+[State 10000, ステート変更、喰らい抜け]
+type = ChangeState
+trigger1 = (Root,stateno = 5045) && (Root,Time = 1)
+value = 10045
+
+[State 10000, ステート変更、纏棘弾を出すため消滅]
+type = ChangeState
+trigger1 = (Root,stateno = 760) && (Root,Time = 1)
+trigger1 = Root,MoveType != H
+value = 10042
+
+[State 10000, ステート変更]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 10010
+
+;---------------------------------------------------------------------------
+; 通常
+
+[Statedef 10010]
+type     = A
+movetype = I
+physics  = N
+anim     = 10010
+;velset   = 0,0
+sprpriority = -1
+
+[State 10010, 影無し]
+type = Assertspecial
+trigger1 = 1
+flag = Noshadow
+ignorehitpause = 1
+
+[State 10010, 基準に位置を固定]
+type = BindToRoot
+trigger1 = 1
+time = 1
+facing = 1
+pos = ceil(const(size.xscale)*0),ceil(const(size.yscale)*0)
+
+[State 10010, 移動] 
+type = VelSet
+trigger1 = 1
+x = Root,vel x
+y = Root,vel y
+
+[State 10010, ターン] 
+type = Turn
+trigger1 = Ceil(P2Dist X) < -15
+
+[State 10010, ステート変更、ジャンプ]
+type = ChangeState
+trigger1 = Root,Stateno = 40
+value = 10011
+
+[State 10010, ステート変更、バックステップ]
+type = ChangeState
+trigger1 = Root,Stateno = 105
+value = 10020
+
+[State 10010, ステート変更、前ダッシュ]
+type = ChangeState
+trigger1 = Root,Stateno = 100
+value = 10022
+
+[State 10010, ステート変更、魂珠・兎衝波を出すため消滅]
+type = ChangeState
+trigger1 = (Root,stateno = 3000) && (Root,Time = 1)
+trigger1 = Root,MoveType != H
+value = 10060
+
+[State 10010, ステート変更、喰らい抜け]
+type = ChangeState
+trigger1 = (Root,stateno = 5045) && (Root,Time = 1)
+value = 10045
+
+[State 10010, ステート変更、纏棘弾を出すため消滅]
+type = ChangeState
+trigger1 = (Root,stateno = 760) && (Root,Time = 1)
+trigger1 = Root,MoveType != H
+value = 10042
+
+[State 10010, ステート変更、２段ジャンプ踏み台のため消滅]
+type = ChangeState
+trigger1 = (Root,stateno = 45) && (Root,Time = 1)
+value = 10042
+
+[State 10010, ステート変更、召喚時勝利でヘルパー側消滅]
+type = ChangeState
+triggerall = Root,Alive
+trigger1 = ((Root,stateno = 182) && (Root,Time = 1))
+trigger2 = ((Root,stateno = 183) && (Root,Time = 1))
+value = 10042
+
+[State 10010, ステート変更、攻撃]
+type = ChangeState
+trigger1 = Root,MoveType = A
+trigger1 = Root,Stateno != 760
+value = 10023
+
+[State 10010, ステート変更、ガード]
+type = ChangeState
+trigger1 = Root,Statetype != A
+trigger1 = Root,Stateno = [150,153]
+value = 10025
+
+[State 10010, ステート変更、攻撃を食らう]
+type = ChangeState
+trigger1 = Root,MoveType = H
+trigger1 = Root,Statetype != A
+trigger1 = Root,Stateno != [5070,5071];足払い中無効
+trigger1 = Root,Stateno != [5100,5199];ダウン中無効
+value = 10025
+
+[State 10010, ステート変更、制御系食らい]
+type = ChangeState
+trigger1 = Root,MoveType = H
+trigger1 = Root,Stateno != [5000,5999]
+value = 10029
+
+[State 10010, ステート変更、投げを食らう]
+type = ChangeState
+trigger1 = Root,MoveType != A
+trigger1 = Root,Stateno = [800,899]
+value = 10025
+
+[State 10010, ステート変更、ダウン攻撃食らい]
+type = ChangeState
+trigger1 = Root,Stateno = 5080
+value = 10025
+
+[State 10010, ステート変更、払い成功]
+type = ChangeState
+trigger1 = Root,Stateno = 701
+value = 10023
+
+[State 10010, ステート変更、挑発]
+type = ChangeState
+trigger1 = Root,Stateno = 195
+value = 10026
+
+[State 10010, ステート変更、ゲージ終了]
+type = ChangeState
+trigger1 = Root,var(4) = 0
+trigger2 = Root,var(4) <= -1
+value = 10040
+
+[State 10010, ステート変更]
+type = ChangeState
+trigger1 = AnimTime = 0
+trigger1 = Root,var(4) > 0
+value = 10010
+
+;---------------------------------------------------------------------------
+; ジャンプ
+
+[Statedef 10011]
+type     = A
+movetype = I
+physics  = N
+velset   = 0,0
+sprpriority = -1
+
+[State 10011, 影無し]
+type = Assertspecial
+trigger1 = 1
+flag = Noshadow
+ignorehitpause = 1
+
+[State 10011, アニメ変更(垂直&前進)]
+type = ChangeAnim
+triggerall = Time = 0
+trigger1 = !(Root,sysvar(1) = -1)
+value = 10011
+
+[State 10011, アニメ変更(垂直&前進)]
+type = ChangeAnim
+triggerall = Time = 4
+trigger1 = Root,Var(5) = 0
+trigger1 = Root,Anim = 41 || Root,Anim = 42
+value = 10012
+
+[State 10011, アニメ変更(垂直&前進、小ジャンプ)]
+type = ChangeAnim
+triggerall = Time = 4
+trigger1 = Root,Var(5) = 1
+trigger1 = Root,Anim = 51 || Root,Anim = 52
+value = 10013
+
+[State 10011, アニメ変更(後退)]
+type = ChangeAnim
+triggerall = Time = 0
+trigger1 = Root,sysvar(1) = -1
+value = 10014
+
+[State 10011, アニメ変更(後退)]
+type = ChangeAnim
+triggerall = Time = 4
+trigger1 = Root,Var(5) = 0
+trigger1 = Root,Anim = 43
+value = 10015
+
+[State 10011, アニメ変更(後退、小ジャンプ)]
+type = ChangeAnim
+triggerall = Time = 4
+trigger1 = Root,Var(5) = 1
+trigger1 = Root,Anim = 53
+value = 10015
+
+[State 10011, 基準に位置を固定]
+type = BindToRoot
+trigger1 = 1
+time = 1
+facing = 0
+pos = ceil(const(size.xscale)*0),ceil(const(size.yscale)*0)
+
+[State 10011, ステート変更、攻撃]
+type = ChangeState
+trigger1 = Stateno != 10030
+trigger1 = Root,MoveType = A
+trigger1 = Root,Statetype = A
+value = 10024
+
+[State 10011, ステート変更、攻撃を食らう]
+type = ChangeState
+trigger1 = Root,MoveType = H
+trigger1 = Root,Stateno != [5070,5071];足払い中無効
+trigger1 = Root,Stateno != [5100,5199];ダウン中無効
+value = 10025
+
+[State 10010, ステート変更、制御系食らい]
+type = ChangeState
+trigger1 = Root,MoveType = H
+trigger1 = Root,Stateno != [5000,5999]
+value = 10029
+
+[State 10010, ステート変更、投げを食らう]
+type = ChangeState
+trigger1 = Root,MoveType != A
+trigger1 = Root,Stateno = [800,899]
+value = 10025
+
+[State 10010, ステート変更、ダウン攻撃食らい]
+type = ChangeState
+trigger1 = Root,Stateno = 5080
+value = 10025
+
+[State 10011, ステート変更、魂珠・兎衝波を出すため消滅]
+type = ChangeState
+trigger1 = (Root,stateno = 3000) && (Root,Time = 1)
+trigger1 = Root,MoveType != H
+value = 10060
+
+[State 10011, ステート変更、纏棘弾を出すため消滅]
+type = ChangeState
+trigger1 = (Root,stateno = 760) && (Root,Time = 1)
+value = 10042
+
+[State 10011, ステート変更、２段ジャンプ踏み台のため消滅]
+type = ChangeState
+trigger1 = (Root,stateno = 45) && (Root,Time = 1)
+trigger1 = Root,MoveType != H
+value = 10041;(原作では10042)
+
+[State 10011, ステート変更]
+type = ChangeState
+trigger1 = Root,Stateno = 0
+trigger2 = Root,Stateno = 52
+value = 10010
+
+[State 10011, ステート変更、ゲージ終了]
+type = ChangeState
+trigger1 = Root,var(4) = 0
+trigger2 = Root,var(4) <= -1
+value = 10040
+
+;---------------------------------------------------------------------------
+; 2段ジャンプ
+
+[Statedef 10018]
+type     = A
+movetype = I
+physics  = N
+anim     = 10018
+velset   = 0,0
+sprpriority = 3
+
+[State 10018, 影無し]
+type = Assertspecial
+trigger1 = 1
+flag = Noshadow
+ignorehitpause = 1
+
+[State 10018, 基準に位置を固定]
+type = BindToRoot
+trigger1 = Time = 0
+time = 1
+facing = 0
+pos = ceil(const(size.xscale)*25),ceil(const(size.yscale)*120)
+
+[State 10018, ステート変更]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 10030
+
+[State 10018, ステート変更、ゲージ終了]
+type = ChangeState
+trigger1 = Root,var(4) = 0
+trigger2 = Root,var(4) <= -1
+value = 10040
+
+;---------------------------------------------------------------------------
+; その場に固定(バックステップ)
+
+[Statedef 10020]
+type     = A
+movetype = I
+physics  = N
+anim     = 10020
+velset   = 0,0
+sprpriority = -1
+
+[State 10020, 影無し]
+type = Assertspecial
+trigger1 = 1
+flag = Noshadow
+ignorehitpause = 1
+
+[State 10020, 基準に位置を固定]
+type = BindToRoot
+trigger1 = 1
+time = 1
+facing = 0
+pos = ceil(const(size.xscale)*0),ceil(const(size.yscale)*0)
+
+[State 10020, ステート変更、魂珠・兎衝波を出すため消滅]
+type = ChangeState
+trigger1 = (Root,stateno = 3000) && (Root,Time = 1)
+trigger1 = Root,MoveType != H
+value = 10060
+
+[State 10020, ステート変更、喰らい抜け]
+type = ChangeState
+trigger1 = (Root,stateno = 5045) && (Root,Time = 1)
+value = 10045
+
+[State 10020, ステート変更、纏棘弾を出すため消滅]
+type = ChangeState
+trigger1 = (Root,stateno = 760) && (Root,Time = 1)
+trigger1 = Root,MoveType != H
+value = 10042
+
+[State 10020, ステート変更、２段ジャンプ踏み台のため消滅]
+type = ChangeState
+trigger1 = (Root,stateno = 45) && (Root,Time = 1)
+value = 10042
+
+[State 10020, ステート変更]
+type = ChangeState
+trigger1 = Root,Stateno = 0
+trigger2 = AnimTime = 0
+value = 10010
+
+[State 10020, ステート変更、ゲージ終了]
+type = ChangeState
+trigger1 = Root,var(4) = 0
+trigger2 = Root,var(4) <= -1
+value = 10040
+
+;---------------------------------------------------------------------------
+; その場に固定(空中、振り返り)
+
+[Statedef 10021]
+type     = A
+movetype = I
+physics  = N
+anim     = 10021
+velset   = 0,0
+sprpriority = -1
+
+[State 10021, 影無し]
+type = Assertspecial
+trigger1 = 1
+flag = Noshadow
+ignorehitpause = 1
+
+[State 10021, 停止] 
+type = PosFreeze
+trigger1 = Root,MoveContact = 1
+
+[State 10021, ステート変更、魂珠・兎衝波を出すため消滅]
+type = ChangeState
+trigger1 = (Root,stateno = 3000) && (Root,Time = 1)
+trigger1 = Root,MoveType != H
+value = 10060
+
+[State 10021, ステート変更、纏棘弾を出すため消滅]
+type = ChangeState
+trigger1 = (Root,stateno = 760) && (Root,Time = 1)
+value = 10041
+
+[State 10021, ステート変更、２段ジャンプ踏み台のため消滅]
+type = ChangeState
+trigger1 = (Root,stateno = 45) && (Root,Time = 1)
+trigger1 = Root,MoveType != H
+value = 10041
+
+[State 10021, ステート変更]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 10030
+
+[State 10021, ステート変更、ゲージ終了]
+type = ChangeState
+trigger1 = Root,var(4) = 0
+trigger2 = Root,var(4) <= -1
+value = 10040
+
+;---------------------------------------------------------------------------
+; その場に固定(ダッシュ)
+
+[Statedef 10022]
+type     = A
+movetype = I
+physics  = N
+anim     = 10022
+velset   = 0,0
+sprpriority = -1
+
+[State 10022, 影無し]
+type = Assertspecial
+trigger1 = 1
+flag = Noshadow
+ignorehitpause = 1
+
+[State 10022, ステート変更、魂珠・兎衝波を出すため消滅]
+type = ChangeState
+trigger1 = (Root,stateno = 3000) && (Root,Time = 1)
+trigger1 = Root,MoveType != H
+value = 10060
+
+[State 10022, ステート変更、喰らい抜け]
+type = ChangeState
+trigger1 = (Root,stateno = 5045) && (Root,Time = 1)
+value = 10045
+
+[State 10022, ステート変更、纏棘弾を出すため消滅]
+type = ChangeState
+trigger1 = (Root,stateno = 760) && (Root,Time = 1)
+trigger1 = Root,MoveType != H
+value = 10041
+
+[State 10022, ステート変更、２段ジャンプ踏み台のため消滅]
+type = ChangeState
+trigger1 = (Root,stateno = 45) && (Root,Time = 1)
+value = 10041
+
+[State 10022, ステート変更]
+type = ChangeState
+trigger1 = Time = 15
+trigger2 = Root,Stateno = 211
+trigger3 = Root,Stateno = 241
+value = 10030
+
+[State 10022, ステート変更、ゲージ終了]
+type = ChangeState
+trigger1 = Root,var(4) = 0
+trigger2 = Root,var(4) <= -1
+value = 10040
+
+;---------------------------------------------------------------------------
+; その場に固定(攻撃)
+
+[Statedef 10023]
+type     = A
+movetype = I
+physics  = N
+velset   = 0,0
+sprpriority = -1
+
+[State 10023, 影無し]
+type = Assertspecial
+trigger1 = 1
+flag = Noshadow
+ignorehitpause = 1
+
+[State 10023, 基準に位置を固定]
+type = BindToRoot
+trigger1 = AnimelemTime(1) = 0
+time = 1
+facing = 1
+pos = ceil(const(size.xscale)*0),ceil(const(size.yscale)*0)
+
+[State 10023, アニメ変更] 
+type = ChangeAnim
+trigger1 = Time = 0
+value = ifelse(random<500,10023,10024)
+
+[State 10023, ステート変更、魂珠・兎衝波を出すため消滅]
+type = ChangeState
+trigger1 = (Root,stateno = 3000) && (Root,Time = 1)
+trigger1 = Root,MoveType != H
+value = 10060
+
+[State 10023, ステート変更、喰らい抜け]
+type = ChangeState
+trigger1 = (Root,stateno = 5045) && (Root,Time = 1)
+value = 10045
+
+[State 10023, ステート変更、纏棘弾を出すため消滅]
+type = ChangeState
+trigger1 = (Root,stateno = 760) && (Root,Time = 1)
+trigger1 = Root,MoveType != H
+value = 10042
+
+[State 10023, ステート変更、２段ジャンプ踏み台のため消滅]
+type = ChangeState
+trigger1 = (Root,stateno = 45) && (Root,Time = 1)
+value = 10042
+
+[State 10023, ステート変更]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 10030
+
+[State 10023, ステート変更、ゲージ終了]
+type = ChangeState
+trigger1 = Root,var(4) = 0
+trigger2 = Root,var(4) <= -1
+value = 10040
+
+;---------------------------------------------------------------------------
+; その場に固定(空中攻撃)
+
+[Statedef 10024]
+type     = A
+movetype = I
+physics  = N
+velset   = 0,0
+sprpriority = -1
+
+[State 10024, 影無し]
+type = Assertspecial
+trigger1 = 1
+flag = Noshadow
+ignorehitpause = 1
+
+[State 10024, 基準に位置を固定]
+type = BindToRoot
+trigger1 = 1
+trigger1 = Root,Stateno = [600,699]
+time = 1
+facing = 0
+pos = ceil(const(size.xscale)*0),ceil(const(size.yscale)*0)
+
+[State 10024, アニメ変更] 
+type = ChangeAnim
+trigger1 = Time = 0
+value = ifelse(random<500,10023,10024)
+
+[State 10024, ステート変更、魂珠・兎衝波を出すため消滅]
+type = ChangeState
+trigger1 = (Root,stateno = 3000) && (Root,Time = 1)
+trigger1 = Root,MoveType != H
+value = 10060
+
+[State 10024, ステート変更、喰らい抜け]
+type = ChangeState
+trigger1 = (Root,stateno = 5045) && (Root,Time = 1)
+value = 10045
+
+[State 10024, ステート変更、纏棘弾を出すため消滅]
+type = ChangeState
+trigger1 = (Root,stateno = 760) && (Root,Time = 1)
+trigger1 = Root,MoveType != H
+value = 10041
+
+[State 10024, ステート変更、２段ジャンプ踏み台のため消滅]
+type = ChangeState
+trigger1 = (Root,stateno = 45) && (Root,Time = 1)
+value = 10041
+
+[State 10024, ステート変更]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 10030
+
+[State 10024, ステート変更、ゲージ終了]
+type = ChangeState
+trigger1 = Root,var(4) = 0
+trigger2 = Root,var(4) <= -1
+value = 10040
+
+;---------------------------------------------------------------------------
+; その場に固定(ガード、ダメージ)
+
+[Statedef 10025]
+type     = A
+movetype = I
+physics  = N
+anim     = 10025
+velset   = 0,0
+sprpriority = -1
+
+[State 10025, 影無し]
+type = Assertspecial
+trigger1 = 1
+flag = Noshadow
+ignorehitpause = 1
+
+[State 10025, ジャンプ中に攻撃を喰らった時は位置を固定]
+type = BindToRoot
+trigger1 = 1
+trigger1 = PrevStateNo = 10011
+trigger1 = Root,statetype = A
+time = 1
+facing = 0
+pos = ceil(const(size.xscale)*0),ceil(const(size.yscale)*0)
+
+[State 10025, ターン] 
+type = Turn
+trigger1 = Time = 0
+trigger1 = facing != Root,facing
+
+[State 10025, ステート変更、魂珠・兎衝波を出すため消滅]
+type = ChangeState
+trigger1 = (Root,stateno = 3000) && (Root,Time = 1)
+trigger1 = Root,MoveType != H
+value = 10060
+
+[State 10025, ステート変更、喰らい抜け]
+type = ChangeState
+trigger1 = (Root,stateno = 5045) && (Root,Time = 1)
+value = 10045
+
+[State 10025, ステート変更、纏棘弾を出すため消滅]
+type = ChangeState
+trigger1 = (Root,stateno = 760) && (Root,Time = 1)
+trigger1 = Root,MoveType != H
+value = 10042
+
+[State 10025, ステート変更、２段ジャンプ踏み台のため消滅]
+type = ChangeState
+trigger1 = (Root,stateno = 45) && (Root,Time = 1)
+value = 10042
+
+[State 10025, ステート変更、制御系食らい]
+type = ChangeState
+trigger1 = Root,MoveType = H
+trigger1 = Root,Stateno != [5000,5999]
+value = 10029
+
+[State 10025, ステート変更]
+type = ChangeState
+trigger1 = AnimTime = 0
+trigger1 = Root,stateno != [800,899];投げられ中は戻らないように
+value = 10030
+
+[State 10025, ステート変更、ゲージ終了]
+type = ChangeState
+trigger1 = Root,var(4) = 0
+trigger2 = Root,var(4) <= -1
+value = 10040
+
+;---------------------------------------------------------------------------
+; その場に固定(挑発)
+
+[Statedef 10026]
+type     = A
+movetype = I
+physics  = N
+anim     = 10026
+velset   = 0,0
+sprpriority = -1
+
+[State 10026, 影無し]
+type = Assertspecial
+trigger1 = 1
+flag = Noshadow
+ignorehitpause = 1
+
+[State 10026, 基準に位置を固定]
+type = BindToRoot
+trigger1 = AnimelemTime(1) = 0
+time = 1
+facing = 0
+pos = ceil(const(size.xscale)*50),ceil(const(size.yscale)*0)
+
+[State 10026, ステート変更、魂珠・兎衝波を出すため消滅]
+type = ChangeState
+trigger1 = (Root,stateno = 3000) && (Root,Time = 1)
+trigger1 = Root,MoveType != H
+value = 10060
+
+[State 10026, ステート変更、喰らい抜け]
+type = ChangeState
+trigger1 = (Root,stateno = 5045) && (Root,Time = 1)
+value = 10045
+
+[State 10026, ステート変更、纏棘弾を出すため消滅]
+type = ChangeState
+trigger1 = (Root,stateno = 760) && (Root,Time = 1)
+trigger1 = Root,MoveType != H
+value = 10042
+
+[State 10026, ステート変更、２段ジャンプ踏み台のため消滅]
+type = ChangeState
+trigger1 = (Root,stateno = 45) && (Root,Time = 1)
+value = 10042
+
+[State 10026, ステート変更]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 10030
+
+[State 10026, ステート変更、ゲージ終了]
+type = ChangeState
+trigger1 = Root,var(4) = 0
+trigger2 = Root,var(4) <= -1
+value = 10040
+
+;---------------------------------------------------------------------------
+; その場に固定(ブリス)
+
+[Statedef 10027]
+type     = A
+movetype = I
+physics  = N
+anim     = 10027
+velset   = -0.1,0
+sprpriority = -2
+
+[State 10027, 影無し]
+type = Assertspecial
+trigger1 = 1
+flag = Noshadow
+ignorehitpause = 1
+
+[State 10027, 軸位置移動]
+type = PosAdd
+trigger1 = AnimElem = 1
+x = -20
+
+[State 10027, ステート変更]
+type = ChangeState
+trigger1 = Root,stateno = 5100 || Root,stateno = 5110 || Root,stateno = 0
+;trigger2 = Time = 250
+value = 10030
+
+[State 10027, ステート変更、ゲージ終了]
+type = ChangeState
+trigger1 = Root,var(4) = 0
+trigger2 = Root,var(4) <= -1
+value = 10040
+
+;---------------------------------------------------------------------------
+; ビーストが打撃攻撃を受ける
+
+[Statedef 10028]
+type     = A
+movetype = I
+physics  = N
+anim     = 10028
+velset   = 0,0
+sprpriority = -1
+
+[State 10028, 影無し]
+type = Assertspecial
+trigger1 = 1
+flag = Noshadow
+ignorehitpause = 1
+
+[State 10028, ステート変更、魂珠・兎衝波を出すため消滅]
+type = ChangeState
+trigger1 = (Root,stateno = 3000) && (Root,Time = 1)
+trigger1 = Root,MoveType != H
+value = 10060
+
+[State 10028, ステート変更、喰らい抜け]
+type = ChangeState
+trigger1 = (Root,stateno = 5045) && (Root,Time = 1)
+value = 10045
+
+[State 10028, ステート変更、纏棘弾を出すため消滅]
+type = ChangeState
+trigger1 = (Root,stateno = 760) && (Root,Time = 1)
+trigger1 = Root,MoveType != H
+value = 10041
+
+[State 10028, ステート変更、２段ジャンプ踏み台のため消滅]
+type = ChangeState
+trigger1 = (Root,stateno = 45) && (Root,Time = 1)
+trigger1 = Root,MoveType != H
+value = 10041
+
+[State 10028, ステート変更]
+type = ChangeState
+trigger1 = AnimTime = 0 || Time = 120
+value = 10030
+
+[State 10028, ステート変更、ゲージ終了]
+type = ChangeState
+trigger1 = Root,var(4) = 0
+trigger2 = Root,var(4) <= -1
+value = 10040
+
+;---------------------------------------------------------------------------
+; その場に固定(制御系食らい)
+
+[Statedef 10029]
+type     = A
+movetype = I
+physics  = N
+anim     = 10025
+velset   = 0,0
+sprpriority = -1
+
+[State 10029, 影無し]
+type = Assertspecial
+trigger1 = 1
+flag = Noshadow
+ignorehitpause = 1
+
+[State 10029, ステート変更、ブリスを食らう]
+type = ChangeState
+trigger1 = Root,Anim = 9020
+value = 10027
+
+[State 10029, ステート変更]
+type = ChangeState
+trigger1 = Root,stateno = 5100
+trigger2 = Root,MoveType != H
+trigger3 = Root,stateno = 5150
+value = 10030
+
+[State 10029, ステート変更、ゲージ終了]
+type = ChangeState
+trigger1 = Root,var(4) = 0
+trigger2 = Root,var(4) <= -1
+value = 10040
+
+;---------------------------------------------------------------------------
+; 烏鈴の元へ
+
+[Statedef 10030]
+type     = A
+movetype = I
+physics  = N
+;anim     = 10030
+velset   = 0,0
+sprpriority = -1
+
+[State 10030, アニメ変更]
+type = ChangeAnim
+trigger1 = Vel Y >= 0
+value = 10030
+
+[State 10030, アニメ変更]
+type = ChangeAnim
+trigger1 = Vel Y <= -1
+value = 10031
+
+[State 10030, 影無し]
+type = Assertspecial
+trigger1 = 1
+flag = Noshadow
+ignorehitpause = 1
+
+[State 10030, ターン] 
+type = Turn
+trigger1 = Time = 0
+trigger1 = RootDist x <= -1
+
+[State 10030, 停止] 
+type = PosFreeze
+trigger1 = Root,MoveContact = 1
+
+[State 10030, 通り抜け]
+type = PlayerPush
+trigger1 = 1
+value = 0
+
+[State 10030, VarSet]
+type = VarSet
+trigger1 = 1
+fvar(1) = ifelse((RootDist x=[0,1]),0.001,ifelse((RootDist x=[-1,0]),-0.001,RootDist x))
+
+[State 10030, VarSet]
+type = VarSet
+trigger1 = 1
+fvar(2) = ifelse((RootDist y=[0,1]),0.001,ifelse((RootDist y=[-1,0]),-000.1,RootDist y))
+
+[State 10030, 軸移動]
+type = Velset
+trigger1 = 1
+x = 5.0*cos(atan(fvar(1)/fvar(2))-(0.5*pi*ifelse(fvar(2) <0,-1,1)))
+y =-7.5*sin(atan(fvar(1)/fvar(2))-(0.5*pi*ifelse(fvar(2) <0,-1,1)))
+
+[State 10030, 無敵]
+type = NotHitBy
+trigger1 = 1
+value = , AT, SA, HA
+
+[State 10030, ダメージ受けたら]
+type = HitOverride
+trigger1 = Time = 0
+attr = SCA, NT, ST, HT, NA, SA, HA, NP, SP, HP
+stateno = 10028        
+time = -1
+
+[State 10030, ステート変更、魂珠・兎衝波を出すため消滅]
+type = ChangeState
+trigger1 = (Root,stateno = 3000) && (Root,Time = 1)
+trigger1 = Root,MoveType != H
+value = 10060
+
+[State 10030, ステート変更、喰らい抜け]
+type = ChangeState
+trigger1 = (Root,stateno = 5045) && (Root,Time = 1)
+value = 10045
+
+[State 10030, ステート変更、纏棘弾を出すため消滅]
+type = ChangeState
+trigger1 = (Root,stateno = 760) && (Root,Time = 1)
+trigger1 = Root,MoveType != H
+value = 10041
+
+[State 10030, ステート変更、２段ジャンプ踏み台のため消滅]
+type = ChangeState
+trigger1 = (Root,stateno = 45) && (Root,Time = 1)
+trigger1 = Root,MoveType != H
+value = 10041
+
+[State 10030, ステート変更];雲雀(ひばり)中
+type = ChangeState
+trigger1 = RootDist x = [-25,25]
+trigger1 = RootDist y = [-35,35]
+trigger1 = Root,stateno = [1050,1051]
+value = 10024
+
+[State 10030, ステート変更]
+type = ChangeState
+trigger1 = Ceil(RootDist X) <= -1
+trigger1 = RootDist x = [-25,25]
+trigger1 = RootDist y = [-25,25]
+trigger1 = Root,statetype = A
+value = 10021
+
+[State 10030, ステート変更];本体壁に当たる
+type = ChangeState
+trigger1 = RootDist x = [-25,25]
+trigger1 = RootDist y = [-15,15]
+trigger1 = Root,stateno = [823,824]
+value = 10021
+
+[State 10030, ステート変更]
+type = ChangeState
+trigger1 = RootDist x = [-25,25]
+trigger1 = RootDist y = [-35,35]
+trigger1 = Root,statetype != A
+value = 10010
+
+[State 10030, ステート変更];空中で攻撃を食らう
+type = ChangeState
+trigger1 = Root,movetype = H
+trigger1 = Root,statetype = A
+trigger1 = Root,stateno != [154,155]
+trigger1 = Root,stateno != [5030,5070]
+trigger1 = Root,stateno != [5200,5210]
+value = 10010
+
+[State 10030, ステート変更];空中でガード
+type = ChangeState
+trigger1 = RootDist x = [-25,25]
+trigger1 = RootDist y = [-25,25]
+trigger1 = Root,stateno = [154,155]
+trigger1 = Root,statetype = A
+value = 10029
+[State 10030, ステート変更、ゲージ終了]
+type = ChangeState
+trigger1 = Root,var(4) = 0
+trigger2 = Root,var(4) <= -1
+value = 10040
+
+;---------------------------------------------------------------------------
+; 消える(ゲージ終了)
+
+[Statedef 10040]
+type     = A
+movetype = I
+physics  = N
+anim     = 10040
+velset   = 0,0
+sprpriority = -1
+
+[State 10040, 影無し]
+type = Assertspecial
+trigger1 = 1
+flag = Noshadow
+ignorehitpause = 1
+
+[State 10040, ヘルパーを消す]
+type = DestroySelf
+trigger1 = AnimTime = 0
+
+;---------------------------------------------------------------------------
+; 消える(煙)
+
+[Statedef 10041]
+type     = A
+movetype = I
+physics  = N
+anim     = 10041
+velset   = 0,0
+sprpriority = -1
+
+[State 10041, 影無し]
+type = Assertspecial
+trigger1 = 1
+flag = Noshadow
+ignorehitpause = 1
+
+[State 10041, ヘルパーを消す]
+type = DestroySelf
+trigger1 = AnimTime = 0
+
+;---------------------------------------------------------------------------
+; 消える(即消え)
+
+[Statedef 10042]
+type     = A
+movetype = I
+physics  = N
+anim     = 10042
+velset   = 0,0
+sprpriority = -1
+
+[State 10042, ヘルパーを消す]
+type = DestroySelf
+trigger1 = AnimTime = 0
+
+;---------------------------------------------------------------------------
+; 喰らい抜け時
+
+[Statedef 10045]
+type     = A
+movetype = I
+physics  = N
+anim     = 10045
+velset   = 0,0
+sprpriority = 5
+
+[State 10045, 影無し]
+type = Assertspecial
+trigger1 = 1
+flag = Noshadow
+ignorehitpause = 1
+
+[State 10045, 基準に位置を固定]
+type = BindToRoot
+trigger1 = 1
+time = 1
+facing = 0
+pos = ceil(const(size.xscale)*0),ceil(const(size.yscale)*0)
+
+[State 10045, スプライト表示優先度を変更]
+type = SprPriority
+trigger1 = AnimElemTime(2) = 0
+value = -1
+
+[State 10045, ステート変更]
+type = ChangeState
+trigger1 = Root,stateno != 5045
+value = 10030
+
+[State 10045, ステート変更、ゲージ終了]
+type = ChangeState
+trigger1 = Root,var(4) = 0
+trigger2 = Root,var(4) <= -1
+value = 10040
+
+;---------------------------------------------------------------------------
+; 纏棘弾(てんしだん)戻り用
+
+[Statedef 10050]
+type     = A
+movetype = I
+physics  = N
+anim     = 10050
+velset   = 0,0
+sprpriority = 5
+
+[State 10050, 影無し]
+type = Assertspecial
+trigger1 = 1
+flag = Noshadow
+ignorehitpause = 1
+
+[State 10050, 基準に位置を固定]
+type = BindToRoot
+trigger1 = 1
+time = 1
+facing = 0
+pos = ceil(const(size.xscale)*0),ceil(const(size.yscale)*0)
+
+[State 10050, ステート変更]
+type = ChangeState
+trigger1 = NumHelper(10051) = 0
+value = 10010
+
+;---------------------------------------------------------------------------
+; 纏棘弾(てんしだん)ヘルパー飛び道具
+
+[Statedef 10051]
+type     = A
+movetype = A
+physics  = N
+ctrl     = 0
+anim     = 10051
+velset   = 5,0
+sprpriority = 5
+
+[State 10051, 影無し]
+type = Assertspecial
+trigger1 = 1
+flag = Noshadow
+ignorehitpause = 1
+
+[State 10051, 殴られたり投げられたりしないように設定]
+type = NotHitBy
+trigger1 = 1
+value = , NA, SA, HA, NT, ST, HT
+
+[State 10051, やられ状態上書き];相殺する場合、消滅ステートに移行
+type = HitOverRide
+trigger1 = 1
+time = -1
+attr = SCA, AA, AP, AT
+slot = 0
+stateno = 10052
+ignorehitpause = 1
+
+[State 10051];カウンターヒット表示
+type = Explod
+trigger1 = movehit && Parent,var(10)
+trigger1 = p2movetype = H || numtarget
+anim = 7060
+ID = 7060
+pos = ifelse(TeamSide = 1,8,250),50
+postype = left
+sprpriority = 6
+facing = 1
+bindtime = -1
+ownpal = 1
+removetime = -2
+supermove = 1
+
+[State 10051, ヒット定義]
+type = Hitdef
+trigger1 = Time = 0
+attr = A, SP
+animtype  = Hard
+damage    = ifelse(Root,var(3),79,158),14
+getpower  = 0
+givepower = 63,42
+priority  = 5
+hitflag   = MA
+guardflag = MA
+pausetime = 0,12
+sparkno = s7003
+guard.sparkno = s7011
+sparkxy = -5,0
+hitsound = s2,7
+guardsound = s3,0
+ground.type = High
+ground.slidetime = 15
+ground.hittime  = 22
+ground.velocity = -4.5,-7
+guard.velocity = -5
+guard.cornerpush.veloff = -13.5
+airguard.velocity = -3.5,-5
+air.velocity = -4.5,-5
+fall = 1
+fall.recover = 0
+yaccel = .55
+fall.envshake.time = 16
+fall.envshake.freq = 40
+fall.envshake.ampl = -4
+fall.envshake.phase = 0
+
+[State 10051, ヘルパーのステート変更];（ヒット、ガード）
+type = ChangeState
+trigger1 = MoveContact = 1
+value = 10052
+ignorehitpause = 1
+
+[State 10051, ヘルパーを消す]
+type = DestroySelf
+trigger1 = FrontEdgeDist <= -90
+trigger2 = Time <= 15
+trigger2 = Root,MoveType = H
+
+;-------------------------
+; ヒット、ガード、相殺
+
+[Statedef 10052]
+type     = A
+movetype = I
+physics  = N
+ctrl     = 0
+anim     = 10052
+velset   = 0,0
+sprpriority = 5
+
+[State 10052, 影を消す]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+[State 10052, ヘルパーを消す]
+type = DestroySelf
+trigger1 = AnimTime = 0
+
+;-------------------------
+;AIガード用ヘルパー
+
+[Statedef 10055]
+type     = S
+movetype = A
+physics  = N
+anim = 10055
+velset = 5,0
+ctrl = 0
+
+[State 10055, ヘルパーを消す]
+type = DestroySelf
+trigger1 = parent,NumHelper(10051) = 0
+
+;---------------------------------------------------------------------------
+; 魂珠・兎衝波時
+
+[Statedef 10060]
+type     = A
+movetype = I
+physics  = N
+anim     = 10059;ヘルパー側は表示しない
+velset   = 0,0
+sprpriority = 5
+
+[State 10060, 影無し]
+type = Assertspecial
+trigger1 = 1
+flag = Noshadow
+ignorehitpause = 1
+
+[State 10060, ステート変更]
+type = ChangeState
+trigger1 = (Root,stateno = 0) && (Root,Time = 1)
+trigger2 = Root,MoveType = H
+value = 10030
+
+;---------------------------
+; 回転時の飛び道具打ち消し用（Rabbit）
+
+[Statedef 11060]
+type     = A
+movetype = I
+physics  = N
+anim     = 11060
+velset   = 0,0
+sprpriority = -1
+
+[State 11060, 基準に位置を固定]
+type = BindToRoot
+trigger1 = 1
+facing = 0
+pos = ceil(const(size.xscale)*0),ceil(const(size.yscale)*0)
+
+[State 11060, 通り抜け]
+type = PlayerPush
+trigger1 = 1
+value = 0
+
+[state 11060, 無敵]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+
+[STate 11060, 受ける攻撃]
+type = HitBy
+trigger1 = 1
+value = SCA, NP, SP
+
+[State 11060, やられ状態上書き]
+type = HitOverRide
+trigger1 = 1
+attr = SCA, NP, SP
+stateno = 11060
+ignorehitpause = 1
+
+[State 11060, ヘルパーを消す]
+type = DestroySelf
+trigger1 = Root,movetype = H
+trigger2 = Root,stateno = 3000
+trigger2 = Root,animelem = 73
+trigger3 = Root,stateno = 3001
+trigger3 = Root,animelem = 59
+trigger4 = Animtime = 0
+
+;---------------------------
+;飛び道具かき消し用ヘルパー（Rabbit）
+
+[Statedef 10069]
+type     = A
+movetype = I
+physics  = N
+ctrl     = 0
+velset   = 12,0
+anim     = 10069
+sprpriority = -1
+
+[State 10069, 打撃と投げ、HPに無敵]
+type = NotHitby
+trigger1 = 1
+value = ,AA,AT,HP
+
+[State 10069, やられ状態上書き]
+type = HitOverride
+trigger1 = 1
+attr = SCA,NP,SP
+slot = 1
+stateno = 10069
+
+[state 10069, ヘルパーを消す]
+type = DestroySelf
+trigger1 = Root,NumProjID(3000) = 0
+trigger2 = Time = 100
+
+
+;---------------------------------------------------------------------------
+;Tiger
+;---------------------------------------------------------------------------
+;飛び道具かき消し用ヘルパー（Tiger）
+
+[Statedef 10105]
+type     = S
+movetype = I
+physics  = N
+ctrl     = 0
+velset   = 0,0
+anim     = 10105
+sprpriority = 5
+
+[State 10105, 基準に位置を固定]
+type = BindToParent
+trigger1 = 1
+time = 1
+facing = 0
+pos = ceil(const(size.xscale)*0),ceil(const(size.yscale)*0)
+
+[State 10105, 打撃と投げ、HPに無敵]
+type = NotHitby
+trigger1 = 1
+value = ,AA,AT,HP
+
+[State 10105, やられ状態上書き]
+type = HitOverride
+trigger1 = 1
+attr = SCA,NP,SP
+slot = 1
+stateno = 10106
+
+[state 10105, ヘルパーを消す]
+type = DestroySelf
+trigger1 = Root,stateno != 3010
+
+;-------------------
+
+[Statedef 10106]
+type     = S
+movetype = I
+physics  = N
+ctrl     = 0
+velset   = 0,0
+anim     = 10105
+sprpriority = 5
+
+[State 10106, 基準に位置を固定]
+type = BindToParent
+trigger1 = 1
+time = 1
+facing = 0
+pos = ceil(const(size.xscale)*0),ceil(const(size.yscale)*0)
+
+[State 10106, 打撃と投げ、HPに無敵]
+type = NotHitby
+trigger1 = 1
+value = ,AA,AT,HP
+
+[State 10106, やられ状態上書き]
+type = HitOverride
+trigger1 = 1
+attr = SCA,NP,SP
+slot = 1
+stateno = 10107
+
+[state 10116, ヘルパーを消す]
+type = DestroySelf
+trigger1 = Root,stateno != 3010
+
+;-------------------
+
+[Statedef 10107]
+type     = S
+movetype = I
+physics  = N
+ctrl     = 0
+velset   = 0,0
+anim     = 10105
+sprpriority = 5
+
+[State 10107, 基準に位置を固定]
+type = BindToParent
+trigger1 = 1
+time = 1
+facing = 0
+pos = ceil(const(size.xscale)*0),ceil(const(size.yscale)*0)
+
+[State 10107, 打撃と投げ、HPに無敵]
+type = NotHitby
+trigger1 = 1
+value = ,AA,AT,HP
+
+[State 10107, やられ状態上書き]
+type = HitOverride
+trigger1 = 1
+attr = SCA,NP,SP
+slot = 1
+stateno = 10105
+
+[state 10107, ヘルパーを消す]
+type = DestroySelf
+trigger1 = Root,stateno != 3010
+
+
+;---------------------------------------------------------------------------
+;Fox
+;---------------------------------------------------------------------------
+;飛び道具かき消し用ヘルパー（Fox）
+
+[Statedef 10115]
+type     = S
+movetype = I
+physics  = N
+ctrl     = 0
+velset   = 0,0
+anim     = 10115
+sprpriority = 5
+
+[State 10115, 基準に位置を固定]
+type = BindToParent
+trigger1 = 1
+time = 1
+facing = 0
+pos = ceil(const(size.xscale)*0),ceil(const(size.yscale)*0)
+
+[State 10115, 打撃と投げ、HPに無敵]
+type = NotHitby
+trigger1 = 1
+value = ,AA,AT,HP
+
+[State 10115, やられ状態上書き]
+type = HitOverride
+trigger1 = 1
+attr = SCA,NP,SP
+slot = 1
+stateno = 10116
+
+[state 10115, ヘルパーを消す]
+type = DestroySelf
+trigger1 = Root,stateno != 3021
+
+;-------------------
+
+[Statedef 10116]
+type     = S
+movetype = I
+physics  = N
+ctrl     = 0
+velset   = 0,0
+anim     = 10115
+sprpriority = 5
+
+[State 10116, 基準に位置を固定]
+type = BindToParent
+trigger1 = 1
+time = 1
+facing = 0
+pos = ceil(const(size.xscale)*0),ceil(const(size.yscale)*0)
+
+[State 10116, 打撃と投げ、HPに無敵]
+type = NotHitby
+trigger1 = 1
+value = ,AA,AT,HP
+
+[State 10116, やられ状態上書き]
+type = HitOverride
+trigger1 = 1
+attr = SCA,NP,SP
+slot = 1
+stateno = 10117
+
+[state 10116, ヘルパーを消す]
+type = DestroySelf
+trigger1 = Root,stateno != 3021
+
+;-------------------
+
+[Statedef 10117]
+type     = S
+movetype = I
+physics  = N
+ctrl     = 0
+velset   = 0,0
+anim     = 10115
+sprpriority = 5
+
+[State 10117, 基準に位置を固定]
+type = BindToParent
+trigger1 = 1
+time = 1
+facing = 0
+pos = ceil(const(size.xscale)*0),ceil(const(size.yscale)*0)
+
+[State 10117, 打撃と投げ、HPに無敵]
+type = NotHitby
+trigger1 = 1
+value = ,AA,AT,HP
+
+[State 10117, やられ状態上書き]
+type = HitOverride
+trigger1 = 1
+attr = SCA,NP,SP
+slot = 1
+stateno = 10105
+
+[state 10117, ヘルパーを消す]
+type = DestroySelf
+trigger1 = Root,stateno != 3021
+
+
+;---------------------------------------------------------------------------
+;Snake
+;---------------------------------------------------------------------------
+;ヘルパー（Snake）
+
+[Statedef 10122]
+type     = A
+movetype = A
+physics  = N
+ctrl     = 0
+velset   = 0,0
+anim     = 10122
+sprpriority = 5
+
+[State 10122, 影を消す]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+[State 10122, 無敵]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+
+[State 10122];BeastForce表示
+type = Explod
+trigger1 = NumExplod(7063) = 0
+trigger1 = Movehit = 1
+anim = 7063
+ID = 7063
+pos = ifelse(TeamSide = 1,8,210),50
+postype = left
+ontop = 1
+facing = 1
+bindtime = -1
+ownpal = 1
+removetime = -2
+supermove = 1
+
+[State 10122, ヒット定義]
+type = HitDef
+trigger1 = Animelem = 4
+trigger2 = Animelem = 5
+trigger3 = Animelem = 6
+trigger4 = Animelem = 7
+trigger5 = Animelem = 8
+trigger6 = Animelem = 9
+trigger7 = Animelem = 10
+trigger8 = Animelem = 11
+trigger9 = Animelem = 12
+attr = S, HP;A
+animtype  = up
+damage    = 14,7
+getpower = 0
+givepower = 63,42
+guardflag = M
+priority = 6
+pausetime = 8,6
+ID = 10122
+sparkno = -1
+guard.sparkno = -1
+hitsound   = s2,4
+guardsound = s3,0
+ground.type = High
+ground.slidetime = 15
+ground.hittime  = 22
+ground.velocity = 0.3,-9
+guard.velocity = -2
+ground.cornerpush.veloff = 0
+airguard.velocity = -2,-5
+air.velocity = 0,-9
+fall = 1
+fall.recover = 0
+yaccel = .55
+sprpriority = 5
+fall.xvelocity = -3.5
+fall.envshake.time = 16
+fall.envshake.freq = 40
+fall.envshake.ampl = -4
+fall.envshake.phase = 0
+fall.damage = 136
+
+[State 10122, スパーク表示（ヒット）]
+type = Explod
+trigger1 = NumExplod(7003) = 0
+trigger1 = Movehit = 1
+anim = 7003
+ID = 7003
+bindtime = 1
+pos = 10, -75
+postype = P2
+facing = -1
+sprpriority = 7
+ownpal = 1
+ignorehitpause = 1
+persistent = 1
+
+[State 10122, スパーク表示（ガード）]
+type = Explod
+trigger1 = NumExplod(7011) = 0
+trigger1 = MoveGuarded = 1
+anim = 7011
+ID = 7011
+bindtime = 1
+pos = 10, -75
+postype = P2
+facing = -1
+sprpriority = 7
+ownpal = 1
+ignorehitpause = 1
+persistent = 1
+
+[State 10122, ヘルパーを消す]
+type = DestroySelf
+trigger1 = AnimTime = 0 
+trigger2 = Root,stateno != 3030
+
+;-----------------
+; 飛び道具打ち消し用（Snake）
+
+[Statedef 10129]
+type     = A
+movetype = I
+physics  = N
+anim     = 10129
+velset   = 0,0
+sprpriority = -1
+
+;[State 10129, 基準に位置を固定]
+;type = BindToRoot
+;trigger1 = 1
+;facing = 0
+;pos = 0,0
+
+[state 10129, 無敵]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+time = -1
+
+[STate 10129, 受ける攻撃]
+type = HitBy
+trigger1 = 1
+value = SCA, NP, SP
+time = -1
+
+[State 10129, やられ状態上書き]
+type = HitOverRide
+trigger1 = 1
+attr = SCA, NP, SP
+stateno = 10129
+ignorehitpause = 1
+
+[State 10129, ヘルパーを消す]
+type = DestroySelf
+trigger1 = Root,movetype = H
+trigger2 = NumHelper(10122) = 1
+trigger2 = helper(10122),AnimElemTime(13) = 0
+trigger3 = Animtime = 0
+
+
+;---------------------------------------------------------------------------
+;Ox
+;---------------------------------------------------------------------------
+;飛び道具かき消し用ヘルパー（Ox）
+
+[Statedef 10135]
+type     = S
+movetype = I
+physics  = N
+ctrl     = 0
+velset   = 0,0
+anim     = 10135
+sprpriority = 5
+
+[State 10135, 基準に位置を固定]
+type = BindToParent
+trigger1 = 1
+time = 1
+facing = 0
+pos = ceil(const(size.xscale)*0),ceil(const(size.yscale)*0)
+
+[State 10135, 打撃と投げ、HPに無敵]
+type = NotHitby
+trigger1 = 1
+value = ,AA,AT,HP
+
+[State 10136, やられ状態上書き]
+type = HitOverride
+trigger1 = 1
+attr = SCA,NP,SP
+slot = 1
+stateno = 10136
+
+[state 10135, ヘルパーを消す]
+type = DestroySelf
+trigger1 = Root,stateno = 3040 && Root,AnimElemTime(18) >= 0
+trigger2 = Root,stateno != 3040
+
+;-------------------
+
+[Statedef 10136]
+type     = S
+movetype = I
+physics  = N
+ctrl     = 0
+velset   = 0,0
+anim     = 10135
+sprpriority = 5
+
+[State 10136, 基準に位置を固定]
+type = BindToParent
+trigger1 = 1
+time = 1
+facing = 0
+pos = ceil(const(size.xscale)*0),ceil(const(size.yscale)*0)
+
+[State 10136, 打撃と投げ、HPに無敵]
+type = NotHitby
+trigger1 = 1
+value = ,AA,AT,HP
+
+[State 10136, やられ状態上書き]
+type = HitOverride
+trigger1 = 1
+attr = SCA,NP,SP
+slot = 1
+stateno = 10137
+
+[state 10136, ヘルパーを消す]
+type = DestroySelf
+trigger1 = Root,stateno = 3040 && Root,AnimElemTime(18) >= 0
+trigger2 = Root,stateno != 3040
+
+;-------------------
+
+[Statedef 10137]
+type     = S
+movetype = I
+physics  = N
+ctrl     = 0
+velset   = 0,0
+anim     = 10135
+sprpriority = 5
+
+[State 10137, 基準に位置を固定]
+type = BindToParent
+trigger1 = 1
+time = 1
+facing = 0
+pos = ceil(const(size.xscale)*0),ceil(const(size.yscale)*0)
+
+[State 10137, 打撃と投げ、HPに無敵]
+type = NotHitby
+trigger1 = 1
+value = ,AA,AT,HP
+
+[State 10137, やられ状態上書き]
+type = HitOverride
+trigger1 = 1
+attr = SCA,NP,SP
+slot = 1
+stateno = 10135
+
+[state 10137, ヘルパーを消す]
+type = DestroySelf
+trigger1 = Root,stateno = 3040 && Root,AnimElemTime(18) >= 0
+trigger2 = Root,stateno != 3040
+
+
+;---------------------------------------------------------------------------
+;Wolf
+;---------------------------------------------------------------------------
+;ヘルパー（Wolf）
+
+[Statedef 10141]
+type     = S
+movetype = A
+physics  = S
+ctrl     = 0
+velset   = 0,0
+anim     = 10141
+sprpriority = 5
+
+[State 10141, 影を消す]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+[State 10141, 無敵]
+type = NotHitBy
+trigger1 = 1
+value = SAC
+
+[State 10141, スプライト表示優先度を変更]
+type = SprPriority
+trigger1 = Animelemtime(4) = 0
+value = -1
+
+[State 10141, ヒット定義]
+type = HitDef
+trigger1 = Time = 0
+trigger1 = P2movetype != H
+trigger1 = P2statetype != A
+attr = S, HT
+ID = 10141
+hitflag = M-
+priority = 6, Miss
+sparkno = -1
+hitsound   = s2,4
+p1stateno = 10142
+p2stateno = 3055
+p1facing = 1
+p2facing = 1
+getpower = 0
+givepower = 0
+numhits = 0
+fall.envshake.time = 16
+fall.envshake.freq = 40
+fall.envshake.ampl = -4
+fall.envshake.phase = 0
+
+[state 10141, ヘルパーを消す]
+type = DestroySelf
+trigger1 = AnimTime = 0
+trigger2 = Time < 7
+trigger2 = Root,stateno != 3050
+
+;----------------
+;ヘルパー（Wolf）（ヒット、捕まえて待機）
+
+[Statedef 10142]
+type     = S
+movetype = A
+physics  = S
+ctrl     = 0
+velset   = 0,0
+anim     = 10142
+sprpriority = -1
+
+[state 10142, 1]
+type = BindToTarget
+trigger1 = time <= 1
+pos = 0,0,Foot
+
+[State 10142, 影を消す]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+[State 10142, 無敵]
+type = NotHitBy
+trigger1 = 1
+value = SAC
+
+[State 10142, 相手のステート変更]
+type = TargetState
+trigger1 = (Root,stateno = 3052) && (Root,Animelemtime(10) = 1)
+value = 3056
+
+[state 10142, ステート変更]
+type = ChangeState
+trigger1 = (Root,stateno = 3052) && (Root,Animelemtime(10) = 8)
+trigger2 = Time = 70;(保険)
+value = 10143
+
+;----------------
+;ヘルパー（Wolf）（蹴られて消える）
+
+[Statedef 10143]
+type     = S
+movetype = I
+physics  = S
+ctrl     = 0
+velset   = 0,0
+anim     = 10143
+sprpriority = -1
+
+[State 10143, 影を消す]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+[State 10143, 無敵]
+type = NotHitBy
+trigger1 = 1
+value = SAC
+
+[state 10143, ヘルパーを消す]
+type = DestroySelf
+trigger1 = AnimTime = 0
+
+;---------------------------------------------------------------------------
+;Hawk
+;---------------------------------------------------------------------------
+; 飛び道具打ち消し用
+
+[Statedef 10156]
+type     = A
+movetype = I
+physics  = N
+anim     = 10156
+velset   = 0,0
+sprpriority = -1
+
+[State 10156, 基準に位置を固定]
+type = BindToParent
+trigger1 = 1
+facing = 1
+pos = 0,0
+
+[state 10156, 無敵]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+time = -1
+
+[STate 10156, 受ける攻撃]
+type = HitBy
+trigger1 = 1
+value = SCA, NP, SP
+time = -1
+
+[State 10156, やられ状態上書き]
+type = HitOverRide
+trigger1 = 1
+attr = SCA, NP, SP
+stateno = 10156
+ignorehitpause = 1
+
+[State 10156, ヘルパーを消す]
+type = DestroySelf
+trigger1 = Root,StateNo != 3060
+trigger2 = Vel Y > 0 && Pos Y >= -5
+
+;---------------------------------------------------------------------------
+;Peccary
+;---------------------------------------------------------------------------
+;ヘルパー（Peccary）1
+
+[Statedef 10161]
+type     = A
+movetype = A
+physics  = N
+ctrl     = 0
+velset   = 0,0
+anim     = 10165
+sprpriority = 5
+
+[State 10161, 影を消す]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+[State 10161, 音を鳴らす]
+type = PlaySnd
+trigger1 = Time = 0
+value = 1, 7
+
+[State 10161, 飛び道具を出す1]
+type = Projectile
+trigger1 = Time = 0
+attr = S, HP
+damage = 86,7
+getpower = 0
+givepower = 63,42
+animtype = Hard
+pausetime = 0,12
+pos = ceil(const(size.xscale)*0),ceil(const(size.yscale)*0)
+velocity = 0,0              ;飛び道具の移動初速度
+accel = 0,0                 ;飛び道具の加速度
+projID = 10161              ;飛び道具のＩＤナンバー
+projanim = 10161            ;飛び道具のアニメ
+;projhitanim =              ;飛び道具がヒットした時のアニメ
+;projremanim = 10162        ;飛び道具が消える時のアニメ
+projcancelanim = 10162      ;飛び道具相殺時のアニメ（未記入時はprojremanimと同じ）
+projscale = 1               ;飛び道具の大きさ
+projshadow = 0,0,0          ;飛び道具の影（現在は0,0,0なので影無し）
+projhits = 1                ;飛び道具のヒット数
+projmisstime = 1            ;飛び道具がヒットしない間隔（２ヒット以上のみ作用する）
+projpriority = 7            ;飛び道具の攻撃優先度
+projsprpriority = 3         ;飛び道具の描画優先度。DEF=2
+projremove = 0              ;0にするとヒット後に飛び道具が消えない。
+projremovetime = 28         ;飛び道具が消えるまでの時間
+hitflag = MAFD
+guardflag = M
+sparkno = -1
+guard.sparkno = -1
+sparkxy = 0,0
+hitsound = s2,7
+guardsound = s3,0
+ground.type = High
+ground.slidetime = 15
+ground.hittime  = 22
+ground.velocity = -4.0,-9
+guard.velocity = -7
+ground.cornerpush.veloff = -15
+airguard.velocity = -3.5,-5
+air.velocity = -4.0,-7
+air.hittime = 22
+fall = 1
+fall.recover = 0
+yaccel = .55
+air.juggle = 3
+ownpal = 1
+palfx.time = 35
+palfx.add = -70, 50, 200
+palfx.sinadd = 50,50,50,12
+palfx.color = 1
+palfx.invertall = 1
+fall.envshake.time = 16
+fall.envshake.freq = 40
+fall.envshake.ampl = -4
+fall.envshake.phase = 0
+
+[State 10161, ヘルパーを出す]
+type = Helper
+trigger1 = Time = 28
+helpertype = normal
+name = "Peccary"
+ID = 10161
+pos = ceil(const(size.xscale)*60),ceil(const(size.yscale)*0)
+postype = p1
+facing = 1
+stateno = 10162
+keyctrl = 0
+ownpal = 1
+supermovetime = 0
+pausemovetime = 0
+
+[State 10161, ヘルパーを消す]
+type = DestroySelf
+trigger1 = AnimTime = 0
+
+;--------------
+;ヘルパー（Peccary）2
+
+[Statedef 10162]
+type     = A
+movetype = A
+physics  = N
+ctrl     = 0
+velset   = 0,0
+anim     = 10165
+sprpriority = 5
+
+[State 10162, 影を消す]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+[State 10162, 音を鳴らす]
+type = PlaySnd
+trigger1 = Time = 0
+value = 1, 7
+
+[State 10162, 飛び道具を出す2]
+type = Projectile
+trigger1 = Time = 0
+attr = S, HP
+damage = 86,7
+getpower = 0
+givepower = 63,42
+animtype = Hard
+pausetime = 0,12
+pos = ceil(const(size.xscale)*0),ceil(const(size.yscale)*0)
+velocity = 0,0              ;飛び道具の移動初速度
+accel = 0,0                 ;飛び道具の加速度
+projID = 10161              ;飛び道具のＩＤナンバー
+projanim = 10161            ;飛び道具のアニメ
+;projhitanim =              ;飛び道具がヒットした時のアニメ
+;projremanim = 10162        ;飛び道具が消える時のアニメ
+projcancelanim = 10162      ;飛び道具相殺時のアニメ（未記入時はprojremanimと同じ）
+projscale = 1               ;飛び道具の大きさ
+projshadow = 0,0,0          ;飛び道具の影（現在は0,0,0なので影無し）
+projhits = 1                ;飛び道具のヒット数
+projmisstime = 1            ;飛び道具がヒットしない間隔（２ヒット以上のみ作用する）
+projpriority = 7            ;飛び道具の攻撃優先度
+projsprpriority = 3         ;飛び道具の描画優先度。DEF=2
+projremove = 0              ;0にするとヒット後に飛び道具が消えない。
+projremovetime = 28         ;飛び道具が消えるまでの時間
+hitflag = MAFD
+guardflag = M
+sparkno = -1
+guard.sparkno = -1
+sparkxy = 0,-5
+hitsound = s2,7
+guardsound = s3,0
+ground.type = High
+ground.slidetime = 15
+ground.hittime  = 22
+ground.velocity = -4.0,-9
+guard.velocity = -7
+ground.cornerpush.veloff = -15
+airguard.velocity = -3.5,-5
+air.velocity = -4.0,-7
+air.hittime = 22
+fall = 1
+fall.recover = 0
+yaccel = .55
+air.juggle = 3
+palfx.time = 35
+palfx.add = -70, 50, 200
+palfx.sinadd = 50,50,50,12
+palfx.color = 1
+palfx.invertall = 1
+fall.envshake.time = 16
+fall.envshake.freq = 40
+fall.envshake.ampl = -4
+fall.envshake.phase = 0
+
+[State 10162, ヘルパーを出す]
+type = Helper
+trigger1 = Time = 28
+helpertype = normal
+name = "Peccary"
+ID = 10161
+pos = ceil(const(size.xscale)*60),ceil(const(size.yscale)*0)
+postype = p1
+facing = 1
+stateno = 10163
+keyctrl = 0
+ownpal = 1
+supermovetime = 0
+pausemovetime = 0
+
+[State 10162, ヘルパーを消す]
+type = DestroySelf
+trigger1 = AnimTime = 0
+
+;--------------
+;ヘルパー（Peccary）3
+
+[Statedef 10163]
+type     = A
+movetype = A
+physics  = N
+ctrl     = 0
+velset   = 0,0
+anim     = 10165
+sprpriority = 5
+
+[State 10163, 影を消す]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+[State 10163, 音を鳴らす]
+type = PlaySnd
+trigger1 = Time = 0
+value = 1, 7
+
+[State 101631, 飛び道具を出す3]
+type = Projectile
+trigger1 = Time = 0
+attr = S, HP
+damage = 86,7
+getpower = 0
+givepower = 63,42
+animtype = Hard
+pausetime = 0,12
+pos = ceil(const(size.xscale)*0),ceil(const(size.yscale)*0)
+velocity = 0,0              ;飛び道具の移動初速度
+accel = 0,0                 ;飛び道具の加速度
+projID = 10161              ;飛び道具のＩＤナンバー
+projanim = 10161            ;飛び道具のアニメ
+;projhitanim =              ;飛び道具がヒットした時のアニメ
+;projremanim = 10162        ;飛び道具が消える時のアニメ
+projcancelanim = 10162      ;飛び道具相殺時のアニメ（未記入時はprojremanimと同じ）
+projscale = 1               ;飛び道具の大きさ
+projshadow = 0,0,0          ;飛び道具の影（現在は0,0,0なので影無し）
+projhits = 1                ;飛び道具のヒット数
+projmisstime = 1            ;飛び道具がヒットしない間隔（２ヒット以上のみ作用する）
+projpriority = 7            ;飛び道具の攻撃優先度
+projsprpriority = 3         ;飛び道具の描画優先度。DEF=2
+projremove = 0              ;0にするとヒット後に飛び道具が消えない。
+projremovetime = 28         ;飛び道具が消えるまでの時間
+hitflag = MAFD
+guardflag = M
+sparkno = -1
+guard.sparkno = -1
+sparkxy = 0,0
+hitsound = s2,7
+guardsound = s3,0
+ground.type = High
+ground.slidetime = 15
+ground.hittime  = 22
+ground.velocity = -4.0,-9
+guard.velocity = -7
+ground.cornerpush.veloff = -15
+airguard.velocity = -3.5,-5
+air.velocity = -4.0,-7
+air.hittime = 22
+fall = 1
+fall.recover = 0
+yaccel = .55
+air.juggle = 3
+palfx.time = 35
+palfx.add = -70, 50, 200
+palfx.sinadd = 50,50,50,12
+palfx.color = 1
+palfx.invertall = 1
+fall.envshake.time = 16
+fall.envshake.freq = 40
+fall.envshake.ampl = -4
+fall.envshake.phase = 0
+
+[State 10163, ヘルパーを出す]
+type = Helper
+trigger1 = Time = 28
+helpertype = normal
+name = "Peccary"
+ID = 10161
+pos = ceil(const(size.xscale)*60),ceil(const(size.yscale)*0)
+postype = p1
+facing = 1
+stateno = 10164
+keyctrl = 0
+ownpal = 1
+supermovetime = 0
+pausemovetime = 0
+
+[State 10163, ヘルパーを消す]
+type = DestroySelf
+trigger1 = AnimTime = 0
+
+;--------------
+;ヘルパー（Peccary）4
+
+[Statedef 10164]
+type     = A
+movetype = A
+physics  = N
+ctrl     = 0
+velset   = 0,0
+anim     = 10165
+sprpriority = 5
+
+[State 10164, 音を鳴らす]
+type = PlaySnd
+trigger1 = Time = 0
+value = 1, 7
+
+[State 10164, 飛び道具を出す4]
+type = Projectile
+trigger1 = Time = 0
+attr = S, HP
+damage = 86,7
+getpower = 0
+givepower = 63,42
+animtype = Hard
+pausetime = 0,12
+pos = ceil(const(size.xscale)*0),ceil(const(size.yscale)*0)
+velocity = 0,0              ;飛び道具の移動初速度
+accel = 0,0                 ;飛び道具の加速度
+projID = 10161              ;飛び道具のＩＤナンバー
+projanim = 10161            ;飛び道具のアニメ
+;projhitanim =              ;飛び道具がヒットした時のアニメ
+;projremanim = 10162        ;飛び道具が消える時のアニメ
+projcancelanim = 10162      ;飛び道具相殺時のアニメ（未記入時はprojremanimと同じ）
+projscale = 1               ;飛び道具の大きさ
+projshadow = 0,0,0          ;飛び道具の影（現在は0,0,0なので影無し）
+projhits = 1                ;飛び道具のヒット数
+projmisstime = 1            ;飛び道具がヒットしない間隔（２ヒット以上のみ作用する）
+projpriority = 7            ;飛び道具の攻撃優先度
+projsprpriority = 3         ;飛び道具の描画優先度。DEF=2
+projremove = 0              ;0にするとヒット後に飛び道具が消えない。
+projremovetime = 28         ;飛び道具が消えるまでの時間
+hitflag = MAFD
+guardflag = M
+sparkno = -1
+guard.sparkno = -1
+sparkxy = 0,0
+hitsound = s2,7
+guardsound = s3,0
+ground.type = High
+ground.slidetime = 15
+ground.hittime  = 22
+ground.velocity = -4.0,-9
+guard.velocity = -7
+ground.cornerpush.veloff = -15
+airguard.velocity = -3.5,-5
+air.velocity = -4.0,-7
+air.hittime = 22
+fall = 1
+fall.recover = 0
+yaccel = .55
+air.juggle = 3
+palfx.time = 35
+palfx.add = -70, 50, 200
+palfx.sinadd = 50,50,50,12
+palfx.color = 1
+palfx.invertall = 1
+fall.envshake.time = 16
+fall.envshake.freq = 40
+fall.envshake.ampl = -4
+fall.envshake.phase = 0
+
+[State 10164, 影を消す]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+[State 10164, ヘルパーを消す]
+type = DestroySelf
+trigger1 = AnimTime = 0
+
+
+;この下、一行以上空ける事。
+
+

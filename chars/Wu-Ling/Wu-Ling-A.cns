@@ -1,0 +1,789 @@
+
+;---------------------------------------------------------------------------
+; 払い
+;---------------------------------------------------------------------------
+; 払い(立ち)
+
+[Statedef 700] 
+type     = S
+movetype = I
+physics  = S
+ctrl     = 0
+anim     = 700
+
+[State 700, 無敵]
+type = NotHitBy
+trigger1 = Time = 0
+value = ,AA, AP
+time = 3
+
+[State 700, ボイス]
+type = PlaySnd
+trigger1 = AnimElem = 1
+trigger1 = random < 750
+value = 5, ifelse(random<500, 0,1)
+value = 5, 0
+channel = 0
+
+[State 700, 受け止め定義]
+type = ReversalDef
+trigger1 = Time = 0
+attr = S, ST
+reversal.attr = SCA, NA
+hitflag = MAF
+priority = 6, hit
+pausetime     = 0,0
+numhits       = 0 ;ヒット数
+sparkno       = -1
+sparkxy       = 0,0
+hitsound      = -1,-1
+p1stateno = 701
+
+[State 700, ステート変更]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+;------------------
+;払い成功
+
+[Statedef 701]
+type     = S
+movetype = A
+physics  = S
+ctrl     = 0
+velset   = 0,0
+anim     = 701
+
+
+[State 701, varset]
+type = varset
+trigger1 = Time = 0
+var(6) = 0
+
+[State 701, ステート変更];反撃技
+type = varset
+triggerall = var(59) = 0
+triggerall = var(6) = 0
+trigger1 = command = "123_x" || command = "123_a"
+var(6) = 740
+
+
+[State 701, スパーク表示]
+type = Explod
+trigger1 = Time = 0
+anim = 7004
+postype = P1
+facing = 1
+pos = 35,-75
+bindtime = 1
+sprpriority = 5
+removeongethit = 0
+ownpal = 1
+pausemovetime = 999
+ignorehitpause = 1
+persistent = 0 
+
+[State 701];Parryin表示
+type = Explod
+trigger1 = Time = 0
+anim = 7062
+ID = 7062
+pos = ifelse(TeamSide = 1,8,242),50
+postype = left
+sprpriority = 6
+facing = 1
+bindtime = -1
+ownpal = 1
+removetime = -2
+supermove = 1
+pausemovetime = 999
+
+[State 701, 無敵]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+Time = 28
+
+[State 701, 音を鳴らす]
+type = PlaySnd
+trigger1 = Time = 0
+value = 3, 1
+
+[State 701, 動きを止める（ポーズ）]
+type = Pause
+trigger1 = Time = 0
+time = 15
+movetime = 15
+ignorehitpause = 1
+persistent = 1
+
+[State 701, ヒット定義];相手が地上
+type = HitDef
+triggerall = p2StateType != A
+Trigger1 = Time = 0
+attr = S, NT
+hitflag = MAF
+priority = 7, hit
+sparkno = -1
+sparkxy = 20, -65
+p2facing = 1
+p2stateno = 720
+;hitsound = 
+persistent = 0
+numhits = 0
+
+[State 701, ヒット定義];相手が空中
+type = HitDef
+triggerall = p2StateType = A
+Trigger1 = Time = 0
+attr = S, NT
+hitflag = MAF
+priority = 7, hit
+sparkno = -1
+sparkxy = 20, -65
+p2facing = 1
+p2stateno = 730
+persistent = 0
+numhits = 0
+
+[State 701, varsetステート変更]
+type = ChangeState
+trigger1 = Time >= 16;= [16,21]
+trigger1 = var(6) != 0
+value = var(6)
+
+[State 701, ステート変更]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+;---------------------------------------------------------------------------
+; 払い(屈み)
+
+[Statedef 710] 
+type     = C
+movetype = I
+physics  = C
+ctrl     = 0
+anim     = 710
+
+[State 710, ボイス]
+type = PlaySnd
+trigger1 = AnimElem = 1
+value = 5, 0
+channel = 0
+
+[State 710, 受け止め定義]
+type = ReversalDef
+trigger1 = Time = 0
+attr = S, ST
+reversal.attr = SCA, NA
+hitflag = MAF
+priority = 6, hit
+pausetime     = 0,0
+numhits       = 0 ;ヒット数
+sparkno       = -1
+sparkxy       = 0,0
+hitsound      = -1,-1
+p1stateno = 711
+
+[State 710, ステート変更]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 11
+ctrl = 1
+
+;------------------
+;払い成功(屈み)
+
+[Statedef 711]
+type     = S
+movetype = A
+physics  = S
+ctrl     = 0
+velset   = 0,0
+anim     = 711
+
+
+[State 711, varset]
+type = varset
+trigger1 = Time = 0
+var(6) = 0
+
+[State 711, ステート変更];反撃技
+type = varset
+triggerall = var(59) = 0
+triggerall = var(6) = 0
+trigger1 = command = "123_x" || command = "123_a"
+var(6) = 740
+
+
+[State 711, スパーク表示]
+type = Explod
+trigger1 = Time = 0
+anim = 7004
+postype = P1
+facing = 1
+pos = 35,-45
+bindtime = 1
+sprpriority = 5
+removeongethit = 0
+ownpal = 1
+pausemovetime = 999
+ignorehitpause = 1
+persistent = 0 
+
+[State 711];Parryin表示
+type = Explod
+trigger1 = Time = 0
+anim = 7062
+ID = 7062
+pos = ifelse(TeamSide = 1,8,242),50
+postype = left
+sprpriority = 6
+facing = 1
+bindtime = -1
+ownpal = 1
+removetime = -2
+supermove = 1
+pausemovetime = 999
+
+[State 711, 無敵]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+Time = 28
+
+[State 711, 音を鳴らす]
+type = PlaySnd
+trigger1 = Time = 0
+value = 3, 1
+
+[State 711, 動きを止める（ポーズ）]
+type = Pause
+trigger1 = Time = 0
+time = 15
+movetime = 15
+ignorehitpause = 1
+persistent = 1
+
+[State 711, ヒット定義];相手が地上
+type = HitDef
+triggerall = p2StateType != A
+Trigger1 = Time = 0
+attr = S, NT
+hitflag = MAF
+priority = 7, hit
+sparkno = -1
+sparkxy = 20, -65
+p2facing = 1
+p2stateno = 720
+;hitsound = 
+persistent = 0
+numhits = 0
+
+[State 711, ヒット定義];相手が空中
+type = HitDef
+triggerall = p2StateType = A
+Trigger1 = Time = 0
+attr = S, NT
+hitflag = MAF
+priority = 7, hit
+sparkno = -1
+sparkxy = 20, -65
+p2facing = 1
+p2stateno = 730
+;hitsound = 
+persistent = 0
+numhits = 0
+
+[State 711, varsetステート変更]
+type = ChangeState
+trigger1 = Time >= 16;= [16,21]
+trigger1 = var(6) != 0
+value = var(6)
+
+[State 711, ステート変更]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 11
+ctrl = 1
+
+;---------------------
+; 相手側(地上)
+
+[Statedef 720]
+type     = S
+movetype = I;H
+physics  = S
+poweradd = 0
+velset   = 0,0
+ctrl     = 0
+sprpriority = 2
+
+[State 720, 軸位置設定]
+type = PosSet
+trigger1 = 1
+y = 0
+
+[State 720, 制御した相手のアニメ変更]
+type = ChangeAnim2
+trigger1 = !(name = "Yu-Lan" && authorname = "mass")
+trigger1 = !(name = "Wu-Ling" && authorname = "mass")
+trigger1 = !(name = "Egith" && authorname = "mass")
+trigger1 = !(name = "Ja-koh" && authorname = "mass")
+trigger1 = !(name = "Tain-ren" && authorname = "mass")
+trigger1 = time = 0
+value = 720
+
+[State 720, 制御した相手のアニメ変更]
+type = ChangeAnim2
+trigger1 = name = "Yu-Lan" && authorname = "mass"
+trigger1 = time = 0
+value = 721
+
+[State 720, 制御した相手のアニメ変更]
+type = ChangeAnim2
+trigger1 = name = "Wu-Ling" && authorname = "mass"
+trigger1 = time = 0
+value = 722
+
+[State 720, 制御した相手のアニメ変更]
+type = ChangeAnim2
+trigger1 = name = "Egith" && authorname = "mass"
+trigger1 = time = 0
+value = 723
+
+[State 720, 制御した相手のアニメ変更]
+type = ChangeAnim2
+trigger1 = name = "Ja-koh" && authorname = "mass"
+trigger1 = time = 0
+value = 724
+
+[State 720, 制御した相手のアニメ変更]
+type = ChangeAnim2
+trigger1 = name = "Tain-ren" && authorname = "mass"
+trigger1 = time = 0
+value = 725
+
+[State 720, 移動速度]
+type = Velset
+trigger1 = 1
+x = -1.5
+
+[State 720, 相手ステートに戻す]
+type = SelfState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+;---------------------------------------------------------------------------
+; 相手側(空中)
+
+[Statedef 730]
+type     = A
+movetype = I;H
+physics  = N
+poweradd = 0
+velset   = -0.3,-1.2
+ctrl     = 0
+sprpriority = 2
+
+[State 730, 速度加算] ;重力
+type = VelAdd
+trigger1 = 1
+y = 0.45
+
+[State 730, 制御した相手のアニメ変更]
+type = ChangeAnim2
+trigger1 = !(name = "Yu-Lan" && authorname = "mass")
+trigger1 = !(name = "Wu-Ling" && authorname = "mass")
+trigger1 = !(name = "Egith" && authorname = "mass")
+trigger1 = !(name = "Ja-koh" && authorname = "mass")
+trigger1 = !(name = "Tain-ren" && authorname = "mass")
+trigger1 = time = 0
+value = 730
+
+[State 730, 制御した相手のアニメ変更]
+type = ChangeAnim2
+triggerall = time = 0
+trigger1 = name = "Yu-Lan" && authorname = "mass"
+trigger2 = name = "Wu-Ling" && authorname = "mass"
+trigger3 = name = "Egith" && authorname = "mass"
+trigger4 = name = "Ja-koh" && authorname = "mass"
+trigger5 = name = "Tain-ren" && authorname = "mass"
+value = 731
+
+[State 730, ステート変更]
+type = ChangeState
+triggerall = StateType = A
+trigger1 = Vel Y > 0
+trigger1 = Pos Y >= 0
+value = 720
+ctrl = 0
+
+
+;---------------------------------------------------------------------------
+;反撃技
+
+[Statedef 740]
+type     = S
+movetype = A
+physics  = S
+poweradd = ifelse(var(11),0,63)
+ctrl     = 0
+anim     = 740
+velset   = 0,0
+sprpriority = 2
+
+
+[State 740, varset]
+type = varset
+trigger1 = Time = 0
+var(6) = 0
+
+[State 740, varset]
+type = varset
+trigger1 = Time = 0
+var(20) = 0
+
+[State 740, varset]
+type = varset
+trigger1 = Time = 0
+var(21) = 0
+
+
+[State 740, Explodで出現させたスプライトを消滅]
+type = RemoveExplod
+trigger1 = Time = 0
+ID = 7062
+
+[State 740];TechnicalBlow表示
+type = Explod
+trigger1 = Time = 0
+anim = 7061
+ID = 7061
+pos = ifelse(TeamSide = 1,8,188),50
+postype = left
+sprpriority = 6
+facing = 1
+bindtime = -1
+ownpal = 1
+removetime = -2
+supermove = 1
+pausemovetime = 999
+
+[State 740, 物理的なキャラの幅]
+type = Width
+trigger1 = AnimElemTime(1) >= 0 && AnimElemTime(8) < 0
+value = 10,0
+
+[State 740, 音を鳴らす]
+type = PlaySnd
+trigger1 = AnimElem = 3
+value = 0, 2
+
+[State 740, 移動速度]
+type = Velset
+trigger1 = AnimElemTime(1) >= 0 && AnimElemTime(7) < 0
+x = 4
+
+[State 740, 移動速度]
+type = Velset
+trigger1 = AnimElemTime(7) >= 0 && AnimElemTime(13) < 0
+x = 2
+
+[State 740, ヒット定義1]
+type = HitDef
+trigger1 = AnimElem = 3
+attr = S, NA
+animtype  = Hard
+damage    = 0
+getpower  = ifelse(var(11),0,125),ifelse(var(11),0,42)
+givepower = 63,42
+guardflag = MA
+pausetime = 3,5
+sparkno = s7002
+guard.sparkno = s7010 
+sparkxy = -20,-60
+hitsound   = s2,2
+guardsound = s3,0
+ground.type = High
+ground.slidetime = 22
+ground.hittime  = 22
+ground.velocity = -5.5
+airguard.velocity = -3.5,-5
+air.velocity = -4.5,-5
+ID = 740
+
+[State 740, 音を鳴らす]
+type = PlaySnd
+trigger1 = AnimElem = 7
+value = 0, 3
+
+[State 740, ヒット定義2]
+type = HitDef
+trigger1 = AnimElem = 6
+attr = S, NA
+animtype  = Hard
+damage    = 0
+getpower  = ifelse(var(11),0,125),ifelse(var(11),0,42)
+givepower = 63,42
+guardflag = MA
+pausetime = 5,5
+sparkno = s7002
+guard.sparkno = s7010 
+sparkxy = -15,-45
+hitsound   = s2,4
+guardsound = s3,0
+ground.type = Low
+ground.slidetime = 22
+ground.hittime  = 22
+ground.velocity = -7.5
+airguard.velocity = -3.5,-5
+air.velocity = -4.5,-5
+ID = 740
+
+[State 740, 音を鳴らす]
+type = PlaySnd
+trigger1 = AnimElem = 10
+value = 0, 5
+
+[State 740, ボイス]
+type = PlaySnd
+trigger1 = AnimElem = 9
+value = 5, 5
+channel = 0
+
+[State 740, ヒット定義3]
+type = HitDef
+trigger1 = AnimElem = 11
+attr = S, NA
+animtype  = Hard
+damage    = 0
+getpower  = ifelse(var(11),0,125),ifelse(var(11),0,42)
+givepower = 63,42
+guardflag = MA
+pausetime = 3,5
+sparkno = s7002
+guard.sparkno = s7010 
+sparkxy = -25,-65
+hitsound   = s2,6
+guardsound = s3,0
+ground.type = Low
+ground.slidetime = 20
+ground.hittime  = 20
+ground.velocity = -5.5,-5.5
+airguard.velocity = -3.5,-5
+air.velocity = -4.5,-5
+fall = 1
+fall.recovertime = 40
+fall.envshake.time = 16
+fall.envshake.freq = 40
+fall.envshake.ampl = -4
+fall.envshake.phase = 0
+ID = 740
+
+
+[State 740, varadd]
+type = varadd
+trigger1 = movehit = 1
+var(20) = 1
+
+[State 740, varset]
+type = varset
+trigger1 = var(20) = 1
+var(21) = -108
+ignorehitpause = 1
+
+[State 740, varset]
+type = varset
+trigger1 = var(20) = 2
+var(21) = -36
+ignorehitpause = 1
+
+[State 740, varset]
+type = varset
+trigger1 = var(20) = 3
+var(21) = -36
+ignorehitpause = 1
+
+[State 740, 掴んだ相手の体力ゲージの増減]
+type = TargetLifeAdd
+trigger1 = movehit = 1
+ID = 740
+absolute = 0
+value = ceil(var(21)*const(data.attack)*0.01)
+
+
+[State 740, ステート変更]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+
+;---------------------------------------------------------------------------
+;ビースト召喚
+
+[Statedef 750]
+type     = S
+movetype = I
+physics  = S
+anim     = 750
+velset   = 0,0
+sprpriority = 2
+ctrl = 0
+
+
+[State 750, Varset]
+type = Varset
+trigger1 = var(11) = 0
+trigger1 = Time = 0
+var(11) = 1
+
+
+[State 750, パワーゲージ消費]
+type = PowerAdd
+trigger1 = time = 0
+value = -1000
+
+[State 750, 無敵]
+type = NotHitBy
+trigger1 = time = 0
+value = SCA
+Time = 1
+
+[State 750, 音を鳴らす]
+type = PlaySnd
+trigger1 = Time = 1
+value = 10, 1
+
+[State 750, ボイス]
+type = PlaySnd
+trigger1 = AnimElem = 1
+value = 8, 1
+channel = 0
+
+[State 750, Helper]
+type = Helper
+trigger1 = Time = 0
+ID = 10000
+pos = 0,0
+postype = p1
+stateno = 10000
+helpertype = normal
+name = "Rabbit"
+ownpal = 1
+keyctrl = 0
+
+[State 750, ステート変更]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+
+;---------------------------------------------------------------------------
+;纏棘弾(てんしだん)
+
+[Statedef 760]
+type     = S
+movetype = A
+physics  = S
+anim     = 760
+velset   = 0,0
+sprpriority = 2
+ctrl = 0
+
+[State 760, Explod];（Rabbit）
+type = Explod
+trigger1 = Time = 0
+anim = 761
+ID = 761
+scale = const(size.xscale),const(size.yscale)
+pos = ceil(const(size.xscale)*0),ceil(0*const(size.yscale)*0)
+postype = p1
+bindtime = 9999999
+supermovetime = 0
+sprpriority = 5
+removetime = -2
+removeongethit = 1
+
+[State 760, ヘルパー];戻り用
+type = Helper
+trigger1 = Time = 0
+helpertype = normal
+name = "Rabbit"
+ID = 10000
+scale = const(size.xscale),const(size.yscale)
+pos = ceil(const(size.xscale)*0),ceil(0*const(size.yscale)*0)
+postype = p1
+facing = 1
+stateno = 10050
+keyctrl = 0
+ownpal = 1
+supermovetime = 0
+pausemovetime = 0
+
+[State 760, ヘルパー飛び道具を出す];纏棘弾(てんしだん)
+type = Helper
+trigger1 = Time = 0
+helpertype = normal
+name = "Tenshidan"
+ID = 10051
+pos = ceil(const(size.xscale)*-25),ceil(const(size.yscale)*-77)
+postype = p1
+facing = 1
+stateno = 10051
+keyctrl = 0
+ownpal = 1
+supermovetime = 0
+pausemovetime = 0
+
+[State 760, ガード用ヘルパー]
+type = Helper
+trigger1 = Time = 0
+helpertype = normal
+name = "Tenshidan_G"
+ID = 10055
+pos = ceil(const(size.xscale)*-85),ceil(const(size.yscale)*-77)
+postype = p1
+sprpriority = 7
+stateno = 10055
+keyctrl = 0
+ownpal = 1
+supermovetime = 0
+pausemovetime = 0
+
+[State 760, 音を鳴らす]
+type = PlaySnd
+trigger1 = Time = 14
+value = 0, 2
+
+[State 760, ボイス]
+type = PlaySnd
+trigger1 = AnimElem = 1
+value = 8, 0
+channel = 0
+
+[State 760, ステート変更]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+
+;---------------------------------------------------------------------------
+;---------------------------------------------------------------------------
+;---------------------------------------------------------------------------
+
+;この下、一行以上空ける事。
+
+
+
+
+

@@ -1,0 +1,881 @@
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+;		常時監視ステート（Statedef -2)
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+[Statedef -2]
+
+
+
+
+[State -2, Explod_Flame]
+type	= Explod
+trigger1= stateno = 3662
+trigger1= anim = 13657
+trigger1= animelemtime(4) = 85 
+anim	= 8806
+ID	= 8806
+postype = p1
+pos	= 10,10
+ownpal	= 1
+bindtime= -1
+sprpriority = 6
+IgnoreHitPause = 1
+scale = 2,1
+pausemovetime	= 9999
+supermovetime	= 9999
+removetime = -1
+
+[State -2, Explod_Flame]
+type	= Explod
+trigger1= stateno = 23110
+trigger1= Target(3000),Anim = 3196
+anim	= 77
+ID	= 8807
+postype = p2
+pos	= 110,-25
+ownpal	= 1
+facing=-1
+bindtime= -1
+sprpriority = 6
+IgnoreHitPause = 1
+scale = 0.9,0.9
+pausemovetime	= 9999
+supermovetime	= 9999
+removetime = -1
+
+
+[State -2, Explod_Flame]
+type	= Explod
+trigger1= stateno = 23110
+trigger1= Target(3000),Anim = 3196
+anim	= 75
+ID	= 8808
+postype = p2
+pos	= 110,-70
+ownpal	= 1
+facing=-1
+bindtime= -1
+sprpriority = 6
+IgnoreHitPause = 1
+scale = 0.6,0.6
+pausemovetime	= 9999
+supermovetime	= 9999
+removetime = -1
+
+[State -2, RemoveExplod]
+type = RemoveExplod
+trigger1 = P2life > 0
+id = 8806
+;ignorehitpause = 
+;persistent = 
+
+[State -2, RemoveExplod]
+type = RemoveExplod
+trigger1 = P2life > 0
+id = 8807
+;ignorehitpause = 
+;persistent = 
+
+
+[State -2, RemoveExplod]
+type = RemoveExplod
+trigger1 = P2life > 0
+id = 8808
+;ignorehitpause = 
+;persistent = 
+
+[State -2, RemoveExplod]
+type = RemoveExplod
+trigger1 = P2life > 0
+id = 97
+;ignorehitpause = 
+;persistent = 
+
+
+[State -2, VarSet]
+type = VarSet
+trigger1 = stateno = 30023
+trigger1 = winko
+v = 43    ;fv = 10
+value = 1
+;ignorehitpause = 
+;persistent = 
+
+[State -2 ]
+type = ChangeState
+triggerall = stateno =[30000,30100]
+triggerall = roundstate <= 2
+triggerall = var(33) = 1
+trigger1 = !sysvar(3)=gametime%100||GetHitVar(hitshaketime)||GetHitVar(damage)
+trigger2 = Helper(15000),GetHitVar(HitCount) > 10 || Helper(15005),GetHitVar(HitCount) > 10
+value = 30004
+supermovetime = 2147483647
+pausemovetime = 2147483647
+ignorehitpause = 1
+
+[State -2,DreamIllumination,SelfState]
+type = SelfState
+triggerall = stateno =[30000,30100]
+triggerall = roundstate <= 2
+triggerall = var(33) = 1
+trigger1 = stateno != 30004
+trigger1 = sysvar(3) != gametime%100
+value = 30005
+ignorehitpause = 1
+
+[State -2,DreamIllumination,SelfState]
+type = SelfState
+triggerall = stateno !=[30000,30100]
+triggerall = roundstate <= 2
+triggerall = var(33) = 1
+trigger1= movetype = H
+trigger2 = stateno = 0
+value = 30004
+ignorehitpause = 1
+
+[State -2]
+type = SelfState
+triggerall = Numhelper(11001) 
+trigger1 = Ishelper(11001) && !(helper(11001),stateno = 11001)
+value = 11001
+ignorehitpause = 1
+
+[state -2]
+type = selfstate
+trigger1 = IsHelper(12345)
+trigger1 = stateno != 12345
+value = 12345
+ignorehitpause = 1
+
+[State -2, RemoveExplod]
+type = RemoveExplod
+trigger1 = stateno = 189
+id = 188
+;ignorehitpause = 
+;persistent = 
+
+
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+;	基礎行動関連
+;━━━━━━━━━━━━━━━━
+[State -2, StopSnd_DashStop]
+type	= StopSnd
+trigger1= StateNo != 100 && StateNo != 730
+channel	= 5
+
+[State -2, StopSnd_ChargeStop]
+type	= StopSnd
+trigger1= StateNo != 780
+channel	= 7
+
+[State -2, StopSnd_ChargeStop]
+type	= StopSnd
+trigger1= StateNo!= [3000,3999]
+trigger2= StateNo = [5000,5950]
+channel	= 16
+
+
+[State -2, PlaySnd_SinkKO]
+type	= PlaySnd
+trigger1= Anim = 5950
+trigger1= AnimElemTime(3) = 0
+value	= 52, 0
+channel	= 4
+
+[State -2, PlaySnd_LoseKO]
+type	= PlaySnd
+trigger1=!Alive
+trigger1=!var(23)
+trigger1= StateNo != 5950	;崩れ落ちＫＯでない
+trigger1=!var(46)		;ビル落下演出が発生しない
+value	= 11, 1
+
+[State -2, VarSet_for_LoseKO]
+type	= VarSet
+trigger1= 1
+var(23)	=!Alive
+
+
+
+[State -2, AfterImageTime_バグ防止記述/残像消去]
+type	= AfterImageTime
+trigger1= StateNo = [ 0, 38]
+trigger2= StateNo = [52, 899]
+trigger3= StateNo = [1000,1399]
+trigger4= StateNo = [1741,1799]
+trigger5= StateNo = [5000,5990]
+trigger6= WinKo
+trigger6= RoundState >= 2
+trigger6= StateNo = 3450 || StateNo = 3530
+time	= 0
+
+
+
+
+
+;-----------------[自由変数リセット]
+[State -2, VarSet]
+type	= VarSet
+triggerAll = var(4) != 0
+trigger1= StateNo = [ 0, 109]
+var(4)	= 0
+
+
+[State -2, VarSet]
+type	= VarSet
+triggerAll = var(5) != 0
+trigger1= StateNo = [ 0, 109]
+var(5)	= 0
+
+
+
+[State -2, VarSet]
+type	= VarSet
+triggerAll = var(35) != 0
+trigger1= StateNo = [1,159]
+trigger2= StateNo = [200,2999]
+var(35)	= 0
+
+[State -2, VarSet]
+type	= VarSet
+triggerAll = var(36) != 0
+trigger1= StateNo = [200,2999]
+var(36)	= 0
+
+[State -2, VarSet]
+type	= VarSet
+triggerAll = var(36) != 2
+trigger1= StateNo = [30200,32999]
+var(36)	= 2
+
+[State -2, VarSet]
+type	= VarSet
+triggerAll = var(36) != 3
+trigger1= StateNo = [20000,22999]
+var(36)	= 3
+;-----------------------[コマンド技エフェクト消去]
+[State -2, RemoveExplod]
+type	= RemoveExplod
+trigger1= StateNo != [1200,1265]
+trigger2= StateNo = 0
+ID	= 7550
+
+
+
+;-------------------[６Ｐ、ブラックカラーモード]
+[State -2, PowerSet]
+type	= PowerSet
+trigger1= PalNo = 6||PalNo = 12
+value	= 5000
+
+[State -2, LifeAdd]
+type	= LifeAdd
+triggerAll = PalNo = 6||PalNo = 12
+triggerAll = GameTime%2 = 0
+trigger1= MoveType!= H
+trigger2= MoveType = H && StateNo = [120,159]
+value	= 1
+
+
+
+
+
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+;	究極体覚醒要素
+;━━━━━━━━━━━━━━━━
+;━━━━━━━━━━━━━━━━[戦士・紋章表示]
+
+
+[State -2, VarSet]
+type	= VarSet
+trigger1 = palno = 12
+trigger2 = palno != 12
+trigger2 = life < 200
+trigger2 = stateno != [30000,30100] 
+var(50)	= 4
+
+[State -2, VarSet]
+type	= VarSet
+triggerAll = Var(50) = 3
+triggerAll = 0.4 >(1.0*(Life)/(LifeMax))
+trigger1= Power >= 3000
+trigger2= 0.2 >(1.0*(Life)/(LifeMax))
+trigger2= Power >= 2000
+trigger3= 0.1 >(1.0*(Life)/(LifeMax))
+trigger3= Power >= 1000
+trigger4= 0.01>(1.0*(Life)/(LifeMax))
+var(50)	= 4
+
+
+[State -2, VarSet]
+type	= VarSet
+triggerAll = Var(50) >= 4
+triggerAll = StateNo != [4000,4010]
+trigger1= 0.4 <=(1.0*(Life)/(LifeMax))
+trigger2= Power < 3000
+trigger2= 0.2 <=(1.0*(Life)/(LifeMax))
+trigger3= Power < 2000
+trigger3= 0.1 <=(1.0*(Life)/(LifeMax))
+trigger4= Power < 1000
+trigger4= 0.01 <=(1.0*(Life)/(LifeMax))
+var(50)	= 3
+
+
+
+
+
+
+
+
+
+
+
+;━━━━━━━━━━━━━━━━
+;	秋子さん「甘くないのもありますよ？」
+;━━━━━━━━━━━━━━━━
+[State -2, Explod]
+type	= Explod
+triggerAll =!NumExplod(15555)
+trigger1= Anim = 5555
+trigger1= AnimElemTIme(1) = 250
+anim	= 15555
+ID	= 15555
+postype	= p1
+pos	= -10-15*(facing=-1), 20
+facing	= 1-2*(facing=-1)
+pausemovetime	= 999
+ignorehitpause	= 1
+
+
+[State -2, PlaySnd_Voice]
+type	= PlaySnd
+trigger1= Anim = 5555
+trigger1= AnimElemTIme(1) = 410
+value	= 5555, 0
+channel	= 0
+
+
+
+
+
+
+
+
+
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+;	特殊勝利演出
+;━━━━━━━━━━━━━━━━
+
+
+;-----------------[爆☆殺ラウンド数]
+[State -2, VarSet]
+type	= VarSet
+triggerAll = RoundState = 0
+trigger1= StateNo = [190,192]
+trigger2= StateNo = [6000,6499]
+;
+var(40) = 1	;←「対戦が勝ちになるラウンド数‐１」を半角数字で入れる
+		;ちなみに「99」とかにすれば、爆☆殺しなくなります。
+
+
+
+
+
+
+
+;----------------------[演出処理]
+[State -2, ScreenBound]
+type	= ScreenBound
+trigger1= var(46) != 0
+value	= 0
+movecamera = 0, 0
+
+[State -2, AssertSpecial]
+type	= AssertSpecial
+trigger1= var(46) = 2
+trigger2= var(46) = 3
+flag	= Invisible
+flag2	= TimerFreeze
+
+[State -2, PlayerPush]
+type	= PlayerPush
+trigger1= var(46) = 2
+trigger2= var(46) = 3
+value	= 0
+
+
+
+[State -2, Pause]
+type	= Pause
+trigger1= var(46) = 1
+trigger1=!NumHelper(6700)
+time	= 60
+
+[State -2, Pause]
+type	= Pause
+trigger1= var(46) = 2
+trigger1=!NumHelper(6700)
+time	= 149
+movetime= 149
+
+
+[State -2, Helper]
+type	= Helper
+trigger1= var(46) = 2
+trigger1=!NumHelper(6700)
+ID	= 6700
+stateno	= 6702
+pos	= 0, 0
+postype	= left
+priority= 2
+ownpal	= 1
+pausemovetime = 9999
+
+
+[State -2, VarSet]
+type	= VarSet
+trigger1= var(46) = 1
+trigger1=!NumHelper(6700)
+var(46)	= 2
+
+[State -2, VarSet]
+type	= VarSet
+trigger1= var(46) = 2
+trigger1= NumHelper(6700)
+var(46)	= 3
+
+
+
+
+
+
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+;	スパコン処理関連
+;━━━━━━━━━━━━━━━━
+
+
+
+;----------------[スーパーキャンセル判断]
+[State -2, VaSet]
+type	= VarSet
+triggerAll = var(30) = 0
+trigger1= StateNo = [1000,2999]
+var(30)	= 1
+
+[State -2, VaSet]
+type	= VarSet
+triggerAll = var(30) = 1
+trigger1= StateNo = 0
+trigger2= StateNo = [0,999]
+trigger3= StateNo >= 5000
+var(30)	= 0
+
+
+
+
+
+;-----------------------[ブラストペガサス演出処理]
+;-----------------------[相手側処理略奪]
+[State -2, TargetFacing]
+type	= TargetFacing
+triggerAll = NumTarget(8200)
+trigger1=!Target(8200),IsHelper
+trigger1= ProjHitTime(8200) = 0
+value	= -1
+ID	= 8200
+
+[State -2, TargetFacing]
+type	= TargetFacing
+triggerAll = NumTarget(8205)
+trigger1=!Target(8205),IsHelper
+trigger1= ProjHitTime(8205) = 0
+value	= -1
+ID	= 8205
+
+
+
+[State -2, TargetState]
+type	= TargetState
+triggerAll = NumTarget(8200)
+trigger1=!Target(8200),IsHelper
+trigger1= ProjHitTime(8200) = 0
+value	= 3550
+ID	= 8200
+
+[State -2, TargetState]
+type	= TargetState
+triggerAll = NumTarget(8205)
+trigger1=!Target(8205),IsHelper
+trigger1= ProjHitTime(8205) = 0
+value	= 3550
+ID	= 8205
+
+
+;===================================================================
+[State -2, HitAdd]
+type	= HitAdd
+triggerAll = NumTarget(8200)
+trigger1= Target(8200),StateNo = 3560
+trigger1= Target(8200),time = 1
+value	= 1
+
+[State -2, HitAdd]
+type	= HitAdd
+triggerAll = NumTarget(8205)
+trigger1= Target(8205),StateNo = 3560
+trigger1= Target(8205),time = 1
+value	= 1
+
+
+[State -2, EnvShake]
+type	= EnvShake
+triggerAll = NumTarget(8200)
+trigger1= Target(8200),StateNo = 3560
+trigger1= Target(8200),time = 1
+trigger1=(floor(var(5)/30)) >= 2
+time	= ifelse(var(31)!=1,12,24)
+ampl	= ifelse(var(31)!=1,10,20)
+
+
+
+
+
+;--------------------------[エフェクト表示用ヘルパー]
+[State -2, VarSet_PlayerID]
+type	= VarSet
+triggerAll = NumTarget(8200)
+trigger1=!Target(8200),IsHelper
+trigger1= ProjHitTime(8200) = 0
+var(53)	= Target(8200),ID
+
+
+[State -2, VarSet_PlayerID]
+type	= VarSet
+triggerAll = NumTarget(8205)
+trigger1=!Target(8205),IsHelper
+trigger1= ProjHitTime(8205) = 0
+var(53)	= Target(8205),ID
+
+
+
+[State -2, Helper]
+type	= Helper
+triggerAll =!NumHelper(17000)
+triggerAll = NumTarget(8200)
+trigger1=!Target(8200),IsHelper
+trigger1= ProjHitTime(8200) = 0
+stateno	= 17000
+ID	= 17000
+name	= "Effect"
+pos	= 0, 0
+postype	= p1
+ownpal	= 1
+ignorehitpause = 1
+
+[State -2, Helper]
+type	= Helper
+triggerAll =!NumHelper(17000)
+triggerAll = NumTarget(8205)
+trigger1=!Target(8205),IsHelper
+trigger1= ProjHitTime(8205) = 0
+stateno	= 17000
+ID	= 17000
+name	= "Effect"
+pos	= 0, 0
+postype	= p1
+ownpal	= 1
+ignorehitpause = 1
+
+;================================================
+[State -2, Helper]
+type	= Helper
+triggerAll =!NumHelper(20000)
+triggerAll = NumTarget(8205)
+triggerAll =!Target(8205),IsHelper
+trigger1= ProjHitTime(8205) = 0
+name	= "SuperAssertSpecial"
+stateno	= 20000
+ID	= 20000
+pos	= 0,0
+postye	= p1
+supermovetime  = 9999
+pausemovetime  = 9999
+
+
+
+
+
+[State -2, VarAdd]
+type	= VarAdd
+triggerAll = var(6) > 20
+triggerAll = NumTarget(8200)
+trigger1= ProjHitTime(8200) = [0,70]
+var(6)	= 2
+
+
+[State -2, BgPalFx]
+type	= BgPalFx
+triggerAll = var(6) > 20
+triggerAll = NumTarget(8200)
+trigger1= ProjHitTime(8200) = [0,70]
+add	= -2*(var(6)-20),-1*(var(6)-20),-2*(var(6)-20)
+time	= 2
+
+
+
+
+;-----------------------[カラミティタイタン演出処理]
+[State -2, RemoveExplod]
+type	= RemoveExplod
+trigger1= StateNo != 3685
+trigger2= StateNo = 0
+trigger3= StateNo = [1,159]
+trigger4= StateNo>= 5000
+ID	= 3685
+IgNoreHitPause = 1
+
+
+
+
+
+
+
+
+
+
+
+
+;----------------------------------------[攻撃力補正]
+[State -2, Varset_Correction Value != -X]
+type	= Varset
+trigger1= fvar(0) < 0
+fvar(0)	= 0
+ignorehitpause = 1
+
+[State -2, Varset_Correction Value_Reset]
+type	= Varset
+trigger1= EnemyNear,MoveType != H
+trigger2= EnemyNear,StateNo = [120,155]
+trigger3=!EnemyNear,Alive
+fvar(0)	= 1
+ignorehitpause = 1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+;		準常時監視ステート（Statedef -3)
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+[Statedef -3]
+
+;━━━━━━━━━━━━━━━━
+
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+;	Common記述移植
+;━━━━━━━━━━━━━━━━
+[State -3, VarRangeSet]
+type	= VarRangeSet
+trigger1=!RoundsExisted
+trigger1=!RoundState
+trigger1= StateNo = 5900
+value	= 0
+persistent = 0
+
+[State -3, VarRangeSet]
+type	= VarRangeSet
+trigger1=!RoundsExisted
+trigger1=!RoundState
+trigger1= StateNo = 5900
+fvalue	= 0
+persistent = 0
+
+[State 0, StopSnd]
+type = StopSnd
+trigger1 = roundstate = 2
+channel = 29
+;ignorehitpause = 
+;persistent = 
+
+[State 0, RemoveExplod]
+type = RemoveExplod
+trigger1 = stateno != [23800,23802]
+id = 13808
+;ignorehitpause = 
+;persistent = 
+
+
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+;	基礎動作用エフェクト＆SE
+;━━━━━━━━━━━━━━━━
+[State -3, PlaySnd_Voice/被ダメ動作用SE]
+type	= PlaySnd
+triggerAll = Time = 1 && Alive
+triggerAll = Random < 500
+triggerAll =!Var(46)
+trigger1= StateNo = 5000 || StateNo = 5010 || StateNo = 5020 || StateNo = 5070
+trigger2= StateNo = 5100 && var(21)
+value	= 5000, ifelse(StateNo=5100||GetHitVar(AnimType)=2,20,ifelse(GetHitVar(AnimType)=1,10,0))+Random%3
+channel	= 20
+
+
+[State -3, StopSnd_Voice/被ダメ動作用SE停止]
+type	= StopSnd
+trigger1= StateNo = 5000 || StateNo = 5010 || StateNo = 5020 || StateNo = 5070 || StateNo = 5100
+trigger2= StateNo = 150 || StateNo = 152 || StateNo = 154
+trigger3= StateNo = 0 && PrevStateno = 190 && time = 1
+channel	= 0
+
+
+
+
+
+
+
+
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+;	イントロ演出
+;━━━━━━━━━━━━━━━━
+[State -3, VarSet_Pos]
+type	= VarSet
+trigger1= RoundState < 2
+trigger1= StateNo = 5110
+fvar(15)= Pos X
+
+[State -3, PosSet]
+type	= PosSet
+trigger1= RoundState = 2
+trigger1= StateNo = 5110
+trigger1=!Ctrl
+trigger1= fvar(15) != 0
+x = Ceil(fvar(15))
+
+
+[State -3, VarSet]
+type	= VarSet
+trigger1= RoundState >= 2
+trigger1= StateNo = 0
+trigger1= fvar(15) != 0
+fvar(15)= 0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+;---------------------[カラミティタイタン用]
+[State -3, PlaySnd_SE]
+type	= PlaySnd
+triggerAll =!IsHelper
+triggerAll = NumHelper(15000) || NumHelper(15005)
+triggerAll = Helper(15000),GetHitvar(damage) > 0
+trigger1= Time = 1 && Alive
+trigger1= StateNo = 3600
+trigger1= AnimElemTime(4) >= 0
+trigger2= StateNo = [3610,3699]
+value	= 3600, 2
+ignorehitpause = 1
+
+
+
+;-----------------[カラミティタイタン解除条件３種]
+[State -3, VarAdd]
+type	= VarAdd
+triggerAll =!IsHelper
+trigger1= StateNo = [3610,3635]
+var(14)	= 1
+
+
+
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+;	スパコン演出処理
+;━━━━━━━━━━━━━━━━
+
+
+;-----------------[ブラストペガサス(空中版)演出処理]
+[State -3, PosAdd]
+type	= PosAdd
+trigger1= GameTime%8 = 0
+trigger1= StateNo = [3500,3520]
+y = (GameTime%120=[60,119])-(GameTime%120=[0,59])
+
+
+
+
+;---------------------------------------[カラミティタイタン演出処理]
+;-----------------[ステート内自由変数２ / var(5)]
+[State -3, VarAdd]
+type	= VarAdd
+triggerAll = var(4) != [0,1]
+trigger1= StateNo = 3650
+trigger1= time < 60
+trigger2= StateNo = 3660
+trigger3= StateNo = 3670
+var(5)	= 1+NumTarget(3650)
+
+
+
+
+[State -3, VarSet_攻撃命中認識_斬り上げ]
+type	= VarSet
+triggerAll =!IsHelper
+trigger1=!var(4)
+trigger1= NumTarget(3650)
+trigger1= Target(3650),StateNo = 3700
+var(4)	= 2
+ignorehitpause	= 1
+
+[State -3, VarSet_攻撃命中認識_直接出した突き]
+type	= VarSet
+triggerAll =!IsHelper
+trigger1=!var(4)
+trigger1= NumTarget(3660)
+trigger1= Target(3660),StateNo = 3720
+var(4)	= 3
+ignorehitpause	= 1
+
+
+
+[State -3, VarSet]
+type	= VarSet
+triggerAll =!IsHelper
+trigger1= StateNo = 3670
+trigger1= time = 75
+var(4)	= 0
+ignorehitpause	= 1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
