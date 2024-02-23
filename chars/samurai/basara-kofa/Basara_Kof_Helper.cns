@@ -1,0 +1,4496 @@
+
+;\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+;ÉpÉèÅ[ÉQÅ[ÉWä«óùÉwÉãÉpÅ[
+[Statedef 8000]
+type = A
+ctrl = 0
+anim = 9999
+velset = 0,0
+movetype = I
+physics = N
+sprpriority = 10
+
+[State 8000, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = NoShadow
+flag2 = Invisible
+
+[State 8000, Explod]
+type = Explod
+triggerall = RoundState = 2
+triggerall = !Root,var(7)
+triggerall = TeamSide = 1
+trigger1 = NumExplod(4000) = 0
+anim = 4000
+ID = 4000
+bindtime = -1
+removetime = -1
+pos = 15,220
+postype = Left
+facing = 1
+ownpal = 1
+sprpriority = 6
+supermovetime = 2147483647
+pausemovetime = 2147483647
+ignorehitpause = 1
+
+[State 8000, Explod]
+type = Explod
+triggerall = RoundState = 2
+triggerall = !Root,var(7)
+triggerall = TeamSide = 2
+trigger1 = NumExplod(4100) = 0
+anim = 4100
+ID = 4100
+bindtime = -1
+removetime = -1
+pos = -103,220
+postype = Right
+facing = 1
+ownpal = 1
+sprpriority = 6
+supermovetime = 2147483647
+pausemovetime = 2147483647
+ignorehitpause = 1
+
+[State 8000, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4000)
+trigger1 = RoundState != 2
+trigger2 = Root,var(7)
+ID = 4000
+
+[State 8000, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4100)
+trigger1 = RoundState != 2
+trigger2 = Root,var(7)
+ID = 4100
+
+[State 8000, Explod]
+type = Explod
+triggerall = RoundState = 2
+triggerall = Root,var(7)
+triggerall = TeamSide = 1
+trigger1 = NumExplod(4200) = 0
+anim = 4200
+ID = 4200
+bindtime = -1
+removetime = -1
+pos = 2,200
+postype = Left
+facing = 1
+ownpal = 1
+ontop = 1
+supermovetime = 2147483647
+pausemovetime = 2147483647
+ignorehitpause = 1
+
+[State 8000, Explod]
+type = Explod
+triggerall = RoundState = 2
+triggerall = Root,var(7)
+triggerall = TeamSide = 2
+trigger1 = NumExplod(4300) = 0
+anim = 4300
+ID = 4300
+bindtime = -1
+removetime = -1
+pos = -109,200
+postype = Right
+facing = 1
+ownpal = 1
+ontop = 1
+supermovetime = 2147483647
+pausemovetime = 2147483647
+ignorehitpause = 1
+
+[State 8000, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4200)
+trigger1 = RoundState != 2
+trigger2 = !Root,var(7)
+ID = 4200
+
+[State 8000, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4300)
+trigger1 = RoundState != 2
+trigger2 = !Root,var(7)
+ID = 4300
+
+[State 8000, Explod]
+type = Explod
+triggerall = RoundState = 2
+triggerall = !Root,var(7)
+triggerall = TeamSide = 1
+trigger1 = NumExplod(4050) = 0
+anim = 4050
+ID = 4050
+bindtime = -1
+removetime = -1
+pos = 103,228
+postype = Left
+facing = 1
+ownpal = 1
+ontop = 1
+supermovetime = 2147483647
+pausemovetime = 2147483647
+ignorehitpause = 1
+
+[State 8000, Explod]
+type = Explod
+triggerall = RoundState = 2
+triggerall = !Root,var(7)
+triggerall = TeamSide = 2
+trigger1 = NumExplod(4150) = 0
+anim = 4150
+ID = 4150
+bindtime = -1
+removetime = -1
+pos = -100,228
+postype = Right
+facing = 1
+ownpal = 1
+ontop = 1
+supermovetime = 2147483647
+pausemovetime = 2147483647
+ignorehitpause = 1
+
+[State 8000, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4050)
+trigger1 = RoundState != 2
+trigger2 = Root,var(7)
+trigger3 = Root,var(17) >= 650
+ID = 4050
+
+[State 8000, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4150)
+trigger1 = RoundState != 2
+trigger2 = Root,var(7)
+trigger3 = Root,var(17) >= 650
+ID = 4150
+
+[State 8000, ModifyExplod]
+type = ModifyExplod
+trigger1 = Root,var(17) < 650
+ID = 4050
+scale = IfElse(Root,var(17)%650 = 0,0,(Root,var(17)%650)/650.0),1
+
+[State 8000, ModifyExplod]
+type = ModifyExplod
+trigger1 = Root,var(17) < 650
+ID = 4150
+scale = IfElse(Root,var(17)%650 = 0,0,(Root,var(17)%650)/650.0),1
+
+[State 8000, Explod]
+type = Explod
+triggerall = RoundState = 2
+triggerall = !Root,var(7)
+triggerall = Root,var(17) >= 650
+triggerall = TeamSide = 1
+trigger1 = NumExplod(4051) = 0
+anim = 4050
+ID = 4051
+bindtime = -1
+removetime = -1
+pos = 103,228
+postype = Left
+facing = 1
+ownpal = 1
+ontop = 1
+supermovetime = 2147483647
+pausemovetime = 2147483647
+ignorehitpause = 1
+
+[State 8000, Explod]
+type = Explod
+triggerall = RoundState = 2
+triggerall = !Root,var(7)
+triggerall = Root,var(17) >= 650
+triggerall = TeamSide = 2
+trigger1 = NumExplod(4151) = 0
+anim = 4150
+ID = 4151
+bindtime = -1
+removetime = -1
+pos = -100,228
+postype = Right
+facing = 1
+ownpal = 1
+ontop = 1
+supermovetime = 2147483647
+pausemovetime = 2147483647
+ignorehitpause = 1
+
+[State 8000, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4051)
+trigger1 = RoundState != 2
+trigger2 = Root,var(7)
+ID = 4051
+
+[State 8000, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4151)
+trigger1 = RoundState != 2
+trigger2 = Root,var(7)
+ID = 4151
+
+[State 8000, Explod]
+type = Explod
+triggerall = RoundState = 2
+triggerall = TeamSide = 1
+trigger1 = NumExplod(4400) = 0
+anim = 4400
+ID = 4400
+bindtime = -1
+removetime = -1
+pos = 183,48
+postype = Left
+facing = 1
+ownpal = 1
+sprpriority = 6
+supermovetime = 2147483647
+pausemovetime = 2147483647
+ignorehitpause = 1
+
+[State 8000, Explod]
+type = Explod
+triggerall = RoundState = 2
+triggerall = TeamSide = 2
+trigger1 = NumExplod(4400) = 0
+anim = 4400
+ID = 4400
+bindtime = -1
+removetime = -1
+pos = -241,48
+postype = Right
+facing = 1
+ownpal = 1
+sprpriority = 6
+supermovetime = 2147483647
+pausemovetime = 2147483647
+ignorehitpause = 1
+
+[State 8000, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4400)
+trigger1 = RoundState != 2
+ID = 4400
+
+[State 8000, Explod]
+type = Explod
+triggerall = RoundState = 2
+triggerall = TeamSide = 1
+trigger1 = NumExplod(4450) = 0
+anim = 4450
+ID = 4450
+bindtime = -1
+removetime = -1
+pos = 185,50
+postype = Left
+facing = 1
+ownpal = 1
+ontop = 1
+supermovetime = 2147483647
+pausemovetime = 2147483647
+ignorehitpause = 1
+
+[State 8000, Explod]
+type = Explod
+triggerall = RoundState = 2
+triggerall = TeamSide = 2
+trigger1 = NumExplod(4450) = 0
+anim = 4450
+ID = 4450
+bindtime = -1
+removetime = -1
+pos = -239,50
+postype = Right
+facing = 1
+ownpal = 1
+ontop = 1
+supermovetime = 2147483647
+pausemovetime = 2147483647
+ignorehitpause = 1
+
+[State 8000, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4450)
+trigger1 = RoundState != 2
+trigger2 = Root,var(22) >= 128
+ID = 4450
+
+[State 8000, ModifyExplod]
+type = ModifyExplod
+trigger1 = Root,var(22) < 128
+ID = 4450
+scale = IfElse(Root,var(22)%128 = 0,0,(Root,var(22)%128)/128.0),1
+
+[State 8000, DestroySelf]
+type = DestroySelf
+trigger1 = RoundState != 2
+
+;\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+;åïëMÅióßÇøÇ`Åj
+[Statedef 9000]
+type = A
+physics = N
+movetype = I
+ctrl = 0
+anim = 201
+velset = 0,0
+sprpriority = 7
+
+[State 9000, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = NoShadow
+flag2 = NoAutoTurn
+
+[State 9000, BindToRoot]
+type = BindToRoot
+trigger1 = 1
+pos = 0,0
+
+[State 9000, ChangeAnim]
+type = ChangeAnim
+triggerall = (Root,StateNo = 200 || Root,StateNo = 205)
+trigger1 = Root,AnimElem = 2, >= 0 && Root,AnimElem = 4, < 0
+value = 201
+elem = 1
+
+[State 9000, ChangeAnim]
+type = ChangeAnim
+triggerall = (Root,StateNo = 200 || Root,StateNo = 205)
+trigger1 = Root,AnimElem = 4, >= 0 && Root,AnimElem = 4, < 2
+value = 201
+elem = 2
+
+[State 9000, ChangeAnim]
+type = ChangeAnim
+triggerall = (Root,StateNo = 200 || Root,StateNo = 205)
+trigger1 = Root,AnimElem = 4, >= 2 && Root,AnimElem = 5, < 0
+value = 201
+elem = 3
+
+[State 9000, Trans]
+type = Trans
+trigger1 = 1
+trans = AddAlpha
+alpha = 256,256
+
+[State 9000, DestroySelf]
+type = DestroySelf
+trigger1 = (Root,StateNo = 200 || Root,StateNo = 205)
+trigger1 = Root,AnimElem = 5
+trigger2 = !(Root,StateNo = 200 || Root,StateNo = 205)
+ignorehitpause = 1
+
+;\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+;åïëMÅiâìóßÇøÇbÅj
+[Statedef 9010]
+type = A
+physics = N
+movetype = I
+ctrl = 0
+anim = 211
+velset = 0,0
+sprpriority = 7
+
+[State 9010, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = NoShadow
+flag2 = NoAutoTurn
+
+[State 9010, BindToRoot]
+type = BindToRoot
+trigger1 = 1
+pos = 0,0
+
+[State 9010, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 210
+trigger1 = Root,AnimElem = 9, >= 0 && Root,AnimElem = 10, < 0
+value = 211
+elem = 1
+
+[State 9010, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 210
+trigger1 = Root,AnimElem = 10, >= 0 && Root,AnimElem = 11, < 0
+value = 211
+elem = 2
+
+[State 9010, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 210
+trigger1 = Root,AnimElem = 11, >= 0 && Root,AnimElem = 12, < 0
+value = 211
+elem = 3
+
+[State 9010, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 210
+trigger1 = Root,AnimElem = 12, >= 0 && Root,AnimElem = 13, < 0
+value = 211
+elem = 4
+
+[State 9010, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 210
+trigger1 = Root,AnimElem = 13, >= 0 && Root,AnimElem = 14, < 0
+value = 211
+elem = 5
+
+[State 9010, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 210
+trigger1 = Root,AnimElem = 14, >= 0 && Root,AnimElem = 15, < 0
+value = 211
+elem = 6
+
+[State 9010, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 210
+trigger1 = Root,AnimElem = 15, >= 0 && Root,AnimElem = 16, < 0
+value = 211
+elem = 7
+
+[State 9010, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 210
+trigger1 = Root,AnimElem = 16, >= 0 && Root,AnimElem = 17, < 0
+value = 211
+elem = 8
+
+[State 9010, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 210
+trigger1 = Root,AnimElem = 17, >= 0 && Root,AnimElem = 18, < 0
+value = 211
+elem = 9
+
+[State 9010, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 210
+trigger1 = Root,AnimElem = 18, >= 0 && Root,AnimElem = 19, < 0
+value = 211
+elem = 10
+
+[State 9010, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 210
+trigger1 = Root,AnimElem = 19, >= 0 && Root,AnimElem = 20, < 0
+value = 211
+elem = 11
+
+[State 9010, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 210
+trigger1 = Root,AnimElem = 20, >= 0 && Root,AnimElem = 21, < 0
+value = 211
+elem = 12
+
+[State 9010, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 210
+trigger1 = Root,AnimElem = 21, >= 0 && Root,AnimElem = 22, < 0
+value = 211
+elem = 13
+
+[State 9010, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 210
+trigger1 = Root,AnimElem = 22, >= 0 && Root,AnimElem = 23, < 0
+value = 211
+elem = 14
+
+[State 9010, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 210
+trigger1 = Root,AnimElem = 23, >= 0 && Root,AnimElem = 24, < 0
+value = 211
+elem = 15
+
+[State 9010, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 210
+trigger1 = Root,AnimElem = 24, >= 0 && Root,AnimElem = 25, < 0
+value = 211
+elem = 16
+
+[State 9010, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 210
+trigger1 = Root,AnimElem = 25, >= 0 && Root,AnimElem = 26, < 0
+value = 211
+elem = 17
+
+[State 9010, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 210
+trigger1 = Root,AnimElem = 26, >= 0 && Root,AnimElem = 27, < 0
+value = 211
+elem = 18
+
+[State 9010, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 210
+trigger1 = Root,AnimElem = 27, >= 0 && Root,AnimElem = 28, < 0
+value = 211
+elem = 19
+
+[State 9010, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 210
+trigger1 = Root,AnimElem = 28, >= 0 && Root,AnimElem = 29, < 0
+value = 211
+elem = 20
+
+[State 9010, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 210
+trigger1 = Root,AnimElem = 29, >= 0 && Root,AnimElem = 30, < 0
+value = 211
+elem = 21
+
+[State 9010, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 210
+trigger1 = Root,AnimElem = 30, >= 0 && Root,AnimElem = 31, < 0
+value = 211
+elem = 22
+
+[State 9010, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 210
+trigger1 = Root,AnimElem = 31, >= 0 && Root,AnimElem = 32, < 0
+value = 211
+elem = 23
+
+[State 9010, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 210
+trigger1 = Root,AnimElem = 32, >= 0 && Root,AnimElem = 33, < 0
+value = 211
+elem = 24
+
+[State 9010, Trans]
+type = Trans
+trigger1 = 1
+trans = AddAlpha
+alpha = 256,256
+
+[State 9010, DestroySelf]
+type = DestroySelf
+trigger1 = Root,StateNo = 210
+trigger1 = Root,AnimElem = 33
+trigger2 = !(Root,StateNo = 210)
+ignorehitpause = 1
+
+;\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+;åïëMÅiãﬂóßÇøÇbÅj
+[Statedef 9020]
+type = A
+physics = N
+movetype = I
+ctrl = 0
+anim = 216
+velset = 0,0
+sprpriority = 7
+
+[State 9020, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = NoShadow
+flag2 = NoAutoTurn
+
+[State 9020, BindToRoot]
+type = BindToRoot
+trigger1 = 1
+pos = 0,0
+
+[State 9020, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 215
+trigger1 = Root,AnimElem = 4, >= 0 && Root,AnimElem = 5, < 0
+value = 216
+elem = 1
+
+[State 9020, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 215
+trigger1 = Root,AnimElem = 5, >= 0 && Root,AnimElem = 6, < 0
+value = 216
+elem = 2
+
+[State 9020, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 215
+trigger1 = Root,AnimElem = 6, >= 0 && Root,AnimElem = 7, < 0
+value = 216
+elem = 3
+
+[State 9020, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 215
+trigger1 = Root,AnimElem = 7, >= 0 && Root,AnimElem = 9, < 0
+value = 216
+elem = 4
+
+[State 9020, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 215
+trigger1 = Root,AnimElem = 9, >= 0 && Root,AnimElem = 10, < 0
+value = 216
+elem = 5
+
+[State 9020, Trans]
+type = Trans
+trigger1 = 1
+trans = AddAlpha
+alpha = 256,256
+
+[State 9020, DestroySelf]
+type = DestroySelf
+trigger1 = Root,StateNo = 215
+trigger1 = Root,AnimElem = 10
+trigger2 = !(Root,StateNo = 215)
+ignorehitpause = 1
+
+;\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+;åïëMÅiâìóßÇøÇaÅj
+[Statedef 9030]
+type = A
+physics = N
+movetype = I
+ctrl = 0
+anim = 221
+velset = 0,0
+sprpriority = 7
+
+[State 9030, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = NoShadow
+flag2 = NoAutoTurn
+
+[State 9030, BindToRoot]
+type = BindToRoot
+trigger1 = 1
+pos = 0,0
+
+[State 9030, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 220
+trigger1 = Root,AnimElem = 8, >= 0 && Root,AnimElem = 9, < 0
+value = 221
+elem = 1
+
+[State 9030, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 220
+trigger1 = Root,AnimElem = 9, >= 0 && Root,AnimElem = 10, < 0
+value = 221
+elem = 2
+
+[State 9030, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 220
+trigger1 = Root,AnimElem = 10, >= 0 && Root,AnimElem = 11, < 0
+value = 221
+elem = 3
+
+[State 9030, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 220
+trigger1 = Root,AnimElem = 11, >= 0 && Root,AnimElem = 12, < 0
+value = 221
+elem = 4
+
+[State 9030, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 220
+trigger1 = Root,AnimElem = 12, >= 0 && Root,AnimElem = 13, < 0
+value = 221
+elem = 5
+
+[State 9030, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 220
+trigger1 = Root,AnimElem = 13, >= 0 && Root,AnimElem = 14, < 0
+value = 221
+elem = 6
+
+[State 9030, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 220
+trigger1 = Root,AnimElem = 14, >= 0 && Root,AnimElem = 15, < 0
+value = 221
+elem = 7
+
+[State 9030, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 220
+trigger1 = Root,AnimElem = 15, >= 0 && Root,AnimElem = 16, < 0
+value = 221
+elem = 8
+
+[State 9030, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 220
+trigger1 = Root,AnimElem = 16, >= 0 && Root,AnimElem = 17, < 0
+value = 221
+elem = 9
+
+[State 9030, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 220
+trigger1 = Root,AnimElem = 17, >= 0 && Root,AnimElem = 18, < 0
+value = 221
+elem = 10
+
+[State 9030, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 220
+trigger1 = Root,AnimElem = 18, >= 0 && Root,AnimElem = 19, < 0
+value = 221
+elem = 11
+
+[State 9030, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 220
+trigger1 = Root,AnimElem = 19, >= 0 && Root,AnimElem = 20, < 0
+value = 221
+elem = 12
+
+[State 9030, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 220
+trigger1 = Root,AnimElem = 20, >= 0 && Root,AnimElem = 21, < 0
+value = 221
+elem = 13
+
+[State 9030, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 220
+trigger1 = Root,AnimElem = 21, >= 0 && Root,AnimElem = 22, < 0
+value = 221
+elem = 14
+
+[State 9030, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 220
+trigger1 = Root,AnimElem = 22, >= 0 && Root,AnimElem = 23, < 0
+value = 221
+elem = 15
+
+[State 9030, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 220
+trigger1 = Root,AnimElem = 23, >= 0 && Root,AnimElem = 24, < 0
+value = 221
+elem = 16
+
+[State 9030, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 220
+trigger1 = Root,AnimElem = 24, >= 0 && Root,AnimElem = 25, < 0
+value = 221
+elem = 17
+
+[State 9030, Trans]
+type = Trans
+trigger1 = 1
+trans = AddAlpha
+alpha = 256,256
+
+[State 9030, DestroySelf]
+type = DestroySelf
+trigger1 = Root,StateNo = 220
+trigger1 = Root,AnimElem = 25
+trigger2 = !(Root,StateNo = 220)
+ignorehitpause = 1
+
+;\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+;åïëMÅiÇ”Ç¡Ç∆ÇŒÇµÅj
+[Statedef 9040]
+type = A
+physics = N
+movetype = I
+ctrl = 0
+anim = 256
+velset = 0,0
+sprpriority = 7
+
+[State 9040, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = NoShadow
+flag2 = NoAutoTurn
+
+[State 9040, BindToRoot]
+type = BindToRoot
+trigger1 = 1
+pos = 0,0
+
+[State 9040, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 250
+trigger1 = Root,AnimElem = 1, >= 0 && Root,AnimElem = 3, < 0
+value = 256
+elem = 1
+
+[State 9040, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 250
+trigger1 = Root,AnimElem = 3, >= 0 && Root,AnimElem = 5, < 0
+value = 256
+elem = 2
+
+[State 9040, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 250
+trigger1 = Root,AnimElem = 5, >= 0 && Root,AnimElem = 6, < 0
+value = 256
+elem = 3
+
+[State 9040, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 250
+trigger1 = Root,AnimElem = 6, >= 0 && Root,AnimElem = 7, < 0
+value = 256
+elem = 4
+
+[State 9040, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 250
+trigger1 = Root,AnimElem = 7, >= 0 && Root,AnimElem = 7, < 4
+value = 256
+elem = 5
+
+[State 9040, Trans]
+type = Trans
+trigger1 = 1
+trans = AddAlpha
+alpha = 256,256
+
+[State 9040, DestroySelf]
+type = DestroySelf
+trigger1 = Root,StateNo = 250
+trigger1 = Root,AnimElem = 7, = 4
+trigger2 = !(Root,StateNo = 250)
+ignorehitpause = 1
+
+;\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+;åïëMÅiÇfÇbÇ”Ç¡Ç∆ÇŒÇµÅj
+[Statedef 9050]
+type = A
+physics = N
+movetype = I
+ctrl = 0
+anim = 256
+velset = 0,0
+sprpriority = 7
+
+[State 9050, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = NoShadow
+flag2 = NoAutoTurn
+
+[State 9050, BindToRoot]
+type = BindToRoot
+trigger1 = 1
+pos = 0,0
+
+[State 9050, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 255
+trigger1 = Root,AnimElem = 3, >= 0 && Root,AnimElem = 5, < 0
+value = 256
+elem = 1
+
+[State 9050, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 255
+trigger1 = Root,AnimElem = 5, >= 0 && Root,AnimElem = 7, < 0
+value = 256
+elem = 2
+
+[State 9050, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 255
+trigger1 = Root,AnimElem = 7, >= 0 && Root,AnimElem = 8, < 0
+value = 256
+elem = 3
+
+[State 9050, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 255
+trigger1 = Root,AnimElem = 8, >= 0 && Root,AnimElem = 9, < 0
+value = 256
+elem = 4
+
+[State 9050, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 255
+trigger1 = Root,AnimElem = 9, >= 0 && Root,AnimElem = 9, < 4
+value = 256
+elem = 5
+
+[State 9050, Trans]
+type = Trans
+trigger1 = 1
+trans = AddAlpha
+alpha = 256,256
+
+[State 9050, DestroySelf]
+type = DestroySelf
+trigger1 = Root,StateNo = 255
+trigger1 = Root,AnimElem = 9, = 4
+trigger2 = !(Root,StateNo = 255)
+ignorehitpause = 1
+
+;\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+;åïëMÅià≈çÌÇ¨Åj
+[Statedef 9060]
+type = A
+physics = N
+movetype = I
+ctrl = 0
+anim = 261
+velset = 0,0
+sprpriority = 7
+
+[State 9060, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = NoShadow
+flag2 = NoAutoTurn
+
+[State 9060, BindToRoot]
+type = BindToRoot
+trigger1 = 1
+pos = 0,0
+
+[State 9060, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 260
+trigger1 = Root,AnimElem = 19, >= 0 && Root,AnimElem = 20, < 0
+value = 261
+elem = 1
+
+[State 9060, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 260
+trigger1 = Root,AnimElem = 20, >= 0 && Root,AnimElem = 21, < 0
+value = 261
+elem = 2
+
+[State 9060, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 260
+trigger1 = Root,AnimElem = 21, >= 0 && Root,AnimElem = 22, < 0
+value = 261
+elem = 3
+
+[State 9060, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 260
+trigger1 = Root,AnimElem = 22, >= 0 && Root,AnimElem = 23, < 0
+value = 261
+elem = 4
+
+[State 9060, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 260
+trigger1 = Root,AnimElem = 23, >= 0 && Root,AnimElem = 24, < 0
+value = 261
+elem = 5
+
+[State 9060, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 260
+trigger1 = Root,AnimElem = 24, >= 0 && Root,AnimElem = 25, < 0
+value = 261
+elem = 6
+
+[State 9060, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 260
+trigger1 = Root,AnimElem = 25, >= 0 && Root,AnimElem = 26, < 0
+value = 261
+elem = 7
+
+[State 9060, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 260
+trigger1 = Root,AnimElem = 26, >= 0 && Root,AnimElem = 27, < 0
+value = 261
+elem = 8
+
+[State 9060, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 260
+trigger1 = Root,AnimElem = 27, >= 0 && Root,AnimElem = 28, < 0
+value = 261
+elem = 9
+
+[State 9060, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 260
+trigger1 = Root,AnimElem = 28, >= 0 && Root,AnimElem = 29, < 0
+value = 261
+elem = 10
+
+[State 9060, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 260
+trigger1 = Root,AnimElem = 29, >= 0 && Root,AnimElem = 30, < 0
+value = 261
+elem = 11
+
+[State 9060, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 260
+trigger1 = Root,AnimElem = 30, >= 0 && Root,AnimElem = 31, < 0
+value = 261
+elem = 12
+
+[State 9060, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 260
+trigger1 = Root,AnimElem = 31, >= 0 && Root,AnimElem = 32, < 0
+value = 261
+elem = 13
+
+[State 9060, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 260
+trigger1 = Root,AnimElem = 32, >= 0 && Root,AnimElem = 33, < 0
+value = 261
+elem = 14
+
+[State 9060, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 260
+trigger1 = Root,AnimElem = 33, >= 0 && Root,AnimElem = 34, < 0
+value = 261
+elem = 15
+
+[State 9060, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 260
+trigger1 = Root,AnimElem = 34, >= 0 && Root,AnimElem = 34, < 1
+value = 261
+elem = 16
+
+[State 9060, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 260
+trigger1 = Root,AnimElem = 34, >= 1 && Root,AnimElem = 35, < 0
+value = 261
+elem = 17
+
+[State 9060, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 260
+trigger1 = Root,AnimElem = 35, >= 0 && Root,AnimElem = 36, < 0
+value = 261
+elem = 18
+
+[State 9060, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 260
+trigger1 = Root,AnimElem = 36, >= 0 && Root,AnimElem = 37, < 0
+value = 261
+elem = 19
+
+[State 9060, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 260
+trigger1 = Root,AnimElem = 37, >= 0 && Root,AnimElem = 38, < 0
+value = 261
+elem = 20
+
+[State 9060, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 260
+trigger1 = Root,AnimElem = 38, >= 0 && Root,AnimElem = 39, < 0
+value = 261
+elem = 21
+
+[State 9060, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 260
+trigger1 = Root,AnimElem = 39, >= 0 && Root,AnimElem = 40, < 0
+value = 261
+elem = 22
+
+[State 9060, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 260
+trigger1 = Root,AnimElem = 40, >= 0 && Root,AnimElem = 41, < 0
+value = 261
+elem = 23
+
+[State 9060, Trans]
+type = Trans
+trigger1 = 1
+trans = AddAlpha
+alpha = 256,256
+
+[State 9060, DestroySelf]
+type = DestroySelf
+trigger1 = Root,StateNo = 260
+trigger1 = Root,AnimElem = 41
+trigger2 = !(Root,StateNo = 260)
+ignorehitpause = 1
+
+;\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+;åïëMÅiÇµÇ·Ç™Ç›Ç`Åj
+[Statedef 9070]
+type = A
+physics = N
+movetype = I
+ctrl = 0
+anim = 221
+velset = 0,0
+sprpriority = 7
+
+[State 9070, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = NoShadow
+flag2 = NoAutoTurn
+
+[State 9070, BindToRoot]
+type = BindToRoot
+trigger1 = 1
+pos = -9,11
+
+[State 9070, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 400
+trigger1 = Root,AnimElem = 2, >= 0 && Root,AnimElem = 4, < 0
+value = 201
+elem = 1
+
+[State 9070, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 400
+trigger1 = Root,AnimElem = 4, >= 0 && Root,AnimElem = 4, < 2
+value = 201
+elem = 2
+
+[State 9070, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 400
+trigger1 = Root,AnimElem = 4, >= 2 && Root,AnimElem = 5, < 0
+value = 201
+elem = 3
+
+[State 9070, Trans]
+type = Trans
+trigger1 = 1
+trans = AddAlpha
+alpha = 256,256
+
+[State 9070, DestroySelf]
+type = DestroySelf
+trigger1 = Root,StateNo = 400
+trigger1 = Root,AnimElem = 5
+trigger2 = !(Root,StateNo = 400)
+ignorehitpause = 1
+
+;\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+;åïëMÅiÇµÇ·Ç™Ç›ÇbÅj
+[Statedef 9080]
+type = A
+physics = N
+movetype = I
+ctrl = 0
+anim = 411
+velset = 0,0
+sprpriority = 7
+
+[State 9080, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = NoShadow
+flag2 = NoAutoTurn
+
+[State 9080, BindToRoot]
+type = BindToRoot
+trigger1 = 1
+pos = 0,0
+
+[State 9080, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 410
+trigger1 = Root,AnimElem = 10, >= 0 && Root,AnimElem = 11, < 0
+value = 411
+elem = 1
+
+[State 9080, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 410
+trigger1 = Root,AnimElem = 11, >= 0 && Root,AnimElem = 12, < 0
+value = 411
+elem = 2
+
+[State 9080, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 410
+trigger1 = Root,AnimElem = 12, >= 0 && Root,AnimElem = 13, < 0
+value = 411
+elem = 3
+
+[State 9080, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 410
+trigger1 = Root,AnimElem = 13, >= 0 && Root,AnimElem = 14, < 0
+value = 411
+elem = 4
+
+[State 9080, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 410
+trigger1 = Root,AnimElem = 14, >= 0 && Root,AnimElem = 15, < 0
+value = 411
+elem = 5
+
+[State 9080, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 410
+trigger1 = Root,AnimElem = 15, >= 0 && Root,AnimElem = 16, < 0
+value = 411
+elem = 6
+
+[State 9080, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 410
+trigger1 = Root,AnimElem = 16, >= 0 && Root,AnimElem = 17, < 0
+value = 411
+elem = 7
+
+[State 9080, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 410
+trigger1 = Root,AnimElem = 17, >= 0 && Root,AnimElem = 18, < 0
+value = 411
+elem = 8
+
+[State 9080, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 410
+trigger1 = Root,AnimElem = 18, >= 0 && Root,AnimElem = 19, < 0
+value = 411
+elem = 9
+
+[State 9080, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 410
+trigger1 = Root,AnimElem = 19, >= 0 && Root,AnimElem = 20, < 0
+value = 411
+elem = 10
+
+[State 9080, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 410
+trigger1 = Root,AnimElem = 20, >= 0 && Root,AnimElem = 21, < 0
+value = 411
+elem = 11
+
+[State 9080, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 410
+trigger1 = Root,AnimElem = 21, >= 0 && Root,AnimElem = 22, < 0
+value = 411
+elem = 12
+
+[State 9080, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 410
+trigger1 = Root,AnimElem = 22, >= 0 && Root,AnimElem = 23, < 0
+value = 411
+elem = 13
+
+[State 9080, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 410
+trigger1 = Root,AnimElem = 23, >= 0 && Root,AnimElem = 24, < 0
+value = 411
+elem = 14
+
+[State 9080, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 410
+trigger1 = Root,AnimElem = 24, >= 0 && Root,AnimElem = 25, < 0
+value = 411
+elem = 15
+
+[State 9080, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 410
+trigger1 = Root,AnimElem = 25, >= 0 && Root,AnimElem = 26, < 0
+value = 411
+elem = 16
+
+[State 9080, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 410
+trigger1 = Root,AnimElem = 26, >= 0 && Root,AnimElem = 27, < 0
+value = 411
+elem = 17
+
+[State 9080, Trans]
+type = Trans
+trigger1 = 1
+trans = AddAlpha
+alpha = 256,256
+
+[State 9080, DestroySelf]
+type = DestroySelf
+trigger1 = Root,StateNo = 410
+trigger1 = Root,AnimElem = 27
+trigger2 = !(Root,StateNo = 410)
+ignorehitpause = 1
+
+;\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+;åïëMÅiÇµÇ·Ç™Ç›ÇaÅj
+[Statedef 9090]
+type = A
+physics = N
+movetype = I
+ctrl = 0
+anim = 421
+velset = 0,0
+sprpriority = 7
+
+[State 9090, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = NoShadow
+flag2 = NoAutoTurn
+
+[State 9090, BindToRoot]
+type = BindToRoot
+trigger1 = 1
+pos = 0,0
+
+[State 9090, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 420
+trigger1 = Root,AnimElem = 7, >= 0 && Root,AnimElem = 8, < 0
+value = 421
+elem = 1
+
+[State 9090, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 420
+trigger1 = Root,AnimElem = 8, >= 0 && Root,AnimElem = 9, < 0
+value = 421
+elem = 2
+
+[State 9090, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 420
+trigger1 = Root,AnimElem = 9, >= 0 && Root,AnimElem = 10, < 0
+value = 421
+elem = 3
+
+[State 9090, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 420
+trigger1 = Root,AnimElem = 10, >= 0 && Root,AnimElem = 11, < 0
+value = 421
+elem = 4
+
+[State 9090, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 420
+trigger1 = Root,AnimElem = 11, >= 0 && Root,AnimElem = 12, < 0
+value = 421
+elem = 5
+
+[State 9090, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 420
+trigger1 = Root,AnimElem = 12, >= 0 && Root,AnimElem = 13, < 0
+value = 421
+elem = 6
+
+[State 9090, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 420
+trigger1 = Root,AnimElem = 13, >= 0 && Root,AnimElem = 14, < 0
+value = 421
+elem = 7
+
+[State 9090, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 420
+trigger1 = Root,AnimElem = 14, >= 0 && Root,AnimElem = 15, < 0
+value = 421
+elem = 8
+
+[State 9090, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 420
+trigger1 = Root,AnimElem = 15, >= 0 && Root,AnimElem = 16, < 0
+value = 421
+elem = 9
+
+[State 9090, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 420
+trigger1 = Root,AnimElem = 16, >= 0 && Root,AnimElem = 17, < 0
+value = 421
+elem = 10
+
+[State 9090, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 420
+trigger1 = Root,AnimElem = 17, >= 0 && Root,AnimElem = 18, < 0
+value = 421
+elem = 11
+
+[State 9090, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 420
+trigger1 = Root,AnimElem = 18, >= 0 && Root,AnimElem = 19, < 0
+value = 421
+elem = 12
+
+[State 9090, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 420
+trigger1 = Root,AnimElem = 19, >= 0 && Root,AnimElem = 20, < 0
+value = 421
+elem = 13
+
+[State 9090, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 420
+trigger1 = Root,AnimElem = 20, >= 0 && Root,AnimElem = 21, < 0
+value = 421
+elem = 14
+
+[State 9090, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 420
+trigger1 = Root,AnimElem = 21, >= 0 && Root,AnimElem = 22, < 0
+value = 421
+elem = 15
+
+[State 9090, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 420
+trigger1 = Root,AnimElem = 22, >= 0 && Root,AnimElem = 23, < 0
+value = 421
+elem = 16
+
+[State 9090, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 420
+trigger1 = Root,AnimElem = 23, >= 0 && Root,AnimElem = 24, < 0
+value = 421
+elem = 17
+
+[State 9090, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 420
+trigger1 = Root,AnimElem = 24, >= 0 && Root,AnimElem = 25, < 0
+value = 421
+elem = 18
+
+[State 9090, Trans]
+type = Trans
+trigger1 = 1
+trans = AddAlpha
+alpha = 256,256
+
+[State 9090, DestroySelf]
+type = DestroySelf
+trigger1 = Root,StateNo = 420
+trigger1 = Root,AnimElem = 25
+trigger2 = !(Root,StateNo = 420)
+ignorehitpause = 1
+
+;\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+;åïëMÅiÇµÇ·Ç™Ç›ÇcÅj
+[Statedef 9100]
+type = A
+physics = N
+movetype = I
+ctrl = 0
+anim = 431
+velset = 0,0
+sprpriority = 7
+
+[State 9100, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = NoShadow
+flag2 = NoAutoTurn
+
+[State 9100, BindToRoot]
+type = BindToRoot
+trigger1 = 1
+pos = 0,0
+
+[State 9100, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 430
+trigger1 = Root,AnimElem = 2, >= 0 && Root,AnimElem = 3, < 0
+value = 431
+elem = 1
+
+[State 9100, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 430
+trigger1 = Root,AnimElem = 3, >= 0 && Root,AnimElem = 4, < 0
+value = 431
+elem = 2
+
+[State 9100, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 430
+trigger1 = Root,AnimElem = 5, >= 0 && Root,AnimElem = 6, < 0
+value = 431
+elem = 3
+
+[State 9100, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 430
+trigger1 = Root,AnimElem = 6, >= 0 && Root,AnimElem = 6, < 4
+value = 431
+elem = 4
+
+[State 9100, Trans]
+type = Trans
+trigger1 = 1
+trans = AddAlpha
+alpha = 256,256
+
+[State 9100, DestroySelf]
+type = DestroySelf
+trigger1 = Root,StateNo = 430
+trigger1 = Root,AnimElem = 6, = 3
+trigger2 = !(Root,StateNo = 430)
+ignorehitpause = 1
+
+;\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+;åïëMÅiÉWÉÉÉìÉvÇ`Åj
+[Statedef 9110]
+type = A
+physics = N
+movetype = I
+ctrl = 0
+anim = 601
+velset = 0,0
+sprpriority = 7
+
+[State 9110, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = NoShadow
+flag2 = NoAutoTurn
+
+[State 9110, BindToRoot]
+type = BindToRoot
+trigger1 = 1
+pos = 0,0
+
+[State 9110, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,Anim = 600
+trigger1 = Root,AnimElem = 1, >= 0 && Root,AnimElem = 2, < 0
+value = 601
+elem = 1
+
+[State 9110, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,Anim = 600
+trigger1 = Root,AnimElem = 2, >= 0 && Root,AnimElem = 2, < 2
+value = 601
+elem = 2
+
+[State 9110, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,Anim = 600
+trigger1 = Root,AnimElem = 2, >= 2 && Root,AnimElem = 3, < 0
+value = 601
+elem = 3
+
+[State 9110, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,Anim = 600
+trigger1 = Root,AnimElem = 3, >= 0 && Root,AnimElem = 4, < 0
+value = 601
+elem = 4
+
+[State 9110, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,Anim = 600
+trigger1 = Root,AnimElem = 4, >= 0 && Root,AnimElem = 4, < 4
+value = 601
+elem = 5
+
+[State 9110, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,Anim = 600
+trigger1 = Root,AnimElem = 4, >= 4 && Root,AnimElem = 4, < 8
+value = 601
+elem = 6
+
+[State 9110, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,Anim = 600
+trigger1 = Root,AnimElem = 4, >= 8 && Root,AnimElem = 4, < 12
+value = 601
+elem = 7
+
+[State 9110, Trans]
+type = Trans
+trigger1 = 1
+trans = AddAlpha
+alpha = 256,256
+
+[State 9110, DestroySelf]
+type = DestroySelf
+trigger1 = Root,Anim = 600
+trigger1 = Root,AnimElem = 4, = 12
+trigger2 = !(Root,Anim = 600)
+ignorehitpause = 1
+
+;\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+;åïëMÅiÉWÉÉÉìÉvÇbÅj
+[Statedef 9120]
+type = A
+physics = N
+movetype = I
+ctrl = 0
+anim = 611
+velset = 0,0
+sprpriority = 7
+
+[State 9120, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = NoShadow
+flag2 = NoAutoTurn
+
+[State 9120, BindToRoot]
+type = BindToRoot
+trigger1 = 1
+pos = 0,0
+
+[State 9120, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,Anim = 610
+trigger1 = Root,AnimElem = 1, >= 0 && Root,AnimElem = 2, < 0
+value = 611
+elem = 1
+
+[State 9120, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,Anim = 610
+trigger1 = Root,AnimElem = 2, >= 0 && Root,AnimElem = 3, < 0
+value = 611
+elem = 2
+
+[State 9120, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,Anim = 610
+trigger1 = Root,AnimElem = 3, >= 0 && Root,AnimElem = 4, < 0
+value = 611
+elem = 3
+
+[State 9120, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,Anim = 610
+trigger1 = Root,AnimElem = 4, >= 0 && Root,AnimElem = 5, < 0
+value = 611
+elem = 4
+
+[State 9120, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,Anim = 610
+trigger1 = Root,AnimElem = 5, >= 0 && Root,AnimElem = 6, < 0
+value = 611
+elem = 5
+
+[State 9120, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,Anim = 610
+trigger1 = Root,AnimElem = 6, >= 0 && Root,AnimElem = 6, < 3
+value = 611
+elem = 6
+
+[State 9120, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,Anim = 610
+trigger1 = Root,AnimElem = 6, >= 3 && Root,AnimElem = 7, < 0
+value = 611
+elem = 7
+
+[State 9120, Trans]
+type = Trans
+trigger1 = 1
+trans = AddAlpha
+alpha = 256,256
+
+[State 9120, DestroySelf]
+type = DestroySelf
+trigger1 = Root,Anim = 610
+trigger1 = Root,AnimElem = 7
+trigger2 = !(Root,Anim = 610)
+ignorehitpause = 1
+
+;\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+;åïëMÅiîÇØçUåÇÅj
+[Statedef 9130]
+type = A
+physics = N
+movetype = I
+ctrl = 0
+anim = 751
+velset = 0,0
+sprpriority = 7
+
+[State 9130, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = NoShadow
+flag2 = NoAutoTurn
+
+[State 9130, BindToRoot]
+type = BindToRoot
+trigger1 = 1
+pos = 0,0
+
+[State 9130, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 750
+trigger1 = Root,AnimElem = 8, >= 0 && Root,AnimElem = 9, < 0
+value = 751
+elem = 1
+
+[State 9130, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 750
+trigger1 = Root,AnimElem = 9, >= 0 && Root,AnimElem = 10, < 0
+value = 751
+elem = 2
+
+[State 9130, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 750
+trigger1 = Root,AnimElem = 10, >= 0 && Root,AnimElem = 12, < 0
+value = 751
+elem = 3
+
+[State 9130, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 750
+trigger1 = Root,AnimElem = 12, >= 0 && Root,AnimElem = 12, < 6
+value = 751
+elem = 4
+
+[State 9130, Trans]
+type = Trans
+trigger1 = 1
+trans = AddAlpha
+alpha = 256,256
+
+[State 9130, DestroySelf]
+type = DestroySelf
+trigger1 = Root,StateNo = 750
+trigger1 = Root,AnimElem = 12, = 6
+trigger2 = !(Root,StateNo = 750)
+ignorehitpause = 1
+
+;\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+;ì{ÇËí∏ì_Å@ÉRÉEÉÇÉäÇ`
+[Statedef 9140]
+type = A
+physics = N
+movetype = I
+ctrl = 0
+anim = 901
+velset = 0,0
+sprpriority = 7
+
+[State 9140, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = NoShadow
+flag2 = NoAutoTurn
+
+[State 9140, PlaySnd]
+type = PlaySnd
+trigger1 = AnimElem = 1
+value = S4,30
+
+[State 9140, VelSet]
+type = VelSet
+trigger1 = AnimElem = 1
+x = 2
+y = -5
+
+[State 9140, DestroySelf]
+type = DestroySelf
+trigger1 = Time > 100
+ignorehitpause = 1
+
+;\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+;ì{ÇËí∏ì_Å@ÉRÉEÉÇÉäÇa
+[Statedef 9150]
+type = A
+physics = N
+movetype = I
+ctrl = 0
+anim = 901
+velset = 0,0
+sprpriority = 7
+
+[State -2, Turn]
+type = Turn
+trigger1 = Time = 0
+
+[State 9150, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = NoShadow
+flag2 = NoAutoTurn
+
+[State 9150, PlaySnd]
+type = PlaySnd
+trigger1 = AnimElem = 1
+value = S4,30
+
+[State 9150, VelSet]
+type = VelSet
+trigger1 = AnimElem = 1
+x = 4
+y = -6
+
+[State 9150, DestroySelf]
+type = DestroySelf
+trigger1 = Time > 100
+ignorehitpause = 1
+
+;\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+;ì{ÇËí∏ì_Å@ÉRÉEÉÇÉäÇb
+[Statedef 9160]
+type = A
+physics = N
+movetype = I
+ctrl = 0
+anim = 901
+velset = 0,0
+sprpriority = 7
+
+[State 9160, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = NoShadow
+flag2 = NoAutoTurn
+
+[State 9160, PlaySnd]
+type = PlaySnd
+trigger1 = AnimElem = 1
+value = S4,30
+
+[State 9160, VelSet]
+type = VelSet
+trigger1 = AnimElem = 1
+x = 2
+y = -7
+
+[State 9160, DestroySelf]
+type = DestroySelf
+trigger1 = Time > 100
+ignorehitpause = 1
+
+;\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+;åïëMÅiì{ÇËîöî≠Åj
+[Statedef 9170]
+type = A
+physics = N
+movetype = I
+ctrl = 0
+anim = 952
+velset = 0,0
+sprpriority = 7
+
+[State 9170, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = NoShadow
+flag2 = NoAutoTurn
+
+[State 9170, BindToRoot]
+type = BindToRoot
+trigger1 = 1
+pos = 0,0
+
+[State 9170, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 950
+trigger1 = Root,AnimElem = 7, >= 0 && Root,AnimElem = 8, < 0
+value = 952
+elem = 1
+
+[State 9170, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 950
+trigger1 = Root,AnimElem = 8, >= 0 && Root,AnimElem = 9, < 0
+value = 952
+elem = 2
+
+[State 9170, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 950
+trigger1 = Root,AnimElem = 9, >= 0 && Root,AnimElem = 10, < 0
+value = 952
+elem = 3
+
+[State 9170, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 950
+trigger1 = Root,AnimElem = 10, >= 0 && Root,AnimElem = 11, < 0
+value = 952
+elem = 4
+
+[State 9170, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 950
+trigger1 = Root,AnimElem = 11, >= 0 && Root,AnimElem = 11, < 1
+value = 952
+elem = 5
+
+[State 9170, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 950
+trigger1 = Root,AnimElem = 11, >= 0 && Root,AnimElem = 12, < 0
+value = 952
+elem = 6
+
+[State 9170, Trans]
+type = Trans
+trigger1 = 1
+trans = AddAlpha
+alpha = 256,256
+
+[State 9170, DestroySelf]
+type = DestroySelf
+trigger1 = Root,StateNo = 950
+trigger1 = Root,AnimElem = 12
+trigger2 = !(Root,StateNo = 950)
+ignorehitpause = 1
+
+;\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+;ínéhÇµÅ@Ç`
+[Statedef 9180]
+type = A
+physics = N
+movetype = A
+anim = 1001
+velset = 0,0
+sprpriority = 6
+
+[State -2, ParentVarAdd]
+type = ParentVarAdd
+trigger1 = MoveGuarded
+var(22) = 18
+ignorehitpause = 1
+persistent = 0
+
+[State 9180, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = NoShadow
+ignorehitpause = 1
+
+[State 9180, StateTypeSet]
+type = StateTypeSet
+trigger1 = Time = 40
+movetype = I
+
+[State 9180, HitDef1]
+type = HitDef
+trigger1 = !Root,var(9)
+attr = A,SP
+damage = Ceil((15+Root,var(5))*Root,fvar(6)*(100-Random%11)*10/103),Ceil((1+Root,var(5))*Root,fvar(6)*(100-Random%11)*10/103)
+animtype = Hard
+air.animtype = Back
+ground.type = High
+guardflag = M
+hitflag = MAF
+priority = 7,Hit
+sparkno = S30002
+guard.sparkno = s30040
+sparkxy = -15,15
+hitsound = S5,25+Random%4
+guardsound = S6,2+Random%3
+pausetime = 0,11
+guard.pausetime = 0,9
+ground.slidetime = 17
+ground.hittime = 17
+guard.ctrltime = 17
+air.hittime = 60
+ground.velocity = -4,-7.5
+guard.velocity = -10.35
+air.velocity = -4,-7.5
+ground.cornerpush.veloff = 0
+guard.cornerpush.veloff = 0
+air.cornerpush.veloff = 0
+fall = 1
+fall.recovertime = 24+11+Ceil((-EnemyNear(var(58)),Pos Y)/10)
+yaccel = .55
+getpower = 100,100
+givepower = 15,15
+ID = 9180
+
+[State 9180, TargetState]
+type = TargetState
+triggerall = NumTarget(9180)
+trigger1 = Root,var(22) >= 128
+trigger1 = MoveGuarded
+trigger1 = !(Target,StateNo = 5910)
+value = 5910
+ID = 9180
+ignorehitpause = 1
+persistent = 0
+
+[State 9180, HitBy]
+type = HitBy
+trigger1 = 1
+value = SCA,AP
+time = -1
+ignorehitpause = 1
+
+[State 9180, HitOverRide]
+type = HitOverRide
+trigger1 = 1
+attr = SCA,AP
+stateno = 9181
+ignorehitpause = 1
+
+[State 9180, Helper]
+type = Helper
+triggerall = NumHelper(9190) = 0
+trigger1 = Time = 0
+helpertype = Normal
+name = "Kensen"
+ID = 9190
+pos = 0,0
+postype = P1
+stateno = 9190
+keyctrl = 0
+ownpal = 1
+persistent = 0
+ignorehitpause = 1
+
+[State 9180, VelSet]
+type = VelSet
+trigger1 = Time = 0
+x = 6
+y = -6
+
+[State 9180, VelAdd]
+type = VelAdd
+trigger1 = Time = [1,20]
+x = -0.05+Ceil(Time/100)
+
+[State 9180, VelAdd]
+type = VelAdd
+trigger1 = Time = [21,30]
+x = -0.75
+
+[State 9180, VelAdd]
+type = VelAdd
+trigger1 = Time = [1,30]
+y = 0.65+Ceil(Time/100)
+
+[State 9180, VelSet]
+type = VelSet
+trigger1 = Time = 30
+x = -2.25
+y = 1.5
+
+[State 9180, VelAdd]
+type = VelAdd
+trigger1 = Time > 30
+x = -0.85
+y = -0.25
+
+[State 9180, End]
+type = ChangeState
+trigger1 = MoveContact
+value = 9181
+
+[State 9180, DestroySelf]
+type = DestroySelf
+trigger1 = Root,StateNo = 1000
+trigger1 = Root,AnimElem = 13
+trigger2 = Root,MoveType = H
+
+;\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+;ínéhÇµÅ@ñﬂÇË
+[Statedef 9181]
+type = A
+physics = N
+movetype = I
+anim = 1001
+velset = -4,0
+sprpriority = 6
+
+[State 9181, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = NoShadow
+ignorehitpause = 1
+
+[State 9181. ParentVarSet]
+type = ParentVarSet
+trigger1 = Root,StateNo = [1000,1100)
+trigger1 = ParentDist X > -80
+trigger2 = Root,StateNo = [1100,1200)
+trigger2 = ParentDist X > -80
+var(21) = 1
+
+[State 9181, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+time = 1
+ignorehitpause = 1
+
+[State 9181, VelSet]
+type = VelSet
+trigger1 = Root,StateNo = [1000,1100)
+x = 12*((ParentDist X)/(Abs(ParentDist X)+Abs(ParentDist Y-30)+0.0000001))
+y = 12*((ParentDist Y-30)/(Abs(ParentDist X)+Abs(ParentDist Y-30)+0.0000001))
+
+[State 9181, VelSet]
+type = VelSet
+trigger1 = Root,StateNo = 1100
+x = 15*((ParentDist X)/(Abs(ParentDist X)+Abs(ParentDist Y-30)+0.0000001))
+y = 15*((ParentDist Y-30)/(Abs(ParentDist X)+Abs(ParentDist Y-30)+0.0000001))
+
+[State 9181, VelSet]
+type = VelSet
+trigger1 = Root,StateNo = 1150
+x = 15*((ParentDist X)/(Abs(ParentDist X)+Abs(ParentDist Y-30)+0.0000001))
+y = 15*((ParentDist Y-30)/(Abs(ParentDist X)+Abs(ParentDist Y-30)+0.0000001))
+
+[State 9181, DestroySelf]
+type = DestroySelf
+trigger1 = Root,StateNo = [1000,1100)
+trigger1 = ParentDist X > -80
+trigger2 = Root,StateNo = [1100,1200)
+trigger2 = ParentDist X > -5
+trigger3 = Root,MoveType = H
+
+;\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+;åïëMÅiínéhÇµÅj
+[Statedef 9190]
+type = A
+physics = N
+movetype = I
+ctrl = 0
+anim = 1002
+velset = 0,0
+sprpriority = 7
+
+[State 9190, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = NoShadow
+flag2 = NoAutoTurn
+
+[State 9190, ChangeAnim]
+type = ChangeAnim
+triggerall = (Parent,StateNo = 9180 || Parent,StateNo = 9200 || Parent,StateNo = 9210 || Parent,StateNo = 9220)
+trigger1 = Parent,AnimElem = 1, >= 0 && Parent,AnimElem = 2, < 0
+trigger2 = Parent,AnimElem = 3, >= 0 && Parent,AnimElem = 4, < 0
+trigger3 = Parent,AnimElem = 7, >= 0 && Parent,AnimElem = 8, < 0
+value = 1002
+elem = 1
+
+[State 9190, ChangeAnim]
+type = ChangeAnim
+triggerall = (Parent,StateNo = 9180 || Parent,StateNo = 9200 || Parent,StateNo = 9210 || Parent,StateNo = 9220)
+trigger1 = Parent,AnimElem = 2, >= 0 && Parent,AnimElem = 3, < 0
+trigger2 = Parent,AnimElem = 5, >= 0 && Parent,AnimElem = 6, < 0
+trigger3 = Parent,AnimElem = 9, >= 0 && Parent,AnimElem = 10, < 0
+value = 1002
+elem = 2
+
+[State 9190, ChangeAnim]
+type = ChangeAnim
+triggerall = (Parent,StateNo = 9180 || Parent,StateNo = 9200 || Parent,StateNo = 9210 || Parent,StateNo = 9220)
+trigger1 = Parent,AnimElem = 6, >= 0 && Parent,AnimElem = 7, < 0
+value = 1002
+elem = 3
+
+[State 9190, ChangeAnim]
+type = ChangeAnim
+triggerall = (Parent,StateNo = 9180 || Parent,StateNo = 9200 || Parent,StateNo = 9210 || Parent,StateNo = 9220)
+trigger1 = Parent,AnimElem = 4, >= 0 && Parent,AnimElem = 5, < 0
+trigger2 = Parent,AnimElem = 8, >= 0 && Parent,AnimElem = 9, < 0
+value = 1002
+elem = 4
+
+[State 9190, Trans]
+type = Trans
+trigger1 = 1
+trans = AddAlpha
+alpha = 256,256
+
+[State 9190, DestroySelf]
+type = DestroySelf
+trigger1 = (Root,StateNo = 1000 || Root,StateNo = 1050)
+trigger1 = Root,AnimElem = 16
+trigger2 = !(Parent,StateNo = 9180 || Parent,StateNo = 9200 || Parent,StateNo = 9210 || Parent,StateNo = 9220)
+trigger3 = Parent,StateNo = 9180
+trigger3 = Parent,Time > 45
+trigger4 = Parent,StateNo = 9200
+trigger4 = Parent,Time > 50
+trigger5 = Parent,StateNo = 9210
+trigger5 = Parent,Time > 40
+trigger6 = Parent,StateNo = 9220
+trigger6 = Parent,Time > 35
+trigger7 = Root,MoveType = H
+trigger8 = Parent,StateNo = 9181
+ignorehitpause = 1
+
+[State 9190, BindToParent]
+type = BindToParent
+trigger1 = (Parent,StateNo = 9180 || Parent,StateNo = 9200 || Parent,StateNo = 9210 || Parent,StateNo = 9220)
+pos = 0,0
+
+;\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+;ínéhÇµÅ@Çb
+[Statedef 9200]
+type = A
+physics = N
+movetype = A
+anim = 1001
+velset = 0,0
+sprpriority = 6
+
+[State -2, ParentVarAdd]
+type = ParentVarAdd
+trigger1 = MoveGuarded
+var(22) = 20
+ignorehitpause = 1
+persistent = 0
+
+[State 9200, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = NoShadow
+ignorehitpause = 1
+
+[State 9200, StateTypeSet]
+type = StateTypeSet
+trigger1 = Time = 40
+movetype = I
+
+[State 9200, HitDef1]
+type = HitDef
+trigger1 = !Root,var(9)
+attr = A,SP
+damage = Ceil((16+Root,var(5))*Root,fvar(6)*(100-Random%11)*10/103),Ceil((1+Root,var(5))*Root,fvar(6)*(100-Random%11)*10/103)
+animtype = Hard
+air.animtype = Back
+ground.type = High
+guardflag = M
+hitflag = MAF
+priority = 7,Hit
+sparkno = S30002
+guard.sparkno = s30040
+sparkxy = -15,15
+hitsound = S5,25+Random%4
+guardsound = S6,2+Random%3
+pausetime = 0,11
+guard.pausetime = 0,9
+ground.slidetime = 17
+ground.hittime = 17
+guard.ctrltime = 17
+air.hittime = 60
+ground.velocity = -4,-7.5
+guard.velocity = -10.35
+air.velocity = -4,-7.5
+ground.cornerpush.veloff = 0
+guard.cornerpush.veloff = 0
+air.cornerpush.veloff = 0
+fall = 1
+fall.recovertime = 24+11+Ceil((-EnemyNear(var(58)),Pos Y)/10)
+yaccel = .55
+getpower = 100,100
+givepower = 15,15
+ID = 9200
+
+[State 9200, TargetState]
+type = TargetState
+triggerall = NumTarget(9200)
+trigger1 = Root,var(22) >= 128
+trigger1 = MoveGuarded
+trigger1 = !(Target,StateNo = 5910)
+value = 5910
+ID = 9200
+ignorehitpause = 1
+persistent = 0
+
+[State 9200, HitBy]
+type = HitBy
+trigger1 = 1
+value = SCA,AP
+time = -1
+ignorehitpause = 1
+
+[State 9200, HitOverRide]
+type = HitOverRide
+trigger1 = 1
+attr = SCA,AP
+stateno = 9181
+ignorehitpause = 1
+
+[State 9200, Helper]
+type = Helper
+triggerall = NumHelper(9190) = 0
+trigger1 = Time = 0
+helpertype = Normal
+name = "Kensen"
+ID = 9190
+pos = 0,0
+postype = P1
+stateno = 9190
+keyctrl = 0
+ownpal = 1
+persistent = 0
+ignorehitpause = 1
+
+[State 9200, VelSet]
+type = VelSet
+trigger1 = Time = 0
+x = 8
+y = -6
+
+[State 9200, VelAdd]
+type = VelAdd
+trigger1 = Time = [1,20]
+x = -0.05+Ceil(Time/100)
+
+[State 9200, VelAdd]
+type = VelAdd
+trigger1 = Time = [21,30]
+x = -0.75
+
+[State 9200, VelAdd]
+type = VelAdd
+trigger1 = Time = [1,30]
+y = 0.65+Ceil(Time/100)
+
+[State 9200, VelSet]
+type = VelSet
+trigger1 = Time = 30
+x = -2.25
+y = 1.5
+
+[State 9200, VelAdd]
+type = VelAdd
+trigger1 = Time > 30
+x = -0.85
+y = -0.25
+
+[State 9200, End]
+type = ChangeState
+trigger1 = MoveContact
+value = 9181
+
+[State 9200, DestroySelf]
+type = DestroySelf
+trigger1 = Root,StateNo = 1050
+trigger1 = Root,AnimElem = 13
+trigger2 = Root,MoveType = H
+
+;\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+;ãÛéhÇµÅ@Ç`
+[Statedef 9210]
+type = A
+physics = N
+movetype = A
+anim = 1001
+velset = 0,0
+sprpriority = 6
+
+[State -2, ParentVarAdd]
+type = ParentVarAdd
+trigger1 = MoveGuarded
+var(22) = 22
+ignorehitpause = 1
+persistent = 0
+
+[State 9210, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = NoShadow
+ignorehitpause = 1
+
+[State 9210, StateTypeSet]
+type = StateTypeSet
+trigger1 = Time = 35
+movetype = I
+
+[State 9210, HitDef1]
+type = HitDef
+trigger1 = !Root,var(9)
+attr = A,SP
+damage = Ceil((15+Root,var(5))*Root,fvar(6)*(100-Random%11)*10/103),Ceil((1+Root,var(5))*Root,fvar(6)*(100-Random%11)*10/103)
+animtype = Hard
+air.animtype = Back
+ground.type = High
+guardflag = H
+hitflag = MAF
+priority = 7,Hit
+sparkno = S30002
+guard.sparkno = s30040
+sparkxy = -15,15
+hitsound = S5,25+Random%4
+guardsound = S6,2+Random%3
+pausetime = 0,11
+guard.pausetime = 0,9
+ground.slidetime = 17
+ground.hittime = 17
+guard.ctrltime = 17
+air.hittime = 60
+ground.velocity = -4,-7.5
+guard.velocity = -10.35
+air.velocity = -4,-7.5
+ground.cornerpush.veloff = 0
+guard.cornerpush.veloff = 0
+air.cornerpush.veloff = 0
+fall = 1
+fall.recovertime = 24+11+Ceil((-EnemyNear(var(58)),Pos Y)/10)
+yaccel = .55
+getpower = 100,100
+givepower = 15,15
+ID = 9210
+
+[State 9210, TargetState]
+type = TargetState
+triggerall = NumTarget(9210)
+trigger1 = Root,var(22) >= 128
+trigger1 = MoveGuarded
+trigger1 = !(Target,StateNo = 5910)
+value = 5910
+ID = 9210
+ignorehitpause = 1
+persistent = 0
+
+[State 9210, HitBy]
+type = HitBy
+trigger1 = 1
+value = SCA,AP
+time = -1
+ignorehitpause = 1
+
+[State 9210, HitOverRide]
+type = HitOverRide
+trigger1 = 1
+attr = SCA,AP
+stateno = 9181
+ignorehitpause = 1
+
+[State 9210, Helper]
+type = Helper
+triggerall = NumHelper(9190) = 0
+trigger1 = Time = 0
+helpertype = Normal
+name = "Kensen"
+ID = 9190
+pos = 0,0
+postype = P1
+stateno = 9190
+keyctrl = 0
+ownpal = 1
+persistent = 0
+ignorehitpause = 1
+
+[State 9210, VelSet]
+type = VelSet
+trigger1 = Time = 0
+x = 10
+y = 7
+
+[State 9210, VelAdd]
+type = VelAdd
+trigger1 = Time = [10,30]
+x = -0.65
+y = -0.4
+
+[State 9210, VelSet]
+type = VelSet
+trigger1 = Time = 30
+x = 15*((ParentDist X)/(Abs(ParentDist X)+Abs(ParentDist Y-50)+0.0000001))
+y = 15*((ParentDist Y-50)/(Abs(ParentDist X)+Abs(ParentDist Y-50)+0.0000001))
+
+[State 9210, End]
+type = ChangeState
+trigger1 = MoveContact
+value = 9181
+
+[State 9210, DestroySelf]
+type = DestroySelf
+trigger1 = Root,StateNo = 1100
+trigger1 = Root,AnimElem = 15
+trigger2 = Root,MoveType = H
+
+;\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+;ãÛéhÇµÅ@Çb
+[Statedef 9220]
+type = A
+physics = N
+movetype = A
+anim = 1001
+velset = 0,0
+sprpriority = 6
+
+[State -2, ParentVarAdd]
+type = ParentVarAdd
+trigger1 = MoveGuarded
+var(22) = 18
+ignorehitpause = 1
+persistent = 0
+
+[State 9220, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = NoShadow
+ignorehitpause = 1
+
+[State 9220, StateTypeSet]
+type = StateTypeSet
+trigger1 = Time = 50
+movetype = I
+
+[State 9220, HitDef1]
+type = HitDef
+trigger1 = !Root,var(9)
+attr = A,SP
+damage = Ceil((15+Root,var(5))*Root,fvar(6)*(100-Random%11)*10/103),Ceil((1+Root,var(5))*Root,fvar(6)*(100-Random%11)*10/103)
+animtype = Hard
+air.animtype = Back
+ground.type = High
+guardflag = H
+hitflag = MAF
+priority = 7,Hit
+sparkno = S30002
+guard.sparkno = s30040
+sparkxy = -15,15
+hitsound = S5,25+Random%4
+guardsound = S6,2+Random%3
+pausetime = 0,11
+guard.pausetime = 0,9
+ground.slidetime = 17
+ground.hittime = 17
+guard.ctrltime = 17
+air.hittime = 60
+ground.velocity = -4,-7.5
+guard.velocity = -10.35
+air.velocity = -4,-7.5
+ground.cornerpush.veloff = 0
+guard.cornerpush.veloff = 0
+air.cornerpush.veloff = 0
+fall = 1
+fall.recovertime = 24+11+Ceil((-EnemyNear(var(58)),Pos Y)/10)
+yaccel = .55
+getpower = 100,100
+givepower = 15,15
+ID = 9220
+
+[State 9220, TargetState]
+type = TargetState
+triggerall = NumTarget(9220)
+trigger1 = Root,var(22) >= 128
+trigger1 = MoveGuarded
+trigger1 = !(Target,StateNo = 5910)
+value = 5910
+ID = 9220
+ignorehitpause = 1
+persistent = 0
+
+[State 9220, HitBy]
+type = HitBy
+trigger1 = 1
+value = SCA,AP
+time = -1
+ignorehitpause = 1
+
+[State 9220, HitOverRide]
+type = HitOverRide
+trigger1 = 1
+attr = SCA,AP
+stateno = 9181
+ignorehitpause = 1
+
+[State 9220, Helper]
+type = Helper
+triggerall = NumHelper(9190) = 0
+trigger1 = Time = 0
+helpertype = Normal
+name = "Kensen"
+ID = 9190
+pos = 0,0
+postype = P1
+stateno = 9190
+keyctrl = 0
+ownpal = 1
+persistent = 0
+ignorehitpause = 1
+
+[State 9220, VelSet]
+type = VelSet
+trigger1 = Time = 0
+x = 12
+y = 1
+
+[State 9220, VelAdd]
+type = VelAdd
+trigger1 = Time = [10,30]
+x = -0.65
+y = -0.15
+
+[State 9220, VelSet]
+type = VelSet
+trigger1 = Time = 30
+x = 15*((ParentDist X)/(Abs(ParentDist X)+Abs(ParentDist Y-50)+0.0000001))
+y = 20*((ParentDist Y-50)/(Abs(ParentDist X)+Abs(ParentDist Y-50)+0.0000001))
+
+[State 9220, End]
+type = ChangeState
+trigger1 = MoveContact
+value = 9181
+
+[State 9220, DestroySelf]
+type = DestroySelf
+trigger1 = Root,StateNo = 1150
+trigger1 = Root,AnimElem = 15
+trigger2 = Root,MoveType = H
+
+;\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+;âeñDÇ¢Å@Ça
+[Statedef 9230]
+type = A
+physics = N
+movetype = A
+anim = 1201
+velset = 0,0
+sprpriority = 6
+
+[State -2, AttackDist]
+type = AttackDist
+trigger1 = AnimElem = 20, >= 0
+value = 0
+
+[State -2, ParentVarAdd]
+type = ParentVarAdd
+trigger1 = MoveGuarded
+var(22) = 24
+ignorehitpause = 1
+persistent = 0
+
+[State 9230, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = NoShadow
+ignorehitpause = 1
+
+[State 9230, PlaySnd]
+type = PlaySnd
+trigger1 = AnimElem = 1
+trigger2 = AnimElem = 29
+value = S4,13
+
+[State 9230, PlaySnd]
+type = PlaySnd
+trigger1 = AnimElem = 5
+value = S4,24
+
+[State 9230, HitDef1]
+type = HitDef
+trigger1 = !Root,var(9)
+trigger1 = Time = 0
+attr = A,SP
+damage = Ceil((15+Root,var(5))*Root,fvar(6)*(100-Random%11)*10/103),Ceil((1+Root,var(5))*Root,fvar(6)*(100-Random%11)*10/103)
+animtype = Hard
+air.animtype = Back
+ground.type = High
+guardflag = H
+hitflag = MAFP
+priority = 7,Hit
+sparkno = S30002
+guard.sparkno = s30040
+sparkxy = -15,95
+hitsound = S5,25+Random%4
+guardsound = S6,2+Random%3
+pausetime = 0,11
+guard.pausetime = 0,9
+ground.slidetime = 17
+ground.hittime = 17
+guard.ctrltime = 17
+air.hittime = 60
+ground.velocity = -4,-7.5
+guard.velocity = -10.35
+air.velocity = -4,-7.5
+ground.cornerpush.veloff = 0
+guard.cornerpush.veloff = 0
+air.cornerpush.veloff = 0
+fall = 1
+fall.recovertime = 24+11+Ceil((-EnemyNear(var(58)),Pos Y)/10)
+yaccel = .55
+getpower = 100,100
+givepower = 15,15
+ID = 9230
+
+[State 9230, TargetState]
+type = TargetState
+triggerall = NumTarget(9230)
+trigger1 = Root,var(22) >= 128
+trigger1 = MoveGuarded
+trigger1 = !(Target,StateNo = 5910)
+value = 5910
+ID = 9230
+ignorehitpause = 1
+persistent = 0
+
+[State 9230, Helper]
+type = Helper
+triggerall = NumHelper(9240) = 0
+trigger1 = AnimElem = 8
+helpertype = Normal
+name = "Kensen"
+ID = 9240
+pos = 0,0
+postype = P1
+stateno = 9240
+keyctrl = 0
+ownpal = 1
+persistent = 0
+ignorehitpause = 1
+
+[State 9230, Explod]
+type = Explod
+trigger1 = AnimElem = 30
+postype = P1
+pos = 0,0
+sprpriority = 7
+anim = 1202
+persistent = 1
+trans = AddAlpha
+alpha = 200,170
+
+[State 9230, DestroySelf]
+type = DestroySelf
+trigger1 = AnimTime = 0
+trigger2 = Root,MoveType = H
+
+;\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+;åïëMÅiâeñDÇ¢Åj
+[Statedef 9240]
+type = A
+physics = N
+movetype = I
+ctrl = 0
+anim = 1203
+velset = 0,0
+sprpriority = 7
+
+[State 9240, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = NoShadow
+flag2 = NoAutoTurn
+
+[State 9240, ChangeAnim]
+type = ChangeAnim
+triggerall = (Root,StateNo = 1200 || Root,StateNo = 1250)
+trigger1 = Parent,AnimElem = 8, >= 0 && Parent,AnimElem = 9, < 0
+value = 1203
+elem = 1
+
+[State 9240, ChangeAnim]
+type = ChangeAnim
+triggerall = (Root,StateNo = 1200 || Root,StateNo = 1250)
+trigger1 = Parent,AnimElem = 9, >= 0 && Parent,AnimElem = 10, < 0
+value = 1203
+elem = 2
+
+[State 9240, ChangeAnim]
+type = ChangeAnim
+triggerall = (Root,StateNo = 1200 || Root,StateNo = 1250)
+trigger1 = Parent,AnimElem = 10, >= 0 && Parent,AnimElem = 11, < 0
+value = 1203
+elem = 3
+
+[State 9240, ChangeAnim]
+type = ChangeAnim
+triggerall = (Root,StateNo = 1200 || Root,StateNo = 1250)
+trigger1 = Parent,AnimElem = 11, >= 0 && Parent,AnimElem = 12, < 0
+value = 1203
+elem = 4
+
+[State 9240, ChangeAnim]
+type = ChangeAnim
+triggerall = (Root,StateNo = 1200 || Root,StateNo = 1250)
+trigger1 = Parent,AnimElem = 12, >= 0 && Parent,AnimElem = 13, < 0
+value = 1203
+elem = 5
+
+[State 9240, ChangeAnim]
+type = ChangeAnim
+triggerall = (Root,StateNo = 1200 || Root,StateNo = 1250)
+trigger1 = Parent,AnimElem = 13, >= 0 && Parent,AnimElem = 14, < 0
+value = 1203
+elem = 6
+
+[State 9240, ChangeAnim]
+type = ChangeAnim
+triggerall = (Root,StateNo = 1200 || Root,StateNo = 1250)
+trigger1 = Parent,AnimElem = 14, >= 0 && Parent,AnimElem = 15, < 0
+value = 1203
+elem = 7
+
+[State 9240, ChangeAnim]
+type = ChangeAnim
+triggerall = (Root,StateNo = 1200 || Root,StateNo = 1250)
+trigger1 = Parent,AnimElem = 15, >= 0 && Parent,AnimElem = 16, < 0
+value = 1203
+elem = 8
+
+[State 9240, ChangeAnim]
+type = ChangeAnim
+triggerall = (Root,StateNo = 1200 || Root,StateNo = 1250)
+trigger1 = Parent,AnimElem = 16, >= 0 && Parent,AnimElem = 17, < 0
+value = 1203
+elem = 9
+
+[State 9240, ChangeAnim]
+type = ChangeAnim
+triggerall = (Root,StateNo = 1200 || Root,StateNo = 1250)
+trigger1 = Parent,AnimElem = 17, >= 0 && Parent,AnimElem = 18, < 0
+value = 1203
+elem = 10
+
+[State 9240, ChangeAnim]
+type = ChangeAnim
+triggerall = (Root,StateNo = 1200 || Root,StateNo = 1250)
+trigger1 = Parent,AnimElem = 18, >= 0 && Parent,AnimElem = 19, < 0
+value = 1203
+elem = 11
+
+[State 9240, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 1250
+trigger1 = Parent,AnimElem = 19, >= 0 && Parent,AnimElem = 20, < 0
+trigger2 = Parent,AnimElem = 23, >= 0 && Parent,AnimElem = 24, < 0
+trigger3 = Parent,AnimElem = 27, >= 0 && Parent,AnimElem = 28, < 0
+value = 1203
+elem = 8
+
+[State 9240, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 1250
+trigger1 = Parent,AnimElem = 20, >= 0 && Parent,AnimElem = 21, < 0
+trigger2 = Parent,AnimElem = 24, >= 0 && Parent,AnimElem = 25, < 0
+trigger3 = Parent,AnimElem = 28, >= 0 && Parent,AnimElem = 29, < 0
+value = 1203
+elem = 9
+
+[State 9240, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 1250
+trigger1 = Parent,AnimElem = 21, >= 0 && Parent,AnimElem = 22, < 0
+trigger2 = Parent,AnimElem = 25, >= 0 && Parent,AnimElem = 26, < 0
+trigger3 = Parent,AnimElem = 29, >= 0 && Parent,AnimElem = 30, < 0
+value = 1203
+elem = 10
+
+[State 9240, ChangeAnim]
+type = ChangeAnim
+triggerall = Root,StateNo = 1250
+trigger1 = Parent,AnimElem = 22, >= 0 && Parent,AnimElem = 23, < 0
+trigger2 = Parent,AnimElem = 26, >= 0 && Parent,AnimElem = 27, < 0
+trigger3 = Parent,AnimElem = 30, >= 0 && Parent,AnimElem = 31, < 0
+value = 1203
+elem = 11
+
+[State 9240, Trans]
+type = Trans
+trigger1 = 1
+trans = AddAlpha
+alpha = 256,256
+
+[State 9240, DestroySelf]
+type = DestroySelf
+trigger1 = Root,StateNo = 1200
+trigger1 = Parent,AnimElem = 19
+trigger2 = Root,StateNo = 1250
+trigger2 = Parent,AnimElem = 31
+trigger3 = !(Root,StateNo = 1200 || Root,StateNo = 1250)
+trigger4 = Root,MoveType = H
+ignorehitpause = 1
+
+;\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+;âeñDÇ¢Å@Çc
+[Statedef 9250]
+type = A
+physics = N
+movetype = A
+anim = 1251
+velset = 0,0
+sprpriority = 6
+
+[State -2, AttackDist]
+type = AttackDist
+trigger1 = AnimElem = 20, >= 0
+value = 0
+
+[State -2, ParentVarAdd]
+type = ParentVarAdd
+trigger1 = MoveGuarded
+var(22) = 26
+ignorehitpause = 1
+persistent = 0
+
+[State 9250, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = NoShadow
+ignorehitpause = 1
+
+[State 9250, PlaySnd]
+type = PlaySnd
+trigger1 = AnimElem = 1
+trigger2 = AnimElem = 41
+value = S4,13
+
+[State 9250, PlaySnd]
+type = PlaySnd
+trigger1 = AnimElem = 5
+value = S4,24
+
+[State 9250, HitDef1]
+type = HitDef
+trigger1 = !Root,var(9)
+trigger1 = Time = 0
+attr = A,SP
+damage = Ceil((15+Root,var(5))*Root,fvar(6)*(100-Random%11)*10/103),Ceil((1+Root,var(5))*Root,fvar(6)*(100-Random%11)*10/103)
+animtype = Hard
+air.animtype = Back
+ground.type = High
+guardflag = H
+hitflag = MAFP
+priority = 7,Hit
+sparkno = S30002
+guard.sparkno = s30040
+sparkxy = -15,95
+hitsound = S5,25+Random%4
+guardsound = S6,2+Random%3
+pausetime = 0,11
+guard.pausetime = 0,9
+ground.slidetime = 17
+ground.hittime = 17
+guard.ctrltime = 17
+air.hittime = 60
+ground.velocity = -4,-7.5
+guard.velocity = -10.35
+air.velocity = -4,-7.5
+ground.cornerpush.veloff = 0
+guard.cornerpush.veloff = 0
+air.cornerpush.veloff = 0
+fall = 1
+fall.recovertime = 24+11+Ceil((-EnemyNear(var(58)),Pos Y)/10)
+yaccel = .55
+getpower = 100,100
+givepower = 15,15
+ID = 9250
+
+[State 9250, TargetState]
+type = TargetState
+triggerall = NumTarget(9250)
+trigger1 = Root,var(22) >= 128
+trigger1 = MoveGuarded
+trigger1 = !(Target,StateNo = 5910)
+value = 5910
+ID = 9250
+ignorehitpause = 1
+persistent = 0
+
+[State 9250, Helper]
+type = Helper
+triggerall = NumHelper(9240) = 0
+trigger1 = AnimElem = 8
+helpertype = Normal
+name = "Kensen"
+ID = 9240
+pos = 0,0
+postype = P1
+stateno = 9240
+keyctrl = 0
+ownpal = 1
+persistent = 0
+ignorehitpause = 1
+
+[State 9250, Explod]
+type = Explod
+trigger1 = AnimElem = 41
+postype = P1
+pos = 0,0
+sprpriority = 7
+anim = 1202
+persistent = 1
+trans = AddAlpha
+alpha = 200,170
+
+[State 9250, DestroySelf]
+type = DestroySelf
+trigger1 = AnimTime = 0
+trigger2 = Root,MoveType = H
+
+;\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+;åïëMÅiâeèoÅj
+[Statedef 9260]
+type = A
+physics = N
+movetype = I
+ctrl = 0
+anim = 1302
+velset = 0,0
+sprpriority = 7
+
+[State 9260, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = NoShadow
+flag2 = NoAutoTurn
+
+[State 9260, BindToRoot]
+type = BindToRoot
+trigger1 = 1
+pos = 0,0
+
+[State 9260, ChangeAnim]
+type = ChangeAnim
+triggerall = (Root,StateNo = 1300 || Root,StateNo = 1350)
+trigger1 = Root,AnimElem = 16, >= 0 && Root,AnimElem = 17, < 0
+value = 1302
+elem = 1
+
+[State 9260, ChangeAnim]
+type = ChangeAnim
+triggerall = (Root,StateNo = 1300 || Root,StateNo = 1350)
+trigger1 = Root,AnimElem = 17, >= 0 && Root,AnimElem = 19, < 0
+value = 1302
+elem = 2
+
+[State 9260, ChangeAnim]
+type = ChangeAnim
+triggerall = (Root,StateNo = 1300 || Root,StateNo = 1350)
+trigger1 = Root,AnimElem = 19, >= 0 && Root,AnimElem = 20, < 0
+value = 1302
+elem = 3
+
+[State 9260, ChangeAnim]
+type = ChangeAnim
+triggerall = (Root,StateNo = 1300 || Root,StateNo = 1350)
+trigger1 = Root,AnimElem = 20, >= 0 && Root,AnimElem = 21, < 0
+value = 1302
+elem = 4
+
+[State 9260, ChangeAnim]
+type = ChangeAnim
+triggerall = (Root,StateNo = 1300 || Root,StateNo = 1350)
+trigger1 = Root,AnimElem = 21, >= 0 && Root,AnimElem = 22, < 0
+value = 1302
+elem = 5
+
+[State 9260, ChangeAnim]
+type = ChangeAnim
+triggerall = (Root,StateNo = 1300 || Root,StateNo = 1350)
+trigger1 = Root,AnimElem = 22, >= 0 && Root,AnimElem = 23, < 0
+value = 1302
+elem = 6
+
+[State 9260, ChangeAnim]
+type = ChangeAnim
+triggerall = (Root,StateNo = 1300 || Root,StateNo = 1350)
+trigger1 = Root,AnimElem = 23, >= 0 && Root,AnimElem = 24, < 0
+value = 1302
+elem = 7
+
+[State 9260, Trans]
+type = Trans
+trigger1 = 1
+trans = AddAlpha
+alpha = 256,256
+
+[State 9260, DestroySelf]
+type = DestroySelf
+trigger1 = (Root,StateNo = 1300 || Root,StateNo = 1350)
+trigger1 = Root,AnimElem = 24
+trigger2 = !(Root,StateNo = 1300 || Root,StateNo = 1350)
+ignorehitpause = 1
+
+;\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+;åïëMÅiâeèoÅ@ã•éÁÅj
+[Statedef 9270]
+type = A
+physics = N
+movetype = I
+ctrl = 0
+anim = 1311
+velset = 0,0
+sprpriority = 7
+
+[State 9270, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = NoShadow
+flag2 = NoAutoTurn
+
+[State 9270, BindToRoot]
+type = BindToRoot
+trigger1 = 1
+pos = 0,0
+
+[State 9270, ChangeAnim]
+type = ChangeAnim
+triggerall = (Root,StateNo = 1310 || Root,StateNo = 1360)
+trigger1 = Root,AnimElem = 15, >= 0 && Root,AnimElem = 16, < 0
+value = 1311
+elem = 1
+
+[State 9270, ChangeAnim]
+type = ChangeAnim
+triggerall = (Root,StateNo = 1310 || Root,StateNo = 1360)
+trigger1 = Root,AnimElem = 16, >= 0 && Root,AnimElem = 18, < 0
+value = 1311
+elem = 2
+
+[State 9270, ChangeAnim]
+type = ChangeAnim
+triggerall = (Root,StateNo = 1310 || Root,StateNo = 1360)
+trigger1 = Root,AnimElem = 18, >= 0 && Root,AnimElem = 27, < 0
+value = 1311
+elem = 3
+
+[State 9270, ChangeAnim]
+type = ChangeAnim
+triggerall = (Root,StateNo = 1310 || Root,StateNo = 1360)
+trigger1 = Root,AnimElem = 27, >= 0 && Root,AnimElem = 28, < 0
+value = 1311
+elem = 4
+
+[State 9270, ChangeAnim]
+type = ChangeAnim
+triggerall = (Root,StateNo = 1310 || Root,StateNo = 1360)
+trigger1 = Root,AnimElem = 28, >= 0 && Root,AnimElem = 29, < 0
+value = 1311
+elem = 5
+
+[State 9270, Trans]
+type = Trans
+trigger1 = 1
+trans = AddAlpha
+alpha = 256,256
+
+[State 9270, DestroySelf]
+type = DestroySelf
+trigger1 = (Root,StateNo = 1310 || Root,StateNo = 1360)
+trigger1 = Root,AnimElem = 29
+trigger2 = !(Root,StateNo = 1310 || Root,StateNo = 1360)
+ignorehitpause = 1
+
+;\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+;ÍKã 
+[Statedef 9280]
+type = A
+physics = N
+movetype = A
+ctrl = 0
+anim = 1602
+velset = 0,0
+sprpriority = 7
+
+[State -2, ParentVarAdd]
+type = ParentVarAdd
+trigger1 = MoveGuarded
+var(22) = 12
+ignorehitpause = 1
+persistent = 0
+
+[State 9280, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = NoShadow
+flag2 = NoAutoTurn
+
+[State 9280, Trans]
+type = Trans
+trigger1 = 1
+trans = AddAlpha
+alpha = 256,256
+
+[State 9280, HitDef1]
+type = HitDef
+trigger1 = !Root,var(9)
+trigger1 = Time = 0
+attr = A,SP
+damage = Ceil((12+Root,var(5))*Root,fvar(6)*(100-Random%11)*10/103),Ceil((1+Root,var(5))*Root,fvar(6)*(100-Random%11)*10/103)
+animtype = Hard
+air.animtype = Back
+ground.type = High
+guardflag = M
+hitflag = MAF
+priority = 7,Hit
+sparkno = S1603
+guard.sparkno = s30040
+sparkxy = -15,Ceil(P2BodyDist Y)-50
+hitsound = S4,29
+guardsound = S6,1
+pausetime = 0,11
+guard.pausetime = 0,9
+ground.slidetime = 17
+ground.hittime = 17
+guard.ctrltime = 17
+air.hittime = 60
+ground.velocity = -10.35
+air.velocity = -4,-7.5
+ground.cornerpush.veloff = 0
+guard.cornerpush.veloff = 0
+air.cornerpush.veloff = 0
+air.fall = 1
+fall.recovertime = 24+11+Ceil((-EnemyNear(var(58)),Pos Y)/10)
+yaccel = .55
+getpower = 100,100
+givepower = 15,15
+palfx.time = 28
+palfx.add = 50,0,170
+palfx.mul = 170,170,170
+palfx.sinadd = 95,95,95,15
+palfx.color = 0
+palfx.invertall = 1
+ID = 9280
+
+[State 9280, TargetState]
+type = TargetState
+triggerall = NumTarget(9280)
+trigger1 = Root,var(22) >= 128
+trigger1 = MoveGuarded
+trigger1 = !(Target,StateNo = 5910)
+value = 5910
+ID = 9280
+ignorehitpause = 1
+persistent = 0
+
+[State 9280, HitBy]
+type = HitBy
+trigger1 = 1
+value = SCA,AP
+time = -1
+ignorehitpause = 1
+
+[State 9280, HitOverRide]
+type = HitOverRide
+trigger1 = 1
+attr = SCA,AP
+stateno = 9290
+ignorehitpause = 1
+
+[State 9280, EnvColor]
+type = EnvColor
+trigger1 = MoveHit = 1
+value = 225,2,2
+under = 1
+time = 1
+
+[State 9280, Explod]
+type = Explod
+triggerall = NumExplod(1605) = 0
+trigger1 = MoveHit = 1
+postype = P2
+pos = Ceil(-5*Const(size.xscale)), Ceil(-55*Const(size.yscale))
+bindtime = -1
+sprpriority = 7
+anim = 1605
+ID = 1605
+ignorehitpause = 1
+trans = AddAlpha
+alpha = 230,70
+
+[State 9280, VelSet]
+type = VelSet
+trigger1 = Time = 0
+x = 4
+y = -3
+
+[State 9280, VelAdd]
+type = VelAdd
+trigger1 = Time = [20,50]
+y = 0.10
+
+[State 9280, VelSet]
+type = VelSet
+triggerall = (GameTime%2) = 0
+trigger1 = Time > 50
+x = 1
+y = 2*((P2Dist Y-50)/(Abs(P2Dist X)+Abs(P2Dist Y-50)+0.0000001))
+
+[State 9280, VelSet]
+type = VelSet
+triggerall = (GameTime%2) = 1
+trigger1 = Time > 50
+x = 5*((P2Dist X)/(Abs(P2Dist X)+Abs(P2Dist Y-50)+0.0000001))
+y = 3*((P2Dist Y-50)/(Abs(P2Dist X)+Abs(P2Dist Y-50)+0.0000001))
+
+[State 9280, End] 
+type = ChangeState
+trigger1 = MoveContact
+trigger2 = Time > 98
+value = 9290
+
+[State 9280, DestroySelf]
+type = DestroySelf
+trigger1 = Time > 98
+ignorehitpause = 1
+
+;\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+;ÉRÉEÉÇÉäÇŒÇ¡Ç≠ÇÍ
+[Statedef 9290]
+type = A
+physics = N
+movetype = I
+ctrl = 0
+anim = 1604
+velset = 0,0
+sprpriority = 5
+
+[State -2. ParentVarSet]
+type = ParentVarSet
+triggerall = !(PrevStateNo = 9280)
+trigger1 = Time = 40
+var(19) = 0
+
+[State -2, Turn]
+type = Turn
+trigger1 = Time = 0
+
+[State 9290, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = NoShadow
+flag2 = NoAutoTurn
+
+[State 9290, ScreenBound]
+type = ScreenBound
+trigger1 = 1
+value = 0
+movecamera = 0,0
+
+[State 9290, PlaySnd]
+type = PlaySnd
+trigger1 = AnimElem = 1
+value = S4,30
+
+[State 9290, VelSet]
+type = VelSet
+trigger1 = AnimElem = 1
+x = 4
+y = -6
+
+[State 9290, DestroySelf]
+type = DestroySelf
+trigger1 = Time > 40
+ignorehitpause = 1
+
+;\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+;âeÈxÇµÅ@ëOÉWÉÉÉìÉv
+[Statedef 9300]
+type = A
+physics = A
+movetype = I
+ctrl = 0
+anim = 42
+velset = 0,0
+sprpriority = 3
+
+[State 9300, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = NoShadow
+flag2 = NoAutoTurn
+
+[State 9300, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+time = 1
+ignorehitpause = 1
+
+[State 9300, ScreenBound]
+type = ScreenBound
+trigger1 = 1
+value = 0
+movecamera = 0,0
+
+[State 9300, PlayerPush]
+type = PlayerPush
+trigger1 = 1
+value = 0
+
+[State 9300, PlaySnd]
+type = PlaySnd
+trigger1 = Time = 0
+value = S7,0
+
+[State 9300, PlaySnd]
+type = PlaySnd
+trigger1 = Time = 0
+value = S2,1
+
+[State 9300, Explod]
+type = Explod
+trigger1 = Time = 42
+postype = P1
+pos = 0,0
+sprpriority = 7
+anim = 1603
+persistent = 1
+trans = AddAlpha
+alpha = 256,256
+
+[State 9300, VelSet]
+type = VelSet
+trigger1 = Time = 0
+x = Const(velocity.jump.fwd.x)
+y = Const(velocity.jump.y)
+
+[State 9300, End] 
+type = ChangeState
+trigger1 = Time = 43
+value = 9290
+
+;\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+;âeÈxÇµÅ@êÇíºÉWÉÉÉìÉv
+[Statedef 9310]
+type = A
+physics = A
+movetype = I
+ctrl = 0
+anim = 41
+velset = 0,0
+sprpriority = 3
+
+[State 9310, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = NoShadow
+flag2 = NoAutoTurn
+
+[State 9310, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+time = 1
+ignorehitpause = 1
+
+[State 9310, ScreenBound]
+type = ScreenBound
+trigger1 = 1
+value = 0
+movecamera = 0,0
+
+[State 9310, PlayerPush]
+type = PlayerPush
+trigger1 = 1
+value = 0
+
+[State 9310, PlaySnd]
+type = PlaySnd
+trigger1 = Time = 0
+value = S7,0
+
+[State 9310, PlaySnd]
+type = PlaySnd
+trigger1 = Time = 0
+value = S2,1
+
+[State 9310, Explod]
+type = Explod
+trigger1 = Time = 42
+postype = P1
+pos = 0,0
+sprpriority = 7
+anim = 1603
+persistent = 1
+trans = AddAlpha
+alpha = 256,256
+
+[State 9310, VelSet]
+type = VelSet
+trigger1 = Time = 0
+x = 0
+y = Const(velocity.jump.y)
+
+[State 9310, End] 
+type = ChangeState
+trigger1 = Time = 43
+value = 9290
+
+;\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+;âeÈxÇµÅ@å„ÉWÉÉÉìÉv
+[Statedef 9320]
+type = A
+physics = A
+movetype = I
+ctrl = 0
+anim = 43
+velset = 0,0
+sprpriority = 3
+
+[State 9320, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = NoShadow
+flag2 = NoAutoTurn
+
+[State 9320, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+time = 1
+ignorehitpause = 1
+
+[State 9320, ScreenBound]
+type = ScreenBound
+trigger1 = 1
+value = 0
+movecamera = 0,0
+
+[State 9320, PlayerPush]
+type = PlayerPush
+trigger1 = 1
+value = 0
+
+[State 9320, PlaySnd]
+type = PlaySnd
+trigger1 = Time = 0
+value = S7,0
+
+[State 9320, PlaySnd]
+type = PlaySnd
+trigger1 = Time = 0
+value = S2,1
+
+[State 9320, Explod]
+type = Explod
+trigger1 = Time = 42
+postype = P1
+pos = 0,0
+sprpriority = 7
+anim = 1603
+persistent = 1
+trans = AddAlpha
+alpha = 256,256
+
+[State 9320, VelSet]
+type = VelSet
+trigger1 = Time = 0
+x = Const(velocity.jump.back.x)
+y = Const(velocity.jump.y)
+
+[State 9320, End] 
+type = ChangeState
+trigger1 = Time = 43
+value = 9290
+
+;\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+;âeÈxÇµÅ@ëOè¨ÉWÉÉÉìÉv
+[Statedef 9330]
+type = A
+physics = A
+movetype = I
+ctrl = 0
+anim = 46
+velset = 0,0
+sprpriority = 3
+
+[State 9330, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = NoShadow
+flag2 = NoAutoTurn
+
+[State 9330, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+time = 1
+ignorehitpause = 1
+
+[State 9330, ScreenBound]
+type = ScreenBound
+trigger1 = 1
+value = 0
+movecamera = 0,0
+
+[State 9330, PlayerPush]
+type = PlayerPush
+trigger1 = 1
+value = 0
+
+[State 9330, PlaySnd]
+type = PlaySnd
+trigger1 = Time = 0
+value = S7,0
+
+[State 9330, PlaySnd]
+type = PlaySnd
+trigger1 = Time = 0
+value = S2,1
+
+[State 9330, Explod]
+type = Explod
+trigger1 = Time = 30
+postype = P1
+pos = 0,0
+sprpriority = 7
+anim = 1603
+persistent = 1
+trans = AddAlpha
+alpha = 256,256
+
+[State 9330, VelSet]
+type = VelSet
+trigger1 = Time = 0
+x = Const(velocity.runjump.fwd.x)
+y = Const(velocity.jump.y)*0.75
+
+[State 9330, End] 
+type = ChangeState
+trigger1 = Time = 31
+value = 9290
+
+;\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+;âeÈxÇµÅ@ëOêi
+[Statedef 9340]
+type = S
+physics = S
+movetype = I
+ctrl = 0
+anim = 20
+velset = 0,0
+sprpriority = 3
+
+[State 9340, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = NoShadow
+flag2 = NoAutoTurn
+
+[State 9340, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+time = 1
+ignorehitpause = 1
+
+[State 9340, ScreenBound]
+type = ScreenBound
+trigger1 = 1
+value = 0
+movecamera = 0,0
+
+[State 9340, PlayerPush]
+type = PlayerPush
+trigger1 = 1
+value = 0
+
+[State 9340, Explod]
+type = Explod
+trigger1 = Time = 72
+postype = P1
+pos = 0,0
+sprpriority = 7
+anim = 1603
+persistent = 1
+trans = AddAlpha
+alpha = 256,256
+
+[State 9340, VelSet]
+type = VelSet
+trigger1 = 1
+x = Const(velocity.walk.fwd.x)
+
+[State 9340, End] 
+type = ChangeState
+trigger1 = Time = 73
+value = 9290
+
+;\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+;âeÈxÇµÅ@å„ëﬁ
+[Statedef 9350]
+type = S
+physics = S
+movetype = I
+ctrl = 0
+anim = 21
+velset = 0,0
+sprpriority = 3
+
+[State 9350, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = NoShadow
+flag2 = NoAutoTurn
+
+[State 9350, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+time = 1
+ignorehitpause = 1
+
+[State 9350, ScreenBound]
+type = ScreenBound
+trigger1 = 1
+value = 0
+movecamera = 0,0
+
+[State 9350, PlayerPush]
+type = PlayerPush
+trigger1 = 1
+value = 0
+
+[State 9350, Explod]
+type = Explod
+trigger1 = Time = 72
+postype = P1
+pos = 0,0
+sprpriority = 7
+anim = 1603
+persistent = 1
+trans = AddAlpha
+alpha = 256,256
+
+[State 9350, VelSet]
+type = VelSet
+trigger1 = 1
+x = Const(velocity.walk.back.x)
+
+[State 9350, End] 
+type = ChangeState
+trigger1 = Time = 73
+value = 9290
+
+;\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+;âeÈxÇµÅ@âeãzÇ¢
+[Statedef 9360]
+type = S
+physics = S
+movetype = I
+ctrl = 0
+anim = 1550
+velset = 0,0
+sprpriority = 3
+
+[State 9360, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = NoShadow
+flag2 = NoAutoTurn
+
+[State 9360, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+time = 1
+ignorehitpause = 1
+
+[State 9360, ScreenBound]
+type = ScreenBound
+trigger1 = 1
+value = 0
+movecamera = 0,0
+
+[State 9360, PlayerPush]
+type = PlayerPush
+trigger1 = 1
+value = 0
+
+[State 9360, Explod]
+type = Explod
+trigger1 = Time = 72
+postype = P1
+pos = 0,0
+sprpriority = 7
+anim = 1603
+persistent = 1
+trans = AddAlpha
+alpha = 256,256
+
+[State 9360, VelSet]
+type = VelSet
+triggerall = AnimElem = 12, >= 0 && AnimElem = 13, < 0
+triggerall = !var(59)
+trigger1 = Root,Command = "holdfwd"
+x = 8
+
+[State 9360, VelSet]
+type = VelSet
+triggerall = AnimElem = 12, >= 0 && AnimElem = 13, < 0
+triggerall = !var(59)
+trigger1 = Root,Command = "holdback"
+x = -8
+
+[State 9360, VelSet]
+type = VelSet
+triggerall = AnimElem = 12, >= 0 && AnimElem = 13, < 0
+triggerall = var(59)
+trigger1 = 1
+x = 8
+
+[State 9360, VelSet]
+type = VelSet
+triggerall = AnimElem = 12, >= 0 && AnimElem = 13, < 0
+triggerall = var(59)
+trigger1 = 0
+x = -8
+
+[State 9360, End] 
+type = ChangeState
+trigger1 = Time = 73
+value = 9290
+
+;\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+;âeÈxÇµÅ@É_ÉbÉVÉÖ
+[Statedef 9370]
+type = S
+physics = S
+movetype = I
+ctrl = 0
+anim = 100
+velset = 0,0
+sprpriority = 3
+
+[State 9370, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = NoShadow
+flag2 = NoAutoTurn
+
+[State 9370, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+time = 1
+ignorehitpause = 1
+
+[State 9370, ScreenBound]
+type = ScreenBound
+trigger1 = 1
+value = 0
+movecamera = 0,0
+
+[State 9370, PlayerPush]
+type = PlayerPush
+trigger1 = 1
+value = 0
+
+[State 9370, PlaySnd]
+type = PlaySnd
+trigger1 = AnimElem = 2
+value = S4,13
+
+[State 9370, Explod]
+type = Explod
+trigger1 = Time = 72
+postype = P1
+pos = 0,0
+sprpriority = 7
+anim = 1603
+persistent = 1
+trans = AddAlpha
+alpha = 256,256
+
+[State 9370, VelSet]
+type = VelSet
+trigger1 = AnimElem = 2, >= 0
+x = Const(velocity.run.fwd.x)
+
+[State 9370, End] 
+type = ChangeState
+trigger1 = Time = 73
+value = 9290
+
+;\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+;âeÈxÇµÅ@ÉoÉbÉNÉXÉeÉbÉv
+[Statedef 9380]
+type = S
+physics = S
+movetype = I
+ctrl = 0
+anim = 105
+velset = 0,0
+sprpriority = 3
+
+[State 9380, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = NoShadow
+flag2 = NoAutoTurn
+
+[State 9380, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+time = 1
+ignorehitpause = 1
+
+[State 9380, ScreenBound]
+type = ScreenBound
+trigger1 = 1
+value = 0
+movecamera = 0,0
+
+[State 9380, PlayerPush]
+type = PlayerPush
+trigger1 = 1
+value = 0
+
+[State 9380, StateTypeSet]
+type = StateTypeSet
+trigger1 = AnimElem = 2
+statetype = A
+physics = N
+
+[State 9380, PlaySnd]
+type = PlaySnd
+trigger1 = AnimElem = 2
+value = S4,13
+
+[State 9380, Explod]
+type = Explod
+trigger1 = Time = 30
+trigger2 = Pos Y >= 0 && Vel Y > 0
+postype = P1
+pos = 0,0
+sprpriority = 7
+anim = 1603
+persistent = 1
+trans = AddAlpha
+alpha = 256,256
+
+[State 9380, VelSet]
+type = VelSet
+trigger1 = AnimElem = 2
+x = Const(velocity.run.back.x)
+y = Const(velocity.run.back.y)
+
+[State 9380, VelAdd]
+type = VelAdd
+trigger1 = AnimElem = 2, >= 0
+trigger1 = Vel X < -1
+x = .40
+
+[State 9380, VelAdd]
+type = VelAdd
+trigger1 = AnimElem = 2, >= 0
+y = .75
+
+[State 9380, End] 
+type = ChangeState
+trigger1 = Time = 31
+trigger2 = Pos Y >= 0 && Vel Y > 0
+value = 9290
+
+;\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+;âeÈxÇµÅ@óßÇø
+[Statedef 9390]
+type = S
+physics = S
+movetype = I
+ctrl = 0
+anim = 0
+velset = 0,0
+sprpriority = 3
+
+[State 9390, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = NoShadow
+flag2 = NoAutoTurn
+
+[State 9390, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+time = 1
+ignorehitpause = 1
+
+[State 9390, ScreenBound]
+type = ScreenBound
+trigger1 = 1
+value = 0
+movecamera = 0,0
+
+[State 9390, PlayerPush]
+type = PlayerPush
+trigger1 = 1
+value = 0
+
+[State 9390, Explod]
+type = Explod
+trigger1 = Time = 30
+postype = P1
+pos = 0,0
+sprpriority = 7
+anim = 1603
+persistent = 1
+trans = AddAlpha
+alpha = 256,256
+
+[State 9390, End] 
+type = ChangeState
+trigger1 = Time = 31
+value = 9290
+
+;\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+;âÊñ ÉtÉâÉbÉVÉÖÉwÉãÉpÅ[
+[Statedef 12000]
+type    = A
+movetype= I
+physics = N
+anim = 9999
+
+[State 12000, AssertSpecial]
+type = AssertSpecial
+trigger1 = Root,MatchOver
+flag = NoMusic
+
+[State 12000, Envcolor]
+type = Envcolor
+trigger1 = Time < 10
+trigger1 = Timemod = 2,0
+value = 255,255,255
+time = 2
+under = 1
+ignorehitpause = 1
+
+[State 12000, Envcolor]
+type = Envcolor
+trigger1 = Time < 10
+trigger1 = Timemod = 2,1
+value = 255,0,0
+time = 2
+under = 1
+ignorehitpause = 1
+
+[State 12000, Envcolor]
+type = Envcolor
+trigger1 = Time = 10
+ignorehitpause = 1
+value = 255,255,255
+time = 1
+under = 1
+
+[State 12000, DestroySelf]
+type = DestroySelf
+trigger1 = RoundState != [2,4]
+
+;\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+;AIãNìÆópÉwÉãÉpÅ[
+[Statedef 20000]
+anim = 9999
+ctrl = 0
+
+[State 20000, SelfState]
+type = SelfState
+trigger1 = !IsHelper
+value = 0
+
+[State 20000, VarSet]
+type = VarSet
+trigger1 = Command = "up" && Root,Command = "up"
+trigger2 = Command = "down" && Root,Command = "down"
+trigger3 = Command = "back" && Root,Command = "back"
+trigger4 = Command = "fwd" && Root,Command = "fwd"
+trigger5 = Command = "a" && Root,Command = "a"
+trigger6 = Command = "b" && Root,Command = "b"
+trigger7 = Command = "c" && Root,Command = "c"
+trigger8 = Command = "x" && Root,Command = "x"
+trigger9 = Command = "y" && Root,Command = "y"
+trigger10 = Command = "z" && Root,Command = "z"
+trigger11 = Command = "start" && Root,Command = "start"
+var(59) = -1
+
+[State 20000, DestroySelf]
+Type = DestroySelf
+triggerall = IsHelper
+trigger1 = Root,var(59) || var(59) = -1
+trigger2 = Command = "up" && Root,Command = "up"
+trigger3 = Command = "down" && Root,Command = "down"
+trigger4 = Command = "back" && Root,Command = "back"
+trigger5 = Command = "fwd" && Root,Command = "fwd"
+trigger6 = Command = "a" && Root,Command = "a"
+trigger7 = Command = "b" && Root,Command = "b"
+trigger8 = Command = "c" && Root,Command = "c"
+trigger9 = Command = "x" && Root,Command = "x"
+trigger10 = Command = "y" && Root,Command = "y"
+trigger11 = Command = "z" && Root,Command = "z"
+trigger12 = Command = "start" && Root,Command = "start"
+
+[State 20000, VarSet]
+type = VarSet
+triggerall = var(59) != -1
+trigger1 = Root,Command = "up"
+trigger2 = Root,Command = "down"
+trigger3 = Root,Command = "back"
+trigger4 = Root,Command = "fwd"
+trigger5 = Root,Command = "a"
+trigger6 = Root,Command = "b"
+trigger7 = Root,Command = "c"
+trigger8 = Root,Command = "x"
+trigger9 = Root,Command = "y"
+trigger10 = Root,Command = "z"
+trigger11 = Root,Command = "start"
+var(59) = 1
+
+;\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+;ÉKÅ[ÉhÉwÉãÉpÅ[
+[Statedef 30000]
+type = S
+physics = N
+movetype = I
+anim = 9999
+ctrl = 0
+
+[State 30000, BindToRoot]
+type = BindToRoot
+trigger1 = 1
+pos = -60,0
+facing = 1
+
+[State -2, VarSet]
+type = VarSet
+triggerall = RoundState = 2
+trigger1 = !var(50)
+trigger2 = Enemy(0),MoveType = I && !InGuardDist
+var(50) = Enemy(0),NumHelper
+ignorehitpause = 1
+
+[State -2, VarSet]
+type = VarSet
+triggerall = NumEnemy > 1
+triggerall = RoundState = 2
+trigger1 = !var(51)
+trigger2 = Enemy(1),MoveType = I && !InGuardDist
+var(51) = Enemy(1),NumHelper
+ignorehitpause = 1
+
+[State -2, ParentVarSet]
+type = ParentVarSet
+trigger1 = NumEnemy = 1
+trigger1 = Enemy(0),NumHelper - var(50) > 0
+trigger1 = Enemy(0),MoveType = A || (Enemy(0),MoveType != A && InGuardDist)
+trigger2 = NumEnemy = 2
+trigger2 = Enemy(0),NumHelper - var(50) > 0
+trigger2 = Enemy(0),MoveType = A || (Enemy(0),MoveType != A && InGuardDist)
+trigger3 = NumEnemy = 2
+trigger3 = Enemy(1),NumHelper - var(51) > 0
+trigger3 = Enemy(1),MoveType = A || (Enemy(1),MoveType != A && InGuardDist)
+var(56) = 1
+ignorehitpause = 1
+
+[State -2, ParentVarSet]
+type = ParentVarSet
+trigger1 = NumEnemy = 1
+trigger1 = !(Enemy(0),NumHelper - var(50) > 0 && (Enemy(0),MoveType = A || (Enemy(0),MoveType != A && InGuardDist)))
+trigger2 = NumEnemy = 2
+trigger2 = !(Enemy(0),NumHelper - var(50) > 0 && (Enemy(0),MoveType = A || (Enemy(0),MoveType != A && InGuardDist)))
+trigger2 = !(Enemy(1),NumHelper - var(51) > 0 && (Enemy(1),MoveType = A || (Enemy(1),MoveType != A && InGuardDist)))
+var(56) = 0
+ignorehitpause = 1
+
+[State 30000, DestroySelf]
+type = DestroySelf
+trigger1 = !(Root,var(59) || Root,fvar(1))
+
+;\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+;âÊñ í[ë™íËÅiç∂Åj
+[Statedef 50000]
+type = S
+anim = 9999
+ctrl = 0
+
+[State 50000, Turn]
+type = Turn
+trigger1 = Time = 0
+trigger1 = Facing = -1
+
+[State 50000, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = NoAutoTurn
+
+[State 50000, Projectile]
+type = Projectile
+triggerall = Root,NumProjID(50000) = 0
+trigger1 = Time = 1
+projanim = 9999
+projID = 50000
+projremovetime = -1
+projremove = 0
+velocity = -20
+offset = 0,0
+postype = P1
+projedgebound = 9999999
+projstagebound = 0
+supermovetime = 9999999
+pausemovetime = 9999999
+persistent = 0
+
+[State 50000, VarAdd]
+type = VarAdd
+trigger1 = Root,NumProjID(50000) > 0
+var(52) = 1
+
+[State 50000, PosAdd]
+type = PosAdd
+triggerall = var(52)
+trigger1 = Root,NumProjID(50000) = 0
+x = -20*(var(52)-1)
+persistent = 0
+
+[State 50000, VarSet]
+type = VarSet
+triggerall = var(52)
+trigger1 = Root,NumProjID(50000) = 0
+var(52) = 0
+persistent = 0
+
+[State 50000, Projectile]
+type = Projectile
+triggerall = Root,NumProjID(50000) = 0
+trigger1 = Time > 1
+trigger1 = !var(52)
+projanim = 9999
+projID = 50000
+projremovetime = -1
+projremove = 0
+velocity = -1
+offset = 0,0
+postype = P1
+projedgebound = 9999999
+projstagebound = 0
+supermovetime = 9999999
+pausemovetime = 9999999
+persistent = 0
+
+[State 50000, PosAdd]
+type = PosAdd
+triggerall = var(52)
+trigger1 = Root,NumProjID(50000) = 0
+x = -1*(var(52))
+persistent = 0
+
+[State 50000, VarSet]
+type = VarSet
+triggerall = RoundState = 2
+trigger1 = Time > 60
+trigger1 = ScreenPos X = [-1,1]
+var(53) = BackEdgeBodyDist
+
+[State 50000, ParentVarSet]
+type = ParentVarSet
+trigger1 = var(53)
+trigger1 = !Parent,var(47)
+var(47) = -Abs(var(53))
+persistent = 0
+
+[State 50000, PosAdd]
+type = PosAdd
+triggerall = Time > 120
+trigger1 = Parent,var(47)
+x = -Parent,var(47)
+persistent = 0
+
+[State 50000, ParentVarSet]
+type = ParentVarSet
+trigger1 = Root,Facing = -1
+var(53) = Floor(Abs(Pos X-Parent,Pos X))
+
+[State 50000, VarSet]
+type = VarSet
+trigger1 = NumEnemy = 1
+trigger2 = NumEnemy > 1
+trigger2 = Abs(Root,Pos X-Enemy(0),Pos X) <= Abs(Root,Pos X-Enemy(1),Pos X)
+var(54) = 0
+
+[State 50000, VarSet]
+type = VarSet
+triggerall = NumEnemy > 1
+trigger1 = Abs(Root,Pos X-Enemy(0),Pos X) > Abs(Root,Pos X-Enemy(1),Pos X)
+var(54) = 1
+
+[State 50000, ParentVarSet]
+type = ParentVarSet
+trigger1 = Enemy(var(54)),Facing = 1
+var(52) = Floor(Abs(Pos X-Enemy(var(54)),Pos X))
+
+[State 50000, DestroySelf]
+type = DestroySelf
+trigger1 = !(Root,var(59) || Root,fvar(1))
+
+;\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+;âÊñ í[ë™íËÅiâEÅj
+[Statedef 50010]
+type = S
+anim = 9999
+ctrl = 0
+
+[State 50010, Turn]
+type = Turn
+trigger1 = Time = 0
+trigger1 = Facing = 1
+
+[State 50010, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = NoAutoTurn
+
+[State 50010, Projectile]
+type = Projectile
+triggerall = Root,NumProjID(50010) = 0
+trigger1 = Time = 1
+projanim = 9999
+projID = 50010
+projremovetime = -1
+projremove = 0
+velocity = -20
+offset = 0,0
+postype = P1
+projedgebound = 9999999
+projstagebound = 0
+supermovetime = 9999999
+pausemovetime = 9999999
+persistent = 0
+
+[State 50010, VarAdd]
+type = VarAdd
+trigger1 = Root,NumProjID(50010) > 0
+var(52) = 1
+
+[State 50010, PosAdd]
+type = PosAdd
+triggerall = var(52)
+trigger1 = Root,NumProjID(50010) = 0
+x = -20*(var(52)-1)
+persistent = 0
+
+[State 50010, VarSet]
+type = VarSet
+triggerall = var(52)
+trigger1 = Root,NumProjID(50010) = 0
+var(52) = 0
+persistent = 0
+
+[State 50010, Projectile]
+type = Projectile
+triggerall = Root,NumProjID(50010) = 0
+trigger1 = Time > 1
+trigger1 = !var(52)
+projanim = 9999
+projID = 50010
+projremovetime = -1
+projremove = 0
+velocity = -1
+offset = 0,0
+postype = P1
+projedgebound = 9999999
+projstagebound = 0
+supermovetime = 9999999
+pausemovetime = 9999999
+persistent = 0
+
+[State 50010, PosAdd]
+type = PosAdd
+triggerall = var(52)
+trigger1 = Root,NumProjID(50010) = 0
+x = -1*(var(52))
+persistent = 0
+
+[State 50010, VarSet]
+type = VarSet
+triggerall = RoundState = 2
+trigger1 = Time > 60
+trigger1 = ScreenPos X = [319,321]
+var(53) = BackEdgeBodyDist
+
+[State 50010, ParentVarSet]
+type = ParentVarSet
+trigger1 = var(53)
+trigger1 = !Parent,var(47)
+var(47) = -Abs(var(53))
+persistent = 0
+
+[State 50010, PosAdd]
+type = PosAdd
+triggerall = Time > 120
+trigger1 = Parent,var(47)
+x = -Parent,var(47)
+persistent = 0
+
+[State 50010, ParentVarSet]
+type = ParentVarSet
+trigger1 = Root,Facing = 1
+var(53) = Floor(Abs(Pos X-Parent,Pos X))
+
+[State 50000, VarSet]
+type = VarSet
+trigger1 = NumEnemy = 1
+trigger2 = NumEnemy > 1
+trigger2 = Abs(Root,Pos X-Enemy(0),Pos X) <= Abs(Root,Pos X-Enemy(1),Pos X)
+var(54) = 0
+
+[State 50000, VarSet]
+type = VarSet
+triggerall = NumEnemy > 1
+trigger1 = Abs(Root,Pos X-Enemy(0),Pos X) > Abs(Root,Pos X-Enemy(1),Pos X)
+var(54) = 1
+
+[State 50000, ParentVarSet]
+type = ParentVarSet
+trigger1 = Enemy(var(54)),Facing = -1
+var(52) = Floor(Abs(Pos X-Enemy(var(54)),Pos X))
+
+[State 50000, DestroySelf]
+type = DestroySelf
+trigger1 = !(Root,var(59) || Root,fvar(1))
+
+

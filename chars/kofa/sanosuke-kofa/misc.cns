@@ -1,0 +1,786 @@
+;----------------------------------------------------------------------         
+; -2 States
+;---------------------------------------------------------------------------
+
+[Statedef -2]
+
+[State -2, Credit]
+type = DisplayToClipboard
+trigger1 = 1
+text="Sagara Sanosuke by Aoshi24, DanMT, and Edogawa Inpo"
+
+[State -2,Victory]
+type = VictoryQuote
+trigger1 = P2name = "HIMURA KENSHIN"
+value    = 3
+
+[State -2,Victory]
+type = VictoryQuote
+trigger1 = P2name = "HIMURA BATTOUSAI"
+value    = 6
+
+[State -2,Victory]
+type = VictoryQuote
+trigger1 = P2name = "SAITO HAJIME"
+value    = 11
+
+[State -2,Victory]
+type = VictoryQuote
+trigger1 = P2name = "SETA SOUJIRO"
+trigger2 = P2name = "SHISHIO MAKOTO"
+value    = 14
+
+;Ready for Sanjou No Kiwame!!!
+[State -2, 7]
+type = VarSet
+trigger1 = Var(10) <= 0
+v = 10
+value = 10
+ignorehitpause = 1
+
+[State -2, 8]
+type = VarAdd
+trigger1 = Var(10) >= 0
+v = 10
+value = -1
+ignorehitpause = 1
+
+
+;Hurt
+[State -3, hurt]
+type = PlaySnd
+triggerall = p1name = "SAGARA SANOSUKE"
+triggerall = alive && (time = 1)
+trigger1 = var(58) != 1
+trigger1 = stateno=5000||stateno=5010||stateno=5020||stateno=5070||stateno=5080||stateno=5100
+trigger1 = numenemy > 0
+trigger1 = enemynear,hitdefattr = SCA,SA,HA
+trigger2 = var(58) != 1
+trigger2 = stateno=5000||stateno=5010||stateno=5020||stateno=5070||stateno=5080||stateno=5100
+trigger2 = gethitvar(animtype)>=2 && random<500
+trigger3 = var(58) != 1
+trigger3 = stateno=5000||stateno=5010||stateno=5020||stateno=5070||stateno=5080||stateno=5100
+trigger3 = gethitvar(animtype)=1 && random<375
+trigger4 = var(58) != 1
+trigger4 = stateno=5000||stateno=5010||stateno=5020||stateno=5070||stateno=5080||stateno=5100
+trigger4 = gethitvar(animtype)=0 && random<250
+trigger5 = var(58) = 1
+trigger5 = stateno = 7001 || stateno = 7011
+trigger5 = random < ifelse ((anim % 10) = 1, 400, 850)
+trigger6 = var(58) = 1
+trigger6 = stateno = 7040 || stateno = 7050
+trigger6 = random < 700
+trigger7 = var(58) = 1
+trigger7 = stateno = 7070
+trigger8 = var(58) = 1
+trigger8 = stateno = 7100 && random < 340
+value = S5,var(5)
+channel = 0
+ignorehitpause = 1
+volume = 255
+
+[State -2, AttackResize]
+type = AngleDraw
+triggerall = statetype != c
+trigger1 = movetype = A
+value = 0
+scale = 1,1.02
+ignorehitpause = 1
+
+[State -2, ZanzaResize]
+type = AngleDraw
+triggerall = var(58) = 1
+triggerall = movetype != A
+triggerall = stateno != 182
+trigger1 = statetype != L
+value = 0
+scale = 1,0.97
+ignorehitpause = 1
+
+[State -2, VarRandom]
+type = VarRandom
+triggerall = p1name = "SAGARA SANOSUKE"
+trigger1 = 1
+v = 5
+range = 0,6
+
+[State -2, 4]
+type = StopSnd
+trigger1 = stateno != 100
+trigger2 = Vel X <= 0
+channel  = 3
+
+[State -2, 4]
+type = PlaySnd
+trigger1 = stateno = 101
+trigger1 = time = 1
+value    = s1,1
+channel  = 4
+
+[state -2]
+type     = assertspecial
+trigger1 = roundstate = 4
+trigger1 = matchover = 1
+flag    = NoBarDisplay
+
+[State -2]
+type = PlaySnd
+triggerall = Time = 1
+trigger1 = StateNo = 40
+trigger2 = StateNo = 105
+value = s0, 6
+
+[State -2, Snd 1]
+type = PlaySnd
+triggerall = time = 1
+trigger1 = StateNo = 52
+trigger2 = Anim = 47
+trigger3 = StateNo = 103
+value = s0, 7
+volume = 255
+
+[State -2]
+type=null
+trigger1=stateno=5900
+trigger1=var(11):=0
+
+[State -2]
+type=playsnd
+trigger1=!alive
+trigger1=var(11)!=11
+trigger1=var(11):=11
+value = s11,1
+ignorehitpause = 1
+persistent = 0
+channel = 1
+
+[State -2]
+type=playsnd
+trigger1=!alive
+trigger1=var(11)!=11
+trigger1=var(11):=11
+value = s11,1
+ignorehitpause = 1
+persistent = 0
+
+[state -2, AssertSpecial Flag]
+type     = assertspecial
+trigger1 = matchover
+trigger1 = time = [0, 9999]
+flag    = nomusic
+
+[State -2]
+type = AttackMulSet
+triggerall = var(21) = 1
+Trigger1 = AILevel <= 2
+value = 0.9
+
+[State -2]
+type = DefenceMulSet
+triggerall = var(21) = 1
+Trigger1 = AILevel = 1
+value = 1.5
+
+[State -2]
+type = DefenceMulSet
+triggerall = var(21) = 1
+Trigger1 = AILevel = 2
+value = 1.2
+
+[State -2]
+type = DefenceMulSet
+trigger1 = var(58) != 1
+value = 0.87
+
+[State -2]
+type = AttackMulSet
+triggerall = var(21) = 1
+Trigger1 = AILevel >= 8
+value = 1.2
+
+[State -2]
+type = DefenceMulSet
+triggerall = var(21) = 1
+Triggerall = AILevel >= 8
+trigger1 = var(58) != 1
+value = 0.8
+
+[State -2]
+type = AttackDist
+trigger1 = var(58) = 1
+value = 240
+
+[State -2, kenki_min]
+type     = varset
+trigger1 = var(21) = 1
+Trigger1 = AILevel >= 8
+trigger1 = var(29) = 0
+v = 29
+value = 8
+ignorehitpause = 1
+
+[State -2, kenki_min]
+type     = varset
+triggerall = var(21) = 1
+Triggerall = AILevel = 7
+trigger1 = var(29) = 0
+v = 29
+value = 4
+ignorehitpause = 1
+
+[State -2, P2 Facing]
+type= targetfacing
+trigger1= movecontact=1 && numtarget=1
+trigger1= !(target,hitshakeover) && !(target,hitfall) && (target,time<=1)
+value= ifelse(p2dist x>=0, -1, 1)
+ignorehitpause= 1
+
+;--------------------------------------------------------
+;Zanbatou Helper
+[State -2, Zanbatou]
+type = Helper
+trigger1 = NumHelper(7999) = 0
+trigger1 = var(58) = 0
+helpertype = normal
+name = "zanbatou"
+ID = 7999
+pos = -40,0
+postype = p1
+stateno = 7999
+ownpal = 1
+keyctrl = 0
+
+[State -2, Zanbatou]
+type = Helper
+trigger1 = NumHelper(7999) = 0
+trigger1 = var(58) = 2
+trigger1 = alive = 1
+helpertype = normal
+name = "zanbatou"
+ID = 7999
+pos = 30,0
+postype = p1
+stateno = 7999
+ownpal = 1
+keyctrl = 0
+
+;THE ARMOR EFFECT
+[State -3, Player_NotHit_During_Armor]
+type = HitBy
+triggerall = var(59) > 0 ;<----Mode variable goes here. If Armor is active all the time or if you do not have a mode var, keep this trigger as nulled.
+trigger1 = NumHelper(8999) || NumHelper(9000) ;<---Player (YOU) are only hitby the below parameters when these helpers (the actual armor) is active.
+value = SCA,NA,SA,HA
+
+[State -3, Player_NotHit_During_Armor]
+type = HitBy
+triggerall = var(59) > 0 ;<----Mode variable goes here. If Armor is active all the time or if you do not have a mode var, keep this trigger as nulled.
+trigger1 = NumHelper(8999) || NumHelper(9000) ;<---Player (YOU) are only hitby the below parameters when these helpers (the actual armor) is active.
+value = SC,NT,ST,HT
+
+[State -3, VarAdd];RemoveArmor_After1Hit
+type = VarAdd
+triggerall = numenemy
+triggerall = var(58) = 1
+trigger1 = var(59) > 0 && enemy, movehit = 1
+var(59) = -1
+ignorehitpause = 1
+
+[State -3, VarSet];Armor Reset
+type = VarSet
+triggerall = numenemy
+triggerall = var(58) = 1
+trigger1 = var(59) < 6 && enemy, movetype != A 
+var(59) = 10
+
+[State -3, Attack_Taker]
+type = Helper ;<-----acts as the bodyguard of YOU. The actual armor.....a helper.
+triggerall = !NumHelper(8999) && var(59) > 0 ;<----Mode variable goes here. If Armor is active all the time or if you do not have a mode var, keep this portion of this trigger nulled.
+trigger1 = MoveType != H  
+stateno = 8999 ;<----stateno of helper definitions
+id = 8999
+facing = ifelse(p2dist X<0,-1,1)
+
+[State -3, damage_during_armor] 
+type = LifeAdd
+trigger1 = NumHelper(8999)
+trigger1 = Helper(8999),gethitvar(hitcount) = 1 
+value = - Helper(8999),GetHitVar(Damage) ;<----gives damage that the helper bodyguard takes to YOU
+kill = 1 ;<----controls whether you can be killed when above helper is active
+
+[State -3, Higher Attack]
+type = AttackMulSet
+triggerall = var(58) = 1
+trigger1 = StateNo != 1201
+trigger2 = StateNo != 1210
+trigger3 = StateNo != 2000
+trigger4 = StateNo != 2001
+trigger5 = StateNo != 2010
+value = 1.2
+
+[State -3, Lower Defense]
+type = DefenceMulSet
+trigger1 = var(58) = 1
+value = 0.93
+
+[state -3, No Guard]
+type     = assertspecial
+trigger1 = var(58) = 1
+flag     = nostandguard
+flag2    = nocrouchguard
+flag3    = noairguard
+
+[State -3]
+type = VarSet
+triggerall = statetype != A
+triggerall = Pos Y >= -10
+triggerall = numenemy
+triggerall = var(58) = 1
+trigger1 = enemy, hitdefattr = SC, NT
+trigger1 = p2BodyDist x <= 30
+trigger2 = enemy, hitdefattr = SC, ST
+trigger2 = p2BodyDist x <= 30
+trigger3 = enemy, hitdefattr = SC, HT
+trigger3 = p2BodyDist x <= 30
+trigger4 = movetype = H
+trigger4 = stateno != [5000,5150]
+v = 58
+value = 2
+
+[State -3]
+type = VarSet
+triggerall = statetype != A
+triggerall = Pos Y >= -10
+triggerall = numenemy
+triggerall = var(59) > 0
+trigger1 = enemy, hitdefattr = SC, NT
+trigger1 = p2BodyDist x <= 30
+trigger2 = enemy, hitdefattr = SC, ST
+trigger2 = p2BodyDist x <= 30
+trigger3 = enemy, hitdefattr = SC, HT
+trigger3 = p2BodyDist x <= 30
+trigger4 = movetype = H
+trigger4 = stateno != [5000,5150]
+v = 59
+value = 0
+
+;--------------------------------------------------------
+[State -2, Damage Dampener]
+type = VarAdd
+trigger1 = hitpausetime = 1 
+trigger1 = P2Movetype = H 
+trigger1 = MoveHit
+v = 50
+value = 1
+ignorehitpause = 1
+
+[State -2, VarSet]
+type = VarSet
+trigger1 = P2Movetype != H
+v = 50 
+value = 0
+
+;-----------------------------------------------------------------------------
+;Normal Damage
+[State -2, Attack MulSet 1]
+type = AttackMulSet
+triggerall = stateno = 3014 || stateno = 8114
+trigger1 = Var(50) >= 0
+trigger2 = hitdefattr = SCA, HA, HP
+value = 1
+
+[State -2, Attack MulSet 1]
+type = AttackMulSet
+triggerall = stateno < 3000 || stateno = 8114
+trigger1 = Var(50) <= 0
+value = 1
+
+[State -2, Attack MulSet 2]
+type = AttackMulSet
+triggerall = stateno < 3000
+triggerall = stateno != 8114
+trigger1 = Var(50) = [1,4]
+value = 0.9
+
+[State -2, Attack MulSet 3]
+type = AttackMulSet
+triggerall = stateno < 3000
+triggerall = stateno != 8114
+trigger1 = Var(50) = [5,9]
+value = 0.75
+
+[State -2, Attack MulSet 4]
+type = AttackMulSet
+triggerall = stateno < 3000
+triggerall = stateno != 8114
+trigger1 = Var(50) = [10,14]
+value = 0.35
+
+[State -2, Attack MulSet 5]
+type = AttackMulSet
+triggerall = stateno < 3000
+triggerall = stateno != 8114
+trigger1 = Var(50) > 15
+value = 0.15
+
+;-----------------------------------------------------------------------------
+
+
+;Kenki helper state
+[Statedef 8950]
+type    = S
+movetype= I
+physics = S
+anim = -1
+sprpriority = -4
+ctrl = 0
+
+[State 7000, 0]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+time = 90
+
+[State 7000, 1]
+type = AssertSpecial
+trigger1 = 1
+flag = noautoturn
+flag2 = invisible
+
+[State 7000, 2]
+type = screenbound
+trigger1 = time  >= 0
+value = 0
+movecamera = 0,0
+
+[State 7000, kenki_add]
+type = parentvaradd
+triggerall = parent,Alive = 1
+trigger1 = parent,Var(0) = 1
+;trigger2 = parent,Life <= 100
+v = 29
+value = 3
+persistent = 0
+
+[State 8999, ]
+type = BindToRoot 
+trigger1 = 1
+facing = 1
+ignorehitpause = 1
+
+[State 8999, ChangeAnim] ;<---copycat's YOU, the player's, animation. Root = YOU, Parent = Helper that spawns another helper.
+type = ChangeAnim
+trigger1 = selfanimexist(root,anim)
+elem = root,animelemno(0)
+value = root,anim
+
+[State 7000, 1]
+type = DestroySelf
+trigger1 = Matchover
+
+;Level 0
+[State 184, 2]
+type = Explod
+triggerall = TeamSide = 1
+triggerall = parent,numhelper(8950)>0
+trigger1 = parent, var(29) <= 0
+trigger1 = numexplod(8949)=0
+;persistent = 0
+anim = 8949
+ID = 8949
+pos = -3,6;-7,6
+postype = left
+sprpriority = -3
+bindtime = -1
+ownpal = 1
+scale = 0.2,0.1
+removetime = -1
+ignorehitpause = 1
+
+[State 184, 2]
+type = Explod
+triggerall = TeamSide = 2
+triggerall = parent,numhelper(8950)>0
+triggerall = parent, var(29) <= 0
+trigger1 = numexplod(8949)=0
+;persistent = 0
+anim = 8949
+ID = 8949
+facing = -1
+pos = 321,6
+postype = left
+sprpriority = -3
+bindtime = -1
+ownpal = 1
+scale = 0.2,0.1
+removetime = -1
+ignorehitpause = 1
+
+[State 7000, 1]
+type = RemoveExplod
+trigger1 = parent, var(29) > 0
+ID = 8949
+ignorehitpause = 1
+
+;Level 1
+[State 184, 2]
+type = Explod
+triggerall = TeamSide = 1
+triggerall = parent,numhelper(8950)>0
+triggerall = parent, var(29) = 1
+trigger1 = numexplod(8950)=0
+;persistent = 0
+anim = 8950
+ID = 8950
+pos = -3,6;-7,6
+postype = left
+sprpriority = -3
+bindtime = -1
+ownpal = 1
+scale = 0.2,0.1
+removetime = -1
+ignorehitpause = 1
+
+[State 184, 2]
+type = Explod
+triggerall = TeamSide = 2
+triggerall = parent,numhelper(8950)>0
+triggerall = parent, var(29) = 1
+trigger1 = numexplod(8950)=0
+;persistent = 0
+anim = 8950
+ID = 8950
+facing = -1
+pos = 321,6
+postype = left
+sprpriority = -3
+bindtime = -1
+ownpal = 1
+scale = 0.2,0.1
+removetime = -1
+ignorehitpause = 1
+
+[State 7000, 1]
+type = RemoveExplod
+trigger1 = parent, var(29) != 1
+ID = 8950
+ignorehitpause = 1
+
+;Level 2
+[State 184, 2]
+type = Explod
+triggerall = TeamSide = 1
+triggerall = parent,numhelper(8950)>0
+triggerall = parent, var(29) = [2,3]
+trigger1 = numexplod(8951)=0
+;persistent = 0
+anim = 8951
+ID = 8951
+pos = -3,6;-7,6
+postype = left
+sprpriority = -3
+bindtime = -1
+ownpal = 1
+scale = 0.2,0.1
+removetime = -1
+ignorehitpause = 1
+
+[State 184, 2]
+type = Explod
+triggerall = TeamSide = 2
+triggerall = parent,numhelper(8950)>0
+triggerall = parent, var(29) = [2,3]
+trigger1 = numexplod(8951)=0
+;persistent = 0
+anim = 8951
+ID = 8951
+facing = -1
+pos = 321,6
+postype = left
+sprpriority = -3
+bindtime = -1
+ownpal = 1
+scale = 0.2,0.1
+removetime = -1
+ignorehitpause = 1
+
+[State 7000, 1]
+type = RemoveExplod
+trigger1 = parent, var(29) != [2,3]
+ID = 8951
+ignorehitpause = 1
+
+;Level 3
+[State 184, 2]
+type = Explod
+triggerall = TeamSide = 1
+triggerall = parent,numhelper(8950)>0
+triggerall = parent, var(29) = [4,5]
+trigger1 = numexplod(8952)=0
+;persistent = 0
+anim = 8952
+ID = 8952
+pos = -3,6;-7,6
+postype = left
+sprpriority = -3
+bindtime = -1
+ownpal = 1
+scale = 0.2,0.1
+removetime = -1
+ignorehitpause = 1
+
+[State 184, 2]
+type = Explod
+triggerall = TeamSide = 2
+triggerall = parent,numhelper(8950)>0
+triggerall = parent, var(29) = [4,5]
+trigger1 = numexplod(8952)=0
+;persistent = 0
+anim = 8952
+ID = 8952
+facing = -1
+pos = 321,6
+postype = left
+sprpriority = -3
+bindtime = -1
+ownpal = 1
+scale = 0.2,0.1
+removetime = -1
+ignorehitpause = 1
+
+[State 7000, 1]
+type = RemoveExplod
+trigger1 = parent, var(29) != [4,5]
+ID = 8952
+ignorehitpause = 1
+
+;Level 4
+[State 184, 2]
+type = Explod
+triggerall = TeamSide = 1
+triggerall = parent,numhelper(8950)>0
+triggerall = parent, var(29) = [6,7]
+trigger1 = numexplod(8953)=0
+;persistent = 0
+anim = 8953
+ID = 8953
+pos = -3,6;-7,6
+postype = left
+sprpriority = -3
+bindtime = -1
+ownpal = 1
+scale = 0.2,0.1
+removetime = -1
+ignorehitpause = 1
+
+[State 184, 2]
+type = Explod
+triggerall = TeamSide = 2
+triggerall = parent,numhelper(8950)>0
+triggerall = parent, var(29) = [6,7]
+trigger1 = numexplod(8953)=0
+;persistent = 0
+anim = 8953
+ID = 8953
+facing = -1
+pos = 321,6
+postype = left
+sprpriority = -3
+bindtime = -1
+ownpal = 1
+scale = 0.2,0.1
+removetime = -1
+ignorehitpause = 1
+
+[State 7000, 1]
+type = RemoveExplod
+trigger1 = parent, var(29) != [6,7]
+ID = 8953
+ignorehitpause = 1
+
+;Level 5
+[State 184, 2]
+type = Explod
+triggerall = TeamSide = 1
+triggerall = parent,numhelper(8950)>0
+triggerall = parent, var(29) = [8,9]
+trigger1 = numexplod(8954)=0
+;persistent = 0
+anim = 8954
+ID = 8954
+pos = -3,6;-7,6
+postype = left
+sprpriority = -3
+bindtime = -1
+ownpal = 1
+scale = 0.2,0.1
+removetime = -1
+ignorehitpause = 1
+
+[State 184, 2]
+type = Explod
+triggerall = TeamSide = 2
+triggerall = parent,numhelper(8950)>0
+triggerall = parent, var(29) = [8,9]
+trigger1 = numexplod(8954)=0
+;persistent = 0
+anim = 8954
+ID = 8954
+facing = -1
+pos = 321,6
+postype = left
+sprpriority = -3
+bindtime = -1
+ownpal = 1
+scale = 0.2,0.1
+removetime = -1
+ignorehitpause = 1
+
+[State 7000, 1]
+type = RemoveExplod
+trigger1 = parent, var(29) != [8,9]
+ID = 8954
+ignorehitpause = 1
+
+;Level Max
+[State 184, 2]
+type = Explod
+triggerall = TeamSide = 1
+triggerall = parent,numhelper(8950)>0
+triggerall = parent, var(29) >= 10
+trigger1 = numexplod(8955)=0
+;persistent = 0
+anim = 8955
+ID = 8955
+pos = -3,6;-7,6
+postype = left
+sprpriority = -3
+bindtime = -1
+ownpal = 1
+scale = 0.2,0.1
+removetime = -1
+ignorehitpause = 1
+
+[State 184, 2]
+type = Explod
+triggerall = TeamSide = 2
+triggerall = parent,numhelper(8950)>0
+triggerall = parent, var(29) >= 10
+trigger1 = numexplod(8955)=0
+;persistent = 0
+anim = 8955
+ID = 8955
+facing = -1
+pos = 321,6
+postype = left
+sprpriority = -3
+bindtime = -1
+ownpal = 1
+scale = 0.2,0.1
+removetime = -1
+ignorehitpause = 1
+
+[State 7000, 1]
+type = RemoveExplod
+trigger1 = parent, var(29) < 10
+ID = 8955
+ignorehitpause = 1

@@ -1,0 +1,57 @@
+[Data]
+life              = 1600    ;�̗̓Q�[�W�̍ő�l�����߂܂�
+power             = 7000;jambu;3000    ;�p���[�Q�[�W�ő�l�i�f�t�H���g�� 3000 = Lv.3 �ɂȂ�܂��E�I�v�V�����j
+attack            = 100     ;�U���̓p�[�Z���e�[�W�i�f�t�H���g�� 100% �ɂȂ�܂��j
+defence           = 100     ;�h��̓p�[�Z���e�[�W�i�f�t�H���g�� 100% �ɂȂ�܂��j
+fall.defence_up   = 50      ;�ꎞ�I�ɏ㏸����_�E�����̖h��̓p�[�Z���e�[�W
+liedown.time      = 50      ;�|��Ă���N���オ��܂ł̎���
+airjuggle         = 15      ;�W���O���|�C���g���E�l�@���P
+sparkno           = 1       ;�f�t�H���g�̃q�b�g�X�p�[�N�ԍ��ifightfx.air���A�L������air����Ăяo���j
+guard.sparkno     = 40      ;�f�t�H���g�̃K�[�h�X�p�[�N�ԍ��ifightfx.air���A�L������air����Ăяo���j
+KO.echo           = 0       ;�j�n���̐��ɃG�R�[���|���邩�ǂ����i0=���Ȃ��E1=����j
+volume            = 0      ;�L�����̉��ʁ@255���ō�
+intpersistindex   = 5,20    ;Var�����̃��E���h�֎����z�����\ (�ŏ�=0, �ő�=59)  ���Q
+floatpersistindex = 40      ;FVar�����̃��E���h�֎����z�����\ (�ŏ�=0, �ő�=39) ���Q
+
+;---------------------------------------------------------------------------
+;�T�C�Y�ݒ�
+[Size]
+xscale           = 1        ;�L�����摜�̉��̃X�P�[��
+yscale           = .95        ;�L�����摜�̏c�̃X�P�[��
+ground.back      = 15       ;�L�����̕��i�n�����j
+ground.front     = 16       ;�L�����̕��i�n��O���j
+air.back         = 12       ;�L�����̕��i�󒆌���j
+air.front        = 12       ;�L�����̕��i�󒆑O���j
+height           = 60       ;���щz������̂��߂̃L�����̍���
+attack.dist      = 160      ;�U�����o�������ɑ��肪�K�[�h�̐��ɓ���Œ�̋���
+proj.attack.dist = 90       ;���肪�K�[�h�̐��ɓ��锭�˕��Ƃ̍Œ�̋���
+proj.doscale     = 0        ;xscale��yscale�����˕��̃X�P�[���ɂ��e�����邩�ǂ����i0=���Ȃ��E1=����j
+head.pos         = 0, -90  ;BindToTarget�̎��ɕK�v�ȓ��̍��W
+mid.pos          = 0, -60  ;BindToTarget�̎��ɕK�v�ȑ̒��S�̍��W
+shadowoffset     = 0        ;�e�̐��������̈ʒu
+draw.offset      = 0,0      ;�L�����`��\���ʒu�i�w��,�x���j
+
+;---------------------------------------------------------------------------
+;�ړ����x�ݒ�
+[Velocity]
+walk.fwd     = 3.3          ;�O�i���s���x
+walk.back    = -3.1         ;��ޕ��s���x
+run.fwd      = 7.2, 0       ;�O�ɑ��鎞�̑��x�i�w��,�x���j
+run.back     = -6,-4      ;���ɑ��鎞�̑��x�i�w��,�x���j
+jump.neu     = 0,-10       ;�����W�����v���x�i�w��,�x���j
+jump.back    = -4           ;��W�����v���x
+jump.fwd     = 4.2          ;�O�W�����v���x
+runjump.back = -2.55,-8.1   ;���ɑ���Ȃ���̃W�����v���x�i�I�v�V�����j
+runjump.fwd  = 4.8,-9.5     ;�O�ɑ���Ȃ���̃W�����v���x�i�I�v�V�����j
+airjump.neu  = 0,-8.1       ;�󒆐����W�����v���x�i�I�v�V�����j
+airjump.back = -2.5         ;�󒆌�W�����v���x�i�I�v�V�����j
+airjump.fwd  = 2.55         ;�󒆑O�W�����v���x�i�I�v�V�����j
+
+;---------------------------------------------------------------------------
+;����ݒ�
+[Movement]
+airjump.num     = 1      ;�󒆃W�����v���o����񐔁i�I�v�V�����j
+airjump.height  = 35     ;�󒆃W�����v���邽�߂ɕK�v�ȍŒ���̍����i�I�v�V�����j
+yaccel          = .54    ;�d�́i�������~�����x�j
+stand.friction  = .85    ;������Ԃ̖��C�W��
+crouch.friction = .82    ;���Ⴊ�ݏ�Ԃ̖��C�W��

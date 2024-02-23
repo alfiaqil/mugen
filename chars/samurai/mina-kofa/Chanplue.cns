@@ -1,0 +1,1482 @@
+;\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+;---------------------------------------------------------------------------
+;---------------------------------------------------------------------------
+;チャンプル
+;---------------------------------------------------------------------------
+;---------------------------------------------------------------------------
+;---------------------------------------------------------------------------
+;[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]
+;----------------------------------------------------------------------------
+;チャンプル・ニュートラル
+[Statedef 20000]
+type = S
+ctrl = 0
+anim = 20000
+velset = 0,0
+movetype = I
+physics = N
+sprpriority = 1
+
+[State 20000, pos y];強制軸あわせ
+type = posset
+trigger1 = pos y != 0
+y = 0 
+
+;---------------------[音声]
+
+[state 20010,cs]
+type = playsnd
+trigger1 = prevstateno != 20190
+trigger1 = roundstate = 2
+trigger1 = time % 130 = 0 && random <= 800 
+value = 20000, ifelse(root,movetype = A,1,ifelse(Enemynear,movetype = H,2,0))
+channel = 5
+
+[state 20010,cs];ミナが攻撃時
+type = playsnd
+trigger1 = prevstateno != 20190
+trigger1 = roundstate = 2 && random <= 300
+trigger1 = root,movetype = A && root,time = 1
+value = 20000, ifelse(random < 500,1,2)
+channel = 5
+
+;---------------------[ステート移行]
+
+[state 20010,cs];MAX2突進用意
+type = changestate
+trigger1 = root,movetype = A && root,stateno = 2510
+trigger1 = root,var(30) >= 1
+value = 22500
+
+[state 20010,cs];援軍カウンター
+type = changestate
+trigger1 = root,movetype = H
+trigger1 = (root,stateno = [5000,5999]) || (root,stateno = [120,159])
+trigger1 = root,var(32) = 1
+value = 23000
+
+;---------------------[ステート移行]
+
+[state 20010,cs];振り向きへ
+type = changestate
+trigger1 = root,facing != facing
+value = 20005
+
+[state 20010,cs];歩きへ
+type = changestate
+trigger1 = rootdist  x > -20
+value = 20020
+
+[State 20000,back];後方へ 
+type =changestate
+trigger1 = rootdist  x < -45
+value = 20021 
+
+;---------------------[ステート移行・決着後]
+
+[state 20010,cs];敗北
+type = changestate
+trigger1 = root,alive = 0 || root,life = 0
+value = 20170
+
+[state 20010,cs];勝利
+type = changestate
+triggerall = root,stateno >= 181
+triggerall = roundstate >= 4
+trigger1 = root,alive && root,life > 0
+trigger1 = win
+value = ifelse(root,stateno = 186,20186,20180)
+
+;----------------------------------------------------------------------------
+;チャンプル・振り向き
+[statedef 20005]
+type    = S
+physics = N
+sprpriority = 1
+anim = 20005
+
+[State 20000, pos y];強制軸あわせ
+type = posset
+trigger1 = pos y != 0
+y = 0 
+
+[State 20005,turn ]
+type =turn
+trigger1 = time = 0
+persistent = 0 
+
+[state 20010,cs];ミナが攻撃時
+type = playsnd
+trigger1 = roundstate = 2 && random <= 300
+trigger1 = root,movetype = A && root,time = 1
+value = 20000, ifelse(random < 500,1,2)
+channel = 5
+
+;---------------------[ステート移行]
+
+[state 20010,cs];MAX2突進用意
+type = changestate
+trigger1 = root,movetype = A && root,stateno = 2510
+trigger1 = root,var(30) >= 1
+value = 22500
+
+[state 20010,cs];援軍カウンター
+type = changestate
+trigger1 = root,movetype = H
+trigger1 = (root,stateno = [5000,5999]) || (root,stateno = [120,159])
+trigger1 = root,var(32) = 1
+value = 23000
+
+[State 20005,];
+type =changestate
+trigger1 = animtime  = 0
+value = 20000 
+
+;----------------------------------------------------------------------------
+;チャンプル・歩き
+[statedef 20020]
+type    = S
+physics = n
+sprpriority =1
+anim = 20020
+
+[State 20000, pos y];強制軸あわせ
+type = posset
+trigger1 = pos y != 0
+y = 0 
+
+[State 20020, 1]
+type = VelSet
+trigger1 = time = 0
+x = 1
+
+[state 20010,cs];ミナが攻撃時
+type = playsnd
+trigger1 = roundstate = 2 && random <= 300
+trigger1 = root,movetype = A && root,time = 1
+value = 20000, ifelse(random < 500,1,2)
+channel = 5
+
+;---------------------[ステート移行]
+
+[state 20010,cs];MAX2突進用意
+type = changestate
+trigger1 = root,movetype = A && root,stateno = 2510
+trigger1 = root,var(30) >= 1
+value = 22500
+
+[state 20010,cs];援軍カウンター
+type = changestate
+trigger1 = root,movetype = H
+trigger1 = (root,stateno = [5000,5999]) || (root,stateno = [120,159])
+trigger1 = root,var(32) = 1
+value = 23000
+
+;---------------------------[立ちにもどる]
+[State 20020, 4]
+type = changestate
+trigger1 = root,facing = facing 
+trigger1 = rootdist x < -30
+trigger2 = root,facing != facing 
+trigger2 = rootdist x < 30
+value = 20000
+
+;--------------------[はなれすぎ時ダッシュ]
+[State 20020, 4]
+type = changestate
+trigger1 = rootdist x > 40
+value = 20100
+
+;----------------------------------------------------------------------------
+;チャンプル・歩き(後ろ)
+[statedef 20021]
+type    = S
+physics = n
+sprpriority = 1
+anim = 20021
+
+[State 20000, pos y];強制軸あわせ
+type = posset
+trigger1 = pos y != 0
+y = 0 
+
+;---------------------[音声]
+
+[state 20010,cs]
+type = playsnd
+trigger1 = time = 0
+value = 20000, 0
+channel = 5
+
+;---------------------[]
+
+[State 20021, 1]
+type = VelSet
+trigger1 = time = 0
+x = -0.8
+
+;---------------------[ステート移行]
+
+[state 20010,cs];MAX2突進用意
+type = changestate
+trigger1 = root,movetype = A && root,stateno = 2510
+trigger1 = root,var(30) >= 1
+value = 22500
+
+[state 20010,cs];援軍カウンター
+type = changestate
+trigger1 = root,movetype = H
+trigger1 = (root,stateno = [5000,5999]) || (root,stateno = [120,159])
+trigger1 = root,var(32) = 1
+value = 23000
+
+[State 20020, 4]
+type = changestate
+trigger1 = root,facing = facing 
+trigger1 = rootdist x > -30
+trigger2 = root,facing != facing 
+trigger2 = rootdist x > 30
+value = 20000
+
+[State 20020, 4];バクステ
+type = changestate
+trigger1 = rootdist x < -100
+value = 20105
+
+;----------------------------------------------------------------------------
+;チャンプル・ダッシュ
+[statedef 20100]
+type    = S
+physics = n
+sprpriority = 1
+anim = 20100
+
+[State 20000, pos y];強制軸あわせ
+type = posset
+trigger1 = pos y != 0
+y = 0 
+
+;---------------------[音声]
+
+[state 20010,cs]
+type = playsnd
+trigger1 = time = 0
+value = 20100, 0
+channel = 5
+
+;---------------------[]
+
+[State 20021, 1]
+type = VelSet
+trigger1 = time = 0
+x = 1.5
+
+;---------------------[ステート移行]
+
+[state 20010,cs];MAX2突進用意
+type = changestate
+trigger1 = root,movetype = A && root,stateno = 2510
+trigger1 = root,var(30) >= 1
+value = 22500
+
+[state 20010,cs];援軍カウンター
+type = changestate
+trigger1 = root,movetype = H
+trigger1 = (root,stateno = [5000,5999]) || (root,stateno = [120,159])
+trigger1 = root,var(32) = 1
+value = 23000
+
+[State 20020, 4]
+type = changestate
+trigger1 = root,facing = facing 
+trigger1 = rootdist x < -30
+trigger2 = root,facing != facing 
+trigger2 = rootdist x < 30
+value = 20020
+
+;----------------------------------------------------------------------------
+;チャンプル・バクステ
+[statedef 20105]
+type    = S
+physics = n
+sprpriority = 1
+anim = 20105
+
+[State 20021, 1]
+type = VelSet
+trigger1 = time = 0
+x = -2
+y = -4
+
+[State 20021, 1]
+type = Veladd
+trigger1 = 1
+y = 0.3
+
+[state 20010,cs];ミナが攻撃時
+type = playsnd
+trigger1 = roundstate = 2 && random <= 300
+trigger1 = root,movetype = A && root,time = 1
+value = 20000, ifelse(random < 500,1,2)
+channel = 5
+
+[State 20020, 4]
+type = changestate
+trigger1 = pos y >= 0 && vel y > 0
+value = 20106
+
+;----------------------------------------------------------------------------
+;チャンプル・バクステ着地
+[statedef 20106]
+type    = S
+physics = n
+sprpriority = 1
+velset = 0,0
+
+[State 20021, 1]
+type = posSet
+trigger1 = time = 0
+y = 0
+
+;---------------------[ステート移行]
+
+[state 20010,cs];MAX2突進用意
+type = changestate
+trigger1 = root,movetype = A && root,stateno = 2510
+trigger1 = root,var(30) >= 1
+value = 22500
+
+[state 20010,cs];援軍カウンター
+type = changestate
+trigger1 = root,movetype = H
+trigger1 = (root,stateno = [5000,5999]) || (root,stateno = [120,159])
+trigger1 = root,var(32) = 1
+value = 23000
+
+[State 20020, 4]
+type = changestate
+trigger1 =time = 0
+value = 20021
+
+;----------------------------------------------------------------------------
+;チャンプル・敗北
+[statedef 20170]
+type = S
+movetype = I
+physics = c
+velset = 0,0
+sprpriority = 3
+anim = 20170
+
+[State 20000, pos y];強制軸あわせ
+type = posset
+trigger1 = pos y != 0
+y = 0 
+
+[State 20170,turn ];振り向き
+type =turn
+trigger1 = time = 0
+trigger1 = rootdist  x < -1
+persistent = 0 
+
+;---------------------[音声]
+
+[state 20010,cs]
+type = playsnd
+trigger1 = animelem = 8
+value = 20170, 1
+channel = 5
+
+;----------------------------------------------------------------------------
+;チャンプル・勝利１－１
+[statedef 20180]
+type = S
+movetype = I
+physics = c
+velset = 0,0
+sprpriority = 3
+anim = 20180
+
+;---------------------[音声]
+
+[state 20010,cs]
+type = playsnd
+trigger1 = animelem = 3
+value = 20180, 0
+channel = 5
+
+;---------------------[]
+
+[State -3, Velset]
+type = Velset
+trigger1 = animelem = 3
+x = 0
+y = -3
+
+[State -3, Veladd]
+type = Veladd
+trigger1 = time >= 16
+y = 0.4
+
+[State 20190, 1]
+type = ChangeState
+trigger1 = time > 16
+trigger1 = Vel Y > 0 && Pos Y >= 0
+value = 20181
+
+;----------------------------------------------------------------------------
+;チャンプル・勝利１－２
+[statedef 20181]
+type = S
+movetype = I
+physics = c
+velset = 0,0
+sprpriority = 3
+anim = 20181
+
+;---------------------[音声]
+
+[state 20010,cs]
+type = playsnd
+trigger1 = animelem = 6
+value = 20180, 1
+channel = 5
+
+;---------------------[]
+
+[State -3, Velset]
+type = Velset
+trigger1 = 1
+x = 0
+y = 0
+
+[State -3, PosSet]
+type = Posset
+trigger1 = 1
+y = 0
+
+;----------------------------------------------------------------------------
+;チャンプル・勝利２－１
+[statedef 20186]
+type = S
+movetype = I
+physics = c
+velset = 0,0
+sprpriority = 3
+anim = 20180
+
+[State 20190, 1]
+type = ChangeState
+trigger1 = time = 0 && root,anim = 187
+value = 20188
+
+;---------------------[音声]
+
+[state 20010,cs]
+type = playsnd
+trigger1 = animelem = 3
+value = 20180, 0
+channel = 5
+
+;---------------------[]
+
+[State -3, Velset]
+type = Velset
+trigger1 = animelem = 3
+x = 0
+y = -3
+
+[State -3, Veladd]
+type = Veladd
+trigger1 = time >= 16
+y = 0.4
+
+[State 20190, 1]
+type = ChangeState
+trigger1 = time > 16
+trigger1 = Vel Y > 0 && Pos Y >= 0
+value = 20187
+
+;----------------------------------------------------------------------------
+;チャンプル・勝利２－２
+[statedef 20187]
+type = S
+movetype = I
+physics = c
+velset = 0,0
+sprpriority = 3
+anim = 20000
+
+;---------------------[]
+
+[State -3, Velset]
+type = Velset
+trigger1 = 1
+x = 0
+y = 0
+
+[State -3, PosSet]
+type = Posset
+trigger1 = 1
+y = 0
+
+[State 20190, 1]
+type = ChangeState
+trigger1 = root,anim = 187
+value = 20188
+
+;----------------------------------------------------------------------------
+;チャンプル・勝利２－３
+[statedef 20188]
+type = S
+movetype = I
+physics = c
+velset = 0,0
+sprpriority = 3
+anim = 20100
+
+[State 20170,turn ];振り向き
+type =turn
+trigger1 = root,facing = -facing
+
+;---------------------[]
+
+[state 20010,cs];あはははは
+type = playsnd
+trigger1 = time = 1
+value = 20180, 1
+channel = 5
+
+;---------------------[]
+
+[State -3, Velset]
+type = Velset
+trigger1 = 1
+x = 1.5
+y = 0
+
+[State -3, PosSet]
+type = Posset
+trigger1 = 1
+y = 0
+
+;----------------------------------------------------------------------------
+;チャンプル・登場
+[Statedef 20190]
+type = S
+ctrl = 0
+anim = 20190
+velset = 0,0
+movetype = I
+physics = N
+sprpriority = 1
+
+[State 20000, pos y];強制軸あわせ
+type = posset
+trigger1 = pos y != 0
+y = 0 
+
+;---------------------[音声]
+
+[state 20010,cs]
+type = playsnd
+trigger1 = animelem = 9
+value = 20000, ifelse(random < 500,3,4)
+channel = 5
+
+;---------------------[]
+
+[State 20190, 1]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 20000
+
+
+;----------------------------------------------------------------------------
+;チャンプル・ちょっと帰るわ
+[Statedef 21000]
+type = S
+ctrl = 0
+anim = 22500
+velset = 0,0
+movetype = I
+physics = N
+sprpriority = 1
+
+[State 20000, pos y];強制軸あわせ
+type = posset
+trigger1 = pos y != 0
+y = 0 
+
+;---------------------[移動]
+
+[State -3, posadd]
+type = posadd
+trigger1 = animelem = 2
+trigger2 = animelem = 3
+trigger3 = animelem = 4
+trigger4 = animelem = 5
+x = 5
+
+;---------------------[]
+
+[State 20190, 1]
+type = Destroyself
+trigger1 = AnimTime = 0
+trigger2 = animelem = 16
+trigger3 = time >= 100
+
+
+;----------------------------------------------------------------------------
+;チャンプル・突進準備
+[Statedef 22500]
+type = S
+ctrl = 0
+anim = 22500
+velset = 0,0
+movetype = I
+physics = N
+sprpriority = 1
+
+[State 20000, pos y];強制軸あわせ
+type = posset
+trigger1 = pos y != 0
+y = 0 
+
+;---------------------[移動]
+
+[State -3, posadd]
+type = posadd
+trigger1 = animelem = 2
+trigger2 = animelem = 3
+trigger3 = animelem = 4
+trigger4 = animelem = 5
+x = 5
+
+;---------------------[]
+
+[State 20190, 1];禊
+type = ChangeState
+trigger1 = root,var(30) = 2
+trigger1 = root,stateno = 2510
+trigger1 = root,animelemtime(68) >= 55
+value = 24000
+
+[State 20190, 1]
+type = ChangeState
+trigger1 = AnimTime = 0
+trigger2 = root,stateno != [2500,2599]
+value = 20190
+
+
+;----------------------------------------------------------------------------
+;チャンプル・援軍カウンターもどき
+[Statedef 23000]
+type = S
+ctrl = 0
+anim = 20100
+velset = 0,0
+movetype = A
+physics = N
+sprpriority = 1
+pausemovetime = 999
+
+[State 20020, 1]
+type = parentvarset
+trigger1 = time = 0
+var(32) = 2
+
+[State 20170,turn ];振り向き
+type =turn
+trigger1 = time = 0
+trigger1 = p2dist  x < -1
+
+[State 20000, pos y];強制軸あわせ
+type = posset
+trigger1 = pos y != 0
+y = 0 
+
+[State 20020, 1]
+type = VelSet
+trigger1 = time = 0
+x = 5
+
+;---------------------[音声]
+
+[state 20010,cs]
+type = playsnd
+trigger1 = time = 0
+value = 23000, 0
+
+;---------------------[無敵]
+[state a]
+type = nothitby
+trigger1 = 1
+value = SCA
+time = 1
+
+[State 2000, 2]
+type = Pause
+trigger1 = time = 1
+time = 60
+movetime = 60
+anim = -1
+darken = 0
+
+;---------------------[]
+
+[State 1000, 5]
+type = Explod
+trigger1 = Time = 0
+anim = 6001
+sprpriority = 3
+postype = p1
+pos = 0,-30
+bindtime = 1
+under = 0
+ownpal = 1
+pausemovetime = 999
+supermovetime = 999
+
+;カットイン
+[state 8000]
+type = Explod
+trigger1 = time=0
+id = 23002
+anim = 23002
+pos = 40,30;+(facing=-1)*320,240
+postype = back
+sprpriority = -5
+bindtime=-1
+removetime=50
+ownpal = 1
+pausemovetime=9999
+supermovetime=9999
+ignorehitpause = 1
+scale = 0.6,0.6;.5,.5
+
+;背景
+[state 8000]
+type = Explod
+trigger1 = time=0
+id = 23001
+anim = 23001
+pos = 0,60
+postype = back
+sprpriority = -5
+bindtime=-1
+removetime=50
+ownpal = 1
+pausemovetime=9999
+supermovetime=9999
+ignorehitpause = 1
+scale = .5,.5
+
+;---------------------[]
+
+[State 20190, 1]
+type = ChangeState
+trigger1 = p2bodydist X <= 30
+value = 23003
+
+[State 20190, 1]
+type = ChangeState
+trigger1 = p2bodydist X <= 100
+value = 23005
+
+;----------------------------------------------------------------------------
+;チャンプル・援軍カウンターもどき(攻撃・昇竜拳)
+[Statedef 23003]
+type = S
+ctrl = 0
+anim = 23003
+velset = 0,0
+movetype = A
+physics = N
+sprpriority = 1
+pausemovetime = 99999
+
+[State 20000, pos y];強制軸あわせ
+type = posset
+trigger1 = 0
+y = 0 
+
+[State 1100, StateType]
+type = StateTypeSet
+trigger1 = AnimElem = 3
+StateType = A
+physics = N
+
+[State 20020, 1]
+type = VelSet
+trigger1 = animelem = 3
+x = 2
+y = -6
+
+[State 20020, 1]
+type = Veladd
+trigger1 = time > 8
+y = 0.2
+
+;---------------------[攻撃]
+[State 240, 2]
+type = HitDef
+trigger1 = time = 11
+attr = S, HP
+animtype  = hard
+damage    = 50
+priority = 5, Hit
+getpower = 0,0
+;guardflag = M
+pausetime = 25,26
+sparkno = S30002
+sparkxy = -0,-10
+hitsound   = s400,6
+guard.sparkno = S30040
+guardsound = s120,0
+ground.type = Low            
+ground.slidetime = 10         
+ground.hittime  = 12         
+ground.velocity = -5, -9 ;-4,-5      
+airguard.velocity = -3,-5     
+air.type = Low               
+air.velocity = -5,-9        
+air.hittime = 20
+p2stateno = 25000   
+fall=1
+fall.recover=1
+ID = 20000
+kill = 0
+
+
+[State 6000];技あり
+type = Explod
+triggerall = root,teamside = 1
+trigger1 = movehit = 1
+anim = 2600
+id = 2600
+sprpriority = -1
+postype = left
+pos = 10,105
+ontop = 1
+bindtime = -1
+removetime = 40
+ownpal = 1
+IgnoreHitPause = 1
+SuperMoveTime = 9999
+PauseMoveTime = 9999
+scale = 1,1
+
+[State 6000];技あり
+type = Explod
+triggerall = root,teamside = 2
+trigger1 = movehit = 1
+anim = 2601
+id = 2600
+sprpriority = -1
+postype = right
+pos = -10,105
+ontop = 1
+bindtime = -1
+removetime = 40
+ownpal = 1
+IgnoreHitPause = 1
+SuperMoveTime = 9999
+PauseMoveTime = 9999
+scale = 1,1
+
+[State 20020, 1]
+type = parentvarset
+triggerall = var(33) = 0
+trigger1 = movehit
+var(33) = 1
+
+;---------------------[]
+
+[State 20190, 1]
+type = ChangeState
+trigger1 = Pos Y >= 0 && Vel Y > 0
+value = 20106
+
+;----------------------------------------------------------------------------
+;チャンプル・援軍カウンターもどき(攻撃・滑り込み)
+[Statedef 23005]
+type = S
+ctrl = 0
+anim = 23000
+velset = 0,0
+movetype = A
+physics = N
+sprpriority = 1
+pausemovetime = 99999
+
+[State 20000, pos y];強制軸あわせ
+type = posset
+trigger1 = pos y != 0
+y = 0 
+
+[State 20020, 1]
+type = VelSet
+trigger1 = time = 0
+x = 6
+
+;---------------------[攻撃]
+[State 240, 2]
+type = HitDef
+trigger1 = time = 11
+attr = S, HP
+animtype  = hard
+damage    = 50
+priority = 5, Hit
+getpower = 0,0
+;guardflag = M
+pausetime = 25,26
+sparkno = S30002
+sparkxy = -0,-10
+hitsound   = s400,6
+guard.sparkno = S30040
+guardsound = s120,0
+ground.type = Low            
+ground.slidetime = 10         
+ground.hittime  = 12         
+ground.velocity = -5, -9 ;-4,-5      
+airguard.velocity = -3,-5     
+air.type = Low               
+air.velocity = -5,-9        
+air.hittime = 20
+p2stateno = 25000   
+fall=1
+fall.recover=1
+ID = 20000
+kill = 0
+
+
+[State 6000];技あり
+type = Explod
+triggerall = root,teamside = 1
+trigger1 = movehit = 1
+anim = 2600
+id = 2600
+sprpriority = -1
+postype = left
+pos = 10,105
+ontop = 1
+bindtime = -1
+removetime = 40
+ownpal = 1
+IgnoreHitPause = 1
+SuperMoveTime = 9999
+PauseMoveTime = 9999
+scale = 1,1
+
+[State 6000];技あり
+type = Explod
+triggerall = root,teamside = 2
+trigger1 = movehit = 1
+anim = 2601
+id = 2600
+sprpriority = -1
+postype = right
+pos = -10,105
+ontop = 1
+bindtime = -1
+removetime = 40
+ownpal = 1
+IgnoreHitPause = 1
+SuperMoveTime = 9999
+PauseMoveTime = 9999
+scale = 1,1
+
+[State 20020, 1]
+type = parentvarset
+triggerall = var(33) = 0
+trigger1 = movehit
+var(33) = 1
+
+;---------------------[]
+
+[State 20190, 1]
+type = ChangeState
+trigger1 = time > 30
+trigger2 = movecontact
+value = 23006
+
+
+;----------------------------------------------------------------------------
+;チャンプル・援軍カウンターもどき(滑り込み終了)
+[Statedef 23006]
+type = S
+ctrl = 0
+anim = 23005
+velset = 0,0
+movetype = A
+physics = N
+sprpriority = 1
+pausemovetime = 999
+
+[State 20000, pos y];強制軸あわせ
+type = posset
+trigger1 = pos y != 0
+y = 0 
+
+[State 20020, 1]
+type = VelSet
+trigger1 = time = 0
+x = 5
+
+[State 20020, 1]
+type = Veladd
+trigger1 = time > 1 && Vel X > 0.2
+x = -0.2
+
+[State 20020, 1]
+type = Velset
+trigger1 = time > 1 && Vel X < 0.2
+x = 0
+
+;---------------------[]
+
+[State 20190, 1]
+type = ChangeState
+trigger1 = animtime = 0
+value = 20000
+
+
+
+;----------------------------------------------------------------------------
+;チャンプル・禊
+[Statedef 24000]
+type = A
+ctrl = 0
+anim = 24000
+velset = 0,0
+movetype = A
+physics = N
+sprpriority = 1
+pausemovetime = 999
+
+[State 50, 4];残像
+type = AfterImage
+trigger1 = time = 1
+time = -1
+trans = none
+timegap = 2
+framegap = 2
+length = 5
+ignorehitpause = 1
+palbright = 3,3,64
+;palcontrast = 225,225,225
+palpostbright = 0,0,0
+paladd = 0,0,0
+palmul = 1,1,1
+
+[State 20020, 1]
+type = Posset
+trigger1 = time = 0
+x = floor(root,fvar(6))
+y = -240
+
+[State 20020, 1]
+type = Velset
+trigger1 = 1
+x = 0
+y = 40
+
+[State explod];ヒットエフェクト
+type = Explod
+trigger1 = Pos Y >= 0 && Vel Y > 0
+anim = 7002
+id = 3000
+sprpriority = 5
+postype = p1
+pos = 0,-40
+bindtime = 1
+supermove = 0
+ignorehitpause = 0
+under = 0
+
+[State 20020, 1];ヒット音
+type = playsnd
+trigger1 = Pos Y >= 0 && Vel Y > 0
+value = 400, 7
+
+;---------------------[]
+
+[state a]
+type = changestate
+trigger1 = Pos Y >= 0 && Vel Y > 0
+value = 24001
+
+
+;----------------------------------------------------------------------------
+;チャンプル・禊・落下
+[Statedef 24001]
+type = S
+ctrl = 0
+anim = 24001
+velset = 0,0
+movetype = A
+physics = N
+sprpriority = 1
+pausemovetime = 999
+
+[State 1000, 3]
+type = EnvShake
+trigger1 = time = 1
+time = 20
+freq = 80
+ampl = -6
+
+[State 20020, 1]
+type = Posset
+trigger1 = 1
+y = 0
+
+[State 20020, 1];ドシュゥゥウウッ！！
+type = playsnd
+trigger1 = time = 1
+value = 24000, 0
+
+[State explod];地面衝突
+type = Explod
+trigger1 = time = 1
+anim = 2041
+id = 2041
+sprpriority = 6
+postype = p2
+pos = 0,0
+vel = 0,0
+bindtime = 1
+supermove = 0
+under = 0
+trans = addalpha
+alpha = 245,150
+ownpal = 1
+
+[State 1000, 5];金剛國裂斬
+type = Explod
+trigger1 = time = 1
+anim = 24002
+sprpriority = -9999
+postype = p1
+pos = 0,0
+bindtime = 1
+removetime = 47
+under = 0
+ownpal = 1
+pausemovetime = 999
+supermovetime = 999
+
+;---------------------[]
+[State 50, 4];残像消去
+type = AfterImagetime
+trigger1 = animtime = 0
+time = 1
+
+[state a]
+type = changestate
+trigger1 = animtime = 0
+value = 20000
+
+
+;----------------------------------------------------------------------------
+;チャンプル・禊(援軍カウンター用)
+[Statedef 24050]
+type = A
+ctrl = 0
+anim = 24000
+velset = 0,0
+movetype = A
+physics = N
+sprpriority = 1
+pausemovetime = 999
+poweradd = -500
+
+[State 20170,turn ];振り向き
+type =turn
+trigger1 = time = 0
+trigger1 = root,facing = -facing
+persistent = 0 
+
+;---------------------[音声]
+
+[state 20010,cs]
+type = playsnd
+trigger1 = time = 0
+value = 23000, 0
+
+[State 2000, 2]
+type = Pause
+trigger1 = time = 0
+time = 20
+movetime = 0
+anim = -1
+darken = 0
+
+;---------------------[]
+
+[State 1000, 5]
+type = Explod
+trigger1 = Time = 0
+anim = 6001
+sprpriority = 3
+postype = p1
+pos = 0,-30
+bindtime = 1
+under = 0
+ownpal = 1
+pausemovetime = 999
+supermovetime = 999
+
+;カットイン
+[state 8000]
+type = Explod
+trigger1 = time = 0
+id = 23002
+anim = 23002
+pos = 40,30;+(facing=-1)*320,240
+postype = back
+sprpriority = -5
+bindtime=-1
+removetime=50
+ownpal = 1
+pausemovetime=9999
+supermovetime=9999
+ignorehitpause = 1
+scale = 0.6,0.6;.5,.5
+
+;背景
+[state 8000]
+type = Explod
+trigger1 = time = 0
+id = 23001
+anim = 23001
+pos = 0,60
+postype = back
+sprpriority = -5
+bindtime=-1
+removetime=50
+ownpal = 1
+pausemovetime=9999
+supermovetime=9999
+ignorehitpause = 1
+scale = .5,.5
+
+[State 50, 4];残像
+type = AfterImage
+trigger1 = time = 1
+time = -1
+trans = none
+timegap = 2
+framegap = 2
+length = 5
+ignorehitpause = 1
+palbright = 3,3,64
+;palcontrast = 225,225,225
+palpostbright = 0,0,0
+paladd = 0,0,0
+palmul = 1,1,1
+
+[State 20020, 1]
+type = Velset
+trigger1 = 1
+x = 0
+y = 40
+
+;---------------------[]
+
+[state a]
+type = changestate
+trigger1 = Pos Y >= 0 && Vel Y > 0
+value = 24051
+
+
+;----------------------------------------------------------------------------
+;チャンプル・禊・落下(援軍カウンター用)
+[Statedef 24051]
+type = S
+ctrl = 0
+anim = 24051
+velset = 0,0
+movetype = A
+physics = N
+sprpriority = 1
+pausemovetime = 999
+
+[State 20170,turn ];振り向き
+type =turn
+trigger1 = time = 0
+trigger1 = root,facing = -facing
+persistent = 0 
+
+[State 1000, 3]
+type = EnvShake
+trigger1 = time = 1
+time = 20
+freq = 80
+ampl = -6
+
+[State 20020, 1]
+type = Posset
+trigger1 = 1
+y = 0
+
+[State 20020, 1];ドシュゥゥウウッ！！
+type = playsnd
+trigger1 = time = 1
+value = 24000, 0
+
+[State explod];地面衝突
+type = Explod
+trigger1 = time = 1
+anim = 2041
+id = 2041
+sprpriority = 6
+postype = p2
+pos = 0,0
+vel = 0,0
+bindtime = 1
+supermove = 0
+under = 0
+trans = addalpha
+alpha = 245,150
+ownpal = 1
+
+[State 1000, 5];金剛國裂斬
+type = Explod
+trigger1 = time = 1
+anim = 24002
+sprpriority = -9999
+postype = p1
+pos = 0,0
+bindtime = 1
+removetime = 47
+under = 0
+ownpal = 1
+pausemovetime = 999
+supermovetime = 999
+
+;---------------------[攻撃]
+[State 240, 2]
+type = HitDef
+trigger1 = time = 1
+attr = S, HP
+animtype  = hard
+damage    = 50
+priority = 5, Hit
+getpower = 0,0
+;guardflag = M
+pausetime = 25,26
+sparkno = S30002
+sparkxy = -0,-10
+hitsound   = s400,7
+guard.sparkno = S30040
+guardsound = s120,0
+ground.type = Low            
+ground.slidetime = 10         
+ground.hittime  = 12         
+ground.velocity = -1, -11     
+airguard.velocity = -3,-5     
+air.type = Low               
+air.velocity = -1,-11        
+air.hittime = 20
+p2stateno = 25000   
+fall=1
+fall.recover=1
+ID = 20000
+kill = 0
+
+
+[State 6000];技あり
+type = Explod
+triggerall = root,teamside = 1
+trigger1 = movehit = 1
+anim = 2600
+id = 2600
+sprpriority = -1
+postype = left
+pos = 10,105
+ontop = 1
+bindtime = -1
+removetime = 40
+ownpal = 1
+IgnoreHitPause = 1
+SuperMoveTime = 9999
+PauseMoveTime = 9999
+scale = 1,1
+
+[State 6000];技あり
+type = Explod
+triggerall = root,teamside = 2
+trigger1 = movehit = 1
+anim = 2601
+id = 2600
+sprpriority = -1
+postype = right
+pos = -10,105
+ontop = 1
+bindtime = -1
+removetime = 40
+ownpal = 1
+IgnoreHitPause = 1
+SuperMoveTime = 9999
+PauseMoveTime = 9999
+scale = 1,1
+
+;---------------------[]
+[State 50, 4];残像消去
+type = AfterImagetime
+trigger1 = animtime = 0
+time = 1
+
+[state a]
+type = changestate
+trigger1 = animtime = 0
+value = 20000
+
+
+;---------------------------------------------------------------------------
+;(ENEMY)援軍カウンター・吹き飛ばされ
+[Statedef 25000]
+type    = A
+movetype= H
+physics = N
+velset = 0,0
+sprpriority = -1
+
+;---------------------[演出]
+[State 700, 2];無敵の状態を作る
+type = NotHitBy
+trigger1 = 1
+value = SCA
+
+[State 820, 1]
+type = ChangeAnim2
+Trigger1 = time = 0
+value = 2030
+
+[State 820, 1]
+type = Velset
+Trigger1 = Time = 0
+x = 0
+y = 0
+
+[State 820, 1]
+type = Velset
+Trigger1 = Time = 20
+x = -5
+y = -10
+
+[State 820, 1]
+type = Veladd
+Trigger1 = Time > 20
+y = 0.4
+
+;---------------------[ステート移行]
+
+[State 821, 3] 
+type = SelfState
+triggerall = Vel Y > 0
+trigger1 = Pos Y >= 0 && time > 1
+value = 5100
+

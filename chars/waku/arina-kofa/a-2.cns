@@ -1,0 +1,286 @@
+;---------------------------------------------------------------------------
+; States that are always executed (use statedef -2)
+;---------------------------------------------------------------------------
+[Statedef -2]
+
+[State -3, Jumping Sound]
+type = PlaySnd
+triggerall = Time = 1
+trigger1 = stateno = 40 ;Jump
+value = S41,41
+
+[State -3, Landing Sound]
+type = PlaySnd
+triggerall = Time = 1
+trigger1 = stateno = 52 ;Land
+value = S51,51
+
+[State 100,]
+type = StopSnd
+trigger1 = command != "holdfwd"
+trigger2 = Anim != 100
+channel = 6
+
+[State -2,];虫取り用
+type = DisplayToClipboard
+trigger1 = 1
+text = "b=%d,h=%d,X=%d,Y=%d"
+params = var(11),HitCount,floor(P2BodyDist X) , floor(P2BodyDist Y)
+ignorehitpause = 1
+
+[State -21, 6];壁激突
+type = Explod
+trigger1 = p2movetype = H
+trigger1 = p2stateno = [251,252]
+trigger1 = numexplod(57) = 0
+id = 57
+persistent = 0
+anim = 57
+pos = 0, floor(screenpos y) -60
+postype = front
+facing = ifelse(facing = 1,1,-1)
+sprpriority = 5
+
+[State -2, 8];スタンゲージ初期化
+type = varset
+trigger1 = RoundState = 1
+;trigger2 = numhelper(6400) = 1
+;trigger3 = numhelper(7400) = 1
+var(10) = 0
+
+[State -2, 12];ゲージ減少
+type = VarAdd
+trigger1 = RoundState = 2
+trigger1 = Var(10) > 0
+var(10) = -1
+
+[State -2, 8]
+type = AttackMulSet
+trigger1 = Var(7) = 1
+ignorehitpause = 1
+value = 1
+
+[State -2, 8]
+type = DefenceMulSet
+trigger1 = Var(7) = 1
+ignorehitpause = 1
+value = 1
+
+[State -2, 8]
+type = AttackMulSet
+trigger1 = Var(7) > 1
+ignorehitpause = 1
+value = 1.5
+
+[State -2, 8]
+type = DefenceMulSet
+trigger1 = Var(7) > 1
+ignorehitpause = 1
+value = .8
+
+[State -2, 12]
+type = VarAdd
+trigger1 = Var(7) > 0
+v = 7
+value = -1
+ignorehitpause = 1
+
+
+[State -2, 10]
+type = VarSet
+trigger1 = Var(8) = 12
+v = 8
+value = 0
+ignorehitpause = 1
+
+[State -2, 11]
+type = VarAdd
+trigger1 = Var(8) <= 12
+v = 8
+value = 1
+ignorehitpause = 1
+
+
+
+[State -2, 2]
+type = PalFX
+triggerall = Var(7) >= 1
+trigger1 = Var(8) = 1
+color = 0
+add = 255,255,0
+time = 1
+ignorehitpause = 1
+
+[State -2, 2]
+type = PalFX
+triggerall = Var(7) >= 1
+trigger1 = Var(8) = 3
+trigger2 = Var(8) = 11
+color = 0
+add = 128,32,-128
+time = 1
+ignorehitpause = 1
+
+[State -2, 2]
+type = PalFX
+triggerall = Var(7) >= 1
+trigger1 = Var(8) = 5
+trigger2 = Var(8) = 9
+color = 0
+add = 108,16,-255
+time = 1
+ignorehitpause = 1
+
+[State -2, 2]
+type = PalFX
+triggerall = Var(7) >= 1
+trigger1 = Var(8) = 7
+color = 0
+add = 64,-32,-255
+time = 1
+ignorehitpause = 1
+
+;---------------------------------------------------------------------------
+
+;音が鳴らねえ。なんでじゃー。
+;[State -2, 1]
+;type = PlaySnd
+;trigger1 = ProjCancelTime(1000) = 1
+;value = 8, 2
+
+;[State -2, 1]
+;type = PlaySnd
+;trigger1 = ProjCancelTime(1001) = 1
+;value = 8, 2
+
+[State -2, HitAttack];弱上段食らい
+type = PlaySnd
+triggerall = Random < 200
+triggerall = Time = 1
+triggerall = life != 0
+trigger1 = anim = 5000
+value = 11, 1
+
+[State -2, HitAttack];弱中段食らい
+type = PlaySnd
+triggerall = Random < 200
+triggerall = Time = 1
+triggerall = life != 0
+trigger1 = anim = 5010
+trigger2 = anim = 5020
+value = 11, 8
+
+[State -2, HitAttack];中食らい
+type = PlaySnd
+triggerall = Random < 200
+triggerall = Time = 1
+triggerall = life != 0
+trigger1 = anim = 5001
+trigger2 = anim = 5011
+trigger3 = anim = 5021
+value = 11, 2
+
+[State -2, HitAttack];強食らい
+type = PlaySnd
+triggerall = Random < 200
+triggerall = Time = 1
+triggerall = life != 0
+trigger1 = anim = 5002
+trigger2 = anim = 5012
+trigger3 = anim = 5022
+value = 11, 3
+
+[State -2, HitAttack];空中食らい戻り
+type = PlaySnd
+triggerall = Random < 200
+triggerall = Time = 1
+triggerall = life != 0
+trigger1 = anim = 5040
+value = 11, 4
+
+[State -2, HitAttack];足払い食らい
+type = PlaySnd
+triggerall = Random < 200
+triggerall = Time = 1
+triggerall = life != 0
+trigger1 = anim = 5070
+value = 11, 6
+
+[State -2, HitAttack];１ラウンド負け
+type = PlaySnd
+triggerall = Time = 62
+trigger1 = MatchOver != 1
+trigger1 = anim = 5140
+value = 11, 5
+
+[State -2, HitAttack];ピヨリ
+type = PlaySnd
+triggerall = Time = 1
+triggerall = life != 0
+trigger1 = anim = 5300
+value = 11, 7
+;-------------------------------------
+
+;ピヨリ回復用
+[State -2, 0]
+type = Helper
+trigger1 = p2stateno = 6300
+trigger1 = p2movetype = I
+trigger1 = numhelper(6400) = 0
+helpertype = normal
+name = "piyopiyo"
+ID = 6400
+pos = 0, 0
+postype = p2
+facing = 1
+stateno = 6400
+keyctrl = 0
+
+;ピヨリエフェクト
+[State -2, 0]
+type = Helper
+trigger1 = p2stateno = 6300
+trigger1 = p2movetype = I
+trigger1 = numhelper(6400) = 1
+trigger1 = numhelper(6410) = 0
+helpertype = normal
+name = "piyo"
+ID = 6410
+pos = 0, 0
+postype = p2
+facing = 1
+stateno = 6410
+keyctrl = 0
+ownpal = 1
+
+;ピヨリ回復用ラブラブ
+[State -2, 0]
+type = Helper
+trigger1 = p2stateno = 7300
+trigger1 = p2movetype = I
+trigger1 = numhelper(7400) = 0
+helpertype = normal
+name = "piyopiyo"
+ID = 7400
+pos = 0, 0
+postype = p2
+facing = 1
+stateno = 7400
+keyctrl = 0
+
+;ピヨリエフェクトラブラブ
+[State -2, 0]
+type = Helper
+trigger1 = p2stateno = 7300
+trigger1 = p2movetype = I
+trigger1 = numhelper(7400) = 1
+trigger1 = numhelper(7410) = 0
+helpertype = normal
+name = "piyo"
+ID = 7410
+pos = 0, 0
+postype = p2
+facing = 1
+stateno = 7410
+keyctrl = 0
+ownpal = 1

@@ -1,0 +1,1915 @@
+;絹とシロ　通常技、－2，－3,  kinunormal.cns
+;var(0) システム予約 var(10)ママハハ攻撃命令 
+;AI var(52),fvar(32)以降 
+;fvar(0)=攻撃係数　7.8125=ss3（inS5900）
+;h,p,e(200)術攻撃時
+
+;---------------------------------------------------------------------------
+; 立ち・弱・遠距離・s200,swwf s300
+[Statedef 200];
+type    = S                      
+movetype= A                      
+physics = n                      
+velset = 0,0                     ;このステートが始まった時に移動するか（0,0で動かない）
+ctrl = 0                         ;このステート中に他のコマンドを受け付けるか(1で受け付ける)
+anim = 200                       ;このステートで表示するスプライトステート番号(0で変化無し)
+sprpriority = 2  
+poweradd = 30   
+             
+[State 200, aura];気
+type = Helper
+trigger1 = time = 0
+ID =200
+pos = 0, 0
+stateno = 202
+helpertype = player
+name = "aura"
+postype = p1
+keyctrl = 0
+ownpal = 1
+
+[State 200, 1]
+type = HitDef
+trigger1 = time = 0
+attr = S, NA                     ;立ち状態で、通常の攻撃(ｓは立ち、ｎは通常、aは攻撃を表す)
+damage = 20                  ;ダメージ量（左が当たった時、右はガードした時）
+animtype = Light                 ;当てた時の相手のポーズ（light/midium/hard/back）から選択
+guardflag = M                   ;ガードできる状態（ｍaは全ての状態でガード可能）
+hitflag = MA                    ;当てる事のできる条件
+priority = 3             ;攻撃の優先権（0弱い　4通常　7強い
+pausetime = 8, 8                 ;攻撃が当たった時の硬直時間（左が自分、右が相手）
+sparkno = s30000    ;ヒットエフェクトのスプライトステート（無ければ0）
+guard.sparkno = S30040
+sparkxy = 0, -70               ;ヒットエフェクトを表示する場所（相手の座標で）
+hitsound = s55,0                  ;ヒットした時の音（ｓ*,*にすると自分の音を使う）
+guardsound = s66,0     ;ガードした時の音（同上）
+ground.type = High               ;相手のくらった場所（High：頭、体, Low：足, Trip：足払い）
+ground.slidetime = 18             ;相手が後にすべる時間
+ground.hittime  = 18             ;コンボが繋がる時間（高くしすぎない事）
+ground.velocity = -4             ;地上で攻撃をくらった場合の相手の移動状況（ｘとｙで小数点可）
+air.type = High                  ;空中で相手がくらった場所（上と同じ）
+air.velocity = -1,-3           ;空中で攻撃をくらった場合の相手の移動状況（ｘとｙで小数点可）
+
+
+[State 200, 7]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+;---------------------
+[Statedef 202]
+type    = S                      
+physics = n                      
+sprpriority = 3                  ;表示した絵の重なり具合(2一番前　0通常　-1奥)
+anim = 201
+
+[state 202,ca1]
+type = changeanim
+trigger1 = root,animelemtime(4) >= 0
+trigger1 = root,animelemtime(5) < 0 
+value = 202
+
+[state 202,bind]
+type = BindToRoot
+trigger1 = root,animelemtime(4) >= 0
+trigger1 = root,animelemtime(5) < 0 
+time = 1
+facing = 1
+pos = 0,0
+
+[state 202,ca2]
+type = changeanim
+trigger1 = root,animelemtime(5) =0
+value = 203
+
+[State 202, 1]
+type = destroyself
+trigger1 = root,stateno != 200
+trigger2 = animtime = 0
+id = 200
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+;--------------------------
+;チラキック　弱　  s1300, tira_w
+[statedef 241]
+type    = S
+movetype= A
+physics = S
+poweradd= 60
+ctrl = 0
+velset = 0,0
+anim = 1300
+sprpriority = 2
+
+[state 1300,snd]
+type = playsnd
+trigger1 = animelem = 3
+value = 200,2
+
+[state 1300, hit ]
+type = HitDef
+trigger1 = time = 0
+attr = c, SA                     ;立ち状態で、通常の攻撃(ｓは立ち、ｎは通常、aは攻撃を表す)
+damage = 45
+animtype = hard                 ;当てた時の相手のポーズ（light/midium/hard/back）から選択
+guardflag = M                   ;ガードできる状態（ｍaは全ての状態でガード可能）
+hitflag = MA                   ;当てる事のできる条件
+priority = 4             ;攻撃の優先権（0弱い　4通常　7強い
+pausetime = 12,12                 ;攻撃が当たった時の硬直時間（左が自分、右が相手）
+sparkno = s30002                      ;ヒットエフェクトのスプライトステート（無ければ0）
+guard.sparkno = S30040
+sparkxy = -10, -75              ;ヒットエフェクトを表示する場所（相手の座標で）
+hitsound = s55,3                     ;ヒットした時の音（ｓ*,*にすると自分の音を使う）
+guardsound = s66,0                ;ガードした時の音（同上）
+ground.type = low               ;相手のくらった場所（High：頭、体, Low：足, Trip：足払い）
+ground.slidetime = 20             ;相手が後にすべる時間
+ground.hittime  = 20             ;コンボが繋がる時間（高くしすぎない事）
+ground.velocity = -10            ;地上で攻撃をくらった場合の相手の移動状況（ｘとｙで小数点可）
+air.velocity = -2,-4          ;空中で攻撃をくらった場合の相手の移動状況（ｘとｙで小数点可）
+
+[state 1300,]
+type = changestate
+trigger1 = animtime = 0
+value = 0
+ctrl = 1 
+
+
+
+
+
+
+
+
+
+;--------------------------
+;チラキック　弱　  s1300, tira_w
+[statedef 441]
+type    = S
+movetype= A
+physics = S
+poweradd= 60
+ctrl = 0
+velset = 0,0
+anim = 1300
+sprpriority = 2
+
+[state 1300,snd]
+type = playsnd
+trigger1 = animelem = 3
+value = 200,2
+
+[state 1300, hit ]
+type = HitDef
+trigger1 = time = 0
+attr = c, SA                     ;立ち状態で、通常の攻撃(ｓは立ち、ｎは通常、aは攻撃を表す)
+damage = 45
+animtype = hard                 ;当てた時の相手のポーズ（light/midium/hard/back）から選択
+guardflag = M                   ;ガードできる状態（ｍaは全ての状態でガード可能）
+hitflag = MA                   ;当てる事のできる条件
+priority = 4             ;攻撃の優先権（0弱い　4通常　7強い
+pausetime = 12,12                ;攻撃が当たった時の硬直時間（左が自分、右が相手）
+sparkno = s30002                      ;ヒットエフェクトのスプライトステート（無ければ0）
+guard.sparkno = S30040
+sparkxy = -10, -75               ;ヒットエフェクトを表示する場所（相手の座標で）
+hitsound = s55,3                        ;ヒットした時の音（ｓ*,*にすると自分の音を使う）
+guardsound = s66,0                ;ガードした時の音（同上）
+ground.type = trip               ;相手のくらった場所（High：頭、体, Low：足, Trip：足払い）
+ground.slidetime = 20             ;相手が後にすべる時間
+ground.hittime  = 20             ;コンボが繋がる時間（高くしすぎない事）
+ground.velocity = -2,-4             ;地上で攻撃をくらった場合の相手の移動状況（ｘとｙで小数点可）
+air.velocity = -2,-4          ;空中で攻撃をくらった場合の相手の移動状況（ｘとｙで小数点可）
+
+[state 1300,]
+type = changestate
+trigger1 = animtime = 0
+value = 11
+ctrl = 1 
+
+
+
+
+
+
+
+
+
+
+
+;---------------------------------------------------------------------------
+; 立ち・弱近距離・の動作 s205,swwn
+[Statedef 231]
+type    = S                      
+movetype= A                      
+physics = S                      
+juggle  = 1				;Commonly-used controllers:
+velset = 0,0                     ;このステートが始まった時に移動するか（0,0で動かない）
+ctrl = 0                         ;このステート中に他のコマンドを受け付けるか(1で受け付ける)
+anim = 205                       ;このステートで表示するスプライトステート番号(0で変化無し)
+sprpriority = 2                  ;表示した絵の重なり具合(2一番前　0通常　-1奥)
+poweradd = 30
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = animelem = 3
+x = 10
+[State 0, VelSet]
+type = VelSet
+trigger1 = animelem = 5
+x = 0
+
+[State 200, aura];気
+type = Helper
+trigger1 = time = 0
+ID =200
+pos = 0, 0
+stateno = 207
+helpertype = player
+name = "aura"
+postype = p1
+keyctrl = 0
+ownpal = 1
+
+[State 205, 1]
+type = HitDef
+trigger1 = time=0
+attr = S, NA                     ;立ち状態で、通常の攻撃(ｓは立ち、ｎは通常、aは攻撃を表す)
+damage = 20                   ;ダメージ量（左が当たった時、右はガードした時）
+animtype = Light                 ;当てた時の相手のポーズ（light/midium/hard/back）から選択
+guardflag = M                   ;ガードできる状態（ｍaは全ての状態でガード可能）
+hitflag = MA                    ;当てる事のできる条件
+priority = 3, Hit                ;攻撃の優先権（0弱い　4通常　7強い
+pausetime = 8, 8                 ;攻撃が当たった時の硬直時間（左が自分、右が相手）
+sparkno = s30000   ;ヒットエフェクトのスプライトステート（無ければ0）
+guard.sparkno = S30040
+sparkxy = -10, -76               ;ヒットエフェクトを表示する場所（相手の座標で）
+hitsound = s55,2            ;ヒットした時の音（ｓ*,*にすると自分の音を使う）
+guardsound = s66,0    ;ガードした時の音（同上）
+ground.type = High               ;相手のくらった場所（High：頭、体, Low：足, Trip：足払い）
+ground.slidetime = 18             ;相手が後にすべる時間
+ground.hittime  = 18           ;コンボが繋がる時間（高くしすぎない事）
+ground.velocity = -4             ;地上で攻撃をくらった場合の相手の移動状況（ｘとｙで小数点可）
+air.velocity = -1,-3           ;空中で攻撃をくらった場合の相手の移動状況（ｘとｙで小数点可）
+
+[State 205, 7]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+;------aura atc state---------------
+[Statedef 207]
+type    = S                      
+physics = n                      
+sprpriority = 3                  ;表示した絵の重なり具合(2一番前　0通常　-1奥)
+anim = 201
+
+[state 207,ca1]
+type = changeanim
+trigger1 = root,animelemtime(4) >= 0
+trigger1 = root,animelemtime(5) < 0 
+value = 206
+
+[state 207,bind]
+type = BindToRoot
+trigger1 = root,animelemtime(4) >= 0
+trigger1 = root,animelemtime(5) < 0 
+time = 1
+facing = 1
+pos = 0,0
+
+[state 207,ca2]
+type = changeanim
+trigger1 = root,animelemtime(5) =0
+value = 203
+
+[State 207, 1]
+type = destroyself
+trigger1 = root,stateno != stateno - 2
+trigger2 = anim = 203
+trigger2 = animtime = 0
+id = 200
+
+;---------------------------------------------------------------------------
+; 立ち・中・遠距離の動作 s210,smwf
+[Statedef 210]
+type    = S
+movetype= A
+physics =n
+ctrl = 0
+velset = 0,0                     
+anim = 210
+sprpriority = 0
+poweradd = 60
+
+[State 200x, aura];気
+type = Helper
+trigger1 = time = 0
+ID =200
+pos = 0, 0
+stateno = 212
+helpertype = player
+name = "aura atc"
+postype = p1
+keyctrl = 0
+ownpal = 1
+
+[State 210, hit1]
+type = HitDef
+trigger1 = time = 0
+attr = S, NA
+animtype  = hard
+damage    = 45
+guardflag = M
+hitflag = MA                    ;当てる事のできる条件
+pausetime = 12,12
+sparkno = s30002  
+guard.sparkno = S30040
+sparkxy = -10,-70
+hitsound = s55,1             
+guardsound = s66,0
+ground.type = High
+ground.slidetime = 20
+ground.hittime  = 20
+ground.velocity = -10
+air.velocity = -2,-4
+
+[State 210, 5]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+;------aura atc state---------------
+[Statedef 212]
+type    = S                      
+physics = n                      
+sprpriority = 3                  ;表示した絵の重なり具合(2一番前　0通常　-1奥)
+anim = 211
+
+[state 212,ca1]
+type = changeanim
+trigger1 = root,animelemtime(4) >= 0
+trigger1 = root,animelemtime(5) < 0 
+value = 212
+
+[state 212,bind]
+type = BindToRoot
+trigger1 = root,animelemtime(4) >= 0
+trigger1 = root,animelemtime(5) < 0 
+time = 1
+facing = 1
+pos = 0,0
+
+[state 212,ca2]
+type = changeanim
+trigger1 = root,animelemtime(5) =0
+value = 213
+
+[State 212, 1]
+type = destroyself
+trigger1 = root,stateno != 210
+trigger2 = anim = 213
+trigger2 = animtime = 0
+id = 200
+
+;------------------------------------
+;中斬り　近距離　s215,smwn
+[Statedef 215];
+type = s
+movetype= A
+physics = n
+ctrl = 0
+velset = 0,0                     
+anim = 215
+poweradd = 60
+sprpriority = 2
+
+[State 200, aura];気
+type = Helper
+trigger1 = time = 0
+ID =200
+pos = 0, 0
+stateno = 217
+helpertype = player
+name = "aura atc"
+postype = p1
+keyctrl = 0
+ownpal = 1
+
+[State 215, 2]
+type = HitDef
+trigger1 = time = 0
+attr = S, NA
+animtype  = hard
+damage    = 45
+guardflag = M
+hitflag = MA                    ;当てる事のできる条件
+pausetime = 12,12
+sparkno = s30002   
+guard.sparkno = S30040
+sparkxy = -10,-70
+hitsound = s55,1            
+guardsound = s66,0
+ground.type = High
+ground.slidetime = 20
+ground.hittime  = 20
+ground.velocity = -10
+air.velocity = -2,-4
+
+[State 215, 5]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+;------aura atc state---------------
+[Statedef 217]
+type    = S                      
+physics = n                      
+sprpriority = 3                  ;表示した絵の重なり具合(2一番前　0通常　-1奥)
+anim = 216
+
+[state 217,ca1]
+type = changeanim
+trigger1 = root,animelemtime(4) >= 0
+trigger1 = root,animelemtime(5) < 0 
+value = 217
+
+[state 217,bind]
+type = BindToRoot
+trigger1 = root,animelemtime(4) >= 0
+trigger1 = root,animelemtime(5) < 0 
+time = 1
+facing = 1
+pos = 0,0
+
+[state 217,ca2]
+type = changeanim
+trigger1 = root,animelemtime(5) =0
+value = 218
+
+[State 217, 1]
+type = destroyself
+trigger1 = root,stateno != 215
+trigger2 = anim = 218
+trigger2 = animtime = 0
+id = 200
+
+;立ち武器　強　s220,ssw
+;-------------------------------------
+[Statedef 520];
+type    = S                      
+movetype= A                      
+physics = S 
+poweradd = 80                     
+juggle  = 1				;Commonly-used controllers:
+velset = 0,0                     ;このステートが始まった時に移動するか（0,0で動かない）
+ctrl = 0                         ;このステート中に他のコマンドを受け付けるか(1で受け付ける)
+anim 0= 220                       ;このステートで表示するスプライトステート番号(0で変化無し)
+sprpriority = 2                  ;表示した絵の重なり具合(2一番前　0通常　-1奥)
+
+[State 220, hit2_1]
+type = HitDef
+trigger1 = time = 0
+attr = S, NA                     ;立ち状態で、通常の攻撃(ｓは立ち、ｎは通常、aは攻撃を表す)
+damage = 100,10                  ;ダメージ量（左が当たった時、右はガードした時）
+animtype = hard                 ;当てた時の相手のポーズ（light/midium/hard/back）から選択
+guardflag = M                   ;ガードできる状態（ｍaは全ての状態でガード可能）
+hitflag = MA                    ;当てる事のできる条件
+priority = 4, Hit                ;攻撃の優先権（0弱い　4通常　7強い
+pausetime = 15, 15                ;攻撃が当たった時の硬直時間（左が自分、右が相手）
+sparkno = s30002                      ;ヒットエフェクトのスプライトステート（無ければ0）
+guard.sparkno = S30040
+sparkxy = -5, -55               ;ヒットエフェクトを表示する場所（相手の座標で）
+hitsound = s55,4                  ;ヒットした時の音（ｓ*,*にすると自分の音を使う）
+guardsound = s66,0         ;ガードした時の音（同上）
+ground.type = high               ;相手のくらった場所（High：頭、体, Low：足, Trip：足払い）
+ground.slidetime = 22             ;相手が後にすべる時間
+ground.hittime  = 22             ;コンボが繋がる時間（高くしすぎない事）
+ground.velocity = -8            ;地上で攻撃をくらった場合の相手の移動状況（ｘとｙで小数点可）
+air.velocity = -4,-6           ;空中で攻撃をくらった場合の相手の移動状況（ｘとｙで小数点可）
+fall = 1
+envshake.time = 12
+envshake.ampl = 6; or 7
+
+[state 200x,attack aura];
+type = Explod
+triggerall = numexplod(200) = 0
+trigger1 = time = 0
+anim = 221
+id = 200
+postype = p1
+pos = 0,0
+sprpriority = 3
+bindtime = 30
+removetime = 30
+removeongethit= 1
+ignorehitpause = 1
+persistent = 0
+ownpal = 1
+
+[State 220, 7]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+;---------------------------------------------------------------------------
+; 立ち・弱 s230,swk
+[Statedef 230];シロひっかき
+type    = S
+movetype= A
+physics = S
+ctrl = 0
+velset = 0,0
+anim = 230
+sprpriority = 2
+
+[state 230, varset]
+type = varset
+triggerall = helper(300),stateno = [8000,8021]
+triggerall = helper(300),rootdist x >= -45
+triggerall = helper(300),rootdist x <= 45
+trigger1 = time = 0
+var(30) = 230
+persistent = 0
+
+[state 230,voice]
+type = playsnd
+trigger1 = time = 0
+value = s230,ifelse(helper(300),stateno = 8230,1,0)
+channel = 0
+persistent = 0
+
+
+[State 230, 3]
+type = ChangeState
+trigger1 = Time >= 30
+value = 0
+ctrl = 1
+
+;---------------------------------------------------------------------------
+; 立ち・レバー入れ弱 s235,lfswk
+[Statedef 235];シロ頭突き
+type    = S
+movetype= A
+physics = S
+poweradd = 100
+ctrl = 0
+velset = 0,0
+anim = 230
+sprpriority = 2
+
+[state 235, varset]
+type = varset
+triggerall = helper(300),stateno = [8000,8021]
+triggerall = helper(300),rootdist x >= -45
+triggerall = helper(300),rootdist x <= 45
+trigger1 = time = 0
+var(30) = 235
+persistent = 0
+
+[state 235,voice]
+type = playsnd
+trigger1 = time = 0
+value = s230,ifelse(helper(300),stateno = 8235,3,0)
+channel = 0
+persistent = 0
+
+[State 235, 3]
+type = ChangeState
+trigger1 = Time >= 40
+value = 0
+ctrl = 1
+
+;---------------------------------------------------------------------------
+; 立ち・強 s240,swk
+[Statedef 240];シロ砂かけ
+type    = S
+movetype= A
+physics = S
+ctrl = 0
+velset = 0,0
+anim = 230
+sprpriority = 2
+
+[state 230, varset]
+type = varset
+triggerall = helper(300),stateno = [8000,8021]
+triggerall = helper(300),rootdist x >= -45
+triggerall = helper(300),rootdist x <= 45
+trigger1 = time = 0
+var(30) = 240
+persistent = 0
+
+[state 240,voice]
+type = playsnd
+trigger1 = time = 0
+value = s230,ifelse(helper(300),stateno = 8240,4,0)
+channel = 0
+persistent = 0
+
+[State 230, 3]
+type = ChangeState
+trigger1 = Time >= 40
+value = 0
+ctrl = 1
+
+;---------------------------------------------------------------------------
+; 立ち・レバー入れ強 s245,lfssk
+[Statedef 245];シロ体当たり
+type    = S
+movetype= A
+physics = S
+ctrl = 0
+velset = 0,0
+anim = 230
+sprpriority = 2
+
+[state 245, varset]
+type = varset
+triggerall = helper(300),stateno = [8000,8021]
+triggerall = helper(300),rootdist x >= -45
+triggerall = helper(300),rootdist x <=45
+trigger1 = time = 0
+var(30) = 245
+persistent = 0
+
+[state 245,voice]
+type = playsnd
+trigger1 = time = 0
+value = s230,ifelse(helper(300),stateno = 8245,2,0)
+channel = 0
+persistent = 0
+
+[State 245, 3]
+type = ChangeState
+trigger1 = Time >= 40
+value = 0
+ctrl = 1
+
+;---------------------------------------------------------------------------
+;屈み・弱・s400,cwwn cwwf
+[statedef 400];
+type    = C
+movetype= A
+physics = C
+juggle  = 5
+ctrl = 0
+poweradd = 30
+anim = 400
+sprpriority = 2
+
+[State 200x, aura];気
+type = Helper
+trigger1 = time = 0
+ID =200
+pos = 0, 0
+stateno = 402
+helpertype = player
+name = "aura atc"
+postype = p1
+keyctrl = 0
+ownpal = 1
+
+[State 400, 2]
+type = HitDef
+trigger1 = Time = 0
+attr = C, NA
+damage    = 20
+priority  = 4
+animtype  = Light
+hitflag = MAF
+guardflag = L
+pausetime = 8,8
+sparkno = s30000
+guard.sparkno = S30040
+sparkxy = -10,-42
+hitsound = s55,0       
+guardsound = s66,0
+ground.type = Low
+ground.slidetime = 18
+ground.hittime  = 18
+ground.velocity = -4
+air.velocity = -1,-3
+
+[State 400, 4]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 11
+ctrl = 1
+
+;------aura atc state---------------
+[Statedef 402]
+type    = S                      
+physics = n                      
+sprpriority = 3                  ;表示した絵の重なり具合(2一番前　0通常　-1奥)
+anim = 401
+
+[state 402,ca1]
+type = changeanim
+trigger1 = root,animelemtime(4) >= 0
+trigger1 = root,animelemtime(5) < 0 
+value = 402
+
+[state 402,bind]
+type = BindToRoot
+trigger1 = root,animelemtime(4) >= 0
+trigger1 = root,animelemtime(5) < 0 
+time = 1
+facing = 1
+pos = 0,0
+
+[state 402,ca2]
+type = changeanim
+trigger1 = root,animelemtime(5) =0
+value = 403
+
+[State 402, 1]
+type = destroyself
+trigger1 = anim = 403
+trigger1 = animtime = 0
+trigger2 = root,stateno != 400
+id = 200
+
+;---------------------------------------------------------------------------
+;屈み・中s410,cmw
+[Statedef 410];
+type    = C
+movetype= A
+physics = C
+juggle  = 6
+poweradd = 60
+ctrl = 0
+anim = 410
+sprpriority = 2
+
+[State 200x, aura];気
+type = Helper
+trigger1 = time = 0
+ID =200
+pos = 0, 0
+stateno = 412
+helpertype = player
+name = "aura atc"
+postype = p1
+keyctrl = 0
+ownpal = 1
+
+[State 410, 2]
+type = HitDef
+trigger1 = time = 0
+attr = C, NA
+damage    = 45
+animtype  = hard
+hitflag = MAF
+guardflag = M
+pausetime = 12,12
+sparkno = s30002   
+guard.sparkno = S30040
+sparkxy = -10,-38
+hitsound = s55,1        
+guardsound = s66,0
+ground.type = Low
+ground.slidetime = 20
+ground.hittime  = 20
+ground.velocity = -10
+air.velocity = -2,-4
+
+
+[State 410, 4]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 11
+ctrl = 1
+
+;------aura atc state---------------
+[Statedef 412]
+type    = S                      
+physics = n                      
+sprpriority = 3                  ;表示した絵の重なり具合(2一番前　0通常　-1奥)
+anim = 411
+
+[state 412,ca1]
+type = changeanim
+trigger1 = root,animelemtime(5) >= 0
+trigger1 = root,animelemtime(6) < 0 
+value = 412
+
+[state 412,bind]
+type = BindToRoot
+trigger1 = root,animelemtime(5) >= 0
+trigger1 = root,animelemtime(6) < 0 
+time = 1
+facing = 1
+pos = 0,0
+
+[state 412,ca2]
+type = changeanim
+trigger1 = root,animelemtime(6) =0
+value = 413
+
+[State 412, 1]
+type = destroyself
+trigger1 = anim = 413
+trigger1 = animtime = 0
+trigger2 = root,stateno != 410
+id = 200
+
+;-屈強武器--------s420,csw----------
+[statedef 431];
+type    = C
+movetype= A
+physics = C
+poweradd = 30
+juggle  = 6
+ctrl = 0
+anim = 420
+sprpriority = 2
+
+[State 200x, aura];気
+type = Helper
+trigger1 = time = 0
+ID =200
+pos = 0, 0
+stateno = 422
+helpertype = player
+name = "aura atc"
+postype = p1
+keyctrl = 0
+ownpal = 1
+
+[State 420, test] 
+type = HitDef
+trigger1 = time = 0
+attr = C, NA
+damage    = 20
+animtype  = light
+hitflag = MAF
+guardflag = m
+pausetime = 8,8
+sparkno = s30000
+guard.sparkno = S30040
+sparkxy = -10,-44
+hitsound = s55,2         
+guardsound = s66,0
+ground.type = low
+ground.slidetime = 18
+ground.hittime  = 18
+ground.velocity = -4
+air.velocity = -1,-3
+
+[State 420, 4]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 11
+ctrl = 1
+
+;------aura atc state---------------
+[Statedef 422]
+type    = S                      
+physics = n                      
+sprpriority = 3                  ;表示した絵の重なり具合(2一番前　0通常　-1奥)
+anim = 421
+
+[state 422,ca1]
+type = changeanim
+trigger1 = root,animelemtime(6) >= 0
+trigger1 = root,animelemtime(7) < 0 
+value = 422
+
+[state 422,bind]
+type = BindToRoot
+trigger1 = root,animelemtime(6) >= 0
+trigger1 = root,animelemtime(7) < 0 
+time = 1
+facing = 1
+pos = 0,0
+
+[state 422,ca2]
+type = changeanim
+trigger1 = root,animelemtime(7) =0
+value = 423
+
+[State 422, 1]
+type = destroyself
+trigger1 = anim = 423
+trigger1 = animtime = 0
+trigger2 = root,stateno != 420
+id = 200
+
+;---------------------------------------------------------------------------
+; しゃがみ・弱 s430,swk
+[Statedef 430];シロひっかき
+type    = c
+movetype= A
+physics = c
+ctrl = 0
+velset = 0,0
+anim = 430
+sprpriority = 2
+
+[state 430, varset]
+type = varset
+triggerall = helper(300),stateno = [8000,8021]
+triggerall = helper(300),rootdist x >= -45
+triggerall = helper(300),rootdist x <=45
+trigger1 = time = 0
+var(30) = 430
+persistent = 0
+
+[state 430,voice]
+type = playsnd
+trigger1 = time = 0
+value = s230,ifelse(helper(300),stateno = 8430,1,0)
+channel = 0
+persistent = 0
+
+
+[State 430, 3]
+type = ChangeState
+trigger1 = Time >= 30
+value = 11
+ctrl = 1
+
+;---------------------------------------------------------------------------
+; しゃがみ強 s440,swk
+[Statedef 440];シロしっぽ
+type    = c
+movetype= A
+physics = c
+ctrl = 0
+velset = 0,0
+anim = 430
+sprpriority = 2
+
+[state 440, varset]
+type = varset
+triggerall = helper(300),stateno = [8000,8021]
+triggerall = helper(300),rootdist x >= -48
+triggerall = helper(300),rootdist x <= 48
+trigger1 = time = 0
+var(30) = 440
+persistent = 0
+
+[state 440,voice]
+type = playsnd
+trigger1 = time = 0
+value = s230,ifelse(helper(300),stateno = 8440,5,0)
+channel = 0
+persistent = 0
+
+[State 230, 3]
+type = ChangeState
+trigger1 = Time >= 30
+value = 11
+ctrl = 1
+
+;---------------------------------------------------------------------------
+;空中・弱・
+[Statedef 600];
+type    = A
+movetype= A
+physics = A
+juggle  = 2
+poweradd = 30
+ctrl = 0
+anim = 600
+sprpriority = 2
+
+[State 200x, aura];気
+type = Helper
+trigger1 = time = 0
+ID =200
+pos = 0, 0
+stateno = 602
+helpertype = player
+name = "aura atc"
+postype = p1
+keyctrl = 0
+ownpal = 1
+
+[State 600, 2]
+type = HitDef
+trigger1 = Time = 0
+attr = A, NA
+damage    = 20
+guardflag = HA
+priority = 3
+pausetime = 12,12
+sparkno = s30000
+guard.sparkno = S30040
+sparkxy = -10,-58
+hitsound = s55,0          
+guardsound = s66,0
+ground.type = High
+ground.slidetime = 18
+ground.hittime  = 18
+ground.velocity = -4
+air.velocity = -1,-3
+
+[State 600, 3]
+type = CtrlSet
+trigger1 = Time = 17
+value = 1
+
+;------aura atc state---------------
+[Statedef 602]
+type    = S                      
+physics = n                      
+sprpriority = 3                  ;表示した絵の重なり具合(2一番前　0通常　-1奥)
+anim = 601
+
+[state 602,ca1]
+type = changeanim
+trigger1 = root,animelemtime(1) >= 0
+trigger1 = root,animelemtime(2) < 0
+value = 602
+
+[state 602,ca2]
+type = changeanim
+trigger1 = root,animelemtime(2) =0
+value = 603
+
+[state 602,pos]
+type = posset
+;trigger1 = root,animelemtime(1) >= 0
+;trigger1 = root,animelemtime(2) < 0
+trigger1 = 1
+x = ifelse(facing = 1,root,pos x + 21 ,root,pos x - 21)
+y =  root,pos x + 17
+
+[state 602,bind]
+type = BindToRoot
+trigger1 = 1
+time = 1
+facing = 1
+pos = 0,0
+
+[State 602, 1]
+type = destroyself
+trigger1 = anim = 603
+trigger1 = animtime = 0
+trigger2 = root,stateno != 600
+id = 200
+
+;---------------------------------------------------------------------------
+;空中・中・
+[Statedef 610];
+type    = A
+movetype= A
+physics = A
+juggle  = 4
+poweradd = 60
+ctrl = 0
+anim = 610
+sprpriority = 2
+
+[State 200x, aura];気
+type = Helper
+trigger1 = time = 0
+ID =200
+pos = 0, 0
+stateno = 612
+helpertype = player
+name = "aura atc"
+postype = p1
+keyctrl = 0
+ownpal = 1
+
+[State 610, 3]
+type = HitDef
+trigger1 = Time = 0
+attr = A, NA
+damage = 45
+guardflag = HA
+priority = 4
+pausetime = 12,12
+sparkno = s30002   
+guard.sparkno = S30040
+sparkxy = -10,-55
+hitsound = s55,2      
+guardsound = s66,0
+animtype = Med
+ground.type = High
+ground.slidetime = 20
+ground.hittime  = 20
+ground.velocity = -10
+air.velocity = -2,-4
+
+
+;------aura atc state---------------
+[Statedef 612]
+type    = S                      
+physics = n                      
+sprpriority = 3                  ;表示した絵の重なり具合(2一番前　0通常　-1奥)
+anim = 611
+
+[state 612,ca1]
+type = changeanim
+trigger1 = root,animelemtime(3) >= 0
+trigger1 = root,animelemtime(4) < 0
+value = 612
+
+[state 612,ca2]
+type = changeanim
+trigger1 = root,animelemtime(4) =0
+value = 613
+
+[state 612,pos]
+type = posset
+trigger1 = root,animelemtime(1) >= 0
+trigger1 = root,animelemtime(2) <= 0
+x = ifelse(facing = 1,root,pos x + 21 ,root,pos x - 21)
+y =  root,pos x + 17
+
+[state 612,bind]
+type = BindToRoot
+trigger1 = 1
+time = 1
+facing = 1
+pos = 0,0
+
+[State 612, 1]
+type = destroyself
+trigger1 = anim = 613
+trigger1 = animtime = 0
+trigger2 = root,stateno != 610
+id = 200
+
+;---------------------------------------------------------------------------
+;空中・強・s620,asw
+[Statedef 620];
+type    = A
+movetype= A
+physics = A
+poweradd = 80
+juggle  = 10
+ctrl = 0
+anim = 620
+sprpriority = 2
+
+[State 200x, aura];気
+type = Helper
+trigger1 = time = 0
+ID =200
+pos = 0, 0
+stateno = 622
+helpertype = player
+name = "aura atc"
+postype = p1
+keyctrl = 0
+ownpal = 1
+
+[State 620, 3]
+type = HitDef
+trigger1 = time = 0
+attr = A, NA
+damage = 100,10
+hitflag = MAF
+guardflag = HA
+priority = 4
+pausetime = 15,15
+sparkno = s30002  
+guard.sparkno = S30040
+sparkxy = -10,-55
+hitsound = s55,4           
+guardsound = s66,0
+animtype = Med
+ground.type = High
+ground.slidetime = 22
+ground.hittime  = 22
+ground.velocity = -8
+air.velocity = -4,-6
+envshake.time = 12
+envshake.ampl = 6; or 7
+fall = 1
+
+;------aura atc state---------------
+[Statedef 622]
+type    = S                      
+physics = n                      
+sprpriority = 3                  ;表示した絵の重なり具合(2一番前　0通常　-1奥)
+anim = 621
+
+[state 622,ca1]
+type = changeanim
+trigger1 = root,animelemtime(3) >= 0
+trigger1 = root,animelemtime(4) < 0
+value = 622
+
+[state 602,ca2]
+type = changeanim
+trigger1 = root,animelemtime(4) =0
+value = 623
+
+[state 602,pos]
+type = posset
+;trigger1 = root,animelemtime(3) >= 0
+;trigger1 = root,animelemtime(4) < 0
+trigger1 = 1
+x = ifelse(facing = 1,root,pos x + 21 ,root,pos x - 21)
+y =  root,pos x + 17
+
+[state 602,bind]
+type = BindToRoot
+trigger1 = 1
+time = 1
+facing = 1
+pos = 0,0
+
+[State 602, 1]
+type = destroyself
+trigger1 = anim = 623
+trigger1 = animtime = 0
+trigger2 = root,stateno != 620
+id = 200
+
+;---------------------------------------------------------------------------
+;空中・弱・シロぼでぇぷれす
+[Statedef 630];
+type    = A
+movetype= A
+physics = A
+poweradd = 100
+ctrl = 0
+anim = 630
+sprpriority = 2
+
+[state 630,voice]
+type = playsnd
+trigger1 = time = 0
+value = s230,0
+
+[state 630,varset]
+type = varset
+triggerall = !var(30)
+triggerall = helper(300),stateno = [8000,8021]
+triggerall = helper(300),rootdist x >= -50
+triggerall = helper(300),rootdist x <= 50
+trigger1 = time = 0
+var(30) = 630
+
+[state 630,vel]
+type = veladd
+trigger1 = helper(300),stateno = 8640
+x = -0.1
+y = 0.3
+
+;---------------------------------------------------------------------------
+;空中・強　シロぼでぇぷれす
+[Statedef 640];
+type    = A
+movetype= A
+physics = A
+ctrl = 0
+anim = 630
+sprpriority = 2
+
+[state 640,voice]
+type = playsnd
+trigger1 = time = 0
+value = s230,0
+
+[state 6430,varset]
+type = varset
+triggerall = !var(30)
+triggerall = helper(300),stateno = [8000,8021]
+triggerall = helper(300),rootdist x >= -55
+triggerall = helper(300),rootdist x <= 55
+trigger1 = time = 0
+var(30) = 640
+
+[state 640,vel]
+type = veladd
+trigger1 = helper(300),stateno = 8640
+x = -0.1
+y = 0.3
+
+;---------------------------------------------------------------------------
+;
+[Statedef 800]
+type    = S
+movetype= A
+physics = S
+juggle  = 0
+velset = 0,0
+ctrl = 0
+anim = 800
+sprpriority = 2
+
+[State 800, 1]
+type = HitDef
+Trigger1 = Time = 0
+attr = S, NT          ;ｓ：立ち　ｎ：通常　ｔ：投げ
+hitflag = M-          ;コンボの途中から投げが入らないよう設定してある
+priority = 1, Miss    ;１は優先順位が低いので技がでないかミスするという設定
+sparkno = -1          ;-をつければスパークエフェクトは無い
+sprpriority = 1       ;２Ｐより上にカンフーマンが表示される
+p1facing = ifelse (command = "holdfwd", -1, 1) ;前を押したらターンする設定
+p2facing = 1          ;？
+p1stateno = 810       ;投げが成功した場合の移動する１Ｐのステート
+p2stateno = 820       ;投げが成功した場合の移動する２Ｐのステート
+fall = 1              ;落ちる力を２Ｐにかけるか
+
+[State 800, 2]
+type = ChangeState
+Trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+;---------------------------------------------------------------------------
+;投げ1
+;   
+[Statedef 810]
+type    = S
+movetype= A
+physics = N
+anim = 810
+poweradd = 60
+
+[State 810, Grab Sound]
+type = PlaySnd
+trigger1 = AnimElem = 2
+value = 1, 1
+
+[State 810, Throw Sound]
+type = PlaySnd
+trigger1 = AnimElem = 7
+value = 800, 0
+
+[State 810, Bind 1]
+type = TargetBind
+trigger1 = AnimElemTime(2) < 0
+pos = 28, 0
+
+[State 810, Width 2-11]
+type = Width
+trigger1 = AnimElemTime(2) >= 0 && AnimElemTime(12) < 0
+edge = 60,0
+
+[State 810, Bind 2-4]
+type = TargetBind
+trigger1 = AnimElemTime(2) >= 0 && AnimElemTime(5) < 0
+pos = 58, 0
+
+[State 810, Bind 5]
+type = TargetBind
+trigger1 = AnimElemTime(5) >= 0 && AnimElemTime(6) < 0
+pos = 47, 0
+
+[State 810, Bind 6]
+type = TargetBind
+trigger1 = AnimElemTime(6) >= 0 && AnimElemTime(7) < 0
+pos = 41, -60
+
+[State 810, Bind 7]
+type = TargetBind
+trigger1 = AnimElemTime(7) >= 0 && AnimElemTime(8) < 0
+pos = 25, -75
+
+[State 810, Bind 8]
+type = TargetBind
+trigger1 = AnimElemTime(8) >= 0 && AnimElemTime(9) < 0
+pos = 15, -90
+
+[State 810, Bind 9]
+type = TargetBind
+trigger1 = AnimElemTime(9) >= 0 && AnimElemTime(10) < 0
+pos = -5, -96
+
+[State 810, Bind 10]
+type = TargetBind
+trigger1 = AnimElemTime(10) >= 0 && AnimElemTime(11) < 0
+pos = -14, -90
+
+[State 810, Bind 11]
+type = TargetBind
+trigger1 = AnimElem = 11
+pos = -50, -50
+
+[State 810, Hurt 11]
+type = TargetLifeAdd
+trigger1 = AnimElem = 11
+value = -78
+
+[State 810, Throw 11]
+type = TargetState
+trigger1 = AnimElem = 11
+value = 821
+
+[State 810, Turn 12]
+type = Turn
+trigger1 = AnimElem = 12
+
+[State 810, Pos 15]
+type = PosAdd
+trigger1 = AnimElem = 15
+x = -10
+
+[State 810, State End]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+;---------------------------------------------------------------------------
+;カンフースロー・投げられている相手
+; 
+;     ここは投げられた瞬間の相手のステートです
+;     たいしたことは書いてありませんがtypeがAになっている事です。
+;     相手が投げれて空中にいる事を設定して次の821ステートに移動します
+
+[Statedef 820]
+type    = A
+movetype= H
+physics = N
+velset = 0,0
+
+[State 820, 1]
+type = ChangeAnim2
+Trigger1 = Time = 0
+value = 820
+
+;---------------------------------------------------------------------------
+;カンフースロー・相手の空中の状態
+;     
+;     これは投げられている相手の状態ととれる行動を設定しています
+;     type = SelfStateは相手のリカバー状態を設定する物でこの状態ならこれ。
+;     と言うように地上近く、空中、叩きつけられた時と３つ設定しています。
+
+[Statedef 821]
+type    = A
+movetype= H
+physics = N
+velset = 2.8,-7
+poweradd = 40
+
+[State 821, 1] ;これは重力これは毎フレーム事に0.4の力が加わります
+type = VelAdd
+Trigger1 = 1
+y = .4
+
+[State 821, 2] 
+type = ChangeState
+triggerall = Vel Y > 0
+triggerall = Pos Y >= -20
+triggerall = alive
+triggerall = CanRecover
+trigger1 = Command = "recovery"
+value = 5200
+
+[State 821, 3] 
+type = SelfState
+triggerall = Vel Y > 0
+triggerall = alive
+triggerall = CanRecover
+trigger1 = Command = "recovery"
+value = 5210 
+
+[State 821, 4] 
+type = SelfState
+trigger1 = Vel Y > 0
+trigger1 = Pos Y >= 0
+value = 5100 
+
+;---------------------------------------------------------------------------
+;投げ技１　s830,s840
+[Statedef 830];来ないで～!!
+type    = S
+movetype= A
+physics = S
+juggle  = 0
+velset = 0,0
+ctrl = 0
+anim = 830
+sprpriority = 2
+
+[State 800, 1]
+type = HitDef
+Trigger1 = animelem = 1
+trigger1 = p2bodydist x <= 10
+attr = S, NT          ;ｓ：立ち　ｎ：通常　ｔ：投げ
+hitflag = M-          ;コンボの途中から投げが入らないよう設定してある
+priority = 1, Miss    ;１は優先順位が低いので技がでないかミスするという設定
+sprpriority = 2       ;２Ｐより上に表示される
+p1facing = 1
+p2facing = 1          ;？
+forcestand = 1
+pausetime = 0, 0                 ;攻撃が当たった時の硬直時間（左が自分、右が相手）
+sparkno = s30002    ;ヒットエフェクトのスプライトステート（無ければ0）
+guard.sparkno = S30040
+sparkxy = -5, -50               ;ヒットエフェクトを表示する場所（相手の座標で）
+hitsound = s55,0
+hitcount = 0
+guardsound = s66,0
+p1stateno = 835       ;投げが成功した場合の移動する１Ｐのステート
+p2stateno = 840       ;投げが成功した場合の移動する２Ｐのステート
+
+[State 830, 2]
+type = ChangeState
+Trigger1 = animtime = 0
+value = 0
+ctrl = 1
+
+;------------root hitmove   
+[Statedef 835]
+type    = S
+movetype= A
+physics = s
+poweradd = 0
+
+[state 835,voice]
+type = playsnd
+trigger1 = time = 0
+value = s800,0
+channel =0
+
+[state -3,test];
+type = Explod
+trigger1 = animelem  =3
+anim = 820
+id = 820
+postype = p1
+pos = 20,0
+sprpriority = 3
+supermove = 1
+bindtime = -1
+removetime = 15
+ownpal = 1
+
+[State 835, State End]
+type = ChangeState
+trigger1 = animtime = 0
+value = 0
+ctrl = 1
+
+;------------------------
+
+;------enemy state-----------------------------------------------------------use p2spr  
+[Statedef 840]
+type = A
+movetype= H
+physics = n
+velset = 0,0;-25,-2
+
+[state 840,po]
+type = posset
+trigger1 = time = 0
+y  = 0
+
+[State 840, 1]
+type = ChangeAnim2
+triggerall = 1   ;debug
+Trigger1 = Time = 0
+value = ifelse(authorname = "R-R",2050 + var(0),2050)
+
+[State 840, 1]
+type = ChangeAnim2
+triggerall = 1   ;debug
+trigger1 = vel y > 0
+value = ifelse(authorname = "R-R",7450 + var(0),7450)
+persistent = 0
+
+[state 2060,vel]
+type = velset
+trigger1 = time  = 6
+x = -25
+y = -2.5
+
+[state 2060,vel]
+type = velset
+trigger1 = BackEdgeBodyDist <= 20
+x = 3
+y = 10
+
+[State 2060,]
+type = lifeadd
+trigger1 = pos y >= -10
+trigger1 = vel y > 0
+value = -50
+absolute = 1
+persistent = 0
+
+[State 2060,]
+type = selfState
+triggerall = 1
+trigger1 = pos y >= -10
+trigger1 = vel y > 0
+value = 5100
+
+
+;---------------------------------------------------------------------------
+; ここから下に新しいステートを書くと分かりやすくていいと思います
+;---------------------------------------------------------------------------
+
+;---------------------------------------------------------------------------
+; ここは-2のステートを書いてください、ヘルパー関係です
+;---------------------------------------------------------------------------
+[statedef -2]
+;--------------------------------------------
+;[State -2, tengu];天狗
+;type = Helper
+;triggerall = var(1) =0
+;trigger1 = numhelper(100) = 0
+;ID = 100
+;pos = -100, -100
+;stateno = 7000
+;helpertype = normal
+;name = "tengu"
+;postype = p1
+;keyctrl = 0
+;ownpal = 1
+
+[State -2, shiro];シロ　戦闘中
+type = Helper
+triggerall = var(1) = 0
+triggerall = 1
+trigger1 = numhelper(300) = 0
+ID =300
+pos = 10, 0
+stateno = 8000
+helpertype = normal
+name = "shiro"
+postype = p1
+keyctrl = 0
+ownpal = 1
+
+[State -2, aura];気 ステート、アニメ0から47
+type = Helper
+triggerall = 1
+triggerall = movetype = i
+trigger1 = stateno = [0,47]
+trigger1 = numhelper(6000) = 0
+ID =6000
+pos = 0, 0
+stateno = 6000
+helpertype = player
+name = "aura normal"
+postype = p1
+keyctrl = 0
+ownpal = 1
+
+[State -2, aura];気 ガード中
+type = Helper
+triggerall = 1
+trigger1 = stateno = [120,150]
+trigger1 = numhelper(6120) = 0
+ID =6120
+pos = 0, 0
+stateno = 6120
+helpertype = player
+name = "aura gurad"
+postype = p1
+keyctrl = 0
+ownpal = 1
+
+[state -2, destroy]
+type = destroyself
+trigger1 = ishelper(200)
+trigger1 = anim = 0
+id = 200
+
+[state -2, cs teng]
+type = changestate
+triggerall = ishelper(100)
+trigger1 = anim = 0
+trigger2 = var(0) = 1
+value = 7000
+
+[state -2, cs shiro]
+type = changestate
+trigger1 = ishelper(300)
+trigger1 = anim = 0
+value = 8000
+
+[state -2, displayb]
+type = displaytoclipboard
+trigger1 = 1
+text = "v(31)=%d,v(32)=%d,v(16)=%d,v(17)=%d,v(18)=%d"
+params =var(31),var(32),var(16),var(17),var(18)
+
+;---------------------------------------------------------------------------
+; ここから下は-3のステートを書いてください、ここに書いたものはゲーム中
+; に条件が成立すればいつでも開始するステートです。
+;---------------------------------------------------------------------------
+
+[Statedef -3]
+;ゲーム中に常にいつでも開始したいステート、ここでは「着地音」に使用しています
+;下の条件は「52か106のステートに移動して１フレーム目に」と言う事です。
+;52と106はバックステップとジャンプの着地のステートです。
+
+
+[State -3, Jumping Sound]
+type = PlaySnd
+triggerall = Time = 1
+trigger1 = stateno = 40 ;Jump
+value = S41,41
+
+[State -3, Landing Sound]
+type = PlaySnd
+triggerall = Time = 1
+trigger1 = stateno = 52 ;Land
+trigger2 = stateno = 106 ;Land
+value = S51,51
+
+
+[State -2,]
+type = StopSnd
+trigger1 = command != "holdfwd"
+trigger2 = Anim != 100
+channel = 6
+
+[state -3, slash snd w]
+type = playsnd
+triggerall = stateno = [200,600]
+triggerall = stateno % 5 = 0
+triggerall = anim && time = 1
+trigger1 = stateno = 200
+trigger2 = stateno = 231
+trigger3 = stateno = 400
+trigger4 = stateno = 431 
+trigger5 = stateno = 600
+value = s220,0
+chanel = 1
+ 
+[state -3, slash snd m]
+type = playsnd
+triggerall = stateno = [200,610]
+triggerall = stateno % 5 = 0
+triggerall = anim && time = 1
+trigger1 = stateno = 210
+trigger2 = stateno = 215
+trigger3 = stateno = 410
+trigger4 = stateno = 441 
+trigger5 = stateno = 610 
+value = 220,1
+chanel = 1 
+
+[state -3, slash snd s]
+type = playsnd
+triggerall = stateno = [200,620]
+triggerall = stateno % 5 = 0
+triggerall = anim && time = 1
+trigger1 = stateno = 520
+trigger2 = stateno = 620 
+value = 220,2
+channel = 1 
+
+;----------------通常攻撃声 弱
+[State -3, atack voice wmk]
+type = PlaySnd
+triggerall = stateno = [200,600]
+triggerall = stateno % 5 = 0 
+triggerall = anim && time = 2
+trigger1 = stateno = 200
+trigger2 = stateno = 231
+trigger3 = stateno = 400
+trigger4 = stateno = 431 
+trigger5 = stateno = 600
+value = 200, 0
+
+;----------------通常攻撃声 弱
+[State -3, atack voice wmk]
+type = PlaySnd
+triggerall = stateno = [200,610]
+triggerall = stateno % 5 = 0 
+triggerall = anim && time = 2
+trigger1 = stateno = 210
+trigger2 = stateno = 215
+trigger3 = stateno = 410
+trigger4 = stateno = 441 
+trigger5 = stateno = 610 
+value = 200, 1
+
+;----------------通常攻撃声 強
+[State -3, atack voice s]
+type = PlaySnd
+triggerall = stateno = [220,620] 
+triggerall = stateno % 5 = 0 
+triggerall = anim && time = 2
+trigger1 = stateno = 520
+trigger2 = stateno = 620 
+value = s200, 2
+
+;----------------シロ！！
+[State -3, Go! shiro! voice]
+type = PlaySnd
+triggerall = stateno % 5 = 0 
+triggerall = anim && time = 2
+trigger1 = stateno = 630
+trigger2 = stateno = 640
+value = s230, 0
+
+;受身声
+[State -3, 5200 5210voice]
+type = PlaySnd
+triggerall = Time = 1
+trigger1 = anim = 5200
+trigger2 = anim = 5210
+value = 200,3
+parsistent = 0
+channel = 0
+
+
+
+;-----------------術タイマー
+[state -3,var(16)add];月読
+type = varadd
+triggerall = var(16)
+trigger1 = 1 
+var(16) = -1
+
+[state -3,var(16)cl]
+type = varset
+trigger1 = var(16) < 0
+trigger1 = 1 
+var(16) = 0
+
+[state -3,def]
+type = DefenceMulSet
+trigger1 = var(16)  
+value = 0.5
+
+[State -3, defmul];月読解除
+type = DefenceMulSet
+trigger1 = !var(16)
+value = 1
+
+;-----------------術タイマー
+[state -3,var(17)add];冬枯
+type = varadd
+triggerall = var(17)
+trigger1 = 1 
+var(17) = -1
+
+[state -3,var(17)cl]
+type = varset
+trigger1 = var(17) < 0
+trigger1 = 1 
+var(17) = 0
+
+[State -3, defmul];冬枯解除
+type =AttackMulSet
+trigger1 = !var(17)
+value = 1
+
+;-----------------術タイマー
+[state -3,var(18)add];風蛇
+type = varadd
+triggerall = var(18)
+trigger1 = 1 
+var(18) = -1
+
+[state -3,var(18)cl]
+type = varset
+trigger1 = var(18) < 0
+trigger1 = 1 
+var(18) = 0
+
+;-----------------術タイマー
+[state -3,var(31)add];追風
+type = varadd
+triggerall = var(31)
+trigger1 = 1 
+var(31) = -1
+
+[state -3,var(31)cl]
+type = varset
+trigger1 = var(31) < 0
+trigger1 = 1 
+var(31) = 0
+
+;-----------------術タイマー
+[state -3,var(32)add];城壁
+type = varadd
+triggerall = var(32)
+trigger1 = 1 
+var(32) = -1
+
+[state -3,var(32)cl]
+type = varset
+trigger1 = var(32) < 0
+trigger1 = 1 
+var(32) = 0
+
+[state -3,muteki]
+type = nothitby
+trigger1 = var(32)
+value = sca
+time = 1
+

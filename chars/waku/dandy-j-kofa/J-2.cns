@@ -1,0 +1,630 @@
+;---------------------------------------------------------------------------
+; States that are always executed (use statedef -2)
+;---------------------------------------------------------------------------
+[Statedef -2]
+
+[State -2,ランダム]
+type = VarRandom
+trigger1 = ctrl = 1
+v = 50
+range = 0,199
+;↑199よりでかい数字いれるとばかになる。
+;でもかなりでかい数字いれても結構暴れちゃう。
+;2000くらいにすれば結構弱くなる？
+
+
+
+;ヒット音変更
+[State 191, 2]
+type = varset
+trigger1 = enemy,name = "politank z"
+trigger2 = enemy,name = "musafar"
+trigger3 = enemy,name = "phobos"
+trigger4 = enemy,name = "sentinel"
+trigger5 = enemy,name = "taros"
+var(35) = 10
+
+
+;フキダシせりふイントロ
+[State 191, 2]
+type = varset
+trigger1 = enemy,name = "Pendejo EX"
+trigger2 = enemy,name = "rai"
+var(30) = 1
+
+[State 191, 2]
+type = varset
+trigger1 = enemy,name = "Slash v2.0 by Inverse"
+var(30) = 2
+
+[State 191, 2]
+type = varset
+trigger1 = enemy,name = "tesse"
+var(30) = 3
+
+[State 191, 2]
+type = varset
+trigger1 = enemy,name = "politank z"
+var(30) = 4
+
+[State 191, 2]
+type = varset
+trigger1 = enemy,name = "MAURU by Inverse"
+var(30) = 5
+
+[State 191, 2]
+type = varset
+trigger1 = enemy,name = "DANDY J"
+var(30) = 6
+
+[State 191, 2]
+type = varset
+trigger1 = enemy,name = "arina"
+var(30) = 7
+
+
+
+;フキダシせりふ勝利
+[State 191, 2]
+type = varset
+trigger1 = enemy,name = "Pendejo EX"
+trigger2 = enemy,name = "rai"
+var(33) = 1
+
+[State 191, 2]
+type = varset
+trigger1 = enemy,name = "Slash v2.0 by Inverse"
+var(33) = 2
+
+[State 191, 2]
+type = varset
+trigger1 = enemy,name = "tesse"
+var(33) = 3
+
+[State 191, 2]
+type = varset
+trigger1 = enemy,name = "politank z"
+var(33) = 4
+
+[State 191, 2]
+type = varset
+trigger1 = enemy,name = "MAURU by Inverse"
+var(33) = 5
+
+[State 191, 2]
+type = varset
+trigger1 = enemy,name = "DANDY J"
+var(33) = 6
+
+[State 191, 2]
+type = varset
+trigger1 = enemy,name = "arina"
+var(33) = 7
+
+
+
+[state -2]
+type = helper
+triggerall = Time = 0
+trigger1 = NumHelper(2000) = 0
+ID = 2000
+pos = 40,0
+postype = p1
+stateno = 2000
+helpertype = normal
+name = "natsumi"
+sprpriority = -5
+ownpal = 1
+keyctrl = 0
+
+
+
+攻撃食らったら炎消す
+[State -2,Trail]
+type = removeExplod
+trigger1 = (stateno = 5000) || (stateno = 5999)
+(id = [1010,1019])
+;id = 1010
+
+[State -2,Trail]
+type = removeExplod
+trigger1 = (stateno = 5000) || (stateno = 5999)
+(id = [1040,1049])
+;id = 1010
+
+
+[State 1000, 0];暫定補正　相手HP50%以降から最大80%の逆根性値
+type = varset
+triggerall = RoundState = 2
+trigger1 = (100*enemy,life/enemy,const(data.life)) >= 30
+fvar(2) = 100.0
+
+[State 1000, 0];暫定補正　相手HP70%以降から最大70%の逆根性値
+type = varset
+triggerall = RoundState = 2
+trigger1 = (100*enemy,life/enemy,const(data.life)) < 30
+fvar(2) = 100.0-(30-(30*enemy,life/(enemy,const(data.life)*0.3)))
+
+
+
+[State -2, 8]
+type = AttackMulSet
+trigger1 = Var(2) = 0
+ignorehitpause = 1
+value = 1*fvar(2)*0.01
+
+[State -2, 8]
+type = DefenceMulSet
+trigger1 = Var(2) = 0
+ignorehitpause = 1
+value = 1
+
+[State -2, 8]
+type = AttackMulSet
+trigger1 = Var(2) > 0
+ignorehitpause = 1
+value = 1.5*fvar(2)*0.01
+
+[State -2, 8]
+type = DefenceMulSet
+trigger1 = Var(2) > 0
+ignorehitpause = 1
+value = .5
+
+[State -2, 12]
+type = VarAdd
+trigger1 = Var(2) > 0
+v = 2
+value = -1
+ignorehitpause = 1
+
+
+[State -2, 10]
+type = VarSet
+trigger1 = Var(3) = 12
+v = 3
+value = 0
+ignorehitpause = 1
+
+[State -2, 11]
+type = VarAdd
+trigger1 = Var(3) <= 12
+v = 3
+value = 1
+ignorehitpause = 1
+
+
+
+[State -2, 2]
+type = PalFX
+triggerall = Var(2) >= 1
+trigger1 = Var(3) = 1
+color = 0
+add = 255,255,0
+time = 1
+ignorehitpause = 1
+
+[State -2, 2]
+type = PalFX
+triggerall = Var(2) >= 1
+trigger1 = Var(3) = 3
+trigger2 = Var(3) = 11
+color = 0
+add = 128,32,-128
+time = 1
+ignorehitpause = 1
+
+[State -2, 2]
+type = PalFX
+triggerall = Var(2) >= 1
+trigger1 = Var(3) = 5
+trigger2 = Var(3) = 9
+color = 0
+add = 108,16,-255
+time = 1
+ignorehitpause = 1
+
+[State -2, 2]
+type = PalFX
+triggerall = Var(2) >= 1
+trigger1 = Var(3) = 7
+color = 0
+add = 64,-32,-255
+time = 1
+ignorehitpause = 1
+
+
+
+
+[State -2, HitAttack]
+type = PlaySnd
+triggerall = Random < 200
+triggerall = Time = 1
+trigger1 = anim = 5000
+trigger2 = anim = 5001
+trigger3 = anim = 5020
+trigger4 = anim = 5021
+value = 5, 1
+
+[State -2, HitAttack]
+type = PlaySnd
+triggerall = Random < 200
+triggerall = Time = 1
+trigger1 = anim = 5010
+trigger2 = anim = 5011
+value = 5, 2
+
+[State -2, HitAttack]
+type = PlaySnd
+triggerall = Random < 200
+triggerall = Time = 1
+trigger1 = anim = 5002
+value = 5, 3
+
+[State -2, HitAttack]
+type = PlaySnd
+triggerall = Random < 200
+triggerall = Time = 1
+trigger1 = anim = 5012
+value = 5, 4
+
+[State -2, HitAttack]
+type = PlaySnd
+triggerall = Random < 200
+triggerall = Time = 1
+trigger1 = anim = 5022
+trigger2 = anim = 5030
+value = 5, 5
+
+[State -2, HitAttack]
+type = PlaySnd
+triggerall = Random < 200
+triggerall = Time = 1
+trigger1 = anim = 5120
+value = 5, 0
+
+[State -2, HitAttack]
+type = PlaySnd
+triggerall = Time = 1
+trigger1 = stateno = 52
+value = 20, 13
+
+
+
+
+[State -21, 6];壁激突
+type = Explod
+triggerall = p2movetype = H
+triggerall = numexplod(57) = 0
+trigger1 = p2stateno = 831;[830,831]
+trigger2 = p2stateno = 7051;[830,831]
+id = 57
+persistent = 0
+anim = 57
+pos = 0, floor(screenpos y) -60
+postype = front
+facing = ifelse(facing = 1,1,-1)
+sprpriority = 5
+
+
+[State -2, 8]
+type = Varset
+triggerall = NumTarget
+trigger1 = stateno = [200,699]
+trigger2 = stateno = [1200,1855]
+var(20) = 1
+ignorehitpause = 1
+
+[State -2, 8]
+type = Varset
+trigger1 = enemy,pos y = 0
+trigger2 = !numtarget
+var(20) = 0
+ignorehitpause = 1
+
+
+
+
+[State 191, 2]
+type = varadd
+trigger1 = numtarget
+trigger1 = movecontact=1
+var(38) = floor(1.8*target,GetHitVar(damage))
+ignorehitpause = 1
+
+[State 191, 2]
+type = varadd
+trigger1 = !numtarget
+trigger1 = var(38)
+var(38) = -1
+ignorehitpause = 1
+
+[State 191, 2]
+type = varset
+trigger1 = var(38)<0
+var(38) = 0
+ignorehitpause = 1
+
+
+[State -2,TargetState];ダウンポイントたまってたら
+type = TargetState
+triggerall = var(38)
+triggerall = alive
+trigger1 = NumTarget
+trigger1 = Target,StateNo = 5110
+trigger1 = Target,alive
+value = 5111
+
+[State -2, 0]
+type = varadd
+trigger1 = var(38)
+trigger1 = alive
+trigger1 = NumTarget
+trigger1 = Target,StateNo = 5111
+trigger1 = Target,alive
+var(38) = -10
+
+[State 9800, 0]
+type = varadd
+triggerall = numtarget
+triggerall = alive
+triggerall = Target,alive
+triggerall = numexplod(9800)
+triggerall = Target,StateNo = 5111
+trigger1 = Target,command = "x"
+trigger2 = Target,command = "y"
+trigger3 = Target,command = "z"
+trigger4 = Target,command = "a"
+trigger5 = Target,command = "b"
+trigger6 = Target,command = "c"
+var(38) = -10
+
+[State -2,Helper]
+type = Helper
+triggerall = RoundState = 2
+triggerall=Var(58)=1
+trigger1 = NumHelper(998) = 0
+ID = 998
+helpertype = normal
+name = "g"
+pos = 80,0
+postype =  p1
+stateno = 998
+keyctrl = 1
+
+[State -2,Helper]
+type = Helper
+trigger1=Var(58)=0
+trigger1 = NumHelper(999) = 0
+ID = 999
+helpertype = normal
+name = "ai"
+pos = 0,0
+postype =  p1
+stateno = 999
+keyctrl = 1
+
+;---------------------------------------------------------------------------
+; States that are executed when in self's state file (use statedef -3)
+;---------------------------------------------------------------------------
+
+[Statedef -3]
+
+;This controller plays a sound everytime KFM lands from a jump, or
+;from his back-dash.
+[State -3, Landing Sound]
+type = PlaySnd
+triggerall = Time = 1
+trigger1 = stateno = 52 ;Jump land
+trigger2 = stateno = 106 ;Run-back land
+value = 40, 0
+
+;---------------------------------------------------------------------------
+;静電拳
+[State -1,seidenn]
+type = ChangeState
+value = 3000
+triggerall = power >= 1000
+triggerall = numhelper(2000) = 1
+triggerall = helper(2000), stateno != 2200
+triggerall = helper(2000), stateno != 2201
+triggerall = helper(2000), stateno != 2300
+triggerall = helper(2000), stateno != 2301
+triggerall = RoundState = 2
+triggerall = statetype != A
+triggerall = var(58) = 1
+triggerall = p2life != 0
+triggerall = P2BodyDist X < 140
+triggerall = P2BodyDist X > 60
+triggerall = P2BodyDist y = 0
+triggerall = var(50) = [0,39]
+trigger1 = p2movetype != H
+trigger1 = ctrl
+
+;激突落とし
+[State -1,seidenn]
+type = ChangeState
+value = 3500
+triggerall = power >= 1000
+triggerall = numhelper(2000) = 1
+triggerall = helper(2000), stateno != 2200
+triggerall = helper(2000), stateno != 2201
+triggerall = helper(2000), stateno != 2300
+triggerall = helper(2000), stateno != 2301
+triggerall = RoundState = 2
+triggerall = statetype != A
+triggerall = var(58) = 1
+triggerall = p2life != 0
+triggerall = P2BodyDist X < 120
+triggerall = P2BodyDist X > 60
+triggerall = P2BodyDist y = 0
+triggerall = var(50) = [40,99]
+trigger1 = p2statetype = S
+trigger1 = p2movetype != H
+trigger1 = ctrl
+
+[State -2, 中距離時];発火
+type = ChangeState
+value = 1000
+triggerall = numhelper(2000) = 1
+triggerall = helper(2000), stateno != 2200
+triggerall = helper(2000), stateno != 2201
+triggerall = helper(2000), stateno != 2300
+triggerall = helper(2000), stateno != 2301
+triggerall = RoundState = 2
+triggerall = statetype != A
+triggerall = var(58) = 1
+triggerall = p2life != 0
+triggerall = var(50) = [0,40]
+triggerall = P2BodyDist X < 120
+triggerall = P2BodyDist X > 60
+triggerall = P2BodyDist y = 0
+trigger1 = ctrl
+
+[State -2, 中距離時];ロープ
+type = ChangeState
+value = 1600
+triggerall = numhelper(2000) = 1
+triggerall = helper(2000), stateno != 2200
+triggerall = helper(2000), stateno != 2201
+triggerall = helper(2000), stateno != 2300
+triggerall = helper(2000), stateno != 2301
+triggerall = RoundState = 2
+triggerall = statetype != A
+triggerall = var(58) = 1
+triggerall = p2life != 0
+triggerall = var(50) = [41,74]
+triggerall = P2BodyDist X < 160
+triggerall = P2BodyDist X > 80
+triggerall = P2BodyDist y = 0
+trigger1 = ctrl
+
+[State -2, 遠距離時];ダッシュ
+type = ChangeState
+value = 100
+Triggerall = !InguardDist
+triggerall = RoundState = 2
+triggerall = statetype = S
+triggerall = var(58) = 1
+triggerall = p2life != 0
+triggerall = var(50) = [75,99]
+;triggerall = P2BodyDist X < 200
+triggerall = P2BodyDist X > 40
+triggerall = P2BodyDist y = 0
+trigger1 = ctrl
+
+[State -2, 近距離時];ダッシュP
+type = ChangeState
+value = 600
+triggerall = RoundState = 2
+triggerall = var(58) = 1
+triggerall = p2life != 0
+triggerall = stateno = 101
+trigger1 = P2BodyDist X < 60
+;triggerall = P2BodyDist y = 0
+;trigger1 = ctrl
+
+
+[State -2, 近距離時];しゃがみＰ
+type = ChangeState
+value = 400
+Triggerall = !InguardDist
+triggerall = RoundState = 2
+triggerall = statetype != A
+triggerall = var(58) = 1
+triggerall = p2life != 0
+triggerall = var(50) = [30,99]
+;triggerall = P2BodyDist X < 200
+triggerall = P2BodyDist X < 40
+triggerall = P2BodyDist y = 0
+trigger1 = ctrl
+
+[State -2, 近距離時];しゃがみけり
+type = ChangeState
+value = 440
+Triggerall = !InguardDist
+triggerall = RoundState = 2
+triggerall = statetype = C
+triggerall = var(58) = 1
+triggerall = p2life != 0
+;triggerall = var(50) = [30,99]
+;triggerall = P2BodyDist X < 200
+triggerall = P2BodyDist X >= 40
+triggerall = P2BodyDist X < 80
+triggerall = P2BodyDist y = 0
+trigger1 = ctrl
+
+;わくわく投げ
+[State -1, Kung Fu Throw]
+type = ChangeState
+value = 950
+triggerall = numhelper(2000) = 1
+triggerall = helper(2000), stateno != 2200
+triggerall = helper(2000), stateno != 2201
+triggerall = helper(2000), stateno != 2300
+triggerall = helper(2000), stateno != 2301
+triggerall = RoundState = 2
+triggerall = statetype != A
+triggerall = var(58) = 1
+triggerall = p2life != 0
+triggerall = var(50) = [0,29]
+triggerall = ctrl
+triggerall = stateno != 100
+trigger1 = statetype != A
+trigger1 = p2bodydist X < 18
+trigger1 = (p2statetype = S) || (p2statetype = C)
+trigger1 = p2movetype != H
+
+;加速拳
+[State -1,kasoku]
+type = ChangeState
+value = 7000
+triggerall = numhelper(2000) = 1
+triggerall = power >= 1000
+triggerall = helper(2000), stateno != 2200
+triggerall = helper(2000), stateno != 2201
+triggerall = helper(2000), stateno != 2300
+triggerall = helper(2000), stateno != 2301
+triggerall = RoundState = 2
+triggerall = statetype != A
+triggerall = var(58) = 1
+triggerall = p2life != 0
+triggerall = P2BodyDist X > 200
+trigger1 = statetype != A
+trigger1 = p2statetype = L
+trigger1 = ctrl
+
+;すーぱー
+[State -1,super]
+type = ChangeState
+value = 900
+triggerall = RoundState = 2
+triggerall = power >= 1000
+;triggerall = P2BodyDist X < 20
+triggerall = var(58) = 1
+triggerall = p2life != 0
+triggerall = Var(2) = 0
+trigger1 = statetype != A
+trigger1 = stateno = [150,153];ガーキャン
+
+[State -3];立ちガードする
+type = ChangeState
+value = 130
+triggerall = RoundState = 2
+triggerall = Var(58) = 1
+triggerall = p2StateType = A
+triggerall = Statetype != A
+Triggerall = InguardDist
+Triggerall = EnemyNear,HitDefAttr != SCA, AT
+trigger1 = ctrl = 1
+
+[State -3];しゃがみガードする
+type = ChangeState
+value = 131
+triggerall = RoundState = 2
+triggerall = Var(58) = 1
+triggerall = p2StateType != A
+triggerall = Statetype != A
+Triggerall = InguardDist
+Triggerall = EnemyNear,HitDefAttr != SCA, AT
+trigger1 = ctrl = 1
