@@ -1,0 +1,39 @@
+[Info]
+name         = "Dietrich"
+displayname  = "Dietrich"
+versiondate  = 4, 05, 2015
+mugenversion = 1.0
+author       = "Super Fighter Team"
+pal.defaults = 1, 2, 3, 4
+;localcoord   = 320, 240
+localcoord = 427      ;jambu;Local coordinate space width and height
+
+[Files]
+sprite   = dietrich.sff
+sound    = dietrich.snd
+anim     = dietrich.air
+cmd      = dietrich.cds
+cns      = dietrich.cns
+stcommon = toughguy.st
+
+st  = states/mechanics.st
+st1 = states/normals.st
+st2 = states/specials.st
+st3 = states/supers.st
+
+[Palette Keymap]
+a  = 1
+b  = 2
+c  = 3
+x  = 4
+y  = 5
+z  = 6
+a2 = 7
+b2 = 8
+c2 = 9
+x2 = 10
+y2 = 11
+z2 = 12
+
+[Arcade]
+ending.storyboard = ending/ending.def

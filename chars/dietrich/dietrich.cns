@@ -1,0 +1,86 @@
+; Super Fighter Team
+
+[Data]
+life = 3000;jambu;281
+power = 7000;jambu;128
+attack = 100
+defence = 100
+fall.defence_up = 50
+liedown.time = 60
+airjuggle = 25
+sparkno = -1
+guard.sparkno = -1
+KO.echo = 0
+volume = 255
+IntPersistIndex = 0
+FloatPersistIndex = 0
+
+[Size]
+xscale = 1.0
+yscale = 1.1;jambu;1.0
+ground.front = 24
+ground.back = 24
+air.front = 12
+air.back = 12
+height = 60
+attack.dist = 112
+proj.attack.dist = 0
+proj.doscale = 0
+head.pos = 0, -92
+mid.pos = 0, -60
+shadowoffset = 0
+draw.offset = 0, 0
+
+[Velocity]
+walk.fwd = 1.6
+walk.back = -1.2
+run.fwd  = 0.0, 0.0
+run.back = 0.0, 0.0
+jump.neu = 0.0, -9.0
+jump.fwd = 3.0
+jump.back = -2.0
+runjump.fwd = 0.0, 0.0
+runjump.back = 0.0, 0.0
+airjump.neu = 0.0, 0.0
+airjump.fwd = 0.0
+airjump.back = 0.0
+
+[Movement]
+airjump.num = 1;jambu;0
+airjump.height = 0
+yaccel = 0.555556
+stand.friction = 0.8
+crouch.friction = 0.8
+stand.friction.threshold = 1.0
+crouch.friction.threshold = 1.0
+air.gethit.groundlevel = 24
+air.gethit.groundrecover.ground.threshold = -24
+air.gethit.groundrecover.groundlevel = 0
+air.gethit.airrecover.threshold = 0
+air.gethit.airrecover.yaccel = 0.5625
+air.gethit.trip.groundlevel = 0
+down.bounce.offset = 0, 0
+down.bounce.yaccel = 0.5625
+down.bounce.groundlevel = 0
+down.friction.threshold = 0.05
+
+[Quotes]
+Victory1 = ""
+
+;=========================================================================
+; Character Notes
+;=========================================================================
+
+; Tough Skill Ability ( Magnetic Field )
+;=========================================================================
+; Dietrich charges his electrical energy to the max.
+;
+; Active (z): 
+;	Dietrich pulls or pushes the opponent, depending on the direction button pressed after activation.
+;	Certain enemy projectiles can also have their energy negatively charged to turn back against the opponent.
+;	Cancel Magnetic Field into most other actions.
+; Passive (hold c -> z): 
+;	Dietrich charges his body with electricity enabling longer pausetime after every connected attack.
+;	Longer pausetimes lead to easier combos for Dietrich. Additionally, Dietrich will absorb ALL 
+;	energy based attacks and gain more attack power for each individual energy attack absorbed. Be careful not
+;	to overcharge Dietrich, or there may be negative consequences.
