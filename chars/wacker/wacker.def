@@ -1,0 +1,33 @@
+; Definition file for Kung Fu Man
+; Contains all the filenames needed for the character
+
+; Player information
+[Info]
+name = "wacker"        ;Name of character
+displayname = "wacker" ;Name of character to display
+versiondate = 04,14,2002    ;Version date of character (MM-DD-YYYY)
+mugenversion = 04,14,2002   ;Version of M.U.G.E.N character works on
+author = "NGI"         ;Character author name
+pal.defaults = 4,1,2,3,5,6      ;Default palettes in order of preference
+localcoord = 427      ;jambu;Local coordinate space width and height
+
+; Files for the player
+[Files]
+cmd     = wacker.cmd   ;Command set
+cns     = wacker.cns   ;Constants
+st      = wacker.cns   ;States
+stcommon = common1.cns ;Common states
+sprite  = wacker.sff   ;Sprite
+anim    = wacker.air   ;Animation
+sound   = wacker.snd   ;Sound
+pal1    = LPK.act  ;Palettes (can have up to 12)
+pal2    = SK.act
+pal3    = EX_L.act
+pal4    = LKP.act
+pal5    = SP.act
+pal6    = EX_S.act
+
+; Arcade mode
+[Arcade]
+;intro.storyboard = intro.def
+;ending.storyboard = ending.def
