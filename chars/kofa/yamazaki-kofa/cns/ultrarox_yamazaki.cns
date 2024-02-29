@@ -1,0 +1,91 @@
+;============================================================================================================================
+; RYUJI YAMAZAKI (KOF 2002)
+;============================================================================================================================
+; CONVERTED BY OROCHIKOF97 & CCIRONMUGEN
+;============================================================================================================================
+; VERSION 0.8 (SEPTEMBER 2005)
+;============================================================================================================================
+;
+;============================================================================================================================ 
+; M.U.G.E.N. CONVERSION INFORMATION
+;===========================================================================================================================
+; SOUND CHANNELS
+;===========================================================================================================================
+; 0  | YAMAZAKI VOICE
+; 1  | SOUND EFFECTS
+; 2  | KOF 2002 HITSOUNDS
+; 3  | RUN
+;===========================================================================================================================
+; VARIABLES 
+;===========================================================================================================================
+; var(1)         : KOF JUMP SYSTEM
+; var(2)         : KOF 2002 LIGHT PUNCH HITSOUND RANDOMIZER
+; var(3)         : KOF 2002 LIGHT KICK HITSOUND RANDOMIZER
+; var(4)         : KOF 2002 STRONG PUNCH HITSOUND RANDOMIZER
+; var(5)         : KOF 2002 STRONG KICK HITSOUND RANDOMIZER
+; var(6)         : COUNTER HIT SYSTEM DETECTION
+; var(7)         : COUNTER HIT SYSTEM TIMER
+; var(8)         : GUARD CRUSH SYSTEM
+; var(9)         : NORMAL THROW LIMITER
+; var(10)        : SPECIAL THROW LIMITER
+; var(11)        : KOF DAMAGE SCALING SYSTEM
+; var(12)        : SUPER ATTACK CANCEL
+; var(13)        : HEAT MODE (KOF NEOWAVE)
+; var(14)        : HEAT MODE TIMER
+; var(15)        : ENEMY HITDEF ATTRIBUTES
+; var(16)        : OPPONENT GUARD CHECKER (BAKUDAN PACHIKI + DRILL)
+; var(17)        : DRILL INPUT
+; var(18)        : HIT COUNTER (DRILL DM & SDM)
+; var(19)        : DRILL LAUGH FOLLOWUP
+; var(20)        : DRILL LIMITATIONS
+;===========================================================================================================================
+
+;--------------------------------------------------------------------------------------------------------------------------
+; Common data
+;--------------------------------------------------------------------------------------------------------------------------
+
+[Data]
+life = 1500
+power = 7000;jambu;3000
+attack = 100
+defence = 100
+fall.defence_up = 50
+liedown.time = 15
+airjuggle = 15
+sparkno = 2
+guard.sparkno = 40
+KO.echo = 0
+volume = 150
+IntPersistIndex = 33
+FloatPersistIndex = 40
+
+[Size]
+xscale = 1           
+yscale = 1           
+ground.back = 21     
+ground.front = 18
+air.back = 20        
+air.front = 18       
+height = 70       
+attack.dist = 160    
+head.pos = -5, -110   
+mid.pos = -8, -80    
+shadowoffset = -1
+
+[Velocity]
+walk.fwd = 2.6
+walk.back = -2.6
+run.fwd = 5.5
+run.back = -4.7, -4.3 
+jump.neu = 0,-9        
+jump.back = -3,-9  
+jump.fwd = 3,-9    
+runjump.fwd = 4,-9
+runjump.back = -4,-9
+
+[Movement]
+airjump.num = 1    
+airjump.height = 35  
+yaccel = .55      
+stand.friction = .824 
+crouch.friction = .819
