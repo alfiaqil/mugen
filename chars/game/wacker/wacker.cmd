@@ -848,7 +848,8 @@ trigger1 = ctrl
 [State -1, AI Guard]
 type = ChangeState
 value = 120
-triggerall = roundstate =2
+triggerall = AILevel && NumEnemy
+triggerall = AILevel * AILevel > random
 triggerall = InGuardDist
 trigger1 = ctrl
-trigger2 = random < 666
+trigger2 = 99 > random
