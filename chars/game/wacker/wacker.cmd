@@ -843,13 +843,70 @@ triggerall = command = "b"
 trigger1 = statetype = A
 trigger1 = ctrl
 
-;jambu;
-; AI Guard
+;---------------------------------------------------------------------------
+JAMBU AI
+;---------------------------------------------------------------------------
 [State -1, AI Guard]
 type = ChangeState
 value = 120
-triggerall = AILevel && NumEnemy
+triggerall = AILevel && NumEnemy && ctrl
+triggerall = AILevel * AILevel * AILevel * 2> random
+trigger1 = InGuardDist
+
+[State -1, AI Taunt]
+type = ChangeState
+value = 195
+triggerall = AILevel && NumEnemy && ctrl
+triggerall = p2movetype = H
+triggerall = p2bodydist x > 150 && statetype != A
+trigger1 = stateno != 195
+
+[State -1, AI Range]
+type = ChangeState
+value = 1000
+triggerall = AILevel && NumEnemy && ctrl
 triggerall = AILevel * AILevel > random
-triggerall = InGuardDist
-trigger1 = ctrl
-trigger2 = 99 > random
+triggerall = p2bodydist x > 200 && statetype != A
+trigger1 = stateno != 1000
+
+[State -1, AI Forward]
+type = ChangeState
+value = 100
+triggerall = AILevel && NumEnemy && ctrl
+triggerall = AILevel * AILevel > random
+triggerall = p2bodydist x > 150 && statetype != A
+trigger1 = stateno != 100
+
+[State -1, AI FollowUp]
+type = ChangeState
+value = 2500
+triggerall = AILevel && NumEnemy
+triggerall = AILevel * AILevel * AILevel * 2> random
+triggerall = p2bodydist x < 50 && statetype != A
+triggerall = movehit && animtime >= 0
+trigger1 = stateno != 2500
+
+[State -1, AI LightHit]
+type = ChangeState
+value = 200
+triggerall = AILevel && NumEnemy && ctrl
+triggerall = AILevel * AILevel > random
+triggerall = p2bodydist x < 50 && statetype != A
+trigger1 = stateno != 200
+
+[State -1, AI LowHit]
+type = ChangeState
+value = 430
+triggerall = AILevel && NumEnemy && ctrl
+triggerall = AILevel * AILevel > random
+triggerall = p2bodydist x < 50 && statetype != A
+trigger1 = stateno != 430
+;---------------------------------------------------------------------------
+;---------------------------------------------------------------------------
+
+;jambu;
+[State -1, Skill Guard]
+type = ChangeState
+value = 120
+triggerall = 99 > random
+trigger1 = InGuardDist

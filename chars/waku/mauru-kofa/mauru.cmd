@@ -821,5 +821,55 @@ triggerall = statetype = A
 trigger1 = ctrl
 
 
+;---------------------------------------------------------------------------
+JAMBU AI
+;---------------------------------------------------------------------------
+[State -1, AI Guard]
+type = ChangeState
+value = 120
+triggerall = AILevel && NumEnemy && ctrl
+triggerall = AILevel * AILevel * AILevel * 2> random
+trigger1 = InGuardDist
 
+[State -1, AI Taunt]
+type = ChangeState
+value = 4950
+triggerall = AILevel && NumEnemy && ctrl
+triggerall = p2bodydist x > 150 && statetype != A
+triggerall = p2movetype = H
+trigger1 = stateno != 4950
 
+[State -1, AI Forward]
+type = ChangeState
+value = 112
+triggerall = AILevel && NumEnemy && ctrl
+triggerall = AILevel * AILevel > random
+triggerall = p2bodydist x > 150 && statetype != A
+trigger1 = stateno != 112
+
+[State -1, AI FollowUp]
+type = ChangeState
+value = 1200
+triggerall = AILevel && NumEnemy
+triggerall = AILevel * AILevel * AILevel * 2> random
+triggerall = p2bodydist x < 50 && statetype != A
+triggerall = movehit && animtime >= 0
+trigger1 = stateno != 1200
+
+[State -1, AI LightHit]
+type = ChangeState
+value = 200
+triggerall = AILevel && NumEnemy && ctrl
+triggerall = AILevel * AILevel > random
+triggerall = p2bodydist x < 50 && statetype != A
+trigger1 = stateno != 200
+
+[State -1, AI LowHit]
+type = ChangeState
+value = 430
+triggerall = AILevel && NumEnemy && ctrl
+triggerall = AILevel * AILevel > random
+triggerall = p2bodydist x < 50 && statetype != A
+trigger1 = stateno != 430
+;---------------------------------------------------------------------------
+;---------------------------------------------------------------------------
