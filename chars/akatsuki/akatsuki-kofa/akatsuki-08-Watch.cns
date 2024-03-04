@@ -1,0 +1,48 @@
+
+
+[Statedef -3]
+
+
+[state -3]
+type = PlaySnd
+trigger1 = (stateno = [730,740]) && time = 1
+value = s0,3
+channel = 0
+
+[state -3]
+type = PlaySnd
+trigger1 = (stateno = 5201 || stateno = 5210) && time = 1
+value = s0,3
+channel = 0
+
+
+[Statedef -2]
+
+
+[State -2]
+type = AfterImage
+trigger1 = roundstate = 2
+trigger1 = time = 1
+trigger1 = var(1) = 1 && movetype != H
+trigger1 = stateno != 750
+trigger1 = stateno != [2000,2999]
+time = ifelse(stateno>=200,abs(animtime+1),-1)
+trans = add1
+timegap = 2
+framegap = 1
+length = 6
+palbright = 64,64,128
+palcontrast = 225,225,225
+palpostbright = 0,0,0
+paladd = 0,0,0
+palmul = 1,1,1
+
+[state -2]
+type = AfterImage
+trigger1 = ((var(1) = 0 && stateno < 200) || movetype = H) && Time <= 1
+trigger2 = stateno = 3000
+trigger2 = movetype = A
+trigger2 = time = 1
+time = 0
+ignorehitpause = 1
+

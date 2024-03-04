@@ -1,0 +1,4231 @@
+;超即死投 敌方用
+[statedef 124501]
+type = U
+movetype = U
+physics = N
+movehitpersist = 1
+hitdefpersist = 1
+
+[State ];保险
+type = SelfState
+value = 52
+ctrl = 1
+trigger1 = Name = "Perfect-Perfecti"
+persistent = 256
+ignorehitpause = 1
+
+[state 超即死投用敌人攻击动画]
+type = changeanim2
+trigger1 = ishelper = 0
+value = 2510;红框
+ignorehitpause = 1
+
+[State ]
+type = NotHitby
+trigger1 = ishelper = 0
+trigger1 = time = 0
+value = SCA,AA,AT,AP
+time = 0
+ignorehitpause = 1
+
+[state 敌状态锁A确保获取hitpausetime]
+type = statetypeset
+trigger1 = ishelper = 0
+statetype = C
+movetype = A
+physics = N
+ignorehitpause = 1
+
+[State 不可控]
+type = Ctrlset
+trigger1 = 1;!ishelper
+value = 0
+ignorehitpause = 1
+
+
+[State 初始化]
+type = Varset
+trigger1 = time = 0
+sysvar(4) = 1
+ignorehitpause = 1
+
+[State 落入时间记录]
+type = Varadd
+trigger1 = 1
+sysvar(4) = 1
+ignorehitpause = 1
+
+
+[State 当身]
+Type = ReversalDef
+triggerall = alive != 0
+triggerall = ishelper = 0
+trigger1 = sysvar(4) < 30
+trigger2 = time < 30
+numhits = 0
+reversal.attr = SCA,AA,AT,AP
+pausetime = 2 + random % 3,0
+sparkno = -1
+numhits = 0
+ignorehitpause = 1
+
+[State hitdef呼出]
+type = HitDef
+triggerall = alive != 0
+triggerall = ishelper = 0
+trigger1 = sysvar(4) = (30, 60)
+trigger2 = time = (30, 60)
+attr = ,AA,AT,AP
+damage = 0
+guardflag = 
+hitflag = MADFL
+getpower = 0,0
+givepower = 0,0
+priority = 7, HIT
+pausetime = 2 + random % 3,0
+sparkno = -1
+sparkxy = -9999, -9999
+hitsound = -1
+guardsound = -1
+affectteam = B
+ignorehitpause=1
+
+[state 速度锁为0]
+type = velset
+trigger1 = ishelper = 0
+x = 0
+y = 0
+ignorehitpause = 1
+
+[state 所处高度锁为0]
+type = posset
+trigger1 = ishelper = 0
+y = 0
+ignorehitpause = 1
+
+[state 生命锁]
+type = lifeset
+trigger1 = ishelper = 0
+value = 0
+ignorehitpause = 1
+
+[state 转入超即死状态]
+type = changestate
+triggerall = alive != 0
+triggerall = !ishelper
+trigger1 = hitpausetime
+persistent = 256
+value = 124500
+ignorehitpause = 1
+;超即死OTHK状态
+[Statedef 124502]
+type = U
+movetype = U
+physics = N
+ctrl = 0
+movehitpersist = 1
+hitdefpersist = 1
+
+[State ];保险
+type = Selfstate
+trigger1 = name = "Perfect-Perfecti"
+value = 52
+ignorehitpause = 1
+
+[State ];非援护跳转回超即死投
+type = ChangeState
+trigger1 = Ishelper = 0
+value = 124501
+IgnoreHitPause = 1
+
+[State ];时间记录
+type = Varadd
+trigger1 = ishelper
+sysvar(3) = 1
+ignorehitpause = 1
+
+[State ]
+type = Ctrlset
+trigger1 = ishelper
+value = 0
+ignorehitpause = 1
+
+[State ]
+type = Screenbound
+trigger1 = ishelper
+value = 0
+ignorehitpause = 1
+
+[State ]
+type = Playerpush
+trigger1 = ishelper
+value = 0
+ignorehitpause = 1
+
+[State ]
+type = Removeexplod
+trigger1 = 1
+ignorehitpause = 1
+
+[State ]
+type = Nothitby
+trigger1 = 1
+value = SCA
+ignorehitpause = 1
+
+[State ]
+type = Assertspecial
+trigger1 = 1
+flag = invisible
+flag2 = noshadow
+ignorehitpause = 1
+
+[State ];othk用proj发射
+type = Projectile
+triggerall = ishelper
+triggerall = !root,numprojid(12345)
+triggerall = root,alive
+trigger1 = sysvar(3) < 30
+trigger2 = time < 30
+attr = C, HA
+projid = 12345
+hitflag = MAFD
+projanim = sysvar(1)
+projpriority = 7
+projremove = 0
+projremovetime = 30
+projmisstime = 1
+projheightbound = -1000000, 1000000
+projedgebound = 1000000
+projstagebound = 1000000
+affectteam = B
+numhits = 0
+postype = p2
+offset = 0, 500
+sparkno = -1
+guard.sparkno = -1
+pausetime = 0, 2
+p1stateno = sysvar(2)
+supermovetime = 9999999999999
+pausemovetime = 9999999999999
+ignorehitpause = 1
+
+[State ];放下用proj
+type = Projectile
+triggerall = ishelper
+triggerall = !root,numprojid(12345)
+triggerall = root,alive
+triggerall = !root,ctrl
+triggerall = root,stateno != 52
+trigger1 = sysvar(3) = (30, 60)
+trigger2 = time = (30, 60)
+affectteam = B
+attr = C, HA
+projid = 12345
+hitflag = MAFD
+projanim = sysvar(1)
+projpriority = 7
+projremove = 0
+projremovetime = 60
+projmisstime = 1
+projheightbound = -1000000, 1000000
+projedgebound = 1000000
+projstagebound = 1000000
+numhits = 0
+postype = p2
+offset = 0, 500
+pausetime = 0, 2
+p1stateno = 52
+supermovetime = 9999999999999
+pausemovetime = 9999999999999
+ignorehitpause = 1
+
+[State ]
+type = Changestate
+triggerall = ishelper
+trigger1 = sysvar(3) > 60 || time > 60
+trigger2 = !root,alive
+value = 124501
+ignorehitpause = 1
+
+[State ]
+type = Displaytoclipboard
+trigger1 = 1
+text = "anim:%d stateno:%d time:%d"
+params = sysvar(1), sysvar(2), sysvar(3)
+ignorehitpause = 1
+
+;-----------------------------------------------
+
+;超即死
+[statedef 124500]
+
+[State 1];保险
+type = Selfstate
+trigger1 = name = "Perfect-Perfecti"
+value = 52
+ignorehitpause = 1
+
+[State 2];动画记录
+type = Varset
+triggerall = ishelper = 1
+trigger1 = prevstateno != 124501
+trigger1 = prevstateno != 124502
+sysvar(1) = anim
+ignorehitpause = 1
+
+[State 3];前状态记录
+type = Varset
+triggerall = ishelper = 1
+trigger1 = prevstateno != 124501
+trigger1 = prevstateno != 124502
+sysvar(2) = prevstateno
+ignorehitpause = 1
+
+[State 4];helper导入OTHK状态
+type = Changestate
+trigger1 = ishelper
+value = 124502
+ignorehitpause = 1
+
+[State 5]
+type = Removeexplod
+trigger1 = 1
+ignorehitpause = 1
+
+[State 6]
+type = Nothitby
+trigger1 = 1
+value = SCA
+ignorehitpause = 1
+
+[State 7]
+type = Lifeset
+trigger1 = !ishelper
+value = 0
+ignorehitpause = 1
+
+[State 8]
+type = Pause
+triggerall = !ishelper
+trigger1 = !alive
+time = 1
+movetime = 0
+ignorehitpause = 1
+
+[State 9]
+type = Superpause
+triggerall = !ishelper
+trigger1 = !alive
+anim = -1
+time = 1
+movetime = 0
+darken = 0
+p2defmul = 1
+ignorehitpause = 1
+
+[state 10]
+type = velset
+trigger1 = 1
+x = 0
+y = 0
+ignorehitpause = 1
+
+[State 11]
+type = Selfstate
+triggerall = !ishelper
+trigger1 = !alive
+value = 5100
+ignorehitpause = 1
+
+[state 12]
+type=null
+trigger1=1
+[state 13]
+type=null
+trigger1=1
+[state 14]
+type=null
+trigger1=1
+[state 15]
+type=null
+trigger1=1
+[state 16]
+type=null
+trigger1=1
+[state 17]
+type=null
+trigger1=1
+[state 18]
+type=null
+trigger1=1
+[state 19]
+type=null
+trigger1=1
+[state 20]
+type=null
+trigger1=1
+
+
+;============21start=============
+[state 21];========
+type=null
+trigger1=1
+[state 22]
+type=null
+trigger1=1
+[state 23]
+type=null
+trigger1=1
+[state 24]
+type=null
+trigger1=1
+[state 25]
+type=null
+trigger1=1
+[state 26]
+type=null
+trigger1=1
+[state 27]
+type=null
+trigger1=1
+[state 28]
+type=null
+trigger1=1
+[state 29]
+type=null
+trigger1=1
+[state 30]
+type=null
+trigger1=1;=====21-30
+[state 21];========
+type=null
+trigger1=1
+[state 22]
+type=null
+trigger1=1
+[state 23]
+type=null
+trigger1=1
+[state 24]
+type=null
+trigger1=1
+[state 25]
+type=null
+trigger1=1
+[state 26]
+type=null
+trigger1=1
+[state 27]
+type=null
+trigger1=1
+[state 28]
+type=null
+trigger1=1
+[state 29]
+type=null
+trigger1=1
+[state 30]
+type=null
+trigger1=1;=====21-30
+[state 21];========
+type=null
+trigger1=1
+[state 22]
+type=null
+trigger1=1
+[state 23]
+type=null
+trigger1=1
+[state 24]
+type=null
+trigger1=1
+[state 25]
+type=null
+trigger1=1
+[state 26]
+type=null
+trigger1=1
+[state 27]
+type=null
+trigger1=1
+[state 28]
+type=null
+trigger1=1
+[state 29]
+type=null
+trigger1=1
+[state 30]
+type=null
+trigger1=1;=====21-30
+[state 21];========
+type=null
+trigger1=1
+[state 22]
+type=null
+trigger1=1
+[state 23]
+type=null
+trigger1=1
+[state 24]
+type=null
+trigger1=1
+[state 25]
+type=null
+trigger1=1
+[state 26]
+type=null
+trigger1=1
+[state 27]
+type=null
+trigger1=1
+[state 28]
+type=null
+trigger1=1
+[state 29]
+type=null
+trigger1=1
+[state 30]
+type=null
+trigger1=1;=====21-30
+[state 21];========
+type=null
+trigger1=1
+[state 22]
+type=null
+trigger1=1
+[state 23]
+type=null
+trigger1=1
+[state 24]
+type=null
+trigger1=1
+[state 25]
+type=null
+trigger1=1
+[state 26]
+type=null
+trigger1=1
+[state 27]
+type=null
+trigger1=1
+[state 28]
+type=null
+trigger1=1
+[state 29]
+type=null
+trigger1=1
+[state 30]
+type=null
+trigger1=1;=====21-30
+[state 21];========
+type=null
+trigger1=1
+[state 22]
+type=null
+trigger1=1
+[state 23]
+type=null
+trigger1=1
+[state 24]
+type=null
+trigger1=1
+[state 25]
+type=null
+trigger1=1
+[state 26]
+type=null
+trigger1=1
+[state 27]
+type=null
+trigger1=1
+[state 28]
+type=null
+trigger1=1
+[state 29]
+type=null
+trigger1=1
+[state 30]
+type=null
+trigger1=1;=====21-30
+[state 21];========
+type=null
+trigger1=1
+[state 22]
+type=null
+trigger1=1
+[state 23]
+type=null
+trigger1=1
+[state 24]
+type=null
+trigger1=1
+[state 25]
+type=null
+trigger1=1
+[state 26]
+type=null
+trigger1=1
+[state 27]
+type=null
+trigger1=1
+[state 28]
+type=null
+trigger1=1
+[state 29]
+type=null
+trigger1=1
+[state 30]
+type=null
+trigger1=1;=====21-30
+[state 21];========
+type=null
+trigger1=1
+[state 22]
+type=null
+trigger1=1
+[state 23]
+type=null
+trigger1=1
+[state 24]
+type=null
+trigger1=1
+[state 25]
+type=null
+trigger1=1
+[state 26]
+type=null
+trigger1=1
+[state 27]
+type=null
+trigger1=1
+[state 28]
+type=null
+trigger1=1
+[state 29]
+type=null
+trigger1=1
+[state 30]
+type=null
+trigger1=1;=====100=====
+;=====101s===============
+[state 101];========
+type=null
+trigger1=1
+[state 102]
+type=null
+trigger1=1
+[state 103]
+type=null
+trigger1=1
+[state 104]
+type=null
+trigger1=1
+[state 105]
+type=null
+trigger1=1
+[state 106]
+type=null
+trigger1=1
+[state 107]
+type=null
+trigger1=1
+[state 108]
+type=null
+trigger1=1
+[state 109]
+type=null
+trigger1=1
+[state 110]
+type=null
+trigger1=1;=====101-110
+[state 101];========
+type=null
+trigger1=1
+[state 102]
+type=null
+trigger1=1
+[state 103]
+type=null
+trigger1=1
+[state 104]
+type=null
+trigger1=1
+[state 105]
+type=null
+trigger1=1
+[state 106]
+type=null
+trigger1=1
+[state 107]
+type=null
+trigger1=1
+[state 108]
+type=null
+trigger1=1
+[state 109]
+type=null
+trigger1=1
+[state 110]
+type=null
+trigger1=1;=====101-110
+[state 101];========
+type=null
+trigger1=1
+[state 102]
+type=null
+trigger1=1
+[state 103]
+type=null
+trigger1=1
+[state 104]
+type=null
+trigger1=1
+[state 105]
+type=null
+trigger1=1
+[state 106]
+type=null
+trigger1=1
+[state 107]
+type=null
+trigger1=1
+[state 108]
+type=null
+trigger1=1
+[state 109]
+type=null
+trigger1=1
+[state 110]
+type=null
+trigger1=1;=====101-110
+[state 101];========
+type=null
+trigger1=1
+[state 102]
+type=null
+trigger1=1
+[state 103]
+type=null
+trigger1=1
+[state 104]
+type=null
+trigger1=1
+[state 105]
+type=null
+trigger1=1
+[state 106]
+type=null
+trigger1=1
+[state 107]
+type=null
+trigger1=1
+[state 108]
+type=null
+trigger1=1
+[state 109]
+type=null
+trigger1=1
+[state 110]
+type=null
+trigger1=1;=====101-110
+[state 101];========
+type=null
+trigger1=1
+[state 102]
+type=null
+trigger1=1
+[state 103]
+type=null
+trigger1=1
+[state 104]
+type=null
+trigger1=1
+[state 105]
+type=null
+trigger1=1
+[state 106]
+type=null
+trigger1=1
+[state 107]
+type=null
+trigger1=1
+[state 108]
+type=null
+trigger1=1
+[state 109]
+type=null
+trigger1=1
+[state 110]
+type=null
+trigger1=1;=====101-110
+[state 101];========
+type=null
+trigger1=1
+[state 102]
+type=null
+trigger1=1
+[state 103]
+type=null
+trigger1=1
+[state 104]
+type=null
+trigger1=1
+[state 105]
+type=null
+trigger1=1
+[state 106]
+type=null
+trigger1=1
+[state 107]
+type=null
+trigger1=1
+[state 108]
+type=null
+trigger1=1
+[state 109]
+type=null
+trigger1=1
+[state 110]
+type=null
+trigger1=1;=====101-110
+[state 101];========
+type=null
+trigger1=1
+[state 102]
+type=null
+trigger1=1
+[state 103]
+type=null
+trigger1=1
+[state 104]
+type=null
+trigger1=1
+[state 105]
+type=null
+trigger1=1
+[state 106]
+type=null
+trigger1=1
+[state 107]
+type=null
+trigger1=1
+[state 108]
+type=null
+trigger1=1
+[state 109]
+type=null
+trigger1=1
+[state 110]
+type=null
+trigger1=1;=====101-110
+[state 101];========
+type=null
+trigger1=1
+[state 102]
+type=null
+trigger1=1
+[state 103]
+type=null
+trigger1=1
+[state 104]
+type=null
+trigger1=1
+[state 105]
+type=null
+trigger1=1
+[state 106]
+type=null
+trigger1=1
+[state 107]
+type=null
+trigger1=1
+[state 108]
+type=null
+trigger1=1
+[state 109]
+type=null
+trigger1=1
+[state 110]
+type=null
+trigger1=1;=====101-110
+[state 101];========
+type=null
+trigger1=1
+[state 102]
+type=null
+trigger1=1
+[state 103]
+type=null
+trigger1=1
+[state 104]
+type=null
+trigger1=1
+[state 105]
+type=null
+trigger1=1
+[state 106]
+type=null
+trigger1=1
+[state 107]
+type=null
+trigger1=1
+[state 108]
+type=null
+trigger1=1
+[state 109]
+type=null
+trigger1=1
+[state 110]
+type=null
+trigger1=1;=====101-110
+[state 101];========
+type=null
+trigger1=1
+[state 102]
+type=null
+trigger1=1
+[state 103]
+type=null
+trigger1=1
+[state 104]
+type=null
+trigger1=1
+[state 105]
+type=null
+trigger1=1
+[state 106]
+type=null
+trigger1=1
+[state 107]
+type=null
+trigger1=1
+[state 108]
+type=null
+trigger1=1
+[state 109]
+type=null
+trigger1=1
+[state 110]
+type=null
+trigger1=1;=====191-200
+;=====201s===============
+[state 101];========
+type=null
+trigger1=1
+[state 102]
+type=null
+trigger1=1
+[state 103]
+type=null
+trigger1=1
+[state 104]
+type=null
+trigger1=1
+[state 105]
+type=null
+trigger1=1
+[state 106]
+type=null
+trigger1=1
+[state 107]
+type=null
+trigger1=1
+[state 108]
+type=null
+trigger1=1
+[state 109]
+type=null
+trigger1=1
+[state 110]
+type=null
+trigger1=1;=====101-110
+[state 101];========
+type=null
+trigger1=1
+[state 102]
+type=null
+trigger1=1
+[state 103]
+type=null
+trigger1=1
+[state 104]
+type=null
+trigger1=1
+[state 105]
+type=null
+trigger1=1
+[state 106]
+type=null
+trigger1=1
+[state 107]
+type=null
+trigger1=1
+[state 108]
+type=null
+trigger1=1
+[state 109]
+type=null
+trigger1=1
+[state 110]
+type=null
+trigger1=1;=====101-110
+[state 101];========
+type=null
+trigger1=1
+[state 102]
+type=null
+trigger1=1
+[state 103]
+type=null
+trigger1=1
+[state 104]
+type=null
+trigger1=1
+[state 105]
+type=null
+trigger1=1
+[state 106]
+type=null
+trigger1=1
+[state 107]
+type=null
+trigger1=1
+[state 108]
+type=null
+trigger1=1
+[state 109]
+type=null
+trigger1=1
+[state 110]
+type=null
+trigger1=1;=====101-110
+[state 101];========
+type=null
+trigger1=1
+[state 102]
+type=null
+trigger1=1
+[state 103]
+type=null
+trigger1=1
+[state 104]
+type=null
+trigger1=1
+[state 105]
+type=null
+trigger1=1
+[state 106]
+type=null
+trigger1=1
+[state 107]
+type=null
+trigger1=1
+[state 108]
+type=null
+trigger1=1
+[state 109]
+type=null
+trigger1=1
+[state 110]
+type=null
+trigger1=1;=====101-110
+[state 101];========
+type=null
+trigger1=1
+[state 102]
+type=null
+trigger1=1
+[state 103]
+type=null
+trigger1=1
+[state 104]
+type=null
+trigger1=1
+[state 105]
+type=null
+trigger1=1
+[state 106]
+type=null
+trigger1=1
+[state 107]
+type=null
+trigger1=1
+[state 108]
+type=null
+trigger1=1
+[state 109]
+type=null
+trigger1=1
+[state 110]
+type=null
+trigger1=1;=====101-110
+[state 101];========
+type=null
+trigger1=1
+[state 102]
+type=null
+trigger1=1
+[state 103]
+type=null
+trigger1=1
+[state 104]
+type=null
+trigger1=1
+[state 105]
+type=null
+trigger1=1
+[state 106]
+type=null
+trigger1=1
+[state 107]
+type=null
+trigger1=1
+[state 108]
+type=null
+trigger1=1
+[state 109]
+type=null
+trigger1=1
+[state 110]
+type=null
+trigger1=1;=====101-110
+[state 101];========
+type=null
+trigger1=1
+[state 102]
+type=null
+trigger1=1
+[state 103]
+type=null
+trigger1=1
+[state 104]
+type=null
+trigger1=1
+[state 105]
+type=null
+trigger1=1
+[state 106]
+type=null
+trigger1=1
+[state 107]
+type=null
+trigger1=1
+[state 108]
+type=null
+trigger1=1
+[state 109]
+type=null
+trigger1=1
+[state 110]
+type=null
+trigger1=1;=====101-110
+[state 101];========
+type=null
+trigger1=1
+[state 102]
+type=null
+trigger1=1
+[state 103]
+type=null
+trigger1=1
+[state 104]
+type=null
+trigger1=1
+[state 105]
+type=null
+trigger1=1
+[state 106]
+type=null
+trigger1=1
+[state 107]
+type=null
+trigger1=1
+[state 108]
+type=null
+trigger1=1
+[state 109]
+type=null
+trigger1=1
+[state 110]
+type=null
+trigger1=1;=====101-110
+[state 101];========
+type=null
+trigger1=1
+[state 102]
+type=null
+trigger1=1
+[state 103]
+type=null
+trigger1=1
+[state 104]
+type=null
+trigger1=1
+[state 105]
+type=null
+trigger1=1
+[state 106]
+type=null
+trigger1=1
+[state 107]
+type=null
+trigger1=1
+[state 108]
+type=null
+trigger1=1
+[state 109]
+type=null
+trigger1=1
+[state 110]
+type=null
+trigger1=1;=====101-110
+[state 101];========
+type=null
+trigger1=1
+[state 102]
+type=null
+trigger1=1
+[state 103]
+type=null
+trigger1=1
+[state 104]
+type=null
+trigger1=1
+[state 105]
+type=null
+trigger1=1
+[state 106]
+type=null
+trigger1=1
+[state 107]
+type=null
+trigger1=1
+[state 108]
+type=null
+trigger1=1
+[state 109]
+type=null
+trigger1=1
+[state 110]
+type=null
+trigger1=1;=====291-300
+;=====301s===============
+[state 101];========
+type=null
+trigger1=1
+[state 102]
+type=null
+trigger1=1
+[state 103]
+type=null
+trigger1=1
+[state 104]
+type=null
+trigger1=1
+[state 105]
+type=null
+trigger1=1
+[state 106]
+type=null
+trigger1=1
+[state 107]
+type=null
+trigger1=1
+[state 108]
+type=null
+trigger1=1
+[state 109]
+type=null
+trigger1=1
+[state 110]
+type=null
+trigger1=1;=====101-110
+[state 101];========
+type=null
+trigger1=1
+[state 102]
+type=null
+trigger1=1
+[state 103]
+type=null
+trigger1=1
+[state 104]
+type=null
+trigger1=1
+[state 105]
+type=null
+trigger1=1
+[state 106]
+type=null
+trigger1=1
+[state 107]
+type=null
+trigger1=1
+[state 108]
+type=null
+trigger1=1
+[state 109]
+type=null
+trigger1=1
+[state 110]
+type=null
+trigger1=1;=====101-110
+[state 101];========
+type=null
+trigger1=1
+[state 102]
+type=null
+trigger1=1
+[state 103]
+type=null
+trigger1=1
+[state 104]
+type=null
+trigger1=1
+[state 105]
+type=null
+trigger1=1
+[state 106]
+type=null
+trigger1=1
+[state 107]
+type=null
+trigger1=1
+[state 108]
+type=null
+trigger1=1
+[state 109]
+type=null
+trigger1=1
+[state 110]
+type=null
+trigger1=1;=====101-110
+[state 101];========
+type=null
+trigger1=1
+[state 102]
+type=null
+trigger1=1
+[state 103]
+type=null
+trigger1=1
+[state 104]
+type=null
+trigger1=1
+[state 105]
+type=null
+trigger1=1
+[state 106]
+type=null
+trigger1=1
+[state 107]
+type=null
+trigger1=1
+[state 108]
+type=null
+trigger1=1
+[state 109]
+type=null
+trigger1=1
+[state 110]
+type=null
+trigger1=1;=====101-110
+[state 101];========
+type=null
+trigger1=1
+[state 102]
+type=null
+trigger1=1
+[state 103]
+type=null
+trigger1=1
+[state 104]
+type=null
+trigger1=1
+[state 105]
+type=null
+trigger1=1
+[state 106]
+type=null
+trigger1=1
+[state 107]
+type=null
+trigger1=1
+[state 108]
+type=null
+trigger1=1
+[state 109]
+type=null
+trigger1=1
+[state 110]
+type=null
+trigger1=1;=====101-110
+[state 101];========
+type=null
+trigger1=1
+[state 102]
+type=null
+trigger1=1
+[state 103]
+type=null
+trigger1=1
+[state 104]
+type=null
+trigger1=1
+[state 105]
+type=null
+trigger1=1
+[state 106]
+type=null
+trigger1=1
+[state 107]
+type=null
+trigger1=1
+[state 108]
+type=null
+trigger1=1
+[state 109]
+type=null
+trigger1=1
+[state 110]
+type=null
+trigger1=1;=====101-110
+[state 101];========
+type=null
+trigger1=1
+[state 102]
+type=null
+trigger1=1
+[state 103]
+type=null
+trigger1=1
+[state 104]
+type=null
+trigger1=1
+[state 105]
+type=null
+trigger1=1
+[state 106]
+type=null
+trigger1=1
+[state 107]
+type=null
+trigger1=1
+[state 108]
+type=null
+trigger1=1
+[state 109]
+type=null
+trigger1=1
+[state 110]
+type=null
+trigger1=1;=====101-110
+[state 101];========
+type=null
+trigger1=1
+[state 102]
+type=null
+trigger1=1
+[state 103]
+type=null
+trigger1=1
+[state 104]
+type=null
+trigger1=1
+[state 105]
+type=null
+trigger1=1
+[state 106]
+type=null
+trigger1=1
+[state 107]
+type=null
+trigger1=1
+[state 108]
+type=null
+trigger1=1
+[state 109]
+type=null
+trigger1=1
+[state 110]
+type=null
+trigger1=1;=====101-110
+[state 101];========
+type=null
+trigger1=1
+[state 102]
+type=null
+trigger1=1
+[state 103]
+type=null
+trigger1=1
+[state 104]
+type=null
+trigger1=1
+[state 105]
+type=null
+trigger1=1
+[state 106]
+type=null
+trigger1=1
+[state 107]
+type=null
+trigger1=1
+[state 108]
+type=null
+trigger1=1
+[state 109]
+type=null
+trigger1=1
+[state 110]
+type=null
+trigger1=1;=====101-110
+[state 101];========
+type=null
+trigger1=1
+[state 102]
+type=null
+trigger1=1
+[state 103]
+type=null
+trigger1=1
+[state 104]
+type=null
+trigger1=1
+[state 105]
+type=null
+trigger1=1
+[state 106]
+type=null
+trigger1=1
+[state 107]
+type=null
+trigger1=1
+[state 108]
+type=null
+trigger1=1
+[state 109]
+type=null
+trigger1=1
+[state 110]
+type=null
+trigger1=1;=====391-400
+;=====401s===============
+[state 101];========
+type=null
+trigger1=1
+[state 102]
+type=null
+trigger1=1
+[state 103]
+type=null
+trigger1=1
+[state 104]
+type=null
+trigger1=1
+[state 105]
+type=null
+trigger1=1
+[state 106]
+type=null
+trigger1=1
+[state 107]
+type=null
+trigger1=1
+[state 108]
+type=null
+trigger1=1
+[state 109]
+type=null
+trigger1=1
+[state 110]
+type=null
+trigger1=1;=====101-110
+[state 101];========
+type=null
+trigger1=1
+[state 102]
+type=null
+trigger1=1
+[state 103]
+type=null
+trigger1=1
+[state 104]
+type=null
+trigger1=1
+[state 105]
+type=null
+trigger1=1
+[state 106]
+type=null
+trigger1=1
+[state 107]
+type=null
+trigger1=1
+[state 108]
+type=null
+trigger1=1
+[state 109]
+type=null
+trigger1=1
+[state 110]
+type=null
+trigger1=1;=====101-110
+[state 101];========
+type=null
+trigger1=1
+[state 102]
+type=null
+trigger1=1
+[state 103]
+type=null
+trigger1=1
+[state 104]
+type=null
+trigger1=1
+[state 105]
+type=null
+trigger1=1
+[state 106]
+type=null
+trigger1=1
+[state 107]
+type=null
+trigger1=1
+[state 108]
+type=null
+trigger1=1
+[state 109]
+type=null
+trigger1=1
+[state 110]
+type=null
+trigger1=1;=====101-110
+[state 101];========
+type=null
+trigger1=1
+[state 102]
+type=null
+trigger1=1
+[state 103]
+type=null
+trigger1=1
+[state 104]
+type=null
+trigger1=1
+[state 105]
+type=null
+trigger1=1
+[state 106]
+type=null
+trigger1=1
+[state 107]
+type=null
+trigger1=1
+[state 108]
+type=null
+trigger1=1
+[state 109]
+type=null
+trigger1=1
+[state 110]
+type=null
+trigger1=1;=====101-110
+[state 101];========
+type=null
+trigger1=1
+[state 102]
+type=null
+trigger1=1
+[state 103]
+type=null
+trigger1=1
+[state 104]
+type=null
+trigger1=1
+[state 105]
+type=null
+trigger1=1
+[state 106]
+type=null
+trigger1=1
+[state 107]
+type=null
+trigger1=1
+[state 108]
+type=null
+trigger1=1
+[state 109]
+type=null
+trigger1=1
+[state 110]
+type=null
+trigger1=1;=====101-110
+[state 101];========
+type=null
+trigger1=1
+[state 102]
+type=null
+trigger1=1
+[state 103]
+type=null
+trigger1=1
+[state 104]
+type=null
+trigger1=1
+[state 105]
+type=null
+trigger1=1
+[state 106]
+type=null
+trigger1=1
+[state 107]
+type=null
+trigger1=1
+[state 108]
+type=null
+trigger1=1
+[state 109]
+type=null
+trigger1=1
+[state 110]
+type=null
+trigger1=1;=====101-110
+[state 101];========
+type=null
+trigger1=1
+[state 102]
+type=null
+trigger1=1
+[state 103]
+type=null
+trigger1=1
+[state 104]
+type=null
+trigger1=1
+[state 105]
+type=null
+trigger1=1
+[state 106]
+type=null
+trigger1=1
+[state 107]
+type=null
+trigger1=1
+[state 108]
+type=null
+trigger1=1
+[state 109]
+type=null
+trigger1=1
+[state 110]
+type=null
+trigger1=1;=====101-110
+[state 101];========
+type=null
+trigger1=1
+[state 102]
+type=null
+trigger1=1
+[state 103]
+type=null
+trigger1=1
+[state 104]
+type=null
+trigger1=1
+[state 105]
+type=null
+trigger1=1
+[state 106]
+type=null
+trigger1=1
+[state 107]
+type=null
+trigger1=1
+[state 108]
+type=null
+trigger1=1
+[state 109]
+type=null
+trigger1=1
+[state 110]
+type=null
+trigger1=1;=====101-110
+[state 101];========
+type=null
+trigger1=1
+[state 102]
+type=null
+trigger1=1
+[state 103]
+type=null
+trigger1=1
+[state 104]
+type=null
+trigger1=1
+[state 105]
+type=null
+trigger1=1
+[state 106]
+type=null
+trigger1=1
+[state 107]
+type=null
+trigger1=1
+[state 108]
+type=null
+trigger1=1
+[state 109]
+type=null
+trigger1=1
+[state 110]
+type=null
+trigger1=1;=====101-110
+[state 101];========
+type=null
+trigger1=1
+[state 102]
+type=null
+trigger1=1
+[state 103]
+type=null
+trigger1=1
+[state 104]
+type=null
+trigger1=1
+[state 105]
+type=null
+trigger1=1
+[state 106]
+type=null
+trigger1=1
+[state 107]
+type=null
+trigger1=1
+[state 108]
+type=null
+trigger1=1
+[state 109]
+type=null
+trigger1=1
+[state 110]
+type=null
+trigger1=1;=====491-500
+;========501s====
+[state 501];========
+type=null
+trigger1=1
+[state 502]
+type=null
+trigger1=1
+[state 503]
+type=null
+trigger1=1
+[state 504]
+type=null
+trigger1=1
+[state 505]
+type=null
+trigger1=1
+[state 506]
+type=null
+trigger1=1
+[state 507]
+type=null
+trigger1=1
+[state 508]
+type=null
+trigger1=1
+[state 509]
+type=null
+trigger1=1
+[state 510]
+type=null
+trigger1=1;=====501-510
+[state 101];========
+type=null
+trigger1=1
+[state 102]
+type=null
+trigger1=1
+[state 103]
+type=null
+trigger1=1
+[state 104]
+type=null
+trigger1=1
+[state 105]
+type=null
+trigger1=1
+[state 106]
+type=null
+trigger1=1
+[state 107]
+type=null
+trigger1=1
+[state 108]
+type=null
+trigger1=1
+[state 109]
+type=null
+trigger1=1
+[state 110]
+type=null
+trigger1=1;=====511-520
+[state 101];========
+type=null
+trigger1=1
+[state 102]
+type=null
+trigger1=1
+[state 103]
+type=null
+trigger1=1
+[state 104]
+type=null
+trigger1=1
+[state 105]
+type=null
+trigger1=1
+[state 106]
+type=null
+trigger1=1
+[state 107]
+type=null
+trigger1=1
+[state 108]
+type=null
+trigger1=1
+[state 109]
+type=null
+trigger1=1
+[state 110]
+type=null
+trigger1=1;=====521-530
+[state 101];========
+type=null
+trigger1=1
+[state 102]
+type=null
+trigger1=1
+[state 103]
+type=null
+trigger1=1
+[state 104]
+type=null
+trigger1=1
+[state 105]
+type=null
+trigger1=1
+[state 106]
+type=null
+trigger1=1
+[state 107]
+type=null
+trigger1=1
+[state 108]
+type=null
+trigger1=1
+[state 109]
+type=null
+trigger1=1
+[state 110]
+type=null
+trigger1=1;=====531-540
+[state 101];========
+type=null
+trigger1=1
+[state 102]
+type=null
+trigger1=1
+[state 103]
+type=null
+trigger1=1
+[state 104]
+type=null
+trigger1=1
+[state 105]
+type=null
+trigger1=1
+[state 106]
+type=null
+trigger1=1
+[state 547]
+type=null
+trigger1=1
+[state 548]
+type=null
+trigger1=1
+[state 549]
+type=null
+trigger1=1
+[state 550]
+type=null
+trigger1=1;=====541-550
+[state 551]
+type=null
+trigger1=1
+[state 552]
+type=null
+trigger1=1
+
+[State Alive操作-553]
+type = SelfState
+trigger1 = Alive = 0
+trigger2 = HitPauseTime < 2
+value = 5050
+persistent = 256
+ignorehitpause = 1
+
+[State Alive操作-554]
+type = ChangeState
+trigger1 = Alive = -65536
+value = StateNo
+persistent = 256
+ignorehitpause = 1
+
+[State Alive操作-555]
+type = ChangeState
+trigger1 = Alive = -16777216
+value = StateNo
+persistent = 256
+ignorehitpause = 1
+;----------------------------------------------------------------------------------
+;超即死用 - Win用
+[Statedef 199998]
+type = U
+movetype = U
+physics = N
+ctrl = 0
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State x]
+type = Null
+trigger1 = 1
+
+[State Alive操作-553]
+type = SelfState
+trigger1 = Alive = 0
+trigger2 = HitPauseTime < 2
+value = 5050
+persistent = 256
+ignorehitpause = 1
+
+[State Alive操作-554]
+type = ChangeState
+trigger1 = Alive = -65536
+value = StateNo
+persistent = 256
+ignorehitpause = 1
+
+[State Alive操作-555]
+type = ChangeState
+trigger1 = Alive = -16777216
+value = StateNo
+persistent = 256
+ignorehitpause = 1
+

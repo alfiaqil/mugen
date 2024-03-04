@@ -1,0 +1,2550 @@
+[Statedef 1035]
+type    = A                      ;状态: S-站立, C-蹲, A-空中, L-倒地
+movetype= I                      ;招式种类: A-攻击, I-非攻击, H-受击
+physics = N                      ;物理: S-站立, C-蹲, A-空中
+juggle  = 1                      ;增加的juggle点数
+anim 	= 1035 
+sprpriority = 3
+ 
+[State 1035, ]
+type = AssertSpecial
+trigger1 = 1
+flag = NoShadow
+ignorehitpause = 1
+[State 1035,]
+type = Trans
+trigger1 = time >= 0
+trans = add
+[State 1035, ]
+type = NotHitBy
+trigger1 = Time >= 0
+value = SCA
+
+[State 1035, ]
+type = Velset
+trigger1 = Time = [1,16]
+x = 1
+y = -1+random%3
+[State 1035, ]
+type = VelSet
+trigger1 = Time = 16
+x = 0
+y = 0
+
+[State 0, ReversalDef]
+type = ReversalDef
+trigger1 = root,Palno <= 9
+reversal.attr = SCA,AT,AA         ;SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+pausetime = 0,0
+hitsound = S1,0
+p1stateno = 10350
+p2stateno = 10355
+sparkno = -1
+ignorehitpause = 1
+attr = 
+
+[State 1011, ReversalDef]
+type = ReversalDef
+trigger1 =root,Palno = 11
+reversal.attr = SCA,AA,AT,AP           ;SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+pausetime = 2,15
+sparkno = S811
+sparkxy = 0,0
+hitsound = S1,2
+p2stateno = 5110
+fall = 1
+fall.damage = random+450+(root,var(17))*2
+fall.recover=0
+p2getp1state=0
+pausemovetime = 9999999999
+supermovetime = 9999999999
+ignorehitpause = 1
+attr =
+
+[State 1011, ReversalDef]
+type = ReversalDef
+trigger1 =root,Palno > 9
+reversal.attr = SCA,AA,AT,AP           ;SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+pausetime = 2,15
+sparkno = -1
+sparkxy = 0,0
+hitsound = S1,2
+p1stateno = 10350
+p2stateno = 5110
+fall = 1
+fall.damage = 200
+fall.recover=0
+p2getp1state=0
+pausemovetime = 9999999999
+supermovetime = 9999999999
+ignorehitpause = 1
+attr =
+
+[State 0, ChangeState]
+type = ChangeState
+triggerall = p2stateno != 1003
+trigger1 = time > 200
+value = 10300
+ctrl = 0
+ignorehitpause = 1
+
+[State 0, DestroySelf]
+type = DestroySelf
+triggerall = p2stateno != 1003
+trigger1 = time >= 240
+ignorehitpause = 1
+
+[Statedef 1036]
+type    = A                      ;状态: S-站立, C-蹲, A-空中, L-倒地
+movetype= I                     ;招式种类: A-攻击, I-非攻击, H-受击
+physics = N                      ;物理: S-站立, C-蹲, A-空中
+juggle  = 1                      ;增加的juggle点数
+anim 	= 1035 
+sprpriority = 3 
+
+[State 1035, ]
+type = AssertSpecial
+trigger1 = 1
+flag = NoShadow
+ignorehitpause = 1
+[State 1035,]
+type = Trans
+trigger1 = time >= 0
+trans = add
+[State 1035, ]
+type = NotHitBy
+trigger1 = Time >= 0
+value = SCA
+
+[State 1035, ]
+type = Velset
+trigger1 = Time = [1,16]
+x = 4+time/3
+y = -2.0 -random%4
+[State 1035, ]
+type = VelSet
+trigger1 = Time = 16
+x = 0
+y = 0
+
+[State 0, ReversalDef]
+type = ReversalDef
+trigger1 = root,palno >= 7
+trigger1 = root,palno <= 9
+reversal.attr = SCA,AT,AA         ;SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+pausetime = 0,0
+hitsound = S1,0
+p1stateno = 10350
+p2stateno = 10355
+sparkno = -1
+ignorehitpause = 1
+attr = 
+
+[State 1011, ReversalDef]
+type = ReversalDef
+trigger1 =root,Palno = 11
+reversal.attr = SCA,AA,AT,AP           ;SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+pausetime = 2,15
+sparkno = S811
+sparkxy = 0,0
+hitsound = S1,2
+p2stateno = 5110
+fall = 1
+fall.damage = random+450+(root,var(17))*2
+fall.recover=0
+p2getp1state=0
+pausemovetime = 9999999999
+supermovetime = 9999999999
+ignorehitpause = 1
+attr =
+
+[State 1011, ReversalDef]
+type = ReversalDef
+trigger1 =root,Palno > 9
+reversal.attr = SCA,AA,AT,AP           ;SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+pausetime = 2,15
+sparkno = -1
+sparkxy = 0,0
+hitsound = S1,2
+p1stateno = 10350
+p2stateno = 5110
+fall = 1
+fall.damage = 200
+fall.recover=0
+p2getp1state=0
+pausemovetime = 9999999999
+supermovetime = 9999999999
+ignorehitpause = 1
+attr =
+
+[State 0, ChangeState]
+type = ChangeState
+triggerall = p2stateno != 1003
+trigger1 = time > 200
+value = 10300
+ctrl = 0
+ignorehitpause = 1
+
+[State 0, DestroySelf]
+type = DestroySelf
+triggerall = p2stateno != 1003
+trigger1 = time >= 240
+ignorehitpause = 1
+
+[Statedef 1037]
+type    = A                      ;状态: S-站立, C-蹲, A-空中, L-倒地
+movetype= I                      ;招式种类: A-攻击, I-非攻击, H-受击
+physics = N                      ;物理: S-站立, C-蹲, A-空中
+juggle  = 1                      ;增加的juggle点数
+anim 	= 1035 
+sprpriority = 3
+
+[State 1035, ]
+type = AssertSpecial
+trigger1 = 1
+flag = NoShadow
+ignorehitpause = 1
+[State 1035,]
+type = Trans
+trigger1 = time >= 0
+trans = add
+[State 1035, ]
+type = NotHitBy
+trigger1 = Time >= 0
+value = SCA
+
+[State 1035, ]
+type = Velset
+trigger1 = Time = [1,16]
+x = 6+time
+y = -2.5 +random%3
+[State 1035, ]
+type = VelSet
+trigger1 = Time = 16
+x = 0
+y = 0
+
+[State 0, ReversalDef]
+type = ReversalDef
+trigger1 = root,Palno <= 9
+reversal.attr = SCA,AT,AA         ;SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+pausetime = 0,0
+sparkno = -1
+hitsound = S1,0
+p1stateno = 10350
+p2stateno = 10355
+ignorehitpause = 1
+attr = 
+
+[State 1011, ReversalDef]
+type = ReversalDef
+trigger1 =root,Palno = 11
+reversal.attr = SCA,AA,AT,AP           ;SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+pausetime = 2,15
+sparkno = S811
+sparkxy = 0,0
+hitsound = S1,2
+p2stateno = 5110
+fall = 1
+fall.damage = random+450+(root,var(17))*2
+fall.recover=0
+p2getp1state=0
+pausemovetime = 9999999999
+supermovetime = 9999999999
+ignorehitpause = 1
+attr =
+
+[State 1011, ReversalDef]
+type = ReversalDef
+trigger1 =root,Palno > 9
+reversal.attr = SCA,AA,AT,AP           ;SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+pausetime = 2,15
+sparkno = -1
+sparkxy = 0,0
+hitsound = S1,2
+p1stateno = 10350
+p2stateno = 5110
+fall = 1
+fall.damage = 200
+fall.recover=0
+p2getp1state=0
+pausemovetime = 9999999999
+supermovetime = 9999999999
+ignorehitpause = 1
+attr =
+
+[State 0, ChangeState]
+type = ChangeState
+triggerall = p2stateno != 1003
+trigger1 = time > 200
+value = 10300
+ctrl = 0
+ignorehitpause = 1
+
+[State 0, DestroySelf]
+type = DestroySelf
+triggerall = p2stateno != 1003
+trigger1 = time >= 240
+ignorehitpause = 1
+
+; 炸
+[statedef 10300]
+type    = A                      ;状态: S-站立, C-蹲, A-空中, L-倒地
+movetype= H                      ;招式种类: A-攻击, I-非攻击, H-受击
+physics = N                     ;物理: S-站立, C-蹲, A-空中
+sprpriority = 0                  ;设定p1的贴图优先度到2 (在前面)
+anim = 1036
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = 1
+x = 0
+y = 0
+
+[State 0, Projectile]
+type = Projectile
+trigger1 = time = 1
+ProjID = 10300
+projanim = 20000
+projhitanim = -1
+projremanim = -1
+projcancelanim = -1
+projscale = 0.2,0.2   ;缩放
+projremove = 1
+projremovetime = -1
+velocity = 10.5,0
+remvelocity = 0,0
+accel = 0,0
+velmul = 1
+projhits = 1
+projpriority = 1
+projsprpriority = 3
+projedgebound = 40
+projstagebound = 40
+offset = 0,0		;位置
+postype = p1         ;p2,front,back,left,right
+projshadow = 0,0,0
+supermovetime = 0
+pausemovetime = 0
+; HitDef
+attr = S, NP                     ;Hitdef属性： 站立，普通攻击
+damage = 13, 7                   ;招式造成的伤害, 防御伤害
+animtype = Medium                 ;动作种类: Light-轻, Medium-中, Heavy-重, Back-后仰 (默认: Light)
+guardflag = MA                   ;能被什么状态的敌人防御
+hitflag = MAF                    ;能击中什么状态的敌人
+priority = 4, Hit                ;攻击优先度: 0 (最低) to 7 (最高), 4 默认，相杀式的处理：Hit-可以击中非dodge情况的敌方/Miss-我方攻击一定miss/Dodge-一定躲避敌方攻击 (默认: Hit)
+pausetime = 8, 18                 ;攻击者暂停的时间, 对手在hitshake的时间
+sparkno = -1                      ;火花的动作号 (默认: 在上面设置的动作好)
+sparkxy = -10, -76               ;火花相对于p2的X坐标偏移量，火花相对于p1的Y坐标偏移量
+hitsound = s1, 2                  ;击中时播放的声音
+guardsound = s2, 0                ;被防御时播放的声音
+guard.slidetime = 4
+ground.type = High               ;种类: High-上段, Low-下段, Trip-绊倒 (默认: Normal)
+ground.slidetime = 10             ;对方向后滑的时间
+ground.hittime  = 25             ;对方在被击中状态的时间
+ground.velocity = -1.2,-0             ;对方被向后推的速度
+airguard.velocity = -1.5,-2.8     ;空中防御的速度 (默认: (air.xvel*1.5, air.yvel/2))
+air.type = High                  ;空中击中的种类: High-上段, Low-下段, Trip-绊倒 (默认: 和ground.type一样)
+air.velocity = -2.5,-2           ;空中击中时对方被向后推的横向速度, 空中击中时对方被向后推的纵向速度
+air.hittime = 230                 ;空中击中对方在被击中状态的时间
+getpower = 0,20
+fall.recovertime = 40
+[State 0, Projectile]
+type = Projectile
+trigger1 = time = 1
+ProjID = 10300
+projanim = 20000
+projhitanim = -1
+projremanim = -1
+projcancelanim = -1
+projscale = 0.2,0.2   ;缩放
+projremove = 1
+projremovetime = -1
+velocity = -10.5,0
+remvelocity = 0,0
+accel = 0,0
+velmul = 1
+projhits = 1
+projpriority = 1
+projsprpriority = 3
+projedgebound = 40
+projstagebound = 40
+offset = 0,0		;位置
+postype = p1         ;p2,front,back,left,right
+projshadow = 0,0,0
+supermovetime = 0
+pausemovetime = 0
+; HitDef
+attr = S, NP                     ;Hitdef属性： 站立，普通攻击
+damage = 13, 10                  ;招式造成的伤害, 防御伤害
+animtype = Medium                 ;动作种类: Light-轻, Medium-中, Heavy-重, Back-后仰 (默认: Light)
+guardflag = MA                   ;能被什么状态的敌人防御
+hitflag = MAF                    ;能击中什么状态的敌人
+priority = 4, Hit                ;攻击优先度: 0 (最低) to 7 (最高), 4 默认，相杀式的处理：Hit-可以击中非dodge情况的敌方/Miss-我方攻击一定miss/Dodge-一定躲避敌方攻击 (默认: Hit)
+pausetime = 8, 18                 ;攻击者暂停的时间, 对手在hitshake的时间
+sparkno = -1                      ;火花的动作号 (默认: 在上面设置的动作好)
+sparkxy = -10, -76               ;火花相对于p2的X坐标偏移量，火花相对于p1的Y坐标偏移量
+hitsound = s1, 2                  ;击中时播放的声音
+guardsound = s2, 0                ;被防御时播放的声音
+guard.slidetime = 4
+ground.type = High               ;种类: High-上段, Low-下段, Trip-绊倒 (默认: Normal)
+ground.slidetime = 10             ;对方向后滑的时间
+ground.hittime  = 25             ;对方在被击中状态的时间
+ground.velocity = -1.2,-0             ;对方被向后推的速度
+airguard.velocity = -1.5,-2.8     ;空中防御的速度 (默认: (air.xvel*1.5, air.yvel/2))
+air.type = High                  ;空中击中的种类: High-上段, Low-下段, Trip-绊倒 (默认: 和ground.type一样)
+air.velocity = -2.5,-2           ;空中击中时对方被向后推的横向速度, 空中击中时对方被向后推的纵向速度
+air.hittime = 230                 ;空中击中对方在被击中状态的时间
+getpower = 0,20
+fall.recovertime = 40
+
+
+
+
+[State 0, Projectile]
+type = Projectile
+trigger1 = time = 1
+ProjID = 11000
+projanim = 20001
+projhitanim = -1
+projremanim = -1
+projcancelanim = -1
+projscale = 0.2,0.2   ;缩放
+projremove = 0
+projremovetime = 450
+velocity = 10.48,-3.0
+remvelocity = 0,0
+accel = 0,0
+velmul = 1
+projhits = 1
+projpriority = 1
+projsprpriority = 3
+projedgebound = 40
+projstagebound = 40
+offset = 0,0		;位置
+postype = p1         ;p2,front,back,left,right
+projshadow = 0,0,0
+supermovetime = 0
+pausemovetime = 0
+; HitDef
+attr = S, NA                     ;Hitdef属性： 站立，普通攻击
+damage = 18, 15                   ;招式造成的伤害, 防御伤害
+animtype = Medium                 ;动作种类: Light-轻, Medium-中, Heavy-重, Back-后仰 (默认: Light)
+guardflag = MA                   ;能被什么状态的敌人防御
+hitflag = MAF                    ;能击中什么状态的敌人
+priority = 4, Hit                ;攻击优先度: 0 (最低) to 7 (最高), 4 默认，相杀式的处理：Hit-可以击中非dodge情况的敌方/Miss-我方攻击一定miss/Dodge-一定躲避敌方攻击 (默认: Hit)
+pausetime = 0, 13                 ;攻击者暂停的时间, 对手在hitshake的时间
+sparkno = s10210                        ;火花的动作号 (默认: 在上面设置的动作好)
+sparkxy = 30, 0               ;火花相对于p2的X坐标偏移量，火花相对于p1的Y坐标偏移量
+hitsound = s1, 2                  ;击中时播放的声音
+guardsound = s2, 0                ;被防御时播放的声音
+guard.slidetime = 4
+ground.type = low               ;种类: High-上段, Low-下段, Trip-绊倒 (默认: Normal)
+ground.slidetime = 5             ;对方向后滑的时间
+ground.hittime  = 20             ;对方在被击中状态的时间
+ground.velocity = -3.1,-4.4             ;对方被向后推的速度
+airguard.velocity = -1.5,-0.8     ;空中防御的速度 (默认: (air.xvel*1.5, air.yvel/2))
+air.type = High                  ;空中击中的种类: High-上段, Low-下段, Trip-绊倒 (默认: 和ground.type一样)
+air.velocity = -2.6,-3.3           ;空中击中时对方被向后推的横向速度, 空中击中时对方被向后推的纵向速度
+air.hittime = 40                 ;空中击中对方在被击中状态的时间、
+fall.recovertime = 90      
+fall = 1
+getpower = 0,50
+fall.recovertime = 40
+[State 0, Projectile]
+type = Projectile
+trigger1 = time = 1
+ProjID = 11000
+projanim = 20001
+projhitanim = -1
+projremanim = -1
+projcancelanim = -1
+projscale = 0.2,0.2   ;缩放
+projremove = 0
+projremovetime = 450
+velocity = -10.48,-3.0
+remvelocity = 0,0
+accel = 0,0
+velmul = 1
+projhits = 1
+projpriority = 1
+projsprpriority = 3
+projedgebound = 40
+projstagebound = 40
+offset = 0,0		;位置
+postype = p1         ;p2,front,back,left,right
+projshadow = 0,0,0
+supermovetime = 0
+pausemovetime = 0
+; HitDef
+attr = S, NA                     ;Hitdef属性： 站立，普通攻击
+damage = 20, 15                   ;招式造成的伤害, 防御伤害
+animtype = Medium                 ;动作种类: Light-轻, Medium-中, Heavy-重, Back-后仰 (默认: Light)
+guardflag = MA                   ;能被什么状态的敌人防御
+hitflag = MAF                    ;能击中什么状态的敌人
+priority = 4, Hit                ;攻击优先度: 0 (最低) to 7 (最高), 4 默认，相杀式的处理：Hit-可以击中非dodge情况的敌方/Miss-我方攻击一定miss/Dodge-一定躲避敌方攻击 (默认: Hit)
+pausetime = 0, 13                 ;攻击者暂停的时间, 对手在hitshake的时间
+sparkno = s10210                        ;火花的动作号 (默认: 在上面设置的动作好)
+sparkxy = 30, 0               ;火花相对于p2的X坐标偏移量，火花相对于p1的Y坐标偏移量
+hitsound = s1, 2                  ;击中时播放的声音
+guardsound = s2, 0                ;被防御时播放的声音
+guard.slidetime = 4
+ground.type = low               ;种类: High-上段, Low-下段, Trip-绊倒 (默认: Normal)
+ground.slidetime = 5             ;对方向后滑的时间
+ground.hittime  = 20             ;对方在被击中状态的时间
+ground.velocity = -3.1,-4.4             ;对方被向后推的速度
+airguard.velocity = -1.5,-0.8     ;空中防御的速度 (默认: (air.xvel*1.5, air.yvel/2))
+air.type = High                  ;空中击中的种类: High-上段, Low-下段, Trip-绊倒 (默认: 和ground.type一样)
+air.velocity = -2.6,-3.3           ;空中击中时对方被向后推的横向速度, 空中击中时对方被向后推的纵向速度
+air.hittime = 40                 ;空中击中对方在被击中状态的时间、
+fall.recovertime = 90      
+fall = 1
+getpower = 0,50
+fall.recovertime = 40
+
+[State 0, Projectile]
+type = Projectile
+trigger1 = time = 1
+ProjID = 11000
+projanim = 20003
+projhitanim = -1
+projremanim = -1
+projcancelanim = -1
+projscale = 0.2,0.2   ;缩放
+projremove = 0
+projremovetime = 450
+velocity = 10.48,3.0
+remvelocity = 0,0
+accel = 0,0
+velmul = 1
+projhits = 1
+projpriority = 1
+projsprpriority = 3
+projedgebound = 40
+projstagebound = 40
+offset = 0,0		;位置
+postype = p1         ;p2,front,back,left,right
+projshadow = 0,0,0
+supermovetime = 0
+pausemovetime = 0
+; HitDef
+attr = S, NA                     ;Hitdef属性： 站立，普通攻击
+damage = 18, 15                   ;招式造成的伤害, 防御伤害
+animtype = Medium                 ;动作种类: Light-轻, Medium-中, Heavy-重, Back-后仰 (默认: Light)
+guardflag = MA                   ;能被什么状态的敌人防御
+hitflag = MAF                    ;能击中什么状态的敌人
+priority = 4, Hit                ;攻击优先度: 0 (最低) to 7 (最高), 4 默认，相杀式的处理：Hit-可以击中非dodge情况的敌方/Miss-我方攻击一定miss/Dodge-一定躲避敌方攻击 (默认: Hit)
+pausetime = 0, 13                 ;攻击者暂停的时间, 对手在hitshake的时间
+sparkno = s10210                        ;火花的动作号 (默认: 在上面设置的动作好)
+sparkxy = 30, 0               ;火花相对于p2的X坐标偏移量，火花相对于p1的Y坐标偏移量
+hitsound = s1, 2                  ;击中时播放的声音
+guardsound = s2, 0                ;被防御时播放的声音
+guard.slidetime = 4
+ground.type = low               ;种类: High-上段, Low-下段, Trip-绊倒 (默认: Normal)
+ground.slidetime = 5             ;对方向后滑的时间
+ground.hittime  = 20             ;对方在被击中状态的时间
+ground.velocity = -3.1,-4.4             ;对方被向后推的速度
+airguard.velocity = -1.5,-0.8     ;空中防御的速度 (默认: (air.xvel*1.5, air.yvel/2))
+air.type = High                  ;空中击中的种类: High-上段, Low-下段, Trip-绊倒 (默认: 和ground.type一样)
+air.velocity = -2.6,-3.3           ;空中击中时对方被向后推的横向速度, 空中击中时对方被向后推的纵向速度
+air.hittime = 40                 ;空中击中对方在被击中状态的时间、
+fall.recovertime = 90      
+fall = 1
+getpower = 0,50
+fall.recovertime = 40
+[State 0, Projectile]
+type = Projectile
+trigger1 = time = 1
+ProjID = 11000
+projanim = 20003
+projhitanim = -1
+projremanim = -1
+projcancelanim = -1
+projscale = 0.2,0.2   ;缩放
+projremove = 0
+projremovetime = 450
+velocity = -10.48,3.0
+remvelocity = 0,0
+accel = 0,0
+velmul = 1
+projhits = 1
+projpriority = 1
+projsprpriority = 3
+projedgebound = 40
+projstagebound = 40
+offset = 0,0		;位置
+postype = p1         ;p2,front,back,left,right
+projshadow = 0,0,0
+supermovetime = 0
+pausemovetime = 0
+; HitDef
+attr = S, NA                     ;Hitdef属性： 站立，普通攻击
+damage = 25, 15                   ;招式造成的伤害, 防御伤害
+animtype = Medium                 ;动作种类: Light-轻, Medium-中, Heavy-重, Back-后仰 (默认: Light)
+guardflag = MA                   ;能被什么状态的敌人防御
+hitflag = MAF                    ;能击中什么状态的敌人
+priority = 4, Hit                ;攻击优先度: 0 (最低) to 7 (最高), 4 默认，相杀式的处理：Hit-可以击中非dodge情况的敌方/Miss-我方攻击一定miss/Dodge-一定躲避敌方攻击 (默认: Hit)
+pausetime = 0, 13                 ;攻击者暂停的时间, 对手在hitshake的时间
+sparkno = s10210                      ;火花的动作号 (默认: 在上面设置的动作好)
+sparkxy = 30, 0               ;火花相对于p2的X坐标偏移量，火花相对于p1的Y坐标偏移量
+hitsound = s1, 2                  ;击中时播放的声音
+guardsound = s2, 0                ;被防御时播放的声音
+guard.slidetime = 4
+ground.type = low               ;种类: High-上段, Low-下段, Trip-绊倒 (默认: Normal)
+ground.slidetime = 5             ;对方向后滑的时间
+ground.hittime  = 20             ;对方在被击中状态的时间
+ground.velocity = -3.1,-4.4             ;对方被向后推的速度
+airguard.velocity = -1.5,-0.8     ;空中防御的速度 (默认: (air.xvel*1.5, air.yvel/2))
+air.type = High                  ;空中击中的种类: High-上段, Low-下段, Trip-绊倒 (默认: 和ground.type一样)
+air.velocity = -2.6,-3.3           ;空中击中时对方被向后推的横向速度, 空中击中时对方被向后推的纵向速度
+air.hittime = 40                 ;空中击中对方在被击中状态的时间、
+fall.recovertime = 90      
+fall = 1
+getpower = 0,50
+fall.recovertime = 40
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 0
+value = S1,5
+[State 0, DestroySelf]
+type = DestroySelf
+trigger1 = animtime = 0
+
+;Flasher-2
+[statedef 10350]
+type    = A                      ;状态: S-站立, C-蹲, A-空中, L-倒地
+movetype= H                      ;招式种类: A-攻击, I-非攻击, H-受击
+physics = N                      ;物理: S-站立, C-蹲, A-空中
+sprpriority = 7                  ;设定p1的贴图优先度到2 (在前面)
+anim = 1036
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 0
+value = S1,5
+
+[State 0, Projectile]
+type = Projectile
+trigger1 = root,Palno < 9
+trigger1 = time = 0
+ProjID = -1
+projanim = 20000
+projhitanim = -1
+projremanim = -1
+projcancelanim = -1
+projscale = 0.5,0.5   ;缩放
+projremove = 1
+projremovetime = -1
+velocity = 15,0
+remvelocity = 0,0
+accel = 0,0
+velmul = 1
+projhits = 1
+projpriority = 1
+projsprpriority = 3
+projedgebound = 40
+projstagebound = 40
+offset = 0,-50		;位置
+postype = p1         ;p2,front,back,left,right
+projshadow = 0,0,0
+supermovetime = 0
+pausemovetime = 0
+; HitDef
+attr = S, NA                     ;Hitdef属性： 站立，普通攻击
+damage = 33, 7                   ;招式造成的伤害, 防御伤害
+animtype = Medium                 ;动作种类: Light-轻, Medium-中, Heavy-重, Back-后仰 (默认: Light)
+guardflag = MA                   ;能被什么状态的敌人防御
+hitflag = MAF                    ;能击中什么状态的敌人
+priority = 4, Hit                ;攻击优先度: 0 (最低) to 7 (最高), 4 默认，相杀式的处理：Hit-可以击中非dodge情况的敌方/Miss-我方攻击一定miss/Dodge-一定躲避敌方攻击 (默认: Hit)
+pausetime = 8, 30                ;攻击者暂停的时间, 对手在hitshake的时间
+sparkno = -1                      ;火花的动作号 (默认: 在上面设置的动作好)
+sparkxy = -10, -76               ;火花相对于p2的X坐标偏移量，火花相对于p1的Y坐标偏移量
+hitsound = s1, 2                  ;击中时播放的声音
+guardsound = s2, 0                ;被防御时播放的声音
+guard.slidetime = 4
+ground.type = High               ;种类: High-上段, Low-下段, Trip-绊倒 (默认: Normal)
+ground.slidetime = 10             ;对方向后滑的时间
+ground.hittime  = 25             ;对方在被击中状态的时间
+ground.velocity = -1.2             ;对方被向后推的速度
+airguard.velocity = -1.5,-0.8     ;空中防御的速度 (默认: (air.xvel*1.5, air.yvel/2))
+air.type = High                  ;空中击中的种类: High-上段, Low-下段, Trip-绊倒 (默认: 和ground.type一样)
+air.velocity = -0.5,-2           ;空中击中时对方被向后推的横向速度, 空中击中时对方被向后推的纵向速度
+air.hittime = 20                 ;空中击中对方在被击中状态的时间
+getpower = 50,50
+fall.recovertime = 40
+
+
+[State 0, DestroySelf]
+type = DestroySelf
+trigger1 = animtime = 0
+
+;Flasher-对方
+[statedef 10355]
+type    = A                      ;状态: S-站立, C-蹲, A-空中, L-倒地
+movetype= H                      ;招式种类: A-攻击, I-非攻击, H-受击
+physics = N                     ;物理: S-站立, C-蹲, A-空中
+sprpriority = 0                  ;设定p1的贴图优先度到2 (在前面)
+velset = 0,0
+
+[State 0, ChangeAnim2]
+type = ChangeAnim2
+trigger1 = time = 0
+value = 1039
+ignorehitpause = 1
+
+[State 0, DestroySelf]
+type = DestroySelf
+trigger1 = ishelper
+ignorehitpause = 1
+
+[State 0, SelfState]
+type = SelfState
+trigger1 = time = 54
+value = 51
+
+
+;完全神杀helper
+[statedef 3010]
+type    = S                      ;状态: S-站立, C-蹲, A-空中, L-倒地
+movetype= I                      ;招式种类: A-攻击, I-非攻击, H-受击
+physics = n                     ;物理: S-站立, C-蹲, A-空中
+anim = 3010                      ;改变动作 (不写这行则不改变anim)
+sprpriority = 0                  ;设定p1的贴图优先度到2 (在前面)
+
+[State 0, Helper↓];↓
+type = Helper
+trigger1 = time = 35
+trigger2 = time%(63) = 35
+helpertype = normal ;player
+name = "zz"
+ID = 3014
+stateno = 3014
+pos = 0,-172
+postype = p2    ;p2,front,back,left,right
+facing = 1
+keyctrl = 0
+ownpal = 0
+supermovetime = 0
+pausemovetime = 0
+
+[State 0, Helper↙];↙
+type = Helper
+trigger1 = time = 49
+trigger2 = time%(63) = 49
+helpertype = normal ;player
+name = "zz"
+ID = 3016
+stateno = 3016
+pos = 90,-130
+postype = p2    ;p2,front,back,left,right
+facing = 1
+keyctrl = 0
+ownpal = 0
+supermovetime = 0
+pausemovetime = 0
+
+[State 0, Helper↑];↑
+type = Helper
+trigger1 = time = 21
+trigger2 = time%(63) = 21
+helpertype = normal ;player
+name = "zz"
+ID = 3015
+stateno = 3015
+pos = 0,50
+postype = p2    ;p2,front,back,left,right
+facing = 1
+keyctrl = 0
+ownpal = 0
+supermovetime = 0
+pausemovetime = 0
+
+[State 0, Helper↖];↖
+type = Helper
+trigger1 = time =42
+trigger2 = time%(63) = 42
+helpertype = normal ;player
+name = "zz"
+ID = 3017
+stateno = 3017
+pos = 90,25
+postype = p2    ;p2,front,back,left,right
+facing = 1
+keyctrl = 0
+ownpal = 0
+supermovetime = 0
+pausemovetime = 0
+
+[State 0, Helper↘];↘
+type = Helper
+trigger1 = 0
+trigger2 = time%(63) = 0
+helpertype = normal ;player
+name = "zz"
+ID = 3018
+stateno = 3018
+pos = -90,-130
+postype = p2    ;p2,front,back,left,right
+facing = 1
+keyctrl = 0
+ownpal = 0
+supermovetime = 0
+pausemovetime = 0
+
+[State 0, Helper↗];↗
+type = Helper
+trigger1 = time = 14
+trigger2 = time%(63) = 14
+helpertype = normal ;player
+name = "zz"
+ID = 3019
+stateno = 3019
+pos = -90,25
+postype = p2    ;p2,front,back,left,right
+facing = 1
+keyctrl = 0
+ownpal = 0
+supermovetime = 0
+pausemovetime = 0
+
+[State 0, Helper→];→
+type = Helper
+trigger1 = time = 7
+trigger2 = time%(63) = 7
+helpertype = normal ;player
+name = "zz"
+ID = 3013
+stateno = 3013
+pos = 130,-60
+postype = p2    ;p2,front,back,left,right
+facing = -1
+keyctrl = 0
+ownpal = 0
+supermovetime = 0
+pausemovetime = 0
+
+[State 0, Helper←];←
+type = Helper
+trigger1 = time = 28
+trigger2 = time%(63) = 28
+helpertype = normal ;player
+name = "zz"
+ID = 3013
+stateno = 3013
+pos = -115,-60
+postype = p2    ;p2,front,back,left,right
+facing = 1
+keyctrl = 0
+ownpal = 0
+supermovetime = 0
+pausemovetime = 0
+scale = 1,1
+
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = p2stateno = [3020,3025]
+triggerall = time > 0
+trigger1 = gametime%7 = 0
+value = S1,2;+ifelse(random<30,1,0)
+;volumescale = -50
+
+
+[State 0, HitAdd]
+type = HitAdd
+triggerall = p2stateno = [3020,3025]
+trigger1 = time%7 = 0
+value = 1
+
+[State 0, Explod]
+type = Explod
+triggerall = p2stateno = [3020,3025]
+trigger1 = time%7 = 0
+anim = 12450
+ID = 12450
+pos = -10+random%20,-45-random%20
+postype = p2  ;p2,front,back,left,right
+facing = 1
+vfacing = 1
+bindtime = 1
+removetime = -2
+pausemovetime = 0
+scale = 0.45,0.45
+sprpriority = 2
+ontop = 0
+ownpal = 1
+removeongethit = 0
+[State 0, Explod]
+type = Explod
+triggerall = p2stateno = [3020,3025]
+trigger1 = time%7 = 0
+anim = 14507
+ID = 14507
+pos = -10+random%20,-45-random%20
+postype = p2  ;p2,front,back,left,right
+facing = 1
+vfacing = 1
+bindtime = 1
+removetime = -2
+pausemovetime = 0
+scale = 0.5,0.5
+sprpriority = 2
+ontop = 0
+ownpal = 1
+removeongethit = 0
+
+[State 0, EnvShake]
+type = EnvShake
+triggerall = p2stateno = [3020,3025]
+triggerall = time > 0
+trigger1 = time%7 = 0
+time = 5
+freq = 30
+ampl = -2
+phase = 90
+
+
+[State 0, ChangeState]
+type = ChangeState
+trigger1 = time > 290
+value = 3011
+ctrl = 0
+
+[State 0, DestroySelf]
+type = DestroySelf
+trigger1 = time > 350
+
+[statedef 3011]
+type    = S                      ;状态: S-站立, C-蹲, A-空中, L-倒地
+movetype= A                     ;招式种类: A-攻击, I-非攻击, H-受击
+physics = N                      ;物理: S-站立, C-蹲, A-空中
+anim = 3010                      ;改变动作 (不写这行则不改变anim)
+sprpriority = 7                  ;设定p1的贴图优先度到2 (在前面)
+
+[State 0, PlaySnd]
+type = null;PlaySnd
+triggerall = time > 20
+triggerall = p2stateno = [3020,3025]
+trigger1 = time%3 = 1
+value = S1,2
+
+[State 0, HitAdd]
+type = HitAdd
+triggerall = p2stateno = [3020,3025]
+trigger1 = time%3 = 0
+value = 1
+
+[State 0, EnvShake]
+type = EnvShake
+triggerall = p2stateno = [3020,3025]
+trigger1 = time = 20
+time = 80
+freq = 160
+ampl = -6
+phase = 90
+
+[State 0, Explod]
+type = Explod
+trigger1 = time = 0
+anim = 3011
+ID = 3011
+pos = 0,-145
+postype = p2  ;p2,front,back,left,right
+facing = 1
+vfacing = 1
+bindtime = 1
+removetime = -2
+pausemovetime = 0
+scale = 0.7,0.5
+sprpriority = 2
+ontop = 0
+ownpal = 1
+removeongethit = 0
+
+[State 0, Helper←];↓↓↓
+type = Helper
+trigger1 = time = 14
+trigger2 = time > 100
+trigger2 = gametime%150=14
+helpertype = normal ;player
+name = "zzzz"
+ID = 3030
+stateno = 3030
+pos = 0,-222
+postype = p2    ;p2,front,back,left,right
+facing = 1
+keyctrl = 0
+ownpal = 0
+supermovetime = 0
+pausemovetime = 0
+size.xscale = 1.4
+size.yscale = 1.2
+
+
+[State 0, DestroySelf]
+type = DestroySelf
+trigger1 = enemy,alive = 0
+trigger1 = time > 105
+
+
+;→
+[statedef 3013]
+type    = S                      ;状态: S-站立, C-蹲, A-空中, L-倒地
+movetype= A                     ;招式种类: A-攻击, I-非攻击, H-受击
+physics = N                      ;物理: S-站立, C-蹲, A-空中
+anim = 3013                      ;改变动作 (不写这行则不改变anim)
+sprpriority = 7                  ;设定p1的贴图优先度到2 (在前面)
+
+[State 0, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 0
+value = S1100,10
+
+[State 0, HitDef]
+type = HitDef
+trigger1 = animelem = 3
+trigger2 = animelem = 4
+attr = S,NP        ;SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+hitflag = MAF        ;HLAFD+-
+animtype = hard          ;light,medium,hard,back,up,diagup
+air.animtype = hard
+damage = 150,90
+pausetime = 0 ,0
+sparkno = -1
+guard.sparkno = -1
+sparkxy = 0,0
+hitsound = S1,2
+guardsound = S2,0
+ground.type = High      ;Low,Trip,None
+ground.slidetime = 4
+ground.hittime = 4
+air.hittime = 4
+ground.velocity = 0,0
+air.velocity = 0,0
+
+[State 0, DestroySelf]
+type = DestroySelf
+trigger1 = time > 41
+
+;↓
+[statedef 3014]
+type    = S                      ;状态: S-站立, C-蹲, A-空中, L-倒地
+movetype= A                     ;招式种类: A-攻击, I-非攻击, H-受击
+physics = N                      ;物理: S-站立, C-蹲, A-空中
+anim = 3014                      ;改变动作 (不写这行则不改变anim)
+sprpriority = 7                  ;设定p1的贴图优先度到2 (在前面)
+
+[State 0, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 0
+value = S1100,10
+
+[State 0, HitDef]
+type = HitDef
+trigger1 = animelem = 3
+trigger2 = animelem = 4
+attr = S,NP        ;SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+hitflag = MAF        ;HLAFD+-
+        ;HLA
+animtype = light          ;light,medium,hard,back,up,diagup
+air.animtype = light
+damage = 150,90
+pausetime = 0 ,0
+sparkno = -1
+guard.sparkno = S3100
+sparkxy = 0,0
+hitsound = S1,2
+guardsound = S2,0
+ground.type = High      ;Low,Trip,None
+ground.slidetime = 0
+ground.hittime = 0
+air.hittime = 0
+ground.velocity = 0,0
+air.velocity = 0,0
+down.bounce = 0
+id = 0
+chainID = -1
+nochainID = -1
+hitonce = 1
+kill = 1
+guard.kill = 1
+fall.kill = 1
+
+[State 0, DestroySelf]
+type = DestroySelf
+trigger1 = time > 41
+
+;↑
+[statedef 3015]
+type    = S                      ;状态: S-站立, C-蹲, A-空中, L-倒地
+movetype= A                     ;招式种类: A-攻击, I-非攻击, H-受击
+physics = N                      ;物理: S-站立, C-蹲, A-空中
+anim = 3015                      ;改变动作 (不写这行则不改变anim)
+sprpriority = 7                  ;设定p1的贴图优先度到2 (在前面)
+
+[State 0, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 0
+value = S1100,10
+
+[State 0, HitDef]
+type = HitDef
+trigger1 = animelem = 3
+trigger2 = animelem = 4
+attr = S,NP        ;SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+hitflag = MAF        ;HLAFD+-
+animtype = light          ;light,medium,hard,back,up,diagup
+air.animtype = light
+damage = 90,90
+pausetime = 0 ,0
+sparkno = -1
+guard.sparkno = S3100
+sparkxy = 0,0
+hitsound = S1,2
+guardsound = S2,0
+ground.type = High      ;Low,Trip,None
+ground.slidetime = 0
+ground.hittime = 0
+air.hittime = 0
+ground.velocity = 0,0
+air.velocity = 0,0
+down.bounce = 0
+id = 0
+chainID = -1
+nochainID = -1
+hitonce = 1
+kill = 1
+guard.kill = 1
+fall.kill = 1
+
+[State 0, DestroySelf]
+type = DestroySelf
+trigger1 = time > 41
+
+;↙
+[statedef 3016]
+type    = S                      ;状态: S-站立, C-蹲, A-空中, L-倒地
+movetype= A                     ;招式种类: A-攻击, I-非攻击, H-受击
+physics = N                      ;物理: S-站立, C-蹲, A-空中
+anim = 3016                      ;改变动作 (不写这行则不改变anim)
+sprpriority = 7                  ;设定p1的贴图优先度到2 (在前面)
+
+[State 0, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 0
+value = S1100,10
+
+[State 0, HitDef]
+type = HitDef
+trigger1 = animelem = 3
+trigger2 = animelem = 4
+attr = S,NP        ;SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+hitflag = MAF        ;HLAFD+-
+        ;HLA
+animtype = light          ;light,medium,hard,back,up,diagup
+air.animtype = light
+damage = 150,90
+pausetime = 0 ,0
+sparkno = -1
+guard.sparkno = S3100
+sparkxy = 0,0
+hitsound = S1,2
+guardsound = S2,0
+ground.type = High      ;Low,Trip,None
+ground.slidetime = 0
+ground.hittime = 0
+air.hittime = 0
+ground.velocity = 0,0
+air.velocity = 0,0
+down.bounce = 0
+id = 0
+chainID = -1
+nochainID = -1
+hitonce = 1
+kill = 1
+guard.kill = 1
+fall.kill = 1
+
+[State 0, DestroySelf]
+type = DestroySelf
+trigger1 = time > 41
+
+
+;↖
+[statedef 3017]
+type    = S                      ;状态: S-站立, C-蹲, A-空中, L-倒地
+movetype= A                     ;招式种类: A-攻击, I-非攻击, H-受击
+physics = N                      ;物理: S-站立, C-蹲, A-空中
+anim = 3017                      ;改变动作 (不写这行则不改变anim)
+sprpriority = 7                  ;设定p1的贴图优先度到2 (在前面)
+
+[State 0, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 0
+value = S1100,10
+
+[State 0, HitDef]
+type = HitDef
+trigger1 = animelem = 3
+trigger2 = animelem = 4
+attr = S,NP        ;SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+hitflag = MAF        ;HLAFD+-
+         ;HLA
+animtype = light          ;light,medium,hard,back,up,diagup
+air.animtype = light
+damage = 90,90
+pausetime = 0 ,0
+sparkno = -1
+guard.sparkno = S3100
+sparkxy = 0,0
+hitsound = S1,2
+guardsound = S2,0
+ground.type = High      ;Low,Trip,None
+ground.slidetime = 0
+ground.hittime = 0
+air.hittime = 0
+ground.velocity = 0,0
+air.velocity = 0,0
+down.bounce = 0
+id = 0
+chainID = -1
+nochainID = -1
+hitonce = 1
+kill = 1
+guard.kill = 1
+fall.kill = 1
+
+[State 0, DestroySelf]
+type = DestroySelf
+trigger1 = time > 41
+
+
+;↘
+[statedef 3018]
+type    = S                      ;状态: S-站立, C-蹲, A-空中, L-倒地
+movetype= A                     ;招式种类: A-攻击, I-非攻击, H-受击
+physics = N                      ;物理: S-站立, C-蹲, A-空中
+anim = 3018                     ;改变动作 (不写这行则不改变anim)
+sprpriority = 7                  ;设定p1的贴图优先度到2 (在前面)
+
+[State 0, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 0
+value = S1100,10
+
+[State 0, HitDef]
+type = HitDef
+trigger1 = animelem = 3
+trigger2 = animelem = 4
+attr = S,NP        ;SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+hitflag = MAF        ;HLAFD+-
+        ;HLA
+animtype = light          ;light,medium,hard,back,up,diagup
+air.animtype = light
+damage = 150,90
+pausetime = 0 ,0
+sparkno = -1
+guard.sparkno = S3100
+sparkxy = 0,0
+hitsound = S1,2
+guardsound = S2,0
+ground.type = High      ;Low,Trip,None
+ground.slidetime = 0
+ground.hittime = 0
+air.hittime = 0
+ground.velocity = 0,0
+air.velocity = 0,0
+down.bounce = 0
+id = 0
+chainID = -1
+nochainID = -1
+hitonce = 1
+kill = 1
+guard.kill = 1
+fall.kill = 1
+
+[State 0, DestroySelf]
+type = DestroySelf
+trigger1 = time > 41
+
+
+;↗
+[statedef 3019]
+type    = S                      ;状态: S-站立, C-蹲, A-空中, L-倒地
+movetype= A                     ;招式种类: A-攻击, I-非攻击, H-受击
+physics = N                      ;物理: S-站立, C-蹲, A-空中
+anim = 3019                      ;改变动作 (不写这行则不改变anim)
+sprpriority = 7                  ;设定p1的贴图优先度到2 (在前面)
+
+[State 0, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 0
+value = S1100,10
+
+[State 0, HitDef]
+type = HitDef
+trigger1 = animelem = 3
+trigger2 = animelem = 4
+attr = S,NP        ;SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+hitflag = MAF        ;HLAFD+-
+guardflag = MA         ;HLA
+animtype = light          ;light,medium,hard,back,up,diagup
+air.animtype = light
+damage = 150,90
+pausetime = 0 ,0
+sparkno = -1
+guard.sparkno = -1
+sparkxy = 0,0
+hitsound = S1,2
+guardsound = S2,0
+ground.type = High      ;Low,Trip,None
+ground.slidetime = 0
+ground.hittime = 0
+air.hittime = 0
+ground.velocity = 0,0
+air.velocity = 0,0
+down.bounce = 0
+id = 0
+chainID = -1
+nochainID = -1
+hitonce = 1
+kill = 1
+guard.kill = 1
+fall.kill = 1
+
+[State 0, DestroySelf]
+type = DestroySelf
+trigger1 = time > 41
+
+
+;↓↓↓
+[statedef 3030]
+type    = S                      ;状态: S-站立, C-蹲, A-空中, L-倒地
+movetype= A                     ;招式种类: A-攻击, I-非攻击, H-受击
+physics = N                      ;物理: S-站立, C-蹲, A-空中
+anim = 3030                     ;改变动作 (不写这行则不改变anim)
+sprpriority = 7                  ;设定p1的贴图优先度到2 (在前面)
+
+[State 0, Explod]
+type = Explod
+trigger1 = time = 0
+anim = 14411
+ID = 14411
+pos = 0,80
+postype = p1  ;p2,front,back,left,right
+facing = 1
+vfacing = 1
+bindtime = 1
+removetime = -2
+pausemovetime = 12450
+supermovetime = 12450
+supermove = 1
+scale = 1,1
+sprpriority = 15
+ownpal = 1
+removeongethit = 0
+ontop = 1
+
+[State 0, SuperPause]
+type = SuperPause
+trigger1 = time = 0
+time = 47
+anim = -1;15413
+sound = -1;S12450,6
+pos = 0,50
+movetime = 0
+darken = 1
+p2defmul = 1
+poweradd = 0
+unhittable = 1
+ignorehitpause = 1
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 0
+value = S12450,6
+channel = 9
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 1
+value = S12450,7
+channel = 9
+
+[State 0, Explod]
+type = Explod
+trigger1 = time = 0
+anim = 3031
+ID = 3031
+pos = 0,0
+postype = p1  ;p2,front,back,left,right
+facing = 1
+vfacing = 1
+bindtime = 1
+removetime = -2
+pausemovetime = 0
+scale = 1.4,1.2
+sprpriority = 0
+ownpal = 1
+removeongethit = 0
+
+[State 0, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 0
+value = S1100,10
+
+[State 0, HitDef]
+type = HitDef
+trigger1 = 1
+attr = ,NP        ;SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+hitflag = MAFD        ;HLAFD+-
+animtype = light          ;light,medium,hard,back,up,diagup
+air.animtype = light
+damage = 12450,90
+pausetime = 0 ,0
+sparkno = -1
+guard.sparkno = -1
+sparkxy = 0,0
+hitsound = S1,2
+guardsound = S2,0
+ground.type = High      ;Low,Trip,None
+ground.slidetime = 1
+ground.hittime = 1
+air.hittime = 1
+ground.velocity = 0,-1
+air.velocity = 0,0.1
+down.bounce = 0
+hitonce = 1
+kill = 1
+guard.kill = 1
+fall.kill = 1
+
+[State 0, DestroySelf]
+type = DestroySelf
+trigger1 = time > 106
+
+
+
+
+
+[statedef 111111]
+;-----------
+;helper鍒涢�
+[State 3010, Helper]
+type = Helper
+trigger1 = time = 3
+helpertype = normal ;player
+name = "shadows"
+ID = 3015
+stateno = 3015
+pos = -15,-20
+postype = p1    ;p2,front,back,left,right
+facing = 1
+ownpal = 1
+supermovetime = 0
+pausemovetime = 0
+size.xscale = 0.5
+size.yscale = 0.5
+
+[State 3010, Helper]
+type = Helper
+trigger1 = time = 10
+helpertype = normal ;player
+name = "shadows"
+ID = 3015
+stateno = 3015
+pos = -30,-40
+postype = p1    ;p2,front,back,left,right
+facing = 1
+ownpal = 1
+supermovetime = 0
+pausemovetime = 0
+size.xscale = 0.5
+size.yscale = 0.5
+
+[State 3010, Helper]
+type = Helper
+trigger1 = time = 17
+helpertype = normal ;player
+name = "shadows"
+ID = 3015
+stateno = 3015
+pos = -15,-60
+postype = p1    ;p2,front,back,left,right
+facing = 1
+ownpal = 1
+supermovetime = 0
+pausemovetime = 0
+size.xscale = 0.5
+size.yscale = 0.5
+
+[State 3010, Helper]
+type = Helper
+trigger1 = time = 24
+helpertype = normal ;player
+name = "shadows"
+ID = 3015
+stateno = 3015
+pos = 0,-80
+postype = p1    ;p2,front,back,left,right
+facing = 1
+ownpal = 1
+supermovetime = 0
+pausemovetime = 0
+size.xscale = 0.5
+size.yscale = 0.5
+;-----------Another side----
+[State 3010, Helper]
+type = Helper
+trigger1 = time = 0
+helpertype = normal ;player
+name = "shadows"
+ID = 3015
+stateno = 3015
+pos = 220,0
+postype = p1    ;p2,front,back,left,right
+facing = -1
+ownpal = 1
+supermovetime = 0
+pausemovetime = 0
+size.xscale = 0.5
+size.yscale = 0.5
+
+[State 3010, Helper]
+type = Helper
+trigger1 = time = 10
+helpertype = normal ;player
+name = "shadows"
+ID = 3015
+stateno = 3015
+pos = 235,-20
+postype = p1    ;p2,front,back,left,right
+facing = -1
+ownpal = 1
+supermovetime = 0
+pausemovetime = 0
+size.xscale = 0.5
+size.yscale = 0.5
+
+[State 3010, Helper]
+type = Helper
+trigger1 = time = 17
+helpertype = normal ;player
+name = "shadows"
+ID = 3015
+stateno = 3015
+pos = 250,-40
+postype = p1    ;p2,front,back,left,right
+facing = -1
+ownpal = 1
+supermovetime = 0
+pausemovetime = 0
+size.xscale = 0.5
+size.yscale = 0.5
+
+[State 3010, Helper]
+type = Helper
+trigger1 = time = 24
+helpertype = normal ;player
+name = "shadows"
+ID = 3015
+stateno = 3015
+pos = 235,-60
+postype = p1    ;p2,front,back,left,right
+facing = -1
+ownpal = 1
+supermovetime = 0
+pausemovetime = 0
+size.xscale = 0.5
+size.yscale = 0.5
+
+[State 3010, Helper]
+type = Helper
+trigger1 = time = 31
+helpertype = normal ;player
+name = "shadows"
+ID = 3015
+stateno = 3015
+pos = 220,-80
+postype = p1    ;p2,front,back,left,right
+facing = -1
+ownpal = 1
+supermovetime = 0
+pausemovetime = 0
+size.xscale = 0.5
+size.yscale = 0.5
+;--------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[statedef 17010]
+type = A
+movetype = A
+physics = N
+anim = 14522
+velset = 0,0
+ctrl = 0
+sprpriority = 10
+
+[State 0, BindToRoot]
+type = BindToRoot ;基绑定位置控制器 同bindtoParent
+trigger1 = 1
+time = 1
+pos = 4,-65
+
+[State 0, Trans]
+type = Trans    ;透明处理
+trigger1 = 1
+trans = add      ;透明的形势 ADD ADD1 ADDALPHA SUP
+
+[State 0, Explod]
+type = Explod ;图像控制器
+trigger1 = animelem = 19
+anim = 14518;图像的动画编号
+ID = 17006;图像ID
+pos = 0,0 ;位置
+postype = p1  ;p2,front,back,left,right 绑定位置
+bindtime = -1 ;绑定时间
+removetime = -1 ;移除时间
+scale = .9,.81 ;纵横比例
+sprpriority = 12 ;图层
+ownpal = 1 ;用自己的色表
+persistent = 0
+
+[State 0, Explod]
+type = Explod ;图像控制器
+trigger1 = animelem = 1
+anim = 14518;图像的动画编号
+ID = 17007;图像ID
+pos = 82,42 ;位置
+postype = p1  ;p2,front,back,left,right 绑定位置
+bindtime = -1 ;绑定时间
+removetime = -1 ;移除时间
+scale = .4,.36 ;纵横比例
+sprpriority = 12 ;图层
+ownpal = 1 ;用自己的色表
+[State 0, Explod]
+type = Explod ;图像控制器
+trigger1 = animelem = 1
+anim = 14518;图像的动画编号
+ID = 17007;图像ID
+pos = -88,-44 ;位置
+postype = p1  ;p2,front,back,left,right 绑定位置
+bindtime = -1 ;绑定时间
+removetime = -1 ;移除时间
+scale = .4,.36 ;纵横比例
+sprpriority = 12 ;图层
+ownpal = 1 ;用自己的色表
+
+[State 0, Helper]
+type = null;Helper ;援助控制器
+trigger1 = animelem = 1
+helpertype = normal ;player 援助级别
+name = "文字";名字
+ID = 17030;援助ID
+stateno = 17030;statedef编号
+pos = 0,0 ;位置
+postype = p1    ;p2,front,back,left,right 绑定位置
+ownpal = 1 ;独立色表
+size.xscale = 0.1
+size.yscale = 0.1
+
+
+[State 0, Helper]
+type = Helper ;援助控制器
+trigger1 = animelem = 1
+trigger1 = numhelper(17020) = 0
+helpertype = normal ;player 援助级别
+name = "seven";名字
+ID = 17020;援助ID
+stateno = 17020;statedef编号
+pos = 82,42 ;位置
+postype = p1    ;p2,front,back,left,right 绑定位置
+facing = 1 ;脸的方向
+keyctrl = 0 ;控制
+ownpal = 1 ;独立色表
+size.xscale = 1.5
+size.yscale = 1.5
+[State 0, Helper]
+type = Helper ;援助控制器
+trigger1 = animelem = 1
+trigger1 = numhelper(17021) = 0
+helpertype = normal ;player 援助级别
+name = "seven";名字
+ID = 17021;援助ID
+stateno = 17020;statedef编号
+pos = -88,-44 ;位置
+postype = p1    ;p2,front,back,left,right 绑定位置
+facing = 1 ;脸的方向
+keyctrl = 0 ;控制
+ownpal = 1 ;独立色表
+size.xscale = 1.5
+size.yscale = 1.5
+
+;===============================
+[State 0, Explod]
+type = Explod ;图像控制器
+trigger1 = animelem = 7
+anim = 14518;图像的动画编号
+ID = 17007;图像ID
+pos = 82,-44 ;位置
+postype = p1  ;p2,front,back,left,right 绑定位置
+bindtime = -1 ;绑定时间
+removetime = -1 ;移除时间
+scale = .4,.36 ;纵横比例
+sprpriority = 12 ;图层
+ownpal = 1 ;用自己的色表
+
+[State 0, Explod]
+type = Explod ;图像控制器
+trigger1 = animelem = 7
+anim = 14518;图像的动画编号
+ID = 17007;图像ID
+pos = -88,42 ;位置
+postype = p1  ;p2,front,back,left,right 绑定位置
+bindtime = -1 ;绑定时间
+removetime = -1 ;移除时间
+scale = .4,.36 ;纵横比例
+sprpriority = 12 ;图层
+ownpal = 1 ;用自己的色表
+
+
+[State 0, Helper]
+type = Helper ;援助控制器
+trigger1 = animelem = 7
+trigger1 = numhelper(17023) = 0
+helpertype = normal ;player 援助级别
+name = "seven";名字
+ID = 17023;援助ID
+stateno = 17020;statedef编号
+pos = 82,-44 ;位置
+postype = p1    ;p2,front,back,left,right 绑定位置
+facing = 1 ;脸的方向
+keyctrl = 0 ;控制
+ownpal = 1 ;独立色表
+size.xscale = 1.5
+size.yscale = 1.5
+[State 0, Helper]
+type = Helper ;援助控制器
+trigger1 = animelem = 7
+trigger1 = numhelper(17022) = 0
+helpertype = normal ;player 援助级别
+name = "seven";名字
+ID = 17022;援助ID
+stateno = 17020;statedef编号
+pos = -88,42 ;位置
+postype = p1    ;p2,front,back,left,right 绑定位置
+facing = 1 ;脸的方向
+keyctrl = 0 ;控制
+ownpal = 1 ;独立色表
+size.xscale = 1.5
+size.yscale = 1.5
+
+;==================================
+[State 0, Explod]
+type = Explod ;图像控制器
+trigger1 = animelem = 13
+anim = 14518;图像的动画编号
+ID = 17007;图像ID
+pos = 0,-91 ;位置
+postype = p1  ;p2,front,back,left,right 绑定位置
+bindtime = -1 ;绑定时间
+removetime = -1 ;移除时间
+scale = .4,.36 ;纵横比例
+sprpriority = 12 ;图层
+ownpal = 1 ;用自己的色表
+[State 0, Explod]
+type = Explod ;图像控制器
+trigger1 = animelem = 13
+anim = 14518;图像的动画编号
+ID = 17007;图像ID
+pos = 0,80 ;位置
+postype = p1  ;p2,front,back,left,right 绑定位置
+bindtime = -1 ;绑定时间
+removetime = -1 ;移除时间
+scale = .4,.36 ;纵横比例
+sprpriority = 12 ;图层
+ownpal = 1 ;用自己的色表
+
+
+[State 0, Helper]
+type = Helper ;援助控制器
+trigger1 = animelem = 13
+trigger1 = numhelper(17024) = 0
+helpertype = normal ;player 援助级别
+name = "seven";名字
+ID = 17024;援助ID
+stateno = 17020;statedef编号
+pos = 0,-91 ;位置
+postype = p1    ;p2,front,back,left,right 绑定位置
+facing = 1 ;脸的方向
+keyctrl = 0 ;控制
+ownpal = 1 ;独立色表
+size.xscale = 1.5
+size.yscale = 1.5
+[State 0, Helper]
+type = Helper ;援助控制器
+trigger1 = animelem = 13
+trigger1 = numhelper(17025) = 0
+helpertype = normal ;player 援助级别
+name = "seven";名字
+ID = 17025;援助ID
+stateno = 17020;statedef编号
+pos = 0,80 ;位置
+postype = p1    ;p2,front,back,left,right 绑定位置
+facing = 1 ;脸的方向
+keyctrl = 0 ;控制
+ownpal = 1 ;独立色表
+size.xscale = 1.5
+size.yscale = 1.5
+
+[State 0, Explod]
+type = Explod ;图像控制器
+trigger1 = animelem = 19
+anim = 14518;图像的动画编号
+ID = 17007;图像ID
+pos = 0,0 ;位置
+postype = p1  ;p2,front,back,left,right 绑定位置
+bindtime = -1 ;绑定时间
+removetime = -1 ;移除时间
+scale = .4,.36 ;纵横比例
+sprpriority = 12 ;图层
+ownpal = 1 ;用自己的色表
+persistent = 0
+
+
+[State 0, PlaySnd]
+type = PlaySnd  ;播放声音控制器
+trigger1 = animelem = 1
+trigger2 = animelem = 7
+trigger3 = animelem = 13
+trigger4 = animelem = 19
+value = S12450,1    ;SND中的声音编号
+
+[State 0, AssertSpecial]
+type = AssertSpecial ;特殊断言控制器
+trigger1 = 1
+flag = noshadow ;无影子
+flag2 = nobardisplay
+
+[State 0, VarSet]
+type = VarSet    ;变数设定
+trigger1 = time = 115
+v = 10    ;fv = 10        某个变数
+value = 1        ;赋值
+
+[State 0, ChangeState]
+type = ChangeState ;改变状态控制器
+trigger1 = time > 125
+value = 17011;statedef编号
+ctrl = 0 ;是否可控
+
+[statedef 17011]
+type = A
+movetype = I
+physics = N
+anim = 14523
+velset = 0,0
+ctrl = 0
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 0
+value = S1100,10
+
+[State 0, Trans]
+type = Trans    ;透明处理
+trigger1 = 1
+trans = addalpha      ;透明的形势 ADD ADD1 ADDALPHA SUP
+alpha = 255-time*4,255
+
+[State 0, ModifyExplod]
+type = ModifyExplod ;修改图像控制器 参数原理同explod控制器
+trigger1 = 1
+ID = 17006
+pos = 0,0
+postype = p1  ;p2,front,back,left,right
+bindtime = -1
+removetime = 60
+scale = 0.9+fVar(11),0.81+fVar(11)
+sprpriority = 12
+ownpal = 1
+
+[State 0, RemoveExplod]
+type = RemoveExplod   ;移除某个图像
+trigger1 = time = 0
+id = 17007     ;图像的ID
+
+
+[State 0, VarAdd]
+type = VarAdd     ;变数改变控制器
+trigger1 = 1
+fv = 11    ;fv =    某个变数
+value = 0.08        ;更改的值
+[State 0, AssertSpecial]
+type = AssertSpecial ;特殊断言控制器
+trigger1 = 1
+flag = noshadow ;无影子
+
+[State 0, AngleDraw]
+type = AngleDraw
+trigger1 = 1
+scale = 1+fVar(11),1+fVar(11)
+
+[State 0, DestroySelf]
+type = DestroySelf ;毁灭自己控制器
+trigger1 = time = 40
+
+;=====
+[statedef 17020]
+type = A
+movetype = A
+physics = N
+anim = 1035;14503
+velset = 0,0
+ctrl = 0
+sprpriority = 10
+
+[State 0, AngleDraw]
+type = AngleDraw
+trigger1 = 1
+scale = 0.5,0.5
+
+[State 1034, 2]
+type = Projectile
+trigger1 = ishelper(17020)
+trigger1 = time%6 = 1
+projremove = 1
+Projremovetime = 1
+projhits = 1
+projpriority = 9999
+projanim = 17021
+offset = 0,0
+velocity = 0,0
+attr = S, HP
+damage = 2+ifelse(root,palno=11,50,0),1+ifelse(root,palno=11,450,0)
+getpower = 0,0
+givepower = 0,0
+animtype = up
+guardflag = M
+hitflag = MAFD
+pausetime = 0,2
+sparkno = 4
+guard.sparkno = -1
+sparkxy = 0,0
+hitsound = S17000,1
+guardsound = S17000,2
+ground.type = High
+ground.slidetime = 5
+ground.hittime  = 5
+guard.hittime = 5
+ground.velocity = 4,-4
+air.velocity = 4,-4
+fall = 1
+fall.recover = 0
+sprpriority = 4
+ignorehitpause = 1
+[State 1034, 2]
+type = Projectile
+trigger1 = ishelper(17021)
+trigger1 = time%6 = 1
+projremove = 1
+Projremovetime = 1
+projhits = 1
+projpriority = 9999
+projanim = 17021
+offset = 0,0
+velocity = 0,0
+attr = S, HP
+damage = 2+ifelse(root,palno=11,50,0),1+ifelse(root,palno=11,50,0)
+getpower = 0,0
+givepower = 0,0
+animtype = up
+guardflag = M
+hitflag = MAFD
+pausetime = 0,2
+sparkno = 4
+guard.sparkno = -1
+sparkxy = 0,0
+hitsound = S17000,1
+guardsound = S17000,2
+ground.type = High
+ground.slidetime = 5
+ground.hittime  = 5
+guard.hittime = 5
+ground.velocity = -4,-3
+air.velocity = -4,-3
+fall = 1
+fall.recover = 0
+sprpriority = 4
+ignorehitpause = 1
+
+
+[State 1034, 2]
+type = Projectile
+trigger1 = ishelper(17022)
+trigger1 = time%6 = 1
+projremove = 1
+Projremovetime = 1
+projhits = 1
+projpriority = 9999
+projanim = 17021
+offset = 0,0
+velocity = 0,0
+attr = S, HP
+damage = 2+ifelse(root,palno=11,50,0),1
+getpower = 0,0
+givepower = 0,0
+animtype = up
+guardflag = M
+hitflag = MAFD
+pausetime = 0,2
+sparkno = 4
+guard.sparkno = -1
+sparkxy = 0,0
+hitsound = S17000,1
+guardsound = S17000,2
+ground.type = High
+ground.slidetime = 5
+ground.hittime  = 5
+guard.hittime = 5
+ground.velocity = -4,-4
+air.velocity = -4,-4
+fall = 1
+fall.recover = 0
+sprpriority = 4
+ignorehitpause = 1
+[State 1034, 2]
+type = Projectile
+trigger1 = ishelper(17023)
+trigger1 = time%6 = 1
+projremove = 1
+Projremovetime = 1
+projhits = 1
+projpriority = 9999
+projanim = 17021
+offset = 0,0
+velocity = 0,0
+attr = S, HP
+damage = 2+ifelse(root,palno=11,50,0),1
+getpower = 0,0
+givepower = 0,0
+animtype = up
+guardflag = M
+hitflag = MAFD
+pausetime = 0,2
+sparkno = 4
+guard.sparkno = -1
+sparkxy = 0,0
+hitsound = S17000,1
+guardsound = S17000,2
+ground.type = High
+ground.slidetime = 5
+ground.hittime  = 5
+guard.hittime = 5
+ground.velocity = 4,-3
+air.velocity = 4,-3
+fall = 1
+fall.recover = 0
+sprpriority = 4
+ignorehitpause = 1
+
+
+[State 1034, 2]
+type = Projectile
+trigger1 = ishelper(17024)
+trigger1 = time%6 = 1
+projremove = 1
+Projremovetime = 1
+projhits = 1
+projpriority = 9999
+projanim = 17021
+offset = 0,0
+velocity = 0,0
+attr = S, HP
+damage = 2+ifelse(root,palno=11,50,0),1
+getpower = 0,0
+givepower = 0,0
+animtype = up
+guardflag = M
+hitflag = MAFD
+pausetime = 0,2
+sparkno = 4
+guard.sparkno = -1
+sparkxy = 0,0
+hitsound = S17000,1
+guardsound = S17000,2
+ground.type = High
+ground.slidetime = 5
+ground.hittime  = 5
+guard.hittime = 5
+ground.velocity = -3,3
+air.velocity = -3,3
+fall = 1
+fall.recover = 0
+sprpriority = 4
+ignorehitpause = 1
+[State 1034, 2]
+type = Projectile
+trigger1 = ishelper(17025)
+trigger1 = time%6 = 1
+projremove = 1
+Projremovetime = 1
+projhits = 1
+projpriority = 9999
+projanim = 17021
+offset = 0,0
+velocity = 0,0
+attr = S, HP
+damage = 2+ifelse(root,palno=11,50,0),1
+getpower = 0,0
+givepower = 0,0
+animtype = up
+guardflag = M
+hitflag = MAFD
+pausetime = 0,2
+sparkno = 4
+guard.sparkno = -1
+sparkxy = 0,0
+hitsound = S17000,1
+guardsound = S17000,2
+ground.type = High
+ground.slidetime = 5
+ground.hittime  = 5
+guard.hittime = 5
+ground.velocity = -3,-4
+air.velocity = -3,-4
+fall = 1
+fall.recover = 0
+sprpriority = 4
+ignorehitpause = 1
+
+
+[State 1034, 2]
+type = Projectile
+trigger1 = ishelper(17026)
+trigger1 = time%6 = 1
+projremove = 1
+Projremovetime = 1
+projhits = 1
+projpriority = 9999
+projanim = 17021
+offset = 0,0
+velocity = 0,0
+attr = S, HP
+damage = 2+ifelse(root,palno=11,50,0),1
+getpower = 0,0
+givepower = 0,0
+animtype = up
+guardflag = M
+hitflag = MAFD
+pausetime = 0,2
+sparkno = 4
+guard.sparkno = -1
+sparkxy = 0,0
+hitsound = S17000,1
+guardsound = S17000,2
+ground.type = High
+ground.slidetime = 5
+ground.hittime  = 5
+guard.hittime = 5
+ground.velocity = ifelse((random=[0,500]),3,-3),-3
+air.velocity = ifelse((random=[0,500]),3,-3),-3
+fall = 1
+fall.recover = 0
+sprpriority = 4
+ignorehitpause = 1
+[State 0, AssertSpecial]
+type = AssertSpecial ;特殊断言控制器
+trigger1 = 1
+flag = noshadow ;无影子
+
+[State 0, Trans]
+type = Trans    ;透明处理
+trigger1 = 1
+trans = add      ;透明的形势 ADD ADD1 ADDALPHA SUP
+
+[State 0, DestroySelf]
+type = DestroySelf
+trigger1 = time >500
+;ignorehitpause = 
+;persistent = 
+
+
+[State 0, ChangeState]
+type = ChangeState ;改变状态控制器
+trigger1 = root,var(30) = 1
+value = 17021
+ctrl = 0 ;是否可控
+
+[Statedef 17021]
+type = A
+movetype = A
+physics = N
+ctrl = 0
+velset = 0,-5
+anim = 11400;17022
+sprpriority = 10
+
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = TIME =0
+value = S12450,5
+
+[State 0, AngleDraw]
+type = AngleDraw
+trigger1 = 1
+scale = 0.5,0.5
+;ignorehitpause = 
+;persistent = 
+
+
+[State 0, RemoveExplod]
+type = RemoveExplod   ;移除某个图像
+trigger1 = time = 0
+id = 17030
+
+[State 0, PlaySnd]
+type = PlaySnd  ;播放声音控制器
+trigger1 = time = 0
+value = S0,27    ;SND中的声音编号
+
+[State 0, Trans]
+type = Trans    ;透明处理
+trigger1 = 1
+trans = add
+[State 0, VelSet]
+type = VelSet    ;速度设定
+trigger1 = time = 0
+trigger1 = p2bodydist x >= 0
+x = 5           ;横向速度
+[State 0, VelSet]
+type = VelSet    ;速度设定
+trigger1 = time = 0
+trigger1 = p2bodydist x < 0
+x = -5           ;横向速度
+[State 0, VelSet]
+type = VelSet    ;速度设定
+trigger1 = time = 0
+y = -16           ;横向速度
+
+
+[State 0, VelAdd]
+type = VelAdd
+triggerall = time > 5
+trigger1 = ishelper(17020)||ishelper(17021)||ishelper(17022)
+trigger1 = p2bodydist x < -40
+trigger1 = vel x >= -10
+trigger1 = pos y < -40
+x = -2
+
+[State 0, VelAdd]
+type = VelAdd  ;速度改变
+triggerall = time > 5
+trigger1 = ishelper(17020)||ishelper(17021)||ishelper(17022)
+trigger1 = p2bodydist x > 40
+trigger1 = pos y < -40
+trigger1 = vel x <= 10
+x = 2
+
+[State 0, VelAdd]
+type = VelAdd  ;速度改变
+triggerall = time > 5
+trigger1 = ishelper(17020)||ishelper(17021)||ishelper(17022)
+trigger1 = p2bodydist y > 40
+trigger1 = vel y <= 10
+y = 0.7
+
+[State 0, VelAdd]
+type = VelAdd
+triggerall = time > 5
+trigger1 = ishelper(17023)||ishelper(17024)||ishelper(17025)
+trigger1 = p2bodydist x < -40
+trigger1 = vel x >= -10
+trigger1 = pos y < -40
+x = -2
+
+[State 0, VelAdd]
+type = VelAdd  ;速度改变
+triggerall = time > 5
+trigger1 = ishelper(17023)||ishelper(17024)||ishelper(17025)
+trigger1 = p2bodydist x > 40
+trigger1 = vel x <= 10
+trigger1 = pos y < -30
+x = 2
+
+
+[State 0, VelAdd]
+type = VelAdd  ;速度改变
+triggerall = time > 5
+trigger1 = ishelper(17023)||ishelper(17024)||ishelper(17025)
+trigger1 = p2bodydist y > 40
+trigger1 = vel y <= 10
+y = 0.6
+[State 0, VelAdd]
+type = VelAdd
+triggerall = time > 5
+trigger1 = ishelper(17026)
+trigger1 = p2bodydist x < -40
+trigger1 = vel x >= -10
+trigger1 = pos y < -50
+x = -2
+
+[State 0, VelAdd]
+type = VelAdd  ;速度改变
+triggerall = time > 5
+trigger1 = ishelper(17026)
+trigger1 = p2bodydist x > 40
+trigger1 = vel x <= 10
+trigger1 = pos y < -50
+x = 2
+
+[State 0, VelAdd]
+type = VelAdd  ;速度改变
+triggerall = time > 5
+trigger1 = ishelper(17026)
+trigger1 = p2bodydist y > 90
+trigger1 = vel y <= 10
+y = 1.7
+
+
+[State 0, Turn]
+type = null;Turn      ;转身控制器
+trigger1 = p2bodydist x < 5
+
+[State 0, Explod]
+type = Explod ;图像控制器
+trigger1 = time >= 0
+trigger1 = time%3 = 1
+anim = 14513;图像的动画编号
+pos = 0,0 ;位置
+postype = p1  ;p2,front,back,left,right 绑定位置
+bindtime = 1 ;绑定时间
+removetime = -2 ;移除时间
+sprpriority = 7 ;图层
+ownpal = 1 ;用自己的色表
+scale =0.5,0.5
+[State 0, Explod]
+type = Explod ;图像控制器
+trigger1 = time >= 0
+trigger1 = time%3 = 1
+anim = 14514;17040;图像的动画编号
+pos = 0,0 ;位置
+postype = p1  ;p2,front,back,left,right 绑定位置
+bindtime = 1 ;绑定时间
+removetime = -2 ;移除时间
+sprpriority = 7 ;图层
+ownpal = 1 ;用自己的色表
+scale =0.5,0.5
+
+[State 0, HitDef]
+type = null;HitDef ;攻击参数控制器
+trigger1 = time%5 = 1
+attr = S, HP
+hitflag = MAFD        ;HLAFD+- 攻击的方法
+guardflag = M         ;HLA 防御的方法
+getpower = 0,0  ;得到的能量
+givepower = 0,0  ;对手得到的能量
+animtype = Up
+priority = 9999,miss   ;Hit,Miss,Dodge 攻击优先值
+damage = 10,5    ;伤血
+pausetime = 3,0   ;击中后的停顿时间
+sparkno = 4    ;击中的火花
+guard.sparkno = -1 ;防御的火花
+sparkxy = 0,0 ;火花的位置
+hitsound = S17000,1
+;guardsound = S0,59
+ground.type = High
+ground.slidetime = 20
+ground.hittime  = 20
+guard.hittime = 20
+ground.velocity = ifelse((vel x >= 0),-4,4),-4
+air.velocity = ifelse((vel x >= 0),-4,4),-4
+fall = 1 ;倒地控制
+fall.recover = 0 ;倒地时是否可以受身
+kill = 1 ;对手血为空时是否直接被杀死
+guard.kill = 1 ;防御中是否被杀死
+fall.kill = 1 ;坠落伤血是否被杀死
+numhits = 1 ;显示击中的数量
+
+[State 1034, 2]
+type = Projectile
+trigger1 = time%5 = 1
+projremove = 0
+Projremovetime = 4
+projhits = 1
+projpriority = 9999
+projanim = 17021
+offset = 0,0
+velocity = 0,0
+attr = S, HP
+damage = 7,3
+getpower = 0,0
+givepower = 0,0
+animtype = up
+guardflag = M
+hitflag = MAFD
+pausetime = 0,7
+sparkno = 4
+guard.sparkno = 42
+sparkxy = 0,0
+hitsound = S17000,1
+guardsound = S17000,2
+ground.type = High
+ground.slidetime = 5
+ground.hittime  = 5
+guard.hittime = 5
+ground.velocity = ifelse((vel x >= 0),-2,2),-2
+air.velocity = ifelse((vel x >= 0),-2,2),-0.5
+sprpriority = 4
+ignorehitpause = 0
+
+[State 0, AfterImage]
+type = null;AfterImage ;残影控制器
+trigger1 = time = 0
+time = -1 ;残影持续时间
+length = 20 ;残影长度
+palcontrast = 250,250,250 ;残影第一时间颜色
+palbright = 0,0,0 ;颜色改变参数
+timegap = 1 ;多少ticks记录一次残影
+framegap = 1 ;AIR播放多少动画图片记录一次
+trans = add ;"none","add1","sub" ;残影透明类型
+
+[State 0, AssertSpecial]
+type = AssertSpecial ;特殊断言控制器
+trigger1 = 1
+flag = noshadow ;无影子
+
+[State 0, ChangeState]
+type = ChangeState
+trigger1 = vel y >=0 && pos y >=0
+value = 17022
+ctrl = 0
+
+[State 0, DestroySelf]
+type = DestroySelf ;毁灭自己控制器
+trigger1 = time >= 500
+
+
+
+[Statedef 17022]
+type = A
+movetype = A
+physics = N
+ctrl = 0
+velset = 0,0
+anim = 14512;17022
+sprpriority = 10
+
+
+[State 1034, 2]
+type = Projectile
+trigger2 = time = 0
+trigger1 = time%15 = 0
+projremove = 0
+Projremovetime = 4
+projhits = 1
+projpriority = 9999
+projanim = 17021
+offset = 0,0
+velocity = 0,0
+attr = S, HP
+damage = 18+ifelse(root,palno=11,450,0),12
+getpower = 0,0
+givepower = 0,0
+animtype = up
+guardflag = M
+hitflag = MAFD
+pausetime = 0,7
+sparkno = 4
+guard.sparkno = 42
+sparkxy = 0,0
+hitsound = S17000,1
+guardsound = S17000,2
+ground.type = High
+ground.slidetime = 5
+ground.hittime  = 5
+guard.hittime = 5
+ground.velocity = ifelse((vel x >= 0),-2,2),-4
+air.velocity = ifelse((vel x >= 0),-2,2),-4.5
+sprpriority = 4
+ignorehitpause = 0
+palfx.time=20
+palfx.add=-50,-50,80
+palfx.sinadd=50,50,50,15
+palfx.color=1
+palfx.invertall=1
+fall = 1
+fall.recover =0
+id = 17022
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 0
+value = S1,5
+
+[State 0, AngleDraw]
+type = AngleDraw
+trigger1 = 1
+scale = 0.5,0.5
+
+[State 0, DestroySelf]
+type = DestroySelf
+trigger1 = animtime = 0
+;ignorehitpause = 
+;persistent = 
+

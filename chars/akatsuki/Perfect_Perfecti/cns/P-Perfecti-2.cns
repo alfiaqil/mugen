@@ -1,0 +1,1252 @@
+
+[statedef -2]
+
+[State -2, 数据]
+type = DisplayToClipboard
+trigger1 = 1
+text = "var()=%d , var(6)=%d"
+params = roundstate, var(23)
+
+;----------脱离开关------
+[state -2, selfstate on/off]
+type = Varset
+trigger1 = 1
+var(3) = 1        ;默认1，设为0时AI禁止使用脱离(受击脱出on/off)
+;-----------PW点数相关----------
+[state -2, PW点数初始值]
+type = Varset
+trigger1 = roundstate = 1 && roundno = 1
+var(45) = 3*(Palno>=9) +   0	;9p以上开场PW点数+3
+[state -2, PW点数获取加强]  
+type = Varset  
+trigger1 = roundstate = 1 && roundno = 1
+;trigger1 = Palno >= 7     ;7P以上默认开启，如果想1P也开启的话，在[trigger1 = Palno >= 7]的前面加上分号就行
+var(44) = 1  		;加快写字的速度，默认为1，想关闭的话改为0
+[state -2, PW点数自动增加]
+type = Varadd
+trigger1 = roundstate = 2 && (Gametime%720 =0) ;每12秒PW点数+1，可修改
+var(45) = 1*(palno>=8)         +0 ;←默认关闭，将0修改为1则开启
+[state -2, var(10)最大值]
+type = Varset
+trigger1 = var(45) >= 13;←最大值，默认15，不要少于12
+v = 45
+value = 13
+[state -2, 11p无限]  
+type = Varset 
+trigger1 = Palno = 11
+var(45) = 15
+;---------10P-----------
+[State 0, NotHitBy]
+type = NotHitBy
+trigger1 = Palno = 9
+value = ,ap
+time = 12450
+ignorehitpause = 1
+;-------底力--------
+[State -2,底力]
+type = DefenceMulSet
+trigger1 = life > 200
+value = 1-ifelse(Palno>=7,Palno*0.025,0)
+
+[State -2,底力]
+type = DefenceMulSet
+trigger1 = life <= 200
+value = 0.4-Palno*0.03
+
+[State -2,底力]
+type = attackMulSet
+trigger1 = Palno>= 9
+value = 1.35
+;-----------站C标志----------------
+[State -2,归零]  ; 
+type = VarSet
+triggerall = var(22) != 0
+trigger1 = P2movetype != H
+var(22) = 0
+;--------连击修正---------------------
+[State -2,Hit数记录]
+type = VarAdd
+trigger1 = movehit = 1
+var(12) = 1
+
+[State -2,Hit数记录3]
+type = VarAdd
+trigger1 = movehit = 1
+var(13) = 1
+
+[State -2,hit数归零]
+type = VarSet
+triggerall = var(13) != 0
+trigger1 = p2movetype != H
+var(13) = 0
+
+[State -2,Hit数记录2]
+type = VarAdd
+trigger1 = helper(1501),movehit=1
+var(14) = 1
+
+[State -2,hit数归零]
+type = VarSet
+trigger1 = var(14) > 12
+fvar(16) = 0.8
+
+[State -2,hit数归零2]
+type = VarSet
+triggerall = var(14) != 0
+trigger1 = P2movetype != H
+var(14) = 0
+[State -2,hit数归零2]
+type = VarSet
+triggerall = var(12) != 0
+trigger1 = stateno != 1301
+var(12) = 0
+
+[State -2,Hit数记录]
+type = VarAdd
+trigger1 = projhit2600 = 1
+var(6) = 1
+[State -2,Hit数记录]
+type = VarAdd
+trigger1 = projhit14507 = 1
+var(8) = 1
+[State -2,Hit数记录1100]
+type = VarAdd
+trigger1 = projhit1100 = 1
+var(9) = 1
+[State -2,Hit数记录]
+type = VarAdd
+trigger1 = projhit1606 = 1
+var(10) = 1
+[State -2,Hit数记录]
+type = VarAdd
+trigger1 = projhit17022 = 1
+var(11) = 1
+[State 0, Hit数记录];地火
+type = VarAdd
+trigger1 = projhit26150 =1
+var(23) = 1
+[State -2,Hit数记录]
+type = Varset
+triggerall = var(6) != 0
+trigger1 = stateno != [2600,2605]
+var(6) = 0
+[State -2,1450归零];
+type = VarSet 
+triggerall = var(7) != 0
+trigger1 = stateno = 1456
+var(7) = 0
+[State -2,1450归零];
+type = VarSet 
+triggerall = var(8) != 0
+trigger1 = P2movetype != H
+var(8) = 0
+[State -2,1450归零];
+type = VarSet 
+triggerall = var(9) != 0
+trigger1 = P2movetype != H
+var(9) = 0
+[State -2,1450归零];
+type = VarSet 
+triggerall = var(10) != 0
+trigger1 = P2movetype != H
+var(10) = 0
+[State -2,1450归零];
+type = VarSet 
+triggerall = var(11) != 0
+trigger1 = P2movetype != H
+var(11) = 0
+;------------受击数---------------
+[State -2,受击数记录]
+type = VarAdd
+trigger1 = gethitvar(damage) > 0
+var(15) = 1
+
+[State -2,hit数归零]
+type = VarSet
+triggerall = var(15) != 0
+trigger1 = movetype != H
+var(15) = 0
+;----------------------------
+[state -2,胜场计数]
+type =Varadd
+trigger1 = win
+var(40)=1
+;---------------------------------------------
+;Perfect World
+;---Count---
+		;两个都要同时修改
+;---0---
+[State -2, ]
+type = Explod
+triggerall = !ishelper
+triggerall = !Numexplod(30100) 
+trigger1 = teamside = 1
+;trigger1 = var(10) = 0
+ID = 30100
+anim = 30000+ifelse(var(10)>=12,12,var(10))
+pos = 70, 60
+postype = left
+vel = 0,0
+accel = 0, 0
+scale = 0.25, 0.25
+removetime = -1
+bindtime = -1
+sprpriority = 7
+ownpal = 1
+ignorehitpause =0
+pausemovetime = 9999999
+supermovetime = 9999999
+
+[State -2, ]
+type = Explod
+triggerall = !ishelper
+triggerall = !Numexplod(30200) 
+trigger1 = teamside = 2
+;trigger1 = var(45) = 0
+ID = 30200
+anim = 30000+ifelse(var(10)>=12,12,var(10))
+pos = -70, 60
+postype = right
+vel = 0,0
+accel = 0, 0
+scale = 0.25, 0.25
+removetime = -1
+bindtime = -1
+sprpriority = 7
+ownpal = 1
+ignorehitpause = 0
+pausemovetime = 9999999
+supermovetime = 9999999
+
+[State -2, RemoveExplod]
+type = RemoveExplod
+trigger1 = var(45) != 0
+id = 30100
+[State -2, RemoveExplod]
+type = RemoveExplod
+trigger1 = var(45) != 0
+id = 30200
+;---1---
+[State -2, ]
+type = Explod
+triggerall = !ishelper
+triggerall = !Numexplod(30101) 
+trigger1 = teamside = 1
+trigger1 = var(45) = 1
+ID = 30101
+anim = 30001
+pos = 70, 60
+postype = left
+vel = 0,0
+accel = 0, 0
+scale = 0.25, 0.25
+removetime = -1
+bindtime = -1
+sprpriority = 7
+ownpal = 1
+ignorehitpause = 0
+pausemovetime = 9999999
+supermovetime = 9999999
+
+[State -2, ]
+type = Explod
+triggerall = !ishelper
+triggerall = !Numexplod(30201) 
+trigger1 = teamside = 2
+trigger1 = var(45) = 1
+ID = 30201
+anim = 30001
+pos = -70, 60
+postype = right
+vel = 0,0
+accel = 0, 0
+scale = 0.25, 0.25
+removetime = -1
+bindtime = -1
+sprpriority = 7
+ownpal = 1
+ignorehitpause = 0
+pausemovetime = 9999999
+supermovetime = 9999999
+
+[State -2, RemoveExplod]
+type = RemoveExplod
+trigger1 = var(45) != 1
+id = 30101
+[State -2, RemoveExplod]
+type = RemoveExplod
+trigger1 = var(45) != 1
+id = 30201
+;---2---
+[State -2, ]
+type = Explod
+triggerall = !ishelper
+triggerall = !Numexplod(30102) 
+trigger1 = teamside = 1
+trigger1 = var(45) = 2
+ID = 30102
+anim = 30002
+pos = 70, 60
+postype = left
+vel = 0,0
+accel = 0, 0
+scale = 0.25, 0.25
+removetime = -1
+bindtime = -1
+sprpriority = 7
+ownpal = 1
+ignorehitpause = 0
+pausemovetime = 9999999
+supermovetime = 9999999
+
+[State -2, ]
+type = Explod
+triggerall = !ishelper
+triggerall = !Numexplod(30202) 
+trigger1 = teamside = 2
+trigger1 = var(45) = 2
+ID = 30202
+anim = 30002
+pos = -70, 60
+postype = right
+vel = 0,0
+accel = 0, 0
+scale = 0.25, 0.25
+removetime = -1
+bindtime = -1
+sprpriority = 7
+ownpal = 1
+ignorehitpause = 0
+pausemovetime = 9999999
+supermovetime = 9999999
+
+[State -2, RemoveExplod]
+type = RemoveExplod
+trigger1 = var(45) != 2
+id = 30102
+[State -2, RemoveExplod]
+type = RemoveExplod
+trigger1 = var(45) != 2
+id = 30202
+;---3---
+[State -2, ]
+type = Explod
+triggerall = !ishelper
+triggerall = !Numexplod(30103) 
+trigger1 = teamside = 1
+trigger1 = var(45) = 3
+ID = 30103
+anim = 30003
+pos = 70, 60
+postype = left
+vel = 0,0
+accel = 0, 0
+scale = 0.25, 0.25
+removetime = -1
+bindtime = -1
+sprpriority = 7
+ownpal = 1
+ignorehitpause = 0
+pausemovetime = 9999999
+supermovetime = 9999999
+
+[State -2, ]
+type = Explod
+triggerall = !ishelper
+triggerall = !Numexplod(30203) 
+trigger1 = teamside = 2
+trigger1 = var(45) = 3
+ID = 30203
+anim = 30003
+pos = -70, 60
+postype = right
+vel = 0,0
+accel = 0, 0
+scale = 0.25, 0.25
+removetime = -1
+bindtime = -1
+sprpriority = 7
+ownpal = 1
+ignorehitpause = 0
+pausemovetime = 9999999
+supermovetime = 9999999
+
+[State -2, RemoveExplod]
+type = RemoveExplod
+trigger1 = var(45) != 3
+id = 30103
+[State -2, RemoveExplod]
+type = RemoveExplod
+trigger1 = var(45) != 3
+id = 30203
+;---4---
+[State -2, ]
+type = Explod
+triggerall = !ishelper
+triggerall = !Numexplod(30104) 
+trigger1 = teamside = 1
+trigger1 = var(45) = 4
+ID = 30104
+anim = 30004
+pos = 70, 60
+postype = left
+vel = 0,0
+accel = 0, 0
+scale = 0.25, 0.25
+removetime = -1
+bindtime = -1
+sprpriority = 7
+ownpal = 1
+ignorehitpause = 0
+pausemovetime = 9999999
+supermovetime = 9999999
+
+[State -2, ]
+type = Explod
+triggerall = !ishelper
+triggerall = !Numexplod(30204) 
+trigger1 = teamside = 2
+trigger1 = var(45) = 4
+ID = 30204
+anim = 30004
+pos = -70, 60
+postype = right
+vel = 0,0
+accel = 0, 0
+scale = 0.25, 0.25
+removetime = -1
+bindtime = -1
+sprpriority = 7
+ownpal = 1
+ignorehitpause = 0
+pausemovetime = 9999999
+supermovetime = 9999999
+
+[State -2, RemoveExplod]
+type = RemoveExplod
+trigger1 = var(45) != 4
+id = 30104
+[State -2, RemoveExplod]
+type = RemoveExplod
+trigger1 = var(45) != 4
+id = 30204
+;---5---
+[State -2, ]
+type = Explod
+triggerall = !ishelper
+triggerall = !Numexplod(30105) 
+trigger1 = teamside = 1
+trigger1 = var(45) = 5
+ID = 30105
+anim = 30005
+pos = 70, 60
+postype = left
+vel = 0,0
+accel = 0, 0
+scale = 0.25, 0.25
+removetime = -1
+bindtime = -1
+sprpriority = 7
+ownpal = 1
+ignorehitpause = 0
+pausemovetime = 9999999
+supermovetime = 9999999
+
+[State -2, ]
+type = Explod
+triggerall = !ishelper
+triggerall = !Numexplod(30205) 
+trigger1 = teamside = 2
+trigger1 = var(45) = 5
+ID = 30205
+anim = 30005
+pos = -70, 60
+postype = right
+vel = 0,0
+accel = 0, 0
+scale = 0.25, 0.25
+removetime = -1
+bindtime = -1
+sprpriority = 7
+ownpal = 1
+ignorehitpause = 0
+pausemovetime = 9999999
+supermovetime = 9999999
+
+[State -2, RemoveExplod]
+type = RemoveExplod
+trigger1 = var(45) != 5
+id = 30105
+[State -2, RemoveExplod]
+type = RemoveExplod
+trigger1 = var(45) != 5
+id = 30205
+;---6---
+[State -2, ]
+type = Explod
+triggerall = !ishelper
+triggerall = !Numexplod(30106) 
+trigger1 = teamside = 1
+trigger1 = var(45) = 6
+ID = 30106
+anim = 30006
+pos = 70, 60
+postype = left
+vel = 0,0
+accel = 0, 0
+scale = 0.25, 0.25
+removetime = -1
+bindtime = -1
+sprpriority = 7
+ownpal = 1
+pausemovetime = 9999999
+supermovetime = 9999999
+
+[State -2, ]
+type = Explod
+triggerall = !ishelper
+triggerall = !Numexplod(30206) 
+trigger1 = teamside = 2
+trigger1 = var(45) = 6
+ID = 30206
+anim = 30006
+pos = -70, 60
+postype = right
+vel = 0,0
+accel = 0, 0
+scale = 0.25, 0.25
+removetime = -1
+bindtime = -1
+sprpriority = 7
+ownpal = 1
+pausemovetime = 9999999
+supermovetime = 9999999
+
+[State -2, RemoveExplod]
+type = RemoveExplod
+trigger1 = var(45) != 6
+id = 30106
+[State -2, RemoveExplod]
+type = RemoveExplod
+trigger1 = var(45) != 6
+id = 30206
+;---7---
+[State -2, ]
+type = Explod
+triggerall = !ishelper
+triggerall = !Numexplod(30107) 
+trigger1 = teamside = 1
+trigger1 = var(45) = 7
+ID = 30107
+anim = 30007
+pos = 70, 60
+postype = left
+vel = 0,0
+accel = 0, 0
+scale = 0.25, 0.25
+removetime = -1
+bindtime = -1
+sprpriority = 7
+ownpal = 1
+pausemovetime = 9999999
+supermovetime = 9999999
+
+[State -2, ]
+type = Explod
+triggerall = !ishelper
+triggerall = !Numexplod(30207) 
+trigger1 = teamside = 2
+trigger1 = var(45) = 7
+ID = 30207
+anim = 30007
+pos = -70, 60
+postype = right
+vel = 0,0
+accel = 0, 0
+scale = 0.25, 0.25
+removetime = -1
+bindtime = -1
+sprpriority = 7
+ownpal = 1
+pausemovetime = 9999999
+supermovetime = 9999999
+
+[State -2, RemoveExplod]
+type = RemoveExplod
+trigger1 = var(45) != 7
+id = 30107
+[State -2, RemoveExplod]
+type = RemoveExplod
+trigger1 = var(45) != 7
+id = 30207
+;---8---
+[State -2, ]
+type = Explod
+triggerall = !ishelper
+triggerall = !Numexplod(30108) 
+trigger1 = teamside = 1
+trigger1 = var(45) = 8
+ID = 30108
+anim = 30008
+pos = 70, 60
+postype = left
+vel = 0,0
+accel = 0, 0
+scale = 0.25, 0.25
+removetime = -1
+bindtime = -1
+sprpriority = 7
+ownpal = 1
+pausemovetime = 9999999
+supermovetime = 9999999
+
+[State -2, ]
+type = Explod
+triggerall = !ishelper
+triggerall = !Numexplod(30208) 
+trigger1 = teamside = 2
+trigger1 = var(45) = 8
+ID = 30208
+anim = 30008
+pos = -70, 60
+postype = right
+vel = 0,0
+accel = 0, 0
+scale = 0.25, 0.25
+removetime = -1
+bindtime = -1
+sprpriority = 7
+ownpal = 1
+pausemovetime = 9999999
+supermovetime = 9999999
+
+[State -2, RemoveExplod]
+type = RemoveExplod
+trigger1 = var(45) != 8
+id = 30108
+[State -2, RemoveExplod]
+type = RemoveExplod
+trigger1 = var(45) != 8
+id = 30208
+;---9---
+[State -2, ]
+type = Explod
+triggerall = !ishelper
+triggerall = !Numexplod(30109) 
+trigger1 = teamside = 1
+trigger1 = var(45) = 9
+ID = 30109
+anim = 30009
+pos = 70, 60
+postype = left
+vel = 0,0
+accel = 0, 0
+scale = 0.25, 0.25
+removetime = -1
+bindtime = -1
+sprpriority = 7
+ownpal = 1
+pausemovetime = 9999999
+supermovetime = 9999999
+
+[State -2, ]
+type = Explod
+triggerall = !ishelper
+triggerall = !Numexplod(30209) 
+trigger1 = teamside = 2
+trigger1 = var(45) = 9
+ID = 30209
+anim = 30009
+pos = -70, 60
+postype = right
+vel = 0,0
+accel = 0, 0
+scale = 0.25, 0.25
+removetime = -1
+bindtime = -1
+sprpriority = 7
+ownpal = 1
+pausemovetime = 9999999
+supermovetime = 9999999
+
+[State -2, RemoveExplod]
+type = RemoveExplod
+trigger1 = var(45) != 9
+id = 30109
+[State -2, RemoveExplod]
+type = RemoveExplod
+trigger1 = var(45) != 9
+id = 30209
+;---10---
+[State -2, ]
+type = Explod
+triggerall = !ishelper
+triggerall = !Numexplod(30110) 
+trigger1 = teamside = 1
+trigger1 = var(45) = 10
+ID = 30110
+anim = 30010
+pos = 70, 60
+postype = left
+vel = 0,0
+accel = 0, 0
+scale = 0.25, 0.25
+removetime = -1
+bindtime = -1
+sprpriority = 7
+ownpal = 1
+pausemovetime = 9999999
+supermovetime = 9999999
+
+[State -2, ]
+type = Explod
+triggerall = !ishelper
+triggerall = !Numexplod(30210) 
+trigger1 = teamside = 2
+trigger1 = var(45) = 10
+ID = 30210
+anim = 30010
+pos = -70, 60
+postype = right
+vel = 0,0
+accel = 0, 0
+scale = 0.25, 0.25
+removetime = -1
+bindtime = -1
+sprpriority = 7
+ownpal = 1
+pausemovetime = 9999999
+supermovetime = 9999999
+
+[State -2, RemoveExplod]
+type = RemoveExplod
+trigger1 = var(45) != 10
+id = 30110
+[State -2, RemoveExplod]
+type = RemoveExplod
+trigger1 = var(45) != 10
+id = 30210
+;---11---
+[State -2, ]
+type = Explod
+triggerall = !ishelper
+triggerall = !Numexplod(30111) 
+trigger1 = teamside = 1
+trigger1 = var(45) = 11
+ID = 30111
+anim = 30011
+pos = 70, 60
+postype = left
+vel = 0,0
+accel = 0, 0
+scale = 0.25, 0.25
+removetime = -1
+bindtime = -1
+sprpriority = 7
+ownpal = 1
+pausemovetime = 9999999
+supermovetime = 9999999
+
+[State -2, ]
+type = Explod
+triggerall = !ishelper
+triggerall = !Numexplod(30211) 
+trigger1 = teamside = 2
+trigger1 = var(45) = 11
+ID = 30211
+anim = 30011
+pos = -70, 60
+postype = right
+vel = 0,0
+accel = 0, 0
+scale = 0.25, 0.25
+removetime = -1
+bindtime = -1
+sprpriority = 7
+ownpal = 1
+pausemovetime = 9999999
+supermovetime = 9999999
+
+[State -2, RemoveExplod]
+type = RemoveExplod
+trigger1 = var(45) != 11
+id = 30111
+[State -2, RemoveExplod]
+type = RemoveExplod
+trigger1 = var(45) != 11
+id = 30211
+;---12---
+[State -2, ]
+type = Explod
+triggerall = !ishelper
+triggerall = !Numexplod(30112) 
+trigger1 = teamside = 1
+trigger1 = var(45) >= 12
+ID = 30112
+anim = 30012
+pos = 70, 60
+postype = left
+vel = 0,0
+accel = 0, 0
+scale = 0.25, 0.25
+removetime = -1
+bindtime = -1
+sprpriority = 7
+ownpal = 1
+pausemovetime = 9999999
+supermovetime = 9999999
+
+[State -2, ]
+type = Explod
+triggerall = !ishelper
+triggerall = !Numexplod(30212) 
+trigger1 = teamside = 2
+trigger1 = var(45) >= 12
+ID = 30212
+anim = 30012
+pos = -70, 60
+postype = right
+vel = 0,0
+accel = 0, 0
+scale = 0.25, 0.25
+removetime = -1
+bindtime = -1
+sprpriority = 7
+ownpal = 1
+pausemovetime = 9999999
+supermovetime = 9999999
+
+[State -2, RemoveExplod]
+type = RemoveExplod
+trigger1 = var(45) < 12
+id = 30112
+[State -2, RemoveExplod]
+type = RemoveExplod
+trigger1 = var(45) < 12
+id = 30212
+
+
+;--------气量相关---------
+[State 0, PowerSet]
+type = PowerSet
+trigger1 = roundno = 1
+trigger1 = roundstate < 2
+value = 1470+palno*30
+
+[State 0, 回气]
+type = PowerAdd
+trigger1 = palno = [4,6] ;4-6p缓慢回气
+trigger1 = Gametime%5 =0;
+value = 3
+ignorehitpause = 1
+[State 0, 回气]
+type = PowerAdd
+trigger1 = palno = 7 
+trigger1 = Gametime%7 =0;
+value = 1
+ignorehitpause = 1
+[State 0, 回气]
+type = PowerAdd
+trigger1 = palno >= 8 ;默认8P以上有回气，可修改
+trigger1 = Gametime%5 =0;
+trigger1 = stateno != [2500,2505]
+trigger1 = stateno != 1600
+trigger1 = stateno != 1045
+value = 30
+ignorehitpause = 1
+
+[State 0, PowerSet]
+type = PowerSet
+trigger1 = palno >= 9
+trigger1 = power < 6500
+value = 6500
+[State 0, 回气]
+type = PowerAdd
+trigger1 = palno >= 9
+value = 70
+;==================================
+[State 0, 偷偷回血]
+type = LifeAdd
+trigger1 = palno >= 10
+trigger1 = gametime %5 = 0
+value = 1
+;==============================
+[State 0, PosSet]
+type = changestate
+triggerall = var(59)>0
+trigger1 = (statetype = S) && (Pos y < 0) && (stateno = [0,99])
+value = 100
+[State 0, PosSet]
+type = PosSet
+triggerall = var(59)>0
+trigger1 = (statetype = S) && (Pos y < 0) && (stateno = [0,100])
+y = 0
+;===============================
+[State -2, VarSet]
+type = VarSet
+trigger1 = 1
+v = 50    
+value = enemynear,pos y
+;===============================
+;====================================
+[State -2, KO voice]
+Type = PlaySnd
+triggerall = Alive = 0
+triggerall = StateNo = 5150
+trigger1 = roundno
+trigger1 = Anim = 5140
+trigger1 = Animelem = 2
+Value = s5050, 0
+persistent = 0
+ignorehitpause = 1
+
+[State -2, KO]
+Type = PlaySnd
+triggerall = Alive = 0
+triggerall = MatchOver = 1
+trigger1 = stateno = 5035
+trigger1 = (anim = 5035)&&(animelem =2)
+trigger1 = movetype = H
+Value = s5050, 1
+persistent = 0
+ignorehitpause = 1
+;=================================
+[State -2, VarSet]
+type = VarSet
+trigger1 = 1
+v = 46    
+value = var(15)
+
+;显血----------------------
+[State 000X, 个位]
+type = null;Explod
+trigger1 = 1
+anim = 3300+ ceil(var(46)%10)
+pos = 160,10
+postype = left  ;p2,front,back,left,right
+removetime = 1
+pausemovetime = 0
+scale = 0.3,0.3
+ontop = 1
+ownpal = 1
+[State 00X0, 十位]
+type = null; Explod
+trigger1 = 1
+anim = 3300+ ifelse(var(46)>=1000,((var(46)/10)%10), ifelse(var(46)>=100,(var(46)/10)%10,ifelse(var(46)>=10,var(46)/10,0)))
+pos = 140,10
+postype = left  ;p2,front,back,left,right
+removetime = 1
+pausemovetime = 0
+scale = 0.3,0.3
+ontop = 1
+ownpal = 1
+[State 0X00, 百位]
+type = null; Explod
+trigger1 = 1
+anim = 3300+ ifelse(var(46)>=1000,((var(46)/100)%10), ifelse(var(46)>=100,var(46)/100,0) )
+pos = 120,10
+postype = left  ;p2,front,back,left,right
+removetime = 1
+pausemovetime = 0
+scale = 0.3,0.3
+ontop = 1
+ownpal = 1
+[State X000, 千位]
+type = null; Explod
+trigger1 = 1
+anim = 3300+(var(46)/1000)
+pos = 100,10
+postype = left  ;p2,front,back,left,right
+removetime = 1
+pausemovetime = 0
+scale = 0.3,0.3
+ontop = 1
+ownpal = 1
+;===============================
+[State 0, 受击时缓慢回气]
+type = PowerAdd
+trigger1 = movetype = H
+;triggerall = var(43) !=0
+value = 1;+random%2
+[State 0, PowerAdd]
+type = PowerAdd
+trigger1 = stateno = [120,140]
+trigger1 = gametime %10 =1
+value = 3
+ignorehitpause = 1
+;persistent = 
+
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = p2stateno = 24111 && enemy,time = 1
+trigger2 = enemy,stateno = 921 && enemy,time = 1
+value = S1,3
+
+[State -2, 旋转特效]
+type = Explod
+triggerall = ishelper=0
+triggerall = Numexplod(10037) = 0
+trigger1 = p2stateno=13022 && target(1300),time = 0
+trigger2 = p2stateno=12066 && target(1205),time = 0
+anim = 10037
+ID = 10037
+pos = 0,0
+postype = p2  ;p2,front,back,left,right
+facing = 1
+vfacing = 1
+bindtime = 12450
+vel = 0,0
+accel = 0,0
+random = 0,0
+removetime = -1
+pausemovetime = 0
+scale = 1,1
+sprpriority = 0
+ontop = 1
+ownpal = 0
+removeongethit = 0
+ignorehitpause = 1
+[State 0, RemoveExplod]
+type = RemoveExplod
+triggerall = ishelper=0
+trigger1 = p2stateno != 13022
+trigger1 = p2stateno != 12066
+id = 10037
+
+[State -2, 锁特效]
+type = Explod
+triggerall = stateno != 1450
+triggerall = Numexplod(1003) = 0
+triggerall = !ishelper
+trigger1 = p2stateno=1003 && target(1300),time = 0
+trigger1 = p2movetype = H
+anim = 1003
+ID = 1003
+pos = 0,-240
+postype = p2  ;p2,front,back,left,right
+facing = 1
+vfacing = 1
+bindtime = 1
+vel = 0,0
+accel = 0,0
+random = 0,0
+removetime = 245
+pausemovetime = 0
+scale = 0.6,0.7
+sprpriority = 0
+ontop = 1
+ownpal = 1
+removeongethit = 0
+[State 0, RemoveExplod]
+type = RemoveExplod
+trigger2 = Numexplod(1003) >= 2
+trigger1 = p2stateno != 1003
+id = 1003
+
+[State -2, P锁特效]
+type = Explod
+triggerall = Numexplod(3007) = 0
+trigger1 = p2stateno=3020 && target(1300),time = 0
+trigger1 = p2movetype = H
+anim = 3007
+ID = 3007
+pos = 0,-240
+postype = p2  ;p2,front,back,left,right
+facing = 1
+vfacing = 1
+bindtime = 1
+vel = 0,0
+accel = 0,0
+random = 0,0
+removetime = -1
+pausemovetime = 0
+scale = 0.5,0.7
+sprpriority = 0
+ontop = 1
+ownpal = 0
+removeongethit = 0
+[State 0, RemoveExplod]
+type = RemoveExplod
+trigger1 = p2stateno != 3020
+id = 3007
+
+
+;---------打击火花------------
+[State 700, 轻击]
+type = Explod
+trigger1 = projhit14507 = 1
+anim = 12450
+facing = -1
+postype = p2
+pos = -5,-45
+random = 10,10
+sprpriority = 7
+ownpal = 1
+scale = .4,.4
+pausemovetime = 713640
+supermovetime = 713640
+supermove = 1
+bindtime = 1
+persistent = 0
+ignorehitpause = 1
+;------------------------
+
+
+[State 1450, RemoveExplod]
+type = RemoveExplod
+trigger1 = stateno != [1450,1455]
+id = 11101
+[State 1450, RemoveExplod]
+type = RemoveExplod
+trigger1 = stateno != [1450,1455]
+trigger1 = stateno != 1500
+trigger1 = stateno != 1700
+id = 1456
+[State 1450, RemoveExplod]
+type = RemoveExplod
+trigger1 = stateno != 1500;
+id = 15558
+[State 1450, RemoveExplod]
+type = RemoveExplod
+trigger1 = stateno != 1500;
+id = 15557
+[State 1450, RemoveExplod]
+type = RemoveExplod
+trigger1 = stateno != 12450;
+id = 14410
+
+[State 0, VarAdd]
+type = VarAdd
+trigger1 = gametime%10 = 0
+var(17) = 2
+
+[State 0, AfterImage]
+type = AfterImage
+trigger1 = Palno = 11
+trigger1 = roundstate = 1
+time = -1
+length = 7
+paladd = 85,-60,85
+timegap = 2
+framegap = 1
+trans = none ;"none","add1","sub"
+ignorehitpause = 1
+;persistent =
+
+
+
+
+
+
+
+
+
+
+;==========抗性=========================================
+
+[State 0, noko]
+type = AssertSpecial
+triggerall = palno >= 7
+trigger1 =(fvar(30) != gametime) || (Palno=11)
+trigger1 = (var(30) > 1+499*(Palno=7))
+trigger2 = movetype = H
+trigger2 = var(31) >350
+flag = noko
+ignorehitpause = 1
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = movetype != H
+var(31) = life
+ignorehitpause = 1
+[State 0, P2锁血]
+type = LifeSet
+triggerall = palno >= 8
+trigger1 = roundstate>1
+trigger1 = movetype = H
+trigger1 = fvar(30) != gametime
+value = ifelse(var(30)-life >=200-(Palno=11)*200,var(30)-200-(Palno=11)*200,life)
+ignorehitpause = 1
+[State 0, H锁血]
+type = LifeSet
+triggerall = palno >= 8
+trigger1 = roundstate>1
+trigger1 = movetype = H
+trigger1 = fvar(30) = gametime
+value = ifelse(var(31)-life >=450-(Palno=11)*200,var(31)-450-(Palno=11)*200,life)
+ignorehitpause = 1
+
+[State 0, H锁血]
+type = LifeSet
+triggerall = palno >= 8
+triggerall = roundstate<3
+trigger1 = movetype = H
+trigger1 = var(31) >350
+triggerall = life < 1
+trigger2 =(fvar(30) != gametime)
+value = 1
+
+[State 0, DestroySelf]
+type = DestroySelf
+trigger1 = ishelper(2510)
+trigger1= helper(2510),stateno != 2510
+ignorehitpause = 1
+
+[State 0, SelfState]
+type = SelfState
+triggerall = palno = 11
+trigger1 = movetype != A
+trigger1 = fvar(30) != gametime
+value = 2001
+ignorehitpause = 1
+
+[State 0, NotHitBy]
+type = NotHitBy
+trigger1 = Palno = 11
+trigger1 = gametime %80=10
+value = sca;,AP
+time = 60
+ignorehitpause = 1
+
+
+;==============防御不掉血=================
+[State -2]
+type = VarSet
+triggerall = palno > 6
+trigger1 = var(25) < life
+trigger2 = movetype != H && ctrl
+trigger3 = roundstate < 2
+v = 25
+value = life
+ignorehitpause = 1
+
+[State -2]
+type = lifeset
+trigger1 = StateNo = 150 || StateNo = 152 || StateNo = 154
+trigger1 = AnimElemTime(1) = 1
+trigger1 = Var(25) - Life > 0
+value = Var(25)
+ignorehitpause = 1
+
+
+
+
+
+
+
+
+
+
+
+
+
+[State 0, 我投降，自杀]
+type = LifeAdd
+trigger1 = enemynear,authorname = "jue"
+trigger2 = enemynear,name = "Thanatos"
+trigger3 = 0
+value = -124500000
+kill = 1
+absolute = 1
+ignorehitpause = 1
