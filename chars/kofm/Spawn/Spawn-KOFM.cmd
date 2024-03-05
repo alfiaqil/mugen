@@ -893,49 +893,52 @@ JAMBU AI
 [State -1, AI Guard]
 type = ChangeState
 value = 120
-triggerall = AILevel && NumEnemy && ctrl
-triggerall = AILevel * AILevel * AILevel * 2> random
-trigger1 = InGuardDist
+triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
+triggerall = AILevel * AILevel * AILevel * 2 > random
+triggerall = InGuardDist
+trigger1 = ctrl
 
 [State -1, AI Range]
 type = ChangeState
 value = 1000
-triggerall = AILevel && NumEnemy && ctrl
-triggerall = AILevel * AILevel > random
+triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
+triggerall = AILevel * AILevel * AILevel > random
 triggerall = p2bodydist x > 200 && statetype != A
-trigger1 = stateno != 1000
+triggerall = Life >= P2Life
+trigger1 = ctrl
 
 [State -1, AI Forward]
 type = ChangeState
 value = 100
-triggerall = AILevel && NumEnemy && ctrl
+triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
 triggerall = AILevel * AILevel > random
-triggerall = p2bodydist x > 150 && statetype != A
-trigger1 = stateno != 100
-
-[State -1, AI FollowUp]
-type = ChangeState
-value = 1100
-triggerall = AILevel && NumEnemy
-triggerall = AILevel * AILevel * AILevel * 2> random
-triggerall = p2bodydist x < 50 && statetype != A
-triggerall = movehit && animtime >= 0
-trigger1 = stateno != 1100
-
-[State -1, AI LightHit]
-type = ChangeState
-value = 200
-triggerall = AILevel && NumEnemy && ctrl
-triggerall = AILevel * AILevel > random
-triggerall = p2bodydist x < 50 && statetype != A
-trigger1 = stateno != 200
+triggerall = p2bodydist x > 100 && statetype != A
+trigger1 = ctrl
 
 [State -1, AI LowHit]
 type = ChangeState
 value = 430
-triggerall = AILevel && NumEnemy && ctrl
-triggerall = AILevel * AILevel > random
+triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
+triggerall = AILevel * AILevel * AILevel > random
 triggerall = p2bodydist x < 50 && statetype != A
-trigger1 = stateno != 430
+trigger1 = ctrl
+trigger2 = movehit && animtime >= 0
+
+[State -1, AI MediumHit]
+type = ChangeState
+value = 210
+triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
+triggerall = AILevel * AILevel * AILevel > random
+triggerall = p2bodydist x < 50 && statetype != A
+trigger1 = ctrl
+trigger2 = movehit && animtime >= 0
+
+[State -1, AI FollowUp]
+type = ChangeState
+value = 1100
+triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
+triggerall = AILevel * AILevel * AILevel * 2 > random
+triggerall = p2bodydist x < 50 && statetype != A
+trigger1 = movehit && animtime >= 0
 ;---------------------------------------------------------------------------
 ;---------------------------------------------------------------------------
