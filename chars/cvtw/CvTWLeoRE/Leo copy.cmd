@@ -663,8 +663,576 @@ time = 1
 
 ;===========================================================================
 ;---------------------------------------------------------------------------
+; Air Dash
+;[State -1, Air Dash]
+;type = ChangeState
+;value = 110
+;triggerall = pos y <= -35
+;trigger1 = command = "FF"
+;trigger1 = statetype = a
+;trigger1 = ctrl
 
 ;---------------------------------------------------------------------------
+
+;sg
+[State -1, AI hr]
+type = ChangeState
+value = 3200
+triggerall = var(59) > 0
+Triggerall=abs(P2Bodydist X)<250
+Triggerall=random<var(50)*0.9
+Triggerall=AILevel>=7
+Triggerall=P2StateType!=A
+Triggerall=P2StateType!=L
+triggerall = power >= 3000
+triggerall = StateType != A
+trigger1 = ctrl || (stateno=[100,101])
+trigger2 = stateno = 200 && movecontact
+trigger3 = stateno = 210 && movecontact
+trigger4 = stateno = 230 && movecontact
+trigger5 = stateno = 240 && movecontact
+trigger6 = stateno = 400 && movecontact
+trigger7 = stateno = 430 && movecontact
+trigger8 = stateno = 440 && movecontact
+trigger9 = stateno = 1000 && movecontact
+trigger10 = stateno = 1010 && movecontact
+trigger11 = stateno = 1020 && movecontact
+trigger12 = stateno = 1050 && movecontact
+trigger13 = stateno = 1060 && movecontact
+trigger14 = stateno = 1070 && movecontact
+trigger15 = stateno = 1100 && movecontact
+trigger16 = stateno = 1110 && movecontact
+trigger17 = stateno = 1120 && movecontact
+
+;br
+[State -1, AI br]
+type = ChangeState
+value = 3000
+triggerall = var(59) > 0
+Triggerall=abs(P2Bodydist X)<250
+Triggerall=random<var(50)*0.4
+Triggerall=AILevel>=4
+Triggerall=P2StateType!=A
+Triggerall=P2StateType!=L
+triggerall = power >= 1000
+triggerall = StateType != A
+trigger1 = ctrl || (stateno=[100,101])
+trigger2 = stateno = 200 && movecontact
+trigger3 = stateno = 210 && movecontact
+trigger4 = stateno = 230 && movecontact
+trigger5 = stateno = 240 && movecontact
+trigger6 = stateno = 400 && movecontact
+trigger7 = stateno = 430 && movecontact
+trigger8 = stateno = 440 && movecontact
+trigger9 = stateno = 1000 && movecontact
+trigger10 = stateno = 1010 && movecontact
+trigger11 = stateno = 1020 && movecontact
+trigger12 = stateno = 1050 && movecontact
+trigger13 = stateno = 1060 && movecontact
+trigger14 = stateno = 1070 && movecontact
+trigger15 = stateno = 1100 && movecontact
+trigger16 = stateno = 1110 && movecontact
+trigger17 = stateno = 1120 && movecontact
+
+;gd
+[State -1, AI gd]
+type = ChangeState
+value = 3100
+triggerall = var(59) > 0
+Triggerall=abs(P2Bodydist X)<80
+Triggerall=random<var(50)*0.3
+Triggerall=AILevel>=4
+Triggerall=P2StateType!=A
+Triggerall=P2StateType!=L
+triggerall = StateType != A
+triggerall = power >= 1000
+trigger1 = ctrl || (stateno=[100,101])
+
+;exmars
+[State -1, AI exmars]
+type = ChangeState
+value = 1120
+triggerall = var(59) > 0
+Triggerall=abs(P2Bodydist X)<150
+Triggerall=random<var(50)*0.3
+Triggerall=AILevel>=5
+Triggerall=P2StateType!=L
+triggerall = power >= 500
+triggerall = StateType != A
+trigger1 = ctrl || (stateno=[100,101]) || stateno = 40
+trigger2 = stateno = 200 && movecontact
+trigger3 = stateno = 230 && movecontact
+trigger4 = stateno = 400 && movecontact
+trigger5 = stateno = 430 && movecontact
+trigger6 = stateno = 210 && movecontact
+trigger7 = stateno = 240 && movecontact
+
+;mars
+[State -1, AI mars2]
+type = ChangeState
+value = 1110
+triggerall = var(59) > 0
+Triggerall=abs(P2Bodydist X)<150
+Triggerall=random<var(50)*0.3
+Triggerall=AILevel>=3
+Triggerall=P2StateType!=L
+triggerall = StateType != A
+trigger1 = ctrl || (stateno=[100,101]) || stateno = 40
+trigger2 = stateno = 200 && movecontact
+trigger3 = stateno = 230 && movecontact
+trigger4 = stateno = 400 && movecontact
+trigger5 = stateno = 430 && movecontact
+trigger6 = stateno = 210 && movecontact
+trigger7 = stateno = 240 && movecontact
+
+;mars
+[State -1, AI mars]
+type = ChangeState
+value = 1100
+triggerall = var(59) > 0
+Triggerall=abs(P2Bodydist X)<150
+Triggerall=random<var(50)*0.3
+Triggerall=AILevel>=3
+Triggerall=P2StateType!=L
+triggerall = StateType != A
+trigger1 = ctrl || (stateno=[100,101]) || stateno = 40
+trigger2 = stateno = 200 && movecontact
+trigger3 = stateno = 230 && movecontact
+trigger4 = stateno = 400 && movecontact
+trigger5 = stateno = 430 && movecontact
+trigger6 = stateno = 210 && movecontact
+trigger7 = stateno = 240 && movecontact
+
+;GaiaDriverEX
+[State -1, AI gaiaEX]
+type = ChangeState
+value = 1220
+triggerall = var(59) > 0
+Triggerall=abs(P2Bodydist X)<80
+Triggerall=random<var(50)*0.9
+Triggerall=AILevel>=6
+Triggerall=P2StateType!=L
+triggerall = power>=500
+trigger1 = statetype != A
+trigger1 = ctrl || (stateno=[100,101])
+
+;GaiaDriverLight
+[State -1, AI gaialight]
+type = ChangeState
+value = 1200
+triggerall = var(59) > 0
+Triggerall=abs(P2Bodydist X)<80
+Triggerall=random<var(50)*0.3
+Triggerall=AILevel>=4
+Triggerall=P2StateType!=A
+Triggerall=P2StateType!=L
+trigger1 = statetype != A
+trigger1 = ctrl || (stateno=[100,101])
+
+;GaiaDriverHeavy
+[State -1, AI gaiaheavy]
+type = ChangeState
+value = 1210
+triggerall = var(59) > 0
+Triggerall=abs(P2Bodydist X)<80
+Triggerall=random<var(50)*0.3
+Triggerall=AILevel>=4
+Triggerall=P2StateType!=A
+Triggerall=P2StateType!=L
+trigger1 = statetype != A
+trigger1 = ctrl || (stateno=[100,101])
+
+;Achilles Rush EX
+[State -1, AI AchillesRushEX]
+type = ChangeState
+value = 1070
+triggerall = var(59) > 0
+Triggerall=abs(P2Bodydist X)<200
+Triggerall=random<var(50)*0.4
+Triggerall=AILevel>=5
+Triggerall=P2StateType!=A
+Triggerall=P2StateType!=L
+triggerall = power>=500
+trigger1 = statetype != A
+trigger1 = ctrl || (stateno=[100,101])
+trigger2 = stateno = 200 && movecontact
+trigger3 = stateno = 230 && movecontact
+trigger4 = stateno = 400 && movecontact
+trigger5 = stateno = 430 && movecontact
+trigger6 = stateno = 210 && movecontact
+trigger7 = stateno = 240 && movecontact
+
+;Achilles Rush Light
+[State -1, AI AchillesRushLight]
+type = ChangeState
+value = 1050
+triggerall = var(59) > 0
+Triggerall=abs(P2Bodydist X)<200
+Triggerall=random<var(50)*0.3
+Triggerall=AILevel>=4
+Triggerall=P2StateType!=A
+Triggerall=P2StateType!=L
+trigger1 = statetype != A
+trigger1 = ctrl || (stateno=[100,101])
+trigger2 = stateno = 200 && movecontact
+trigger3 = stateno = 230 && movecontact
+trigger4 = stateno = 400 && movecontact
+trigger5 = stateno = 430 && movecontact
+trigger6 = stateno = 210 && movecontact
+trigger7 = stateno = 240 && movecontact
+
+;Achilles Rush Heavy
+[State -1, AI AchillesRushHeavy]
+type = ChangeState
+value = 1060
+triggerall = var(59) > 0
+Triggerall=abs(P2Bodydist X)<200
+Triggerall=random<var(50)*0.7
+Triggerall=AILevel>=4
+Triggerall=P2StateType!=A
+Triggerall=P2StateType!=L
+trigger1 = statetype != A
+trigger1 = ctrl || (stateno=[100,101])
+trigger2 = stateno = 200 && movecontact
+trigger3 = stateno = 230 && movecontact
+trigger4 = stateno = 400 && movecontact
+trigger5 = stateno = 430 && movecontact
+trigger6 = stateno = 210 && movecontact
+trigger7 = stateno = 240 && movecontact
+
+;Chronos Rush EX
+[State -1, AI ChronosRushEX]
+type = ChangeState
+value = 1020
+triggerall = var(59) > 0
+Triggerall=abs(P2Bodydist X)<200
+Triggerall=random<var(50)*0.4
+Triggerall=AILevel>=4
+Triggerall=P2StateType!=A
+Triggerall=P2StateType!=L
+triggerall = power>=500
+trigger1 = statetype != A
+trigger1 = ctrl || (stateno=[100,101])
+trigger2 = stateno = 200 && movecontact
+trigger3 = stateno = 230 && movecontact
+trigger4 = stateno = 400 && movecontact
+trigger5 = stateno = 430 && movecontact
+trigger6 = stateno = 210 && movecontact
+trigger7 = stateno = 240 && movecontact
+
+;Chronos Rush Light
+[State -1, AI ChronosRushLight]
+type = ChangeState
+value = 1000
+triggerall = var(59) > 0
+Triggerall=abs(P2Bodydist X)<200
+Triggerall=random<var(50)*0.5
+Triggerall=AILevel>=2
+Triggerall=P2StateType!=A
+Triggerall=P2StateType!=L
+trigger1 = statetype != A
+trigger1 = ctrl || (stateno=[100,101])
+trigger2 = stateno = 200 && movecontact
+trigger3 = stateno = 230 && movecontact
+trigger4 = stateno = 400 && movecontact
+trigger5 = stateno = 430 && movecontact
+trigger6 = stateno = 210 && movecontact
+trigger7 = stateno = 240 && movecontact
+
+;Chronos Rush Heavy
+[State -1, AI ChronosRushHeavy]
+type = ChangeState
+value = 1010
+triggerall = var(59) > 0
+Triggerall=abs(P2Bodydist X)<200
+Triggerall=random<var(50)*0.4
+Triggerall=AILevel>=3
+Triggerall=P2StateType!=A
+Triggerall=P2StateType!=L
+trigger1 = statetype != A
+trigger1 = ctrl || (stateno=[100,101])
+trigger2 = stateno = 200 && movecontact
+trigger3 = stateno = 230 && movecontact
+trigger4 = stateno = 400 && movecontact
+trigger5 = stateno = 430 && movecontact
+trigger6 = stateno = 210 && movecontact
+trigger7 = stateno = 240 && movecontact
+
+;launch
+[State -1, AI upfwd]
+Type = changestate
+value = 40000
+triggerall = var(59) > 0
+Triggerall=abs(P2Bodydist X)<150
+Triggerall=random<var(50)*1.5
+Triggerall=AILevel>=6
+Triggerall=P2StateType=A
+Triggerall=P2StateType!=L
+triggerall = statetype != a
+trigger1 = (StateNo = 410)
+trigger1 = movehit
+
+;easyoh
+[state -1, AI easyoh]
+Type = changestate
+value = 990
+triggerall = var(59) > 0
+Triggerall=abs(P2Bodydist X)<150
+Triggerall=random<var(50)*0.1
+Triggerall=AILevel>=7
+Triggerall=P2StateType!=L
+triggerall = var(37) >= 4
+trigger1 = (statetype != a) && ctrl
+
+;throw
+[state -1, AI throw]
+Type = changestate
+value = 800
+triggerall = var(59) > 0
+Triggerall=abs(P2Bodydist X)<70
+Triggerall=random<var(50)*0.4
+Triggerall=AILevel>=4
+Triggerall=P2StateType!=A
+Triggerall=P2StateType!=L
+trigger1 = (statetype != a) && ctrl
+
+;===========================================================================
+;---------------------------------------------------------------------------
+
+;===========================================================================
+;---------------------------------------------------------------------------
+; Air Dash
+;[State -1, Air Dash]
+;type = ChangeState
+;value = 110
+;triggerall = pos y <= -35
+;trigger1 = command = "FF"
+;trigger1 = statetype = a
+;trigger1 = ctrl
+
+; Run Fwd
+[State -1, AI Run Fwd]
+type = ChangeState
+value = 100
+triggerall = var(59) > 0
+Triggerall=abs(P2Bodydist X)<350
+Triggerall=random<var(50)*0.7
+Triggerall=AILevel>=4
+Triggerall=P2StateType!=L
+trigger1 = statetype = S
+trigger1 = ctrl
+
+;---------------------------------------------------------------------------
+
+;---------------------------------------------------------------------------
+; Stand Light Punch
+[State -1, AI Stand Light Punch]
+type = ChangeState
+value = 200
+triggerall = var(59) > 0
+Triggerall=abs(P2Bodydist X)<90
+Triggerall=random<var(50)*1.5
+Triggerall=AILevel>=1
+Triggerall=P2StateType!=A
+Triggerall=P2StateType!=L
+trigger1 = statetype != A
+trigger1 = ctrl || (stateno=[100,101])
+trigger2 = stateno = 200 && time >= 30
+
+
+;---------------------------------------------------------------------------
+;Stand Strong Punch
+[State -1, AI Stand Strong Punch]
+type = ChangeState
+value = 210
+triggerall = var(59) > 0
+Triggerall=abs(P2Bodydist X)<100
+Triggerall=random<var(50)*1.5
+Triggerall=AILevel>=1
+Triggerall=P2StateType!=A
+Triggerall=P2StateType!=L
+trigger1 = statetype != A
+trigger1 = ctrl || (stateno=[100,101])
+trigger2 = stateno = 200 && movecontact
+trigger3 = stateno = 230 && movecontact
+trigger4 = stateno = 400 && movecontact
+trigger5 = stateno = 430 && movecontact
+trigger6 = stateno = 205 && movecontact
+trigger7 = stateno = 235 && movecontact
+trigger8 = stateno = 245 && movecontact
+trigger9 = stateno = 201 && movecontact
+
+;---------------------------------------------------------------------------
+; Stand Light Kick
+[State -1, AI Stand Light Kick]
+type = ChangeState
+value = 230
+triggerall = var(59) > 0
+Triggerall=abs(P2Bodydist X)<70
+Triggerall=random<var(50)*1.5
+Triggerall=AILevel>=1
+Triggerall=P2StateType!=A
+Triggerall=P2StateType!=L
+trigger1 = statetype != A
+trigger1 = ctrl || (stateno=[100,101])
+
+;---------------------------------------------------------------------------
+; Standing Strong Kick
+[State -1, AI Standing Strong Kick]
+type = ChangeState
+value = 240
+triggerall = var(59) > 0
+Triggerall=abs(P2Bodydist X)<110
+Triggerall=random<var(50)*1.5
+Triggerall=AILevel>=1
+Triggerall=P2StateType!=A
+Triggerall=P2StateType!=L
+trigger1 = statetype != A
+trigger1 = ctrl || (stateno=[100,101])
+trigger2 = stateno = 200 && movecontact
+trigger3 = stateno = 230 && movecontact
+trigger4 = stateno = 400 && movecontact
+trigger5 = stateno = 430 && movecontact
+trigger6 = stateno = 235 && movecontact
+trigger7 = stateno = 205 && movecontact
+trigger8 = stateno = 201 && movecontact
+
+;---------------------------------------------------------------------------
+; Crouching Light Punch
+[State -1, AI Crouching Light Punch]
+type = ChangeState
+value = 400
+triggerall = var(59) > 0
+Triggerall=abs(P2Bodydist X)<80
+Triggerall=random<var(50)*1.5
+Triggerall=AILevel>=1
+Triggerall=P2StateType!=A
+Triggerall=P2StateType!=L
+trigger1 = statetype != A
+trigger1 = ctrl || (stateno=[100,101])
+
+;---------------------------------------------------------------------------
+; Crouching Strong Punch
+[State -1, AI Crouching Strong Punch]
+type = ChangeState
+value = 410
+triggerall = var(59) > 0
+Triggerall=abs(P2Bodydist X)<100
+Triggerall=random<var(50)*1.5
+Triggerall=AILevel>=1
+Triggerall=P2StateType!=L
+trigger1 = statetype != A
+trigger1 = ctrl || (stateno=[100,101])
+trigger2 = stateno = 200 && movecontact
+trigger3 = stateno = 230 && movecontact
+trigger4 = stateno = 400 && movecontact
+trigger5 = stateno = 430 && movecontact
+trigger6 = stateno = 235 && movecontact
+trigger7 = stateno = 240 && movecontact
+trigger8 = stateno = 210 && movecontact
+trigger8 = anim!= 210
+trigger9 = stateno = 211 && movecontact
+trigger10 = stateno = 205 && movecontact
+trigger11 = stateno = 201 && movecontact
+
+;---------------------------------------------------------------------------
+; Crouching Light Kick
+[State -1, AI Crouching Light Kick]
+type = ChangeState
+value = 430
+triggerall = var(59) > 0
+Triggerall=abs(P2Bodydist X)<70
+Triggerall=random<var(50)*1.5
+Triggerall=AILevel>=1
+Triggerall=P2StateType!=A
+Triggerall=P2StateType!=L
+trigger1 = statetype != A
+trigger1 = ctrl || (stateno=[100,101])
+
+;---------------------------------------------------------------------------
+; Crouching Strong Kick
+[State -1, AI Crouching Strong Kick]
+type = ChangeState
+value = 440
+triggerall = var(59) > 0
+Triggerall=abs(P2Bodydist X)<100
+Triggerall=random<var(50)*1.5
+Triggerall=AILevel>=1
+Triggerall=P2StateType!=A
+Triggerall=P2StateType!=L
+trigger1 = statetype != A
+trigger1 = ctrl || (stateno=[100,101])
+trigger2 = stateno = 200 && movecontact
+trigger3 = stateno = 230 && movecontact
+trigger4 = stateno = 400 && movecontact
+trigger5 = stateno = 430 && movecontact
+trigger6 = stateno = 235 && movecontact
+trigger7 = stateno = 205 && movecontact
+trigger8 = stateno = 201 && movecontact
+
+;---------------------------------------------------------------------------
+; Jump Light Punch
+[State -1, AI Jump Light Punch]
+type = ChangeState
+value = 600
+triggerall = var(59) > 0
+Triggerall=abs(P2Bodydist X)<150
+Triggerall=random<var(50)*1.5
+Triggerall=AILevel>=1
+Triggerall=P2StateType!=L
+trigger1 = statetype = A
+trigger1 = ctrl
+
+;---------------------------------------------------------------------------
+;Jump Strong Punch
+[State -1, AI Jump Strong Punch]
+type = ChangeState
+value = 610
+triggerall = var(59) > 0
+Triggerall=abs(P2Bodydist X)<150
+Triggerall=random<var(50)*1.5
+Triggerall=AILevel>=1
+Triggerall=P2StateType!=L
+trigger1 = statetype = A
+trigger1 = ctrl
+trigger2 = stateno = 600 && movecontact
+trigger3 = stateno = 630 && movecontact
+
+;---------------------------------------------------------------------------
+; Jump Light Kick
+[State -1, AI Jump Light Kick]
+type = ChangeState
+value = 630
+triggerall = var(59) > 0
+Triggerall=abs(P2Bodydist X)<150
+Triggerall=random<var(50)*1.5
+Triggerall=AILevel>=1
+Triggerall=P2StateType!=L
+trigger1 = statetype = A
+trigger1 = ctrl
+
+;---------------------------------------------------------------------------
+; Jump Strong Kick
+[State -1, AI Jump Strong Kick]
+type = ChangeState
+value = 640
+triggerall = var(59) > 0
+Triggerall=abs(P2Bodydist X)<150
+Triggerall=random<var(50)*1.5
+Triggerall=AILevel>=1
+Triggerall=P2StateType!=L
+trigger1 = statetype = A
+trigger1 = ctrl
+trigger2 = stateno = 600 && movecontact
+trigger3 = stateno = 630 && movecontact
+
+[state -1, AI Jump]
+Type=changestate
+triggerall = var(59) > 0
+Triggerall=random<var(50)*0.5
+Triggerall=AILevel>=1
+trigger1 = ctrl && statetype != A
+value=40
 
 ;sg
 [State -1, hr]
@@ -885,6 +1453,7 @@ Type = changestate
 value = 40000
 triggerall = command = "upfwd" || command = "up"
 triggerall = statetype != a
+triggerall = var(59) = 0
 trigger1 = (StateNo = 410)
 trigger1 = movehit
 
@@ -915,6 +1484,14 @@ trigger1 = (statetype != a) && ctrl
 
 ;===========================================================================
 ;---------------------------------------------------------------------------
+; Air Dash
+;[State -1, Air Dash]
+;type = ChangeState
+;value = 110
+;triggerall = pos y <= -35
+;trigger1 = command = "FF"
+;trigger1 = statetype = a
+;trigger1 = ctrl
 
 ; Run Fwd
 [State -1, Run Fwd]
@@ -1143,59 +1720,4 @@ trigger1 = ctrl
 trigger2 = stateno = 600 && movecontact
 trigger3 = stateno = 630 && movecontact
 
-;---------------------------------------------------------------------------
-
-;---------------------------------------------------------------------------
-JAMBU AI
-;---------------------------------------------------------------------------
-[State -1, AI Guard]
-type = ChangeState
-value = 120
-triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
-triggerall = AILevel * AILevel * AILevel * 2 > random
-triggerall = InGuardDist
-trigger1 = ctrl
-
-[State -1, AI Taunt]
-type = ChangeState
-value = 195
-triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
-triggerall = p2bodydist x > 100 && statetype != A
-triggerall = p2movetype = H && Life >= P2Life
-trigger1 = ctrl
-
-[State -1, AI Forward]
-type = ChangeState
-value = 1050
-triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
-triggerall = AILevel * AILevel * AILevel > random
-triggerall = p2bodydist x > 100 && statetype != A
-trigger1 = ctrl
-
-[State -1, AI LowHit]
-type = ChangeState
-value = 430
-triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
-triggerall = AILevel * AILevel * AILevel > random
-triggerall = p2bodydist x < 50 && statetype != A
-trigger1 = ctrl
-trigger2 = movehit && animtime >= 0
-
-[State -1, AI MediumHit]
-type = ChangeState
-value = 210
-triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
-triggerall = AILevel * AILevel * AILevel > random
-triggerall = p2bodydist x < 50 && statetype != A
-trigger1 = ctrl
-trigger2 = movehit && animtime >= 0
-
-[State -1, AI FollowUp]
-type = ChangeState
-value = 1110
-triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
-triggerall = AILevel * AILevel * AILevel * 2 > random
-triggerall = p2bodydist x < 50 && statetype != A
-trigger1 = movehit && animtime >= 0
-;---------------------------------------------------------------------------
 ;---------------------------------------------------------------------------
