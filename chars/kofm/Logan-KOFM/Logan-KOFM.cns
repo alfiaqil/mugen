@@ -26,7 +26,7 @@
 [Data]
 ;Amount of life to start with
 ;?????????
-life = 1500;jambu;2500
+life = 1200;jambu;2500
 ;attack power (more is stronger)
 ;??????
 attack = 100;jambu;130
@@ -12816,9 +12816,9 @@ value = 1,2
 ;jambu; recover hp
 [State -3, LifeAdd]
 type = LifeAdd
-trigger1 = life <= 1500
+trigger1 = life <= 1200
 trigger1 = Power > 1000
-trigger1 = gametime%10=0
+trigger1 = gametime%6=0
 value = 1
 
 [State 0, RemoveExplod]
