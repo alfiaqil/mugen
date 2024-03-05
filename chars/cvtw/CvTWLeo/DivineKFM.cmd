@@ -581,49 +581,9 @@ trigger1 = !HitPauseTime
 trigger1 = !(HitDefAttr = SCA, AT)
 var(15) = 1
 
-;[State -1, ProjContact];special thanks to 20S
-;type = VarSet
-;trigger1 = IsHelper
-;trigger1 = MoveContact = 1 && NumTarget
-;var(18) = 1
-
-;[State -1, Root ProjContact];special thanks to 20S
-;type = ParentVarSet
-;trigger1 = IsHelper
-;trigger1 = MoveContact = 1 && NumTarget
-;var(18) = 1
-
-;[State -1, Grand KF Upper]
-;type = ChangeState
-;value = 3100
-;triggerall = command = "GrandKFUpper"
-;triggerall = RoundState = 2 && StateType != A
-;triggerall = ifelse(var(20) <= 0, power >= 3000, power >= 1000)
-;trigger1 = ctrl || StateNo = 40 || StateNo = 52 || (StateNo = [100,101])
-;trigger2 = var(6)
-
-;[State -1, Kung Fu Barrage Max]
-;type = ChangeState
-;value = 3050
-;triggerall = command = "KungFuBarrageMax"
-;triggerall = RoundState = 2 && StateType != A
-;triggerall = ifelse(var(20) <= 0, power >= 2000, power >= 1000)
-;trigger1 = ctrl || StateNo = 40 || StateNo = 52 || (StateNo = [100,101])
-;trigger2 = var(6) || var(7)
-
-;[State -1, Kung Fu Barrage]
-;type = ChangeState
-;value = 3000
-;triggerall = command = "KungFuBarrage"
-;triggerall = RoundState = 2 && StateType != A
-;triggerall = ifelse(var(20) <= 0, power >= 1000, power >= 0)
-;trigger1 = ctrl || StateNo = 40 || StateNo = 52 || (StateNo = [100,101])
-;trigger2 = var(6)
-
 [State -1, SliceUpper]
 type = ChangeState
 value = 1100
-triggerall = var(59) != 1
 triggerall = roundstate = 2
 triggerall = Command = "SliceUpper"
 triggerall = RoundState = 2 && StateType != A
@@ -633,7 +593,6 @@ trigger2 = var(5)
 [State -1, Slice]
 type = ChangeState
 value = 1000
-triggerall = var(59) != 1
 triggerall = roundstate = 2
 triggerall = Command = "Slice"
 triggerall = RoundState = 2 && StateType != A
@@ -643,7 +602,6 @@ trigger2 = var(5)
 [State -1, Shuriken]
 type = ChangeState
 value = 1001
-triggerall = var(59) != 1
 triggerall = roundstate = 2
 triggerall = Command = "Shuriken"
 triggerall = RoundState = 2 && StateType != A
@@ -653,29 +611,11 @@ trigger2 = var(5)
 [State -1, SideKickA]
 type = ChangeState
 value = 1200
-triggerall = var(59) != 1
 triggerall = roundstate = 2
 triggerall = Command = "SideKickA"
 triggerall = RoundState = 2 && StateType = A
 trigger1 = ctrl || StateNo = 40 || StateNo = 52 || (StateNo = [100,101])
 trigger2 = var(5)
-
-
-;[State -1, Zero Counter]
-;type = ChangeState
-;value = 750
-;trigger1 = StateNo = 150 || StateNo = 152
-;trigger1 = command = "412p" || command = "412k"
-;trigger1 = RoundState = 2 && StateType != A
-;trigger1 = power >= 1000 && !var(20)
-
-;[State -1, Throw]
-;type = ChangeState
-;value = 800
-;trigger1 = (command = "holdfwd" || command = "holdback") && command = "pp" 
-;trigger1 = RoundState = 2 && StateType = S
-;trigger1 = ctrl
-
 
 [State -1, Run Fwd]
 type = ChangeState
@@ -695,7 +635,7 @@ trigger1 = ctrl
 [State -1, Stand Light Punch]
 type = ChangeState
 value = 200
-triggerall = command = "x"
+triggerall = command = "x" || command = "z" || command = "c"
 triggerall = command != "holddown"
 trigger1 = statetype != A
 trigger1= ctrl || (stateno=[100,101])
@@ -730,7 +670,7 @@ trigger2= (StateNo = 210) && Time >=5
 [State -1, Crouching Light Punch]
 type = ChangeState
 value = 400
-triggerAll = command = "holddown" && command = "x"
+triggerAll = command = "holddown" && (command = "x" || command = "z" || command = "c")
 triggerAll = StateType != A
 trigger1 = ctrl || (StateNo = [100,101])
 trigger2= (StateNo = 200 || StateNo = 400 || StateNo = 430) && Time >=5
@@ -760,7 +700,7 @@ trigger1 = ctrl || (StateNo = [100,101])
 [State -1, Jump Light Punch]
 type = ChangeState
 value = 600
-triggerall = command = "x"
+triggerall = command = "x" || command = "z" || command = "c"
 trigger1 = statetype = A
 trigger1 = ctrl
 
@@ -785,11 +725,59 @@ triggerall = command = "b"
 trigger1 = statetype = A
 trigger1 = ctrl
 
-;[State -1, Taunt]
-;type = ChangeState
-;value = 195
-;triggerall = command = "s"
-;triggerall = StateType != A
-;triggerall = StateNo != [200,699]
-;trigger1 = ctrl || (StateNo = [100,101])
-;trigger2 = var(5)
+
+;---------------------------------------------------------------------------
+JAMBU AI
+;---------------------------------------------------------------------------
+[State -1, AI Guard]
+type = ChangeState
+value = 120
+triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
+triggerall = AILevel * AILevel * AILevel * 2 > random
+triggerall = InGuardDist
+trigger1 = ctrl
+
+[State -1, AI Range]
+type = ChangeState
+value = 1001
+triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
+triggerall = AILevel * AILevel > random
+triggerall = p2bodydist x > 200 && statetype != A
+triggerall = Life >= P2Life
+trigger1 = ctrl
+
+[State -1, AI Forward]
+type = ChangeState
+value = 100
+triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
+triggerall = AILevel * AILevel * AILevel > random
+triggerall = p2bodydist x > 100 && statetype != A
+trigger1 = ctrl
+
+[State -1, AI LowHit]
+type = ChangeState
+value = 430
+triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
+triggerall = AILevel * AILevel * AILevel > random
+triggerall = p2bodydist x < 50 && statetype != A
+trigger1 = ctrl
+trigger2 = movehit && animtime >= 0
+
+[State -1, AI MediumHit]
+type = ChangeState
+value = 210
+triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
+triggerall = AILevel * AILevel * AILevel > random
+triggerall = p2bodydist x < 50 && statetype != A
+trigger1 = ctrl
+trigger2 = movehit && animtime >= 0
+
+[State -1, AI FollowUp]
+type = ChangeState
+value = 1100
+triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
+triggerall = AILevel * AILevel * AILevel * 2 > random
+triggerall = p2bodydist x < 50 && statetype != A
+trigger1 = movehit && animtime >= 0
+;---------------------------------------------------------------------------
+;---------------------------------------------------------------------------
