@@ -921,37 +921,60 @@ value = 1
 type = ChangeState
 ignorehitpause = 1
 value = 1100
+triggerAll = !AILevel
 triggerall = ifelse((Anim!=[5,6]),(command = "SHINKOENZAN"),(command = "SHINKOENZAN69"))
 triggerAll = RoundState = 2 && StateType = A
 trigger1 = ctrl 
 ;AIR LIGHT KICK  
 trigger2 = Stateno = 630
+;trigger2 = Animelemtime(3) >= 0
 trigger2 = MoveCONTACT && time > 2
 
 [State -1, SHINGETSU]
 type = ChangeState
 ignorehitpause = 1
 value = 1000
+triggerAll = !AILevel
 triggerall = ifelse((Anim!=[5,6]),(command = "SHINGETSUN"),(command = "SHINGETSUN69"))
 triggerAll = RoundState = 2 && StateType != A 
 trigger1 = ctrl || StateNo = 52 
 ;Punch  
 trigger2 = Stateno = [200,220]
+;trigger2 = Animelemtime(3) >= 0
 trigger2 = MoveCONTACT && time > 2
 ;Kick  
 trigger3 = Stateno = [230,250]
+;trigger3 = Animelemtime(3) >= 0
 trigger3 = MoveCONTACT && time > 2
 ;CPunch  
 trigger4 = Stateno = [410,420]
+;trigger4 = Animelemtime(3) >= 0
 trigger4 = MoveCONTACT && time > 2
 ;CKick  
 trigger5 = Stateno = [430,450]
+;trigger5 = Animelemtime(3) >= 0
 trigger5 = MoveCONTACT && time > 2
+
+
+[State -1, Back throw]
+type = NULL;ChangeState
+value = 801
+triggerall = stateno != 100 || stateno != 105
+triggerall = Statetype != A && ctrl && roundstate = 2
+trigger1 = (command = "holdback" && command = "x" && command = "a")
+
+[State -1, Shoulder Throw]
+type = NULL;ChangeState
+value = 800
+triggerall = stateno != 100 || stateno != 105
+triggerall = Statetype != A && ctrl && roundstate = 2
+trigger1 = command = "x" && command = "a";command != "holdback" && ((command = "a" && command = "x") || (command = "holdfwd" && command = "x" && command = "a"))
 
 [State -1, DASH FWD]
 type = ChangeState
 value = 100
 ignorehitpause = 1
+triggerAll = !AILevel
 triggerAll = command = "FF" 
 triggerAll = RoundState = 2 && StateType != A
 trigger1 = ctrl  
@@ -962,16 +985,25 @@ trigger3 = (stateno = [310,312]) && movecontact
 type = ChangeState
 value = 105
 ignorehitpause = 1
+triggerAll = !AILevel
 triggerAll = command = "BB" 
 triggerAll = RoundState = 2 && StateType != A
 trigger1 = ctrl  
 trigger2 = (stateno = [300,301]) 
 trigger3 = (stateno = [310,312]) && movecontact
 
+[state -1, DODGE]
+Type = NULL;changestate
+value = 700
+triggerAll = !AILevel
+triggerall = command = "b" && command = "y"
+trigger1 = RoundState = 2 && (statetype != a) && ctrl
+
 [State -1, FA]
 type = ChangeState
 ignorehitpause = 1
 value = 300
+triggerAll = !AILevel
 triggerAll =command = "c" && command = "z"
 triggerAll = RoundState = 2 && StateType != A
 trigger1 = ctrl
@@ -980,6 +1012,7 @@ trigger1 = ctrl
 type = ChangeState
 ignorehitpause = 1
 value = 211
+triggerAll = !AILevel
 triggerAll = command = "x" && command = "y"
 triggerAll = RoundState = 2 && StateType != A
 trigger1 = ctrl || StateNo = 52
@@ -988,6 +1021,7 @@ trigger1 = ctrl || StateNo = 52
 type = ChangeState
 ignorehitpause = 1
 value = 421
+triggerAll = !AILevel
 triggerAll = command = "holddown" && command = "holdfwd" && command = "z"
 triggerAll = RoundState = 2 && StateType != A
 trigger1 = ctrl || StateNo = 52
@@ -996,6 +1030,7 @@ trigger1 = ctrl || StateNo = 52
 type = ChangeState
 ignorehitpause = 1
 value = 200
+triggerAll = !AILevel
 triggerAll = command != "holddown" && command = "x"
 triggerAll = RoundState = 2 && StateType != A
 trigger1 = ctrl || StateNo = 52
@@ -1006,6 +1041,7 @@ TRIGGER3 = STATENO = 230 && MoveContact && time > 13
 type = ChangeState
 ignorehitpause = 1
 value = 210
+triggerAll = !AILevel
 triggerAll = command != "holddown" && command = "y"
 triggerAll = RoundState = 2 && StateType != A
 trigger1 = ctrl || StateNo = 52
@@ -1016,6 +1052,7 @@ trigger1 = ctrl || StateNo = 52
 type = ChangeState
 ignorehitpause = 1
 value = 220 
+triggerAll = !AILevel
 triggerAll = command != "holddown" && command = "z"
 triggerAll = RoundState = 2 && StateType != A
 trigger1 = ctrl || StateNo = 52
@@ -1025,6 +1062,7 @@ TRIGGER2 = STATENO = 230 && MoveContact && time > 4
 type = ChangeState
 ignorehitpause = 1
 value = 230
+triggerAll = !AILevel
 triggerAll = command != "holddown" && command = "a"
 triggerAll = RoundState = 2 && StateType != A
 trigger1 = ctrl || StateNo = 52
@@ -1034,6 +1072,7 @@ TRIGGER2 = STATENO = 230 && MoveContact && time > 13
 type = ChangeState
 ignorehitpause = 1
 value = 240
+triggerAll = !AILevel
 triggerAll = command != "holddown" && command = "b"
 triggerAll = RoundState = 2 && StateType != A
 trigger1 = ctrl || StateNo = 52
@@ -1042,6 +1081,7 @@ trigger1 = ctrl || StateNo = 52
 type = ChangeState
 ignorehitpause = 1
 value = 250
+triggerAll = !AILevel
 triggerAll = command != "holddown" && command = "c"
 triggerAll = RoundState = 2 &&StateType != A
 trigger1 = ctrl || StateNo = 52
@@ -1050,6 +1090,7 @@ trigger1 = ctrl || StateNo = 52
 type = ChangeState
 ignorehitpause = 1
 value = 400
+triggerAll = !AILevel
 triggerAll = command = "holddown" && command = "x" 
 triggerAll = RoundState = 2 &&StateType != A
 trigger1 = ctrl || StateNo = 52
@@ -1060,6 +1101,7 @@ TRIGGER3 = STATENO = 430 && MoveContact
 type = ChangeState
 ignorehitpause = 1
 value = 410
+triggerAll = !AILevel
 triggerAll = command = "holddown" && command = "y" 
 triggerAll = RoundState = 2 &&StateType != A
 trigger1 = ctrl || StateNo = 52
@@ -1068,6 +1110,7 @@ trigger1 = ctrl || StateNo = 52
 type = ChangeState
 ignorehitpause = 1
 value = 420
+triggerAll = !AILevel
 triggerAll = command = "holddown" && command = "z" 
 triggerAll = RoundState = 2 &&StateType != A
 trigger1 = ctrl || StateNo = 52
@@ -1077,6 +1120,7 @@ TRIGGER2 = STATENO = 200 && MoveContact && time > 10
 type = ChangeState
 ignorehitpause = 1
 value = 430
+triggerAll = !AILevel
 triggerAll = command = "holddown" && command = "a" 
 triggerAll = RoundState = 2 &&StateType != A
 trigger1 = ctrl || StateNo = 52
@@ -1086,6 +1130,7 @@ TRIGGER2 = STATENO = 430 && time > 8
 type = ChangeState
 ignorehitpause = 1
 value = 440
+triggerAll = !AILevel
 triggerAll = command = "holddown" && command = "b" 
 triggerAll = RoundState = 2 &&StateType != A
 trigger1 = ctrl || StateNo = 52
@@ -1094,6 +1139,7 @@ trigger1 = ctrl || StateNo = 52
 type = ChangeState
 ignorehitpause = 1
 value = 450
+triggerAll = !AILevel
 triggerAll = command = "holddown" && command = "c" 
 triggerAll = RoundState = 2 &&StateType != A
 trigger1 = ctrl || StateNo = 52
@@ -1102,6 +1148,7 @@ trigger1 = ctrl || StateNo = 52
 type = ChangeState
 ignorehitpause = 1
 value = 640
+triggerAll = !AILevel
 triggerAll = command = "holddown" && command = "y" 
 triggerAll = RoundState = 2 &&StateType = A
 trigger1 = ctrl 
@@ -1110,6 +1157,7 @@ trigger1 = ctrl
 type = ChangeState
 ignorehitpause = 1
 value = 600
+triggerAll = !AILevel
 triggerAll = command = "x" 
 triggerAll = RoundState = 2 &&StateType = A
 trigger1 = ctrl
@@ -1118,6 +1166,7 @@ trigger1 = ctrl
 type = ChangeState
 ignorehitpause = 1
 value = 610
+triggerAll = !AILevel
 triggerAll = command = "y" 
 triggerAll = RoundState = 2 &&StateType = A
 trigger1 = ctrl
@@ -1126,6 +1175,7 @@ trigger1 = ctrl
 type = ChangeState
 ignorehitpause = 1
 value = 630
+triggerAll = !AILevel
 triggerAll = command = "a" 
 triggerAll = RoundState = 2 &&StateType = A
 trigger1 = ctrl 
@@ -1134,6 +1184,7 @@ trigger1 = ctrl
 type = ChangeState
 ignorehitpause = 1
 value = 641
+triggerAll = !AILevel
 triggerAll = command = "b" 
 triggerAll = RoundState = 2 &&StateType = A
 trigger1 = ctrl 
@@ -1142,6 +1193,7 @@ trigger1 = ctrl
 type = ChangeState
 ignorehitpause = 1
 value = 620
+triggerAll = !AILevel
 triggerAll = command = "z" 
 triggerAll = RoundState = 2 &&StateType = A
 trigger1 = ctrl 
@@ -1154,6 +1206,7 @@ trigger3 = stateno = 630 && movecontact
 type = ChangeState
 ignorehitpause = 1
 value = 650
+triggerAll = !AILevel
 triggerAll = command = "c" 
 triggerAll = RoundState = 2 &&StateType = A
 trigger1 = ctrl 
@@ -1165,32 +1218,11 @@ trigger3 = stateno = 630 && movecontact
 [State -1, Taunt]
 type = ChangeState
 value = 195
+triggerAll = !AILevel
 triggerAll = command = "start"
 triggerAll = StateType != A
 triggerAll = StateNo != [200,699]
 trigger1 = ctrl 
-
-;---------------------------------------------------------------------------
-JAMBU AI
-;---------------------------------------------------------------------------
-[State -1, AI Guard]
-type = ChangeState
-value = 120
-triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
-triggerall = AILevel * AILevel * AILevel * 2 > random
-triggerall = InGuardDist
-trigger1 = ctrl
-trigger2 = animtime >= 0
-
-[State -1, AI Taunt]
-type = ChangeState
-value = 4950
-triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
-triggerall = p2bodydist x > 100 && statetype != A
-triggerall = p2movetype = H && Life >= P2Life
-trigger1 = ctrl
-trigger2 = animtime >= 0
-
 ;==============================================================
 ;==================================CVTW2/AI==============MEMO==
 ;==============================================================
@@ -1220,6 +1252,7 @@ triggerall = StateNo != [10,12]
 triggerall = PrevStateNo != [10,12]
 triggerall = StateNo != [120,159]
 triggerall = PrevStateNo != [120,159]
+;triggerall = (P2BodyDist x = [0,500]) && EnemyNear, vel y >= 0
 trigger1 = (EnemyNear, MoveType = A) && BackEdgeDist >= 80 && (P2BodyDist x = [80,200]) && (EnemyNear, vel x)
 trigger1 = Random < (ifElse((EnemyNear, HitDefAttr = SC, AT), 387, 50) * (AILevel ** 2 / 64.0))
 trigger2 = (P2BodyDist x = [0,150]) && BackEdgeBodyDist >= 80
@@ -1227,6 +1260,17 @@ trigger2 = EnemyNear, StateNo = 5120 && EnemyNear, AnimTime = -4 && Random < (15
 trigger3 = InGuardDist && (P2BodyDist x = [0,85]) && Random < (125 * (AILevel ** 2 / 64.0))
 trigger4 = ctrl && Random < (280 * (AILevel ** 2 / 64.0))
 value = 99921
+
+[State -1, AI Guard]
+type = ChangeState
+value = 120
+trigger1 = AILevel && NumEnemy
+trigger1 = RoundState = 2 && InGuardDist
+trigger1 = ctrl && (StateNo != [120, 155])
+trigger1 = !(EnemyNear, HitDefAttr = SCA, AT) && (EnemyNear, Time < 120)
+trigger1 = StateType != A 
+trigger1 = Random < (ifElse((P2StateNo = [200, 699]), 100, ifElse((P2StateNo = [1000,2999]), 333, 1000)) * (AILevel ** 2 / 64.0))
+
 
 [State -1, Avoid Throws] ; Thanks, Warusaki!
 type = ChangeState
@@ -1239,6 +1283,43 @@ triggerall = StateType != A
 triggerall = StateNo != 40
 trigger1 = EnemyNear, HitDefAttr = SC, NT,ST,HT && Random < (1 * (AILevel ** 2 / 64.0))
 
+[State -1, Fall Recovery (Air)]
+type = NULL;ChangeState
+value = 5210
+trigger1 = AILevel && NumEnemy
+trigger1 = RoundState = 2 && Alive
+trigger1 = StateNo = 5050 && CanRecover
+trigger1 = vel y > 0 && pos y < -20
+trigger1 = Random < (25 * (AILevel ** 2 / 64.0))
+
+[State -1, Fall Recovery (Ground)]
+type = NULL;ChangeState
+value = 5200
+trigger1 = AILevel && NumEnemy
+trigger1 = RoundState = 2 && Alive
+trigger1 = StateNo = 5050 && GetHitVar(fall.recover)
+trigger1 = vel y > 0 && pos y >= -20
+trigger1 = Random < (100 * (AILevel ** 2 / 64.0))
+
+[State -1, Shoulder Throw]
+type = NULL;ChangeState
+value = 800
+triggerAll = AILevel && NumEnemy
+triggerAll = RoundState = 2 && StateType = S
+triggerAll = P2StateType != A && P2StateType != L && P2MoveType != H
+triggerAll = (P2BodyDist x = [-20,24]) && P2BodyDist y = 0
+trigger1 = ctrl && Random < (41 * (AIlevel ** 2 / 64.0))
+trigger2 = ctrl && (P2StateNo = [120,140]) && Random < (83 * (AILevel ** 2 / 64.0))
+[State -1, Back throw]
+type = NULL;ChangeState
+value = 805
+triggerAll = AILevel && NumEnemy
+triggerAll = RoundState = 2 && StateType = S
+triggerAll = P2StateType != A && P2StateType != L && P2MoveType != H
+triggerAll = (P2BodyDist x = [-20,24]) && P2BodyDist y = 0
+trigger1 = ctrl && Random < (41 * (AIlevel ** 2 / 64.0))
+trigger2 = ctrl && (P2StateNo = [120,140]) && Random < (83 * (AILevel ** 2 / 64.0))
+
 [State -1, DASH BACK]
 type = ChangeState
 value = 105
@@ -1250,6 +1331,16 @@ trigger1 = Random < (ifElse((EnemyNear, HitDefAttr = SC, AT), 387, 50) * (AILeve
 trigger2 = (P2BodyDist x = [0,80]) && BackEdgeBodyDist >= 80
 trigger2 = EnemyNear, StateNo = 5120 && EnemyNear, AnimTime = -4 && Random < (750 * (AILevel ** 2 / 64.0))
 trigger3 = InGuardDist && (P2BodyDist x = [0,45]) && Random < (610 * (AILevel ** 2 / 64.0))
+
+[State -1, FA]
+type = null;ChangeState
+value = 300
+triggerAll = AILevel && NumEnemy
+triggerAll = RoundState = 2 && StateType != A
+triggerAll = (MoveType = I && ctrl) 
+trigger1 = AILevel && InGuardDist && (P2BodyDist x = [0,45]) && Random < 150
+trigger2 = InGuardDist && (P2BodyDist x = [0,75]) && Random < 100
+
 
 [State -1, RUN]
 type = ChangeState
