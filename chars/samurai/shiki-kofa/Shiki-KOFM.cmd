@@ -7,9 +7,9 @@ b = b
 c = c
 s = s
 
-;-| •W€‰» |-------------------------------------------------------
+;-| ï¿½Wï¿½ï¿½ï¿½ï¿½ |-------------------------------------------------------
 [Defaults]
-; time‚ð‹Lq‚µ‚È‚©‚Á‚½ê‡AˆÈ‰º‚Ì’l‚ªŽQÆ‚³‚ê‚Ü‚·BÅ¬’l‚Í1‚Å‚·B
+; timeï¿½ï¿½ï¿½Lï¿½qï¿½ï¿½ï¿½È‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ê‡ï¿½Aï¿½È‰ï¿½ï¿½Ì’lï¿½ï¿½ï¿½Qï¿½Æ‚ï¿½ï¿½ï¿½Ü‚ï¿½ï¿½Bï¿½Åï¿½ï¿½lï¿½ï¿½1ï¿½Å‚ï¿½ï¿½B
 command.time = 15
 
 command.bUFFer.time = 1
@@ -130,43 +130,43 @@ time = 30
 ;command = ~30$B,F,a
 ;time = 15
 
-;-| •KŽE‹Z |-------------------------------------------------------------------
+;-| ï¿½Kï¿½Eï¿½Z |-------------------------------------------------------------------
 [Command]
 name = "jump"    
 command = D, $U
 time = 12
 
 ;------------------------------------------------------------------------------
-;-| ƒL[‚Q‰ñ˜A‘±“ü—Í |---------------------------------------------------------
+;-| ï¿½Lï¿½[ï¿½Qï¿½ï¿½Aï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ |---------------------------------------------------------
 [Command]
-name = "FF"     ;—v‹Ï‚Ý (ƒL[‚Ì•ÏX‚Í‰Â”\‚Å‚·‚ª–¼‘O‚ð•Ï‚¦‚½‚è–³Œø‚É‚µ‚Ä‚Í‚¢‚¯‚Ü‚¹‚ñ)
+name = "FF"     ;ï¿½vï¿½ï¿½ï¿½Ï‚ï¿½ (ï¿½Lï¿½[ï¿½Ì•ÏXï¿½Í‰Â”\ï¿½Å‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Oï¿½ï¿½Ï‚ï¿½ï¿½ï¿½ï¿½è–³ï¿½ï¿½ï¿½É‚ï¿½ï¿½Ä‚Í‚ï¿½ï¿½ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½)
 command = F, F
 time = 10
 
 [Command]
-name = "BB"     ;—v‹Ï‚Ý (ƒL[‚Ì•ÏX‚Í‰Â”\‚Å‚·‚ª–¼‘O‚ð•Ï‚¦‚½‚è–³Œø‚É‚µ‚Ä‚Í‚¢‚¯‚Ü‚¹‚ñ)
+name = "BB"     ;ï¿½vï¿½ï¿½ï¿½Ï‚ï¿½ (ï¿½Lï¿½[ï¿½Ì•ÏXï¿½Í‰Â”\ï¿½Å‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Oï¿½ï¿½Ï‚ï¿½ï¿½ï¿½ï¿½è–³ï¿½ï¿½ï¿½É‚ï¿½ï¿½Ä‚Í‚ï¿½ï¿½ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½)
 command = B, B
 time = 10
 
 ;------------------------------------------------------------------------------
-;-| “¯Žž‰Ÿ‚µ |-----------------------------------------------------------------
+;-| ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ |-----------------------------------------------------------------
 [Command]
-name = "recovery"   ;—v‹Ï‚Ý (ƒL[‚Ì•ÏX‚Í‰Â”\‚Å‚·‚ª–¼‘O‚ð•Ï‚¦‚½‚è–³Œø‚É‚µ‚Ä‚Í‚¢‚¯‚Ü‚¹‚ñ)
+name = "recovery"   ;ï¿½vï¿½ï¿½ï¿½Ï‚ï¿½ (ï¿½Lï¿½[ï¿½Ì•ÏXï¿½Í‰Â”\ï¿½Å‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Oï¿½ï¿½Ï‚ï¿½ï¿½ï¿½ï¿½è–³ï¿½ï¿½ï¿½É‚ï¿½ï¿½Ä‚Í‚ï¿½ï¿½ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½)
 command = x+a
 time = 1
 
 [Command]
-name = "recovery"   ;—v‹Ï‚Ý (ƒL[‚Ì•ÏX‚Í‰Â”\‚Å‚·‚ª–¼‘O‚ð•Ï‚¦‚½‚è–³Œø‚É‚µ‚Ä‚Í‚¢‚¯‚Ü‚¹‚ñ)
+name = "recovery"   ;ï¿½vï¿½ï¿½ï¿½Ï‚ï¿½ (ï¿½Lï¿½[ï¿½Ì•ÏXï¿½Í‰Â”\ï¿½Å‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Oï¿½ï¿½Ï‚ï¿½ï¿½ï¿½ï¿½è–³ï¿½ï¿½ï¿½É‚ï¿½ï¿½Ä‚Í‚ï¿½ï¿½ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½)
 command = z
 time = 1
 
 [Command]
-name = "‚Ó‚Á‚Æ‚Î‚µ"
+name = "ï¿½Ó‚ï¿½ï¿½Æ‚Î‚ï¿½"
 command = y+b
 time = 1
 
 [Command]
-name = "‚Ó‚Á‚Æ‚Î‚µ"
+name = "ï¿½Ó‚ï¿½ï¿½Æ‚Î‚ï¿½"
 command = c
 time = 1
 
@@ -191,7 +191,7 @@ command = /$y
 time = 1
 
 ;------------------------------------------------------------------------------
-;-| •ûŒüƒL[{ƒ{ƒ^ƒ“ |---------------------------------------------------------
+;-| ï¿½ï¿½ï¿½ï¿½ï¿½Lï¿½[ï¿½{ï¿½{ï¿½^ï¿½ï¿½ |---------------------------------------------------------
 
 [Command]
 name = "down_a"
@@ -204,7 +204,7 @@ command = /$D,b
 time = 1
 
 ;------------------------------------------------------------------------------
-;-| ƒ{ƒ^ƒ“’P”­ |---------------------------------------------------------------
+;-| ï¿½{ï¿½^ï¿½ï¿½ï¿½Pï¿½ï¿½ |---------------------------------------------------------------
 [Command]
 name = "a"
 command = a
@@ -241,24 +241,24 @@ command = s
 time = 1
 
 ;------------------------------------------------------------------------------
-;-| •ûŒüƒL[‰Ÿ‚µ‚Á‚Ï‚È‚µ |-----------------------------------------------------
+;-| ï¿½ï¿½ï¿½ï¿½ï¿½Lï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï‚È‚ï¿½ |-----------------------------------------------------
 [Command]
-name = "holdfwd"   ;—v‹Ï‚Ý (ƒL[‚Ì•ÏX‚Í‰Â”\‚Å‚·‚ª–¼‘O‚ð•Ï‚¦‚½‚è–³Œø‚É‚µ‚Ä‚Í‚¢‚¯‚Ü‚¹‚ñ)
+name = "holdfwd"   ;ï¿½vï¿½ï¿½ï¿½Ï‚ï¿½ (ï¿½Lï¿½[ï¿½Ì•ÏXï¿½Í‰Â”\ï¿½Å‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Oï¿½ï¿½Ï‚ï¿½ï¿½ï¿½ï¿½è–³ï¿½ï¿½ï¿½É‚ï¿½ï¿½Ä‚Í‚ï¿½ï¿½ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½)
 command = /$F
 time = 1
 
 [Command]
-name = "holdback"  ;—v‹Ï‚Ý (ƒL[‚Ì•ÏX‚Í‰Â”\‚Å‚·‚ª–¼‘O‚ð•Ï‚¦‚½‚è–³Œø‚É‚µ‚Ä‚Í‚¢‚¯‚Ü‚¹‚ñ)
+name = "holdback"  ;ï¿½vï¿½ï¿½ï¿½Ï‚ï¿½ (ï¿½Lï¿½[ï¿½Ì•ÏXï¿½Í‰Â”\ï¿½Å‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Oï¿½ï¿½Ï‚ï¿½ï¿½ï¿½ï¿½è–³ï¿½ï¿½ï¿½É‚ï¿½ï¿½Ä‚Í‚ï¿½ï¿½ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½)
 command = /$B
 time = 1
 
 [Command]
-name = "holdup"    ;—v‹Ï‚Ý (ƒL[‚Ì•ÏX‚Í‰Â”\‚Å‚·‚ª–¼‘O‚ð•Ï‚¦‚½‚è–³Œø‚É‚µ‚Ä‚Í‚¢‚¯‚Ü‚¹‚ñ)
+name = "holdup"    ;ï¿½vï¿½ï¿½ï¿½Ï‚ï¿½ (ï¿½Lï¿½[ï¿½Ì•ÏXï¿½Í‰Â”\ï¿½Å‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Oï¿½ï¿½Ï‚ï¿½ï¿½ï¿½ï¿½è–³ï¿½ï¿½ï¿½É‚ï¿½ï¿½Ä‚Í‚ï¿½ï¿½ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½)
 command = /$U
 time = 1
 
 [Command]
-name = "holddown"  ;—v‹Ï‚Ý (ƒL[‚Ì•ÏX‚Í‰Â”\‚Å‚·‚ª–¼‘O‚ð•Ï‚¦‚½‚è–³Œø‚É‚µ‚Ä‚Í‚¢‚¯‚Ü‚¹‚ñ)
+name = "holddown"  ;ï¿½vï¿½ï¿½ï¿½Ï‚ï¿½ (ï¿½Lï¿½[ï¿½Ì•ÏXï¿½Í‰Â”\ï¿½Å‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Oï¿½ï¿½Ï‚ï¿½ï¿½ï¿½ï¿½è–³ï¿½ï¿½ï¿½É‚ï¿½ï¿½Ä‚Í‚ï¿½ï¿½ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½)
 command = /$D
 time = 1
 
@@ -483,7 +483,7 @@ trigger2=(stateno=[200,499]) && movecontact
 ;---------------------------------------------------------------------------
 ;---------------------------------------------------------------------------
 
-;Œã‹Ù‹}‰ñ”ð
+;ï¿½ï¿½Ù‹}ï¿½ï¿½ï¿½
 [State -1, T S]
 type = ChangeState
 value = 710
@@ -493,7 +493,7 @@ triggerall = statetype != A
 trigger1 = ctrl
 trigger2=(stateno=[200,499]) && movecontact
 
-;‘O‹Ù‹}‰ñ”ð
+;ï¿½Oï¿½Ù‹}ï¿½ï¿½ï¿½
 [State -1, T S]
 type = ChangeState
 value = 700
@@ -503,7 +503,7 @@ trigger1 = ctrl
 trigger2=(stateno=[200,499]) && movecontact
 
 
-;Žóg
+;ï¿½ï¿½g
 [State -1, UKEMI]
 type = ChangeState
 value = 52000
@@ -514,7 +514,7 @@ trigger1 = command = "recovery"
 ;---------------------------------------------------------------------------
 ;------------------------------------------------------------------------------
 
-;‚Ó‚Á‚Æ‚Î‚µ
+;ï¿½Ó‚ï¿½ï¿½Æ‚Î‚ï¿½
 [State -1, Throw]
 type = ChangeState
 value = 500
@@ -523,7 +523,7 @@ triggerall = statetype != A
 trigger1 = ctrl
 trigger2=(stateno=[200,499]) && movecontact
 
-;‹ó’†‚Ó‚Á‚Æ‚Î‚µ
+;ï¿½ó’†‚Ó‚ï¿½ï¿½Æ‚Î‚ï¿½
 [State -1, CD]
 type = ChangeState
 value = 650
@@ -533,7 +533,7 @@ trigger1 = ctrl
 trigger2=(stateno=[600,699]) && movecontact
 
 ;------------------------------------------------------------------------------
-;P“Š‚°
+;Pï¿½ï¿½ï¿½ï¿½
 [State -1, Throw]
 type = ChangeState
 value = 800
@@ -547,7 +547,7 @@ trigger1 = ctrl
 						Triggerall = var(50) = 0
 
 ;------------------------------------------------------------------------------
-;K“Š‚°
+;Kï¿½ï¿½ï¿½ï¿½
 [State -1, Throw]
 type = ChangeState
 value = 800
@@ -560,7 +560,7 @@ trigger1 = p2statetype != A && p2movetype != H
 trigger1 = ctrl
 						Triggerall = var(50) = 0
 
-;ƒ_ƒbƒVƒ…
+;ï¿½_ï¿½bï¿½Vï¿½ï¿½
 [State -1, Dash]
 type = ChangeState
 value = 100
@@ -569,7 +569,7 @@ trigger1 = statetype = S
 trigger1 = ctrl
 						Triggerall = var(50) = 0
 
-;ƒoƒbƒNƒXƒeƒbƒv
+;ï¿½oï¿½bï¿½Nï¿½Xï¿½eï¿½bï¿½v
 [State -1, Back Step]
 type = ChangeState
 value = 105
@@ -687,7 +687,7 @@ trigger5 = (stateno = [430,439])&& movecontact
 trigger6 = stateno = 100
 
 ;------------------------------------------------------------------------------
-;’§”­
+;ï¿½ï¿½ï¿½ï¿½
 [State -1, Taunt]
 type = ChangeState
 value = 195
@@ -749,7 +749,7 @@ trigger5 = (stateno = [430,439])&& movecontact
 trigger6 = stateno = 100  
 
 ;------------------------------------------------------------------------------
-;ƒWƒƒƒ“ƒvŽãƒpƒ“ƒ`
+;ï¿½Wï¿½ï¿½ï¿½ï¿½ï¿½vï¿½ï¿½pï¿½ï¿½ï¿½`
 [State -1, Jump Light Punch]
 type = ChangeState
 value = 600
@@ -759,7 +759,7 @@ trigger1 = statetype = A
 trigger1 = ctrl
 						Triggerall = var(50) = 0
 
-;ƒWƒƒƒ“ƒv‹­ƒpƒ“ƒ`
+;ï¿½Wï¿½ï¿½ï¿½ï¿½ï¿½vï¿½ï¿½ï¿½pï¿½ï¿½ï¿½`
 [State -1, Jump Strong Punch]
 type = ChangeState
 value = 610
@@ -770,7 +770,7 @@ trigger1 = ctrl
 						Triggerall = var(50) = 0
 
 ;------------------------------------------------------------------------------
-;‚’¼ƒWƒƒƒ“ƒvŽãƒLƒbƒN
+;ï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½ï¿½ï¿½ï¿½ï¿½vï¿½ï¿½Lï¿½bï¿½N
 [State -1, Jump Light Kick]
 type = ChangeState
 value = 630
@@ -781,7 +781,7 @@ trigger1 = statetype = A
 trigger1 = ctrl
 						Triggerall = var(50) = 0
 
-;ŽÎ‚ßƒWƒƒƒ“ƒvŽãƒLƒbƒN
+;ï¿½Î‚ßƒWï¿½ï¿½ï¿½ï¿½ï¿½vï¿½ï¿½Lï¿½bï¿½N
 [State -1, Jump Light Kick]
 type = ChangeState
 value = 635
@@ -792,7 +792,7 @@ trigger1 = statetype = A
 trigger1 = ctrl
 						Triggerall = var(50) = 0
 
-;‚’¼ƒWƒƒƒ“ƒv‹­ƒLƒbƒN
+;ï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½ï¿½ï¿½ï¿½ï¿½vï¿½ï¿½ï¿½Lï¿½bï¿½N
 [State -1, Jump Strong Kick]
 type = ChangeState
 value = 640
@@ -803,7 +803,7 @@ trigger1 = statetype = A
 trigger1 = ctrl
 						Triggerall = var(50) = 0
 
-;ŽÎ‚ßƒWƒƒƒ“ƒv‹­ƒLƒbƒN
+;ï¿½Î‚ßƒWï¿½ï¿½ï¿½ï¿½ï¿½vï¿½ï¿½ï¿½Lï¿½bï¿½N
 [State -1, Jump Strong Kick]
 type = ChangeState
 value = 645
@@ -813,3 +813,59 @@ triggerall = vel X != 0
 trigger1 = statetype = A
 trigger1 = ctrl
 
+
+;---------------------------------------------------------------------------
+JAMBU AI
+;---------------------------------------------------------------------------
+[State -1, AI Guard]
+type = ChangeState
+value = 120
+triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
+triggerall = AILevel * AILevel * AILevel * 2 > random
+triggerall = InGuardDist
+trigger1 = ctrl
+trigger2 = animtime >= 0
+
+[State -1, AI Taunt]
+type = ChangeState
+value = 195
+triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
+triggerall = p2bodydist x > 100 && statetype != A
+triggerall = p2movetype = H && Life >= P2Life
+trigger1 = ctrl
+
+[State -1, AI Forward]
+type = ChangeState
+value = 1200
+triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
+triggerall = AILevel * AILevel * AILevel > random
+triggerall = p2bodydist x > 100 && statetype != A
+trigger1 = ctrl
+
+[State -1, AI LowHit]
+type = ChangeState
+value = 430
+triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
+triggerall = AILevel * AILevel * AILevel > random
+triggerall = p2bodydist x < 50 && statetype != A
+trigger1 = ctrl
+trigger2 = movehit && animtime >= 0
+
+[State -1, AI MediumHit]
+type = ChangeState
+value = 210
+triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
+triggerall = AILevel * AILevel * AILevel > random
+triggerall = p2bodydist x < 50 && statetype != A
+trigger1 = ctrl
+trigger2 = movehit && animtime >= 0
+
+[State -1, AI FollowUp]
+type = ChangeState
+value = 1520
+triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
+triggerall = AILevel * AILevel * AILevel * 2 > random
+triggerall = p2bodydist x < 50 && statetype != A
+trigger1 = movehit && animtime >= 0
+;---------------------------------------------------------------------------
+;---------------------------------------------------------------------------

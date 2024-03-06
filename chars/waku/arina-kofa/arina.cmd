@@ -213,7 +213,7 @@ command = D, $U
 
 ;===========================================================================
 
-;ƒAƒŠ[ƒiƒJ[ƒjƒoƒ‹
+;ï¿½Aï¿½ï¿½ï¿½[ï¿½iï¿½Jï¿½[ï¿½jï¿½oï¿½ï¿½
 [State -1, ac]
 type = ChangeState
 value = 3000
@@ -225,7 +225,7 @@ trigger2=(stateno=[200,499]) && movecontact
 ;---------------------------------------------------------------------------
 
 ;===========================================================================
-;ƒAƒŠ[ƒiƒNƒ‰ƒbƒVƒ…‚d‚w
+;ï¿½Aï¿½ï¿½ï¿½[ï¿½iï¿½Nï¿½ï¿½ï¿½bï¿½Vï¿½ï¿½ï¿½dï¿½w
 [State -1, ab]
 type = ChangeState
 value = 4500
@@ -244,8 +244,8 @@ triggerall = statetype = A
 trigger1 = ctrl
 trigger2=(stateno=[600,699]) && movecontact
 
-;ƒX[ƒp[‰»
-[State -1, ƒX[ƒp[]
+;ï¿½Xï¿½[ï¿½pï¿½[ï¿½ï¿½
+[State -1, ï¿½Xï¿½[ï¿½pï¿½[]
 type = ChangeState
 value = 4900
 triggerall = command = "super"
@@ -254,7 +254,7 @@ triggerall = statetype != A
 trigger1 = ctrl
 trigger2=(stateno=[200,499]) && movecontact
 
-;ƒAƒŠ[ƒiƒr[ƒ€‚d‚w
+;ï¿½Aï¿½ï¿½ï¿½[ï¿½iï¿½rï¿½[ï¿½ï¿½ï¿½dï¿½w
 [State -1, ab]
 type = ChangeState
 value = 4300
@@ -264,7 +264,7 @@ triggerall = statetype != A
 trigger1 = ctrl
 trigger2=(stateno=[200,499]) && movecontact
 
-;ƒAƒŠ[ƒiƒr[ƒ€‚d‚w‹ó’†
+;ï¿½Aï¿½ï¿½ï¿½[ï¿½iï¿½rï¿½[ï¿½ï¿½ï¿½dï¿½wï¿½ï¿½
 [State -1, ab]
 type = ChangeState
 value = 4310
@@ -274,7 +274,7 @@ triggerall = statetype = A
 trigger1 = ctrl
 trigger2=(stateno=[600,699]) && movecontact
 
-;ƒAƒŠ[ƒiƒgƒ‹ƒl[ƒh‚d‚w
+;ï¿½Aï¿½ï¿½ï¿½[ï¿½iï¿½gï¿½ï¿½ï¿½lï¿½[ï¿½hï¿½dï¿½w
 [State -1, at]
 type = ChangeState
 value = 4995
@@ -306,7 +306,7 @@ trigger2=(stateno=[200,499]) && movecontact
 ;______________________________________________________________----------
 
 
-;‚í‚­‚í‚­“Š‚°
+;ï¿½í‚­ï¿½í‚­ï¿½ï¿½ï¿½ï¿½
 [State -1, Kung Fu Throw]
 type = ChangeState
 value = 880
@@ -315,7 +315,7 @@ triggerall = statetype != A
 trigger1 = ctrl
 trigger2=(stateno=[200,499]) && movecontact
 
-;ƒAƒŠ[ƒiƒNƒ‰ƒbƒVƒ…
+;ï¿½Aï¿½ï¿½ï¿½[ï¿½iï¿½Nï¿½ï¿½ï¿½bï¿½Vï¿½ï¿½
 [State -1, ab]
 type = ChangeState
 value = 1400
@@ -333,7 +333,7 @@ trigger1 = ctrl
 trigger2=(stateno=[200,499]) && movecontact
 
 ;---------------------------------------------------------------------------
-;ƒAƒŠ[ƒiƒr[ƒ€ã
+;ï¿½Aï¿½ï¿½ï¿½[ï¿½iï¿½rï¿½[ï¿½ï¿½ï¿½ï¿½
 [State -1, ab]
 type = ChangeState
 value = 1000
@@ -342,7 +342,7 @@ triggerall = statetype != A
 trigger1 = ctrl
 trigger2=(stateno=[200,499]) && movecontact
 
-;ƒAƒŠ[ƒiƒr[ƒ€ã
+;ï¿½Aï¿½ï¿½ï¿½[ï¿½iï¿½rï¿½[ï¿½ï¿½ï¿½ï¿½
 [State -1, ab]
 type = ChangeState
 value = 1003
@@ -351,7 +351,7 @@ triggerall = statetype != A
 trigger1 = ctrl
 trigger2=(stateno=[200,499]) && movecontact
 
-;ƒAƒŠ[ƒiƒr[ƒ€‹­
+;ï¿½Aï¿½ï¿½ï¿½[ï¿½iï¿½rï¿½[ï¿½ï¿½ï¿½ï¿½
 [State -1, ab]
 type = ChangeState
 value = 1010
@@ -360,7 +360,7 @@ triggerall = statetype != A
 trigger1 = ctrl
 trigger2=(stateno=[200,499]) && movecontact
 
-;ƒAƒŠ[ƒiƒr[ƒ€‹­
+;ï¿½Aï¿½ï¿½ï¿½[ï¿½iï¿½rï¿½[ï¿½ï¿½ï¿½ï¿½
 [State -1, ab]
 type = ChangeState
 value = 1014
@@ -369,7 +369,7 @@ triggerall = statetype != A
 trigger1 = ctrl
 trigger2=(stateno=[200,499]) && movecontact
 
-;ƒAƒŠ[ƒiƒr[ƒ€ã‹ó’†
+;ï¿½Aï¿½ï¿½ï¿½[ï¿½iï¿½rï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½
 [State -1, ab]
 type = ChangeState
 value = 1020
@@ -378,7 +378,7 @@ triggerall = statetype = A
 trigger1 = ctrl
 trigger2=(stateno=[600,699]) && movecontact
 
-;ƒAƒŠ[ƒiƒr[ƒ€ã‹ó’†
+;ï¿½Aï¿½ï¿½ï¿½[ï¿½iï¿½rï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½
 [State -1, ab]
 type = ChangeState
 value = 1024
@@ -387,7 +387,7 @@ triggerall = statetype = A
 trigger1 = ctrl
 trigger2=(stateno=[600,699]) && movecontact
 
-;ƒAƒŠ[ƒiƒr[ƒ€‹­‹ó’†
+;ï¿½Aï¿½ï¿½ï¿½[ï¿½iï¿½rï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 [State -1, ab]
 type = ChangeState
 value = 1030
@@ -396,7 +396,7 @@ triggerall = statetype = A
 trigger1 = ctrl
 trigger2=(stateno=[600,699]) && movecontact
 
-;ƒAƒŠ[ƒiƒr[ƒ€‹­‹ó’†
+;ï¿½Aï¿½ï¿½ï¿½[ï¿½iï¿½rï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 [State -1, ab]
 type = ChangeState
 value = 1035
@@ -405,7 +405,7 @@ triggerall = statetype = A
 trigger1 = ctrl
 trigger2=(stateno=[600,699]) && movecontact
 ;__________________________________________________________________________
-;ƒAƒŠ[ƒiƒgƒ‹ƒl[ƒhã
+;ï¿½Aï¿½ï¿½ï¿½[ï¿½iï¿½gï¿½ï¿½ï¿½lï¿½[ï¿½hï¿½ï¿½
 [State -1, at]
 type = ChangeState
 value = 1200
@@ -414,7 +414,7 @@ triggerall = statetype != A
 trigger1 = ctrl
 trigger2=(stateno=[200,499]) && movecontact
 
-;ƒAƒŠ[ƒiƒgƒ‹ƒl[ƒh‹­
+;ï¿½Aï¿½ï¿½ï¿½[ï¿½iï¿½gï¿½ï¿½ï¿½lï¿½[ï¿½hï¿½ï¿½
 [State -1, at]
 type = ChangeState
 value = 1290
@@ -424,7 +424,7 @@ trigger1 = ctrl
 trigger2=(stateno=[200,499]) && movecontact
 
 ;---------------------------------------------------------------------------
-;ƒ_ƒbƒVƒ…
+;ï¿½_ï¿½bï¿½Vï¿½ï¿½
 [State -1, Run Fwd]
 type = ChangeState
 value = 100
@@ -433,7 +433,7 @@ trigger1 = statetype = S
 trigger1 = ctrl
 
 ;---------------------------------------------------------------------------
-;Œã‘Şƒ_ƒbƒVƒ…
+;ï¿½ï¿½Şƒ_ï¿½bï¿½Vï¿½ï¿½
 [State -1, Run Back]
 type = ChangeState
 value = 105
@@ -442,7 +442,7 @@ trigger1 = statetype = S
 trigger1 = ctrl
 
 ;---------------------------------------------------------------------------
-;‚o“Š‚°
+;ï¿½oï¿½ï¿½ï¿½ï¿½
 [State -1, Kung Fu Throw]
 type = ChangeState
 value = 800
@@ -459,7 +459,7 @@ trigger2 = p2bodydist X < 5
 trigger2 = (p2statetype = S) || (p2statetype = C)
 trigger2 = p2movetype != H
 
-;‚j“Š‚°
+;ï¿½jï¿½ï¿½ï¿½ï¿½
 [State -1, Kung Fu Throw]
 type = ChangeState
 value = 801
@@ -476,7 +476,7 @@ trigger2 = p2bodydist X < 5
 trigger2 = (p2statetype = S) || (p2statetype = C)
 trigger2 = p2movetype != H
 
-;‹ó’†“Š‚°
+;ï¿½ó’†“ï¿½ï¿½ï¿½
 ;[State -1, Kung Fu Throw]
 ;type = ChangeState
 ;value = 850
@@ -489,8 +489,8 @@ trigger2 = p2movetype != H
 ;trigger1 = p2movetype != H
 
 ;---------------------------------------------------------------------------
-;‚¿‚ã[‚¾[‚ñ
-[State -1, ’†’i]
+;ï¿½ï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½[ï¿½ï¿½
+[State -1, ï¿½ï¿½ï¿½i]
 type = ChangeState
 value = 711
 triggerall = (command = "y" && command = "b") || command = "c"
@@ -653,7 +653,7 @@ trigger6 = stateno = 100
 
 ;---------------------------------------------------------------------------
 
-;‹ó’†ãƒpƒ“ƒ`
+;ï¿½ó’†ï¿½pï¿½ï¿½ï¿½`
 [State -1, Jump Light Punch]
 type = ChangeState
 value = 600
@@ -661,7 +661,7 @@ triggerall = command = "x"
 trigger1 = statetype = A
 trigger1 = ctrl
 
-;‹ó’†‹­‚o
+;ï¿½ó’†‹ï¿½ï¿½o
 [State -1, Jump Strong Punch]
 type = ChangeState
 value = 610
@@ -670,7 +670,7 @@ triggerall = vel X = 0
 triggerall = statetype = A
 trigger1 = ctrl
 
-;‹ó’†‹­‚o
+;ï¿½ó’†‹ï¿½ï¿½o
 [State -1, Jump Strong Punch]
 type = ChangeState
 value = 611
@@ -680,7 +680,7 @@ triggerall = statetype = A
 trigger1 = ctrl
 
 ;---------------------------------------------------------------------------
-;‹ó’†ã‚j
+;ï¿½ó’†ï¿½j
 [State -1, Jump Light Kick]
 type = ChangeState
 value = 630
@@ -688,7 +688,7 @@ triggerall = command = "a"
 trigger1 = statetype = A
 trigger1 = ctrl
 
-;‹ó’†‹­ƒLƒbƒN
+;ï¿½ó’†‹ï¿½ï¿½Lï¿½bï¿½N
 [State -1, Jump Strong Kick]
 type = ChangeState
 value = 640
@@ -704,3 +704,68 @@ triggerall = stateno != 995 && ctrl
 triggerall = command != "holdfwd"
 triggerall = command != "holdback"
 trigger1 =  command = "start"
+
+;---------------------------------------------------------------------------
+JAMBU AI
+;---------------------------------------------------------------------------
+[State -1, AI Guard]
+type = ChangeState
+value = 120
+triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
+triggerall = AILevel * AILevel * AILevel * 2 > random
+triggerall = InGuardDist
+trigger1 = ctrl
+trigger2 = animtime >= 0
+
+[State -1, AI Taunt]
+type = ChangeState
+value = 995;195
+triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
+triggerall = p2bodydist x > 100 && statetype != A
+triggerall = p2movetype = H && Life >= P2Life
+trigger1 = ctrl
+
+[State -1, AI Range]
+type = ChangeState
+value = 1000
+triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
+triggerall = AILevel * AILevel > random
+triggerall = p2bodydist x > 200 && statetype != A
+triggerall = Life >= P2Life
+trigger1 = ctrl
+
+[State -1, AI Forward]
+type = ChangeState
+value = 730
+triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
+triggerall = AILevel * AILevel * AILevel > random
+triggerall = p2bodydist x > 100 && statetype != A
+trigger1 = ctrl
+
+[State -1, AI LowHit]
+type = ChangeState
+value = 430
+triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
+triggerall = AILevel * AILevel * AILevel > random
+triggerall = p2bodydist x < 50 && statetype != A
+trigger1 = ctrl
+trigger2 = movehit && animtime >= 0
+
+[State -1, AI MediumHit]
+type = ChangeState
+value = 210
+triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
+triggerall = AILevel * AILevel * AILevel > random
+triggerall = p2bodydist x < 50 && statetype != A
+trigger1 = ctrl
+trigger2 = movehit && animtime >= 0
+
+[State -1, AI FollowUp]
+type = ChangeState
+value = 880
+triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
+triggerall = AILevel * AILevel * AILevel * 2 > random
+triggerall = p2bodydist x < 50 && statetype != A
+trigger1 = movehit && animtime >= 0
+;---------------------------------------------------------------------------
+;---------------------------------------------------------------------------

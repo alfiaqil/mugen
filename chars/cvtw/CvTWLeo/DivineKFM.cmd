@@ -738,6 +738,14 @@ triggerall = InGuardDist
 trigger1 = ctrl
 trigger2 = animtime >= 0
 
+[State -1, AI Taunt]
+type = ChangeState
+value = 195
+triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
+triggerall = p2bodydist x > 100 && statetype != A
+triggerall = p2movetype = H && Life >= P2Life
+trigger1 = ctrl
+
 [State -1, AI Range]
 type = ChangeState
 value = 1001

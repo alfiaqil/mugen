@@ -673,7 +673,7 @@ trigger1 = statetype != A && ctrl
 type = ChangeState
 value = 2000
 triggerall = var(59) = 0
-triggerall = command = "x" || command = "y"
+triggerall = command = "x" || command = "y" || command = "z" || command = "c"
 triggerall = command = "holddown" && command = "holdfwd"
 trigger1 = var(1)
 
@@ -685,7 +685,7 @@ trigger1 = var(1)
 type = ChangeState
 value = 200
 triggerall = var(59) = 0
-triggerall = command = "x"
+triggerall = command = "x" || command = "z" || command = "c"
 triggerall = command != "holddown"
 trigger1 = statetype = S
 trigger1 = ctrl
@@ -752,7 +752,7 @@ trigger1 = ctrl
 type = ChangeState
 value = 400
 triggerall = var(59) = 0
-triggerall = command = "x"
+triggerall = command = "x" || command = "z" || command = "c"
 triggerall = command = "holddown"
 trigger1 = statetype = C
 trigger1 = ctrl
@@ -806,7 +806,7 @@ trigger2 = (time > 9) || (movecontact && time > 5)
 type = ChangeState
 value = 600
 triggerall = var(59) = 0
-triggerall = command = "x"
+triggerall = command = "x" || command = "z" || command = "c"
 trigger1 = statetype = A
 trigger1 = ctrl
 ;trigger2 = stateno = 600
