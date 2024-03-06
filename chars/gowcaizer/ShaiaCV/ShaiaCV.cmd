@@ -558,7 +558,6 @@ triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
 triggerall = AILevel * AILevel * AILevel * 2 > random
 triggerall = InGuardDist
 trigger1 = ctrl
-trigger2 = animtime >= 0
 
 [State -1, AI Helper]
 type = ChangeState

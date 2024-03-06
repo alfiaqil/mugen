@@ -775,7 +775,6 @@ triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
 triggerall = AILevel * AILevel * AILevel * 2 > random
 triggerall = InGuardDist
 trigger1 = ctrl
-trigger2 = animtime >= 0
 
 [State -1, AI Taunt]
 type = ChangeState
@@ -789,7 +788,7 @@ trigger1 = ctrl
 type = ChangeState
 value = 1000
 triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
-triggerall = AILevel * AILevel * 2 > random
+triggerall = AILevel * AILevel * AILevel > random
 triggerall = p2bodydist x > 100 && statetype != A
 ;triggerall = Life >= P2Life
 trigger1 = ctrl
