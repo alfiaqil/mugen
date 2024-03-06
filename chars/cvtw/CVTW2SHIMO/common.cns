@@ -44,20 +44,6 @@ trigger1 = IsHelper
 ;=========<CAPCOM VS SNK ALPHA>================================================================
 ;=======================================<SYSTEM STATES>========================================
 ;==========================<BY MEMO>===========================================================
-;STANDING FOR AI FIX
-;[Statedef 1]
-;type = S
-;physics = S
-;sprpriority = 0
-
-;[State 10, End]
-;type = ChangeState
-;trigger1 = 1
-;value = 0
-;ctrl = 1
-;==============================================================
-;==================================CVSA/SYSTEM==========MEMO===
-;==============================================================
 [Statedef 21]
 type    = S
 physics = S
@@ -720,11 +706,6 @@ trigger2 = !(enemynear, statetype = C) && !(enemynear, hitdefattr = C, AA, AP)
 statetype = S
 physics = S
 
-[State 120, AI fix]
-type = null;ctrlset
-trigger1 = AIlevel && numenemy
-value = (enemynear, time >= 120 || time >= 180)
-
 [State 120, End]
 type = changestate
 trigger1 = !animtime || AIlevel
@@ -749,11 +730,6 @@ physics = S
 type = changeanim
 trigger1 = anim != 130
 value = 130
-
-[State 130, AI fix]
-type = null;ctrlset
-trigger1 = AIlevel && numenemy
-value = (enemynear, time >= 120 || time >= 180)
 
 [State 130, High to Low]
 type = changestate
@@ -790,11 +766,6 @@ trigger2 = AIlevel && numenemy
 trigger2 = (enemynear, movetype = A) && random < (125 * (AIlevel ** 2 / 64.0))
 trigger2 = !(enemynear, statetype = C) && !(enemynear, hitdefattr = C, AA, AP)
 value = 130
-
-[State 131, AI fix]
-type = null;ctrlset
-trigger1 = AIlevel && numenemy
-value = (enemynear, time >= 120 || time >= 180)
 
 [State 131, Stop Guarding]
 type = changestate
@@ -835,11 +806,6 @@ y = 0
 type = posset
 trigger1 = sysvar(0)
 y = 0
-
-[State 132, AI fix]
-type = null;ctrlset
-trigger1 = AIlevel && numenemy
-value = (enemynear, time >= 120 || time >= 180)
 
 [State 132, End]
 type = changestate
