@@ -261,7 +261,7 @@ channel = 0
 [State 1003, TargetLifeAdd]
 type = TargetLifeAdd
 trigger1 = AnimElem = 1
-value = -90*2
+value = -90
 
 [State 1003, TargetState]
 type = TargetState
@@ -594,7 +594,7 @@ channel = 0
 [State 1013, TargetLifeAdd]
 type = TargetLifeAdd
 trigger1 = AnimElem = 1
-value = -110*2
+value = -110
 
 [State 1013, TargetState]
 type = TargetState
@@ -938,7 +938,7 @@ channel = 0
 [State 1023, TargetLifeAdd]
 type = TargetLifeAdd
 trigger1 = AnimElem = 1
-value = -135*2
+value = -135
 
 [State 1023, TargetState]
 type = TargetState
@@ -1056,17 +1056,17 @@ ctrl = 0
 type = PosAdd
 trigger1 = AnimElem = 10
 trigger2 = AnimElem = 11
-x = 15*2
+x = 15
 
 [State 1100, PosAdd]
 type = PosAdd
 trigger1 = AnimElem = 12
-x = 7*2
+x = 7
 
 [State 1100, VelSet]
 type = VelSet
 trigger1 = AnimElem = 12, = 1
-x = 3*2
+x = 3
 
 [State 1100, VelSet]
 type = VelSet
@@ -1093,22 +1093,22 @@ ctrl = 0
 [State 1110, PosAdd]
 type = PosAdd
 trigger1 = AnimElem = 10
-x = 23*2
+x = 23
 
 [State 1110, PosAdd]
 type = PosAdd
 trigger1 = AnimElem = 11
-x = 15*2
+x = 15
 
 [State 1110, PosAdd]
 type = PosAdd
 trigger1 = AnimElem = 12
-x = 7*2
+x = 7
 
 [State 1110, VelSet]
 type = VelSet
 trigger1 = AnimElem = 12, = 1
-x = 3*2
+x = 3
 
 [State 1110, VelSet]
 type = VelSet
@@ -1161,7 +1161,7 @@ channel = 2
 type = PosAdd
 trigger1 = AnimElem = 10
 trigger2 = AnimElem = 11
-x = 27*2
+x = 27
 
 [State 1120, PlayerPush]
 type = PlayerPush
@@ -1171,12 +1171,12 @@ value = 0
 [State 1120, PosAdd]
 type = PosAdd
 trigger1 = AnimElem = 12
-x = 7*2
+x = 7
 
 [State 1110, VelSet]
 type = VelSet
 trigger1 = AnimElem = 12, = 1
-x = 3*2
+x = 3
 
 [State 1120, VelSet]
 type = VelSet

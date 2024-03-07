@@ -463,6 +463,7 @@ trigger4 = (StateNo = [1200,1299]) && Movecontact
 [State -1, Tenraigin Kuchinawaichigo]
 type = ChangeState
 value = 3100
+triggerall = !AILevel
 triggerall = command = "DU2+P"
 triggerall = power >= 1000
 trigger1 = statetype != A
@@ -476,6 +477,7 @@ trigger3 = (StateNo = [400,449]) && Movecontact
 [State -1, Saiunricchu Mozuotoshi EX]
 type = ChangeState
 value = 1020
+triggerall = !AILevel
 triggerall = command = "DU+xy"
 triggerall = power >= 500
 triggerall = statetype != A
@@ -488,6 +490,7 @@ trigger3 = (StateNo = [400,449]) && Movecontact
 [State -1, Saiunricchu Mozuotoshi X]
 type = ChangeState
 value = 1000
+triggerall = !AILevel
 triggerall = command = "DU+x"
 triggerall = statetype != A
 trigger1 = ctrl || stateno = 40
@@ -499,6 +502,7 @@ trigger3 = (StateNo = [400,449]) && Movecontact
 [State -1, Saiunricchu Mozuotoshi Y]
 type = ChangeState
 value = 1010
+triggerall = !AILevel
 triggerall = command = "DU+y"
 triggerall = statetype != A
 trigger1 = ctrl || stateno = 40
@@ -510,6 +514,7 @@ trigger3 = (StateNo = [400,449]) && Movecontact
 [State -1, Kikkajyunikou Jibashiri EX]
 type = ChangeState
 value = 1120
+triggerall = !AILevel
 triggerall = command = "HCF+xy"
 triggerall = power >= 500
 trigger1 = statetype != A
@@ -522,6 +527,7 @@ trigger3 = (StateNo = [400,449]) && Movecontact
 [State -1, Kikkajyunikou Jibashiri X]
 type = ChangeState
 value = 1100
+triggerall = !AILevel
 triggerall = command = "HCF+x"
 trigger1 = statetype != A
 trigger1 = ctrl
@@ -533,6 +539,7 @@ trigger3 = (StateNo = [400,449]) && Movecontact
 [State -1, Kikkajyunikou Jibashiri Y]
 type = ChangeState
 value = 1110
+triggerall = !AILevel
 triggerall = command = "HCF+y"
 trigger1 = statetype != A
 trigger1 = ctrl
@@ -624,6 +631,7 @@ trigger1 = ctrl
 [State -1, Guard Break Attack]
 type = ChangeState
 value = 950
+triggerall = !AILevel
 triggerall = command = "by"
 trigger1 = statetype != A
 trigger1 = ctrl
@@ -634,7 +642,7 @@ trigger1 = ctrl
 [State -1, Lunging Side Kick]
 type = ChangeState
 value = 260
-triggerall = command = "holdfwd" && command = "a"
+triggerall = command = "holdfwd" && (command = "a" || command = "z" || command = "c")
 trigger1 = statetype = S
 trigger1 = ctrl
 trigger2 = StateNo = 240 && Movecontact && Anim = Var(5)+240
@@ -666,7 +674,7 @@ trigger1 = ctrl
 [State -1, Stand Light Punch]
 type = ChangeState
 value = 200
-triggerall = command = "x"
+triggerall = command = "x" 
 triggerall = command != "holddown"
 trigger1 = statetype = S
 trigger1 = ctrl
@@ -677,6 +685,7 @@ trigger2 = StateNo = 200 && Movecontact
 [State -1, Stand Strong Punch]
 type = ChangeState
 value = 210
+triggerall = !AILevel
 triggerall = command = "y"
 triggerall = command != "holddown"
 trigger1 = statetype = S
@@ -687,7 +696,7 @@ trigger1 = ctrl
 [State -1, Stand Light Kick]
 type = ChangeState
 value = 230
-triggerall = command = "a"
+triggerall = command = "a" || command = "z" || command = "c"
 triggerall = command != "holddown"
 trigger1 = statetype = S
 trigger1 = ctrl
@@ -738,7 +747,7 @@ trigger1 = ctrl
 [State -1, Crouching Light Kick]
 type = ChangeState
 value = 430
-triggerall = command = "a"
+triggerall = command = "a" || command = "z" || command = "c"
 triggerall = command = "holddown"
 trigger1 = statetype = C
 trigger1 = ctrl
@@ -758,7 +767,7 @@ trigger1 = ctrl
 [State -1, Light Dive Kick]
 type = ChangeState
 value = 650
-triggerall = command = "holddownfwd" && command = "a" && statetype = A && pos y <= -50
+triggerall = command = "holddownfwd" && (command = "a" || command = "z" || command = "c") && statetype = A && pos y <= -50
 trigger1 = Anim != Var(5)+43
 trigger1 = ctrl
 
@@ -776,7 +785,7 @@ trigger1 = ctrl
 [State -1, Jump Light Punch]
 type = ChangeState
 value = 600
-triggerall = command = "x"
+triggerall = command = "x" 
 trigger1 = statetype = A
 trigger1 = ctrl
 
@@ -795,7 +804,7 @@ trigger2 = StateNo = 600 && Movecontact
 [State -1, Jump Light Kick]
 type = ChangeState
 value = 630
-triggerall = command = "a"
+triggerall = command = "a" || command = "z" || command = "c"
 trigger1 = statetype = A
 trigger1 = ctrl
 
@@ -829,3 +838,68 @@ value = 40
 triggerall = command = "HighJump"
 triggerall = (StateNo = 1210 && MoveHit && Time = 13) || (StateNo = 1220 && MoveHit && Time = 26) || (StateNo = 3000 && MoveHit && Time = 83)
 trigger1 = statetype != A
+
+
+;---------------------------------------------------------------------------
+;JAMBU AI
+;---------------------------------------------------------------------------
+[State -1, AI Guard]
+type = ChangeState
+value = 120
+triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
+triggerall = AILevel * AILevel * AILevel * 2 > random
+triggerall = InGuardDist
+trigger1 = ctrl
+
+[State -1, AI Taunt]
+type = ChangeState
+value = 195
+triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
+triggerall = p2bodydist x > 100 && statetype != A
+triggerall = p2movetype = H && Life >= P2Life
+trigger1 = ctrl
+
+[State -1, AI Forward]
+type = ChangeState
+value = 1100
+triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
+triggerall = AILevel * AILevel * AILevel > random
+triggerall = p2bodydist x > 100 && statetype != A
+trigger1 = ctrl
+
+[State -1, AI Throw]
+type = ChangeState
+value = 1000
+triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
+triggerall = AILevel * AILevel * AILevel> random
+triggerall = p2bodydist x < 20 && statetype != A
+trigger1 = ctrl && animtime >= 0
+
+[State -1, AI FollowUp]
+type = ChangeState
+value = 1200
+triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
+;triggerall = AILevel * AILevel * AILevel * 2 > random
+triggerall = p2bodydist x < 50 && statetype != A
+trigger1 = movehit && animtime >= 0
+trigger2 = movecontact  && animtime = 0
+
+[State -1, AI LowHit]
+type = ChangeState
+value = 440
+triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
+triggerall = AILevel * AILevel * AILevel > random
+triggerall = p2bodydist x < 50 && statetype != A
+trigger1 = ctrl
+trigger2 = movehit && animtime >= 0
+
+[State -1, AI MediumHit]
+type = ChangeState
+value = 240
+triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
+triggerall = AILevel * AILevel * AILevel > random
+triggerall = p2bodydist x < 50 && statetype != A
+trigger1 = ctrl
+trigger2 = movehit && animtime >= 0
+;---------------------------------------------------------------------------
+;---------------------------------------------------------------------------
