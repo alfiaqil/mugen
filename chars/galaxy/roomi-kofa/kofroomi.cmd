@@ -335,7 +335,7 @@ trigger1 = ctrl
 ;---------------------------------------------------------------------------
 ;---------------------------------------------------------------------------
 
-;00ƒMƒK‚Q
+;00ï¿½Mï¿½Kï¿½Q
 [State -1, Triple Kung Fu Palm]
 type = ChangeState
 value = 3300
@@ -345,7 +345,7 @@ triggerall = statetype != A
 trigger1 = ctrl
 trigger2=(stateno=[200,499]) && movecontact
 
-;98EXMAXƒXƒNƒŠ[ƒ}[¬
+;98EXMAXï¿½Xï¿½Nï¿½ï¿½ï¿½[ï¿½}ï¿½[ï¿½ï¿½
 [State -1, Triple Kung Fu Palm]
 type = ChangeState
 value = 3500
@@ -357,7 +357,7 @@ trigger2=(stateno=[200,499]) && movecontact
 
 
 
-;00ƒAƒbƒp[
+;00ï¿½Aï¿½bï¿½pï¿½[
 [State -1, Smash Kung Fu Upper]
 type = ChangeState
 value = 3100
@@ -376,7 +376,7 @@ triggerall = statetype != A
 trigger1 = ctrl
 trigger2=(stateno=[200,499]) && movecontact
 
-;98EXƒXƒNƒŠ[ƒ}[¬
+;98EXï¿½Xï¿½Nï¿½ï¿½ï¿½[ï¿½}ï¿½[ï¿½ï¿½
 [State -1, Triple Kung Fu Palm]
 type = ChangeState
 value = 3400
@@ -386,7 +386,7 @@ triggerall = statetype != A
 trigger1 = ctrl
 trigger2=(stateno=[200,499]) && movecontact
 
-;98EXƒMƒKƒ“ƒg
+;98EXï¿½Mï¿½Kï¿½ï¿½ï¿½g
 [State -1, Triple Kung Fu Palm]
 type = ChangeState
 value = 3000
@@ -396,7 +396,7 @@ triggerall = statetype != A
 trigger1 = ctrl
 trigger2=(stateno=[200,499]) && movecontact
 
-;95—•‘
+;95ï¿½ï¿½ï¿½ï¿½
 [State -1, Triple Kung Fu Palm]
 type = ChangeState
 value = 3600
@@ -423,7 +423,7 @@ trigger1 = ctrl
 trigger2=(stateno=[200,499]) && movecontact
 
 ;---------------------------------------------------------------------------
-;’ÇŒ‚iŽãj
+;ï¿½ÇŒï¿½ï¿½iï¿½ï¿½j
 [State -1, Light Kung Fu Palm]
 type = ChangeState
 value = 1330
@@ -434,7 +434,7 @@ trigger2=(stateno=[200,499]) && movecontact
 ;---------------------------------------------------------------------------
 
 ;---------------------------------------------------------------------------
-;95ƒTƒ}ƒ\Žã
+;95ï¿½Tï¿½}ï¿½\ï¿½ï¿½
 [State -1, Light Kung Fu Palm]
 type = ChangeState
 value = 1600
@@ -443,7 +443,7 @@ triggerall = statetype != A
 trigger1 = ctrl
 trigger2=(stateno=[200,499]) && movecontact
 ;---------------------------------------------------------------------------
-;95ƒTƒ}ƒ\‹­
+;95ï¿½Tï¿½}ï¿½\ï¿½ï¿½
 [State -1, Strong Kung Fu Palm]
 type = ChangeState
 value = 1610
@@ -452,7 +452,7 @@ triggerall = statetype != A
 trigger1 = ctrl
 trigger2=(stateno=[200,499]) && movecontact
 ;---------------------------------------------------------------------------
-;ƒWƒƒƒCƒAƒ“ƒgƒiƒbƒNƒ‹iŽãj
+;ï¿½Wï¿½ï¿½ï¿½Cï¿½Aï¿½ï¿½ï¿½gï¿½iï¿½bï¿½Nï¿½ï¿½ï¿½iï¿½ï¿½j
 [State -1, Light Kung Fu Palm]
 type = ChangeState
 value = 1000
@@ -461,7 +461,7 @@ triggerall = statetype != A
 trigger1 = ctrl
 trigger2=(stateno=[200,499]) && movecontact
 ;---------------------------------------------------------------------------
-;ƒWƒƒƒCƒAƒ“ƒgƒiƒbƒNƒ‹i‹­j
+;ï¿½Wï¿½ï¿½ï¿½Cï¿½Aï¿½ï¿½ï¿½gï¿½iï¿½bï¿½Nï¿½ï¿½ï¿½iï¿½ï¿½ï¿½j
 [State -1, Strong Kung Fu Palm]
 type = ChangeState
 value = 1010
@@ -471,7 +471,7 @@ trigger1 = ctrl
 trigger2=(stateno=[200,499]) && movecontact
 
 ;---------------------------------------------------------------------------
-;ƒƒŠƒ{ƒ“iŽãj
+;ï¿½ï¿½ï¿½ï¿½ï¿½{ï¿½ï¿½ï¿½iï¿½ï¿½j
 [State -1, Strong Kung Fu Palm]
 type = ChangeState
 value = 1400
@@ -480,7 +480,7 @@ triggerall = statetype = A
 trigger1 = ctrl
 trigger2=(stateno=[600,699]) && movecontact
 ;---------------------------------------------------------------------------
-;ƒƒŠƒ{ƒ“i‹­j
+;ï¿½ï¿½ï¿½ï¿½ï¿½{ï¿½ï¿½ï¿½iï¿½ï¿½ï¿½j
 [State -1, Strong Kung Fu Palm]
 type = ChangeState
 value = 1410
@@ -503,7 +503,7 @@ trigger2=(stateno=[600,699]) && movecontact
 ;trigger1=ctrl=1
 ;trigger1=statetype!=A
 ;---------------------------------------------------------------------------
-;”ð‚¯
+;ï¿½ï¿½ï¿½ï¿½
 ;[State -1, Stand Light Punch]
 ;type = ChangeState
 ;value = 720
@@ -514,7 +514,7 @@ trigger2=(stateno=[600,699]) && movecontact
 ;trigger1 = ctrl
 
 ;---------------------------------------------------------------------------
-;”ð‚¯UŒ‚
+;ï¿½ï¿½ï¿½ï¿½ï¿½Uï¿½ï¿½
 ;[State -1, Stand Light Punch]
 ;type = ChangeState
 ;value = 721
@@ -529,7 +529,7 @@ trigger2=(stateno=[600,699]) && movecontact
 ;Trigger6 = command = "z"
 ;---------------------------------------------------------------------------
 ;Run Fwd
-;ƒ_ƒbƒVƒ…
+;ï¿½_ï¿½bï¿½Vï¿½ï¿½
 [State -1, Run Fwd]
 type = ChangeState
 value = 100
@@ -539,7 +539,7 @@ trigger1 = ctrl
 
 ;---------------------------------------------------------------------------
 ;Run Back
-;Œã‘Þƒ_ƒbƒVƒ…
+;ï¿½ï¿½Þƒ_ï¿½bï¿½Vï¿½ï¿½
 [State -1, Run Back]
 type = ChangeState
 value = 104
@@ -547,7 +547,7 @@ trigger1 = command = "BB"
 trigger1 = statetype = S
 trigger1 = ctrl
 ;---------------------------------------------------------------------------
-;00ƒA[ƒ}[ƒ‚[ƒh
+;00ï¿½Aï¿½[ï¿½}ï¿½[ï¿½ï¿½ï¿½[ï¿½h
 ;[State -1]
 ;type = ChangeState
 ;value = 760
@@ -560,7 +560,7 @@ trigger1 = ctrl
 ;trigger1 = statetype = S
 ;trigger1 = ctrl
 ;---------------------------------------------------------------------------
-;00ƒJƒEƒ“ƒ^[ƒ‚[ƒh
+;00ï¿½Jï¿½Eï¿½ï¿½ï¿½^ï¿½[ï¿½ï¿½ï¿½[ï¿½h
 ;[State -1]
 ;type = ChangeState
 ;value = 750
@@ -585,7 +585,7 @@ trigger1 = ctrl
 ;trigger1 = statetype = S
 ;trigger1 = ctrl
 ;---------------------------------------------------------------------------
-;95ƒ^ƒ
+;95ï¿½^ï¿½ï¿½
 ;[State -1]
 ;type = ChangeState
 ;value = 740
@@ -596,7 +596,7 @@ trigger1 = ctrl
 ;trigger1 = statetype = S
 ;trigger1 = ctrl
 ;---------------------------------------------------------------------------
-;98EXƒ^ƒ
+;98EXï¿½^ï¿½ï¿½
 ;[State -1]
 ;type = ChangeState
 ;value = 740
@@ -608,7 +608,7 @@ trigger1 = ctrl
 ;trigger1 = ctrl
 
 ;---------------------------------------------------------------------------
-;ƒ[ƒŠƒ“ƒOƒNƒ‰ƒbƒVƒ…
+;ï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½Oï¿½Nï¿½ï¿½ï¿½bï¿½Vï¿½ï¿½
 [State -1, Light Kung Fu Palm]
 type = ChangeState
 value = 1310
@@ -617,7 +617,7 @@ triggerall = statetype != A
 trigger1 = ctrl
 trigger2=(stateno=[200,499]) && movecontact
 ;---------------------------------------------------------------------------
-;ƒ[ƒŠƒ“ƒOƒNƒ‰ƒbƒVƒ…
+;ï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½Oï¿½Nï¿½ï¿½ï¿½bï¿½Vï¿½ï¿½
 [State -1, Light Kung Fu Palm]
 type = ChangeState
 value = 1300
@@ -640,7 +640,7 @@ triggerall = statetype != A
 trigger1 = ctrl
 trigger2=(stateno=[200,499]) && movecontact
 
-;‘O“]
+;ï¿½Oï¿½]
 [State -1, Stand Light Punch]
 type = ChangeState
 value = 700
@@ -653,7 +653,7 @@ trigger2=(stateno=[200,499]) && movecontact
 ;---------------------------------------------------------------------------
 ;---------------------------------------------------------------------------
 ;Kung Fu Throw
-;“Š‚°
+;ï¿½ï¿½ï¿½ï¿½
 [State -1, Kung Fu Throw]
 type = ChangeState
 value = 830
@@ -671,7 +671,7 @@ trigger2 = (p2statetype = S) || (p2statetype = C)
 trigger2 = p2movetype != H
 ;---------------------------------------------------------------------------
 ;Kung Fu Throw
-;“Š‚°
+;ï¿½ï¿½ï¿½ï¿½
 [State -1, Kung Fu Throw]
 type = ChangeState
 value = 800
@@ -690,7 +690,7 @@ trigger2 = p2movetype != H
 
 ;===========================================================================
 
-;‚Ó‚Á‚Æ‚Î‚µ
+;ï¿½Ó‚ï¿½ï¿½Æ‚Î‚ï¿½
 [State -1, Stand Light Punch]
 type = ChangeState
 value = 550
@@ -699,7 +699,7 @@ triggerall = statetype != A
 trigger1 = ctrl
 trigger2=(stateno=[200,499]) && movecontact
 
-;‹ó’†‚Ó‚Á‚Æ‚Î‚µ
+;ï¿½ó’†‚Ó‚ï¿½ï¿½Æ‚Î‚ï¿½
 [State -1, Jump Light Punch]
 type = ChangeState
 value = 650
@@ -818,7 +818,7 @@ trigger6 = stateno = 100
 
 ;---------------------------------------------------------------------------
 ;Taunt
-;’§”­
+;ï¿½ï¿½ï¿½ï¿½
 [State -1, Taunt]
 type = ChangeState
 value = 195
@@ -881,7 +881,7 @@ trigger6 = stateno = 100
 
 ;---------------------------------------------------------------------------
 ;Jump Light Punch
-;‹ó’†Žãƒpƒ“ƒ`
+;ï¿½ó’†Žï¿½pï¿½ï¿½ï¿½`
 [State -1, Jump Light Punch]
 type = ChangeState
 value = 600
@@ -912,7 +912,7 @@ trigger2=var(1)>0
 trigger2=movecontact
 ;---------------------------------------------------------------------------
 ;Jump Strong Kick
-;‹ó’†‹­ƒLƒbƒN
+;ï¿½ó’†‹ï¿½ï¿½Lï¿½bï¿½N
 [State -1, Jump Strong Kick]
 type = ChangeState
 value = 640
@@ -921,3 +921,67 @@ triggerall = statetype = A
 trigger1 = ctrl
 trigger2=var(1)>0
 trigger2=movecontact
+
+
+;---------------------------------------------------------------------------
+JAMBU AI
+;---------------------------------------------------------------------------
+[State -1, AI Guard]
+type = ChangeState
+value = 120
+triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
+triggerall = AILevel * AILevel * AILevel * 2 > random
+triggerall = InGuardDist
+trigger1 = ctrl
+
+[State -1, AI Taunt]
+type = ChangeState
+value = 195
+triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
+triggerall = p2bodydist x > 100 && statetype != A
+triggerall = p2movetype = H && Life >= P2Life
+trigger1 = ctrl
+
+[State -1, AI Forward]
+type = ChangeState
+value = 1300
+triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
+triggerall = AILevel * AILevel * AILevel > random
+triggerall = p2bodydist x > 100 && statetype != A
+trigger1 = ctrl
+
+[State -1, AI Grab]
+type = ChangeState
+value = 1500
+triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
+triggerall = AILevel * AILevel * AILevel * 2> random
+triggerall = p2bodydist x < 20 && statetype != A
+trigger1 = ctrl
+
+[State -1, AI LowHit]
+type = ChangeState
+value = 430
+triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
+triggerall = AILevel * AILevel * AILevel > random
+triggerall = p2bodydist x < 50 && statetype != A
+trigger1 = ctrl
+trigger2 = movehit && animtime >= 0
+
+[State -1, AI MediumHit]
+type = ChangeState
+value = 210
+triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
+triggerall = AILevel * AILevel * AILevel > random
+triggerall = p2bodydist x < 50 && statetype != A
+trigger1 = ctrl
+trigger2 = movehit && animtime >= 0
+
+[State -1, AI FollowUp]
+type = ChangeState
+value = 1330
+triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
+triggerall = AILevel * AILevel * AILevel * 2 > random
+triggerall = p2bodydist x < 50 && statetype != A
+trigger1 = movehit && animtime >= 0
+;---------------------------------------------------------------------------
+;---------------------------------------------------------------------------
