@@ -867,7 +867,7 @@ triggerall = AILevel * AILevel * AILevel > random
 triggerall = p2bodydist x > 100 && statetype != A
 trigger1 = ctrl
 
-[State -1, AI Throw]
+[State -1, AI Grab]
 type = ChangeState
 value = 1000
 triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
@@ -879,10 +879,9 @@ trigger1 = ctrl && animtime >= 0
 type = ChangeState
 value = 1200
 triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
-;triggerall = AILevel * AILevel * AILevel * 2 > random
+triggerall = AILevel * AILevel * AILevel * 2 > random
 triggerall = p2bodydist x < 50 && statetype != A
-trigger1 = movehit && animtime >= 0
-trigger2 = movecontact  && animtime = 0
+trigger1 = movecontact && animtime >= 0
 
 [State -1, AI LowHit]
 type = ChangeState
