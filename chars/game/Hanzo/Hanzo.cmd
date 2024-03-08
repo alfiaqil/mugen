@@ -875,6 +875,7 @@ triggerall = AILevel * AILevel * AILevel> random
 triggerall = p2bodydist x < 20 && statetype != A
 trigger1 = ctrl && animtime >= 0
 
+;uniq move contact
 [State -1, AI FollowUp]
 type = ChangeState
 value = 1200

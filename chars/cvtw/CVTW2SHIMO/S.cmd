@@ -1173,6 +1173,7 @@ trigger1 = ctrl
 ;---------------------------------------------------------------------------
 JAMBU AI
 ;---------------------------------------------------------------------------
+;uniq, animtime trigger
 [State -1, AI Guard]
 type = ChangeState
 value = 120
@@ -1182,6 +1183,7 @@ triggerall = InGuardDist
 trigger1 = ctrl
 trigger2 = animtime >= 0
 
+;uniq, animtime trigger
 [State -1, AI Taunt]
 type = ChangeState
 value = 4950
@@ -1190,6 +1192,8 @@ triggerall = p2bodydist x > 100 && statetype != A
 triggerall = p2movetype = H && Life >= P2Life
 trigger1 = ctrl
 trigger2 = animtime >= 0
+
+;uniq, attack AI, never jump
 
 ;==============================================================
 ;==================================CVTW2/AI==============MEMO==

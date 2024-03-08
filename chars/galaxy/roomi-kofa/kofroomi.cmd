@@ -417,6 +417,7 @@ trigger2=(stateno=[200,499]) && movecontact
 [State -1, Light Kung Fu Palm]
 type = ChangeState
 value = 1500
+triggerall = !AILevel
 triggerall = command = "sab"
 triggerall = statetype != A
 trigger1 = ctrl

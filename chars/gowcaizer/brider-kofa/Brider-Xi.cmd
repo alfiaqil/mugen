@@ -1,8 +1,7 @@
 ;
-;   Brider xi    ,   ºÇºÇ   £Þ£ß£Þ
+;   Brider xi    ,   ï¿½Çºï¿½   ï¿½Þ£ß£ï¿½
 -----------------------------------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------------------------
-----------------------------------------------------------AI-----------------------------------------------------
 -----------------------------------------------------------------------------------------------------------------
 
 --------------------------------------------------------------------------------
@@ -20,7 +19,7 @@ s = s
 command.time = 15
 command.buffer.time = 1
 
-;************************* ;   ÈËÎïµÄ cmd
+;************************* ;   ï¿½ï¿½ï¿½ï¿½ï¿½ cmd
 
 [Command]
 name = "db c";
@@ -516,7 +515,7 @@ trigger1 = pos y > -30
 
 
 ;----------------------------------
-; ÖØÊÖÍ¶
+; ï¿½ï¿½ï¿½ï¿½Í¶
 [State -1, Throw]
 type = ChangeState
 value = 800
@@ -529,7 +528,7 @@ trigger1 = p2statetype != A && p2movetype != H
 trigger1 = ctrl
 
 ;--------------------------------------------------
-;  ÖØ½ÅÍ¶
+;  ï¿½Ø½ï¿½Í¶
 [State -1, Throw]
 type = ChangeState
 value = 860
@@ -698,7 +697,7 @@ trigger4 = (stateno = [400,419])&& movecontact
 trigger5 = (stateno = [430,439])&& movecontact
 trigger6 = stateno = 100
 
-;----------------------------- ÌôÐÆ¶¯×÷
+;----------------------------- ï¿½ï¿½ï¿½Æ¶ï¿½ï¿½ï¿½
 ;
 [State -1, Taunt]
 type = ChangeState
@@ -868,3 +867,58 @@ triggerall = vel X != 0
 trigger1 = statetype = A
 trigger1 = ctrl
 
+
+;---------------------------------------------------------------------------
+JAMBU AI
+;---------------------------------------------------------------------------
+[State -1, AI Guard]
+type = ChangeState
+value = 120
+triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
+triggerall = AILevel * AILevel * AILevel * 2 > random
+triggerall = InGuardDist
+trigger1 = ctrl
+
+[State -1, AI Taunt]
+type = ChangeState
+value = 195
+triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
+triggerall = p2bodydist x > 100 && statetype != A
+triggerall = p2movetype = H && Life >= P2Life
+trigger1 = ctrl
+
+[State -1, AI Forward]
+type = ChangeState
+value = 700
+triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
+triggerall = AILevel * AILevel * AILevel > random
+triggerall = p2bodydist x > 100 && statetype != A
+trigger1 = ctrl
+
+[State -1, AI LowHit]
+type = ChangeState
+value = 430
+triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
+triggerall = AILevel * AILevel * AILevel > random
+triggerall = p2bodydist x < 50 && statetype != A
+trigger1 = ctrl
+trigger2 = movehit && animtime >= 0
+
+[State -1, AI MediumHit]
+type = ChangeState
+value = 210
+triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
+triggerall = AILevel * AILevel * AILevel > random
+triggerall = p2bodydist x < 50 && statetype != A
+trigger1 = ctrl
+trigger2 = movehit && animtime >= 0
+
+[State -1, AI FollowUp]
+type = ChangeState
+value = 1400
+triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
+triggerall = AILevel * AILevel * AILevel * 2 > random
+triggerall = p2bodydist x < 50 && statetype != A
+trigger1 = movehit && animtime >= 0
+;---------------------------------------------------------------------------
+;---------------------------------------------------------------------------

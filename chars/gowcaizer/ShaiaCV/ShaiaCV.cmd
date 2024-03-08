@@ -601,7 +601,7 @@ triggerall = statetype != A
 trigger1 = ctrl
 trigger2 = p2movetype = H && animtime >= 0
 
-[State -1, AI LightHit]
+[State -1, AI MediumHit]
 type = ChangeState
 value = 210
 triggerall = RoundState = 2 && Alive && AILevel && NumEnemy

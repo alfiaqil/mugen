@@ -908,6 +908,7 @@ trigger1 = movehit && animtime >= 0
 ;---------------------------------------------------------------------------
 
 ;jambu;
+;uniq, guard master
 [State -1, Skill Guard]
 type = ChangeState
 value = 120
