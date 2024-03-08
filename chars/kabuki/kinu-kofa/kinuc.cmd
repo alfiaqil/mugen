@@ -1,8 +1,8 @@
-;Œ¦‚ÆƒVƒ‚Æ‚¢‚ë‚¢‚ë@ƒRƒ}ƒ“ƒhƒtƒ@ƒCƒ‹ 
-;kinu @commandfile
+;ï¿½ï¿½ï¿½ÆƒVï¿½ï¿½ï¿½Æ‚ï¿½ï¿½ë‚¢ï¿½ï¿½@ï¿½Rï¿½}ï¿½ï¿½ï¿½hï¿½tï¿½@ï¿½Cï¿½ï¿½ 
+;kinu ï¿½@commandfile
 ;kinucommand.cmd
 
-;-| ’´•KE‹Z |--------------------------------------------------------
+;-| ï¿½ï¿½ï¿½Kï¿½Eï¿½Z |--------------------------------------------------------
 
 [Command]
 name = "hmag1"
@@ -56,7 +56,7 @@ name = "bird_m2"
 command = ~D, F, D, F, y
 time = 30
 
-;-| •KE‹Z |------------------------------------------------------
+;-| ï¿½Kï¿½Eï¿½Z |------------------------------------------------------
 
 [Command]
 name = "si_w2"
@@ -114,7 +114,7 @@ command = ~B, D, DB, b
 time = 30
 
 
-;-| ‚Q‰ñ‰Ÿ‚µ‹Z |-----------------------------------------------------------
+;-| ï¿½Qï¿½ñ‰Ÿ‚ï¿½ï¿½Z |-----------------------------------------------------------
 
 
 
@@ -137,7 +137,7 @@ name = "BB"
 command = B, B
 time = 10
 
-;-| ‚QE‚RŒÂ‚Ì“¯‰Ÿ‚µ‹Z |-----------------------------------------------
+;-| ï¿½Qï¿½Eï¿½Rï¿½Â‚Ì“ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Z |-----------------------------------------------
 [Command]
 name = "recovery"
 command = x+y
@@ -147,7 +147,7 @@ time = 1
 name = "recovery"
 command = c
 time = 1
-;-| •ûŒü‚Æƒ{ƒ^ƒ“‚Åo‚·‹Z |---------------------------------------------------------
+;-| ï¿½ï¿½ï¿½ï¿½ï¿½Æƒ{ï¿½^ï¿½ï¿½ï¿½Åoï¿½ï¿½ï¿½Z |---------------------------------------------------------
 [Command]
 name = "down_a"
 command = /$D,a
@@ -158,7 +158,7 @@ name = "down_b"
 command = /$D,b
 time = 1
 
-;-| ƒ{ƒ^ƒ“İ’èi‚¢‚¶‚ç‚È‚¢j|---------------------------------------------------------
+;-| ï¿½{ï¿½^ï¿½ï¿½ï¿½İ’ï¿½iï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È‚ï¿½ï¿½j|---------------------------------------------------------
 [Command]
 name = "a"
 command = a
@@ -194,7 +194,7 @@ name = "start"
 command = s
 time = 1
 
-;-| ‰Ÿ‚µ‚Á‚Ï‚È‚µİ’èi‚¢‚¶‚ç‚È‚¢j-------------------------------------------------------
+;-| ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï‚È‚ï¿½ï¿½İ’ï¿½iï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È‚ï¿½ï¿½j-------------------------------------------------------
 [Command]
 name = "holdfwd"
 command = /$F
@@ -216,12 +216,12 @@ command = /$D
 time = 1
 
 
-; ‰º‚Ì‹Lq«‚Íâ‘Î‚ÉÁ‚³‚È‚¢‚Å‚­‚¾‚³‚¢B
+; ï¿½ï¿½ï¿½Ì‹Lï¿½qï¿½ï¿½ï¿½Íï¿½Î‚Éï¿½ï¿½ï¿½ï¿½È‚ï¿½ï¿½Å‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½B
 [Statedef -1]
 
-;=======•KE‹Z====================================================================
+;=======ï¿½Kï¿½Eï¿½Z====================================================================
 
-[state -1, hmag1 ]; — E‰Ô—’
+[state -1, hmag1 ]; ï¿½ï¿½ï¿½Eï¿½Ô—ï¿½
 type = changestate
 value = 4000
 triggerall = command = "hmag1"
@@ -242,7 +242,7 @@ trigger2=(stateno=[200,499]) && movecontact
 
 
 
-[state -1, bird s]; ’¹Šñ‚¹@‹­  — E— ’¹Šñ‚¹EƒJƒ€ƒCƒVƒ`ƒJƒbƒv 
+[state -1, bird s]; ï¿½ï¿½ï¿½ñ‚¹@ï¿½ï¿½  ï¿½ï¿½ï¿½Eï¿½ï¿½ï¿½ï¿½ï¿½ñ‚¹Eï¿½Jï¿½ï¿½ï¿½Cï¿½Vï¿½`ï¿½Jï¿½bï¿½v 
 type = changestate
 value =  1160;ifelse(var(1), 1190,1160)
 triggerall = command = "bird_s"
@@ -251,7 +251,7 @@ triggerall = statetype != A
 trigger1 = ctrl
 trigger2=(stateno=[200,499]) && movecontact
 
-[state -1, shiro s ex];    — E‹S‰Î
+[state -1, shiro s ex];    ï¿½ï¿½ï¿½Eï¿½Sï¿½ï¿½
 type = changestate
 value = 3600
 triggerall = command = "si_s"
@@ -261,7 +261,7 @@ trigger1 = ctrl
 trigger2=(stateno=[200,499]) && movecontact
 
 
-[state -1, shiro s];‚µ‚ë‚Ìƒ[ƒŠƒ“ƒOƒAƒ^‚ÁƒN@@@ — E‹S‰Î
+[state -1, shiro s];ï¿½ï¿½ï¿½ï¿½Ìƒï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½Oï¿½Aï¿½^ï¿½ï¿½ï¿½Nï¿½@ï¿½@ï¿½@ ï¿½ï¿½ï¿½Eï¿½Sï¿½ï¿½
 type = changestate
 value =  1500
 triggerall = command = "si_s2"
@@ -270,7 +270,7 @@ triggerall = statetype != A
 trigger1 = ctrl
 trigger2=(stateno=[200,499]) && movecontact
 
-[state -1, bird w]; — E•—‰Ô
+[state -1, bird w]; ï¿½ï¿½ï¿½Eï¿½ï¿½ï¿½ï¿½
 type = changestate
 value = 3300
 triggerall = command = "bird_w2"
@@ -279,7 +279,7 @@ triggerall = statetype != A
 trigger1 = ctrl
 trigger2=(stateno=[200,499]) && movecontact
 
-[state -1, bird m]; — E—‹Œõ
+[state -1, bird m]; ï¿½ï¿½ï¿½Eï¿½ï¿½ï¿½ï¿½
 type = changestate
 value = 3400
 triggerall = command = "bird_m2"
@@ -289,7 +289,7 @@ trigger1 = ctrl
 trigger2=(stateno=[200,499]) && movecontact
 
 
-[state -1, shiro w]; ƒVƒ‚Ì‚©‚İ‚Â‚«   — E•Xn
+[state -1, shiro w]; ï¿½Vï¿½ï¿½ï¿½Ì‚ï¿½ï¿½İ‚Â‚ï¿½   ï¿½ï¿½ï¿½Eï¿½Xï¿½n
 type = changestate
 value =  1550
 triggerall = command = "si_w"
@@ -313,10 +313,10 @@ trigger2=(stateno=[200,499]) && movecontact
 
 
  
-;-------------ƒTƒ}[ƒ\ƒ‹ƒgƒLƒbƒN--------------------------------------
+;-------------ï¿½Tï¿½}ï¿½[ï¿½\ï¿½ï¿½ï¿½gï¿½Lï¿½bï¿½N--------------------------------------
 
 
-[state -1, shiro w ex];    — E•Xn
+[state -1, shiro w ex];    ï¿½ï¿½ï¿½Eï¿½Xï¿½n
 type = changestate
 value =  3500
 triggerall = command = "si_w2"
@@ -327,11 +327,11 @@ trigger2=(stateno=[200,499]) && movecontact
 
 
 
-;------— ------------------------------
+;------ï¿½ï¿½------------------------------
 
 
-;-------’¹Šñ‚¹------------------------------
-[state -1, bird w]; ’¹Šñ‚¹@ã — E•—‰Ô
+;-------ï¿½ï¿½ï¿½ï¿½------------------------------
+[state -1, bird w]; ï¿½ï¿½ï¿½ñ‚¹@ï¿½ï¿½ ï¿½ï¿½ï¿½Eï¿½ï¿½ï¿½ï¿½
 type = changestate
 value = 1100
 triggerall = command = "bird_w"
@@ -354,7 +354,7 @@ trigger2=(stateno=[200,499]) && movecontact
 
 
 
-[state -1, magic1];Œ“Ç
+[state -1, magic1];ï¿½ï¿½ï¿½ï¿½
 type = changestate
 value = 1600
 triggerall = command = "mag1"
@@ -362,7 +362,7 @@ triggerall = statetype != A
 trigger1 = ctrl
 trigger2=(stateno=[200,499]) && movecontact
 
-[state -1, magic2];“~ŒÍ
+[state -1, magic2];ï¿½~ï¿½ï¿½
 type = changestate
 value = 1700
 triggerall = command = "mag2"
@@ -370,7 +370,7 @@ triggerall = statetype != A
 trigger1 = ctrl
 trigger2=(stateno=[200,499]) && movecontact
 
-;ƒVƒ@UŒ‚
+;ï¿½Vï¿½ï¿½ï¿½@ï¿½Uï¿½ï¿½
 [State -1, Crouching Light Kick]
 type = ChangeState
 value = 440
@@ -379,7 +379,7 @@ triggerall = statetype != A
 trigger1 = ctrl
 
 
-;—§‚¿ãƒVƒ@‚Ğ‚Á‚©‚«
+;ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Vï¿½ï¿½ï¿½@ï¿½Ğ‚ï¿½ï¿½ï¿½ï¿½ï¿½
 [State -1, Stand Light Kick]
 type = ChangeState
 value = 230
@@ -387,7 +387,7 @@ triggerall = command = "ted2"
 triggerall = statetype != A
 trigger1 = ctrl
 
-;—§‚¿‹­ƒVƒ@»‚©‚¯
+;ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Vï¿½ï¿½ï¿½@ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 [State -1, Standing Strong Kick f]
 type = ChangeState
 value = 235;
@@ -395,7 +395,7 @@ triggerall = command = "ted1"
 triggerall = statetype != A
 trigger1 = ctrl
 
-;—§‚¿‹­ƒVƒ@»‚©‚¯
+;ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Vï¿½ï¿½ï¿½@ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 [State -1, Standing Strong Kick f]
 type = ChangeState
 value = 630
@@ -416,8 +416,8 @@ triggerall = statetype != A
 trigger1 = ctrl
 trigger2=(stateno=[200,499]) && movecontact
 
-;‹ó’†‹­
-[State -1, Jump s@slash]
+;ï¿½ó’†‹ï¿½
+[State -1, Jump sï¿½@slash]
 type = ChangeState
 value = 620
 triggerall = (command = "y" && command = "b") || command = "c"
@@ -426,7 +426,7 @@ trigger1 = ctrl
 trigger2=(stateno=[600,699]) && movecontact
 
 ;-------------------------
-;‰ñ”ğŒnW’† c ’nã
+;ï¿½ï¿½ï¿½ï¿½nï¿½Wï¿½ï¿½ c ï¿½nï¿½ï¿½
 [state -1, aboid ground]
 type = changestate
 value = 900
@@ -436,7 +436,7 @@ trigger1 = ctrl
 trigger2=(stateno=[200,499]) && movecontact
 
 ;---------------------------------------------------------------------------
-;ƒ_ƒbƒVƒ…
+;ï¿½_ï¿½bï¿½Vï¿½ï¿½
 [State -1, Run Fwd]
 type = ChangeState
 value = 100
@@ -445,7 +445,7 @@ trigger1 = statetype = S
 trigger1 = ctrl
 
 ;---------------------------------------------------------------------------
-;Œã‘Şƒ_ƒbƒVƒ…
+;ï¿½ï¿½Şƒ_ï¿½bï¿½Vï¿½ï¿½
 [State -1, Run Back]
 type = ChangeState
 value = 105
@@ -454,7 +454,7 @@ trigger1 = statetype = S
 trigger1 = ctrl
 
 ;---------------------------------------------------------------------------
-;‹­a‚èiR‚è‚É•ÏXHj“Š‚° 
+;ï¿½ï¿½ï¿½aï¿½ï¿½iï¿½Rï¿½ï¿½É•ÏXï¿½Hï¿½jï¿½ï¿½ï¿½ï¿½ 
 [State -1, z Throw]
 type = ChangeState
 value = 830
@@ -467,7 +467,7 @@ triggerall = stateno != [100,101]
 trigger1 = (p2statetype = S) || (p2statetype = C)
 trigger1 = p2movetype != H
 
-;==’ÊíUŒ‚=========================================================================
+;==ï¿½Êï¿½Uï¿½ï¿½=========================================================================
 
 
 ;---------------------------------------------------------------------------
@@ -541,7 +541,7 @@ trigger5 = (stateno = [430,439])&& movecontact
 trigger6 = stateno = 100
 
 ;---------------------------------------------------------------------------
-;’§”­
+;ï¿½ï¿½ï¿½ï¿½
 [State -1, Taunt]
 type = ChangeState
 value = 195
@@ -601,23 +601,16 @@ trigger5 = (stateno = [430,439])&& movecontact
 trigger6 = stateno = 100  
 
 ;---------------------------------------------------------------------------
-;‹ó’†ã
+;ï¿½ó’†ï¿½
 [State -1, Jump Light slash]
 type = ChangeState
 value = 600
 triggerall = command = "x" || command ="a"
 trigger1 = statetype = A && ctrl
 
-;‹ó’†’†
-[State -1, Jump m@slash]
+;ï¿½ó’†’ï¿½
+[State -1, Jump mï¿½@slash]
 type = ChangeState
 value = 610
 triggerall = command = "y" || command ="b"
 trigger1 = statetype = A && ctrl
-
-
-
-
-
-
-
