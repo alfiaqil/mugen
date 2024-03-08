@@ -1,4 +1,4 @@
-;-| ’´•KŽE‹Z |--------------------------------------------------------
+;-| ï¿½ï¿½ï¿½Kï¿½Eï¿½Z |--------------------------------------------------------
 
 
 [Command] 
@@ -29,7 +29,7 @@ name = "senpuu_z"
 command = ~D, F, D, F, y
 time = 30
 
-;-| •KŽE‹Z |------------------------------------------------------
+;-| ï¿½Kï¿½Eï¿½Z |------------------------------------------------------
 
 [Command]
 name = "fuuka"
@@ -67,7 +67,7 @@ name = "sp2"
 command = ~D, DB, B, y
 time = 30
 
-;-| ‚Q‰ñ‰Ÿ‚µ‹Z |-----------------------------------------------------------
+;-| ï¿½Qï¿½ñ‰Ÿ‚ï¿½ï¿½Z |-----------------------------------------------------------
 [Command]
 name = "FF"     
 command = F, F
@@ -78,7 +78,7 @@ name = "BB"
 command = B, B
 time = 10
 
-;-| ‚QE‚RŒÂ‚Ì“¯Žž‰Ÿ‚µ‹Z |-----------------------------------------------
+;-| ï¿½Qï¿½Eï¿½Rï¿½Â‚Ì“ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Z |-----------------------------------------------
 [Command]
 name = "recovery"
 command = x+y
@@ -90,7 +90,7 @@ name = "b+c"
 command = a+y
 time = 1
 
-;-| •ûŒü‚Æƒ{ƒ^ƒ“‚Åo‚·‹Z |---------------------------------------------------------
+;-| ï¿½ï¿½ï¿½ï¿½ï¿½Æƒ{ï¿½^ï¿½ï¿½ï¿½Åoï¿½ï¿½ï¿½Z |---------------------------------------------------------
 [Command]
 name = "down_a"
 command = /$D,a
@@ -107,7 +107,7 @@ name = "holddownfwd"
 command = /DF
 time = 1
 
-;-| ƒ{ƒ^ƒ“Ý’èi‚¢‚¶‚ç‚È‚¢j|---------------------------------------------------------
+;-| ï¿½{ï¿½^ï¿½ï¿½ï¿½Ý’ï¿½iï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È‚ï¿½ï¿½j|---------------------------------------------------------
 [Command]
 name = "a"
 command = a
@@ -143,7 +143,7 @@ name = "start"
 command = s
 time = 1
 
-;-| ‰Ÿ‚µ‚Á‚Ï‚È‚µÝ’èi‚¢‚¶‚ç‚È‚¢j-------------------------------------------------------
+;-| ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï‚È‚ï¿½ï¿½Ý’ï¿½iï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È‚ï¿½ï¿½j-------------------------------------------------------
 [Command]
 name = "holdfwd"
 command = /$F
@@ -181,7 +181,7 @@ command = /$DF
 time = 1
 
 ;===========================================================================
-; ‰º‚Ì‹Lq«‚Íâ‘Î‚ÉÁ‚³‚È‚¢‚Å‚­‚¾‚³‚¢B
+; ï¿½ï¿½ï¿½Ì‹Lï¿½qï¿½ï¿½ï¿½Íï¿½Î‚Éï¿½ï¿½ï¿½ï¿½È‚ï¿½ï¿½Å‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½B
 [Statedef -1]
 ;===========================================================================
 
@@ -272,7 +272,7 @@ trigger1 = ctrl
 trigger2=(stateno=[200,499]) && movecontact
 
 
-;‚µ‚á‚ª‚Ý(B+C)
+;ï¿½ï¿½ï¿½á‚ªï¿½ï¿½(B+C)
 [State -1, Crouching Strong Punch]
 type = ChangeState
 value = 1460
@@ -294,7 +294,7 @@ triggerall = statetype != A
 trigger1 = ctrl
 trigger2=(stateno=[200,499]) && movecontact
 
-;‹ó’†z
+;ï¿½ï¿½z
 [State -1, Jump Strong Punch]
 type = ChangeState
 value = 620
@@ -327,7 +327,7 @@ trigger2=(stateno=[200,499]) && movecontact
 ;------------------------------------------------
 
 ;---------------------------------------------------------------------------
-;ƒ_ƒbƒVƒ…
+;ï¿½_ï¿½bï¿½Vï¿½ï¿½
 [State -1, Run Fwd]
 type = ChangeState
 value = 100
@@ -336,7 +336,7 @@ trigger1 = statetype = S
 trigger1 = ctrl
 
 ;---------------------------------------------------------------------------
-;Œã‘Þƒ_ƒbƒVƒ…
+;ï¿½ï¿½Þƒ_ï¿½bï¿½Vï¿½ï¿½
 [State -1, Run Back]
 type = ChangeState
 value = 105
@@ -345,7 +345,7 @@ trigger1 = statetype = S
 trigger1 = ctrl
 
 ;---------------------------------------------------------------------------
-;‚µ‚á‚ª‚Ý•à‚«
+;ï¿½ï¿½ï¿½á‚ªï¿½Ý•ï¿½ï¿½ï¿½
 ;[state -1]
 ;type = ChangeState
 ;value = 25
@@ -353,7 +353,7 @@ trigger1 = ctrl
 ;trigger1 = statetype = C && ctrl
 
 ;---------------------------------------------------------------------------
-;P“Š‚°
+;Pï¿½ï¿½ï¿½ï¿½
 [State -1, Throw]
 type = ChangeState
 value = 800
@@ -366,7 +366,7 @@ triggerall = stateno != [100,101]
 trigger1 = (p2statetype = S) || (p2statetype = C)
 trigger1 = p2movetype != H
 ;---------------------------------------------------------------------------
-;K“Š‚°
+;Kï¿½ï¿½ï¿½ï¿½
 [State -1, Throw]
 type = ChangeState
 value = 850
@@ -490,7 +490,7 @@ trigger6 = stateno = 100
 
 ;---------------------------------------------------------------------------
 ;Taunt
-;’§”­
+;ï¿½ï¿½ï¿½ï¿½
 [State -1, Taunt]
 type = ChangeState
 value = 195
@@ -576,7 +576,7 @@ trigger6 = stateno = 100
 
 ;---------------------------------------------------------------------------
 
-;‹ó’†x
+;ï¿½ï¿½x
 [State -1, Jump Light Punch]
 type = ChangeState
 value = 600
@@ -584,7 +584,7 @@ triggerall = command = "x"
 trigger1 = statetype = A
 trigger1 = ctrl
 
-;‹ó’†y
+;ï¿½ï¿½y
 [State -1, Jump Strong Punch]
 type = ChangeState
 value = 610
@@ -594,7 +594,7 @@ trigger1 = ctrl
 
 ;---------------------------------------------------------------------------
 
-;‹ó’†a
+;ï¿½ï¿½a
 [State -1, Jump Light Kick]
 type = ChangeState
 value = 630
@@ -602,10 +602,75 @@ triggerall = command = "a"
 trigger1 = statetype = A
 trigger1 = ctrl
 
-;‹ó’†c
+;ï¿½ï¿½c
 [State -1, Jump Strong Punch]
 type = ChangeState
 value = 650
 triggerall = command = "b"
 trigger1 = statetype = A
 trigger1 = ctrl
+
+;---------------------------------------------------------------------------
+JAMBU AI
+;---------------------------------------------------------------------------
+[State -1, AI Guard]
+type = ChangeState
+value = 120
+triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
+triggerall = AILevel * AILevel * AILevel * 2 > random
+triggerall = InGuardDist
+trigger1 = ctrl
+
+[State -1, AI Taunt]
+type = ChangeState
+value = 195
+triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
+triggerall = p2bodydist x > 100 && statetype != A
+triggerall = p2movetype = H && Life >= P2Life
+trigger1 = ctrl
+
+;uniq, non life
+[State -1, AI Range]
+type = ChangeState
+value = 1000
+triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
+triggerall = AILevel * AILevel * 2 > random
+triggerall = p2bodydist x > 100 && statetype != A
+;triggerall = Life >= P2Life
+trigger1 = ctrl
+
+[State -1, AI Forward]
+type = ChangeState
+value = 112
+triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
+triggerall = AILevel * AILevel * AILevel > random
+triggerall = p2bodydist x > 100 && statetype != A
+trigger1 = ctrl
+
+[State -1, AI LowHit]
+type = ChangeState
+value = 430
+triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
+triggerall = AILevel * AILevel * AILevel > random
+triggerall = p2bodydist x < 50 && statetype != A
+trigger1 = ctrl
+trigger2 = movehit && animtime >= 0
+
+[State -1, AI MediumHit]
+type = ChangeState
+value = 210
+triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
+triggerall = AILevel * AILevel * AILevel > random
+triggerall = p2bodydist x < 50 && statetype != A
+trigger1 = ctrl
+trigger2 = movehit && animtime >= 0
+
+[State -1, AI FollowUp]
+type = ChangeState
+value = 1100
+triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
+triggerall = AILevel * AILevel * AILevel * 2 > random
+triggerall = p2bodydist x < 50 && statetype != A
+trigger1 = movehit && animtime >= 0
+;---------------------------------------------------------------------------
+;---------------------------------------------------------------------------

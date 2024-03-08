@@ -700,6 +700,7 @@ triggerall = p2bodydist x > 100 && statetype != A
 triggerall = p2movetype = H && Life >= P2Life * 2
 trigger1 = ctrl
 
+;uniq, common
 [State -1, AI Range]
 type = ChangeState
 value = 3005
