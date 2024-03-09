@@ -304,6 +304,7 @@ trigger2=(stateno=[200,399]) && movecontact
 [state -1]
 type = ChangeState
 value = 1200
+triggerall = !AILevel
 triggerall = command = "1200"
 triggerall = statetype != A
 trigger1 = ctrl
@@ -578,13 +579,14 @@ triggerall = p2bodydist x > 100 && statetype != A
 triggerall = p2movetype = H && Life >= P2Life
 trigger1 = ctrl
 
-;uniq, endless upper
+;uniq, electric upper
 [State -1, AI FollowUp]
 type = ChangeState
-value = 1300
+value = 1200
 triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
+triggerall = AILevel * AILevel * AILevel * 2 > random
 triggerall = statetype != A
-trigger1 = movehit && stateno = 1300
+trigger1 = movecontact && stateno = 1300 && animtime >= 0
 
 [State -1, AI Forward]
 type = ChangeState
@@ -614,7 +616,7 @@ trigger2 = movehit && animtime >= 0
 
 [State -1, AI FollowUp]
 type = ChangeState
-value = 1100;1200
+value = 1100
 triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
 triggerall = AILevel * AILevel * AILevel * 2 > random
 triggerall = p2bodydist x < 50 && statetype != A
