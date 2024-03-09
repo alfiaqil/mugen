@@ -13,10 +13,10 @@ command.buffer.time = 1
 
 ;------------------------------------------------------------------------------
 
-;-| ’´•KE‹Z |-----------------------------------------------------------------
+;-| ï¿½ï¿½ï¿½Kï¿½Eï¿½Z |-----------------------------------------------------------------
 
 [Command]
-name = "ƒXƒvƒŠƒbƒgƒAƒ^ƒbƒN"
+name = "ï¿½Xï¿½vï¿½ï¿½ï¿½bï¿½gï¿½Aï¿½^ï¿½bï¿½N"
 command = ~D, DF, F, D, DF, F, c
 time = 30
 
@@ -30,119 +30,114 @@ name = "MBW-2"
 command = ~D, DF, F, D, DF, F, b
 time = 30
 
-;[Command]
-;name = "ƒKƒgƒŠƒ“ƒOƒŒ[ƒU[1"
-;command = ~D, DB, B, D, DB, B, a
-;time = 30
-
 [Command]
-name = "ƒKƒgƒŠƒ“ƒOƒŒ[ƒU[2"
+name = "ï¿½Kï¿½gï¿½ï¿½ï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½[ï¿½Uï¿½[2"
 command = ~D, F, D, F, z
 time = 30
 
 [Command]
-name = "ƒKƒgƒŠƒ“ƒOƒŒ[ƒU[3"
+name = "ï¿½Kï¿½gï¿½ï¿½ï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½[ï¿½Uï¿½[3"
 command = ~D, DB, B, D, DB, B, x
 time = 30
 
 [Command]
-name = "ƒKƒgƒŠƒ“ƒOƒŒ[ƒU[4"
+name = "ï¿½Kï¿½gï¿½ï¿½ï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½[ï¿½Uï¿½[4"
 command = ~D, DB, B, D, DB, B, y
 time = 30
 
 [Command]
-name = "ƒ~ƒTƒCƒ‹ƒAƒ^ƒbƒN"
+name = "ï¿½~ï¿½Tï¿½Cï¿½ï¿½ï¿½Aï¿½^ï¿½bï¿½N"
 command = ~D, DF, F, D, DF, F, x
 time = 30
 
 [Command]
-name = "ƒ~ƒTƒCƒ‹ƒAƒ^ƒbƒN"
+name = "ï¿½~ï¿½Tï¿½Cï¿½ï¿½ï¿½Aï¿½^ï¿½bï¿½N"
 command = ~D, DF, F, D, DF, F, y
 time = 30
 
 ;------------------------------------------------------------------------------
-;-| •KE‹Z |-------------------------------------------------------------------
+;-| ï¿½Kï¿½Eï¿½Z |-------------------------------------------------------------------
 
 [Command]
-name = "ƒ[ƒ‰[ƒ_ƒbƒVƒ…"
+name = "ï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½[ï¿½_ï¿½bï¿½Vï¿½ï¿½"
 command = ~D, DF, F, a
 time = 30
 
 [Command]
-name = "ƒ[ƒ‰[ƒ_ƒbƒVƒ…"
+name = "ï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½[ï¿½_ï¿½bï¿½Vï¿½ï¿½"
 command = ~D, DF, F, b
 time = 30
 
 [Command]
-name = "ƒƒPƒbƒgƒoƒY[ƒJ"
+name = "ï¿½ï¿½ï¿½Pï¿½bï¿½gï¿½oï¿½Yï¿½[ï¿½J"
 command = ~F, D, B, F, a
 time = 30
 
 [Command]
-name = "ƒƒPƒbƒgƒoƒY[ƒJ"
+name = "ï¿½ï¿½ï¿½Pï¿½bï¿½gï¿½oï¿½Yï¿½[ï¿½J"
 command = ~F, D, B, F, b
 time = 30
 
 [Command]
-name = "ãƒtƒ‰ƒCƒ“ƒOƒpƒ[ƒ{ƒ€"
+name = "ï¿½ï¿½tï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½Oï¿½pï¿½ï¿½ï¿½[ï¿½{ï¿½ï¿½"
 command = ~F, D, DF, a
 time = 30
 
 [Command]
-name = "‹­ƒtƒ‰ƒCƒ“ƒOƒpƒ[ƒ{ƒ€"
+name = "ï¿½ï¿½ï¿½tï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½Oï¿½pï¿½ï¿½ï¿½[ï¿½{ï¿½ï¿½"
 command = ~F, D, DF, b
 time = 30
 
 [Command]
-name = "ƒtƒ‰ƒCƒ“ƒOƒgƒ‹ƒl[ƒh"
+name = "ï¿½tï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½Oï¿½gï¿½ï¿½ï¿½lï¿½[ï¿½h"
 command = ~F, D, B, F, x
 time = 30
 
 [Command]
-name = "ƒtƒ‰ƒCƒ“ƒOƒgƒ‹ƒl[ƒh"
+name = "ï¿½tï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½Oï¿½gï¿½ï¿½ï¿½lï¿½[ï¿½h"
 command = ~F, D, B, F, y
 time = 30
 
 [Command]
-name = "ƒnƒ“ƒ}[ã"
+name = "ï¿½nï¿½ï¿½ï¿½}ï¿½[ï¿½ï¿½"
 command = ~D, DF, F, x
 time = 30
 
 [Command]
-name = "ƒnƒ“ƒ}[‹­"
+name = "ï¿½nï¿½ï¿½ï¿½}ï¿½[ï¿½ï¿½"
 command = ~D, DF, F, y
 time = 30
 
 ;---------------------------
 
 ;------------------------------------------------------------------------------
-;-| ƒL[‚Q‰ñ˜A‘±“ü—Í |---------------------------------------------------------
+;-| ï¿½Lï¿½[ï¿½Qï¿½ï¿½Aï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ |---------------------------------------------------------
 
 [Command]
-name = "FF"       ;•K{ƒRƒ}ƒ“ƒh–¼
+name = "FF"       ;ï¿½Kï¿½{ï¿½Rï¿½}ï¿½ï¿½ï¿½hï¿½ï¿½
 command = F, F
 time = 10
 
 [Command]
-name = "BB"       ;•K{ƒRƒ}ƒ“ƒh–¼
+name = "BB"       ;ï¿½Kï¿½{ï¿½Rï¿½}ï¿½ï¿½ï¿½hï¿½ï¿½
 command = B, B
 time = 10
 
 ;------------------------------------------------------------------------------
-;-| “¯‰Ÿ‚µ |-----------------------------------------------------------------
+;-| ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ |-----------------------------------------------------------------
 
 [Command]
-name = "recovery" ;•K{ƒRƒ}ƒ“ƒh–¼
+name = "recovery" ;ï¿½Kï¿½{ï¿½Rï¿½}ï¿½ï¿½ï¿½hï¿½ï¿½
 command = x+a
 time = 1
 
 [Command]
-name = "recovery" ;•K{ƒRƒ}ƒ“ƒh–¼
+name = "recovery" ;ï¿½Kï¿½{ï¿½Rï¿½}ï¿½ï¿½ï¿½hï¿½ï¿½
 command = z
 time = 1
 
 [Command]
-name = "‘O•û‰ñ”ğ"
+name = "ï¿½Oï¿½ï¿½ï¿½ï¿½ï¿½"
 command = x+a
 time = 1
 
@@ -156,7 +151,7 @@ name = "CDattack"
 command = c
 time = 1
 ;------------------------------------------------------------------------------
-;-| •ûŒüƒL[{ƒ{ƒ^ƒ“ |---------------------------------------------------------
+;-| ï¿½ï¿½ï¿½ï¿½ï¿½Lï¿½[ï¿½{ï¿½{ï¿½^ï¿½ï¿½ |---------------------------------------------------------
 
 [Command]
 name = "down_a"
@@ -169,7 +164,7 @@ command = /$D,b
 time = 1
 
 ;------------------------------------------------------------------------------
-;-| ƒ{ƒ^ƒ“’P”­ |---------------------------------------------------------------
+;-| ï¿½{ï¿½^ï¿½ï¿½ï¿½Pï¿½ï¿½ |---------------------------------------------------------------
 
 [Command]
 name = "a"
@@ -207,31 +202,31 @@ command = s
 time = 1
 
 ;---------------------------
-;(uƒpƒ[—­‚ßv—p‚ÉƒRƒ}ƒ“ƒh‚ğ’Ç‰Á‚µ‚Ä‚Ü‚·)
+;(ï¿½uï¿½pï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ßvï¿½pï¿½ÉƒRï¿½}ï¿½ï¿½ï¿½hï¿½ï¿½Ç‰ï¿½ï¿½ï¿½ï¿½Ä‚Ü‚ï¿½)
 [Command]
 name = "hold_c"
 command = /c
 
 ;------------------------------------------------------------------------------
-;-| •ûŒüƒL[ |-----------------------------------------------------------------
+;-| ï¿½ï¿½ï¿½ï¿½ï¿½Lï¿½[ |-----------------------------------------------------------------
 
 [Command]
-name = "holdfwd"   ;•K{ƒRƒ}ƒ“ƒh–¼
+name = "holdfwd"   ;ï¿½Kï¿½{ï¿½Rï¿½}ï¿½ï¿½ï¿½hï¿½ï¿½
 command = /$F
 time = 1
 
 [Command]
-name = "holdback"  ;•K{ƒRƒ}ƒ“ƒh–¼
+name = "holdback"  ;ï¿½Kï¿½{ï¿½Rï¿½}ï¿½ï¿½ï¿½hï¿½ï¿½
 command = /$B
 time = 1
 
 [Command]
-name = "holdup"    ;•K{ƒRƒ}ƒ“ƒh–¼
+name = "holdup"    ;ï¿½Kï¿½{ï¿½Rï¿½}ï¿½ï¿½ï¿½hï¿½ï¿½
 command = /$U
 time = 1
 
 [Command]
-name = "holddown"  ;•K{ƒRƒ}ƒ“ƒh–¼
+name = "holddown"  ;ï¿½Kï¿½{ï¿½Rï¿½}ï¿½ï¿½ï¿½hï¿½ï¿½
 command = /$D
 time = 1
 
@@ -253,19 +248,18 @@ name="down"
 command=D
 time=1
 ;==============================================================================
-;============================================================================== ‘æ‚S•”
-; ƒXƒe[ƒgƒGƒ“ƒgƒŠ[ƒp[ƒgi‹Z‚È‚Ç‚ğo‚¹‚é‚æ‚¤‚É‚·‚é‚½‚ß‚ÌğŒ‚ğİ’èj
+;============================================================================== ï¿½ï¿½Sï¿½ï¿½
+; ï¿½Xï¿½eï¿½[ï¿½gï¿½Gï¿½ï¿½ï¿½gï¿½ï¿½ï¿½[ï¿½pï¿½[ï¿½gï¿½iï¿½Zï¿½È‚Ç‚ï¿½ï¿½oï¿½ï¿½ï¿½ï¿½æ‚¤ï¿½É‚ï¿½ï¿½é‚½ï¿½ß‚Ìï¿½ï¿½ï¿½ï¿½ï¿½İ’ï¿½j
 ;==============================================================================
 ;------------------------------------------------------------------------------
-[Statedef -1] ;©‚±‚Ìs‚Íâ‘Î‚ÉÁ‚³‚È‚¢‚Å‚ËB•K{€–Ú‚Å‚·B
+[Statedef -1] ;ï¿½ï¿½ï¿½ï¿½ï¿½Ìsï¿½Íï¿½Î‚Éï¿½ï¿½ï¿½ï¿½È‚ï¿½ï¿½Å‚ËBï¿½Kï¿½{ï¿½ï¿½ï¿½Ú‚Å‚ï¿½ï¿½B
 ;------------------------------------------------------------------------------
-[State -1, AI‹N“®—pƒwƒ‹ƒp[]
+[State -1, AIï¿½Nï¿½ï¿½ï¿½pï¿½wï¿½ï¿½ï¿½pï¿½[]
 type=helper
 trigger1=!NumHelper(40000+id)
 ;trigger1=RoundState=2
 Trigger1=RoundState<2||(RoundState=2&&Ctrl&&Stateno=0)
 trigger1=alive
-trigger1=var(59)=0
 Trigger1=(PrevStateNo=[190,193])||PrevStateNo=5900||PrevStateNo=0
 ;Trigger1=Ctrl&&Stateno=0
 Trigger1=!IsHelper
@@ -279,1283 +273,44 @@ pausemovetime=2147483647
 supermovetime=2147483647
 persistent = 0
 
-;”O‚Ì‚½‚ß«‚à•t‚¯‚Ä‚¨‚­
-[State -1, ŠÖŒW–³‚¢ƒXƒe[ƒg‚És‚©‚È‚¢‚æ‚¤‚É]
+;ï¿½Oï¿½Ì‚ï¿½ï¿½ßï¿½ï¿½ï¿½ï¿½tï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½
+[State -1, ï¿½ÖŒWï¿½ï¿½ï¿½ï¿½ï¿½Xï¿½eï¿½[ï¿½gï¿½Ésï¿½ï¿½ï¿½È‚ï¿½ï¿½æ‚¤ï¿½ï¿½]
 type=changestate
 trigger1= ishelper(40000)
 trigger1= ishelper(40000+root,id)
 trigger1= stateno!=40000
 value=40000
 
+;------------------------------------------------------------------------------
 ;==============================================================================
-;•Ï”ŠÇ—
-;v56 VarRandom (0-19)
-;v57 Facing
-;v58 Tag
-;v59 AI
-
-;fv37 Coefficient of Friction
-;fv39 Combo
+; ï¿½ï¿½ï¿½Kï¿½Eï¿½Z
 ;==============================================================================
-[State -1, AI]
-Type = VarSet
-TriggerAll = Var(59) >= 1	;AI‚ªƒZƒbƒg‚³‚ê‚½ó‘Ô
-Trigger1 = RoundState = 4	;ƒ‰ƒEƒ“ƒhI—¹Œã
-Trigger2 = Win = 1			;Ÿ‚Á‚½‚Æ‚«
-Trigger3 = Lose = 1			;•‰‚¯‚½‚Æ‚«
-Trigger4 = DrawGame = 1		;ˆø‚«•ª‚¯‚½‚Æ‚«
-V = 59
-Value = -Var(59)
-
-[State -1, AI]
-Type = VarSet
-TriggerAll = Var(59) <= -1	;AI‚ğ’â~‚³‚¹‚½ó‘Ô
-Trigger1 = RoundState = 2	;ƒ‰ƒEƒ“ƒhŠJn
-V = 59
-Value = -Var(59)
-
-[State -1, ƒ^ƒbƒO—p¶€”»•Ê]
-Type = VarSet
-triggerall = var(59)>0
-triggerall = RoundState = 2
-trigger1 = NumEnemy = 1
-trigger2 = NumEnemy = 2
-trigger2 = EnemyNear(0),life > 0
-var(58) = 0
-IgnoreHitPause = 1
-
-[State -1, ƒ^ƒbƒO—p¶€”»•Ê]
-Type = VarSet
-triggerall = var(59)>0
-triggerall = RoundState = 2
-trigger1 = NumEnemy = 2
-trigger1 = EnemyNear(0),life <= 0
-var(58) = 1
-IgnoreHitPause = 1
-;==============================================================================
-;–€CŒvZ
-[State -2, Facing]
-type = VarSet
-trigger1 = 1
-var(57) = -(Facing)*(EnemyNear(var(58)),Facing)
-ignorehitpause = 1
-
-[State -1, ‘Šè–€CŒW”]
-Type = VarSet
-Trigger1 = 1
-fvar(37) = IfElse(enemynear(var(58)),StateType=C,(EnemyNear(var(58)),Const(movement.crouch.friction)),(EnemyNear(var(58)),Const(movement.stand.friction)))
-IgnoreHitPause = 1
-;==============================================================================
-;ƒRƒ“ƒ{ŠÖŒW
-[State -1, •Ï”ƒŠƒZƒbƒg]
-Type = VarSet
-triggerall = var(59) >= 1
-trigger1 = RoundState = 4
-trigger2 = stateno = 5120 || movetype = H
-trigger3 = fvar(39)!=3
-trigger3 = EnemyNear,StateNo = [5070,5120]
-trigger4 = stateno=1200 || stateno=1210 || stateno=3000
-trigger5 = fvar(39)=3
-trigger5 = !(EnemyNear,StateNo = [5050,5120])
-trigger6 = stateno = 400 || stateno = 205; || stateno = 1210
-trigger7 = fvar(39)=7
-trigger7 = stateno = 1000
-fvar(39) = 0
-IgnoreHitPause = 1
-
-[State -1, •Ï”ƒZƒbƒg];JUŒ‚
-Type = VarSet
-triggerall = var(59) >= 1
-trigger1 = stateno = 640 && movecontact
-trigger1 = enemynear(var(58)),statetype!=A
-trigger2 = stateno = 660 && moveguarded
-fvar(39) = 1
-IgnoreHitPause = 1
-
-[State -1, •Ï”ƒZƒbƒg];ƒƒPƒbƒgƒoƒY[ƒJ¬Œ÷
-Type = VarSet
-triggerall = var(59) >= 1
-trigger1 = stateno = 1301; && movecontact
-fvar(39) = 2
-IgnoreHitPause = 1
-
-[State -1, •Ï”ƒZƒbƒg];ƒnƒ“ƒ}[ƒpƒ“ƒ`‹­
-Type = VarSet
-triggerall = var(59) >= 1
-trigger1 = stateno = 1010
-fvar(39) = 3
-IgnoreHitPause = 1
-
-[State -1, •Ï”ƒZƒbƒg];ƒwƒCƒ[
-Type = VarSet
-triggerall = var(59) >= 1
-trigger1 = stateno = 660 && movehit
-fvar(39) = 4
-IgnoreHitPause = 1
-
-[State -1, •Ï”ƒZƒbƒg];‹ó’†‹­P
-Type = VarSet
-triggerall = var(59) >= 1
-trigger1 = stateno = 610 && movehit
-fvar(39) = 5
-IgnoreHitPause = 1
-
-[State -1, •Ï”ƒZƒbƒg]ƒ[ƒ‰[¨ƒ^ƒbƒNƒ‹contact
-Type = VarSet
-triggerall = var(59) >= 1
-trigger1 = stateno = 1460 && movecontact
-fvar(39) = 7
-IgnoreHitPause = 1
-;==============================================================================
-;ƒ‰ƒ“ƒ_ƒ€•Ï”
-[State -1,VarRandom]
-Type = VarRandom
-TriggerAll = Var(59) >= 1
-Trigger1 = Time = 1
-Trigger2 = Time%60 = 1
-Trigger2 = MoveType != I
-Trigger3 = Time%1 = 0
-Trigger3 = MoveType = I
-V = 56
-Range = 0,19
-IgnoreHitPause = 1
-;==============================================================================
-[State -1, ƒKƒgƒŠƒ“ƒOƒŒ[ƒU[]
-type = ChangeState
-value = ifelse(p2bodydist x >120,3110,3100)
-triggerall = var(59) >= 1
-TriggerAll = RoundState = 2
-triggerall = Power >= 2000
-TriggerAll = StateType != A
-TriggerAll = enemynear(var(58)),StateType != L
-TriggerAll = enemynear(var(58)),MoveType != H
-TriggerAll = (enemynear(var(58)),MoveType=A);||(enemynear(var(58)),Ctrl)
-triggerall = p2bodydist x = [50,155]
-triggerall = p2bodydist y >=-135
-;triggerall = enemynear(var(58)),vel y >= 0
-triggerall = (ctrl || stateno=19 || stateno=21) || stateno=99
-TriggerAll = enemynear(var(58)),Time >= 30 || (!Time&&(var(59)>8)) || var(59)>9
-Trigger1 = random<var(59)*10
-
-;ƒXƒvƒŠƒbƒgƒAƒ^ƒbƒN
-[State -1, ƒXƒvƒŠƒbƒgƒAƒ^ƒbƒN]
+;------------------------------------------------------------------------------
+[State -1, ï¿½Xï¿½vï¿½ï¿½ï¿½bï¿½gï¿½Aï¿½^ï¿½bï¿½N]
 type = ChangeState
 value = 3200
-triggerall = var(59) >= 1
-TriggerAll = RoundState = 2
-triggerall = Power >= 2000
-TriggerAll = StateType != A
-TriggerAll = enemynear(var(58)),StateType != L
-;TriggerAll = enemynear(var(58)),StateType != A
-TriggerAll = enemynear(var(58)),MoveType != H
-TriggerAll = (enemynear(var(58)),MoveType=A)||(enemynear(var(58)),Ctrl)
-triggerall = p2bodydist x <= 70
-triggerall = enemynear(var(58)),backedgebodydist <= 40
-triggerall = (ctrl || stateno=19 || stateno=21) || stateno=99
-TriggerAll = enemynear(var(58)),Time >= 30 || (!Time&&(var(59)>8)) || var(59)>9
-triggerall = random<var(59)*12
-Trigger1 = random<var(59)*10
-Trigger2 = PrevStateNo = [120, 159]
-Trigger3 = PrevStateNo = [5000, 5210]
-trigger4 = NumEnemy>1
-trigger5 = NumPartner
-trigger5 = Partner,Alive
-;------------------------------------------------------------------------------
-;—Dæ‡ˆÊ‚“®ì
-;------------------------------------------------------------------------------
-;’ÇŒ‚‘Ò‚¿
-[State -1,‘Ò‚¿]
-type = ChangeState
-value = 0
-TriggerAll = Var(59) >= 1
-TriggerAll = RoundState = 2
-triggerall = statetype != A
-trigger1 = frontedgebodydist>60
-trigger1 = (ctrl || stateno=19 || stateno=21 || stateno = 99)
-trigger1 = fvar(39) = 2
-trigger2 = (ctrl || stateno=19 || stateno=21 || stateno = 99)
-trigger2 = fvar(39) = 4
-ctrl = 0
-
-;ƒ_ƒEƒ“’Ç‚¢“¢‚¿
-;‹­ƒnƒ“ƒ}[ƒpƒ“ƒ`
-[State -1, ‹­ƒnƒ“ƒ}[ƒpƒ“ƒ`]
-type = ChangeState
-value = 1010
-TriggerAll = var(59) >= 1
-triggerall = roundstate = 2
-triggerall = statetype != A
-triggerall = EnemyNear(var(58)),statetype = L
-triggerall = EnemyNear(var(58)),movetype != A
-TriggerAll = !InGuardDist
-trigger1 = p2bodydist x >= 140
-trigger1 = fvar(39)!=3
-;trigger1 = EnemyNear(var(58)),stateno=5100
-trigger1 = (ctrl || stateno=19 || stateno=21) || stateno=99
-
-;‹N‚«U‚ß
-;ƒKƒgƒŠƒ“ƒOƒŒ[ƒU[
-[State -1, ƒKƒgƒŠƒ“ƒOƒŒ[ƒU[]
-type = ChangeState
-value = 3100
-TriggerAll = var(59) >= 1
-triggerall = roundstate = 2
-triggerall = power>=2000
-triggerall = statetype != A
-triggerall = EnemyNear(var(58)),statetype != A
-;triggerall = EnemyNear(var(58)),movetype = H
-trigger1 = (p2bodydist x <=70) || (p2bodydist x =[100,120])
-trigger1 = EnemyNear(var(58)),stateno=5120
-trigger1 = EnemyNear(var(58)),animtime<=-10
-trigger1 = (ctrl || stateno=19 || stateno=21) || stateno=99
-trigger1 = random<=var(59)*20
-
-;ƒƒPƒbƒgƒoƒY[ƒJ
-[State -1, ƒƒPƒbƒgƒoƒY[ƒJ]
-type = ChangeState
-value = 1300
-TriggerAll = var(59) >= 1
-triggerall = roundstate = 2
-triggerall = statetype != A
-;triggerall = EnemyNear(var(58)),statetype != L
-triggerall = EnemyNear(var(58)),statetype != A
-;triggerall = EnemyNear(var(58)),movetype = H
-trigger1 = p2bodydist x <= 20
-trigger1 = EnemyNear(var(58)),prevstateno=5120
-trigger1 = EnemyNear(var(58)),animtime<-(12+6)
-trigger1 = (ctrl || stateno=19 || stateno=21) || stateno=99
-trigger1 = random<=var(59)*25
-
-;‹­ƒpƒ“ƒ`
-[State -1, ‹­ƒpƒ“ƒ`]
-type = ChangeState
-value = 210
-TriggerAll = var(59) >= 1
-triggerall = roundstate = 2
-triggerall = statetype != A
-;triggerall = EnemyNear(var(58)),statetype != L
-triggerall = EnemyNear(var(58)),statetype != A
-;triggerall = EnemyNear(var(58)),movetype = H
-trigger1 = p2bodydist x = [16,60]
-trigger1 = EnemyNear(var(58)),prevstateno=5120
-trigger1 = EnemyNear(var(58)),animtime=[-(3+14),-(3+5)]
-trigger1 = (ctrl || stateno=19 || stateno=21) || stateno=99
-trigger1 = random<=var(59)*25
-
-;‚’¼ƒWƒƒƒ“ƒv
-[state -1, ƒWƒƒƒ“ƒv]
-Type = Changestate
-Value = 42
-TriggerAll = var(59) >= 1
-TriggerAll = Roundstate = 2
-TriggerAll = stateType != A
-Triggerall = (ctrl || stateno=19 || stateno=21 || stateno = 99)
-trigger1 = prevstateno != [5100,5120]
-;Trigger1 = enemynear(var(58)),stateType = L
-trigger1 = enemynear(var(58)),stateno = [5120,5129]
-trigger1 = enemynear(var(58)),animtime = [-23,-18]
-trigger1 = P2bodydist X = [40,70]
-trigger1 = random<=200
-trigger1 = fvar(39):=6
-
-;ƒGƒAEƒuƒŒ[ƒL
-[State -1, ƒGƒAEƒuƒŒ[ƒL]
-type = ChangeState
-value = 650
-TriggerAll = var(59) >= 1
-triggerall = roundstate = 2
-triggerall = statetype = A
-triggerall = enemynear(var(58)),statetype != A
-;triggerall = enemynear(var(58)),statetype != L
-triggerall = stateno != 105
-triggerall = ctrl
-triggerall = fvar(39) = 6
-trigger1 = enemynear(var(58)),prevstateno = [5120,5129]
-trigger1 = random<=var(59)*20
-trigger2 = enemynear(var(58)),stateno = [5120,5129]
-trigger2 = enemynear(var(58)),animtime>=-5
-trigger2 = random<=var(59)*15
-
-;ƒXƒeƒbƒvŒã
-;ƒtƒ‰ƒCƒ“ƒOƒgƒ‹ƒl[ƒh
-[State -1, ƒtƒ‰ƒCƒ“ƒOƒgƒ‹ƒl[ƒh]
-type = ChangeState
-value = 1100
-TriggerAll = var(59) >= 1
-triggerall = roundstate = 2
-triggerall = statetype != A
-triggerall = EnemyNear(var(58)),statetype != A
-triggerall = EnemyNear(var(58)),statetype != L
-triggerall = P2bodydist X = [-5,20]
-triggerall = var(56)=[0,var(59)+7]
-trigger1 = stateno=1450 && animtime=0
-
-;ƒƒPƒbƒgƒoƒY[ƒJ
-[State -1, ƒƒPƒbƒgƒoƒY[ƒJ]
-type = ChangeState
-value = 1300
-TriggerAll = var(59) >= 1
-triggerall = roundstate = 2
-triggerall = statetype != A
-triggerall = EnemyNear(var(58)),statetype != A
-triggerall = EnemyNear(var(58)),statetype != L
-triggerall = P2bodydist X = [-3,22]
-triggerall = var(56)=[0,var(59)+7]
-trigger1 = stateno=1450 && animtime=0
-
-;Œ„Œ©‚ÄÚ‹ß
-;ƒ^ƒNƒeƒBƒJƒ‹ƒXƒeƒbƒv
-[State -1,ƒ^ƒNƒeƒBƒJƒ‹ƒXƒeƒbƒv]
-type = ChangeState
-value = 700
-triggerall = var(59) >= 1
-TriggerAll = RoundState = 2
-triggerall = statetype != A
-triggerall = (ctrl || stateno=19 || stateno=21) || stateno=99
-TriggerAll = enemynear(var(58)),StateType != A
-triggerall = enemynear(var(58)),movetype = A
-trigger1 = P2BodyDist X = [20,80]
-Trigger1 = enemynear(var(58)),Time >= 30 || (!Time&&(var(59)>8)) || var(59)>9
-trigger1 = enemynear(var(58)),AnimTime <= -15
-trigger1 = random <= var(59)*5 || (random <= var(59)*18 && EnemyNear,HitDefAttr = SCA,NP,SP)
-;==============================================================================
-; “Š‚°E•œ‹A
-;==============================================================================
-;ƒ{ƒfƒB[ƒXƒ‰ƒ€
-[State -1, ƒ{ƒfƒB[ƒXƒ‰ƒ€];“Š‚°‹Z
-type = ChangeState
-value = ifelse(backedgebodydist<=80,800,802)
-triggerall = var(59) >= 1
-triggerall = RoundState = 2 
-triggerall = statetype != A
-triggerall = (ctrl || stateno=19 || stateno=21)||(stateno=700&&animtime=0)
-triggerall = stateno!=[99,100]
-triggerall = EnemyNear(var(58)),stateno != 5120
-TriggerAll = EnemyNear(var(58)),StateType != L
-TriggerAll = EnemyNear(var(58)),MoveType != H
-triggerall = EnemyNear(var(58)),statetype != A
-triggerall = p2bodydist x = [-3,15]
-Trigger1 = Random <= var(59)*13
-Trigger2 = EnemyNear(var(58)),StateNo=[120,159]
-
-;ƒtƒ‰ƒCƒ“ƒOƒgƒ‹ƒl[ƒh
-[State -1, ƒtƒ‰ƒCƒ“ƒOƒgƒ‹ƒl[ƒh]
-type = ChangeState
-value = 1100
-TriggerAll = var(59) >= 1
-triggerall = roundstate = 2
-triggerall = statetype != A
-triggerall = var(59) >= 1
-triggerall = RoundState = 2 
-triggerall = statetype != A
-triggerall = (ctrl || stateno=19 || stateno=21)||(stateno=700&&animtime=0)
-triggerall = stateno!=[99,100]
-triggerall = EnemyNear(var(58)),stateno != 5120
-TriggerAll = EnemyNear(var(58)),StateType != L
-TriggerAll = EnemyNear(var(58)),MoveType != H
-triggerall = EnemyNear(var(58)),statetype != A
-triggerall = p2bodydist x = [-3,18]
-Trigger1 = Random <= var(59)*15
-Trigger2 = EnemyNear(var(58)),StateNo=[120,159]
-
-[State -1, ’nãóg]
-type = ChangeState
-value = 5200
-triggerall = var(59) >= 1
-triggerall = Vel Y > 0
-triggerall = Pos Y >= -20
-TriggerAll = Alive || Life>0
-triggerall = CanRecover
-TriggerAll = StateNo = 5050
-trigger1   = Random < var(59)*5
-trigger2   = var(56) = [0,7]
-trigger2   = EnemyNear(var(58)),hitdefattr = SC, AA, AT, AP
-;==============================================================================
-; ‰ñ”ğ
-;==============================================================================
-;ƒ^ƒNƒeƒBƒJƒ‹ƒXƒeƒbƒv
-[State -1,ƒ^ƒNƒeƒBƒJƒ‹ƒXƒeƒbƒv]
-type = ChangeState
-value = 700
-triggerall = var(59) >= 1
-TriggerAll = RoundState = 2
-triggerall = power>=1000
-;triggerall = Life<=LifeMax*0.5
-triggerall = statetype != A
-triggerall = (ctrl || stateno=19 || stateno=21 || stateno=99)
-triggerall = !(StateNo=700&&PrevStateNo=700)
-TriggerAll = P2BodyDist X<=15+75||(EnemyNear(var(58)),AnimTime<=-29&&!EnemyNear(var(58)),Ctrl)
-TriggerAll = EnemyNear(var(58)),HitDefAttr = SCA,AA
-TriggerAll = InGuardDist
-TriggerAll = Random<=var(59)*40||var(59)>9
-TriggerAll = EnemyNear(var(58)),Time>=30||(!Time&&var(59)>7)||var(59)>9||EnemyNear(var(58)),Ctrl
-triggerall = enemynear(var(58)),prevstateno!=[5100,5120]
-Trigger1 = EnemyNear(var(58)),Time>=50||var(59)>9
-Trigger2 = PrevStateNo = [120,159]
-Trigger3 = EnemyNear(var(58)),Ctrl
-trigger4 = EnemyNear,AnimTime = [-25,-20]
-
-;ƒoƒbƒNƒXƒeƒbƒv
-[State -1, ƒoƒbƒNƒXƒeƒbƒv]
-type = changestate
-value = 105
-triggerall = var(59) >= 1
-TriggerAll = RoundState = 2
-triggerall = statetype != A
-triggerall = (ctrl || stateno=19 || stateno=21) || stateno=99
-triggerall = stateno!=105
-triggerall = backedgebodydist > 80
-TriggerAll = EnemyNear(var(58)),Time>=30||(!Time&&var(59)>7)||var(59)>9||EnemyNear(var(58)),Ctrl
-triggerall = facing*(enemynear(numenemy>=2),pos x-pos x)>0
-Trigger1 = EnemyNear(var(58)),Time>=50||(var(59)>9&&random<50);||(random<ifelse(EnemyNear(var(58)),movetype=A,150,50))
-trigger1 = EnemyNear(var(58)),statetype = A
-trigger1 = EnemyNear(var(58)),statetype!= L
-trigger1 = EnemyNear(var(58)),vel x > 0
-trigger1 = EnemyNear(var(58)),Pos Y <= -30
-Trigger2 = EnemyNear(var(58)),Time>=50||(var(59)>7&&random<50)||var(59)>9;||(random<ifelse(EnemyNear(var(58)),movetype=A,150,50))
-trigger2 = EnemyNear(var(58)),statetype!= L
-Trigger2 = EnemyNear(var(58)),HitDefAttr = SC,AT
-Trigger2 = (PrevStateNo = [5000,5270]) || (PrevStateNo = [120,159]) || random<50
-
-;==============================================================================
-; ‘Î‹ó
-;==============================================================================
-;‹­ƒtƒ‰ƒCƒ“ƒOƒpƒ[ƒ{ƒ€
-[State -1, ‹­ƒtƒ‰ƒCƒ“ƒOƒpƒ[ƒ{ƒ€]
-type = ChangeState
-value = 1210
-TriggerAll = var(59) >= 1
-triggerall = roundstate = 2
-triggerall = statetype != A
-triggerall = (ctrl || stateno=19 || stateno=21) || stateno=99 || (stateno = 700 && animtime=0)
-triggerall = EnemyNear(var(58)),statetype = A 
-triggerall = EnemyNear(var(58)),statetype!= L
-;triggerall = EnemyNear(var(58)),movetype != H
-;TriggerAll =!InGuardDist
-triggerall = P2BodyDist X - (enemynear(var(58)),vel x * 6)= [10,120]
-triggerall = enemynear(var(58)),vel x > 0
-triggerall = p2bodydist y = [-140,-50]
-Trigger1 = EnemyNear(var(58)),Time >= 30 || (!Time&&(var(59)>8)) || var(59)>9
-trigger1 = random <= var(59)*15
-
-;‚µ‚á‚ª‚İ‹­ƒpƒ“ƒ`
-[State -1, ‚µ‚á‚ª‚İ‹­ƒpƒ“ƒ`]
-type = ChangeState
-value = 410
-TriggerAll = var(59) >= 1
-triggerall = roundstate = 2
-triggerall = statetype != A
-triggerall = (ctrl || stateno=19 || stateno=21) || stateno=99 || (stateno = 700 && animtime=0)
-triggerall = EnemyNear(var(58)),statetype = A 
-triggerall = EnemyNear(var(58)),statetype!= L
-triggerall = EnemyNear(var(58)),movetype != H
-TriggerAll =!InGuardDist
-triggerall = P2BodyDist X - (enemynear(var(58)),vel x * 9)= [50,90]
-;triggerall = enemynear(var(58)),vel x > 0
-triggerall = p2bodydist y = [-140,-50]
-TriggerAll = EnemyNear(var(58)),Time >= 30 || (!Time&&(var(59)>8)) || var(59)>9
-trigger1 = random <= var(59)*10
-
-;==============================================================================
-; ”ò‚Ñ‚İUŒ‚
-;==============================================================================
-;ƒWƒƒƒ“ƒv‹­ƒLƒbƒN
-[State -1, ƒWƒƒƒ“ƒv‹­ƒLƒbƒN]
-type = ChangeState
-value = 640
-TriggerAll = var(59) >= 1
-triggerall = roundstate = 2
-triggerall = statetype = A
-;triggerall = enemynear(var(58)),statetype != A
-triggerall = enemynear(var(58)),statetype != L
-triggerall = vel y >=0
-triggerall = stateno != 105
-triggerall = ctrl
-triggerall = p2bodydist x = [-20,60+vel x*7+EnemyNear(var(58)),vel x*7]
-triggerall = p2bodydist y + vel y*7 = [-40,75]
-trigger1 = random<=var(59)*50
-;==============================================================================
-; ƒK[ƒhŠÖŒW
-;==============================================================================
-;ƒK[ƒh
-[State -1,—§‚¿ƒK[ƒh]
-Type = ChangeState
-Value = 120
-TriggerAll = var(59) >= 1
-triggerall = roundstate = 2
-TriggerAll = StateNo!=[120,155]
-triggerall = (ctrl || stateno=19 || stateno=21) || stateno=99
-TriggerAll = inguarddist
-Trigger1 = Random <= var(59)*80 || var(59)>9
-Trigger2 = P2BodyDist X > 90 || EnemyNear(var(58)),Time > 50
-Trigger2 = Random <= var(59)*150
-
-;==============================================================================
-; ’nã
-;==============================================================================
-;ƒ~ƒTƒCƒ‹ƒAƒ^ƒbƒN
-[State -1, ƒ~ƒTƒCƒ‹ƒAƒ^ƒbƒN]
-type = ChangeState
-value = 3000
-TriggerAll = var(59) >= 1
-triggerall = roundstate = 2
-triggerall = power>=1000
-triggerall = statetype != A
-triggerall = EnemyNear(var(58)),movetype = H
-trigger1 = EnemyNear(var(58)),statetype = A
-trigger1 = fvar(39) = 4
-trigger1 = ctrl = 0 && stateno = 0
-trigger1 = EnemyNear(var(58)),vel y > 0
-Trigger1 = P2BodyDist Y + EnemyNear(var(58)),const(movement.yaccel) / 2 * 36 + (EnemyNear(var(58)),Vel y * 6) = [-65,10]
-
-;‹­ƒtƒ‰ƒCƒ“ƒOƒpƒ[ƒ{ƒ€
-[State -1, ‹­ƒtƒ‰ƒCƒ“ƒOƒpƒ[ƒ{ƒ€]
-type = ChangeState
-value = 1210
-TriggerAll = var(59) >= 1
-triggerall = roundstate = 2
-triggerall = statetype != A
-triggerall = EnemyNear(var(58)),movetype = H
-trigger1 = EnemyNear(var(58)),statetype = A
-trigger1 = fvar(39) = 4
-trigger1 = ctrl = 0 && stateno = 0
-trigger1 = EnemyNear(var(58)),vel y > 0
-Trigger1 = P2BodyDist Y + EnemyNear(var(58)),const(movement.yaccel) / 2 * 36 + (EnemyNear(var(58)),Vel y * 6) = [-80,-30]
-trigger2 = EnemyNear(var(58)),statetype = A
-trigger2 = fvar(39) = 5
-trigger2 = random<=250
-
-[State -1, ‹­ƒtƒ‰ƒCƒ“ƒOƒpƒ[ƒ{ƒ€]
-type = ChangeState
-value = 3310
-TriggerAll = var(59) >= 1
-triggerall = roundstate = 2
-triggerall = power>=1000
-triggerall = statetype != A
-triggerall = EnemyNear(var(58)),movetype = H
-trigger1 = EnemyNear(var(58)),statetype = A
-trigger1 = fvar(39) = 4
-trigger1 = ctrl = 0 && stateno = 0
-trigger1 = EnemyNear(var(58)),vel y > 0
-Trigger1 = P2BodyDist Y + EnemyNear(var(58)),const(movement.yaccel) / 2 * 36 + (EnemyNear(var(58)),Vel y * 6) = [-80,-30]
-trigger2 = EnemyNear(var(58)),statetype = A
-trigger2 = fvar(39) = 5
-trigger2 = random<=250
-
-;ƒ~ƒTƒCƒ‹ƒAƒ^ƒbƒN
-[State -1, ƒ~ƒTƒCƒ‹ƒAƒ^ƒbƒN]
-type = ChangeState
-value = 3000
-TriggerAll = var(59) >= 1
-triggerall = roundstate = 2
-triggerall = power>=1000
-triggerall = statetype != A
-triggerall = EnemyNear(var(58)),movetype = H
-trigger1 = EnemyNear(var(58)),statetype = A
-trigger1 = EnemyNear(var(58)),stateno=1304
-;trigger1 = frontedgebodydist>60
-trigger1 = ctrl = 0 && stateno = 0
-trigger1 = fvar(39)=2
-trigger2 = stateno = 1000 && movehit && animelemtime(7)<0
-trigger3 = stateno = 1010 && movehit && animelemtime(7)<0
-trigger4 = EnemyNear(var(58)),statetype = A
-trigger4 = EnemyNear(var(58)),statetype != L
-trigger4 = NumTarget(1001)
-trigger4 = p2bodydist x <= 100
-trigger4 = (ctrl || stateno=19 || stateno=21) || stateno=99
-
-;‹­ƒtƒ‰ƒCƒ“ƒOƒpƒ[ƒ{ƒ€
-[State -1, ‹­ƒtƒ‰ƒCƒ“ƒOƒpƒ[ƒ{ƒ€]
-type = ChangeState
-value = 1210
-TriggerAll = var(59) >= 1
-triggerall = roundstate = 2
-triggerall = statetype != A
-triggerall = EnemyNear(var(58)),statetype = A
-triggerall = EnemyNear(var(58)),movetype = H
-trigger1 = EnemyNear(var(58)),stateno=1304
-;trigger1 = frontedgebodydist>60
-trigger1 = fvar(39)=2
-trigger1 = ctrl = 0 && stateno = 0
-
-;‹­ƒnƒ“ƒ}[ƒpƒ“ƒ`
-[State -1, ‹­ƒnƒ“ƒ}[ƒpƒ“ƒ`]
-type = ChangeState
-value = 1010
-TriggerAll = var(59) >= 1
-triggerall = roundstate = 2
-triggerall = statetype != A
-trigger1 = EnemyNear(var(58)),statetype = A
-trigger1 = EnemyNear(var(58)),movetype = H
-trigger1 = EnemyNear(var(58)),stateno=1304
-trigger1 = frontedgebodydist<=60
-trigger1 = (ctrl || stateno=19 || stateno=21) || stateno=99
-trigger1 = fvar(39)=2
-
-;ãƒnƒ“ƒ}[ƒpƒ“ƒ`
-[State -1, ãƒnƒ“ƒ}[ƒpƒ“ƒ`]
-type = ChangeState
-value = 1000
-TriggerAll = var(59) >= 1
-triggerall = roundstate = 2
-triggerall = statetype != A
-;triggerall = EnemyNear(var(58)),statetype != A
-triggerall = EnemyNear(var(58)),statetype != L
-triggerall = EnemyNear(var(58)),movetype = H
-triggerall = random<=var(59)*30
-trigger1 = stateno = 245 && movecontact
-trigger2 = stateno = 215 && moveguarded
-trigger3 = stateno = 440 && moveguarded
-trigger4 = stateno = 400 && moveguarded
-trigger4 = p2bodydist x >=43
-trigger5 = stateno = 400 && movehit
-trigger5 = p2bodydist x >=81
-trigger6 = EnemyNear(var(58)),statetype != A
-trigger6 = fvar(39)=7
-trigger6 = stateno = 1460 && animtime=0
-
-;ƒtƒ‰ƒCƒ“ƒOƒgƒ‹ƒl[ƒh
-[State -1, ƒtƒ‰ƒCƒ“ƒOƒgƒ‹ƒl[ƒh]
-type = ChangeState
-value = 1100
-TriggerAll = var(59) >= 1
-triggerall = roundstate = 2
-triggerall = statetype != A
-triggerall = EnemyNear(var(58)),statetype != A
-triggerall = EnemyNear(var(58)),statetype != L
-triggerall = EnemyNear(var(58)),movetype = H
-Triggerall = EnemyNear(var(58)),GetHitVar(yvel) = 0
-Triggerall = EnemyNear(var(58)),GetHitVar(HitShakeTime) + EnemyNear(var(58)),GetHitVar(HitTime) >= 0
-trigger1 = (stateno=241&&animtime=0)
-Trigger1 = (abs(EnemyNear(var(58)),Vel X) = abs(EnemyNear(var(58)),GetHitVar(xvel))) || EnemyNear(var(58)),Vel X = 0
-Trigger1 = abs(P2BodyDist X+(abs(EnemyNear(var(58)),GetHitVar(xvel))*(1-fvar(37)**(IfElse((EnemyNear(var(58)),GetHitVar(HitShakeTime)>1),0,(1-EnemyNear(var(58)),GetHitVar(HitShakeTime)))))/(1-fvar(37)))*var(57))=[-1,35]
-trigger2 = (stateno=241&&animtime=0)
-Trigger2 = !((abs(EnemyNear(var(58)),Vel X) = abs(EnemyNear(var(58)),GetHitVar(xvel))) || EnemyNear(var(58)),Vel X = 0)
-Trigger2 = abs(P2BodyDist X-((EnemyNear(var(58)),Vel X)*(1-fvar(37)**(IfElse((EnemyNear(var(58)),GetHitVar(HitShakeTime)>1),0,(1-EnemyNear(var(58)),GetHitVar(HitShakeTime)))))/(1-fvar(37)))*var(57))=[-1,35]
-
-;ƒƒPƒbƒgƒoƒY[ƒJ
-[State -1, ƒƒPƒbƒgƒoƒY[ƒJ]
-type = ChangeState
-value = 1300
-TriggerAll = var(59) >= 1
-triggerall = roundstate = 2
-triggerall = statetype != A
-triggerall = EnemyNear(var(58)),statetype != A
-triggerall = EnemyNear(var(58)),statetype != L
-triggerall = EnemyNear(var(58)),movetype = H
-Triggerall = EnemyNear(var(58)),GetHitVar(yvel) = 0
-Triggerall = EnemyNear(var(58)),GetHitVar(HitShakeTime) + EnemyNear(var(58)),GetHitVar(HitTime) >= 6
-trigger1 = (stateno=400)||(stateno=215)
-trigger1 = movehit
-Trigger1 = (abs(EnemyNear(var(58)),Vel X) = abs(EnemyNear(var(58)),GetHitVar(xvel))) || EnemyNear(var(58)),Vel X = 0
-Trigger1 = abs(P2BodyDist X+(abs(EnemyNear(var(58)),GetHitVar(xvel))*(1-fvar(37)**(IfElse((EnemyNear(var(58)),GetHitVar(HitShakeTime)>7),0,(7-EnemyNear(var(58)),GetHitVar(HitShakeTime)))))/(1-fvar(37)))*var(57))<=35
-trigger2 = (stateno=400)||(stateno=215)
-trigger2 = movehit
-Trigger2 = !((abs(EnemyNear(var(58)),Vel X) = abs(EnemyNear(var(58)),GetHitVar(xvel))) || EnemyNear(var(58)),Vel X = 0)
-Trigger2 = abs(P2BodyDist X-((EnemyNear(var(58)),Vel X)*(1-fvar(37)**(IfElse((EnemyNear(var(58)),GetHitVar(HitShakeTime)>7),0,(7-EnemyNear(var(58)),GetHitVar(HitShakeTime)))))/(1-fvar(37)))*var(57))<=35
-
-;‚µ‚á‚ª‚İãƒpƒ“ƒ`
-[State -1, ‚µ‚á‚ª‚İãƒpƒ“ƒ`]
-type = ChangeState
-value = 400
-TriggerAll = var(59) >= 1
-triggerall = roundstate = 2
-triggerall = statetype != A
-triggerall = EnemyNear(var(58)),statetype != A
-triggerall = EnemyNear(var(58)),statetype != L
-triggerall = EnemyNear(var(58)),movetype = H
-Triggerall = EnemyNear(var(58)),GetHitVar(yvel) = 0
-Triggerall = EnemyNear(var(58)),GetHitVar(HitShakeTime) + EnemyNear(var(58)),GetHitVar(HitTime) >= 6
-trigger1 = (stateno=400)
-trigger1 = movecontact
-Trigger1 = (abs(EnemyNear(var(58)),Vel X) = abs(EnemyNear(var(58)),GetHitVar(xvel))) || EnemyNear(var(58)),Vel X = 0
-Trigger1 = abs(P2BodyDist X+(abs(EnemyNear(var(58)),GetHitVar(xvel))*(1-fvar(37)**(IfElse((EnemyNear(var(58)),GetHitVar(HitShakeTime)>7),0,(7-EnemyNear(var(58)),GetHitVar(HitShakeTime)))))/(1-fvar(37)))*var(57))=[36,78]
-trigger2 = (stateno=400)
-trigger2 = movecontact
-Trigger2 = !((abs(EnemyNear(var(58)),Vel X) = abs(EnemyNear(var(58)),GetHitVar(xvel))) || EnemyNear(var(58)),Vel X = 0)
-Trigger2 = abs(P2BodyDist X-((EnemyNear(var(58)),Vel X)*(1-fvar(37)**(IfElse((EnemyNear(var(58)),GetHitVar(HitShakeTime)>7),0,(7-EnemyNear(var(58)),GetHitVar(HitShakeTime)))))/(1-fvar(37)))*var(57))=[37,78]
-
-;‚µ‚á‚ª‚İãƒpƒ“ƒ`
-[State -1, ‚µ‚á‚ª‚İãƒpƒ“ƒ`]
-type = ChangeState
-value = 400
-TriggerAll = var(59) >= 1
-triggerall = roundstate = 2
-triggerall = statetype != A
-triggerall = EnemyNear(var(58)),statetype != A
-triggerall = EnemyNear(var(58)),statetype != L
-triggerall = EnemyNear(var(58)),movetype = H
-Triggerall = EnemyNear(var(58)),GetHitVar(yvel) = 0
-Triggerall = EnemyNear(var(58)),GetHitVar(HitShakeTime) + EnemyNear(var(58)),GetHitVar(HitTime) >= 6
-trigger1 = (stateno = 430 && animelemtime(7)<0)
-trigger1 = movehit
-Trigger1 = (abs(EnemyNear(var(58)),Vel X) = abs(EnemyNear(var(58)),GetHitVar(xvel))) || EnemyNear(var(58)),Vel X = 0
-Trigger1 = abs(P2BodyDist X+(abs(EnemyNear(var(58)),GetHitVar(xvel))*(1-fvar(37)**(IfElse((EnemyNear(var(58)),GetHitVar(HitShakeTime)>7),0,(7-EnemyNear(var(58)),GetHitVar(HitShakeTime)))))/(1-fvar(37)))*var(57))<=80
-trigger2 = (stateno = 430 && animelemtime(7)<0)
-trigger2 = movehit
-Trigger2 = !((abs(EnemyNear(var(58)),Vel X) = abs(EnemyNear(var(58)),GetHitVar(xvel))) || EnemyNear(var(58)),Vel X = 0)
-Trigger2 = abs(P2BodyDist X-((EnemyNear(var(58)),Vel X)*(1-fvar(37)**(IfElse((EnemyNear(var(58)),GetHitVar(HitShakeTime)>7),0,(7-EnemyNear(var(58)),GetHitVar(HitShakeTime)))))/(1-fvar(37)))*var(57))<=80
-
-;‹ß‹——£—§‚¿ãƒpƒ“ƒ`
-[State -1, —§‚¿ãƒpƒ“ƒ`(close)]
-type = ChangeState
-value = 205
-TriggerAll = var(59) >= 1
-triggerall = roundstate = 2
-triggerall = statetype != A
-triggerall = EnemyNear(var(58)),statetype != A
-triggerall = EnemyNear(var(58)),statetype != L
-triggerall = EnemyNear(var(58)),movetype = H
-Triggerall = EnemyNear(var(58)),GetHitVar(yvel) = 0
-Triggerall = EnemyNear(var(58)),GetHitVar(HitShakeTime) + EnemyNear(var(58)),GetHitVar(HitTime) >= 5
-trigger1 = (stateno=205)
-trigger1 = movecontact
-Trigger1 = (abs(EnemyNear(var(58)),Vel X) = abs(EnemyNear(var(58)),GetHitVar(xvel))) || EnemyNear(var(58)),Vel X = 0
-Trigger1 = abs(P2BodyDist X+(abs(EnemyNear(var(58)),GetHitVar(xvel))*(1-fvar(37)**(IfElse((EnemyNear(var(58)),GetHitVar(HitShakeTime)>6),0,(6-EnemyNear(var(58)),GetHitVar(HitShakeTime)))))/(1-fvar(37)))*var(57))<=20
-trigger2 = (stateno=205)
-trigger2 = movecontact
-Trigger2 = !((abs(EnemyNear(var(58)),Vel X) = abs(EnemyNear(var(58)),GetHitVar(xvel))) || EnemyNear(var(58)),Vel X = 0)
-Trigger2 = abs(P2BodyDist X-((EnemyNear(var(58)),Vel X)*(1-fvar(37)**(IfElse((EnemyNear(var(58)),GetHitVar(HitShakeTime)>6),0,(6-EnemyNear(var(58)),GetHitVar(HitShakeTime)))))/(1-fvar(37)))*var(57))<=20
-
-;ãƒnƒ“ƒ}[ƒpƒ“ƒ`
-[State -1, ãƒnƒ“ƒ}[ƒpƒ“ƒ`]
-type = ChangeState
-value = 1000
-TriggerAll = var(59) >= 1
-triggerall = roundstate = 2
-triggerall = statetype != A
-triggerall = EnemyNear(var(58)),statetype != A
-triggerall = EnemyNear(var(58)),statetype != L
-triggerall = EnemyNear(var(58)),movetype = H
-Triggerall = EnemyNear(var(58)),GetHitVar(yvel) = 0
-Triggerall = EnemyNear(var(58)),GetHitVar(HitShakeTime) + EnemyNear(var(58)),GetHitVar(HitTime) >= 12
-trigger1 = (stateno=205)
-trigger1 = movecontact
-Trigger1 = (abs(EnemyNear(var(58)),Vel X) = abs(EnemyNear(var(58)),GetHitVar(xvel))) || EnemyNear(var(58)),Vel X = 0
-Trigger1 = abs(P2BodyDist X+(abs(EnemyNear(var(58)),GetHitVar(xvel))*(1-fvar(37)**(IfElse((EnemyNear(var(58)),GetHitVar(HitShakeTime)>7),0,(7-EnemyNear(var(58)),GetHitVar(HitShakeTime)))))/(1-fvar(37)))*var(57))>20
-trigger2 = (stateno=205)
-trigger2 = movecontact
-Trigger2 = !((abs(EnemyNear(var(58)),Vel X) = abs(EnemyNear(var(58)),GetHitVar(xvel))) || EnemyNear(var(58)),Vel X = 0)
-Trigger2 = abs(P2BodyDist X-((EnemyNear(var(58)),Vel X)*(1-fvar(37)**(IfElse((EnemyNear(var(58)),GetHitVar(HitShakeTime)>7),0,(7-EnemyNear(var(58)),GetHitVar(HitShakeTime)))))/(1-fvar(37)))*var(57))>20
-
-;ƒ[ƒ‰[ƒ_ƒbƒVƒ…
-[State -1, ƒ[ƒ‰[ƒ_ƒbƒVƒ…]
-type = ChangeState
-value = 1400
-TriggerAll = var(59) >= 1
-triggerall = roundstate = 2
-triggerall = statetype != A
-triggerall = EnemyNear(var(58)),statetype != A
-triggerall = EnemyNear(var(58)),statetype != L
-triggerall = EnemyNear(var(58)),movetype = H
-Triggerall = EnemyNear(var(58)),GetHitVar(yvel) = 0
-Triggerall = EnemyNear(var(58)),GetHitVar(HitShakeTime) + EnemyNear(var(58)),GetHitVar(HitTime) >= 4
-trigger1 = (stateno=440)
-trigger1 = movehit
-Trigger1 = (abs(EnemyNear(var(58)),Vel X) = abs(EnemyNear(var(58)),GetHitVar(xvel))) || EnemyNear(var(58)),Vel X = 0
-Trigger1 = abs(P2BodyDist X+(abs(EnemyNear(var(58)),GetHitVar(xvel))*(1-fvar(37)**(IfElse((EnemyNear(var(58)),GetHitVar(HitShakeTime)>7),0,(7-EnemyNear(var(58)),GetHitVar(HitShakeTime)))))/(1-fvar(37)))*var(57))>20
-trigger2 = (stateno=440)
-trigger2 = movehit
-Trigger2 = !((abs(EnemyNear(var(58)),Vel X) = abs(EnemyNear(var(58)),GetHitVar(xvel))) || EnemyNear(var(58)),Vel X = 0)
-Trigger2 = abs(P2BodyDist X-((EnemyNear(var(58)),Vel X)*(1-fvar(37)**(IfElse((EnemyNear(var(58)),GetHitVar(HitShakeTime)>7),0,(7-EnemyNear(var(58)),GetHitVar(HitShakeTime)))))/(1-fvar(37)))*var(57))>20
-;trigger1 = (stateno=205)
-;trigger1 = moveguarded
-;Trigger1 = (abs(EnemyNear(var(58)),Vel X) = abs(EnemyNear(var(58)),GetHitVar(xvel))) || EnemyNear(var(58)),Vel X = 0
-;Trigger1 = abs(P2BodyDist X+(abs(EnemyNear(var(58)),GetHitVar(xvel))*(1-fvar(37)**(IfElse((EnemyNear(var(58)),GetHitVar(HitShakeTime)>7),0,(7-EnemyNear(var(58)),GetHitVar(HitShakeTime)))))/(1-fvar(37)))*var(57))>20
-;trigger2 = (stateno=205)
-;trigger2 = moveguarded
-;Trigger2 = !((abs(EnemyNear(var(58)),Vel X) = abs(EnemyNear(var(58)),GetHitVar(xvel))) || EnemyNear(var(58)),Vel X = 0)
-;Trigger2 = abs(P2BodyDist X-((EnemyNear(var(58)),Vel X)*(1-fvar(37)**(IfElse((EnemyNear(var(58)),GetHitVar(HitShakeTime)>7),0,(7-EnemyNear(var(58)),GetHitVar(HitShakeTime)))))/(1-fvar(37)))*var(57))>20
-
-;ƒtƒ‰ƒCƒ“ƒOƒgƒ‹ƒl[ƒh
-[State -1, ƒtƒ‰ƒCƒ“ƒOƒgƒ‹ƒl[ƒh]
-type = ChangeState
-value = 1100
-TriggerAll = var(59) >= 1
-triggerall = roundstate = 2
-triggerall = statetype != A
-triggerall = EnemyNear(var(58)),statetype != A
-triggerall = EnemyNear(var(58)),statetype != L
-triggerall = EnemyNear(var(58)),movetype = H
-Triggerall = EnemyNear(var(58)),GetHitVar(yvel) = 0
-Triggerall = EnemyNear(var(58)),GetHitVar(HitShakeTime) + EnemyNear(var(58)),GetHitVar(HitTime) >= 0
-trigger1 = (stateno=205)
-trigger1 = movehit
-Trigger1 = (abs(EnemyNear(var(58)),Vel X) = abs(EnemyNear(var(58)),GetHitVar(xvel))) || EnemyNear(var(58)),Vel X = 0
-Trigger1 = abs(P2BodyDist X+(abs(EnemyNear(var(58)),GetHitVar(xvel))*(1-fvar(37)**(IfElse((EnemyNear(var(58)),GetHitVar(HitShakeTime)>1),0,(1-EnemyNear(var(58)),GetHitVar(HitShakeTime)))))/(1-fvar(37)))*var(57))=[-1,35]
-trigger2 = (stateno=205)
-trigger2 = movehit
-Trigger2 = !((abs(EnemyNear(var(58)),Vel X) = abs(EnemyNear(var(58)),GetHitVar(xvel))) || EnemyNear(var(58)),Vel X = 0)
-Trigger2 = abs(P2BodyDist X-((EnemyNear(var(58)),Vel X)*(1-fvar(37)**(IfElse((EnemyNear(var(58)),GetHitVar(HitShakeTime)>1),0,(1-EnemyNear(var(58)),GetHitVar(HitShakeTime)))))/(1-fvar(37)))*var(57))=[-1,35]
-
-;‹­ƒtƒ‰ƒCƒ“ƒOƒpƒ[ƒ{ƒ€
-[State -1, ‹­ƒtƒ‰ƒCƒ“ƒOƒpƒ[ƒ{ƒ€]
-type = ChangeState
-value = 1210
-TriggerAll = var(59) >= 1
-triggerall = roundstate = 2
-triggerall = statetype != A
-triggerall = EnemyNear(var(58)),statetype = A
-triggerall = EnemyNear(var(58)),statetype != L
-triggerall = EnemyNear(var(58)),movetype = H
-trigger1 = stateno = 205 || stateno = 215 || (stateno = 235&& animelemtime(5)>=0 && animelemtime(6)<0) || stateno = 245
-trigger1 = movehit
-
-;ãƒtƒ‰ƒCƒ“ƒOƒpƒ[ƒ{ƒ€
-[State -1, ƒtƒ‰ƒCƒ“ƒOƒpƒ[ƒ{ƒ€]
-type = ChangeState
-value = 1200
-TriggerAll = var(59) >= 1
-triggerall = roundstate = 2
-triggerall = statetype != A
-triggerall = EnemyNear(var(58)),statetype = A
-triggerall = EnemyNear(var(58)),statetype != L
-triggerall = EnemyNear(var(58)),movetype = H
-trigger1 = stateno = 410
-trigger1 = movehit
-
-;‹­ƒtƒ‰ƒCƒ“ƒOƒpƒ[ƒ{ƒ€
-[State -1, ‹­ƒtƒ‰ƒCƒ“ƒOƒpƒ[ƒ{ƒ€]
-type = ChangeState
-value = 3310
-TriggerAll = var(59) >= 1
-triggerall = roundstate = 2 && power >= 1000
-triggerall = statetype != A
-triggerall = EnemyNear(var(58)),statetype = A
-triggerall = EnemyNear(var(58)),statetype != L
-triggerall = EnemyNear(var(58)),movetype = H
-trigger1 = stateno = 205 || stateno = 215 || (stateno = 235&& animelemtime(5)>=0 && animelemtime(6)<0) || stateno = 245
-trigger1 = movehit
-
-;ãƒtƒ‰ƒCƒ“ƒOƒpƒ[ƒ{ƒ€
-[State -1, ƒtƒ‰ƒCƒ“ƒOƒpƒ[ƒ{ƒ€]
-type = ChangeState
-value = 3300
-TriggerAll = var(59) >= 1
-triggerall = roundstate = 2 && power >= 1000
-triggerall = statetype != A
-triggerall = EnemyNear(var(58)),statetype = A
-triggerall = EnemyNear(var(58)),statetype != L
-triggerall = EnemyNear(var(58)),movetype = H
-trigger1 = stateno = 410
-trigger1 = movehit
-
-;ƒVƒ‡ƒ‹ƒ_[ƒ^ƒbƒNƒ‹
-[State -1, ƒVƒ‡ƒ‹ƒ_[ƒ^ƒbƒNƒ‹]
-type = ChangeState
-value = 250
-TriggerAll = var(59) >= 1
-triggerall = roundstate = 2
-triggerall = statetype != A
-triggerall = EnemyNear(var(58)),statetype = A
-triggerall = EnemyNear(var(58)),statetype != L
-trigger1 = EnemyNear(var(58)),movetype = H
-trigger1 = EnemyNear(var(58)),stateno=[120,159]
-trigger1 = Numtarget(1001)=1
-trigger1 = stateno = 1000 && animtime=0
-trigger1 = p2bodydist x <= 69
-trigger1 = random<=var(59)*20||var(59)>9
-;------------------------------------------------------------------------------
-; n“®
-;------------------------------------------------------------------------------
-;‚µ‚á‚ª‚İãƒpƒ“ƒ`
-[State -1, ‚µ‚á‚ª‚İãƒpƒ“ƒ`]
-type = ChangeState
-value = 400
-TriggerAll = var(59) >= 1
-triggerall = roundstate = 2
-triggerall = statetype != A
-triggerall = EnemyNear(var(58)),statetype != A
-triggerall = EnemyNear(var(58)),statetype != L
-triggerall = P2bodydist X <= 50 ;48
-triggerall = (ctrl || stateno=19 || stateno=21) || stateno=99
-trigger1 = var(56)=[1,2]
-trigger2 = var(56)=[2,4]
-trigger2 = fvar(39)=1
-
-;‹ß‹——£—§‚¿ãƒpƒ“ƒ`
-[State -1, —§‚¿ãƒpƒ“ƒ`(close)]
-type = ChangeState
-value = ifelse(p2bodydist x<20,205,200)
-TriggerAll = var(59) >= 1
-triggerall = roundstate = 2
-triggerall = statetype != A
-triggerall = EnemyNear(var(58)),statetype != C
-;triggerall = EnemyNear(var(58)),statetype != A
-triggerall = EnemyNear(var(58)),statetype != L
-triggerall = P2bodydist X <= 90
-triggerall = p2bodydist y >= -50
-triggerall = (ctrl || stateno=19 || stateno=21) || stateno=99
-trigger1 = var(56)=[0,1]
-trigger2 = var(56)=[5,7]
-trigger2 = fvar(39)=1
-
-;‚µ‚á‚ª‚İãƒLƒbƒN
-[State -1, ‚µ‚á‚ª‚İãƒLƒbƒN]
-type = ChangeState
-value = 430
-TriggerAll = var(59) >= 1
-triggerall = roundstate = 2
-triggerall = statetype != A
-triggerall = EnemyNear(var(58)),statetype != A
-triggerall = EnemyNear(var(58)),statetype != L
-triggerall = P2bodydist X = [40,61] ;48
-triggerall = (ctrl || stateno=19 || stateno=21) || stateno=99
-trigger1 = enemynear(var(58)),animtime<-10
-trigger1 = var(56)=[3,4]
-
-;—§‚¿‹­ƒLƒbƒN
-[State -1, —§‚¿‹­ƒLƒbƒN]
-type = ChangeState
-value = ifelse(p2bodydist x<20,240,245)
-TriggerAll = var(59) >= 1
-triggerall = roundstate = 2
-triggerall = statetype != A
-triggerall = EnemyNear(var(58)),statetype != A
-triggerall = EnemyNear(var(58)),statetype != L
-triggerall = p2bodydist x <= 50
-triggerall = (ctrl || stateno=19 || stateno=21) || stateno=99
-trigger1 = var(56)=[5,6]
-
-;==============================================================================
-; ‹ó’†
-;==============================================================================
-;ƒWƒƒƒ“ƒv‹­ƒpƒ“ƒ`
-[State -1, ƒWƒƒƒ“ƒv‹­ƒpƒ“ƒ`]
-type = ChangeState
-value = 610
-TriggerAll = var(59) >= 1
-triggerall = roundstate = 2
-triggerall = statetype = A
-triggerall = enemynear(var(58)),statetype = A
-triggerall = enemynear(var(58)),statetype != L
-;triggerall = vel y > 0
-triggerall = stateno != 105
-triggerall = ctrl
-triggerall = p2bodydist x = [-20,80+vel x*6+EnemyNear(var(58)),vel x*6]
-triggerall = p2bodydist y + vel y*6 = [-55,70]
-trigger1 = random<=var(59)*50
-
-;ƒWƒƒƒ“ƒv‹­ƒLƒbƒN
-[State -1, ƒWƒƒƒ“ƒv‹­ƒLƒbƒN]
-type = ChangeState
-value = 640
-TriggerAll = var(59) >= 1
-triggerall = roundstate = 2
-triggerall = statetype = A
-triggerall = enemynear(var(58)),statetype != A
-triggerall = enemynear(var(58)),statetype != L
-triggerall = vel y > -1
-triggerall = stateno != 105
-triggerall = ctrl
-triggerall = p2bodydist x = [-5,70+vel x*7+EnemyNear(var(58)),vel x*7]
-triggerall = p2bodydist y + vel y*7 = [-40,70]
-trigger1 = random<=var(59)*50
-
-;ƒGƒAEƒuƒŒ[ƒL
-[State -1, ƒGƒAEƒuƒŒ[ƒL]
-type = ChangeState
-value = 650
-TriggerAll = var(59) >= 1
-triggerall = roundstate = 2
-triggerall = statetype = A
-triggerall = enemynear(var(58)),statetype != A
-triggerall = enemynear(var(58)),statetype != L
-triggerall = stateno != 105
-triggerall = ctrl
-triggerall = p2bodydist x - enemynear(var(58)),vel x*6 = [50,110]
-triggerall = pos y <= -70
-trigger1 = random<=var(59)*50
-trigger2 = enemynear(var(58)),movetype=A
-trigger2 = random<=var(59)*15
-
-;==============================================================================
-; —§‚¿‰ñ‚è
-;==============================================================================
-;•à‚«Œã
-[State -1, Walk_back] 
-type = ChangeState 
-value = 21
-TriggerAll = var(59) >= 1
-triggerall = Roundstate = 2
-Triggerall = StateType != A
-TriggerAll = alive || Life>0
-;triggerall = var(57) = 0
-triggerall = (ctrl || stateno=19 || stateno=21) && time>2
-triggerall = stateno != 11 && prevstateno != 10
-triggerall = stateno != [120,159]
-Triggerall = EnemyNear(var(58)),MoveType != H
-;triggerall = prevstateno != [120,159]
-triggerall = !InGuardDist
-trigger1 = random%3<=1
-trigger1 = EnemyNear(var(58)),statetype = L
-trigger1 = EnemyNear(var(58)),StateNo=[5100,5120]
-trigger1 = p2bodydist x <= 50
-trigger2 = random%3<=1
-trigger2 = backedgebodydist>=50
-trigger2 = p2bodydist x <= 60
-
-;•à‚«Œã
-[State -1, Walk_back] 
-type = ChangeState 
-value = 21
-TriggerAll = var(59) >= 1
-triggerall = Roundstate = 2
-Triggerall = StateType != A
-TriggerAll = alive || Life>0
-;triggerall = var(57) = 0
-triggerall = (ctrl || stateno=19 || stateno=21) && time>2
-triggerall = stateno != 11 && prevstateno != 10
-triggerall = stateno != [120,159]
-;triggerall = prevstateno != [120,159]
-triggerall = !InGuardDist
-trigger1 = random%3<=1
-trigger1 = EnemyNear(var(58)),stateType = A
-trigger1 = EnemyNear(var(58)),moveType = H
-trigger1 = p2bodydist x <= -5
-
-;•à‚«‘O
-[State -1, Walk_fwd] 
-type = ChangeState 
-value = 19
-TriggerAll = var(59) >= 1
-triggerall = Roundstate = 2
-Triggerall = StateType != A
-TriggerAll = alive || Life>0
-;triggerall = var(57) = 0
-triggerall = (ctrl || stateno=19 || stateno=21) && time>2
-triggerall = stateno != 11 && prevstateno != 10
-triggerall = stateno != [120,159]
-;triggerall = prevstateno != [120,159]
-triggerall = !InGuardDist
-trigger1 = p2bodydist x >= 90
-trigger1 = random%3<=1
-trigger2 = p2bodydist x >= 135
-trigger2 = EnemyNear(var(58)),StateType = L
-trigger2 = EnemyNear(var(58)),StateNo=[5110,5120]
-trigger2 = random%3<=1
-
-[State -1,ƒoƒbƒNƒXƒeƒbƒv]
-Type     = ChangeState
-Value    = 105
-TriggerAll = var(59) >= 1
-triggerall = Roundstate = 2
-Triggerall = StateType != A
-Triggerall = enemynear(var(58)),MoveType != H
-Triggerall = EnemyNear(var(58)),StateType != A
-Triggerall = enemynear(var(58)),Stateno != [120,159]
-Triggerall = statetype = S
-Triggerall = backedgebodydist > 50
-triggerall = (ctrl || stateno=19 || stateno=21) && (stateno != 20 && stateno != 11)
-triggerall = facing*(enemynear(numenemy>=2),pos x-pos x)>0
-triggerall = fvar(39)=0
-Trigger1 = enemynear(var(58)),StateType != L
-Trigger1 = P2BodyDist X <= 50
-trigger1 = Random <= var(59)*13
-Trigger2 = enemynear(var(58)),StateType != L
-trigger2 = p2bodydist X =[-10,110]
-trigger2 = random < (15-var(59))*3
-Trigger3 = enemynear(var(58)),StateType != L
-Trigger3 = P2BodyDist X <= 30
-trigger3 = random <= var(59)*7
-
-[state -1,ƒ_ƒbƒVƒ…]
-type = ChangeState
-value = 99
-TriggerAll = var(59) >= 1
-triggerall = Roundstate = 2
-triggerall = statetype != A
-triggerall = statetype = S
-triggerall = (ctrl || stateno=19 || stateno=21) && (stateno != [99,100]) && (stateno != 10) && (stateno != 12) && (stateno!=[105,106])
-triggerall = EnemyNear(var(58)),stateno!=5120
-triggerall = EnemyNear(var(58)),stateType != L
-triggerall = EnemyNear(var(58)),stateType != A
-trigger1 = !inguarddist
-trigger1 = Random<=var(59)*25
-trigger1 = EnemyNear(var(58)),MoveType != A
-trigger1 = p2bodydist X >= 125
-
-[state -1, ƒWƒƒƒ“ƒv]
-Type = Changestate
-Value = 41
-TriggerAll = var(59) >= 1
-TriggerAll = Roundstate = 2
-TriggerAll = stateType != A
-Triggerall = (ctrl || stateno=19 || stateno=21 || stateno = 99)
-triggerall = prevstateno != [5100,5120]
-Triggerall = enemynear(var(58)),stateType != L
-triggerall = (enemynear(var(58)),stateno!=[5100,5120]);&&(enemynear(var(58)),stateno!=[5030,5060])&&(enemynear(var(58)),stateno!=1451)
-triggerall = (enemynear(var(58)),statetype != A)
-triggerall = P2bodydist X > 50+30*(stateno = 99)+(EnemyNear(var(35)),vel X*5)
-trigger1 = !inguarddist
-Trigger1 = enemynear(var(58)),MoveType != A
-;Trigger1 = P2BodyDist X = [50,125]
-;trigger1 = Random <= var(59)*25
-trigger1 = random < 65+20*(stateno = 99)+20*(P2bodydist X > 65 && vel X > 0)+100*(stateno = 99 && time < 3)+50*(stateno != 100 && P2bodydist X = [70,110])
-trigger1 = enemynear(var(58)),stateNo != [120,159]
-Trigger2 = InGuardDist
-trigger2 = enemynear(var(58)),MoveType = A
-trigger2 = HitDefAttr = SCA, NT, ST, HT
-Trigger2 = P2BodyDist X >= 0
-Trigger2 = P2BodyDist Y = [-30,0]
-trigger2 = Random <= var(59) * 40
-trigger3 = enemynear(var(58)),MoveType = A
-trigger3 = enemynear(var(58)),StateType = C
-Trigger3 = P2BodyDist X = [-3,80]
-trigger3 = Random <= var(59) * 30
-
-
-;==============================================================================
-; Œ¡§
-;==============================================================================
-;‚µ‚á‚ª‚İãƒpƒ“ƒ`
-[State -1, ‚µ‚á‚ª‚İãƒpƒ“ƒ`]
-type = ChangeState
-value = 400
-TriggerAll = var(59) >= 1
-TriggerAll = Roundstate = 2
-TriggerAll = stateType != A
-TriggerAll = enemynear(var(58)),StateType != L
-TriggerAll = enemynear(var(58)),StateType != A
-TriggerAll = enemynear(var(58)),MoveType != H
-TriggerAll =!InGuardDist
-TriggerAll = P2BodyDist X = [-2,50]
-TriggerAll =(enemynear(var(58)),StateNo != [120,159])
-Triggerall = (ctrl || stateno=19 || stateno=21) || stateno = 99
-Trigger1 = var(56)=[0,2]
-
-;—§‚¿‹­ƒpƒ“ƒ`
-[State -1, —§‚¿‹­ƒpƒ“ƒ`]
-type = ChangeState
-value = ifelse(p2bodydist x<20,215,210)
-TriggerAll = var(59) >= 1
-TriggerAll = Roundstate = 2
-TriggerAll = stateType != A
-TriggerAll = enemynear(var(58)),StateType != L
-;TriggerAll = enemynear(var(58)),StateType != A
-TriggerAll = enemynear(var(58)),MoveType != H
-TriggerAll =!InGuardDist
-TriggerAll = P2BodyDist X = [-2,60]
-triggerall = p2bodydist y >= -55
-TriggerAll =(enemynear(var(58)),StateNo != [120,159])
-Triggerall = (ctrl || stateno=19 || stateno=21) || stateno = 99
-Trigger1 = var(56)=[0,2]
-
-;‚µ‚á‚ª‚İãƒLƒbƒN
-[State -1, ‚µ‚á‚ª‚İãƒLƒbƒN]
-type = ChangeState
-value = 430
-TriggerAll = var(59) >= 1
-TriggerAll = Roundstate = 2
-TriggerAll = stateType != A
-TriggerAll = enemynear(var(58)),StateType != L
-TriggerAll = enemynear(var(58)),StateType != A
-TriggerAll = enemynear(var(58)),MoveType != H
-TriggerAll =!InGuardDist
-TriggerAll = P2BodyDist X = [-2,66]
-TriggerAll =(enemynear(var(58)),StateNo != [120,159])
-Triggerall = (ctrl || stateno=19 || stateno=21) || stateno = 99
-Trigger1 = var(56)=[3,4]
-
-;‚µ‚á‚ª‚İ‹­ƒLƒbƒN
-[State -1, ‚µ‚á‚ª‚İ‹­ƒLƒbƒN]
-type = ChangeState
-value = 440
-TriggerAll = var(59) >= 1
-TriggerAll = Roundstate = 2
-TriggerAll = stateType != A
-TriggerAll = enemynear(var(58)),StateType != L
-TriggerAll = enemynear(var(58)),StateType != A
-TriggerAll = enemynear(var(58)),MoveType != H
-TriggerAll =!InGuardDist
-TriggerAll = P2BodyDist X = [45,75]
-TriggerAll =(enemynear(var(58)),StateNo != [120,159])
-Triggerall = (ctrl || stateno=19 || stateno=21) || stateno = 99
-Trigger1 = var(56)=[4,6]
-
-;ãƒnƒ“ƒ}[ƒpƒ“ƒ`
-[State -1, ãƒnƒ“ƒ}[ƒpƒ“ƒ`]
-type = ChangeState
-value = 1000
-TriggerAll = var(59) >= 1
-TriggerAll = Roundstate = 2
-TriggerAll = stateType != A
-TriggerAll = enemynear(var(58)),StateType != L
-TriggerAll = enemynear(var(58)),StateType != A
-TriggerAll = enemynear(var(58)),MoveType != H
-TriggerAll =!InGuardDist
-TriggerAll = P2BodyDist X >=150
-triggerall = enemynear(var(58)),NumProj=0
-TriggerAll =(enemynear(var(58)),StateNo != [120,159])
-Triggerall = (ctrl || stateno=19 || stateno=21) || stateno = 99
-Trigger1 = random<=var(59)*20
-
-;ãƒnƒ“ƒ}[ƒpƒ“ƒ`
-[State -1, ãƒnƒ“ƒ}[ƒpƒ“ƒ`]
-type = ChangeState
-value = 1000
-TriggerAll = var(59) >= 1
-TriggerAll = Roundstate = 2
-TriggerAll = stateType != A
-TriggerAll = enemynear(var(58)),StateType != L
-TriggerAll = enemynear(var(58)),StateType != A
-;TriggerAll = enemynear(var(58)),MoveType != H
-;TriggerAll =!InGuardDist
-TriggerAll = P2BodyDist X >= 120
-;TriggerAll =(enemynear(var(58)),StateNo != [120,159])
-triggerall = NumEnemy >= 2
-Triggerall = (ctrl || stateno=19 || stateno=21) || stateno = 99
-Trigger1 = random<var(59)*6
-trigger2 = enemynear(var(58)),MoveType = A
-trigger2 = random<=50
-
-;ƒ[ƒ‰[ƒ_ƒbƒVƒ…
-[State -1, ƒ[ƒ‰[ƒ_ƒbƒVƒ…]
-type = ChangeState
-value = 1400
-TriggerAll = var(59) >= 1
-TriggerAll = Roundstate = 2
-TriggerAll = stateType != A
-TriggerAll = enemynear(var(58)),StateType != L
-TriggerAll = enemynear(var(58)),StateType != A
-TriggerAll = enemynear(var(58)),MoveType != H
-TriggerAll =!InGuardDist
-TriggerAll = enemynear(var(58)),numproj=0
-TriggerAll = P2BodyDist X = [65,85]
-TriggerAll =(enemynear(var(58)),StateNo != [120,159])
-Triggerall = (ctrl || stateno=19 || stateno=21) || stateno = 99
-Trigger1 = random<=60
-
-;------------------------------------------------------------------------------
-;==============================================================================
-; ’´•KE‹Z
-;==============================================================================
-;------------------------------------------------------------------------------
-[State -1, ƒXƒvƒŠƒbƒgƒAƒ^ƒbƒN]
-type = ChangeState
-value = 3200
-triggerall = command = "ƒXƒvƒŠƒbƒgƒAƒ^ƒbƒN"
+triggerall = command = "ï¿½Xï¿½vï¿½ï¿½ï¿½bï¿½gï¿½Aï¿½^ï¿½bï¿½N"
 triggerall = power >= 3000
 triggerall = statetype != A
 trigger1 = ctrl
 trigger2=(stateno=[200,499]) && movecontact
 
 ;------------------------------------------------------------------------------
-;ƒKƒgƒŠƒ“ƒOƒŒ[ƒU[1
-;[State -1, ƒKƒgƒŠƒ“ƒOƒŒ[ƒU[]
+;ï¿½Kï¿½gï¿½ï¿½ï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½[ï¿½Uï¿½[1
+;[State -1, ï¿½Kï¿½gï¿½ï¿½ï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½[ï¿½Uï¿½[]
 ;type = ChangeState
 ;value = 3100
-;triggerall = command = "ƒKƒgƒŠƒ“ƒOƒŒ[ƒU[1"
+;triggerall = command = "ï¿½Kï¿½gï¿½ï¿½ï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½[ï¿½Uï¿½[1"
 ;triggerall = power >= 1000
 ;triggerall = statetype != A
 ;trigger1 = ctrl
 ;trigger2=(stateno=[200,499]) && movecontact
 
-;ƒKƒgƒŠƒ“ƒOƒŒ[ƒU[2
-[State -1, ƒKƒgƒŠƒ“ƒOƒŒ[ƒU[]
+;ï¿½Kï¿½gï¿½ï¿½ï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½[ï¿½Uï¿½[2
+[State -1, ï¿½Kï¿½gï¿½ï¿½ï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½[ï¿½Uï¿½[]
 type = ChangeState
 value = 3110
-triggerall = command = "ƒKƒgƒŠƒ“ƒOƒŒ[ƒU[2"
+triggerall = command = "ï¿½Kï¿½gï¿½ï¿½ï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½[ï¿½Uï¿½[2"
 triggerall = power >= 2000
 triggerall = statetype != A
 trigger1 = ctrl
@@ -1581,90 +336,92 @@ trigger1 = ctrl
 trigger2=(stateno=[200,499]) && movecontact
 
 ;------------------------------------------------------------------------------
-;ƒ~ƒTƒCƒ‹ƒAƒ^ƒbƒN
-[State -1, ƒ~ƒTƒCƒ‹ƒAƒ^ƒbƒN]
+;ï¿½~ï¿½Tï¿½Cï¿½ï¿½ï¿½Aï¿½^ï¿½bï¿½N
+[State -1, ï¿½~ï¿½Tï¿½Cï¿½ï¿½ï¿½Aï¿½^ï¿½bï¿½N]
 type = ChangeState
 value = 3000
-triggerall = command = "ƒ~ƒTƒCƒ‹ƒAƒ^ƒbƒN"
+triggerall = command = "ï¿½~ï¿½Tï¿½Cï¿½ï¿½ï¿½Aï¿½^ï¿½bï¿½N"
 triggerall = power >= 1000
 triggerall = statetype != A
 trigger1 = ctrl
 trigger2=(stateno=[200,499]) && movecontact
 
 ;==============================================================================
-; •KE‹Z
+; ï¿½Kï¿½Eï¿½Z
 ;==============================================================================
 ;------------------------------------------------------------------------------
-;ƒƒPƒbƒgƒoƒY[ƒJ
-[State -1, ƒƒPƒbƒgƒoƒY[ƒJ]
+;ï¿½ï¿½ï¿½Pï¿½bï¿½gï¿½oï¿½Yï¿½[ï¿½J
+[State -1, ï¿½ï¿½ï¿½Pï¿½bï¿½gï¿½oï¿½Yï¿½[ï¿½J]
 type = ChangeState
 value = 1300
-triggerall = command = "ƒƒPƒbƒgƒoƒY[ƒJ"
+triggerall = !AILevel
+triggerall = command = "ï¿½ï¿½ï¿½Pï¿½bï¿½gï¿½oï¿½Yï¿½[ï¿½J"
 triggerall = statetype != A
 trigger1 = ctrl
 trigger2=(stateno=[200,499]) && movecontact
 
 ;------------------------------------------------------------------------------
-;ãƒtƒ‰ƒCƒ“ƒOƒpƒ[ƒ{ƒ€
-[State -1, ãƒtƒ‰ƒCƒ“ƒOƒpƒ[ƒ{ƒ€]
+;ï¿½ï¿½tï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½Oï¿½pï¿½ï¿½ï¿½[ï¿½{ï¿½ï¿½
+[State -1, ï¿½ï¿½tï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½Oï¿½pï¿½ï¿½ï¿½[ï¿½{ï¿½ï¿½]
 type = ChangeState
 value = 1200
-triggerall = command = "ãƒtƒ‰ƒCƒ“ƒOƒpƒ[ƒ{ƒ€"
+triggerall = command = "ï¿½ï¿½tï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½Oï¿½pï¿½ï¿½ï¿½[ï¿½{ï¿½ï¿½"
 triggerall = statetype != A
 trigger1 = ctrl
 trigger2=(stateno=[200,499]) && movecontact
 
-;‹­ƒtƒ‰ƒCƒ“ƒOƒpƒ[ƒ{ƒ€
-[State -1, ‹­ƒtƒ‰ƒCƒ“ƒOƒpƒ[ƒ{ƒ€]
+;ï¿½ï¿½ï¿½tï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½Oï¿½pï¿½ï¿½ï¿½[ï¿½{ï¿½ï¿½
+[State -1, ï¿½ï¿½ï¿½tï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½Oï¿½pï¿½ï¿½ï¿½[ï¿½{ï¿½ï¿½]
 type = ChangeState
 value = 1210
-triggerall = command = "‹­ƒtƒ‰ƒCƒ“ƒOƒpƒ[ƒ{ƒ€"
+triggerall = command = "ï¿½ï¿½ï¿½tï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½Oï¿½pï¿½ï¿½ï¿½[ï¿½{ï¿½ï¿½"
 triggerall = statetype != A
 trigger1 = ctrl
 trigger2=(stateno=[200,499]) && movecontact
 
 ;------------------------------------------------------------------------------
-;ƒtƒ‰ƒCƒ“ƒOƒgƒ‹ƒl[ƒh
-[State -1, ƒtƒ‰ƒCƒ“ƒOƒgƒ‹ƒl[ƒh]
+;ï¿½tï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½Oï¿½gï¿½ï¿½ï¿½lï¿½[ï¿½h
+[State -1, ï¿½tï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½Oï¿½gï¿½ï¿½ï¿½lï¿½[ï¿½h]
 type = ChangeState
 value = 1100
-triggerall = command = "ƒtƒ‰ƒCƒ“ƒOƒgƒ‹ƒl[ƒh"
+triggerall = !AILevel
+triggerall = command = "ï¿½tï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½Oï¿½gï¿½ï¿½ï¿½lï¿½[ï¿½h"
 triggerall = statetype != A
 trigger1 = ctrl
 trigger2=(stateno=[200,499]) && movecontact
 
 ;------------------------------------------------------------------------------
-;ƒ[ƒ‰[ƒ_ƒbƒVƒ…
-[State -1, ƒ[ƒ‰[ƒ_ƒbƒVƒ…]
+;ï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½[ï¿½_ï¿½bï¿½Vï¿½ï¿½
+[State -1, ï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½[ï¿½_ï¿½bï¿½Vï¿½ï¿½]
 type = ChangeState
 value = 1400
-triggerall = command = "ƒ[ƒ‰[ƒ_ƒbƒVƒ…"
+triggerall = command = "ï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½[ï¿½_ï¿½bï¿½Vï¿½ï¿½"
 triggerall = statetype != A
 trigger1 = ctrl
 trigger2=(stateno=[200,499]) && movecontact
 
 ;------------------------------------------------------------------------------
-;ãƒnƒ“ƒ}[ƒpƒ“ƒ`
-[State -1, ãƒnƒ“ƒ}[ƒpƒ“ƒ`]
+;ï¿½ï¿½nï¿½ï¿½ï¿½}ï¿½[ï¿½pï¿½ï¿½ï¿½`
+[State -1, ï¿½ï¿½nï¿½ï¿½ï¿½}ï¿½[ï¿½pï¿½ï¿½ï¿½`]
 type = ChangeState
 value = 1000
-triggerall = command = "ƒnƒ“ƒ}[ã"
+triggerall = command = "ï¿½nï¿½ï¿½ï¿½}ï¿½[ï¿½ï¿½"
 triggerall = statetype != A
 trigger1 = ctrl
 trigger2=(stateno=[200,499]) && movecontact
 
-;‹­ƒnƒ“ƒ}[ƒpƒ“ƒ`
-[State -1, ‹­ƒnƒ“ƒ}[ƒpƒ“ƒ`]
+;ï¿½ï¿½ï¿½nï¿½ï¿½ï¿½}ï¿½[ï¿½pï¿½ï¿½ï¿½`
+[State -1, ï¿½ï¿½ï¿½nï¿½ï¿½ï¿½}ï¿½[ï¿½pï¿½ï¿½ï¿½`]
 type = ChangeState
 value = 1010
-triggerall = command = "ƒnƒ“ƒ}[‹­"
+triggerall = command = "ï¿½nï¿½ï¿½ï¿½}ï¿½[ï¿½ï¿½"
 triggerall = statetype != A
 trigger1 = ctrl
 trigger2=(stateno=[200,499]) && movecontact
 
 ;------------------------------------------------------------------------------
 ;==============================================================================
-; ˆÚ“®ŠÖ˜A
+; ï¿½Ú“ï¿½ï¿½Ö˜A
 ;==============================================================================
 ;------------------------------------------------------------------------------
 
@@ -1682,51 +439,45 @@ value = 670
 triggerall = command = "CDattack"
 triggerall = statetype = A
 trigger1 = ctrl
-triggerall = var(59) = 0
 
 ;-------------------------------------------------------------Roll from falling
 [State -1]
 type = ChangeState
-triggerall = var(59) = 0
 triggerall = Vel Y > 0 && Pos Y >= -20 && alive && (StateNo = 5050 || StateNo = 5071)
 trigger1 = command = "recovery" || command = "z"
 value = 5201
 
 ;-------------------------------------------------------------Roll
-[State -1£¬½ô¼±»Ø±Ü]
+[State -1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø±ï¿½]
 type = ChangeState
 value = ifelse(command = "holdback",710,700)
-triggerall = var(59) = 0
 triggerall = command = "recovery" || command = "z"
 triggerall = statetype != A && winko = 0
 trigger1 = ctrl || (stateno = 100 && time >= 3)
 trigger2 = (stateno = [150,153]) && power >= 1000
 
 ;------------------------------------------------------------------------------
-[State -1, ‘–‚é]
+[State -1, ï¿½ï¿½ï¿½ï¿½]
 type = ChangeState
 value = 100
-triggerall = var(59) = 0
-trigger1 = command = "FF"
+triggerall = command = "FF"
 trigger1 = statetype = S
 trigger1 = ctrl
 
-[State -1, ƒoƒbƒNƒXƒeƒbƒv]
+[State -1, ï¿½oï¿½bï¿½Nï¿½Xï¿½eï¿½bï¿½v]
 type = ChangeState
 value = 105
-triggerall = var(59) = 0
-trigger1 = command = "BB"
+triggerall = command = "BB"
 trigger1 = statetype = S
 trigger1 = ctrl
 
 ;==============================================================================
-; “Áê‹Z
+; ï¿½ï¿½ï¿½ï¿½Z
 ;==============================================================================
 ;------------------------------------------------------------------------------
-[State -1, ƒ{ƒfƒB[ƒXƒ‰ƒ€];“Š‚°‹Z
+[State -1, ï¿½{ï¿½fï¿½Bï¿½[ï¿½Xï¿½ï¿½ï¿½ï¿½];ï¿½ï¿½ï¿½ï¿½ï¿½Z
 type = ChangeState
 value = 800
-triggerall =var(59) = 0
 triggerall = command = "y"||command = "b"
 triggerall = statetype = S
 triggerall = ctrl
@@ -1739,18 +490,17 @@ trigger1 = p2movetype != H
 ;------------------------------------------------------------------------------
 
 
-;ƒGƒAEƒuƒŒ[ƒL
-[State -1, ƒGƒAEƒuƒŒ[ƒL]
+;ï¿½Gï¿½Aï¿½Eï¿½uï¿½ï¿½ï¿½[ï¿½L
+[State -1, ï¿½Gï¿½Aï¿½Eï¿½uï¿½ï¿½ï¿½[ï¿½L]
 type = ChangeState
 value = 650
-triggerall = var(59)=0
-triggerall = command = "‘O•û‰ñ”ğ" || command = "z"
+triggerall = command = "ï¿½Oï¿½ï¿½ï¿½ï¿½ï¿½" || command = "z"
 trigger1 = statetype = A
 trigger1 = ctrl
 
 ;------------------------------------------------------------------------------
 ;==============================================================================
-; ’ÊíUŒ‚‹Z
+; ï¿½Êï¿½Uï¿½ï¿½ï¿½Z
 ;==============================================================================
 ;------------------------------------------------------------------------------
 ;Stand Light Punch Close
@@ -1927,47 +677,106 @@ trigger5 = (stateno = [430,439])&& movecontact
 trigger6 = stateno = 100 
 
 ;------------------------------------------------------------------------------
-[State -1, ƒWƒƒƒ“ƒvãƒpƒ“ƒ`]
+[State -1, ï¿½Wï¿½ï¿½ï¿½ï¿½ï¿½vï¿½ï¿½pï¿½ï¿½ï¿½`]
 type = ChangeState
 value = 600
-triggerall = var(59)=0
 triggerall = command = "x"
 trigger1 = stateno != 105
 trigger1 = statetype = A
 trigger1 = ctrl
 
-[State -1, ƒWƒƒƒ“ƒv‹­ƒpƒ“ƒ`]
+[State -1, ï¿½Wï¿½ï¿½ï¿½ï¿½ï¿½vï¿½ï¿½ï¿½pï¿½ï¿½ï¿½`]
 type = ChangeState
 value = 610
-triggerall = var(59)=0
 triggerall = command = "y"
 trigger1 = stateno != 105
 trigger1 = statetype = A
 trigger1 = ctrl
 
-[State -1, ƒWƒƒƒ“ƒvãƒLƒbƒN]
+[State -1, ï¿½Wï¿½ï¿½ï¿½ï¿½ï¿½vï¿½ï¿½Lï¿½bï¿½N]
 type = ChangeState
 value = 630
-triggerall = var(59)=0
 triggerall = command = "a"
 trigger1 = stateno != 105
 trigger1 = statetype = A
 trigger1 = ctrl
 
-[State -1, ƒWƒƒƒ“ƒv‹­ƒLƒbƒN]
+[State -1, ï¿½Wï¿½ï¿½ï¿½ï¿½ï¿½vï¿½ï¿½ï¿½Lï¿½bï¿½N]
 type = ChangeState
 value = 640
-triggerall = var(59)=0
 triggerall = command = "b"
 trigger1 = stateno != 105
 trigger1 = statetype = A
 trigger1 = ctrl
 
 ;------------------------------------------------------------------------------
-[State -1, ’§”­]
+[State -1, ï¿½ï¿½ï¿½ï¿½]
 type = ChangeState
 value = 195
-triggerall = var(59)=0
 triggerall = command = "start"
 trigger1 = statetype != A
 trigger1 = ctrl
+
+
+;---------------------------------------------------------------------------
+JAMBU AI
+;---------------------------------------------------------------------------
+[State -1, AI Guard]
+type = ChangeState
+value = 120
+triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
+triggerall = AILevel * AILevel * AILevel * 2 > random
+triggerall = InGuardDist
+trigger1 = ctrl
+
+[State -1, AI Taunt]
+type = ChangeState
+value = 195
+triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
+triggerall = p2bodydist x > 100 && statetype != A
+triggerall = p2movetype = H && Life >= P2Life
+trigger1 = ctrl
+
+[State -1, AI Forward]
+type = ChangeState
+value = 1400
+triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
+triggerall = AILevel * AILevel * AILevel > random
+triggerall = p2bodydist x > 100 && statetype != A
+trigger1 = ctrl
+
+[State -1, AI Grab]
+type = ChangeState
+value = 1300
+triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
+triggerall = AILevel * AILevel * AILevel * 2 > random
+triggerall = p2bodydist x < 20 && statetype != A
+trigger1 = ctrl
+
+[State -1, AI LowHit]
+type = ChangeState
+value = 430
+triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
+triggerall = AILevel * AILevel * AILevel > random
+triggerall = p2bodydist x < 50 && statetype != A
+trigger1 = ctrl
+trigger2 = movehit && animtime >= 0
+
+[State -1, AI MediumHit]
+type = ChangeState
+value = 210
+triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
+triggerall = AILevel * AILevel * AILevel > random
+triggerall = p2bodydist x < 50 && statetype != A
+trigger1 = ctrl
+trigger2 = movehit && animtime >= 0
+
+[State -1, AI FollowUp]
+type = ChangeState
+value = 1000
+triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
+triggerall = AILevel * AILevel * AILevel * 2 > random
+triggerall = p2bodydist x < 50 && statetype != A
+trigger1 = movehit && animtime >= 0
+;---------------------------------------------------------------------------
+;---------------------------------------------------------------------------
