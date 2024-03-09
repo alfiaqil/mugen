@@ -863,7 +863,7 @@ value = 195
 triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
 triggerall = p2bodydist x > 100 && statetype != A
 triggerall = p2movetype = H && Life >= P2Life
-trigger1 = ctrl
+trigger1 = ctrl && animtime >= 0
 
 [State -1, AI Forward]
 type = ChangeState
@@ -871,7 +871,7 @@ value = 700
 triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
 triggerall = AILevel * AILevel * AILevel > random
 triggerall = p2bodydist x > 100 && statetype != A
-trigger1 = ctrl
+trigger1 = ctrl && animtime >= 0
 
 [State -1, AI LowHit]
 type = ChangeState

@@ -428,26 +428,6 @@ trigger2=(stateno=[200,499]) && movecontact
 ;---------------------------------------------------------------------------
 
 
-;---------------------------------------------------------------------------
-;Power! Unit!
-;[State -1, Power! Unit!]
-;type = ChangeState
-;value = 3150
-;triggerall = roundstate = 2
-;triggerall = numhelper(3110) = 1
-;triggerall = numhelper(3126) = 0
-;triggerall = command = "Baseball Stars"
-;trigger1 = ctrl
-;trigger2 = stateno = 900 && anim = 100 && animelemtime(2) >= 0
-;trigger3 = stateno = 901
-;trigger4 = stateno = 200 && (animelemtime(2) >= 0 && animelemtime(3) < 1)
-;trigger5 = stateno = 210 && (animelemtime(2) >= 0 && animelemtime(5) < 0)
-;trigger6 = stateno = 230 && (animelemtime(3) >= 0 && animelemtime(4) < 0)
-;trigger7 = stateno = 400 && (animelemtime(2) >= 0 && animelemtime(3) < 0)
-;trigger8 = movecontact && stateno = 405 && (animelemtime(5)>= 0 && animelemtime(7) < 0)
-;trigger9 = movecontact && stateno = 445 && (animelemtime(3)>= 0 && animelemtime(5) < 0)
-;trigger10 = stateno = 1100 && (animelemtime(3) > 0 && animelemtime(6) < 0)
-;trigger11 = stateno = 1300
 
 ;---------------------------------------------------------------------------
 ; 2020 Super Catch
@@ -617,7 +597,6 @@ trigger1 = ctrl
 [State -1, Top Hunting Throw]
 type = ChangeState
 value = 800
-triggerall = var(59)!=1
 triggerall = roundstate=2
 triggerall = command = "y"
 triggerall = command = "holdfwd" || command = "holdback"
@@ -684,7 +663,6 @@ trigger1 = ctrl
 [State -1, Stand Light Punch]
 type = ChangeState
 value = 200
-triggerall = var(59) != 1
 triggerall = command = "x"
 triggerall = command != "holddown"
 triggerall = statetype != A
@@ -695,7 +673,6 @@ trigger2 = stateno = 100
 [State -1, Stand Medium Punch]
 type = ChangeState
 value = 210
-triggerall = var(59) != 1
 triggerall = command = "y"
 triggerall = command != "holddown"
 triggerall = statetype != A
@@ -711,7 +688,6 @@ trigger6 = stateno = 100
 [State -1, Stand Light Kick]
 type = ChangeState
 value = 230
-triggerall = var(59) != 1
 triggerall = command = "a"
 triggerall = command != "holddown"
 triggerall = statetype != A
@@ -724,7 +700,6 @@ trigger4 = stateno = 100
 [State -1, Stand Medium Kick]
 type = ChangeState
 value = 240
-triggerall = var(59) != 1
 triggerall = command = "b"
 triggerall = command != "holddown"
 triggerall = statetype != A
@@ -741,7 +716,6 @@ trigger6 = stateno = 100
 [State -1, Crouching Light Punch]
 type = ChangeState
 value = 400
-triggerall = var(59) != 1
 triggerall = command = "x"
 triggerall = command = "holddown"
 triggerall = statetype != A
@@ -751,7 +725,6 @@ trigger1 = ctrl
 [State -1, Crouching Medium Punch]
 type = ChangeState
 value = 410
-triggerall = var(59) != 1
 triggerall = command = "y"
 triggerall = command = "holddown"
 triggerall = statetype != A
@@ -766,7 +739,6 @@ trigger5 = (stateno = [430,439])&& movecontact
 [State -1, Crouching Light Kick]
 type = ChangeState
 value = 430
-triggerall = var(59) != 1
 triggerall = command = "a"
 triggerall = command = "holddown"
 triggerall = statetype != A
@@ -778,7 +750,6 @@ trigger3 = (stateno = [400,409])&& movecontact
 [State -1, Crouching Medium Kick]
 type = ChangeState
 value = 440
-triggerall = var(59) != 1
 triggerall = command = "b"
 triggerall = command = "holddown"
 triggerall = statetype != A
@@ -795,7 +766,6 @@ trigger6 = stateno = 100
 [State -1, Jump Light Punch]
 type = ChangeState
 value = 600
-triggerall = var(59) != 1
 triggerall = command = "x"
 triggerall = statetype = A
 trigger1 = ctrl
@@ -805,7 +775,6 @@ trigger2 = stateno = 100000
 [State -1, Jump Medium Punch]
 type = ChangeState
 value = 610
-triggerall = var(59) != 1
 triggerall = command = "y"
 triggerall = statetype = A
 trigger1 = ctrl
@@ -821,7 +790,6 @@ trigger4 = stateno = 100000
 [State -1, Jump Light Kick]
 type = ChangeState
 value = 630
-triggerall = var(59) != 1
 triggerall = command = "a"
 triggerall = statetype = A
 trigger1 = ctrl
@@ -832,7 +800,6 @@ trigger3 = stateno = 100000
 [State -1, Jump Medium Kick]
 type = ChangeState
 value = 640
-triggerall = var(59) != 1
 triggerall = command = "b"
 triggerall = statetype = A
 trigger1 = ctrl
@@ -841,3 +808,62 @@ trigger3 = (stateno = [630,639])&& movecontact
 trigger4 = stateno = 100000
 
 
+
+
+;---------------------------------------------------------------------------
+JAMBU AI
+;---------------------------------------------------------------------------
+[State -1, AI Guard]
+type = ChangeState
+value = 120
+triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
+triggerall = AILevel * AILevel * AILevel * 2 > random
+triggerall = InGuardDist
+trigger1 = ctrl
+
+;uniq, dist 200
+[State -1, AI Taunt]
+type = ChangeState
+value = 195
+triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
+triggerall = p2bodydist x > 200 && statetype != A
+triggerall = p2movetype = H && Life >= P2Life
+trigger1 = ctrl
+
+;uniq, spam
+[State -1, AI Range]
+type = ChangeState
+value = 1000
+triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
+triggerall = AILevel * AILevel * AILevel> random
+triggerall = p2bodydist x > 100 && statetype != A
+trigger1 = ctrl
+
+;uniq, knock back
+[State -1, AI FollowUp]
+type = ChangeState
+value = 1100
+triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
+triggerall = AILevel * AILevel * AILevel * 2 > random
+triggerall = p2bodydist x < 50 && statetype != A
+trigger1 = movehit && animtime >= 0
+
+[State -1, AI LowHit]
+type = ChangeState
+value = 430
+triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
+triggerall = AILevel * AILevel * AILevel > random
+triggerall = p2bodydist x < 50 && statetype != A
+trigger1 = ctrl
+trigger2 = movehit && animtime >= 0
+
+[State -1, AI MediumHit]
+type = ChangeState
+value = 210
+triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
+triggerall = AILevel * AILevel * AILevel > random
+triggerall = p2bodydist x < 50 && statetype != A
+trigger1 = ctrl
+trigger2 = movehit && animtime >= 0
+;---------------------------------------------------------------------------
+;---------------------------------------------------------------------------
