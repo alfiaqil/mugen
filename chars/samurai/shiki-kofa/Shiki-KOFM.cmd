@@ -313,6 +313,7 @@ trigger2=(stateno=[200,499]) && movecontact
 [State -1, gods's rebellion]
 type = ChangeState
 value = 1660
+triggerall = !AILevel
 triggerall = command = "gods's rebellion"
 triggerall = power >= 1000
 triggerall = statetype != A
@@ -401,6 +402,7 @@ trigger2=(stateno=[200,499]) && movecontact
 [State -1, Kiss]
 type = ChangeState
 value = 1300
+triggerall = !AILevel
 triggerall = command = "Kiss"
 triggerall = statetype != A
 trigger1 = ctrl
@@ -840,6 +842,14 @@ triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
 triggerall = AILevel * AILevel * AILevel > random
 triggerall = p2bodydist x > 100 && statetype != A
 trigger1 = ctrl
+
+[State -1, AI Grab]
+type = ChangeState
+value = 1300
+triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
+triggerall = AILevel * AILevel * AILevel * 2> random
+triggerall = p2bodydist x < 20 && statetype != A
+trigger1 = ctrl && animtime >= 0
 
 [State -1, AI LowHit]
 type = ChangeState

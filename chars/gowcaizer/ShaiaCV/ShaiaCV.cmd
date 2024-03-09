@@ -573,7 +573,7 @@ type = ChangeState
 value = 195
 triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
 triggerall = p2bodydist x > 200 && statetype != A
-triggerall = p2movetype = H && Life >= P2Life * 2
+triggerall = p2movetype = H && Life >= P2Life
 trigger1 = ctrl
 
 [State -1, AI Escape]
