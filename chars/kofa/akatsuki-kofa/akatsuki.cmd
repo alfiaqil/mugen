@@ -585,7 +585,7 @@ type = ChangeState
 value = 1200
 triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
 triggerall = AILevel * AILevel * AILevel * 2 > random
-triggerall = statetype != A
+triggerall = p2bodydist x < 50 && statetype != A
 trigger1 = movecontact && stateno = 1300 && animtime >= 0
 
 [State -1, AI Forward]
