@@ -11,6 +11,176 @@ s = s
 command.time = 15
 command.buffer.time = 1
 ;==============================================================
+;AI Commands
+[Command]
+name = "cpu"
+command = D, F, U, UF, D, F, x+y
+time = 0
+
+[Command]
+name = "cpu2"
+command = B, F, U, DB, D, F, a+b
+time = 0
+
+[Command]
+name = "cpu3"
+command = B, U, DB, D, F, D, c
+time = 0
+
+[Command]
+name = "cpu4"
+command = F, D, UB, F, B, D, a
+time = 0
+
+[Command]
+name = "cpu5"
+command = F+a, b+c+D, c+x+a+UB
+time = 0
+
+[Command]
+name = "cpu6"
+command = F+b+c, D, UB, c+a, c+x+UF
+time = 0
+
+[Command]
+name = "cpu7"
+command = F, U, B, F, UF, U, B, DF, c+z
+time = 0
+
+[Command]
+name = "cpu8"
+command = F, U, B, F, UF, U, B, DU, c+z
+time = 0
+
+[Command]
+name = "cpu9"
+command = F, U, B, F, UF, U, B, D, D, c+z
+time = 0
+
+[Command]
+name = "cpu10"
+command = F, U, B, F, UF, U, B, c+z+UB
+time = 0
+
+[Command]
+name = "cpu11"
+command = F, U, B, F, UF, U, B, c+z+UD
+time = 0
+
+[Command]
+name = "cpu12"
+command = F, U, B, F, UF, U, B, a+b
+time = 0
+
+[Command]
+name = "cpu13"
+command = F, U, B, F, UF, U, B, c+y
+time = 0
+
+[Command]
+name = "cpu14"
+command = F, U, B, F, UF, U, B, c+x
+time = 0
+
+[Command]
+name = "cpu15"
+command = F, U, B, F, UF, U, B, c+b
+time = 0
+
+[Command]
+name = "cpu16"
+command = F, U, B, F, UF, U, B, c+a
+time = 0
+
+[Command]
+name = "cpu17"
+command = F, U, B, F, UF, U, B, c+z+b
+time = 0
+
+[Command]
+name = "cpu18"
+command = F, U, B, F, UF, U, B, c+z+a
+time = 0
+
+[Command]
+name = "cpu19"
+command = F, U, B, F, UF, U, B, c+z+x
+time = 0
+
+[Command]
+name = "cpu20"
+command = F, U, B, F, UF, U, B, c+z+B
+time = 0
+
+[Command]
+name = "cpu21"
+command = F, U, B, F, UF, U, B, c+z+y
+time = 0
+
+[Command]
+name = "cpu22"
+command = F, U, B, F, UF, U, B, a+b
+time = 0
+
+[Command]
+name = "cpu23"
+command = F, U, B, F, UF, U, B, c+y
+time = 0
+
+[Command]
+name = "cpu24"
+command = F, U, B, F, UF, U, B, c+x
+time = 0
+
+[Command]
+name = "cpu25"
+command = F, U, B, F, UF, U, B, c+b
+time = 0
+
+[Command]
+name = "cpu26"
+command = F, U, B, F, UF, U, B, c+a
+time = 0
+
+[Command]
+name = "cpu27"
+command = F, U, B, F, UF, U, B, c+z+b
+time = 0
+
+[Command]
+name = "cpu28"
+command = F, U, B, F, UF, U, B, c+z+a
+time = 0
+
+[Command]
+name = "cpu29"
+command = F, U, B, F, UF, U, B, c+z+x
+time = 0
+
+[Command]
+name = "cpu30"
+command = F, U, B, F, UF, U, B, c+z+B
+time = 0
+
+[Command]
+name = "cpu31"
+command = F, UD, B, F, UF, U, B, c+z+y
+time = 0
+
+[Command]
+name = "cpu32"
+command = F, U, BD, F, UF, U, B, c+z+y
+time = 0
+
+[Command]
+name = "cpu33"
+command = F, UF, B, F, UF, U, B, c+z+y
+time = 0
+
+[Command]
+name = "cpu34"
+command = D, D, D, D, D, D, D, x
+time = 1
 ;-| Super Motions |--------------------------------------------------------
 ;Hyper Moves
 
@@ -266,6 +436,58 @@ time = 1
 ; Don't remove the following line. It's required by the CMD standard.
 [Statedef -1]
 
+;===========================================================================
+;---------------------------------------------------------------------------
+;Smash Kung Fu Upper (uses one super bar)
+;[State -1, Smash Kung Fu Upper]
+;type = ChangeState
+;value = 3050
+;triggerall = command = "SmashKFUpper"
+;triggerall = power >= 1000
+;triggerall = statetype != A
+;trigger1 = ctrl
+;trigger2 = hitdefattr = SC, NA, SA, HA
+;trigger2 = stateno != [3050,3100)
+;trigger2 = movecontact
+;trigger3 = stateno = 1310 || stateno = 1330 ;From blocking
+
+;===========================================================================
+;This is not a move, but it sets up var(1) to be 1 if conditions are right
+;for a combo into a special move (used below).
+;Since a lot of special moves rely on the same conditions, this reduces
+;redundant logic.
+;[State -1, Combo condition Reset]
+;type = VarSet
+;trigger1 = 1
+;var(1) = 0
+
+;[State -1, Combo condition Check]
+;type = VarSet
+;trigger1 = statetype != A
+;trigger1 = ctrl
+;trigger2 = (stateno = [200,299]) || (stateno = [400,499])
+;trigger2 = stateno != 440 ;Except for sweep kick
+;trigger2 = movecontact
+;trigger3 = stateno = 1310 || stateno = 1330 ;From blocking
+;var(1) = 1
+
+;---------------------------------------------------------------------------
+[State -1, AI Activation]
+type = varset
+triggerall = AILevel > 2
+triggerall = (roundstate = 2) && (var(50) = 0)
+trigger1 = Random <= ((AILevel-2)*100)
+v = 50
+value = 1
+
+[State -1, AI Deactivation]
+type = varset
+triggerall = AIlevel < 7
+triggerall = var(50) = 1
+trigger1 = Random > ((AILevel-2)*100)
+trigger2 = roundstate != 2
+v = 50
+value = 0
 ;----------------------------------------------------------------------------
 ;Hellcycle
 [State -1, Hellcycle]
@@ -274,6 +496,7 @@ value = 4000
 triggerall = command = "Hellcycle"
 triggerall = power >= 2000
 triggerall = statetype != A
+triggerall = var(59) <= 0
 trigger1 = ctrl
 trigger2=(stateno=[200,499]) && movecontact
 trigger3 = prevstateno = 4008
@@ -298,6 +521,7 @@ value = 4008
 triggerall = command = "Hyperchain"
 triggerall = power >= 1000
 triggerall = statetype != A
+triggerall = var(59) <= 0
 trigger1 = ctrl
 trigger2=(stateno=[200,499]) && movecontact
 trigger3=stateno= 4000
@@ -310,6 +534,7 @@ value = 4009
 triggerall = command = "Hyperfireball"
 triggerall = power >= 1000
 triggerall = statetype != A
+triggerall = var(59) <= 0
 trigger1 = ctrl
 trigger2=(stateno=[200,499]) && movecontact
 
@@ -321,6 +546,7 @@ value = 4018
 triggerall = command = "Penancestare"
 triggerall = power >= 3000
 triggerall = statetype != A
+triggerall = var(59) <= 0
 trigger1 = ctrl
 trigger2=(stateno=[200,499]) && movecontact
 
@@ -332,6 +558,7 @@ type = ChangeState
 value = 3050
 triggerall = command = "Charge"
 triggerall = statetype != A
+triggerall = var(59) <= 0
 trigger1 = ctrl
 trigger2=(stateno=[200,499]) && movecontact
 
@@ -352,6 +579,7 @@ type = ChangeState
 value = 3070
 triggerall = command = "FlameWhip"
 triggerall = statetype != A
+triggerall = var(59) <= 0
 trigger1 = ctrl
 trigger2=(stateno=[200,499]) && movecontact
 
@@ -362,6 +590,7 @@ type = ChangeState
 value = 2012
 triggerall = command = "Fireball"
 triggerall = statetype != A
+triggerall = var(59) <= 0
 trigger1 = ctrl
 trigger2=(stateno=[200,499]) && movecontact
 
@@ -393,6 +622,7 @@ type = ChangeState
 value = 2013
 triggerall = command = "flamebreath"
 triggerall = statetype != A
+triggerall = var(59) <= 0
 trigger1 = ctrl
 trigger2=(stateno=[200,499]) && movecontact
 
@@ -415,6 +645,7 @@ type = ChangeState
 value = 2020
 triggerall = command = "flamebreath_high"
 triggerall = statetype != A
+triggerall = var(59) <= 0
 trigger1 = ctrl
 trigger2=(stateno=[200,499]) && movecontact
 
@@ -425,6 +656,7 @@ type = ChangeState
 value = 2018
 triggerall = command = "FirePillar"
 triggerall = statetype != A
+triggerall = var(59) <= 0
 trigger1 = ctrl
 trigger2=(stateno=[200,499]) && movecontact
 ;----------------------------------------------------------------------------
@@ -434,6 +666,7 @@ type = ChangeState
 value = 2050
 triggerall = command = "FirePillarD"
 triggerall = statetype != A
+triggerall = var(59) <= 0
 trigger1 = ctrl
 trigger2=(stateno=[200,499]) && movecontact
 
@@ -444,6 +677,7 @@ type = ChangeState
 value = 3060
 triggerall = command = "ArialChainattack"
 triggerall = statetype = A
+triggerall = var(59) <= 0
 trigger1 = ctrl
 trigger2=(stateno=[600,699]) && movecontact
 
@@ -456,6 +690,7 @@ trigger2=(stateno=[600,699]) && movecontact
 [State -1, Run Fwd]
 type = ChangeState
 value = 100
+triggerall = var(59) <= 0
 trigger1 = command = "FF"
 trigger1 = statetype = S
 trigger1 = ctrl
@@ -465,6 +700,7 @@ trigger1 = ctrl
 [State -1, Run Back]
 type = ChangeState
 value = 105
+triggerall = var(59) <= 0
 trigger1 = command = "BB"
 trigger1 = statetype = S
 trigger1 = ctrl
@@ -478,6 +714,7 @@ triggerall = command = "y"
 triggerall = statetype = S
 triggerall = ctrl
 triggerall = stateno != 100
+triggerall = var(59) <= 0
 trigger1 = command = "holdfwd"
 trigger1 = p2bodydist X < 3
 trigger1 = (p2statetype = S) || (p2statetype = C)
@@ -497,6 +734,7 @@ value = 122
 triggerall = (command = "x" && command = "a") || command = "z"
 triggerall = command = "holdback"
 triggerall = statetype != A
+triggerall = var(59) <= 0
 trigger1 = ctrl
 trigger2=(stateno=[200,499]) && movecontact
 
@@ -506,6 +744,7 @@ type = ChangeState
 value = 112
 triggerall = (command = "x" && command = "a") || command = "z"
 triggerall = statetype != A
+triggerall = var(59) <= 0
 trigger1 = ctrl
 trigger2=(stateno=[200,499]) && movecontact
 
@@ -519,6 +758,7 @@ value = 521
 triggerall = command="holdback"
 triggerall = (command = "y" && command = "b") || command = "c"
 triggerall = statetype != A
+triggerall = var(59) <= 0
 trigger1 = ctrl
 trigger2=(stateno=[200,499]) && movecontact
 
@@ -528,6 +768,7 @@ type = ChangeState
 value = 520
 triggerall = (command = "y" && command = "b") || command = "c"
 triggerall = statetype != A
+triggerall = var(59) <= 0
 trigger1 = ctrl
 trigger2=(stateno=[200,499]) && movecontact
 
@@ -537,6 +778,7 @@ type = ChangeState
 value = 620
 triggerall = (command = "y" && command = "b") || command = "c"
 triggerall = statetype = A
+triggerall = var(59) <= 0
 trigger1 = ctrl
 trigger2=(stateno=[600,699]) && movecontact
 
@@ -549,6 +791,7 @@ value = 200
 triggerall = command = "x"
 triggerall = command != "holddown"
 triggerall = statetype != A
+triggerall = var(59) <= 0
 trigger1 = ctrl
 trigger2 = stateno = 100
 
@@ -559,6 +802,7 @@ value = 210
 triggerall = command = "y"
 triggerall = command != "holddown"
 triggerall = statetype != A
+triggerall = var(59) <= 0
 trigger1 = ctrl
 trigger2 = (stateno = [200,209])&& movecontact
 trigger3 = (stateno = [230,239])&& movecontact
@@ -575,6 +819,7 @@ value = 230
 triggerall = command = "a"
 triggerall = command != "holddown"
 triggerall = statetype != A
+triggerall = var(59) <= 0
 trigger1 = ctrl
 trigger2 = (stateno = [200,209])&& movecontact
 trigger3 = (stateno = [400,409])&& movecontact
@@ -588,6 +833,7 @@ triggerall = command = "b"
 triggerall = command = "holdfwd"
 triggerall = command != "holddown"
 triggerall = statetype != A
+triggerall = var(59) <= 0
 trigger1 = ctrl
 trigger2 = (stateno = [200,219])&& movecontact
 trigger3 = (stateno = [230,239])&& movecontact
@@ -602,6 +848,7 @@ value = 240
 triggerall = command = "b"
 triggerall = command != "holddown"
 triggerall = statetype != A
+triggerall = var(59) <= 0
 trigger1 = ctrl
 trigger2 = (stateno = [200,219])&& movecontact
 trigger3 = (stateno = [230,239])&& movecontact
@@ -615,6 +862,7 @@ trigger6 = stateno = 100
 type = ChangeState
 value = 195
 triggerall = command = "start"
+triggerall = var(59) <= 0
 trigger1 = statetype != A
 trigger1 = ctrl
 
@@ -627,6 +875,7 @@ value = 400
 triggerall = command = "x"
 triggerall = command = "holddown"
 triggerall = statetype != A
+triggerall = var(59) <= 0
 trigger1 = ctrl  
 
 ;Crouching Medium Punch
@@ -637,6 +886,7 @@ triggerall = command = "y"
 triggerall = command = "holdfwd"
 triggerall = command = "holddown"
 triggerall = statetype != A
+triggerall = var(59) <= 0
 trigger1 = ctrl
 trigger2 = (stateno = [200,209])&& movecontact
 trigger3 = (stateno = [230,239])&& movecontact
@@ -650,6 +900,7 @@ value = 410
 triggerall = command = "y"
 triggerall = command = "holddown"
 triggerall = statetype != A
+triggerall = var(59) <= 0
 trigger1 = ctrl
 trigger2 = (stateno = [200,209])&& movecontact
 trigger3 = (stateno = [230,239])&& movecontact
@@ -666,6 +917,7 @@ triggerall = command = "a"
 triggerall = command = "holddown"
 triggerall = command = "holdfwd"
 triggerall = statetype != A
+triggerall = var(59) <= 0
 trigger1 = ctrl
 trigger2 = (stateno = [200,209])&& movecontact
 trigger3 = (stateno = [400,409])&& movecontact  
@@ -677,6 +929,7 @@ value = 430
 triggerall = command = "a"
 triggerall = command = "holddown"
 triggerall = statetype != A
+triggerall = var(59) <= 0
 trigger1 = ctrl
 trigger2 = (stateno = [200,209])&& movecontact
 trigger3 = (stateno = [400,409])&& movecontact  
@@ -688,6 +941,7 @@ value = 440
 triggerall = command = "b"
 triggerall = command = "holddown"
 triggerall = statetype != A
+triggerall = var(59) <= 0
 trigger1 = ctrl
 trigger2 = (stateno = [200,219])&& movecontact
 trigger3 = (stateno = [230,239])&& movecontact
@@ -701,6 +955,7 @@ trigger6 = stateno = 100
 type = ChangeState
 value = 600
 triggerall = command = "x"
+triggerall = var(59) <= 0
 trigger1 = statetype = A
 trigger1 = ctrl
 trigger2 = (stateno = 610)  
@@ -712,6 +967,7 @@ trigger2 = movecontact
 type = ChangeState
 value = 610
 triggerall = command = "y"
+triggerall = var(59) <= 0
 trigger1 = statetype = A
 trigger1 = ctrl
 trigger2 = (stateno = 630)  ||  (stateno = 600)  ||  (stateno = 640)  
@@ -728,6 +984,7 @@ value = 640
 triggerall = command = "a"
 triggerall = vel X != 0
 triggerall = statetype = A
+triggerall = var(59) <= 0
 trigger1 = ctrl
 trigger2 = (stateno = 600)  
 trigger2 = movecontact
@@ -739,6 +996,7 @@ value = 630
 triggerall = command = "a"
 triggerall = vel X = 0
 triggerall = statetype = A
+triggerall = var(59) <= 0
 trigger1 = ctrl
 trigger2 = (stateno = 630)  ||  (stateno = 610)  ||  (stateno = 600)  
 trigger2 = movecontact
@@ -748,6 +1006,7 @@ trigger2 = movecontact
 type = ChangeState
 value = 650
 triggerall = command = "b"
+triggerall = var(59) <= 0
 trigger1 = statetype = A
 trigger1 = ctrl
 trigger2 = (stateno = 630)  ||  (stateno = 610)  ||  (stateno = 600)  ||  (stateno = 640) ||  (stateno = 620)
@@ -755,59 +1014,3 @@ trigger2 = movecontact
 
 
 
-
-
-;---------------------------------------------------------------------------
-JAMBU AI
-;---------------------------------------------------------------------------
-[State -1, AI Guard]
-type = ChangeState
-value = 120
-triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
-triggerall = AILevel * AILevel * AILevel * 2 > random
-triggerall = InGuardDist
-trigger1 = ctrl
-
-[State -1, AI Taunt]
-type = ChangeState
-value = 195
-triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
-triggerall = p2bodydist x > 100 && statetype != A
-triggerall = p2movetype = H && Life >= P2Life
-trigger1 = ctrl
-
-[State -1, AI Forward]
-type = ChangeState
-value = 3050
-triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
-triggerall = AILevel * AILevel * AILevel > random
-triggerall = p2bodydist x > 100 && statetype != A
-trigger1 = ctrl
-
-[State -1, AI LowHit]
-type = ChangeState
-value = 430
-triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
-triggerall = AILevel * AILevel * AILevel > random
-triggerall = p2bodydist x < 50 && statetype != A
-trigger1 = ctrl
-trigger2 = movehit && animtime >= 0
-
-[State -1, AI MediumHit]
-type = ChangeState
-value = 210
-triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
-triggerall = AILevel * AILevel * AILevel > random
-triggerall = p2bodydist x < 50 && statetype != A
-trigger1 = ctrl
-trigger2 = movehit && animtime >= 0
-
-[State -1, AI FollowUp]
-type = ChangeState
-value = 3000
-triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
-triggerall = AILevel * AILevel * AILevel * 2 > random
-triggerall = p2bodydist x < 50 && statetype != A
-trigger1 = movehit && animtime >= 0
-;---------------------------------------------------------------------------
-;---------------------------------------------------------------------------
