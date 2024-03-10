@@ -1,0 +1,1152 @@
+;\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+;---------------------------------------------------------------------------
+;---------------------------------------------------------------------------
+;アトミックガイ
+;---------------------------------------------------------------------------
+;---------------------------------------------------------------------------
+;\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+;---------------------------------------------------------------------------
+;---------------------------------------------------------------------------
+;\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+; 登場
+[Statedef 4190]
+type    = S
+movetype= A
+physics = N
+juggle  = 0
+poweradd= 0
+velset = 0,10
+anim = 4190
+sprpriority = 1
+ctrl = 0
+
+[state a];変身用タイムカウント
+type = varset
+trigger1 = time = 0
+v = 26
+value = 850
+
+
+[state a]
+type = posadd
+trigger1 = time = 0
+y = -350
+
+;---------------------[効果音]
+[state a];こんてぃも(?)
+type = playsnd
+trigger1 = time = 5
+value = 4190,0
+
+;---------------------[腕のエフェクト]
+[State removeexplod];前のステートの光消去
+type = removeexplod
+trigger1 = time = 0
+ID = 4000
+
+[State explod];ブレスレットの光
+type = Explod
+trigger1 = numexplod(4000) = 0
+anim = 4192
+id = 4000
+sprpriority = 2
+postype = p1
+pos = 0,0
+bindtime = -1
+removetime = -1
+supermove = 0
+under = 0
+
+[State 02];カメラ固定
+type = screenbound
+trigger1 = 1
+value = 1
+movecamera = 1
+
+
+
+[state 00]
+type = changestate
+trigger1 = Vel Y > 0
+trigger1 = Pos Y >= 0
+value = 4191
+
+
+;\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+; 登場着地
+[Statedef 4191]
+type    = S
+movetype= A
+physics = N
+juggle  = 0
+poweradd= 0
+velset = 0,0
+anim = 4191
+sprpriority = 1
+ctrl = 0
+
+[state a]
+type = posset
+trigger1 = time = 0
+y = 0
+
+;---------------------[効果音]
+[state a];着地
+type = playsnd
+trigger1 = time = 0
+value = 40,0
+
+;---------------------[腕のエフェクト]
+[State removeexplod];前のステートの光消去
+type = removeexplod
+trigger1 = time = 0
+ID = 4000
+
+[State explod];ブレスレットの光
+type = Explod
+trigger1 = numexplod(4000) = 0
+anim = 4193
+id = 4000
+sprpriority = 2
+postype = p1
+pos = 0,0
+bindtime = -1
+removetime = -1
+supermove = 0
+under = 0
+
+[State 02];カメラ固定
+type = screenbound
+trigger1 = 1
+value = 1
+movecamera = 1
+
+;---------------------[ステートチェンジ]
+[state a]
+type = changestate
+trigger1 = animtime = 0
+value = 4000
+
+
+;---------------------------------------------------------------------------
+; 立ちモーション
+[Statedef 4000]
+type = S
+physics = S
+sprpriority = 0
+anim = 4000
+
+[State 00]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+
+;---------------------[腕のエフェクト]
+[State removeexplod];前のステートの光消去
+type = removeexplod
+trigger1 = time = 0
+ID = 4000
+
+[State explod];ブレスレットの光
+type = Explod
+trigger1 = numexplod(4000) = 0
+anim = 4001
+id = 4000
+sprpriority = 2
+postype = p1
+pos = 0,0
+bindtime = -1
+removetime = -1
+supermove = 1
+under = 0
+
+;---------------------[]
+[state a]
+type = changeanim
+trigger1 = p2Dist X < 0
+value = 4000
+
+[State removeexplod];前のステートの光消去
+type = removeexplod
+trigger1 = p2Dist X < 0
+ID = 4000
+
+[state a]
+type = turn
+trigger1 = p2Dist X < 0
+
+[State 0, 2]
+type = VelSet
+trigger1 = Time = 0
+y = 0
+
+[State 0, 3] ;Stop moving if low velocity or 4 ticks pass
+type = VelSet
+trigger1 = abs(vel x) < 2
+trigger2 = Time = 4
+x = 0
+
+[State 0, 4] ;Are you dead?
+type = ChangeState
+trigger1 = !alive
+value = 5050
+
+;---------------------[打撃防御]
+[state a]
+type = reversaldef
+trigger1 = 1
+attr = S,HA
+reversal.attr = SCA,NA,SA,HA
+pausetime = 0,4
+hitsound = s310,var(6)
+numhits = 0
+
+[State 02];カメラ固定
+type = screenbound
+trigger1 = 1
+value = 1
+movecamera = 1
+
+;---------------------[]
+[state a];前進
+type = changestate
+trigger1 = command = "holdfwd"
+value = 4020
+
+[state a];後退
+type = changestate
+trigger1 = command = "holdback"
+value = 4021
+
+[state a];ジャンプ
+type = changestate
+trigger1 = command = "holdup"
+value = 4040
+
+[state a];メガトンスパーク
+type = changestate
+trigger1 = command = "メガトンスパーク"
+value = 4800
+
+[state a];アトミックパンチ
+type = changestate
+trigger1 = command = "x"
+value = 4200
+
+[state a];アトミックパンチ
+type = changestate
+trigger1 = command = "y"
+value = 4200
+
+[state a];アトミックスライディング
+type = changestate
+trigger1 = command = "a"
+value = 4400
+
+[state a];アトミックスライディング
+type = changestate
+trigger1 = command = "b"
+value = 4400
+
+[state a];変身終了
+type = changestate
+trigger1 = command = "BB"
+trigger2 = var(26) <= 0
+value = 4900
+
+
+;---------------------------------------------------------------------------
+; 前進
+[Statedef 4020]
+type = S
+physics = S
+sprpriority = 0
+anim = 4020
+
+[State 00]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+
+;---------------------[腕のエフェクト]
+[State removeexplod];前のステートの光消去
+type = removeexplod
+trigger1 = time = 0
+ID = 4000
+
+[State explod];ブレスレットの光
+type = Explod
+trigger1 = numexplod(4000) = 0
+anim = 4025
+id = 4000
+sprpriority = 2
+postype = p1
+pos = 0,0
+bindtime = -1
+removetime = -1
+supermove = 0
+under = 0
+
+;---------------------[速度]
+[state a]
+type = velset
+trigger1 = 1
+x = 3.5
+
+;---------------------[打撃防御]
+[state a]
+type = reversaldef
+trigger1 = 1
+attr = S,HA
+reversal.attr = SCA,NA,SA,HA
+pausetime = 0,4
+hitsound = s310,var(6)
+numhits = 0
+
+[State 02];カメラ固定
+type = screenbound
+trigger1 = 1
+value = 1
+movecamera = 1
+
+;---------------------[]
+[state a];ジャンプ
+type = changestate
+trigger1 = command = "holdup"
+value = 4040
+
+[state a]
+type = changestate
+trigger1 = command != "holdfwd"
+value = 4000
+
+[state a];メガトンスパーク
+type = changestate
+trigger1 = command = "メガトンスパーク"
+value = 4800
+
+[state a];アトミックパンチ
+type = changestate
+trigger1 = command = "x"
+value = 4200
+
+[state a];アトミックパンチ
+type = changestate
+trigger1 = command = "y"
+value = 4200
+
+[state a];アトミックスライディング
+type = changestate
+trigger1 = command = "a"
+value = 4400
+
+[state a];アトミックスライディング
+type = changestate
+trigger1 = command = "b"
+value = 4400
+
+[state a];変身終了
+type = changestate
+trigger1 = command = "BB"
+trigger2 = var(26) <= 0
+value = 4900
+
+;---------------------------------------------------------------------------
+; 後退
+[Statedef 4021]
+type = S
+physics = S
+sprpriority = 0
+anim = 4021
+
+[State 00]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+
+;---------------------[腕のエフェクト]
+[State removeexplod];前のステートの光消去
+type = removeexplod
+trigger1 = time = 0
+ID = 4000
+
+[State explod];ブレスレットの光
+type = Explod
+trigger1 = numexplod(4000) = 0
+anim = 4026
+id = 4000
+sprpriority = 2
+postype = p1
+pos = 0,0
+bindtime = -1
+removetime = -1
+supermove = 0
+under = 0
+
+;---------------------[速度]
+[state a]
+type = velset
+trigger1 = 1
+x = -3.5
+
+;---------------------[打撃防御]
+[state a]
+type = reversaldef
+trigger1 = 1
+attr = S,HA
+reversal.attr = SCA,NA,SA,HA
+pausetime = 0,4
+hitsound = s310,var(6)
+numhits = 0
+
+[State 02];カメラ固定
+type = screenbound
+trigger1 = 1
+value = 1
+movecamera = 1
+
+;---------------------[]
+[state a];ジャンプ
+type = changestate
+trigger1 = command = "holdup"
+value = 4040
+
+[state a]
+type = changestate
+trigger1 = command != "holdback"
+value = 4000
+
+[state a];メガトンスパーク
+type = changestate
+trigger1 = command = "メガトンスパーク"
+value = 4800
+
+[state a];アトミックパンチ
+type = changestate
+trigger1 = command = "x"
+value = 4200
+
+[state a];アトミックパンチ
+type = changestate
+trigger1 = command = "y"
+value = 4200
+
+[state a];アトミックスライディング
+type = changestate
+trigger1 = command = "a"
+value = 4400
+
+[state a];アトミックスライディング
+type = changestate
+trigger1 = command = "b"
+value = 4400
+
+[state a];変身終了
+type = changestate
+trigger1 = command = "BB"
+trigger2 = var(26) <= 0
+value = 4900
+
+;---------------------------------------------------------------------------
+; ジャンプスタート
+[Statedef 4040]
+type    = S
+physics = S
+anim = 4040
+ctrl = 0
+velset = 0,0
+sprpriority = 1
+
+;---------------------[腕のエフェクト]
+[State removeexplod];前のステートの光消去
+type = removeexplod
+trigger1 = time = 0
+ID = 4000
+
+[State explod];ブレスレットの光
+type = Explod
+trigger1 = time = 0
+anim = 4050
+id = 4000
+sprpriority = 2
+postype = p1
+pos = 0,0
+bindtime = -1
+removetime = -1
+supermove = 0
+under = 0
+
+;---------------------[]
+
+[State 40, 1]
+type = VarSet
+trigger1 = Time = 0
+sysvar(1) = 0
+
+[State 40, 2]
+type = VarSet
+trigger1 = command = "holdfwd"
+sysvar(1) = 1
+
+[State 40, 3]
+type = VarSet
+trigger1 = command = "holdback"
+sysvar(1) = -1
+
+[State 40, 4]
+type = VelSet
+trigger1 = AnimTime = 0
+x = ifelse(sysvar(1)=0, const(velocity.jump.neu.x), ifelse(sysvar(1)=1, const(velocity.jump.fwd.x), const(velocity.jump.back.x)))
+y = const(velocity.jump.y)
+
+[State 40, 5]
+type = VelSet
+trigger1 = AnimTime = 0
+trigger1 = prevstateno = 100 ;RUN_FWD
+trigger1 = sysvar(1) = 1
+x = const(velocity.runjump.fwd.x)
+
+;---------------------[打撃防御]
+[State 00]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+
+[state a]
+type = reversaldef
+trigger1 = 1
+attr = S,HA
+reversal.attr = SCA,NA,SA,HA
+pausetime = 0,4
+hitsound = s310,var(6)
+numhits = 0
+
+[State 02];カメラ固定
+type = screenbound
+trigger1 = 1
+value = 1
+movecamera = 1
+
+;---------------------[]
+[State 40, 6]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 4050
+
+;---------------------------------------------------------------------------
+; ジャンプ
+[Statedef 4050]
+type    = A
+physics = N
+anime = 4041
+
+[state a]
+type = changeanim
+trigger1 = time = 0
+value = 4041
+
+[State 50, 1]
+type = VarSet
+trigger1 = Time = 0
+sysvar(1) = 0
+
+[state a]
+type = veladd
+trigger1 = 1
+y = 0.52
+
+;---------------------[効果音]
+[state a];ジャンプ
+type = playsnd
+trigger1 = time = 0
+value = 40,1
+
+;---------------------[腕のエフェクト]
+[State removeexplod];前のステートの光消去
+type = removeexplod
+trigger1 = time = 0
+ID = 4000
+
+[State explod];ブレスレットの光
+type = Explod
+trigger1 = time = 0
+anim = 4042
+id = 4000
+sprpriority = 2
+postype = p1
+pos = 0,0
+bindtime = -1
+removetime = -1
+supermove = 0
+under = 0
+
+;---------------------[打撃防御]
+[State 00]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+
+[state a]
+type = reversaldef
+trigger1 = 1
+attr = S,HA
+reversal.attr = SCA,NA,SA,HA
+pausetime = 0,4
+hitsound = s310,var(6)
+numhits = 0
+
+[State 02];カメラ固定
+type = screenbound
+trigger1 = 1
+value = 1
+movecamera = 1
+
+;---------------------[]
+
+;---------------------[]
+[state a];アトミックスラッシュ
+type = changestate
+trigger1 = command = "x"
+value = 4600
+
+[state a];アトミックスラッシュ
+type = changestate
+trigger1 = command = "y"
+value = 4600
+
+[state a];アトミックスラッシュ
+type = changestate
+trigger1 = command = "a"
+value = 4600
+
+[state a];アトミックスラッシュ
+type = changestate
+trigger1 = command = "b"
+value = 4600
+
+[state 00]
+type = changestate
+trigger1 = Vel Y > 0
+trigger1 = Pos Y >= 0
+value = 4052
+
+;---------------------------------------------------------------------------
+; 着地
+[Statedef 4052]
+type    = S
+physics = S
+ctrl = 0
+velset = 0,0
+anim = 4047
+
+;---------------------[効果音]
+[state a];着地
+type = playsnd
+trigger1 = time = 0
+value = 40,0
+
+;---------------------[腕のエフェクト]
+[State removeexplod];前のステートの光消去
+type = removeexplod
+trigger1 = time = 0
+ID = 4000
+
+[State explod];ブレスレットの光
+type = Explod
+trigger1 = time = 0
+anim = 4051
+id = 4000
+sprpriority = 2
+postype = p1
+pos = 0,0
+bindtime = -1
+removetime = -1
+supermove = 0
+under = 0
+;---------------------[]
+
+[State 52, 1]
+type = VelSet
+trigger1 = Time = 0
+y = 0
+
+[State 52, 2]
+type = PosSet
+trigger1 = Time = 0
+y = 0
+
+;---------------------[打撃防御]
+[State 00]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+
+[state a]
+type = reversaldef
+trigger1 = 1
+attr = S,HA
+reversal.attr = SCA,NA,SA,HA
+pausetime = 0,4
+hitsound = s310,var(6)
+numhits = 0
+
+[State 02];カメラ固定
+type = screenbound
+trigger1 = 1
+value = 1
+movecamera = 1
+
+;---------------------[]
+
+[State 52, 4]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 4000
+
+
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+;---------------------------------------------------------------------------
+;アトミックパンチ
+[Statedef 4200]
+type    = S
+movetype= A
+physics = S
+juggle  = 0
+poweradd= 0
+ctrl = 0
+velset = 0,0
+anim = 4200
+
+;---------------------[腕のエフェクト]
+[State removeexplod];前のステートの光消去
+type = removeexplod
+trigger1 = time = 0
+ID = 4000
+
+[State explod];ブレスレットの光
+type = Explod
+trigger1 = animelem = 1
+anim = 4201
+id = 4000
+sprpriority = 2
+postype = p1
+pos = 0,0
+bindtime = -1
+supermove = 0
+ignorehitpause = 0
+under = 0
+;---------------------[]
+
+[State 210, 1]
+type = PlaySnd
+trigger1 = animelem = 2
+value = 4200, 0
+
+[State 200, 1]
+type = PlaySnd
+trigger1 = animelem = 2
+value = 410, 0
+
+[State 210, 2]
+type = HitDef
+trigger1 = animelem = 2
+attr = S, HA
+animtype  = up
+damage    = 80,80
+priority = 12, Hit
+getpower = 0,0
+hitflag = MAFLD
+guardflag = N
+pausetime = 20,12
+sparkno = S30002
+sparkxy = -10,-87
+hitsound   = s2,4;310,var(6)
+guardsound = s120,0
+guard.sparkno = s30040
+ground.type = low
+ground.slidetime = 17
+ground.hittime  = 17
+ground.velocity = -3,-4
+air.velocity = -3,-4
+envshake.time = 15
+envshake.ampl = -7
+envshake.freq = 92
+envshake.phase = 92
+ID = 4000
+fall = 1
+fall.recover = 0
+
+;---------------------[打撃防御]
+[State 00]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+
+[State 02];カメラ固定
+type = screenbound
+trigger1 = 1
+value = 1
+movecamera = 1
+
+[state a]
+type = varadd
+trigger1 = time = 0
+v = 26
+value = -10
+
+[State 210, 5]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 4000
+
+
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+;---------------------------------------------------------------------------
+;アトミックスライディング
+[Statedef 4400]
+type    = S
+movetype= A
+physics = S
+juggle  = 0
+poweradd= 0
+ctrl = 0
+velset = 10,0
+anim = 4400
+
+;---------------------[腕のエフェクト]
+[State removeexplod];前のステートの光消去
+type = removeexplod
+trigger1 = time = 0
+ID = 4000
+
+[State explod];ブレスレットの光
+type = Explod
+trigger1 = animelem = 1
+anim = 4401
+id = 4000
+sprpriority = 2
+postype = p1
+pos = 0,0
+bindtime = -1
+supermove = 0
+ignorehitpause = 0
+under = 0
+;---------------------[]
+
+[State 210, 1]
+type = PlaySnd
+trigger1 = animelem = 2
+value = 4400, 0
+
+[State 200, 1]
+type = PlaySnd
+trigger1 = animelem = 2
+value = 440, 0
+
+[State 210, 2]
+type = HitDef
+trigger1 = animelem = 2
+attr = C, HA
+animtype  = up
+damage    = 80,80
+priority = 12, Hit
+getpower = 0,0
+hitflag = MAFLD
+guardflag = N
+pausetime = 20,12
+sparkno = S30002
+sparkxy = -10,-44
+hitsound   = s1200,2
+guardsound = s120,0
+guard.sparkno = s30040
+ground.type = low
+ground.slidetime = 17
+ground.hittime  = 17
+ground.velocity = -3,-6
+air.velocity = -3,-6
+envshake.time = 15
+envshake.ampl = -7
+envshake.freq = 92
+envshake.phase = 92
+ID = 4000
+fall = 1
+fall.recover = 0
+
+;---------------------[打撃防御]
+[State 00]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+
+[State 02];カメラ固定
+type = screenbound
+trigger1 = 1
+value = 1
+movecamera = 1
+
+[state a]
+type = varadd
+trigger1 = time = 0
+v = 26
+value = -10
+
+[State 210, 5]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 4000
+
+
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+;---------------------------------------------------------------------------
+;アトミックスラッシュ
+[Statedef 4600]
+type    = A
+movetype= A
+physics = N
+juggle  = 0
+poweradd= 0
+ctrl = 0
+anim = 4600
+
+;---------------------[腕のエフェクト]
+[State removeexplod];前のステートの光消去
+type = removeexplod
+trigger1 = time = 0
+ID = 4000
+
+[State explod];ブレスレットの光
+type = Explod
+trigger1 = animelem = 1
+anim = 4601
+id = 4000
+sprpriority = 2
+postype = p1
+pos = 0,0
+bindtime = -1
+supermove = 0
+ignorehitpause = 0
+under = 0
+;---------------------[]
+
+[State 210, 1]
+type = PlaySnd
+trigger1 = animelem = 2
+value = 4400, 0
+
+[State 200, 1]
+type = PlaySnd
+trigger1 = animelem = 2
+value = 410, 0
+
+[State 210, 2]
+type = HitDef
+trigger1 = animelem = 2
+attr = C, HA
+animtype  = up
+damage    = 80,80
+priority = 12, Hit
+getpower = 0,0
+hitflag = MAFLD
+guardflag = N
+pausetime = 20,12
+sparkno = S30002
+sparkxy = -10,-44
+hitsound   = s1200,2
+guardsound = s120,0
+guard.sparkno = s30040
+ground.type = low
+ground.slidetime = 17
+ground.hittime  = 17
+ground.velocity = -3,-6
+air.velocity = -3,-6
+envshake.time = 15
+envshake.ampl = -7
+envshake.freq = 92
+envshake.phase = 92
+ID = 4000
+fall = 1
+fall.recover = 0
+
+[state a]
+type = veladd
+trigger1 = 1
+y = 0.52
+
+;---------------------[打撃防御]
+[State 00]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+
+[State 02];カメラ固定
+type = screenbound
+trigger1 = 1
+value = 1
+movecamera = 1
+
+[state a]
+type = varadd
+trigger1 = time = 0
+v = 26
+value = -10
+
+;---------------------[]
+[state 00]
+type = changestate
+trigger1 = Vel Y > 0
+trigger1 = Pos Y >= 0
+value = 4052
+
+
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+;---------------------------------------------------------------------------
+;メガトンスパーク
+[Statedef 4800]
+type    = S
+movetype= A
+physics = S
+juggle  = 0
+poweradd= 0
+ctrl = 0
+velset = 0,0
+anim = 4800
+
+;---------------------[腕のエフェクト]
+[State removeexplod];前のステートの光消去
+type = removeexplod
+trigger1 = time = 0
+ID = 4000
+
+[State explod];ブレスレットの光
+type = Explod
+trigger1 = animelem = 1
+anim = 4801
+id = 4000
+sprpriority = 2
+postype = p1
+pos = 0,0
+bindtime = -1
+supermove = 0
+ignorehitpause = 0
+under = 0
+;---------------------[]
+
+[State 210, 1]
+type = PlaySnd
+trigger1 = animelem = 2
+value = 4200, 0
+
+[State 200, 1]
+type = PlaySnd
+trigger1 = animelem = 2
+value = 1300, 1
+
+[State 210, 2]
+type = HitDef
+trigger1 = hitcount <= 8
+attr = S, HA
+animtype  = up
+damage    = 40,40
+priority = 12, Hit
+getpower = 0,0
+hitflag = MAFLD
+guardflag = N
+pausetime = 2,12
+sparkno = S30002
+sparkxy = -10,-87
+hitsound   = s1300,2
+guardsound = s120,0
+guard.sparkno = s30040
+ground.type = low
+ground.slidetime = 17
+ground.hittime  = 17
+ground.velocity = ifelse(enemy,BackEdgeBodyDist <= 10,0,-5),-4
+air.velocity = ifelse(enemy,BackEdgeBodyDist <= 10,0,-5),-4
+palfx.time =45
+palfx.mul = 230,230,250
+palfx.sinadd = 255,255,255,5;palfx.sinadd = 63,65,68,5
+palfx.add = 16,16,16
+palfx.color = 1
+palfx.invertall = 1
+ID = 4000
+fall = 1
+fall.recover = 0
+
+[State 3040, 7]
+type = EnvColor
+trigger1 = movehit = 1
+ignorehitpause = 0
+time = 1
+value = 255,255,255
+under = 2
+
+;---------------------[打撃防御]
+[State 00]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+
+[State 02];カメラ固定
+type = screenbound
+trigger1 = 1
+value = 1
+movecamera = 1
+
+[state a]
+type = varadd
+trigger1 = time = 0
+v = 26
+value = -100
+
+[State 210, 5]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 4000
+
+
+;---------------------------------------------------------------------------
+;変身終了
+[Statedef 4900]
+type    = S
+movetype= A
+physics = S
+juggle  = 0
+poweradd= 0
+velset = 0,0
+ctrl = 0
+anim = 4900
+
+;---------------------[腕のエフェクト]
+[State removeexplod];前のステートの光消去
+type = removeexplod
+trigger1 = time = 0
+ID = 4000
+
+
+[State 3040, 7]
+type = EnvColor
+trigger1 = time = 0
+persistent = 0
+ignorehitpause = 1
+time = 2
+value = 255,255,255
+under = 2
+
+;---------------------[打撃防御]
+[State 00]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+
+[State 02];カメラ固定
+type = screenbound
+trigger1 = 1
+value = 1
+movecamera = 1
+
+;---------------------[]
+[state 00]
+type = changestate
+trigger1 = animtime = 0
+value = 11
+ctrl = 1
