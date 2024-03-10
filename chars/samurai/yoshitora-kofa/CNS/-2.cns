@@ -1,4 +1,26 @@
 [Statedef -2]
+
+;[State -2,]
+;type = SelfState
+;triggerall = alive
+;triggerall = roundstate = 2
+;trigger1 = movetype = H
+;trigger1 = anim = 5100+(anim%10)
+;value = 870
+
+[State -3, Jumping Sound]
+type = PlaySnd
+triggerall = Time = 1
+trigger1 = stateno = 40 ;Jump
+value = S41,41
+
+[State -3, Landing Sound]
+type = PlaySnd
+triggerall = Time = 1
+trigger1 = stateno = 52 ;Land
+trigger2 = stateno = 106 ;Land
+value = S51,51
+
 ;意味：
 ;	常時実行されるstate
 ;	※今回は使用されていないがこういったstateもあります
