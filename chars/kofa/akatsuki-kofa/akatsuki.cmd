@@ -579,14 +579,21 @@ triggerall = p2bodydist x > 100 && statetype != A
 triggerall = p2movetype = H && Life >= P2Life
 trigger1 = ctrl
 
-;uniq, electric upper
+;uniq, combo system
 [State -1, AI FollowUp]
 type = ChangeState
 value = 1200
 triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
 triggerall = AILevel * AILevel * AILevel * 2 > random
 triggerall = p2bodydist x < 50 && statetype != A
-trigger1 = movecontact && stateno = 1300 && animtime >= 0
+trigger1 = movehit && animtime >= 0 && stateno = 1300
+[State -1, AI Anti Air]
+type = ChangeState
+value = 1000
+triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
+triggerall = AILevel * AILevel * AILevel > random
+triggerall = p2statetype = A && statetype != A
+trigger1 = ctrl
 
 [State -1, AI Forward]
 type = ChangeState
@@ -614,12 +621,13 @@ triggerall = p2bodydist x < 50 && statetype != A
 trigger1 = ctrl
 trigger2 = movehit && animtime >= 0
 
+;uniq, no dist
 [State -1, AI FollowUp]
 type = ChangeState
 value = 1100
 triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
 triggerall = AILevel * AILevel * AILevel * 2 > random
-triggerall = p2bodydist x < 50 && statetype != A
+triggerall = statetype != A
 trigger1 = movehit && animtime >= 0
 ;---------------------------------------------------------------------------
 ;---------------------------------------------------------------------------
