@@ -34,7 +34,7 @@ command = ~D, F, D, F, c
 time = 30
 
 [Command]
-name = "Ryû Seî Ken"   ;Same name as above
+name = "Ryï¿½ Seï¿½ Ken"   ;Same name as above
 command = ~D, F, D, F, c
 time = 30
 
@@ -48,11 +48,11 @@ command = ~D, F, D, F, z
 time = 30
 
 [Command]
-name = "Ryû Seî Ken1"
+name = "Ryï¿½ Seï¿½ Ken1"
 command = ~D, F, D, F, x
 time = 30
 [Command]
-name = "Ryû Seî Ken1"
+name = "Ryï¿½ Seï¿½ Ken1"
 command = ~D, F, D, F, y
 time = 30
 
@@ -94,7 +94,7 @@ name = "Light FIREBALL_x"
 command = ~D,DF,F, x
 time = 30
 [Command]
-name = "médium FIREBALL_y"
+name = "mï¿½dium FIREBALL_y"
 command = ~D,DF,F, y
 time = 30
 
@@ -111,7 +111,7 @@ time = 30
 ;time = 30
 
 [Command]
-name = " médium Eagle Tough Lash_b"
+name = " mï¿½dium Eagle Tough Lash_b"
 command = ~D, DF, F, a
 time = 30
 [Command]
@@ -127,7 +127,7 @@ time = 30
 ;time = 30
 
 ;[Command]
-;name = "médium Eagle Toe Flash_b"
+;name = "mï¿½dium Eagle Toe Flash_b"
 ;command = ~D, DF, F, b
 ;time = 30
 
@@ -272,15 +272,12 @@ time = 1
 
 [Statedef -1]
 
-; AI
-
-
 ;==========================================================================
 ;SAINT KO SAINT KO SAINT KO SAINT KO SAINT KO SAINT KO SAINT KO SAINT KO SAINT KO
 ;===========================================================================
 
 ;Eagle Toe Flash
-;désactivé
+;dï¿½sactivï¿½
 ;[State -1,"Eagle Toe Flash" ]
 ;type = ChangeState
 ;value = 4000
@@ -295,22 +292,22 @@ time = 1
 ; FURY
 ;===========================================================================
 
-;huper Ryû Seî Ken  vitesse du son
-[State -1, Ryû Seî Ken]
+;huper Ryï¿½ Seï¿½ Ken  vitesse du son
+[State -1, Ryï¿½ Seï¿½ Ken]
 type = ChangeState
 value = 3020
-triggerall = command = "Ryû Seî Ken1"
+triggerall = command = "Ryï¿½ Seï¿½ Ken1"
 triggerall = power >= 1000
 triggerall = statetype != A
 trigger1 = ctrl
 trigger2=(stateno=[200,499]) && movecontact
 
 
-;huper Ryû Seî Ken  2 foie la vitesse du son
-[State -1, Ryû Seî Ken]
+;huper Ryï¿½ Seï¿½ Ken  2 foie la vitesse du son
+[State -1, Ryï¿½ Seï¿½ Ken]
 type = ChangeState
 value = 3000
-triggerall = command = "Ryû Seî Ken"
+triggerall = command = "Ryï¿½ Seï¿½ Ken"
 triggerall = power >= 3000
 triggerall = statetype != A
 trigger1 = ctrl
@@ -339,24 +336,6 @@ triggerall = statetype = A
 trigger1 = ctrl
 trigger2=(stateno=[600,699]) && movecontact
 
-
-
-;===========================================================================
-;===========================================================================
-;"hyper Eagle Tough Lash
-;tenporaire
-;===========================================================================
-
-;[State -1, "medium hyper Eagle Tough Lash"]
-;type = ChangeState
-;value = 3062
-;triggerall = command ="medium hyper Eagle Tough Lash"
-;triggerall = power >= 2000
-;triggerall = statetype = A
-;trigger1 = ctrl
-;trigger2=(stateno=[600,699]) && movecontact
-
-
 [State -1, "Strong hyper Eagle Tough Lash"]
 type = ChangeState
 value = 3063
@@ -375,38 +354,6 @@ triggerall = power >= 1000
 triggerall = statetype != A
 trigger1 = ctrl
 trigger2=(stateno=[200,499]) && movecontact
-
-;===========================================================================
-;Combo condition
-;===========================================================================
-;This is not a move, but it sets up var(1) to be 1 if conditions are right
-;for a combo into a special move (used below).
-;Since a lot of special moves rely on the same conditions, this reduces
-;redundant logic.
-;[State -1, Combo condition Reset]
-;type = VarSet
-;trigger1 = 1
-;var(1) = 0
-
-;[State -1, Combo condition Check]
-;type = VarSet
-;trigger1 = statetype != A
-;trigger1 = ctrl
-;trigger2 = (stateno = [200,299]) || (stateno = [400,499])
-;trigger2 = stateno != 440 ;Except for sweep kick
-;trigger2 = movecontact
-;var(1) = 1
-
-;[State -1, Combo condition Check]
-;type = VarSet
-;trigger1 = statetype != S
-;trigger1 = ctrl
-;trigger2 = (stateno = [600,620]) || (stateno = [630,409])
-;var(1) = 1
-;===========================================================================
-;ATTAQUES
-;===========================================================================
-;meteoros no ar
 
 [State -1, Meteoro Air]
 type = ChangeState
@@ -429,18 +376,9 @@ trigger2=(stateno=[600,699]) && movecontact
 
 ;===========================================================================
 ;===========================================================================
-;Volcanic eruption  désactivé
+;Volcanic eruption  dï¿½sactivï¿½
 ;===========================================================================
-;Light eagle ruch
 
-;[State -1, Light eagle ruch]
-;type = ChangeState
-;value = 1050
-;triggerall = command = "Light agle ruch_a"
-;triggerall = statetype != A
-;trigger1 = ctrl
-;trigger2=(stateno=[200,499]) && movecontact
-;---------------------------------------------------------------------------
 ;medium eagle ruch
 [State -1, medium eagle ruch]
 type = ChangeState
@@ -473,39 +411,18 @@ value = 1000
 ;mediom Fireball
 [State -1, medium Fireball]
 type = ChangeState
-triggerall = command = "médium FIREBALL_y"
+triggerall = command = "mï¿½dium FIREBALL_y"
 triggerall = statetype != A
 trigger1 = ctrl
 trigger2=(stateno=[200,499]) && movecontact
 value = 1010
 
 ;---------------------------------------------------------------------------
-; Strong  Fireball
-;[State -1, Strong  Fireball]
-;type = ChangeState
-;triggerall = command = "Strong FIREBALL_z"
-;triggerall = statetype != A
-;trigger1 = ctrl
-;trigger2=(stateno=[200,499]) && movecontact
-;value = 1020
-;===========================================================================
-;Eagle Tough Lash
-;===========================================================================
-; Light Eagle Tough Lash
-;[State -1, Light Eagle Tough Lash]
-;type = ChangeState
-;value = 1210
-;triggerall = command = "Light Eagle Tough Lash_a"
-;triggerall = statetype = A
-;trigger1 = ctrl
-;trigger2=(stateno=[600,699]) && movecontact
-
-;---------------------------------------------------------------------------
-;médium Eagle Tough Lash
-[State -1, médium Eagle Tough Lash]
+;mï¿½dium Eagle Tough Lash
+[State -1, mï¿½dium Eagle Tough Lash]
 type = ChangeState
 value = 1211
-triggerall = command = " médium Eagle Tough Lash_b"
+triggerall = command = " mï¿½dium Eagle Tough Lash_b"
 triggerall = statetype = A
 trigger1 = ctrl
 trigger2=(stateno=[600,699]) && movecontact
@@ -519,39 +436,6 @@ triggerall = statetype = A
 trigger1 = ctrl
 trigger2=(stateno=[600,699]) && movecontact
 
-
-
-;===========================================================================
-;Eagle Toe Flash  désacivé
-;===========================================================================
-; Light Eagle Toe Flash
-;[State -1, Light Eagle Toe Flash]
-;type = ChangeState
-;value = 1415
-;triggerall = command = "Light Eagle Toe Flash_a"
-;triggerall = statetype = A
-;trigger1 = ctrl
-;trigger2=(stateno=[600,699]) && movecontact
-
-;---------------------------------------------------------------------------
-;médium Eagle Tough Lash
-;[State -1, médium Eagle Tough Lash]
-;type = ChangeState
-;value = 1419
-;triggerall = command = "médium Eagle Toe Flash_b"
-;triggerall = statetype = A
-;trigger1 = ctrl
-;trigger2=(stateno=[600,699]) && movecontact
-;---------------------------------------------------------------------------
-
-;Strong Eagle Tough Lash
-;[State -1, Strong Eagle Tough Lash]
-;type = ChangeState
-;value = 1422
-;triggerall = command = "Strong Eagle Toe Flash_c"
-;triggerall = statetype = A
-;trigger1 = ctrl
-;trigger2=(stateno=[600,699]) && movecontact
 
 
 ;===========================================================================
@@ -574,16 +458,6 @@ trigger1 = command = "BB"
 trigger1 = statetype = S
 trigger1 = ctrl
 ;---------------------------------------------------------------------------
-;power (cosmos )
-;[State -1, Carica cosmo -_-]
-;type = ChangeState
-;value = 24000
-;triggerall = Var(59) = 0
-;triggerall = command = "cosmo"
-;triggerall = power < 3000
-;trigger1 = statetype = S
-;trigger1 = ctrl = 1
-;trigger1 = stateno !=2401
 
 
 ;------------------------------------------------
@@ -860,12 +734,5 @@ trigger1 = statetype = A
 trigger1 = ctrl
 
 ;---------------------------------------------------------------------------
-
-
- ;===========================================================================
-; AI
-;===========================================================================
-
-
 
 
