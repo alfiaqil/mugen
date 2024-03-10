@@ -837,6 +837,7 @@ value = 1000
 triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
 triggerall = AILevel * AILevel * AILevel> random
 triggerall = p2bodydist x > 100 && statetype != A
+;triggerall = Life >= P2Life
 trigger1 = ctrl
 
 ;uniq, knock back

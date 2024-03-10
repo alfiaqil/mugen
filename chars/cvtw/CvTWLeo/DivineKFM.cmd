@@ -749,7 +749,7 @@ trigger1 = ctrl
 type = ChangeState
 value = 1001
 triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
-triggerall = AILevel * AILevel > random
+triggerall = AILevel * AILevel * 2 > random
 triggerall = p2bodydist x > 100 && statetype != A
 triggerall = Life >= P2Life
 trigger1 = ctrl
