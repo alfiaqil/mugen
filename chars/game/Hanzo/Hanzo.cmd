@@ -867,6 +867,7 @@ triggerall = AILevel * AILevel * AILevel > random
 triggerall = p2bodydist x > 100 && statetype != A
 trigger1 = ctrl
 
+;uniq, always grab
 [State -1, AI Grab]
 type = ChangeState
 value = 1000
