@@ -1,0 +1,7 @@
+Template
+
+-This is a basic template for CvTW. It includes some sample commands with generic labels (the commands also have negative edge versions, so be sure to make negative edge versions of any commands you add), basic code for all normals with suggested damage values (raise or decrease as necessary, the values included are all Ryu's normal damage values), optional states for different types of dashes, damage dampener in the state -2, the .cmd already has several of the magic chains already coded (these can be changed as long as you're sticking to the geenral feel of CvTW), and a .snd file with an assortment of sounds. The file still contains Ryu's voice clips, but these are to give you an idea of what groups should be attack sounds, get hit sounds, win pose sounds, etc. The .sff is empty and can be swapped out for a new .sff.
+
+-I forgot to include it here, but be sure to include an animation numbered 13579. It is for Alex's Flash Chop state. The animation can use any frames in the character's .sff, but it should be a total of 60 ticks long and look like they're being stunned by Alex's chop. I had to make this to accommodate for no one having the back-turned sprites that are standard in Street Fighter 3.
+
+-If you have any questions about this template, shoot me a PM. This is a basic template that is open to interpretation and does not have to be followed strictly. It's just meant as a starting point.

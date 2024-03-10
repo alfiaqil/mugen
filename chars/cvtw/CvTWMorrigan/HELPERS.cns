@@ -1,0 +1,537 @@
+[Statedef 104]
+physics = N
+velset = 0, 0
+anim = 6020
+sprpriority = 0
+[State 104, Pos]
+type = bindtoroot
+trigger1 = 1
+[State 6020, facing]
+type = turn
+trigger1 = facing != root, facing
+
+
+[State 104, Anim]
+type = changeanim
+trigger1 = anim != 104 && root, anim = 100
+value = 104
+
+
+[State 104, End]
+type = destroyself
+trigger1 = (root, stateno != [100, 105]) && (root, stateno != [3400, 3401]) && (root, stateno != [4000, 4001])
+trigger2 = root, anim != 100 && root, anim != 105 && root, anim != 110 && root, anim != 115 && root, anim != 3400 && (root, anim != [4000, 4001])
+trigger3 = root, anim = 4001 && root, animelemtime(56) < 0
+;-------------------------------------------------------------------------------
+[Statedef 1107]
+physics=N
+velset=0
+anim=1107
+sprpriority=5
+
+[State 1107, PlaySnd]
+type = PlaySnd
+trigger1 =!time
+value = S1104,0
+volume = 0
+channel = -1
+;lowpriority = -1
+freqmul = 1.0
+loop = 0
+pan = 0
+;abspan =
+;ignorehitpause =
+;persistent =
+
+[State 1107, AssertSpecial]
+type = AssertSpecial
+trigger1 =1
+flag = noshadow
+;flag = globalnoshadow
+;flag = nomusic
+;flag = nowalk
+;flag = timerfreeze
+;flag = unguardable
+
+
+[State 1107, StopSnd]
+type = StopSnd
+trigger1 =stateno!=1107
+channel = -1
+;ignorehitpause =
+;persistent =
+
+
+[state 1107. pos]
+type=bindtoroot
+trigger1=1
+[State 1107, facing]
+type = turn
+trigger1 = facing != root, facing
+[State 1107, ChangeAnim]
+type = ChangeAnim
+trigger1 =root, stateno=1104&&hitcount>3
+value = 1108
+;elem = 1
+ignorehitpause =1
+persistent =0
+[State 1107, DestroySelf]
+type = DestroySelf
+trigger1=root, stateno!=1104
+;ignorehitpause =
+;persistent =
+;-------------------------------------------------------------------------------
+[Statedef 1220]
+physics=N
+velset=0
+anim=9876
+[State 1220, AssertSpecial]
+type = AssertSpecial
+trigger1 =1
+flag = noshadow
+
+[State 1220, particles]
+type=explod
+trigger1 = 1
+vel=0+(random<500),-.5
+accel=0,-.05
+anim= 1213
+sprpriority=5
+postype=p2
+pos = 0,-60
+random=20,60
+removetime=-2
+scale = .35,.35
+ownpal=1
+ignorehitpause=1
+
+[State 1220, DestroySelf]
+type = DestroySelf
+trigger1=time>25
+;ignorehitpause =
+;persistent =
+;-------------------------------------------------------------------------------
+;Drops from splashing
+[StateDef 1303]
+type = A
+movetype= I
+physics = N
+juggle  = 1
+ctrl = 0
+anim = 1302
+poweradd=0
+sprpriority = 3
+
+[State 0, VelMul]
+type = VelMul
+trigger1 =1
+y = .98
+;ignorehitpause =
+;persistent =
+
+
+[State y]
+type = VarRandom
+trigger1 = 1
+v = 0
+range = -1,-2+random%-3
+[State x]
+type = VarRandom
+trigger1 = 1
+v = 1
+range = -1,2
+
+[State ]
+type = velset
+trigger1 = time = 1
+y = var(0)
+x = var(1)
+
+[State ]
+type = veladd
+trigger1 = time >= 1
+y = -.1
+
+[State 1303, Gravity]
+type = Gravity
+trigger1 =time>3
+;ignorehitpause =
+;persistent =
+
+[State 0, DestroySelf]
+type = DestroySelf
+trigger1 =numhelper(1303)>5
+;ignorehitpause =
+;persistent =
+
+
+[State 1303, ChangeState]
+type = ChangeState
+trigger1 =Vel Y > 0 && Pos y >=0
+value =1304
+ctrl = 0
+;anim =
+;ignorehitpause =
+;persistent =
+;-----------------------------------------------
+[StateDef 1304]
+type = S
+movetype= I
+physics = S
+juggle  = 1
+ctrl = 0
+anim = 1303
+poweradd = 0
+sprpriority = 3
+
+[State 1304, PlaySnd]
+type = PlaySnd
+trigger1 =!time
+value = S1300,1
+volume = 300
+
+[State 1304, VelSet]
+type = VelSet
+trigger1 =!time
+x = 0
+y = 0
+;ignorehitpause =
+;persistent =
+
+
+[state 1304, posset]
+type=posset
+trigger1=animelem=1
+y=0
+
+[State 1304, DestroySelf]
+type = DestroySelf
+trigger1 =!animtime
+;ignorehitpause =
+;persistent =
+
+
+
+;-------------------------------------------------------------------------------
+;=================< Walking dust>=======================
+[Statedef 4004]
+physics = N
+velset = 0, 0
+anim = 4006
+sprpriority = 2
+
+[State 4004, Pos]
+type = bindtoroot
+trigger1 = 1
+[State 4004, facing]
+type = turn
+trigger1 = facing != root, facing
+[State 4004, Anim]
+type = changeanim
+trigger1 = anim != 4006 && root, anim = 20
+value = 4006
+[State 4004, Anim]
+type = changeanim
+trigger1 = anim != 4007 && root, anim = 21
+value = 4007
+[State 4004, End]
+type = destroyself
+trigger1 = root, stateno != 20
+;===============================
+;========================< BATS >=============================
+;--- WALK ---
+[Statedef 4000]
+physics = N
+anim = 4000
+velset = 0, 0
+ctrl = 0
+
+[State 4000, ID]
+type = varset
+trigger1 = !time
+var(0) = root, var(48)
+
+[State 4000, Vel];to trigger sprpriority only
+type = velset
+trigger1 = 1
+x = ifelse((sin(time / 5.0) < 0), -.001, 0.001)
+[State 4000, Bind]
+type = bindtoroot
+trigger1 = var(0) = 1
+pos = 0 + 25 * cos(time / 5.0), -50 + 35 * cos(time / 17.5)
+[State 4000, Bind]
+type = bindtoroot
+trigger1 = var(0) = 2
+pos = -5 -25 * cos(time / 5.0), -50 -35 * cos(time / 17.5)
+
+[State 4000, spr]
+type = sprpriority
+trigger1 = var(0) = 1
+value = ifelse(vel x >= 0, 2, -1)
+[State 4000, spr]
+type = sprpriority
+trigger1 = var(0) = 2
+value = ifelse(vel x <= 0, 2, -2)
+[State 4000, End]
+type = destroyself
+trigger1 = root, stateno != 20 || root, movetype = H
+;-------------------------------------------------------------
+;--- LIE DOWN ---
+[Statedef 6105]
+physics = N
+anim = 4000
+velset = 0, 0
+sprpriority = 2
+ctrl = 0
+
+[State 6105, ID]
+type = varset
+trigger1 = !time
+var(0) = root, var(48)
+[State 6105, Turn]
+type = turn
+trigger1 = var(0) = 2 && facing != root, facing
+
+[State 6105, varx]
+type = varset
+trigger1 = root, stateno != 5120
+fvar(1) = 0
+[State 6105, vary]
+type = varset
+trigger1 = root, stateno != 5120
+fvar(2) = 0
+
+[State 6105, varx]
+type = varadd
+trigger1 = var(0) = 1 && root, stateno = 5120
+fvar(1) = -1.47
+[State 6105, vary]
+type = varadd
+trigger1 = var(0) = 1 && root, stateno = 5120
+fvar(2) = -1.16
+
+[State 6105, varx]
+type = varadd
+trigger1 = var(0) = 2 && root, stateno = 5120
+fvar(1) = 5
+[State 6105, vary]
+type = varadd
+trigger1 = var(0) = 2 && root, stateno = 5120
+fvar(2) = -6.33
+
+[State 6105, varx]
+type = varadd
+trigger1 = var(0) = 3 && root, stateno = 5120
+fvar(1) = 0.4
+[State 6105, vary]
+type = varadd
+trigger1 = var(0) = 3 && root, stateno = 5120
+fvar(2) = -0.5
+
+[State 6100, varx]
+type = varadd
+trigger1 = var(0) = 4 && root, stateno = 5120
+fvar(1) = -.6
+[State 6100, vary]
+type = varadd
+trigger1 = var(0) = 4 && root, stateno = 5120
+fvar(2) = -0.73
+
+[State 6105, Bind]
+type = bindtoroot
+trigger1 = var(0) = 1
+pos = 2 + fvar(1), -16 + fvar(2)
+[State 6105, Bind]
+type = bindtoroot
+trigger1 = var(0) = 2
+pos = -64 + fvar(1), -18 + fvar(2)
+[State 6105, Bind]
+type = bindtoroot
+trigger1 = var(0) = 3
+pos = -24 + fvar(1), -36 + fvar(2)
+[State 6105, Bind]
+type = bindtoroot
+trigger1 = var(0) = 4
+pos = -7 + fvar(1), -43 + fvar(2)
+
+[State 6105, End]
+type = destroyself
+trigger1 = root, stateno != 5110 && root, stateno != 5120 && root, stateno != 5150
+trigger2 = var(0) = 2 && root, stateno = 5120 && root, animelemtime(5) >= 0
+
+
+
+;========================< JETS >=============================
+[Statedef 6020]
+physics = N
+velset = 0, 0
+anim = 6020
+sprpriority = 0
+
+[State 6020, SprPriority]
+type = SprPriority
+trigger1 =root, anim=1105
+value = 2
+;ignorehitpause =
+persistent =0
+
+[State 6020, Snd]
+type = playsnd
+trigger1 = !time
+value = S100, 3
+channel = 0
+
+[State 6020, sndpos]
+type = sndpan
+trigger1 = 1
+channel = 0
+pan = 0
+ignorehitpause = 1
+
+
+[State 6020, Pos]
+type = bindtoroot
+trigger1 = 1
+[State 6020, facing]
+type = turn
+trigger1 = facing != root, facing
+[State 6020, Anim]
+type = changeanim
+trigger1 = anim != 6022 && root, anim = 1100
+value = 6022
+
+[State 6020, Anim]
+type = changeanim
+trigger1 = anim != 6021 && root, anim = 1105
+value = 6021
+
+[State 6020, Anim]
+type = changeanim
+trigger1 = anim != 6022 && root, anim = 1110
+value = 6022
+
+
+[State 6020, Snd]
+type = stopsnd
+trigger1 = (root, stateno != [1100, 1105]) 
+trigger2 = root, anim != 1100 && root, anim != 1105 && root, anim != 1110
+channel = 0
+
+[State 6020, End]
+type = destroyself
+trigger1 = (root, stateno != [1100, 1105])
+trigger2 = root, anim != 1100 && root, anim != 1105 && root, anim != 1110
+
+;--- INTRO 1 ---
+[Statedef 6106]
+physics = N
+anim = 6100
+velset = 0, 0
+sprpriority = 2
+ctrl = 0
+
+[State 6106, ID]
+type = varset
+trigger1 = !time
+var(0) = root, var(48)
+
+[State 6100, varx]
+type = varset
+trigger1 = root, animelemtime(13) < 0
+fvar(1) = 0
+[State 6100, vary]
+type = varset
+trigger1 = root, animelemtime(13) < 0
+fvar(2) = 0
+
+[State 6106, varx]
+type = varadd
+trigger1 = var(0) = 1 && (root, animelemtime(13) = [0, 25])
+fvar(1) = -.16
+[State 6106, vary]
+type = varadd
+trigger1 = var(0) = 1 && (root, animelemtime(13) = [0, 25])
+fvar(2) = -2.04
+
+[State 6106, varx]
+type = varadd
+trigger1 = var(0) = 2 && (root, animelemtime(13) = [0, 25])
+fvar(1) = -1.08
+[State 6106, vary]
+type = varadd
+trigger1 = var(0) = 2 && (root, animelemtime(13) = [0, 25])
+fvar(2) = -1.4
+
+[State 6106, varx]
+type = varadd
+trigger1 = var(0) = 3 && (root, animelemtime(13) = [0, 25])
+fvar(1) = -1.32
+[State 6106, vary]
+type = varadd
+trigger1 = var(0) = 3 && (root, animelemtime(13) = [0, 25])
+fvar(2) = -3.7
+
+[State 6106, varx]
+type = varadd
+trigger1 = var(0) = 4 && (root, animelemtime(13) = [0, 25])
+fvar(1) = 0.84
+[State 6106, vary]
+type = varadd
+trigger1 = var(0) = 4 && (root, animelemtime(13) = [0, 25])
+fvar(2) = -1.72
+
+[State 6106, varx]
+type = varadd
+trigger1 = var(0) = 5 && (root, animelemtime(13) = [0, 25])
+fvar(1) = -.04
+[State 6106, vary]
+type = varadd
+trigger1 = var(0) = 5 && (root, animelemtime(13) = [0, 25])
+fvar(2) = -.8
+
+[State 6106, varx]
+type = varadd
+trigger1 = var(0) = 6 && (root, animelemtime(13) = [0, 25])
+fvar(1) = -.56
+[State 6106, vary]
+type = varadd
+trigger1 = var(0) = 6 && (root, animelemtime(13) = [0, 25])
+fvar(2) = -3.4
+
+[State 6106, Bind]
+type = bindtoroot
+trigger1 = var(0) = 1
+pos = -23 + fvar(1), 1 + fvar(2)
+[State 6106, Bind]
+type = bindtoroot
+trigger1 = var(0) = 2
+pos = 0 + fvar(1), 4 + fvar(2)
+[State 6106, Bind]
+type = bindtoroot
+trigger1 = var(0) = 3
+pos = 23 + fvar(1), 1 + fvar(2)
+[State 6106, Bind]
+type = bindtoroot
+trigger1 = var(0) = 4
+pos = -19 + fvar(1), -7 + fvar(2)
+[State 6106, Bind]
+type = bindtoroot
+trigger1 = var(0) = 5
+pos = 0 + fvar(1), -10 + fvar(2)
+[State 6106, Bind]
+type = bindtoroot
+trigger1 = var(0) = 6
+pos = 19 + fvar(1), -7 + fvar(2)
+
+[State 6106, spr]
+type = sprpriority
+trigger1 = 1
+value = ifelse(var(0) >= 4, -1, 1)
+pos = 2 + fvar(1), -16 + fvar(2)
+[State 6106, End]
+type = destroyself
+trigger1 = root, stateno != 191 || root, movetype = H
+trigger2 = root, stateno = 191 && root, animelemtime(14) >= 0
+
+
+
