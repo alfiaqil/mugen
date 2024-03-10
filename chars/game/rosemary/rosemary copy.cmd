@@ -1,11 +1,167 @@
 [Remap]
-x = x
-y = y
-z = z
-a = a
-b = b
-c = c
+x = a
+y = x
+z = y
+a = b
+b = c
+c = z
 s = s
+
+;-| AI |--------------------------------------------------------
+[Command]
+Name = "AI_00"
+Command = U, U, D, D, B, F, B, F, b, a
+Time = 0
+
+[Command]
+Name = "AI_01"
+Command = U, U, D, D, B, F, B, F, a, a
+Time = 0
+
+[Command]
+Name = "AI_02"
+Command = U, U, D, D, B, F, B, F, b, b
+Time = 0
+
+[Command]
+Name = "AI_03"
+Command = U, U, D, D, B, F, B, F, c, c
+Time = 0
+
+[Command]
+Name = "AI_04"
+Command = U, U, D, D, B, F, B, F, x, x
+Time = 0
+
+[Command]
+Name = "AI_05"
+Command = U, U, D, D, B, F, B, F, y, y
+Time = 0
+
+[Command]
+Name = "AI_06"
+Command = U, U, D, D, B, F, B, F, z, z
+Time = 0
+
+[Command]
+Name = "AI_07"
+Command = U, U, D, D, B, F, B, F, s, s
+Time = 0
+
+[Command]
+Name = "AI_08"
+Command = U, U, D, D, B, F, B, F, a, b
+Time = 0
+
+[Command]
+Name = "AI_09"
+Command = U, U, D, D, B, F, B, F, a, c
+Time = 0
+
+[Command]
+Name = "AI_10"
+Command = U, U, D, D, B, F, B, F, a, x
+Time = 0
+
+[Command]
+Name = "AI_11"
+Command = U, U, D, D, B, F, B, F, a, y
+Time = 0
+
+[Command]
+Name = "AI_12"
+Command = U, U, D, D, B, F, B, F, a, z
+Time = 0
+
+[Command]
+Name = "AI_13"
+Command = U, U, D, D, B, F, B, F, a, s
+Time = 0
+
+[Command]
+Name = "AI_14"
+Command = U, U, D, D, B, F, B, F, b, c
+Time = 0
+
+[Command]
+Name = "AI_15"
+Command = U, U, D, D, B, F, B, F, b, x
+Time = 0
+
+[Command]
+Name = "AI_16"
+Command = U, U, D, D, B, F, B, F, b, y
+Time = 0
+
+[Command]
+Name = "AI_17"
+Command = U, U, D, D, B, F, B, F, b, z
+Time = 0
+
+[Command]
+Name = "AI_18"
+Command = U, U, D, D, B, F, B, F, b, s
+Time = 0
+
+[Command]
+Name = "AI_19"
+Command = U, U, D, D, B, F, B, F, c, a
+Time = 0
+
+[Command]
+Name = "AI_20"
+Command = U, U, D, D, B, F, B, F, c, b
+Time = 0
+
+[Command]
+Name = "AI_21"
+Command = U, U, D, D, B, F, B, F, c, x
+Time = 0
+
+[Command]
+Name = "AI_22"
+Command = U, U, D, D, B, F, B, F, c, y
+Time = 0
+
+[Command]
+Name = "AI_23"
+Command = U, U, D, D, B, F, B, F, c, z
+Time = 0
+
+[Command]
+Name = "AI_24"
+Command = U, U, D, D, B, F, B, F, c, s
+Time = 0
+
+[Command]
+Name = "AI_25"
+Command = U, U, D, D, B, F, B, F, s, a
+Time = 0
+
+[Command]
+Name = "AI_26"
+Command = U, U, D, D, B, F, B, F, s, b
+Time = 0
+
+[Command]
+Name = "AI_27"
+Command = U, U, D, D, B, F, B, F, s, c
+Time = 0
+
+[Command]
+Name = "AI_28"
+Command = U, U, D, D, B, F, B, F, s, x
+Time = 0
+
+[Command]
+Name = "AI_29"
+Command = U, U, D, D, B, F, B, F, s, y
+Time = 0
+
+[Command]
+Name = "AI_30"
+Command = U, U, D, D, B, F, B, F, s, z
+Time = 0
 
 ;-| Super Motions |--------------------------------------------------------
 [Command]
@@ -282,7 +438,7 @@ time = 1
 [Statedef -1]
 ;===========================================================================
 ;---------------------------------------------------------------------------
-; ï¿½~ï¿½ï¿½ï¿½[ï¿½Wï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½tï¿½Bï¿½Xï¿½g
+; ƒ~ƒ‰[ƒWƒ…ƒƒ‹ƒtƒBƒXƒg
 [State -1]
 type = ChangeState
 value = 3900
@@ -294,7 +450,7 @@ trigger3 = (stateno = 200 || stateno = 400 || stateno = 220) && movecontact
 trigger4 = (stateno = 210 || stateno = 410 || stateno = 420) && movecontact
 
 ;---------------------------------------------------------------------------
-; ï¿½ï¿½ï¿½ï¿½ï¿½tï¿½Bï¿½Xï¿½gï¿½Eï¿½Zï¿½Jï¿½ï¿½ï¿½h
+; ƒƒ‹ƒtƒBƒXƒgEƒZƒJƒ“ƒh
 [State -1]
 type = ChangeState
 value = 3600
@@ -306,7 +462,7 @@ trigger3 = (stateno = 200 || stateno = 400 || stateno = 220) && movecontact
 trigger4 = (stateno = 210 || stateno = 410 || stateno = 420) && movecontact
 
 ;---------------------------------------------------------------------------
-; ï¿½ï¿½ï¿½ï¿½ï¿½tï¿½Bï¿½Xï¿½g
+; ƒƒ‹ƒtƒBƒXƒg
 [State -1]
 type = ChangeState
 value = 3500
@@ -318,11 +474,11 @@ trigger3 = (stateno = 200 || stateno = 400 || stateno = 220) && movecontact
 trigger4 = (stateno = 210 || stateno = 410 || stateno = 420) && movecontact
 
 ;---------------------------------------------------------------------------
-; EXï¿½ï¿½ï¿½[ï¿½[ï¿½Xï¿½tï¿½Fï¿½Cï¿½N
+; EXƒ[ƒ[ƒXƒtƒFƒCƒN
 [State -1]
 type = ChangeState
 value = 3200
-triggerall = !AILevel
+triggerall = Var(59) != 1
 triggerall = power >= 1000
 triggerall = command = "EXroses"
 trigger1 = statetype != A && ctrl
@@ -331,7 +487,7 @@ trigger3 = (stateno = 200 || stateno = 400 || stateno = 220) && movecontact
 trigger4 = (stateno = 210 || stateno = 410 || stateno = 420) && movecontact
 
 ;---------------------------------------------------------------------------
-; EXï¿½fï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Cï¿½Uï¿½[
+; EXƒfƒ‚ƒ“ƒŒƒCƒU[
 [State -1]
 type = ChangeState
 value = 3100
@@ -343,7 +499,7 @@ trigger3 = (stateno = 200 || stateno = 400 || stateno = 220) && movecontact
 trigger4 = (stateno = 210 || stateno = 410 || stateno = 420) && movecontact
 
 ;---------------------------------------------------------------------------
-; EXï¿½Gï¿½rï¿½ï¿½ï¿½nï¿½[ï¿½Pï¿½ï¿½
+; EXƒGƒrƒ‹ƒn[ƒPƒ“
 [State -1]
 type = ChangeState
 value = 3000
@@ -365,10 +521,10 @@ trigger3 = (stateno = 600 || stateno = 610 || stateno = 620) && movecontact
 
 ;===========================================================================
 ;---------------------------------------------------------------------------
-;ï¿½@ï¿½{ï¿½^ï¿½ï¿½ï¿½ï¿½ï¿½m
+;@ƒ{ƒ^ƒ“Š´’m
 [State -1]
 type = Varset
-trigger1 = command = "x" || command = "y" || command = "z" || command = "c"
+trigger1 = command = "x"
 trigger1 = stateno < 1000
 var(2) = 0
 
@@ -386,7 +542,7 @@ var(2) = 2
 
 ;===========================================================================
 ;---------------------------------------------------------------------------
-; ï¿½ï¿½ï¿½[ï¿½[ï¿½Xï¿½tï¿½Fï¿½Cï¿½N
+; ƒ[ƒ[ƒXƒtƒFƒCƒN
 [State -1]
 type = ChangeState
 value = 1200
@@ -397,7 +553,7 @@ trigger3 = (stateno = 200 || stateno = 400 || stateno = 220) && movecontact
 trigger4 = (stateno = 210 || stateno = 410 || stateno = 420) && movecontact
 
 ;---------------------------------------------------------------------------
-; ï¿½fï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Cï¿½Uï¿½[
+; ƒfƒ‚ƒ“ƒŒƒCƒU[
 [State -1]
 type = ChangeState
 value = 1100
@@ -408,7 +564,7 @@ trigger3 = (stateno = 200 || stateno = 400 || stateno = 220) && movecontact
 trigger4 = (stateno = 210 || stateno = 410 || stateno = 420) && movecontact
 
 ;---------------------------------------------------------------------------
-; ï¿½Gï¿½rï¿½ï¿½ï¿½nï¿½[ï¿½Pï¿½ï¿½
+; ƒGƒrƒ‹ƒn[ƒPƒ“
 [State -1]
 type = ChangeState
 value = 1000
@@ -428,20 +584,20 @@ trigger3 = (stateno = 600 || stateno = 610 || stateno = 620) && movecontact
 
 ;===========================================================================
 ;---------------------------------------------------------------------------
-;ï¿½_ï¿½bï¿½Vï¿½ï¿½
+;ƒ_ƒbƒVƒ…
 [State -1]
 type = ChangeState
 value = 100
 trigger1 = command = "FF" && statetype = S && ctrl
 
-;ï¿½ï¿½Şƒ_ï¿½bï¿½Vï¿½ï¿½
+;Œã‘Şƒ_ƒbƒVƒ…
 [State -1]
 type = ChangeState
 value = 105
 trigger1 = command = "BB" && statetype = S && ctrl
 
 ;---------------------------------------------------------------------------
-; ï¿½ï¿½ï¿½ï¿½
+; “Š‚°
 [State -1]
 type = ChangeState
 value = 800
@@ -475,10 +631,11 @@ trigger1 = command = "holdback" && (p2bodydist X < 5) && (p2movetype != H)
 trigger1 = (p2statetype = S) || (p2statetype = C)
 
 ;===========================================================================
-; ï¿½ï¿½ï¿½ï¿½ï¿½Î‚ï¿½ï¿½Uï¿½ï¿½
+; •Ší”ò‚Î‚µUŒ‚
 [State -1]
 type = ChangeState
 value = 240
+triggerall = Var(59) != 1
 triggerall = command = "3btn"
 triggerall = var(1) != 1
 trigger1 = statetype != A && ctrl
@@ -487,7 +644,7 @@ trigger3 = (stateno = 200 || stateno = 400 || stateno = 220) && movecontact
 trigger4 = (stateno = 210 || stateno = 410 || stateno = 420) && movecontact
 
 ;---------------------------------------------------------------------------
-; ï¿½ó’†‚Ó‚ï¿½ï¿½Æ‚Î‚ï¿½
+; ‹ó’†‚Ó‚Á‚Æ‚Î‚µ
 [State -1]
 type = ChangeState
 value = 630
@@ -496,10 +653,11 @@ trigger1 = statetype = A && ctrl
 trigger2 = stateno = 600 || stateno = 610 || stateno = 620
 trigger2 = movecontact
 
-; ï¿½Ó‚ï¿½ï¿½Æ‚Î‚ï¿½
+; ‚Ó‚Á‚Æ‚Î‚µ
 [State -1]
 type = ChangeState
 value = 230
+triggerall = Var(59) != 1
 triggerall = command = "2btn"
 trigger1 = statetype != A && ctrl
 trigger2 = stateno = 100 || stateno = 105 || stateno = 3250
@@ -507,17 +665,17 @@ trigger3 = (stateno = 200 || stateno = 400 || stateno = 220) && movecontact
 trigger4 = (stateno = 210 || stateno = 410 || stateno = 420) && movecontact
 
 ;---------------------------------------------------------------------------
-; ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+; —§‚¿ã
 [State -1]
 type = ChangeState
 value = 200
-triggerall = (command = "x" || command = "y" || command = "z" || command = "c") && command != "holddown"
+triggerall = command = "x" && command != "holddown"
 trigger1 = statetype = S && ctrl
 trigger2 = stateno = 100 || stateno = 105 || stateno = 3250
 trigger3 = stateno = 200 && time > 6
 
 ;---------------------------------------------------------------------------
-; ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+; —§‚¿’†
 [State -1]
 type = ChangeState
 value = 210
@@ -527,7 +685,7 @@ trigger2 = stateno = 100 || stateno = 105 || stateno = 3250
 trigger3 = (stateno = 200 || stateno = 400) && movecontact
 
 ;---------------------------------------------------------------------------
-; ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+; —§‚¿‹­
 [State -1]
 type = ChangeState
 value = 220
@@ -538,25 +696,26 @@ trigger3 = (stateno = 200 || stateno = 400) && movecontact
 trigger4 = (stateno = 210 || stateno = 410) && movecontact
 
 ;---------------------------------------------------------------------------
-;ï¿½ï¿½ï¿½ï¿½
+;’§”­
 [State -1, Taunt]
 type = ChangeState
 value = 195
+triggerall = Var(59) != 1
 triggerall = command = "start"
 trigger1 = statetype != A
 trigger1 = ctrl
 
 ;---------------------------------------------------------------------------
-;ï¿½ï¿½ï¿½á‚ªï¿½İï¿½
+;‚µ‚á‚ª‚İã
 [State -1]
 type = ChangeState
 value = 400
-triggerall = (command = "x" || command = "y" || command = "z" || command = "c") && command = "holddown"
+triggerall = command = "x" && command = "holddown"
 trigger1 = statetype = C && ctrl
 trigger2 = stateno = 100 || stateno = 105 || stateno = 3250
 
 ;---------------------------------------------------------------------------
-;ï¿½ï¿½ï¿½á‚ªï¿½İ’ï¿½
+;‚µ‚á‚ª‚İ’†
 [State -1]
 type = ChangeState
 value = 410
@@ -566,7 +725,7 @@ trigger2 = stateno = 100 || stateno = 105 || stateno = 3250
 trigger3 = (stateno = 200 || stateno = 400) && movecontact
 
 ;---------------------------------------------------------------------------
-;ï¿½ï¿½ï¿½á‚ªï¿½İ‹ï¿½
+;‚µ‚á‚ª‚İ‹­
 [State -1]
 type = ChangeState
 value = 420
@@ -577,17 +736,17 @@ trigger3 = (stateno = 200 || stateno = 400) && movecontact
 trigger4 = (stateno = 210 || stateno = 410) && movecontact
 
 ;---------------------------------------------------------------------------
-; ï¿½ó’†ï¿½
+; ‹ó’†ã
 [State -1]
 type = ChangeState
 value = 600
-triggerall =  command = "x" || command = "y" || command = "z" || command = "c"
+triggerall = command = "x"
 trigger1 = ctrl && statetype = A
 trigger2 = stateno = 600
 trigger2 = statetime >= 10
 
 ;---------------------------------------------------------------------------
-; ï¿½ó’†’ï¿½
+; ‹ó’†’†
 [State -1]
 type = ChangeState
 value = 610
@@ -596,7 +755,7 @@ trigger1 = statetype = A && ctrl
 trigger2 = stateno = 600 && movecontact
 
 ;---------------------------------------------------------------------------
-; ï¿½ó’†‹ï¿½
+; ‹ó’†‹­
 [State -1]
 type = ChangeState
 value = 620
@@ -605,68 +764,3 @@ trigger1 = statetype = A && ctrl
 trigger2 = stateno = 600 || stateno = 610
 trigger2 = movecontact
 
-
-;---------------------------------------------------------------------------
-JAMBU AI
-;---------------------------------------------------------------------------
-[State -1, AI Guard]
-type = ChangeState
-value = 120
-triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
-triggerall = AILevel * AILevel * AILevel * 2 > random
-triggerall = InGuardDist
-trigger1 = ctrl
-
-[State -1, AI Taunt]
-type = ChangeState
-value = 195
-triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
-triggerall = p2bodydist x > 100 && statetype != A
-triggerall = p2movetype = H && Life >= P2Life
-trigger1 = ctrl
-
-;uniq, numproj
-[State -1, AI Range]
-type = ChangeState
-value = 1000
-triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
-triggerall = AILevel * AILevel * AILevel > random
-triggerall = p2bodydist x > 100 && statetype != A
-triggerall = numproj = 0
-trigger1 = ctrl
-
-[State -1, AI Aerial]
-type = ChangeState
-value = 610
-triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
-triggerall = AILevel * AILevel * AILevel > random
-triggerall = statetype = A
-trigger1 = ctrl
-
-[State -1, AI LowHit]
-type = ChangeState
-value = 400
-triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
-triggerall = AILevel * AILevel * AILevel > random
-triggerall = p2bodydist x < 50 && statetype != A
-trigger1 = ctrl
-trigger2 = movehit && animtime >= 0
-
-[State -1, AI MediumHit]
-type = ChangeState
-value = 210
-triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
-triggerall = AILevel * AILevel * AILevel > random
-triggerall = p2bodydist x < 50 && statetype != A
-trigger1 = ctrl
-trigger2 = movehit && animtime >= 0
-
-[State -1, AI FollowUp]
-type = ChangeState
-value = 1100
-triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
-triggerall = AILevel * AILevel * AILevel * 2 > random
-triggerall = p2bodydist x < 50 && statetype != A
-trigger1 = movehit && animtime >= 0
-;---------------------------------------------------------------------------
-;---------------------------------------------------------------------------

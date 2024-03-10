@@ -559,7 +559,6 @@ trigger2=(stateno=[200,499]) && movecontact
 [State -1]
 type = ChangeState
 value = 850
-triggerall = var(59)!=1
 triggerall = roundstate=2
 triggerall = command = "b"
 triggerall = command = "holdfwd" || command = "holdback"
