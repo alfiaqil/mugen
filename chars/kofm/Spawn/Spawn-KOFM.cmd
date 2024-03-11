@@ -906,6 +906,7 @@ triggerall = p2bodydist x > 100 && statetype != A
 triggerall = p2movetype = H && Life >= P2Life
 trigger1 = ctrl
 
+;uniq, limit life
 [State -1, AI Range]
 type = ChangeState
 value = 1000

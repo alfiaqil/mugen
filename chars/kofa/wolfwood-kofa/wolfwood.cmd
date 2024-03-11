@@ -700,14 +700,13 @@ triggerall = p2bodydist x > 100 && statetype != A
 triggerall = p2movetype = H && Life >= P2Life
 trigger1 = ctrl
 
-;uniq, common
+;uniq, spam
 [State -1, AI Range]
 type = ChangeState
 value = 3005
 triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
 triggerall = AILevel * AILevel * AILevel > random
 triggerall = p2bodydist x > 100 && statetype != A
-;triggerall = Life >= P2Life
 trigger1 = ctrl
 
 [State -1, AI LowHit]

@@ -751,7 +751,6 @@ value = 1001
 triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
 triggerall = AILevel * AILevel * 2 > random
 triggerall = p2bodydist x > 100 && statetype != A
-triggerall = Life >= P2Life
 trigger1 = ctrl
 
 [State -1, AI Forward]
