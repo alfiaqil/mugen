@@ -914,7 +914,7 @@ value = 0
 ctrl = 1
 
 ;-----------------------------------------------------------------------
-;SYSTEM1?：マキシマ･スクランブル弱
+;SYSTEM1?：マキシマ?スクランブル弱
 [Statedef 1200]
 type = S
 movetype = A
@@ -975,7 +975,7 @@ value = 0
 ctrl = 1
 
 ;---------------------------------------------------------------------------
-;SYSTEM1?：マキシマ･スクランブル強
+;SYSTEM1?：マキシマ?スクランブル強
 [Statedef 1210]
 type = S
 movetype = A
@@ -1178,7 +1178,7 @@ id = 1300
 type = ChangeState
 triggerall = animelemtime(12)>0
 trigger1 = var(59) = 0
-trigger1 = command = "セントーンプレス"
+trigger1 = command = "back_a"
 trigger2 = var(59) > 5
 trigger2 = AnimElemTime(9)=0
 trigger3 = var(59) = [1,5]
@@ -1732,7 +1732,7 @@ value = -140
 type = ChangeState
 triggerall = AnimElemTime(5)>=0
 trigger1 = var(59) = 0
-trigger1 = command = "セントーンプレス"
+trigger1 = command = "back_a"
 trigger2 = var(59) > 5
 trigger2 = AnimElemTime(9)=0
 trigger3 = var(59) = [1,5]
@@ -2059,7 +2059,7 @@ trigger1 = Vel Y > 0 && Pos Y >= 0
 value = 5110
 
 ;-----------------------------------------------------------------------
-;M11型デンジャラス･アーチ
+;M11型デンジャラス?アーチ
 [Statedef 1700]
 type    = S
 movetype= A
@@ -2104,7 +2104,7 @@ value = 0
 ctrl = 1
 
 ;-----------------------------------------------------------------------
-;M11型デンジャラス･アーチ（成功）
+;M11型デンジャラス?アーチ（成功）
 [Statedef 1701]
 type    = S
 movetype= A
@@ -2350,7 +2350,7 @@ value = 0
 ctrl = 1
 
 ;-----------------------------------------------------------------------
-;M11型デンジャラス･アーチ
+;M11型デンジャラス?アーチ
 ;相手投げられ
 [Statedef 1710]
 type    = A
