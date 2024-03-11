@@ -343,6 +343,7 @@ trigger2=(stateno=[200,499]) && movecontact
 [State -1, Light Kung Fu Palm]
 type = ChangeState
 value = 1600
+triggerall = !AiLevel
 triggerall = command = "taiku_a"
 triggerall = statetype != A
 trigger1 = ctrl
@@ -354,6 +355,7 @@ trigger2=(stateno=[200,499]) && movecontact
 [State -1, Light Kung Fu Palm]
 type = ChangeState
 value = 1650
+triggerall = !AiLevel
 triggerall = command = "taiku_b"
 triggerall = statetype != A
 trigger1 = ctrl
@@ -480,6 +482,7 @@ trigger2=(stateno=[200,499]) && movecontact
 [State -1, ]
 type = ChangeState
 value = 1700
+triggerall = !AiLevel
 triggerall = command = "QCF_a"
 triggerall = statetype = A
 trigger1 = ctrl
@@ -489,6 +492,7 @@ trigger2=(stateno=[600,699]) && movecontact
 [State -1, ]
 type = ChangeState
 value = 1750
+triggerall = !AiLevel
 triggerall = command = "QCF_b"
 triggerall = statetype = A
 trigger1 = ctrl
@@ -784,17 +788,19 @@ triggerall = p2bodydist x > 100 && statetype != A
 triggerall = p2movetype = H && Life >= P2Life
 trigger1 = ctrl
 
+;uniq, combo trigger
 [State -1, AI Range]
 type = ChangeState
 value = 1000
 triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
-triggerall = AILevel * AILevel * 2 > random
-triggerall = p2bodydist x > 100 && statetype != A
-trigger1 = ctrl
+triggerall = AILevel * AILevel * AILevel > random
+triggerall = statetype != A
+trigger1 = stateno = 1500 && animtime >= 0
+trigger2 = stateno = 1510 && animtime >= 0
 
 [State -1, AI Forward]
 type = ChangeState
-value = 1500
+value = 1510;1500
 triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
 triggerall = AILevel * AILevel * AILevel > random
 triggerall = p2bodydist x > 100 && statetype != A
@@ -820,7 +826,7 @@ trigger2 = movehit && animtime >= 0
 
 [State -1, AI FollowUp]
 type = ChangeState
-value = 1600
+value = 1215
 triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
 triggerall = AILevel * AILevel * AILevel * 2 > random
 triggerall = p2bodydist x < 50 && statetype != A
