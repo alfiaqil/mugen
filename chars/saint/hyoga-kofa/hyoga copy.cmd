@@ -147,10 +147,10 @@ time = 30
 
 
 ;Furia del Cigno
-[Command]
-name = "Furia"
-command = c
-time = 1
+;[Command]
+;name = "Furia"
+;command = c
+;time = 1
 
 ;---------------------------
 ;Carika cosmo
@@ -269,20 +269,44 @@ time = 1
 ;-----------------------------------------------
 ;===============================================
 
+;carica Cosmo
+;[State -1]
+;type = ChangeState
+;value = 730000
+;triggerall = Var(59) = 0
+;triggerall = Power < 3000
+;triggerall = command = "charge"
+;triggerall = command = "charge 1"
+;trigger1 = statetype = S
+;trigger1 = ctrl = 1
+
 ;Furia del Cigno
-[State -1]
-type = ChangeState
-value = 709
-triggerall = command = "Furia"
-triggerall = command = "holdfwd"
-triggerall = P2BodyDist X <= 10
-trigger1 = P2StateType = S
-trigger1 = statetype = S
-trigger1 = ctrl = 1
+;[State -1]
+;type = ChangeState
+;value = 709
+;triggerall = Var(59) = 0
+;triggerall = command = "Furia"
+;triggerall = command = "holdfwd"
+;triggerall = P2BodyDist X <= 10
+;trigger1 = P2StateType = S
+;trigger1 = statetype = S
+;trigger1 = ctrl = 1
 
 ;-----------------------------------------------
 ;-----------------------------------------------
 ;-----------------------------------------------
+
+;settimo senso
+;[State -1]
+;type = ChangeState
+;value = 8000
+;triggerall = Var(59) = 0
+;triggerall = var(8) = 0
+;triggerall = command = "7senso"
+;triggerall = power >= 3000
+;triggerall = life <= 250
+;trigger1 = statetype != A
+;trigger1 = ctrl = 1
 
 ;Aurora del Nord
 [State -1]
@@ -780,58 +804,11 @@ trigger1 = stateno != 1982
 trigger1 = stateno != 1981
 trigger1 = ctrl = 1
 
+;-----------------------------------------------
+;-| AI Variabile |------------------------------
+;-----------------------------------------------
 
-;---------------------------------------------------------------------------
-JAMBU AI
-;---------------------------------------------------------------------------
-[State -1, AI Guard]
-type = ChangeState
-value = 120
-triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
-triggerall = AILevel * AILevel * AILevel * 2 > random
-triggerall = InGuardDist
-trigger1 = ctrl
 
-[State -1, AI Taunt]
-type = ChangeState
-value = 199
-triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
-triggerall = p2bodydist x > 100 && statetype != A
-triggerall = p2movetype = H && Life >= P2Life
-trigger1 = ctrl
-
-[State -1, AI Forward]
-type = ChangeState
-value = 112
-triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
-triggerall = AILevel * AILevel * AILevel > random
-triggerall = p2bodydist x > 100 && statetype != A
-trigger1 = ctrl
-
-[State -1, AI LowHit]
-type = ChangeState
-value = 435
-triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
-triggerall = AILevel * AILevel * AILevel > random
-triggerall = p2bodydist x < 50 && statetype != A
-trigger1 = ctrl
-trigger2 = movehit && animtime >= 0
-
-[State -1, AI MediumHit]
-type = ChangeState
-value = 210
-triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
-triggerall = AILevel * AILevel * AILevel > random
-triggerall = p2bodydist x < 50 && statetype != A
-trigger1 = ctrl
-trigger2 = movehit && animtime >= 0
-
-[State -1, AI FollowUp]
-type = ChangeState
-value = 1100
-triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
-triggerall = AILevel * AILevel * AILevel * 2 > random
-triggerall = p2bodydist x < 50 && statetype != A
-trigger1 = movehit && animtime >= 0
-;---------------------------------------------------------------------------
-;---------------------------------------------------------------------------
+;-----------------------------------------------
+;-----------------------------------------------
+;-----------------------------------------------
