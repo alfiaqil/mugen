@@ -793,8 +793,8 @@ trigger1 = ctrl
 type = ChangeState
 value = 1000
 triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
-triggerall = AILevel * AILevel * AILevel > random
-triggerall = statetype != A
+triggerall = AILevel * AILevel * AILevel * 2 > random
+triggerall = p2bodydist x > 30 && statetype != A
 trigger1 = stateno = 1500 && animtime >= 0
 trigger2 = stateno = 1510 && animtime >= 0
 

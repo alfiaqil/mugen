@@ -1,14 +1,14 @@
 ;\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 ;---------------------------------------------------------------------------
 ;---------------------------------------------------------------------------
-;ƒAƒgƒ~ƒbƒNƒKƒC
+;ï¿½Aï¿½gï¿½~ï¿½bï¿½Nï¿½Kï¿½C
 ;---------------------------------------------------------------------------
 ;---------------------------------------------------------------------------
 ;\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 ;---------------------------------------------------------------------------
 ;---------------------------------------------------------------------------
 ;\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-; “oê
+; ï¿½oï¿½ï¿½
 [Statedef 4190]
 type    = S
 movetype= A
@@ -20,7 +20,7 @@ anim = 4190
 sprpriority = 1
 ctrl = 0
 
-[state a];•Ïg—pƒ^ƒCƒ€ƒJƒEƒ“ƒg
+[state a];ï¿½Ïgï¿½pï¿½^ï¿½Cï¿½ï¿½ï¿½Jï¿½Eï¿½ï¿½ï¿½g
 type = varset
 trigger1 = time = 0
 v = 26
@@ -32,19 +32,19 @@ type = posadd
 trigger1 = time = 0
 y = -350
 
-;---------------------[Œø‰Ê‰¹]
-[state a];‚±‚ñ‚Ä‚¡‚à(?)
+;---------------------[ï¿½ï¿½ï¿½Ê‰ï¿½]
+[state a];ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½(?)
 type = playsnd
 trigger1 = time = 5
 value = 4190,0
 
-;---------------------[˜r‚ÌƒGƒtƒFƒNƒg]
-[State removeexplod];‘O‚ÌƒXƒe[ƒg‚ÌŒõÁ‹
+;---------------------[ï¿½rï¿½ÌƒGï¿½tï¿½Fï¿½Nï¿½g]
+[State removeexplod];ï¿½Oï¿½ÌƒXï¿½eï¿½[ï¿½gï¿½ÌŒï¿½ï¿½ï¿½ï¿½ï¿½
 type = removeexplod
 trigger1 = time = 0
 ID = 4000
 
-[State explod];ƒuƒŒƒXƒŒƒbƒg‚ÌŒõ
+[State explod];ï¿½uï¿½ï¿½ï¿½Xï¿½ï¿½ï¿½bï¿½gï¿½ÌŒï¿½
 type = Explod
 trigger1 = numexplod(4000) = 0
 anim = 4192
@@ -57,7 +57,7 @@ removetime = -1
 supermove = 0
 under = 0
 
-[State 02];ƒJƒƒ‰ŒÅ’è
+[State 02];ï¿½Jï¿½ï¿½ï¿½ï¿½ï¿½Å’ï¿½
 type = screenbound
 trigger1 = 1
 value = 1
@@ -73,7 +73,7 @@ value = 4191
 
 
 ;\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-; “oê’…’n
+; ï¿½oï¿½ê’…ï¿½n
 [Statedef 4191]
 type    = S
 movetype= A
@@ -90,19 +90,19 @@ type = posset
 trigger1 = time = 0
 y = 0
 
-;---------------------[Œø‰Ê‰¹]
-[state a];’…’n
+;---------------------[ï¿½ï¿½ï¿½Ê‰ï¿½]
+[state a];ï¿½ï¿½ï¿½n
 type = playsnd
 trigger1 = time = 0
 value = 40,0
 
-;---------------------[˜r‚ÌƒGƒtƒFƒNƒg]
-[State removeexplod];‘O‚ÌƒXƒe[ƒg‚ÌŒõÁ‹
+;---------------------[ï¿½rï¿½ÌƒGï¿½tï¿½Fï¿½Nï¿½g]
+[State removeexplod];ï¿½Oï¿½ÌƒXï¿½eï¿½[ï¿½gï¿½ÌŒï¿½ï¿½ï¿½ï¿½ï¿½
 type = removeexplod
 trigger1 = time = 0
 ID = 4000
 
-[State explod];ƒuƒŒƒXƒŒƒbƒg‚ÌŒõ
+[State explod];ï¿½uï¿½ï¿½ï¿½Xï¿½ï¿½ï¿½bï¿½gï¿½ÌŒï¿½
 type = Explod
 trigger1 = numexplod(4000) = 0
 anim = 4193
@@ -115,13 +115,13 @@ removetime = -1
 supermove = 0
 under = 0
 
-[State 02];ƒJƒƒ‰ŒÅ’è
+[State 02];ï¿½Jï¿½ï¿½ï¿½ï¿½ï¿½Å’ï¿½
 type = screenbound
 trigger1 = 1
 value = 1
 movecamera = 1
 
-;---------------------[ƒXƒe[ƒgƒ`ƒFƒ“ƒW]
+;---------------------[ï¿½Xï¿½eï¿½[ï¿½gï¿½`ï¿½Fï¿½ï¿½ï¿½W]
 [state a]
 type = changestate
 trigger1 = animtime = 0
@@ -129,7 +129,7 @@ value = 4000
 
 
 ;---------------------------------------------------------------------------
-; —§‚¿ƒ‚[ƒVƒ‡ƒ“
+; ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½Vï¿½ï¿½ï¿½ï¿½
 [Statedef 4000]
 type = S
 physics = S
@@ -141,13 +141,13 @@ type = NotHitBy
 trigger1 = 1
 value = SCA
 
-;---------------------[˜r‚ÌƒGƒtƒFƒNƒg]
-[State removeexplod];‘O‚ÌƒXƒe[ƒg‚ÌŒõÁ‹
+;---------------------[ï¿½rï¿½ÌƒGï¿½tï¿½Fï¿½Nï¿½g]
+[State removeexplod];ï¿½Oï¿½ÌƒXï¿½eï¿½[ï¿½gï¿½ÌŒï¿½ï¿½ï¿½ï¿½ï¿½
 type = removeexplod
 trigger1 = time = 0
 ID = 4000
 
-[State explod];ƒuƒŒƒXƒŒƒbƒg‚ÌŒõ
+[State explod];ï¿½uï¿½ï¿½ï¿½Xï¿½ï¿½ï¿½bï¿½gï¿½ÌŒï¿½
 type = Explod
 trigger1 = numexplod(4000) = 0
 anim = 4001
@@ -166,7 +166,7 @@ type = changeanim
 trigger1 = p2Dist X < 0
 value = 4000
 
-[State removeexplod];‘O‚ÌƒXƒe[ƒg‚ÌŒõÁ‹
+[State removeexplod];ï¿½Oï¿½ÌƒXï¿½eï¿½[ï¿½gï¿½ÌŒï¿½ï¿½ï¿½ï¿½ï¿½
 type = removeexplod
 trigger1 = p2Dist X < 0
 ID = 4000
@@ -191,7 +191,7 @@ type = ChangeState
 trigger1 = !alive
 value = 5050
 
-;---------------------[‘ÅŒ‚–hŒä]
+;---------------------[ï¿½ÅŒï¿½ï¿½hï¿½ï¿½]
 [state a]
 type = reversaldef
 trigger1 = 1
@@ -201,54 +201,54 @@ pausetime = 0,4
 hitsound = s310,var(6)
 numhits = 0
 
-[State 02];ƒJƒƒ‰ŒÅ’è
+[State 02];ï¿½Jï¿½ï¿½ï¿½ï¿½ï¿½Å’ï¿½
 type = screenbound
 trigger1 = 1
 value = 1
 movecamera = 1
 
 ;---------------------[]
-[state a];‘Oi
+[state a];ï¿½Oï¿½i
 type = changestate
 trigger1 = command = "holdfwd"
 value = 4020
 
-[state a];Œã‘Ş
+[state a];ï¿½ï¿½ï¿½
 type = changestate
 trigger1 = command = "holdback"
 value = 4021
 
-[state a];ƒWƒƒƒ“ƒv
+[state a];ï¿½Wï¿½ï¿½ï¿½ï¿½ï¿½v
 type = changestate
 trigger1 = command = "holdup"
 value = 4040
 
-[state a];ƒƒKƒgƒ“ƒXƒp[ƒN
+[state a];3buttons
 type = changestate
-trigger1 = command = "ƒƒKƒgƒ“ƒXƒp[ƒN"
+trigger1 = command = "3buttons"
 value = 4800
 
-[state a];ƒAƒgƒ~ƒbƒNƒpƒ“ƒ`
+[state a];ï¿½Aï¿½gï¿½~ï¿½bï¿½Nï¿½pï¿½ï¿½ï¿½`
 type = changestate
 trigger1 = command = "x"
 value = 4200
 
-[state a];ƒAƒgƒ~ƒbƒNƒpƒ“ƒ`
+[state a];ï¿½Aï¿½gï¿½~ï¿½bï¿½Nï¿½pï¿½ï¿½ï¿½`
 type = changestate
 trigger1 = command = "y"
 value = 4200
 
-[state a];ƒAƒgƒ~ƒbƒNƒXƒ‰ƒCƒfƒBƒ“ƒO
+[state a];ï¿½Aï¿½gï¿½~ï¿½bï¿½Nï¿½Xï¿½ï¿½ï¿½Cï¿½fï¿½Bï¿½ï¿½ï¿½O
 type = changestate
 trigger1 = command = "a"
 value = 4400
 
-[state a];ƒAƒgƒ~ƒbƒNƒXƒ‰ƒCƒfƒBƒ“ƒO
+[state a];ï¿½Aï¿½gï¿½~ï¿½bï¿½Nï¿½Xï¿½ï¿½ï¿½Cï¿½fï¿½Bï¿½ï¿½ï¿½O
 type = changestate
 trigger1 = command = "b"
 value = 4400
 
-[state a];•ÏgI—¹
+[state a];ï¿½Ïgï¿½Iï¿½ï¿½
 type = changestate
 trigger1 = command = "BB"
 trigger2 = var(26) <= 0
@@ -256,7 +256,7 @@ value = 4900
 
 
 ;---------------------------------------------------------------------------
-; ‘Oi
+; ï¿½Oï¿½i
 [Statedef 4020]
 type = S
 physics = S
@@ -268,13 +268,13 @@ type = NotHitBy
 trigger1 = 1
 value = SCA
 
-;---------------------[˜r‚ÌƒGƒtƒFƒNƒg]
-[State removeexplod];‘O‚ÌƒXƒe[ƒg‚ÌŒõÁ‹
+;---------------------[ï¿½rï¿½ÌƒGï¿½tï¿½Fï¿½Nï¿½g]
+[State removeexplod];ï¿½Oï¿½ÌƒXï¿½eï¿½[ï¿½gï¿½ÌŒï¿½ï¿½ï¿½ï¿½ï¿½
 type = removeexplod
 trigger1 = time = 0
 ID = 4000
 
-[State explod];ƒuƒŒƒXƒŒƒbƒg‚ÌŒõ
+[State explod];ï¿½uï¿½ï¿½ï¿½Xï¿½ï¿½ï¿½bï¿½gï¿½ÌŒï¿½
 type = Explod
 trigger1 = numexplod(4000) = 0
 anim = 4025
@@ -287,13 +287,13 @@ removetime = -1
 supermove = 0
 under = 0
 
-;---------------------[‘¬“x]
+;---------------------[ï¿½ï¿½ï¿½x]
 [state a]
 type = velset
 trigger1 = 1
 x = 3.5
 
-;---------------------[‘ÅŒ‚–hŒä]
+;---------------------[ï¿½ÅŒï¿½ï¿½hï¿½ï¿½]
 [state a]
 type = reversaldef
 trigger1 = 1
@@ -303,14 +303,14 @@ pausetime = 0,4
 hitsound = s310,var(6)
 numhits = 0
 
-[State 02];ƒJƒƒ‰ŒÅ’è
+[State 02];ï¿½Jï¿½ï¿½ï¿½ï¿½ï¿½Å’ï¿½
 type = screenbound
 trigger1 = 1
 value = 1
 movecamera = 1
 
 ;---------------------[]
-[state a];ƒWƒƒƒ“ƒv
+[state a];ï¿½Wï¿½ï¿½ï¿½ï¿½ï¿½v
 type = changestate
 trigger1 = command = "holdup"
 value = 4040
@@ -320,39 +320,39 @@ type = changestate
 trigger1 = command != "holdfwd"
 value = 4000
 
-[state a];ƒƒKƒgƒ“ƒXƒp[ƒN
+[state a];3buttons
 type = changestate
-trigger1 = command = "ƒƒKƒgƒ“ƒXƒp[ƒN"
+trigger1 = command = "3buttons"
 value = 4800
 
-[state a];ƒAƒgƒ~ƒbƒNƒpƒ“ƒ`
+[state a];ï¿½Aï¿½gï¿½~ï¿½bï¿½Nï¿½pï¿½ï¿½ï¿½`
 type = changestate
 trigger1 = command = "x"
 value = 4200
 
-[state a];ƒAƒgƒ~ƒbƒNƒpƒ“ƒ`
+[state a];ï¿½Aï¿½gï¿½~ï¿½bï¿½Nï¿½pï¿½ï¿½ï¿½`
 type = changestate
 trigger1 = command = "y"
 value = 4200
 
-[state a];ƒAƒgƒ~ƒbƒNƒXƒ‰ƒCƒfƒBƒ“ƒO
+[state a];ï¿½Aï¿½gï¿½~ï¿½bï¿½Nï¿½Xï¿½ï¿½ï¿½Cï¿½fï¿½Bï¿½ï¿½ï¿½O
 type = changestate
 trigger1 = command = "a"
 value = 4400
 
-[state a];ƒAƒgƒ~ƒbƒNƒXƒ‰ƒCƒfƒBƒ“ƒO
+[state a];ï¿½Aï¿½gï¿½~ï¿½bï¿½Nï¿½Xï¿½ï¿½ï¿½Cï¿½fï¿½Bï¿½ï¿½ï¿½O
 type = changestate
 trigger1 = command = "b"
 value = 4400
 
-[state a];•ÏgI—¹
+[state a];ï¿½Ïgï¿½Iï¿½ï¿½
 type = changestate
 trigger1 = command = "BB"
 trigger2 = var(26) <= 0
 value = 4900
 
 ;---------------------------------------------------------------------------
-; Œã‘Ş
+; ï¿½ï¿½ï¿½
 [Statedef 4021]
 type = S
 physics = S
@@ -364,13 +364,13 @@ type = NotHitBy
 trigger1 = 1
 value = SCA
 
-;---------------------[˜r‚ÌƒGƒtƒFƒNƒg]
-[State removeexplod];‘O‚ÌƒXƒe[ƒg‚ÌŒõÁ‹
+;---------------------[ï¿½rï¿½ÌƒGï¿½tï¿½Fï¿½Nï¿½g]
+[State removeexplod];ï¿½Oï¿½ÌƒXï¿½eï¿½[ï¿½gï¿½ÌŒï¿½ï¿½ï¿½ï¿½ï¿½
 type = removeexplod
 trigger1 = time = 0
 ID = 4000
 
-[State explod];ƒuƒŒƒXƒŒƒbƒg‚ÌŒõ
+[State explod];ï¿½uï¿½ï¿½ï¿½Xï¿½ï¿½ï¿½bï¿½gï¿½ÌŒï¿½
 type = Explod
 trigger1 = numexplod(4000) = 0
 anim = 4026
@@ -383,13 +383,13 @@ removetime = -1
 supermove = 0
 under = 0
 
-;---------------------[‘¬“x]
+;---------------------[ï¿½ï¿½ï¿½x]
 [state a]
 type = velset
 trigger1 = 1
 x = -3.5
 
-;---------------------[‘ÅŒ‚–hŒä]
+;---------------------[ï¿½ÅŒï¿½ï¿½hï¿½ï¿½]
 [state a]
 type = reversaldef
 trigger1 = 1
@@ -399,14 +399,14 @@ pausetime = 0,4
 hitsound = s310,var(6)
 numhits = 0
 
-[State 02];ƒJƒƒ‰ŒÅ’è
+[State 02];ï¿½Jï¿½ï¿½ï¿½ï¿½ï¿½Å’ï¿½
 type = screenbound
 trigger1 = 1
 value = 1
 movecamera = 1
 
 ;---------------------[]
-[state a];ƒWƒƒƒ“ƒv
+[state a];ï¿½Wï¿½ï¿½ï¿½ï¿½ï¿½v
 type = changestate
 trigger1 = command = "holdup"
 value = 4040
@@ -416,39 +416,39 @@ type = changestate
 trigger1 = command != "holdback"
 value = 4000
 
-[state a];ƒƒKƒgƒ“ƒXƒp[ƒN
+[state a];3buttons
 type = changestate
-trigger1 = command = "ƒƒKƒgƒ“ƒXƒp[ƒN"
+trigger1 = command = "3buttons"
 value = 4800
 
-[state a];ƒAƒgƒ~ƒbƒNƒpƒ“ƒ`
+[state a];ï¿½Aï¿½gï¿½~ï¿½bï¿½Nï¿½pï¿½ï¿½ï¿½`
 type = changestate
 trigger1 = command = "x"
 value = 4200
 
-[state a];ƒAƒgƒ~ƒbƒNƒpƒ“ƒ`
+[state a];ï¿½Aï¿½gï¿½~ï¿½bï¿½Nï¿½pï¿½ï¿½ï¿½`
 type = changestate
 trigger1 = command = "y"
 value = 4200
 
-[state a];ƒAƒgƒ~ƒbƒNƒXƒ‰ƒCƒfƒBƒ“ƒO
+[state a];ï¿½Aï¿½gï¿½~ï¿½bï¿½Nï¿½Xï¿½ï¿½ï¿½Cï¿½fï¿½Bï¿½ï¿½ï¿½O
 type = changestate
 trigger1 = command = "a"
 value = 4400
 
-[state a];ƒAƒgƒ~ƒbƒNƒXƒ‰ƒCƒfƒBƒ“ƒO
+[state a];ï¿½Aï¿½gï¿½~ï¿½bï¿½Nï¿½Xï¿½ï¿½ï¿½Cï¿½fï¿½Bï¿½ï¿½ï¿½O
 type = changestate
 trigger1 = command = "b"
 value = 4400
 
-[state a];•ÏgI—¹
+[state a];ï¿½Ïgï¿½Iï¿½ï¿½
 type = changestate
 trigger1 = command = "BB"
 trigger2 = var(26) <= 0
 value = 4900
 
 ;---------------------------------------------------------------------------
-; ƒWƒƒƒ“ƒvƒXƒ^[ƒg
+; ï¿½Wï¿½ï¿½ï¿½ï¿½ï¿½vï¿½Xï¿½^ï¿½[ï¿½g
 [Statedef 4040]
 type    = S
 physics = S
@@ -457,13 +457,13 @@ ctrl = 0
 velset = 0,0
 sprpriority = 1
 
-;---------------------[˜r‚ÌƒGƒtƒFƒNƒg]
-[State removeexplod];‘O‚ÌƒXƒe[ƒg‚ÌŒõÁ‹
+;---------------------[ï¿½rï¿½ÌƒGï¿½tï¿½Fï¿½Nï¿½g]
+[State removeexplod];ï¿½Oï¿½ÌƒXï¿½eï¿½[ï¿½gï¿½ÌŒï¿½ï¿½ï¿½ï¿½ï¿½
 type = removeexplod
 trigger1 = time = 0
 ID = 4000
 
-[State explod];ƒuƒŒƒXƒŒƒbƒg‚ÌŒõ
+[State explod];ï¿½uï¿½ï¿½ï¿½Xï¿½ï¿½ï¿½bï¿½gï¿½ÌŒï¿½
 type = Explod
 trigger1 = time = 0
 anim = 4050
@@ -506,7 +506,7 @@ trigger1 = prevstateno = 100 ;RUN_FWD
 trigger1 = sysvar(1) = 1
 x = const(velocity.runjump.fwd.x)
 
-;---------------------[‘ÅŒ‚–hŒä]
+;---------------------[ï¿½ÅŒï¿½ï¿½hï¿½ï¿½]
 [State 00]
 type = NotHitBy
 trigger1 = 1
@@ -521,7 +521,7 @@ pausetime = 0,4
 hitsound = s310,var(6)
 numhits = 0
 
-[State 02];ƒJƒƒ‰ŒÅ’è
+[State 02];ï¿½Jï¿½ï¿½ï¿½ï¿½ï¿½Å’ï¿½
 type = screenbound
 trigger1 = 1
 value = 1
@@ -534,7 +534,7 @@ trigger1 = AnimTime = 0
 value = 4050
 
 ;---------------------------------------------------------------------------
-; ƒWƒƒƒ“ƒv
+; ï¿½Wï¿½ï¿½ï¿½ï¿½ï¿½v
 [Statedef 4050]
 type    = A
 physics = N
@@ -555,19 +555,19 @@ type = veladd
 trigger1 = 1
 y = 0.52
 
-;---------------------[Œø‰Ê‰¹]
-[state a];ƒWƒƒƒ“ƒv
+;---------------------[ï¿½ï¿½ï¿½Ê‰ï¿½]
+[state a];ï¿½Wï¿½ï¿½ï¿½ï¿½ï¿½v
 type = playsnd
 trigger1 = time = 0
 value = 40,1
 
-;---------------------[˜r‚ÌƒGƒtƒFƒNƒg]
-[State removeexplod];‘O‚ÌƒXƒe[ƒg‚ÌŒõÁ‹
+;---------------------[ï¿½rï¿½ÌƒGï¿½tï¿½Fï¿½Nï¿½g]
+[State removeexplod];ï¿½Oï¿½ÌƒXï¿½eï¿½[ï¿½gï¿½ÌŒï¿½ï¿½ï¿½ï¿½ï¿½
 type = removeexplod
 trigger1 = time = 0
 ID = 4000
 
-[State explod];ƒuƒŒƒXƒŒƒbƒg‚ÌŒõ
+[State explod];ï¿½uï¿½ï¿½ï¿½Xï¿½ï¿½ï¿½bï¿½gï¿½ÌŒï¿½
 type = Explod
 trigger1 = time = 0
 anim = 4042
@@ -580,7 +580,7 @@ removetime = -1
 supermove = 0
 under = 0
 
-;---------------------[‘ÅŒ‚–hŒä]
+;---------------------[ï¿½ÅŒï¿½ï¿½hï¿½ï¿½]
 [State 00]
 type = NotHitBy
 trigger1 = 1
@@ -595,7 +595,7 @@ pausetime = 0,4
 hitsound = s310,var(6)
 numhits = 0
 
-[State 02];ƒJƒƒ‰ŒÅ’è
+[State 02];ï¿½Jï¿½ï¿½ï¿½ï¿½ï¿½Å’ï¿½
 type = screenbound
 trigger1 = 1
 value = 1
@@ -604,22 +604,22 @@ movecamera = 1
 ;---------------------[]
 
 ;---------------------[]
-[state a];ƒAƒgƒ~ƒbƒNƒXƒ‰ƒbƒVƒ…
+[state a];ï¿½Aï¿½gï¿½~ï¿½bï¿½Nï¿½Xï¿½ï¿½ï¿½bï¿½Vï¿½ï¿½
 type = changestate
 trigger1 = command = "x"
 value = 4600
 
-[state a];ƒAƒgƒ~ƒbƒNƒXƒ‰ƒbƒVƒ…
+[state a];ï¿½Aï¿½gï¿½~ï¿½bï¿½Nï¿½Xï¿½ï¿½ï¿½bï¿½Vï¿½ï¿½
 type = changestate
 trigger1 = command = "y"
 value = 4600
 
-[state a];ƒAƒgƒ~ƒbƒNƒXƒ‰ƒbƒVƒ…
+[state a];ï¿½Aï¿½gï¿½~ï¿½bï¿½Nï¿½Xï¿½ï¿½ï¿½bï¿½Vï¿½ï¿½
 type = changestate
 trigger1 = command = "a"
 value = 4600
 
-[state a];ƒAƒgƒ~ƒbƒNƒXƒ‰ƒbƒVƒ…
+[state a];ï¿½Aï¿½gï¿½~ï¿½bï¿½Nï¿½Xï¿½ï¿½ï¿½bï¿½Vï¿½ï¿½
 type = changestate
 trigger1 = command = "b"
 value = 4600
@@ -631,7 +631,7 @@ trigger1 = Pos Y >= 0
 value = 4052
 
 ;---------------------------------------------------------------------------
-; ’…’n
+; ï¿½ï¿½ï¿½n
 [Statedef 4052]
 type    = S
 physics = S
@@ -639,19 +639,19 @@ ctrl = 0
 velset = 0,0
 anim = 4047
 
-;---------------------[Œø‰Ê‰¹]
-[state a];’…’n
+;---------------------[ï¿½ï¿½ï¿½Ê‰ï¿½]
+[state a];ï¿½ï¿½ï¿½n
 type = playsnd
 trigger1 = time = 0
 value = 40,0
 
-;---------------------[˜r‚ÌƒGƒtƒFƒNƒg]
-[State removeexplod];‘O‚ÌƒXƒe[ƒg‚ÌŒõÁ‹
+;---------------------[ï¿½rï¿½ÌƒGï¿½tï¿½Fï¿½Nï¿½g]
+[State removeexplod];ï¿½Oï¿½ÌƒXï¿½eï¿½[ï¿½gï¿½ÌŒï¿½ï¿½ï¿½ï¿½ï¿½
 type = removeexplod
 trigger1 = time = 0
 ID = 4000
 
-[State explod];ƒuƒŒƒXƒŒƒbƒg‚ÌŒõ
+[State explod];ï¿½uï¿½ï¿½ï¿½Xï¿½ï¿½ï¿½bï¿½gï¿½ÌŒï¿½
 type = Explod
 trigger1 = time = 0
 anim = 4051
@@ -675,7 +675,7 @@ type = PosSet
 trigger1 = Time = 0
 y = 0
 
-;---------------------[‘ÅŒ‚–hŒä]
+;---------------------[ï¿½ÅŒï¿½ï¿½hï¿½ï¿½]
 [State 00]
 type = NotHitBy
 trigger1 = 1
@@ -690,7 +690,7 @@ pausetime = 0,4
 hitsound = s310,var(6)
 numhits = 0
 
-[State 02];ƒJƒƒ‰ŒÅ’è
+[State 02];ï¿½Jï¿½ï¿½ï¿½ï¿½ï¿½Å’ï¿½
 type = screenbound
 trigger1 = 1
 value = 1
@@ -706,7 +706,7 @@ value = 4000
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ;---------------------------------------------------------------------------
-;ƒAƒgƒ~ƒbƒNƒpƒ“ƒ`
+;ï¿½Aï¿½gï¿½~ï¿½bï¿½Nï¿½pï¿½ï¿½ï¿½`
 [Statedef 4200]
 type    = S
 movetype= A
@@ -717,13 +717,13 @@ ctrl = 0
 velset = 0,0
 anim = 4200
 
-;---------------------[˜r‚ÌƒGƒtƒFƒNƒg]
-[State removeexplod];‘O‚ÌƒXƒe[ƒg‚ÌŒõÁ‹
+;---------------------[ï¿½rï¿½ÌƒGï¿½tï¿½Fï¿½Nï¿½g]
+[State removeexplod];ï¿½Oï¿½ÌƒXï¿½eï¿½[ï¿½gï¿½ÌŒï¿½ï¿½ï¿½ï¿½ï¿½
 type = removeexplod
 trigger1 = time = 0
 ID = 4000
 
-[State explod];ƒuƒŒƒXƒŒƒbƒg‚ÌŒõ
+[State explod];ï¿½uï¿½ï¿½ï¿½Xï¿½ï¿½ï¿½bï¿½gï¿½ÌŒï¿½
 type = Explod
 trigger1 = animelem = 1
 anim = 4201
@@ -776,13 +776,13 @@ ID = 4000
 fall = 1
 fall.recover = 0
 
-;---------------------[‘ÅŒ‚–hŒä]
+;---------------------[ï¿½ÅŒï¿½ï¿½hï¿½ï¿½]
 [State 00]
 type = NotHitBy
 trigger1 = 1
 value = SCA
 
-[State 02];ƒJƒƒ‰ŒÅ’è
+[State 02];ï¿½Jï¿½ï¿½ï¿½ï¿½ï¿½Å’ï¿½
 type = screenbound
 trigger1 = 1
 value = 1
@@ -802,7 +802,7 @@ value = 4000
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ;---------------------------------------------------------------------------
-;ƒAƒgƒ~ƒbƒNƒXƒ‰ƒCƒfƒBƒ“ƒO
+;ï¿½Aï¿½gï¿½~ï¿½bï¿½Nï¿½Xï¿½ï¿½ï¿½Cï¿½fï¿½Bï¿½ï¿½ï¿½O
 [Statedef 4400]
 type    = S
 movetype= A
@@ -813,13 +813,13 @@ ctrl = 0
 velset = 10,0
 anim = 4400
 
-;---------------------[˜r‚ÌƒGƒtƒFƒNƒg]
-[State removeexplod];‘O‚ÌƒXƒe[ƒg‚ÌŒõÁ‹
+;---------------------[ï¿½rï¿½ÌƒGï¿½tï¿½Fï¿½Nï¿½g]
+[State removeexplod];ï¿½Oï¿½ÌƒXï¿½eï¿½[ï¿½gï¿½ÌŒï¿½ï¿½ï¿½ï¿½ï¿½
 type = removeexplod
 trigger1 = time = 0
 ID = 4000
 
-[State explod];ƒuƒŒƒXƒŒƒbƒg‚ÌŒõ
+[State explod];ï¿½uï¿½ï¿½ï¿½Xï¿½ï¿½ï¿½bï¿½gï¿½ÌŒï¿½
 type = Explod
 trigger1 = animelem = 1
 anim = 4401
@@ -872,13 +872,13 @@ ID = 4000
 fall = 1
 fall.recover = 0
 
-;---------------------[‘ÅŒ‚–hŒä]
+;---------------------[ï¿½ÅŒï¿½ï¿½hï¿½ï¿½]
 [State 00]
 type = NotHitBy
 trigger1 = 1
 value = SCA
 
-[State 02];ƒJƒƒ‰ŒÅ’è
+[State 02];ï¿½Jï¿½ï¿½ï¿½ï¿½ï¿½Å’ï¿½
 type = screenbound
 trigger1 = 1
 value = 1
@@ -898,7 +898,7 @@ value = 4000
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ;---------------------------------------------------------------------------
-;ƒAƒgƒ~ƒbƒNƒXƒ‰ƒbƒVƒ…
+;ï¿½Aï¿½gï¿½~ï¿½bï¿½Nï¿½Xï¿½ï¿½ï¿½bï¿½Vï¿½ï¿½
 [Statedef 4600]
 type    = A
 movetype= A
@@ -908,13 +908,13 @@ poweradd= 0
 ctrl = 0
 anim = 4600
 
-;---------------------[˜r‚ÌƒGƒtƒFƒNƒg]
-[State removeexplod];‘O‚ÌƒXƒe[ƒg‚ÌŒõÁ‹
+;---------------------[ï¿½rï¿½ÌƒGï¿½tï¿½Fï¿½Nï¿½g]
+[State removeexplod];ï¿½Oï¿½ÌƒXï¿½eï¿½[ï¿½gï¿½ÌŒï¿½ï¿½ï¿½ï¿½ï¿½
 type = removeexplod
 trigger1 = time = 0
 ID = 4000
 
-[State explod];ƒuƒŒƒXƒŒƒbƒg‚ÌŒõ
+[State explod];ï¿½uï¿½ï¿½ï¿½Xï¿½ï¿½ï¿½bï¿½gï¿½ÌŒï¿½
 type = Explod
 trigger1 = animelem = 1
 anim = 4601
@@ -972,13 +972,13 @@ type = veladd
 trigger1 = 1
 y = 0.52
 
-;---------------------[‘ÅŒ‚–hŒä]
+;---------------------[ï¿½ÅŒï¿½ï¿½hï¿½ï¿½]
 [State 00]
 type = NotHitBy
 trigger1 = 1
 value = SCA
 
-[State 02];ƒJƒƒ‰ŒÅ’è
+[State 02];ï¿½Jï¿½ï¿½ï¿½ï¿½ï¿½Å’ï¿½
 type = screenbound
 trigger1 = 1
 value = 1
@@ -1000,7 +1000,7 @@ value = 4052
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ;---------------------------------------------------------------------------
-;ƒƒKƒgƒ“ƒXƒp[ƒN
+;3buttons
 [Statedef 4800]
 type    = S
 movetype= A
@@ -1011,13 +1011,13 @@ ctrl = 0
 velset = 0,0
 anim = 4800
 
-;---------------------[˜r‚ÌƒGƒtƒFƒNƒg]
-[State removeexplod];‘O‚ÌƒXƒe[ƒg‚ÌŒõÁ‹
+;---------------------[ï¿½rï¿½ÌƒGï¿½tï¿½Fï¿½Nï¿½g]
+[State removeexplod];ï¿½Oï¿½ÌƒXï¿½eï¿½[ï¿½gï¿½ÌŒï¿½ï¿½ï¿½ï¿½ï¿½
 type = removeexplod
 trigger1 = time = 0
 ID = 4000
 
-[State explod];ƒuƒŒƒXƒŒƒbƒg‚ÌŒõ
+[State explod];ï¿½uï¿½ï¿½ï¿½Xï¿½ï¿½ï¿½bï¿½gï¿½ÌŒï¿½
 type = Explod
 trigger1 = animelem = 1
 anim = 4801
@@ -1080,13 +1080,13 @@ time = 1
 value = 255,255,255
 under = 2
 
-;---------------------[‘ÅŒ‚–hŒä]
+;---------------------[ï¿½ÅŒï¿½ï¿½hï¿½ï¿½]
 [State 00]
 type = NotHitBy
 trigger1 = 1
 value = SCA
 
-[State 02];ƒJƒƒ‰ŒÅ’è
+[State 02];ï¿½Jï¿½ï¿½ï¿½ï¿½ï¿½Å’ï¿½
 type = screenbound
 trigger1 = 1
 value = 1
@@ -1105,7 +1105,7 @@ value = 4000
 
 
 ;---------------------------------------------------------------------------
-;•ÏgI—¹
+;ï¿½Ïgï¿½Iï¿½ï¿½
 [Statedef 4900]
 type    = S
 movetype= A
@@ -1116,8 +1116,8 @@ velset = 0,0
 ctrl = 0
 anim = 4900
 
-;---------------------[˜r‚ÌƒGƒtƒFƒNƒg]
-[State removeexplod];‘O‚ÌƒXƒe[ƒg‚ÌŒõÁ‹
+;---------------------[ï¿½rï¿½ÌƒGï¿½tï¿½Fï¿½Nï¿½g]
+[State removeexplod];ï¿½Oï¿½ÌƒXï¿½eï¿½[ï¿½gï¿½ÌŒï¿½ï¿½ï¿½ï¿½ï¿½
 type = removeexplod
 trigger1 = time = 0
 ID = 4000
@@ -1132,13 +1132,13 @@ time = 2
 value = 255,255,255
 under = 2
 
-;---------------------[‘ÅŒ‚–hŒä]
+;---------------------[ï¿½ÅŒï¿½ï¿½hï¿½ï¿½]
 [State 00]
 type = NotHitBy
 trigger1 = 1
 value = SCA
 
-[State 02];ƒJƒƒ‰ŒÅ’è
+[State 02];ï¿½Jï¿½ï¿½ï¿½ï¿½ï¿½Å’ï¿½
 type = screenbound
 trigger1 = 1
 value = 1
