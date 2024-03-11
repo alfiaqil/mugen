@@ -95,22 +95,22 @@ name = "DP_x"
 command = ~D, DB, B, y
 time = 30
 
-[Command]
-name = "DP_b"
-command = ~D,D,a
-time = 30
-[Command]
-name = "DP_b"
-command = ~D,D,b
-time = 30
-[Command]
-name = "DP_b"
-command = ~D,D,x
-time = 30
-[Command]
-name = "DP_b"
-command = ~D,D,y
-time = 30
+;[Command]
+;name = "DP_b"
+;command = ~D,D,a
+;time = 30
+;[Command]
+;name = "DP_b"
+;command = ~D,D,b
+;time = 30
+;[Command]
+;name = "DP_b"
+;command = ~D,D,x
+;time = 30
+;[Command]
+;name = "DP_b"
+;command = ~D,D,y
+;time = 30
 
 [Command]
 name = "dragonp_cont"
@@ -406,7 +406,6 @@ trigger2=(stateno=[200,499]) && movecontact
 [State -1]
 type = ChangeState
 value = 850
-triggerall = !AILevel
 triggerall = command = "QCFB_start"
 triggerall = statetype != A
 trigger1 = ctrl
@@ -416,7 +415,6 @@ trigger2=(stateno=[200,499]) && movecontact
 [State -1]
 type = ChangeState
 value = 1700
-triggerall = !AILevel
 triggerall = command = "QCBF_b"
 triggerall = statetype != A
 trigger1 = ctrl
@@ -459,13 +457,13 @@ trigger1 = ctrl
 trigger2=(stateno=[200,499]) && movecontact
 
 ;;Fake
-[State -1]
-type = ChangeState
-value = 1115             
-triggerall = command = "DP_b"
-triggerall = statetype != A
-trigger1 = ctrl
-trigger2=(stateno=[200,499]) && movecontact
+;[State -1]
+;type = ChangeState
+;value = 1115             
+;triggerall = command = "DP_b"
+;triggerall = statetype != A
+;trigger1 = ctrl
+;trigger2=(stateno=[200,499]) && movecontact
 
 
 ;Fireball y
@@ -834,74 +832,3 @@ triggerall = statetype = A
 trigger1 = ctrl
 
 ;----------------------------------------------------------------------------------     
-
-;---------------------------------------------------------------------------
-JAMBU AI
-;---------------------------------------------------------------------------
-[State -1, AI Guard]
-type = ChangeState
-value = 120
-triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
-triggerall = AILevel * AILevel * AILevel * 2 > random
-triggerall = InGuardDist
-trigger1 = ctrl
-
-[State -1, AI Taunt]
-type = ChangeState
-value = 1115
-triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
-triggerall = p2bodydist x > 100 && statetype != A
-triggerall = p2movetype = H && Life >= P2Life
-trigger1 = ctrl
-
-[State -1, AI Range]
-type = ChangeState
-value = 1001
-triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
-triggerall = AILevel * AILevel * 2 > random
-triggerall = p2bodydist x > 100 && statetype != A
-trigger1 = ctrl
-
-[State -1, AI Forward]
-type = ChangeState
-value = 111
-triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
-triggerall = AILevel * AILevel * AILevel > random
-triggerall = p2bodydist x > 100 && statetype != A
-trigger1 = ctrl
-
-[State -1, AI Anti Air]
-type = ChangeState
-value = 1100
-triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
-triggerall = AILevel * AILevel * AILevel > random
-triggerall = p2statetype = A && p2bodydist x < 50 && statetype != A
-trigger1 = ctrl
-
-[State -1, AI LowHit]
-type = ChangeState
-value = 430
-triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
-triggerall = AILevel * AILevel * AILevel > random
-triggerall = p2bodydist x < 50 && statetype != A
-trigger1 = ctrl
-trigger2 = movehit && animtime >= 0
-
-[State -1, AI MediumHit]
-type = ChangeState
-value = 210
-triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
-triggerall = AILevel * AILevel * AILevel > random
-triggerall = p2bodydist x < 50 && statetype != A
-trigger1 = ctrl
-trigger2 = movehit && animtime >= 0
-
-[State -1, AI FollowUp]
-type = ChangeState
-value = 1500
-triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
-triggerall = AILevel * AILevel * AILevel * 2 > random
-triggerall = p2bodydist x < 50 && statetype != A
-trigger1 = movehit && animtime >= 0
-;---------------------------------------------------------------------------
-;---------------------------------------------------------------------------
