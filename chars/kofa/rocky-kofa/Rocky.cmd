@@ -358,6 +358,7 @@ trigger2=(stateno=[200,499]) && movecontact
 [State -1, �}�L�V�}����x���W���[]
 type = ChangeState
 value = 3000
+triggerall = !AILevel
 triggerall = command = "�}�L�V�}���x���W���["
 triggerall = power >= 1000
 triggerall = statetype != A
@@ -403,6 +404,7 @@ trigger2=(stateno=[200,499]) && movecontact
 [State -1, M11�^�f���W�����X��A�[�`]
 type = ChangeState
 value = 1700
+triggerall = !AILevel
 triggerall = command = "�f���W�����X�A�[�`"
 triggerall = statetype != A
 trigger1 = ctrl
@@ -859,6 +861,14 @@ value = 700
 triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
 triggerall = AILevel * AILevel * AILevel > random
 triggerall = p2bodydist x > 100 && statetype != A
+trigger1 = ctrl
+
+[State -1, AI Grab]
+type = ChangeState
+value = 1700
+triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
+triggerall = AILevel * AILevel * AILevel> random
+triggerall = p2bodydist x < 20 && statetype != A
 trigger1 = ctrl
 
 [State -1, AI LowHit]
