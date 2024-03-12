@@ -453,7 +453,6 @@ trigger2=(stateno=[200,499]) && movecontact
 [State -1,Low Sonic Boom a]
 type = ChangeState
 value = 1100
-triggerall = Var(59) = 0
 triggerall = Command = "xxxxx"; || Command = "xxx"
 trigger1 = StateType != A && ctrl
 trigger2 = var(39) = 1
@@ -464,7 +463,6 @@ trigger4 = stateno = 100
 [State -1, Low Sonic Boom b]
 type = ChangeState
 value = 1150
-triggerall = Var(59) = 0
 triggerall = Command = "yyyyy"; || Command = "yyy"
 trigger1 = StateType != A && ctrl
 trigger2 = var(39) = 1
