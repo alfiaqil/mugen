@@ -870,14 +870,6 @@ triggerall = AILevel * AILevel * AILevel > random
 triggerall = p2bodydist x > 100 && statetype != A
 trigger1 = ctrl
 
-[State -1, AI Anti Air]
-type = ChangeState
-value = 1100
-triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
-triggerall = AILevel * AILevel * AILevel > random
-triggerall = p2statetype = A && p2bodydist x < 50 && statetype != A
-trigger1 = ctrl
-
 [State -1, AI LowHit]
 type = ChangeState
 value = 430
