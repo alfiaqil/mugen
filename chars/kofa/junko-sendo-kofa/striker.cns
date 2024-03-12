@@ -1,0 +1,441 @@
+[Statedef 84028]
+type    = S
+movetype= I
+physics = S
+poweradd = 0
+ctrl = 0
+velset = 0,0
+anim = 84028 ;<-Animacion del personaje
+sprpriority = -2
+
+[State 240, 4]
+type = PlaySnd
+trigger1 = Time = 1
+value = 0, 71
+
+[State 4100,1];
+type = Helper
+trigger1 = time = 0
+trigger1 = numhelper(84029) = 0
+ID = 84029
+name = "Striker!"
+postype = p1
+pos = -280,-50
+sprpriority = 2
+stateno = 84029
+helpertype = normal
+keyctrl = 0
+ownpal = 1
+
+[State 240, 4]
+type = ChangeState
+trigger1 = animTime = 0
+value = 0
+ctrl = 1
+
+;Striker - Salto del helper
+[Statedef 84029]
+type     = A
+movetype = A
+physics  = N
+ctrl = 0
+anim = 84029 ;<- Animacion de entrada del personaje (salto hacia el escenario) 3120
+velset = 0,0
+poweradd = -1000
+sprpriority = -2
+
+[State 0, HitOverride]
+type = HitOverride
+trigger1 = 1
+attr = SCA,NA,SA,HA,NP,SP,HP    ;SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+slot = 1
+stateno = 840299
+time = 1
+
+[State 210, 1]
+type = HitDef
+trigger1 = time = 1
+attr = S, NA
+damage = 30,5
+animtype = Hard
+air.animtype = back
+guardflag = M
+hitflag = MAFDF
+priority = 5, Hit
+sparkno = S30002
+sparkxy = -10, -30
+hitsound = s1,1
+guardsound = s2,0
+guard.sparkno = s30040
+ground.type = High
+pausetime = 7,7
+guard.pausetime = 12,11
+ground.slidetime = 11
+ground.hittime = 17
+guard.hittime = 17
+guard.slidetime = 11
+guard.ctrltime = 28
+ground.velocity = -7
+air.type = High
+air.velocity = -4.5,-6.5
+air.hittime = 13
+air.juggle = 0
+getpower = 94,94
+givepower = 16,16
+id = 310
+air.fall = 0
+ground.cornerpush.veloff = 0
+guard.cornerpush.veloff = 0
+air.cornerpush.veloff = 0
+yaccel = .5
+
+[State 1203, 1]
+type = playsnd
+trigger1 = animelem  = 1
+value = S0,10 ;(-MOD-) Sonido del salto del striker (VOZ)
+
+
+[State 1203, 1]
+type = playsnd
+trigger1 = animelem  = 1
+value = S0,3 ;(-MOD-) Sonido del salto del striker
+
+;-------------------------------------------------------------------------------
+
+[State 1203, 1]
+type = VelSet
+trigger1 = Time = 0
+x = 11.5
+y = -5
+
+[State 1203, 1]
+type = Veladd
+trigger1 = Time >= 0
+y = .6
+x = -.01
+
+[state 190]
+type = changestate
+trigger1 = Vel Y > 0
+trigger1 = Pos Y >= 0
+value = 84030
+
+;Striker - Ataque del Helper
+[Statedef 84030]
+type     = A
+movetype = A
+physics  = N
+ctrl = 0
+anim = 84 ;<- Animacion de entrada del personaje (salto hacia el escenario) 3120
+velset = 0,0
+poweradd = 30
+sprpriority = -2
+
+[State 1203, 1]
+type = playsnd
+trigger1 = AnimElem = 3
+value = S10,15
+
+[State 0, HitOverride]
+type = HitOverride
+trigger1 = 1
+attr = SCA,NA,SA,HA,NP,SP,HP    ;SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+slot = 1
+stateno = 840299
+time = 1
+
+[State 1203, 1]
+type = playsnd
+trigger1 = AnimElem = 3
+trigger2 = AnimElem = 6
+trigger3 = AnimElem = 9
+trigger4 = AnimElem = 11
+trigger5 = animelem = 13
+trigger6 = AnimElem = 16
+trigger7 = AnimElem = 19
+trigger8 = AnimElem = 23
+value = S0,4
+
+
+[State 820, 1]
+type = PlayerPush
+trigger1 = 1
+value = 0
+
+[State 820, 1]
+type = HitBy
+trigger1 = 1
+value = SCA, AA,AP
+time = 2
+
+[State 820, 1]
+type = hitoverride
+Trigger1 = 1
+time = 2
+attr = SCA,AP,AA
+stateno = 84033 ;<- En caso de ser golpeado, ira al estado 84026
+ignorehitpause = 1
+
+
+[State 810, 1]
+type = velset
+trigger1 = AnimElemtime(1) >= 0 && AnimElemtime(21) < 0
+x = 2.30
+
+[State 810, 1]
+type = velset
+trigger1 = AnimElem = 22
+x =  0
+
+[State 1950]
+type = HitDef
+trigger1 = AnimElem = 3
+trigger2 = AnimElem = 6
+attr = S,HA
+getpower = 0
+damage = 15,10
+animtype = Hard
+hitflag = MAF
+guardflag = M
+priority = 5
+pausetime = 5,5
+sparkno = 4020
+sparkxy = -10,-72
+hitsound = s10,14
+guardsound = s2,1
+guard.sparkno = 4120
+guard.velocity = -9
+ground.type = High
+ground.slidetime = 11
+ground.hittime = 18
+ground.velocity = -3,0
+air.velocity =-3,-4
+
+
+[State 240, 2]
+type = HitDef
+trigger1 = animelem = 9
+trigger2 = AnimElem = 11
+attr = S, NA
+animtype  =hard
+damage    = 15,10
+getpower = 10,10
+hitflag = MAFDF
+guardflag = MA
+pausetime = 8,8
+sparkno = S30002
+sparkxy = -10,-72
+hitsound   = s10,14
+guard.sparkno = s30040
+guardsound = s2,1
+ground.type = high
+ground.slidetime = 12
+ground.hittime  = 17
+ground.velocity = -2,-0
+air.velocity = -2,-4
+air.fall =433
+air.hittime = 665
+fall.recover = 0
+air.fall. recover= 0
+
+
+[State 240, 2]
+type = HitDef
+trigger1 = animelem = 13
+trigger2 = AnimElem = 16
+trigger3 = AnimElem = 19
+attr = S, NA
+animtype  =hard
+damage    = 25,10
+getpower = 10,10
+hitflag = MAFDF
+guardflag = MA
+pausetime = 8,8
+sparkno = S30002
+sparkxy = -10,-72
+hitsound   = s10,14
+guard.sparkno = s30040
+guardsound = s2,1
+ground.type = high
+ground.slidetime = 12
+ground.hittime  = 17
+ground.velocity = -2,-0
+air.velocity = -2,-4
+air.fall =433
+air.hittime = 665
+air.fall = 1
+fall.recover = 0
+air.fall.recover = 0
+
+[State 200, ƒqƒbƒg’è‹`]
+type = HitDef
+trigger1 = animelem = 23
+attr = S, HA
+damage = 20,23
+getpower = 20
+animtype = up
+guardflag = M
+hitflag = MAF
+priority = 3, Hit
+pausetime = 10,10
+sparkno = S30002
+guard.sparkno = s30040
+sparkxy = -10, -88
+hitsound = s1,4
+guardsound = s2,1
+ground.type = High
+ground.slidetime = 12
+ground.hittime  = 54
+ground.velocity = -1,-9.5
+air.velocity = -1,-9.5
+air.type = High
+air.hittime = 333
+fall = 333
+air.fall = 333
+fall.recovertime = 310
+envshake.time = 15
+envshake.ampl = 4
+envshake.freq = 100
+
+;(-MOD-)
+;-------------------------------------------------------------------------------
+
+[state 190]
+type = changestate
+trigger1 = animtime = 0
+value =  84031
+
+;Striker - Retirada del Helper
+[Statedef 84031]
+type    = A
+movetype= A
+physics = N
+anim = 84031
+velset = -7.5,-7.5
+sprpriority = 2
+
+[State 1203, 1]
+type = playsnd
+trigger1 = Time = 2
+value = S84029,5
+
+[State 0]
+type = DestroySelf
+trigger1 = Time = 36
+
+;Striker - Al ser golpeado el Helper
+[Statedef 84032]
+type = A
+physics = N
+movetype = H
+ctrl = 0
+anim = 84032
+velset = -5,-4
+poweradd = 0
+sprpriority = -2
+
+[State 1203, 1]
+type = Veladd
+trigger1 = Time > 3
+x = .04
+y = .4
+
+[state 190]
+type = changestate
+trigger1 = Vel Y > 0
+trigger1 = Pos Y >= 0
+value = 84033
+
+;Striker - Despues de ser golpeado
+[Statedef 84033]
+type = S
+physics = S
+movetype = H
+ctrl = 0
+anim = 84033
+velset = 0,0
+poweradd = 0
+sprpriority = -2
+
+[State 1203, 1]
+type = playsnd
+trigger1 = Time = 0
+value = S84029,1 ;<-Sonido de salto (-MOD-)
+
+[State 1203, 1]
+type = posSet
+trigger1 = Time = 0
+y = 0
+
+[state 190]
+type = changestate
+trigger1 = animtime = 0
+value = 84034
+
+;Striker - Retirada del Helper despues de ser golpeado
+[Statedef 84034]
+type    = A
+movetype= A
+physics = N
+anim = 84031
+velset = -7.5,-7.5
+sprpriority = 2
+
+[State 1203, 1]
+type = playsnd
+trigger1 = Time = 0
+value = S84029,5
+
+[State 0]
+type = DestroySelf
+trigger1 = Time = 36
+
+
+;Striker - Hit part 0
+[Statedef 840299]
+type    = A
+movetype= H
+physics = N
+juggle  = 0
+poweradd= 0
+velset = 0,0
+anim = 84034
+sprpriority = 2
+
+;-------------------------------------------------------------------------------
+;(-MOD-)
+[state a]
+type = stopsnd
+trigger1 = animtime = 0
+channel = 6
+
+[state a]
+type = stopsnd
+trigger1 = animtime = 0
+channel = 7
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 =!time
+value = S0,20 ;hit
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 =!time
+value = S84000,13 ;Voz Hit
+;-------------------------------------------------------------------------------
+
+[State 2020, VelSet]
+type = VelSet
+trigger1 = animelem = 2
+x = -5
+y = -5
+
+[State 0, Gravity]
+type = Gravity
+trigger1 = time > 10
+
+[State 2020, 0]
+type = ChangeState
+trigger1 = Pos Y > 0 && Vel Y > 0
+value = 84030

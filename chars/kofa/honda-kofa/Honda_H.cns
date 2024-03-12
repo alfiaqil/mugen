@@ -1,0 +1,599 @@
+;Honda KOF
+;Thedge
+
+;=====================================
+;DESPERATION MOVES
+;=====================================
+
+;Oni Musou
+;=====================================
+[Statedef 3000]
+movetype = A
+ctrl = 0
+velset = 0, 0
+anim = 3000
+poweradd = 0
+juggle = 10
+
+
+
+[State 3000, PALFX]
+type = PalFX
+triggerall = timemod = 2,0 && time <= 13
+trigger1 = prevstateno = [1000,1999]
+ignorehitpause = 1
+time = 1
+add = 255,255,255
+sinadd = -100,-100,-100, 1
+ignorehitpause = 1
+
+;------------------------------------
+
+[State 3000, voice]
+type = PlaySnd
+trigger1 = !time
+value = 17000,0
+
+[State 3000, VarSet]
+type = VarSet
+trigger1 = time = 0 ;Superpause tick error fix.
+var(6) = 29
+
+[State 3000, Super Pause]
+type = SuperPause
+trigger1 = time = 1
+movetime = 29
+poweradd = -1000
+time = 29
+anim = -1
+p2defmul = 1
+darken = 1
+
+[State 3000,Explod1]
+type = Explod
+trigger1 = Time = 1
+anim = 17010
+id   = 7010
+pos = -5,-90
+postype = p1
+supermove = 1
+supermovetime = 9999
+sprpriority = 11
+bindtime = 1
+ontop = 1
+ownpal = 1
+scale = .5,.5
+
+[State 3000,Explod2]
+type = Explod
+trigger1 = Time = 1
+anim = 17000
+id   = 7000
+pos = -5,-90
+postype = p1
+sprpriority = -2
+supermove = 1
+supermovetime = 9999
+bindtime = 1
+ontop = 0
+ownpal = 1
+unhittable = 1
+scale = .5,.5
+
+[State 3000, env2]
+type = EnvColor
+trigger1 = Time = 1
+value = 0,0,0
+time = 24
+under = 1
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = animelem = 5
+x = 9.268
+
+[State 2810, aftimg]
+type = AfterImage
+trigger1 = AnimElem = 4
+length = 15
+framegap = 3
+palcolor = 0
+trans = add1
+
+[State 3000, voice]
+type = PlaySnd
+trigger1 = !time
+value = 3000
+channel = 0
+
+[State 3000, voice]
+type = PlaySnd
+trigger1 = animelem = 4
+value = 3000,1
+channel = 0
+
+[State 3000, Invincibility]
+type = nothitby
+trigger1 = animelem = 4, < 0
+value = SCA
+
+[State 3000, hit]
+type = HitDef
+trigger1 = animelem = 3 || animelem = 4 || animelem = 5
+attr = s, ha
+hitflag = MAF
+guardflag = M
+animtype = hard
+air.animtype = hard
+fall.animtype = hard
+air.type = low
+priority = 6
+damage = 50,11
+pausetime = 7, 9
+guard.pausetime = 7, 7
+sparkno = S30002
+guard.sparkno = s30040
+sparkxy = ifelse(animelem = 23, >= 0, -15, ifelse(animelem = 9, >= 0 && p2bodydist x < 60, -30, -10)), ifelse(animelem = 23, >= 0, -95, ifelse(animelem = 9, >= 0, -81, -78))
+hitsound = S3,0
+guardsound = S120, 1
+ground.type = High
+ground.hittime = 18
+yaccel = .5
+ground.velocity = 0
+air.velocity = -4.4, -7.35; 128, 52
+ground.cornerpush.veloff = 0
+air.cornerpush.veloff = 0
+fall.recover = 0
+air.fall = 1
+getpower = 0, 0
+givepower = 8, 8
+envshake.time = 3
+envshake.freq = 100
+envshake.ampl = -5
+envshake.phase = 10
+kill = 1
+
+
+[State 1000, End]
+type=changestate
+triggerall = animelemtime(5) >= 2
+trigger1 = movecontact || movereversed
+trigger2 = !animtime
+value = 3001
+
+;------------------------------------------------------------------
+
+[Statedef 3001]
+movetype = A
+ctrl = 0
+velset = 0, 0
+anim = 3001
+poweradd = 0
+juggle = 10
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = animelem = 8
+x = 9.268
+
+[State 3000, hit]
+type = HitDef
+trigger1 = animelem = 7 || animelem = 8
+attr = s, ha
+hitflag = MAF
+guardflag = M
+animtype = hard
+air.animtype = hard
+fall.animtype = hard
+air.type = low
+priority = 6
+damage = 60,11
+pausetime = 7, 9
+guard.pausetime = 7, 7
+sparkno = S30002
+guard.sparkno = s30040
+sparkxy = ifelse(animelem = 23, >= 0, -15, ifelse(animelem = 9, >= 0 && p2bodydist x < 60, -30, -10)), ifelse(animelem = 23, >= 0, -95, ifelse(animelem = 9, >= 0, -81, -78))
+hitsound = S3,0
+guardsound = S120, 1
+ground.type = High
+ground.hittime = 18
+yaccel = .5
+ground.velocity = 0
+air.velocity = -4.4, -7.35; 128, 52
+ground.cornerpush.veloff = 0
+air.cornerpush.veloff = 0
+fall.recover = 0
+air.fall = 1
+getpower = 0, 0
+givepower = 8, 8
+envshake.time = 3
+envshake.freq = 100
+envshake.ampl = -5
+envshake.phase = 10
+kill = 1
+
+[State 1000, End]
+type=changestate
+triggerall = animelemtime(8) >= 2
+trigger1 = movecontact || movereversed
+trigger2 = !animtime
+value = 3002
+
+;-----------------------------------------------------
+[Statedef 3002]
+movetype = A
+ctrl = 0
+velset = 0, 0
+anim = 3002
+poweradd = 0
+juggle = 10
+
+[State 3000, voice]
+type = PlaySnd
+trigger1 = animelem = 5
+value = 3000,3
+channel = 0
+
+[State 3000, hit]
+type = HitDef
+trigger1 = animelem = 6 || animelem = 8 || animelem = 11 || animelem = 14 || animelem = 17
+attr = s, ha
+hitflag = MAF
+guardflag = M
+animtype = hard
+air.animtype = hard
+fall.animtype = hard
+air.type = low
+priority = 6
+damage = 15,11
+pausetime = 7, 9
+guard.pausetime = 7, 7
+sparkno = S30002
+guard.sparkno = s30040
+sparkxy = ifelse(animelem = 23, >= 0, -15, ifelse(animelem = 9, >= 0 && p2bodydist x < 60, -30, -10)), ifelse(animelem = 23, >= 0, -95, ifelse(animelem = 9, >= 0, -81, -78))
+hitsound = S3,0
+guardsound = S120, 1
+ground.type = High
+ground.hittime = 18
+yaccel = .5
+ground.velocity = 0
+air.velocity = -4.4, -7.35; 128, 52
+ground.cornerpush.veloff = 0
+air.cornerpush.veloff = 0
+fall.recover = 0
+air.fall = 1
+getpower = 0, 0
+givepower = 8, 8
+envshake.time = 3
+envshake.freq = 100
+envshake.ampl = -5
+envshake.phase = 10
+kill = 0
+
+[State 3000, final hit]
+type = HitDef
+trigger1 = animelem = 21
+attr = s, ha
+hitflag = MAF
+guardflag = M
+animtype = diagup
+air.animtype = diagup
+fall.animtype = diagup
+air.type = low
+priority = 6
+damage = 42,11
+pausetime = 28, 30
+guard.pausetime = 16, 16
+sparkno = S30002
+guard.sparkno = s30040
+sparkxy = -15, -83
+hitsound = S5
+guardsound = S120, 1
+ground.type = High
+ground.slidetime = 18
+ground.hittime = 18
+yaccel = .5
+ground.velocity = -6, -9.4; ~224, 85
+air.velocity = -6, -9.4; ~224, 85
+guard.velocity = -10.4; 62
+ground.cornerpush.veloff = 0; 62
+air.cornerpush.veloff = 0
+fall.recover = 0
+fall = 1
+ID = 3001
+getpower = 0, 0
+givepower = 8, 8
+envshake.time = 28
+envshake.freq = 100
+envshake.ampl = -5
+envshake.phase = 10
+
+[State 1000, End]
+type = changestate
+trigger1 = !animtime
+value = 0
+ctrl = 1
+
+;End of Oni Musou ========================================
+
+
+
+
+
+;Somersault Strike DM
+;=============================================================
+[Statedef 3100]
+movetype = A
+ctrl = 0
+velset = 0, 0
+anim = 3100
+poweradd = 0
+juggle = 10
+
+
+
+[State 3000, PALFX]
+type = PalFX
+triggerall = timemod = 2,0 && time <= 13
+trigger1 = prevstateno = [1000,19999]
+ignorehitpause = 1
+time = 1
+add = 255,255,255
+sinadd = -100,-100,-100, 1
+ignorehitpause = 1
+
+[State 3000, voice]
+type = PlaySnd
+trigger1 = animelem = 2
+value = 17000,0
+
+[State 3000, VarSet]
+type = VarSet
+trigger1 = time = 2 ;Superpause tick error fix.
+var(6) = 29
+
+[State 3000, Super Pause]
+type = SuperPause
+trigger1 = animelem = 2
+movetime = 29
+poweradd = -1000
+time = 29
+anim = -1
+p2defmul = 1
+
+[State 3000,Explod1]
+type = Explod
+trigger1 = animelem = 2
+anim = 17010
+id   = 7010
+pos = 25,-60
+postype = p1
+supermove = 1
+supermovetime = 9999
+sprpriority = 11
+bindtime = 1
+ontop = 1
+ownpal = 1
+scale = .5,.5
+
+[State 3000,Explod2]
+type = Explod
+trigger1 = animelem = 2
+anim = 17000
+id   = 7000
+pos = 25,-60
+postype = p1
+sprpriority = -2
+supermove = 1
+supermovetime = 9999
+bindtime = 1
+ontop = 0
+ownpal = 1
+unhittable = 1
+scale = .5,.5
+
+[State 3000, env2]
+type = EnvColor
+trigger1 = animelem = 2
+value = 0,0,0
+time = 29
+under = 1
+
+[State 3100, voice]
+type = PlaySnd
+trigger1 = !time
+value = 3100
+channel = 0
+
+[State 3100, voice]
+type = PlaySnd
+trigger1 = animelem = 5
+value = 1000
+channel = 0
+
+[State 2810, aftimg]
+type = AfterImage
+trigger1 = AnimElem = 3
+length = 15
+framegap = 3
+palcolor = 0
+trans = add1
+
+[State 1100, no]
+type = NotHitBy
+trigger1 = animelem = 5, < 0
+value = sca
+
+[State 1100, G2A]
+type = statetypeset
+trigger1 = animelem = 5
+statetype = A
+physics = N
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = animelem = 5
+x = 2.57
+y = -5.31
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = animelem = 6
+y = -1.31
+
+[State 1200, Accel]
+type = Veladd
+trigger1 = animelemtime(6)>=1
+y = .5751422
+
+[State 3000, hit]
+type = HitDef
+trigger1 = animelem = 3
+attr = s, ha
+hitflag = MAF
+guardflag = M
+animtype = hard
+air.animtype = hard
+fall.animtype = hard
+air.type = low
+priority = 6
+damage = 40,11
+pausetime = 7, 9
+guard.pausetime = 7, 7
+sparkno = S30002
+guard.sparkno = s30040
+sparkxy = 20,-60
+hitsound = S3,0
+guardsound = S120, 1
+ground.type = High
+ground.hittime = 18
+yaccel = .5
+ground.velocity = 0
+air.velocity = -4.4, -7.35; 128, 52
+ground.cornerpush.veloff = 0
+air.cornerpush.veloff = 0
+fall.recover = 0
+air.fall = 1
+getpower = 0, 0
+givepower = 8, 8
+envshake.time = 3
+envshake.freq = 100
+envshake.ampl = -5
+envshake.phase = 10
+
+[State 3000, hit]
+type = HitDef
+trigger1 = animelem = 5
+attr = s, ha
+hitflag = MAF
+guardflag = M
+animtype = hard
+air.animtype = hard
+fall.animtype = hard
+air.type = low
+priority = 6
+damage = 60,11
+pausetime = 7, 9
+guard.pausetime = 7, 7
+sparkno = S30002
+guard.sparkno = s30040
+sparkxy = 20,-60
+hitsound = S3,0
+guardsound = S120, 1
+ground.slidetime = 17
+ground.hittime  = 17
+ground.velocity = -2.3,-8.75
+guard.velocity = -14.90625
+air.type = High
+air.velocity = -2.3,-8.75
+air.hittime = 13
+air.juggle = 0
+getpower = 0,0
+givepower = 16,16
+ground.cornerpush.veloff = 0
+guard.cornerpush.veloff = 0
+air.cornerpush.veloff = 0
+fall = 1
+yaccel = .5
+envshake.time = 3
+envshake.freq = 100
+envshake.ampl = -5
+envshake.phase = 10
+
+[State 1200, End]
+type=changestate
+trigger1= statetype=A
+trigger1= pos y >= 1 && vel y >= 1
+value=3110
+
+;--------------------------------
+[Statedef 3110]
+movetype = A
+ctrl = 0
+velset = 0, 0
+anim = 3110
+poweradd = 0
+
+[State 0, PosSet]
+type = PosSet
+trigger1 = !time
+y = 0
+
+[State 3100, voice]
+type = PlaySnd
+trigger1 = animelem = 4
+value = 320,0
+channel = 0
+
+[State 3100, voice]
+type = PlaySnd
+trigger1 = animelem = 4
+value = 0,1
+channel = 1
+
+[State 280, 5]
+type = HitDef
+trigger1 = animelem = 5
+attr = S, NA
+damage = ifelse(var(56),124,100),11
+hitflag = MAF
+guardflag = H
+animtype = UP
+ground.animtype = low
+pausetime = 20,21
+sparkno = S30002
+guard.sparkno = s30040
+sparkxy = -10, -73
+hitsound = s5,0
+guardsound = s120,1
+ground.slidetime = 17
+ground.hittime  = 17
+ground.velocity = -0.5,-10.5
+guard.velocity = -14.90625
+air.type = High
+air.velocity = -0.5,-10.5
+air.hittime = 13
+air.juggle = 0
+getpower = 0,0
+givepower = 16,16
+ground.cornerpush.veloff = 0
+guard.cornerpush.veloff = 0
+air.cornerpush.veloff = 0
+fall = 1
+ID = 3110
+envshake.time = 10
+envshake.freq = 100
+envshake.ampl = -5
+envshake.phase = 10
+yaccel = .5
+
+[State 1000, End]
+type = changestate
+trigger1 = !animtime
+value = 0
+ctrl = 1
+
+;End of Somersault Strike DM ====================================
+
+
+;=============================================================

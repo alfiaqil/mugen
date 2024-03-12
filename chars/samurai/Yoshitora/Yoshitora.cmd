@@ -2,36 +2,36 @@
 
 [Command];葵
 name = "aoi"
-command = ~D, F, D, F, c
+command = ~D, DF, F, D, DF, F, c
 time = 30
 
 ;-------------------
 [Command];遊蝶花
 name = "yuuchouka"
-command = ~D, F, D, F, z
+command = ~D, DF, F,D , DF, F, a+b
 time = 30
 [Command];朝顔強
 name = "yuugao"
-command = ~D, B, D, B, z
+command = ~D, DF, F, D, DF, F, x+y
 time = 30
 
 ;-------------------
 [Command];葵
 name = "hyper1"
-command = ~D, F, D, F, x
+command = ~D, DF, F, D, DF, F, x
 time = 30
 [Command];葵
 name = "hyper1"
-command = ~D, F, D, F, y
+command = ~D, DF, F, D, DF, F, y
 time = 30
 
 [Command];夕顔
 name = "asagao_c"
-command = ~D, F, D, F, a
+command = ~D, DF, F, D, DF, F,a
 time = 30
 [Command];夕顔
 name = "asagao_c"
-command = ~D, F, D, F, b
+command = ~D, DF, F, D, DF, F,b
 time = 30
 
 
@@ -39,11 +39,11 @@ time = 30
 
 [Command];白百合弱
 name = "sirayuri_a"
-command = ~F, D, DF, x
+command = ~D, DF, F, x
 time = 30
 [Command];白百合中
 name = "sirayuri_b"
-command = ~F, D, DF, y
+command = ~D, DF, F, y
 time = 30
 
 ;-------------------
@@ -69,11 +69,11 @@ time = 30
 ;-------------------
 [Command];椿中
 name = "tubaki_b"
-command = ~D, DF, F, x
+command = ~D, DB, B, x
 time = 30
 [Command];椿中
 name = "tubaki_b"
-command = ~D, DF, F, y
+command = ~D, DB, B, y
 time = 30
 
 ;-| Double Tap |-----------------------------------------------------------
@@ -231,6 +231,9 @@ triggerall = power >= 2000
 triggerall = statetype != A
 trigger1 = ctrl
 trigger2=(stateno=[200,449]) && movecontact
+trigger3 = stateno = 1250 || stateno = 1162 || stateno = 1010 || stateno = 1060 || stateno = 3220
+trigger3=movecontact
+trigger4=stateno=2273
 
 [State -1, yuugao]
 type = ChangeState
@@ -239,7 +242,9 @@ triggerall = command = "yuugao"
 triggerall = power >= 2000
 triggerall = statetype != A
 trigger1 = ctrl
-trigger2=(stateno=[200,449]) && movecontact
+trigger2=(stateno=[200,499]) && movecontact
+trigger3 = stateno = 1250 || stateno = 1162 || stateno = 1010 || stateno = 1060
+trigger3=movecontact
 
 
 ;-------------------------------------------------------------------------------
@@ -250,7 +255,9 @@ triggerall = command = "hyper1"
 triggerall = power >= 1000
 triggerall = statetype != A
 trigger1 = ctrl
-trigger2=(stateno=[200,499]) && movecontact
+trigger2=(stateno=[200,449]) && movecontact
+trigger3 = stateno = 1250 || stateno = 1162 || stateno = 1010 || stateno = 1060
+trigger3=movecontact
 
 [State -1, asagao c]
 type = ChangeState
@@ -260,28 +267,12 @@ triggerall = power >= 1000
 triggerall = statetype != A
 trigger1 = ctrl
 trigger2=(stateno=[200,499]) && movecontact
+trigger3 = stateno = 1250 || stateno = 1162 || stateno = 1010 || stateno = 1060
+trigger3=movecontact
 
 ;===========================================================================
 ;　　　　　　　　　　　　　　　　　必殺技
 ;===========================================================================
-
-;---------------------------------------------------------------------------
-[State -1, sirayuri a]
-type = ChangeState
-value = 1000
-triggerall = command = "sirayuri_a"
-triggerall = statetype != A
-trigger1 = ctrl
-trigger2=(stateno=[200,449]) && movecontact
-
-[State -1, sirayuri b]
-type = ChangeState
-value = 1010
-triggerall = command = "sirayuri_b"
-triggerall = statetype != A
-trigger1 = ctrl
-trigger2=(stateno=[200,449]) && movecontact
-
 ;椿中＆強
 [State -1, tubaki b or c]
 type = ChangeState
@@ -291,10 +282,35 @@ triggerall = statetype != A
 trigger1 = ctrl
 trigger2=(stateno=[200,449]) && movecontact
 
+;---------------------------------------------------------------------------
+[State -1, sirayuri a]
+type = ChangeState
+value = 1000
+triggerall = command = "sirayuri_a"
+triggerall = statetype != A
+trigger1 = ctrl
+trigger2=(stateno=[200,449]) && movecontact
+trigger3 = stateno = 1060 && movecontact && command = "sirayuri_a"
+trigger4 = stateno = 1250 && movecontact && command = "sirayuri_a"
 
+[State -1, sirayuri b]
+type = ChangeState
+value = 1010
+triggerall = command = "sirayuri_b"
+triggerall = statetype != A
+trigger1 = ctrl
+trigger2=(stateno=[200,449]) && movecontact
+trigger3 = stateno = 1050 && movecontact && command = "sirayuri_b"
 
 ;---------------------------------------------------------------------------------------
-
+;牡丹
+[State -1, botan]
+type = ChangeState
+value = 1100
+triggerall = command = "nadesiko_a" || command = "nadesiko_b"
+triggerall = statetype = A
+trigger1 = ctrl
+trigger2=(stateno=[600,559]) && movecontact
 
 ;---------------------------------------------------------------------------------------
 ;撫子Ａ
@@ -320,13 +336,66 @@ trigger2=(stateno=[200,449]) && movecontact
 ;不意打ち
 [State -1, fuiuchi]
 type = ChangeState
-value = 1251
+value = 1250
 triggerall = command = "fui"
 triggerall = statetype != A
 trigger1 = ctrl
 trigger2 = stateno = [200,449]
 trigger2 = movecontact
-
+trigger3 = stateno = 1060 && movecontact && command = "fui"
+;---------------------------------------------------------------------------
+;椿弱
+;[State -1, tubaki a]
+;type = ChangeState
+;value = 1150
+;triggerall = command = "tubaki_a"
+;trigger1 = statetype != A
+;trigger1 = ctrl
+;trigger2 = stateno = 200
+;trigger2 = animelemtime(1) >= 0 && animelemtime(3) < 0
+;trigger3 = stateno = 205
+;trigger4 = stateno = 210
+;trigger4 = animelemtime(8) >= 0 && animelemtime(14) < 0
+;trigger5 = stateno = 215
+;trigger6 = stateno = 230
+;trigger6 = animelemtime(1) >= 0 && animelemtime(2) < 0
+;trigger7 = stateno = 235
+;trigger7 = animelemtime(1) >= 0 && animelemtime(12) < 0
+;trigger8 = stateno = 240
+;trigger8 = animelemtime(1) >= 0 && animelemtime(2) < 0
+;trigger9 = stateno = 245
+;trigger9 = animelemtime(4) >= 0
+;trigger10 = stateno = 350
+;trigger10 = animelemtime(1) >= 0 && animelemtime(3) < 0
+;trigger11 = stateno = 360
+;trigger11 = animelemtime(1) >= 0 && animelemtime(7) < 0
+;trigger12 = stateno = 380
+;trigger12 = animelemtime(1) >= 0 && animelemtime(2) < 0
+;trigger13 = stateno = 400
+;trigger13 = animelemtime(1) >= 0 && animelemtime(4) < 0
+;trigger14 = stateno = 405
+;trigger15 = stateno = 410
+;trigger15 = animelemtime(1) >= 0 && animelemtime(5) < 0
+;trigger16 = stateno = 430
+;trigger16 = animelemtime(1) >= 0 && animelemtime(2) < 0
+;trigger17 = stateno = 445
+;trigger17 = animelemtime(8) >= 0
+;trigger18 = stateno = 720
+;trigger18 = animelemtime(3) >= 0
+;trigger19 = stateno = 100
+;trigger20 = stateno = 102
+;trigger21 = stateno = 103
+;trigger22 = stateno = 104
+;trigger23 = prevstateno != 235
+;trigger23 = stateno = 301
+;trigger23 = animelemtime(2) >= 0
+;trigger24 = prevstateno = 235
+;trigger24 = stateno = 301
+;trigger24 = animelemtime(1) >= 7 && animelemtime(2) < 0
+;trigger25 = stateno = 302
+;trigger25 = animelemtime(1) >= 7 && animelemtime(2) < 0
+;trigger26 = stateno = 501
+;trigger26 = animelemtime(2) >= 0
 
 ;===========================================================================
 ;　　　　　　　　　　　　　　　　システム関連
@@ -353,39 +422,59 @@ trigger1 = ctrl
 [State -1]
 type = ChangeState
 value = 870
-triggerall = command = "holdback"
-triggerall = (command = "x" && command = "a") || command = "z"
-triggerall = statetype != A
-trigger1 = ctrl
-trigger2=(stateno=[200,499]) && movecontact
+triggerall = command = "a+x" && Command = "holdback"
+trigger1 = StateType = S && (Ctrl = 1 || StateNo = 100)
+trigger2 = stateno = [150,151]
+trigger2 = Power >= 1000
+[State -1]
+type = ChangeState
+value = 870
+triggerall = command = "z" && Command = "holdback"
+trigger1 = StateType = S && (Ctrl = 1 || StateNo = 100)
+trigger2 = stateno = [150,151]
+trigger2 = Power >= 1000
 
+;---------------------------------------------------------------------------
 ; 避け
 [State -1]
 type = ChangeState
 value = 799
-triggerall = (command = "x" && command = "a") || command = "z"
+triggerall = command = "a" && command = "x" && !Command = "holdback"
 triggerall = statetype != A
 trigger1 = ctrl
-trigger2=(stateno=[200,499]) && movecontact
-
-;---------------------------------------------------------------------------
+trigger2 = stateno = [200,499]
+trigger2 = movecontact && Power >= 1000
+trigger2 = statetype = S
+trigger3 = stateno = [150,151]
+trigger3 = Power >= 1000
+[State -1]
+type = ChangeState
+value = 799
+triggerall = command = "z" && !Command = "holdback"
+triggerall = statetype != A
+trigger1 = ctrl
+trigger2 = stateno = [200,499]
+trigger2 = movecontact && Power >= 1000
+trigger2 = statetype = S
+trigger3 = stateno = [150,151]
+trigger3 = Power >= 1000
 
 [State -1]
 type = ChangeState
 value = 665
-triggerall = (command = "y" && command = "b") || command = "c"
-triggerall = statetype != A
+triggerall = command = "b" && command = "y"
+triggerall = statetype = S
 trigger1 = ctrl
-trigger2=(stateno=[200,499]) && movecontact
-
-;jump strong kick
-[State -1, Jump Hard Slash]
+trigger2 = stateno = [150,151]
+trigger2 = power >= 1000
+[State -1]
 type = ChangeState
-value = 650
-triggerall = (command = "y" && command = "b") || command = "c"
-triggerall = statetype = A
+value = 665
+triggerall = command = "c"
+triggerall = statetype = S
 trigger1 = ctrl
-trigger2=(stateno=[600,699]) && movecontact
+trigger2 = stateno = [150,151]
+trigger2 = power >= 1000
 
 ;---------------------------------------------------------------------------
 ;Kung Fu Throw
@@ -422,6 +511,27 @@ trigger2 = p2bodydist X < 5
 trigger2 = (p2statetype = S) || (p2statetype = C)
 trigger2 = p2movetype != H
 
+;-----------------------------------------------------------------------------
+;小ジャンプ前
+;[State -1, jump]
+;type = ChangeState
+;value = 705
+;triggerall = command = "y"
+;triggerall = command = "holdfwd"
+;triggerall = command != "holddown"
+;trigger1 = statetype = S
+;trigger1 = ctrl
+
+;-----------------------------------------------------------------------------
+;小ジャンプ垂直
+;[State -1, jump]
+;type = ChangeState
+;value = 700
+;triggerall = command = "y"
+;triggerall = command = "holdback"
+;triggerall = command != "holddown"
+;trigger1 = statetype = S
+;trigger1 = ctrl
 ;---------------------------------------------------------------------------
 ;敬意
 [State -1, keii]
@@ -446,157 +556,133 @@ trigger1 = ctrl
 
 ;---------------------------------------------------------------------------
 
-;Stand Light Punch Close
-[State -1, Stand Light Punch Close]
+;stand low punch close
+[State -1, Slash]
 type = ChangeState
 value = 205
-triggerall = p2bodydist X <= 10
+triggerall = p2bodydist X <= 30
+triggerall = var(59) != 1
 triggerall = command = "x"
 triggerall = command != "holddown"
 triggerall = statetype != A
 trigger1 = ctrl
 trigger2 = stateno = 100
+trigger3 =stateno=230||stateno=430&&movecontact
 
-;Stand Light Punch
+;stand low punch
 [State -1, Stand Light Punch]
 type = ChangeState
 value = 200
+triggerall = var(59) != 1
 triggerall = command = "x"
 triggerall = command != "holddown"
 triggerall = statetype != A
 trigger1 = ctrl
 trigger2 = stateno = 100
 
-;Stand Medium Punch Close
-[State -1, Stand Medium Punch Close]
+;stand medium punch
+[State -1, Stand Medium Slash]
 type = ChangeState
 value = 211
-triggerall = p2bodydist X <= 10
+triggerall = var(59) != 1
 triggerall = command = "y"
 triggerall = command != "holddown"
 triggerall = statetype != A
 trigger1 = ctrl
-trigger2 = (stateno = [200,209])&& movecontact
-trigger3 = (stateno = [230,239])&& movecontact
-trigger4 = (stateno = [400,409])&& movecontact
-trigger5 = (stateno = [430,439])&& movecontact
-trigger6 = stateno = 100
-
-;Stand Medium Punch
-[State -1, Stand Medium Punch]
-type = ChangeState
-value = 210
-triggerall = command = "y"
-triggerall = command != "holddown"
-triggerall = statetype != A
-trigger1 = ctrl
-trigger2 = (stateno = [200,209])&& movecontact
-trigger3 = (stateno = [230,239])&& movecontact
-trigger4 = (stateno = [400,409])&& movecontact
-trigger5 = (stateno = [430,439])&& movecontact
-trigger6 = stateno = 100
+trigger2 = stateno = 100
+trigger3 = stateno = 205 && movecontact && command = "y"
+trigger4 = stateno = 410 && movecontact && command = "y"
+trigger5 = stateno = 1050 && movecontact && command = "y"
 
 ;---------------------------------------------------------------------------
 
-;Stand Light Kick
-[State -1, Stand Light Kick]
+;stand low kick
+[State -1, Standing Kick]
 type = ChangeState
 value = 230
+triggerall = var(59) != 1
 triggerall = command = "a"
 triggerall = command != "holddown"
 triggerall = statetype != A
 trigger1 = ctrl
-trigger2 = (stateno = [200,209])&& movecontact
-trigger3 = (stateno = [400,409])&& movecontact
-trigger4 = stateno = 100
+trigger2 = stateno = 100
 
-;Stand Medium Kick
-[State -1, Stand Medium Kick]
+;stand medium kick
+[State -1, Kick]
 type = ChangeState
 value = 240
+triggerall = var(59) != 1
 triggerall = command = "b"
 triggerall = command != "holddown"
 triggerall = statetype != A
 trigger1 = ctrl
-trigger2 = (stateno = [200,219])&& movecontact
-trigger3 = (stateno = [230,239])&& movecontact
-trigger4 = (stateno = [400,419])&& movecontact
-trigger5 = (stateno = [430,439])&& movecontact
-trigger6 = stateno = 100
+trigger2 = stateno = 100
+trigger3 =stateno=211&&movecontact
 
 
 ;---------------------------------------------------------------------------
 
-;Crouching Light Punch
-[State -1, Crouching Light Punch]
+;crouching low punch close
+[State -1, Slash]
 type = ChangeState
 value = 405
+triggerall = p2bodydist X <= 20
+triggerall = var(59) != 1
 triggerall = command = "x"
-triggerall = p2bodydist X <= 10
 triggerall = command = "holddown"
 triggerall = statetype != A
-trigger1 = ctrl  
+trigger1 = ctrl    
+trigger2 =stateno=230||stateno=430&&movecontact
 
-;Crouching Light Punch
-[State -1, Crouching Light Punch]
+;crouching low punch
+[State -1, Crouching Light Slash]
 type = ChangeState
 value = 400
+triggerall = var(59) != 1
 triggerall = command = "x"
 triggerall = command = "holddown"
 triggerall = statetype != A
-trigger1 = ctrl  
+trigger1 = ctrl
+trigger2 =stateno=430&&movecontact
 
-;Crouching Medium Punch
-[State -1, Crouching Medium Punch]
+;crouching medium punch
+[State -1, Crouching Medium Slash]
 type = ChangeState
 value = 410
+triggerall = var(59) != 1
 triggerall = command = "y"
 triggerall = command = "holddown"
 triggerall = statetype != A
 trigger1 = ctrl
-trigger2 = (stateno = [200,209])&& movecontact
-trigger3 = (stateno = [230,239])&& movecontact
-trigger4 = (stateno = [400,409])&& movecontact
-trigger5 = (stateno = [430,439])&& movecontact   
+trigger2 = stateno = 405 && movecontact && command = "y" 
+trigger3 = stateno = 430 && movecontact && command = "y"
+trigger4 = stateno = 400 && movecontact && command = "y"
 
 ;-------------------------------------------------
 
-;Crouching Light Kick
-[State -1, Crouching Light Kick]
-type = ChangeState
-value = 435
-triggerall = command = "a"
-triggerall = command = "holdfwd"
-triggerall = command = "holddown"
-triggerall = statetype != A
-trigger1 = ctrl
-trigger2 = (stateno = [200,209])&& movecontact
-trigger3 = (stateno = [400,409])&& movecontact  
-
-;Crouching Light Kick
-[State -1, Crouching Light Kick]
+;crouching low kick
+[State -1, Crouching Kick]
 type = ChangeState
 value = 430
+triggerall = var(59) != 1
 triggerall = command = "a"
 triggerall = command = "holddown"
 triggerall = statetype != A
 trigger1 = ctrl
-trigger2 = (stateno = [200,209])&& movecontact
-trigger3 = (stateno = [400,409])&& movecontact  
+trigger2 = stateno = 405 && movecontact && command = "a"
 
-;Crouching Medium Kick
-[State -1, Crouching Medium Kick]
+
+
+;crouching strong kick
+[State -1, Crouching Hard Slash]
 type = ChangeState
-value = 440
+value = 450
+triggerall = var(59) != 1
 triggerall = command = "b"
 triggerall = command = "holddown"
 triggerall = statetype != A
 trigger1 = ctrl
-trigger2 = (stateno = [200,219])&& movecontact
-trigger3 = (stateno = [230,239])&& movecontact
-trigger4 = (stateno = [400,419])&& movecontact
-trigger5 = (stateno = [430,439])&& movecontact
-trigger6 = stateno = 100  
+
 
 ;---------------------------------------------------------------------------
 
@@ -630,13 +716,38 @@ trigger1 = ctrl
 ;jump medium kick
 [State -1, Jump Medium Slash]
 type = ChangeState
-value = 1100
+value = 640
 triggerall = var(59) != 1
 triggerall = command = "b"
 triggerall = statetype = A
 trigger1 = ctrl
 
-
+;jump strong kick
+[State -1, Jump Hard Slash]
+type = ChangeState
+value = 650
+triggerall = var(59) != 1
+triggerall = command = "c"
+triggerall = statetype = A
+trigger1 = ctrl
 
 ;---------------------------------------------------------------------------
+;Roll_Back
+[State -1]
+type = ChangeState
+value = 7100
+triggerall = command = "BB"
+triggerall = (command = "x" && command = "a") || command = "z"
+triggerall = statetype != A
+trigger1 = ctrl
+trigger2=(stateno=[200,499]) && movecontact
 
+;Roll_Fwd
+[State -1]
+type = ChangeState
+value = 7001
+triggerall = command = "FF"
+triggerall = (command = "x" && command = "a") || command = "z"
+triggerall = statetype != A
+trigger1 = ctrl
+trigger2=(stateno=[200,499]) && movecontact

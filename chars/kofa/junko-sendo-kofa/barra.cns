@@ -1,0 +1,417 @@
+[Statedef 70000]
+ctrl = 0
+anim = 9999
+ownpal = 1
+
+
+[State 60000, Explod]
+type = Explod
+trigger1 = !NumExplod(14006)
+trigger1 = TeamSide = 1
+anim = 14009
+ID = 14006
+postype = Back
+pos = 23,225+(root,var(25))
+ownpal = 1
+bindtime = -1
+scale = 0.5,0.5
+ignorehitpause = 1
+ontop = 1
+pausemovetime = -1
+supermovetime = -1
+
+[State 60000, Explod]
+type = Explod
+trigger1 = !NumExplod(14006)
+trigger1 = TeamSide = 2
+anim = 14010
+ID = 14006
+postype = Back
+pos = 23,225+(root,var(25))
+ownpal = 1
+bindtime = -1
+scale = 0.5,0.5
+ignorehitpause = 1
+ontop = 1
+pausemovetime = -1
+supermovetime = -1
+
+
+
+
+[State 60000, Explod]
+type = Explod
+triggerall = parent,fvar(5) > 1000
+trigger1 = !NumExplod(14007)
+trigger1 = TeamSide = 1
+anim = 14000
+ID = 14007
+postype = Back
+pos = 52,259+(root,var(25))
+ownpal = 1
+bindtime = -1
+ignorehitpause = 1
+ontop = 1
+pausemovetime = -1
+supermovetime = -1
+
+
+
+[State 60000, Explod]
+type = Explod
+triggerall = parent,fvar(5) > 1000
+trigger1 = !NumExplod(14001)
+trigger1 = TeamSide = 1
+anim = 14001
+ID = 14001
+postype = Back
+pos = 37,629+(root,var(25))
+ownpal = 1
+bindtime = -1
+ignorehitpause = 1
+ontop = 1
+pausemovetime = -1
+supermovetime = -1
+
+[State 60000, Explod]
+type = Explod
+triggerall = parent,fvar(5) > 1000
+trigger1 = !NumExplod(14001)
+trigger1 = TeamSide = 2
+anim = 14001
+ID = 14001
+postype = Back
+pos = 87,629+(root,var(25))
+ownpal = 1
+bindtime = -1
+ignorehitpause = 1
+ontop = 1
+pausemovetime = -1
+supermovetime = -1
+
+[State 60000, Explod];Stock Numbah One
+type = Explod
+trigger1 = parent,fvar(5) > 1000
+trigger1 = !NumExplod(14003)
+trigger1 = TeamSide = 1
+anim = 14003
+ID = 14000
+postype = Back
+pos = 52,259+(root,var(25))
+ownpal = 1
+bindtime = -1
+ignorehitpause = 1
+ontop = 1
+removetime = -1
+pausemovetime = -1
+supermovetime = -1
+
+
+[State 60000, Explod]
+type = Explod
+trigger1 = parent,fvar(5) > 1000
+trigger1 = !NumExplod(14003)
+trigger1 = TeamSide = 2
+anim = 14000
+ID = 14003
+postype = Back
+pos = 52,259+(root,var(25))
+ownpal = 1
+bindtime = -1
+ignorehitpause = 1
+ontop = 1
+removetime = -1
+pausemovetime = -1
+supermovetime = -1
+
+
+[State 60000, Explod];Stock Numbah One Silver
+type = Explod
+trigger1 = parent,fvar(5) > 1999
+trigger1 = !NumExplod(14005)
+trigger1 = TeamSide = 1
+anim = 14001
+ID = 14005
+postype = Back
+pos = 52,259+(root,var(25))
+ownpal = 1
+bindtime = -1
+ignorehitpause = 1
+ontop = 1
+removetime = -1
+pausemovetime = -1
+supermovetime = -1
+
+[State 60000, Explod]
+type = Explod
+trigger1 = parent,fvar(5) > 1999
+trigger1 = !NumExplod(14005)
+trigger1 = TeamSide = 2
+anim = 14001
+ID = 14005
+postype = Back
+pos = 52,259+(root,var(25))
+ownpal = 1
+bindtime = -1
+ignorehitpause = 1
+ontop = 1
+removetime = -1
+pausemovetime = -1
+supermovetime = -1
+
+[State 6140, ModifyExplod]
+type = ModifyExplod
+triggerall = parent,fvar(5) < 1001
+trigger1 = NumExplod(14000)
+ID = 14000
+scale = (parent,fvar(5))/1000.0,.5
+ignorehitpause = 1
+
+[State 60000, Explod]
+type = Explod
+triggerall = parent,fvar(5) > 1999
+trigger1 = !NumExplod(14002)
+trigger1 = TeamSide = 1
+anim = 14002
+ID = 14002
+postype = Back
+pos = 37,229+(root,var(25))
+ownpal = 1
+bindtime = -1
+ignorehitpause = 1
+ontop = 1
+removetime = -1
+pausemovetime = -1
+supermovetime = -1
+
+[State 60000, Explod]
+type = Explod
+triggerall = parent,fvar(5) > 1999
+trigger1 = !NumExplod(14002)
+trigger1 = TeamSide = 2
+anim = 14002
+ID = 14002
+postype = Back
+pos = 38,229+(root,var(25))
+ownpal = 1
+bindtime = -1
+ignorehitpause = 1
+ontop = 1
+removetime = -1
+pausemovetime = -1
+supermovetime = -1
+
+[State 6140, ModifyExplod]
+type = ModifyExplod
+triggerall = parent,fvar(5) > 1000
+trigger1 = NumExplod(14001)
+ID = 14001
+scale = ((parent,fvar(5)-1000)/1000.0),.5
+ignorehitpause = 1
+
+[State 6140, ModifyExplod]
+type = ModifyExplod
+triggerall = parent,fvar(5) > 1999
+trigger1 = NumExplod(14002)
+ID = 14002
+scale = (parent,fvar(5)-1000)/1000.0,.5
+ignorehitpause = 1
+
+[State 6140, ModifyExplod]
+type = RemoveExplod
+triggerall = parent,fvar(5) > 1000
+trigger1 = NumExplod(14000)
+ID = 14000
+ignorehitpause = 1
+
+[State 6140, ModifyExplod]
+type = RemoveExplod
+triggerall = NumExplod(14001)
+trigger1 = parent,fvar(5) > 1999
+trigger2 = parent,fvar(5) < 999
+ID = 14001
+ignorehitpause = 1
+
+[State 6140, ModifyExplod]
+type = RemoveExplod
+triggerall = parent,fvar(5) < 1999
+trigger1 = NumExplod(14002)
+ID = 14002
+ignorehitpause = 1
+
+[State 6140, ModifyExplod]
+type = RemoveExplod
+triggerall = NumExplod(14003)
+trigger1 = parent,fvar(5) > 1999
+trigger2 = parent,fvar(5) < 999
+ID = 14003
+ignorehitpause = 1
+
+[State 6140, ModifyExplod]
+type = RemoveExplod
+triggerall = parent,fvar(5) < 1999
+trigger1 = NumExplod(14004)
+ID = 14004
+ignorehitpause = 1
+
+[State 6140, ModifyExplod]
+type = RemoveExplod
+triggerall = parent,fvar(5) < 1999
+trigger1 = NumExplod(14005)
+ID = 14005
+ignorehitpause = 1
+
+[State 6140, ModifyExplod]
+type = RemoveExplod
+triggerall = NumExplod(14007)
+trigger1 = parent,fvar(5) > 1999
+trigger2 = parent,fvar(5) < 999
+ID = 14007
+ignorehitpause = 1
+
+[State 60000, Explod];Stock Numbah Two
+type = Explod
+trigger1 = parent,fvar(5) > 1999
+trigger1 = !NumExplod(14004)
+trigger1 = TeamSide = 1
+anim = 14004
+ID = 14004
+postype = Back
+pos = 24,228+(root,var(25))
+ownpal = 1
+bindtime = -1
+ignorehitpause = 1
+ontop = 1
+removetime = -1
+pausemovetime = -1
+supermovetime = -1
+scale = .5,.5
+
+[State 60000, Explod]
+type = Explod
+trigger1 = parent,fvar(5) > 1999
+trigger1 = !NumExplod(14004)
+trigger1 = TeamSide = 2
+anim = 14005
+ID = 14004
+postype = Back
+pos = 25,228+(root,var(25))
+ownpal = 1
+bindtime = -1
+ignorehitpause = 1
+ontop = 1
+removetime = -1
+pausemovetime = -1
+supermovetime = -1
+scale = .5,.5
+
+[State 132121321, DisplayToClipboard]
+type = DisplayToClipboard
+trigger1 = 1
+text = "Gauge 2 = %d Gauge 1 = %d"
+params = numexplod(14001), numexplod(14000)
+;ignorehitpause =
+;persistent =
+
+;Skill Bar Snd
+[Statedef 70001]
+ctrl = 0
+anim = 1
+ownpal = 1
+
+[State 60000, PlaySnd]
+type = PlaySnd
+trigger1 = !time
+value = S3,14
+volume = 256
+persistent = 0
+channel = 23
+ignorehitpause = 1
+
+[State 60000, StopSnd]
+type = StopSnd
+trigger1 = Roundstate < 2
+channel = 23
+
+[State 70001, DestroySelf]     º
+type = DestroySelf
+trigger1 = Parent, Var(58) = [1002,1998]
+trigger2 = Parent, Var(58) = [0,1001]
+trigger3 = Parent, Var(58) = 2000
+
+[Statedef 250]
+type    = S
+movetype= A
+physics = N
+poweradd= 65
+ctrl = 0
+velset = 0,0
+anim = 250
+sprpriority = 4
+
+[State 1000, VarAdd]
+type = VarAdd
+trigger1 = time = 0
+fvar(5) = -1000
+persistent = 0
+
+[State 1100, EX‰‰o]
+type = Varset
+trigger1 = time = 0
+var(24) = 1
+
+
+[State 250, PlaySnd]
+type = PlaySND
+trigger1 = AnimElem = 3
+value = 0,4
+
+[State 250, PlaySnd]
+type = PlaySND
+trigger1 = AnimElem = 1
+value = 9,3
+
+[State 250, VelSet]
+type = VelSet
+trigger1 = animelem = 1
+x = 6
+
+[State 250, VelSet]
+type = VelSet
+trigger1 = animelem = 7,5
+x = 0
+
+[State 250, VelMul]
+type = VelMul
+trigger1 = Animelem = 1,>= 0
+x = .95
+
+[State 250, HitDef]
+type = HitDef
+trigger1 = Time = 0
+attr = S, NA
+animtype  = Medium
+damage    = 60
+guardflag = MA
+pausetime = 12,12
+sparkno = S30002
+guard.sparkno = S4040
+sparkxy = -10,-75
+hitsound = S1,4
+guardsound = S2,1
+ground.type = High
+ground.slidetime = 12
+ground.hittime  = 32
+ground.velocity = 3.5
+air.velocity = -2.5,-5
+fall = 0
+air.fall = 1
+
+[State 250, ChangeState]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+
+

@@ -1,0 +1,31 @@
+;====================================================
+; Honda Dipswitch
+;====================================================
+[Statedef 5900]
+type = S
+
+[State 5900, Dipswitch]
+type = Null
+trigger1 = (var(26) := 0) || e  ; 0 = Skill Bar, 1 = No Skill Bar
+persistent = 1
+
+[State 5900, Skillbar Y Offset]
+type = VarSet
+trigger1 = !time
+var(25) = 0
+;-... Up
+;+... Down
+
+;============================================================
+;Anything Below Should Be Left Alone.                       
+;============================================================
+[State 5900, AI]
+type = VarSet
+trigger1 = !RoundsExisted
+var(30) = 0
+
+[State 5900, 3] ;Intro
+type = ChangeState
+trigger1 = roundno = 1
+value = 190
+
