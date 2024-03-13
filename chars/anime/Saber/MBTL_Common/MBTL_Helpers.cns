@@ -1,0 +1,8099 @@
+;MBTL Common Helper
+
+;Shield Helper
+[Statedef 720]
+type = S
+physics = N
+MoveType = I
+sprpriority = 0
+ctrl = 0
+
+[State 720, Sync Type]
+type = StateTypeSet
+trigger1 = Parent, StateType = S
+trigger1 = StateType != S
+statetype = S
+ignorehitpause = 1
+
+[State 720, Sync Type]
+type = StateTypeSet
+trigger1 = Parent, StateType = C
+trigger1 = StateType != C
+statetype = C
+ignorehitpause = 1
+
+[State 720, Sync Type]
+type = StateTypeSet
+trigger1 = Parent, StateType = A
+trigger1 = StateType != A
+statetype = A
+ignorehitpause = 1
+
+[State 720, Bind]
+type = BindToParent
+trigger1 = 1
+time = 1
+facing = 1
+pos = 0,0
+ignorehitpause = 1
+
+
+[State 720, Durableness-01]
+type = varadd
+trigger1 = !time
+var(2) = -1
+
+[State 720, Durableness-02]
+type = varset
+trigger1 = !PrevStateNo && !time
+var(2) = 6
+
+[State NoPush]
+type = PlayerPush
+trigger1 = 1
+value = 0
+ignorehitpause = 1
+
+[State Safe noloop]
+type = NotHitBy
+trigger1 = !var(2)
+time = 1
+value = SCA,AA,AP,AT
+ignorehitpause = 1
+
+[State Hitby]
+type = HitBy
+triggerall = StateType = S
+trigger1 = var(2)
+time = 1
+value = SA,AP
+ignorehitpause = 1
+
+[State Hitby]
+type = HitBy
+triggerall = StateType = C
+trigger1 = var(2)
+time = 1
+value = SC,AP
+ignorehitpause = 1
+
+[State Hitby]
+type = HitBy
+triggerall = StateType = A
+trigger1 = var(2)
+time = 1
+value = SA,AP
+ignorehitpause = 1
+
+[State HitOverRide]
+type = HitOverride
+trigger1 = 1
+attr = SCA,AA,AP,AT
+stateno = StateNo
+slot = 7
+time = 1
+ignorehitpause = 1
+
+[State 720, Anim]
+type = ChangeAnim
+trigger1 = !Time && PrevStateNo != 5000
+value = 720 + StateType = C + 2*(StateType = A)
+ignorehitpause = 1
+
+[State Safe Remove]
+type = DestroySelf
+trigger1 = Parent,StateNo != [700,702]
+trigger2 = Parent,StateNo = [700,702]
+trigger2 = Parent,Anim = [710,712]
+recursive = 1
+removeexplods  = 1
+
+[State Debug]
+type = displaytoclipboard
+trigger1 = 1
+text = "PrevStateNo=%d | var(5)=%d | var(6)=%d"
+params = PrevStateNo, var(5), var(6)
+ignorehitpause = 1
+
+[State Counter-Run]
+type = varadd
+trigger1 = var(6) < 4294967295
+var(6) = 1
+
+
+;Heat Blaster Projectile
+[Statedef 985]
+type = A
+physics = N
+MoveType = A
+sprpriority = 0
+anim = StateNo
+ctrl = 0
+
+[State ScreenRatioVar]
+type = varset
+trigger1 = !time
+fvar(3) = (1.77778 / (ScreenWidth/ScreenHeight))
+
+[State 985, Type]
+type = varset
+trigger1 = !time
+var(10) = Const(size.shadowoffset)
+
+[State Parent]
+type = BindToParent
+trigger1 = 1
+time = 1
+facing = 1
+pos = 0, Parent,Const(Size.mid.pos.y) * Parent,Const(Size.yScale)
+
+[State 980, SND-FX]
+type = PlaySnd
+trigger1 = !time
+value = 5, 980
+abspan = 0
+volumescale = 100
+
+[State 980, SND-FX-Boost]
+type = PlaySnd
+trigger1 = !time
+value = 5, 980
+abspan = 0
+volumescale = 100
+
+
+[State 985, BG Color]
+type = Explod
+trigger1 = !NumExplod(7187)
+trigger1 = !var(6)
+anim = 7187
+ID = 7187
+space = stage
+bindID = ID
+pos = 0 * facing * Const(Size.xScale), 0 * Const(Size.yScale)
+facing = facing
+bindtime = -1
+removetime = -2
+;supermovetime = 4294967295
+;pausemovetime = 4294967295
+sprpriority = -1
+scale = 8 * Const(Size.xScale), 8 * Const(Size.yScale)
+;remappal = 7187,0
+angle = 0
+;xangle = 0
+;yangle = 0
+ownpal = 1
+ignorehitpause = 1
+
+[State 985, BG White]
+type = Explod
+trigger1 = !NumExplod(7186)
+trigger1 = !var(6)
+anim = 7186
+ID = 7186
+space = stage
+bindID = ID
+pos = 0 * facing * Const(Size.xScale), 0 * Const(Size.yScale)
+facing = facing
+bindtime = -1
+removetime = -2
+;supermovetime = 4294967295
+;pausemovetime = 4294967295
+sprpriority = 2
+scale = 6 * Const(Size.xScale), 6 * Const(Size.yScale)
+trans = add
+alpha = 128,256
+;remappal = 7187,0
+angle = 0
+;xangle = 0
+;yangle = 0
+ownpal = 1
+ignorehitpause = 1
+
+[State 985, Crescent]
+type = Explod
+trigger1 = var(6) = 2
+anim = 7132;7183
+ID = 7132;7183
+space = stage
+bindID = ID
+pos = 0 * facing * Const(Size.xScale), 0 * Const(Size.yScale)
+facing = facing
+bindtime = -1
+removetime = -2
+;supermovetime = 4294967295
+;pausemovetime = 4294967295
+sprpriority = 2
+scale = 1.3 * Const(Size.xScale), 1.3 * Const(Size.yScale)
+;trans = add
+;alpha = 128,256
+remappal = 6001,0
+angle = -90
+;xangle = 0
+;yangle = 0
+ownpal = 1
+ignorehitpause = 1
+
+[State 985, Crescent]
+type = Explod
+trigger1 = var(6) = 2
+anim = 7132;7183
+ID = 7132;7183
+space = stage
+bindID = ID
+pos = 0 * facing * Const(Size.xScale), 0 * Const(Size.yScale)
+facing = facing
+bindtime = -1
+removetime = -2
+;supermovetime = 4294967295
+;pausemovetime = 4294967295
+sprpriority = 2
+scale = 0.95 * Const(Size.xScale), 0.95 * Const(Size.yScale)
+;trans = add
+;alpha = 128,256
+remappal = 6001,0
+angle = 0
+;xangle = 0
+;yangle = 0
+ownpal = 1
+ignorehitpause = 1
+
+[State 985, Wind]
+type = Explod
+trigger1 = var(6) = 0
+anim = 7560
+ID = 7560
+space = stage
+bindID = ID
+pos = 0 * facing * Const(Size.xScale), 0 * Const(Size.yScale)
+facing = facing
+bindtime = -1
+removetime = -2
+;supermovetime = 4294967295
+;pausemovetime = 4294967295
+sprpriority = -1
+scale = 0.6 * Const(Size.xScale), 0.6 * Const(Size.yScale)
+;trans = add
+;alpha = 128,256
+;remappal = 7187,0
+angle = 195
+;xangle = 0
+;yangle = 0
+ownpal = 1
+ignorehitpause = 1
+
+[State 985, Lighting]
+type = Explod
+trigger1 = var(6) = 2
+anim = 7192 + Random%2
+ID = 7192
+space = stage
+bindID = ID
+pos = 0 * facing * Const(Size.xScale), 0 * Const(Size.yScale)
+facing = facing
+bindtime = -1
+removetime = -2
+;supermovetime = 4294967295
+;pausemovetime = 4294967295
+sprpriority = -1
+scale = 1.5 * Const(Size.xScale), 2 * Const(Size.yScale)
+;trans = add
+;alpha = 128,256
+;remappal = 7187,0
+angle = 40
+;xangle = 0
+;yangle = 0
+ownpal = 1
+ignorehitpause = 1
+
+[State 985, Lighting]
+type = Explod
+trigger1 = var(6) = 2
+anim = 7192 + Random%2
+ID = 7192
+space = stage
+bindID = ID
+pos = 0 * facing * Const(Size.xScale), 0 * Const(Size.yScale)
+facing = facing
+bindtime = -1
+removetime = -2
+;supermovetime = 4294967295
+;pausemovetime = 4294967295
+sprpriority = -1
+scale = 1.5 * Const(Size.xScale), 2 * Const(Size.yScale)
+;trans = add
+;alpha = 128,256
+;remappal = 7187,0
+angle = 100
+;xangle = 0
+;yangle = 0
+ownpal = 1
+ignorehitpause = 1
+
+[State 985, Lighting]
+type = Explod
+trigger1 = var(6) = 2
+anim = 7192 + Random%2
+ID = 7192
+space = stage
+bindID = ID
+pos = 0 * facing * Const(Size.xScale), 0 * Const(Size.yScale)
+facing = facing
+bindtime = -1
+removetime = -2
+;supermovetime = 4294967295
+;pausemovetime = 4294967295
+sprpriority = -1
+scale = 1.5 * Const(Size.xScale), 2 * Const(Size.yScale)
+;trans = add
+;alpha = 128,256
+;remappal = 7187,0
+angle = 225
+;xangle = 0
+;yangle = 0
+ownpal = 1
+ignorehitpause = 1
+
+[State 985, Lighting]
+type = Explod
+trigger1 = var(6) = 2
+anim = 7192 + Random%2
+ID = 7192
+space = stage
+bindID = ID
+pos = 0 * facing * Const(Size.xScale), 0 * Const(Size.yScale)
+facing = facing
+bindtime = -1
+removetime = -2
+;supermovetime = 4294967295
+;pausemovetime = 4294967295
+sprpriority = -1
+scale = 1.5 * Const(Size.xScale), 2 * Const(Size.yScale)
+;trans = add
+;alpha = 128,256
+;remappal = 7187,0
+angle = -45
+;xangle = 0
+;yangle = 0
+ownpal = 1
+ignorehitpause = 1
+
+[State 985, Wind]
+type = Explod
+trigger1 = var(6) = 0
+anim = 7560
+ID = 7560
+space = stage
+bindID = ID
+pos = 0 * facing * Const(Size.xScale), 0 * Const(Size.yScale)
+facing = facing
+bindtime = -1
+removetime = -2
+;supermovetime = 4294967295
+;pausemovetime = 4294967295
+sprpriority = 2
+scale = 1 * Const(Size.xScale), 1 * Const(Size.yScale)
+;trans = add
+;alpha = 128,256
+;remappal = 7187,0
+angle = 15
+;xangle = 0
+;yangle = 0
+ownpal = 1
+ignorehitpause = 1
+
+
+;-----------------
+[State 985, BG Blue]
+type = Explod
+trigger1 = var(6) = 6
+anim = 7187
+ID = 7187
+space = stage
+bindID = ID
+pos = 0 * facing * Const(Size.xScale), 0 * Const(Size.yScale)
+facing = facing
+bindtime = -1
+removetime = -2
+;supermovetime = 4294967295
+;pausemovetime = 4294967295
+sprpriority = -1
+scale = 16 * Const(Size.xScale), 16 * Const(Size.yScale)
+;trans = add
+;alpha = 128,256
+remappal = 7187,1 + var(10)
+angle = 0
+;xangle = 0
+;yangle = 0
+ownpal = 1
+ignorehitpause = 1
+
+[State 985, BG Wave1]
+type = Explod
+trigger1 = var(6) = 6
+anim = 7184
+ID = 7184
+space = stage
+bindID = ID
+pos = 0 * facing * Const(Size.xScale), 0 * Const(Size.yScale)
+facing = facing
+bindtime = -1
+removetime = -2
+;supermovetime = 4294967295
+;pausemovetime = 4294967295
+sprpriority = -1
+scale = 1 * Const(Size.xScale), 1 * Const(Size.yScale)
+;trans = add
+;alpha = 128,256
+;remappal = 7187,1
+angle = Random%360
+;xangle = 0
+;yangle = 0
+ownpal = 1
+ignorehitpause = 1
+
+[State 985, BG Wave1]
+type = ModifyExplod
+trigger1 = NumExplod(7184)
+trigger1 = var(6) = [6,18]
+ID = 7184
+scale = (1 + 0.5*(var(6)-6)) * Const(Size.xScale), (1 + 0.5*(var(6)-6)) * Const(Size.yScale)
+
+[State 985, BG Wave2]
+type = Explod
+trigger1 = var(6) = 10
+anim = 7184
+ID = 7185
+space = stage
+bindID = ID
+pos = 0 * facing * Const(Size.xScale), 0 * Const(Size.yScale)
+facing = facing
+bindtime = -1
+removetime = -2
+;supermovetime = 4294967295
+;pausemovetime = 4294967295
+sprpriority = -1
+scale = 1 * Const(Size.xScale), 1 * Const(Size.yScale)
+;trans = add
+;alpha = 128,256
+;remappal = 7187,1
+angle = Random%360
+;xangle = 0
+;yangle = 0
+ownpal = 1
+ignorehitpause = 1
+
+[State 985, BG Wave2]
+type = ModifyExplod
+trigger1 = NumExplod(7185)
+trigger1 = var(6) = [10,18]
+ID = 7185
+scale = (1 + 0.5*(var(6)-10)) * Const(Size.xScale), (1 + 0.5*(var(6)-10)) * Const(Size.yScale)
+
+
+[State 985, BG Line]
+type = Explod
+trigger1 = !var(10)
+trigger1 = var(6) = 16
+anim = 7465
+ID = 7465
+space = stage
+bindID = ID
+pos = 0 * facing * Const(Size.xScale), 0 * Const(Size.yScale)
+facing = facing
+bindtime = 1
+removetime = 12
+;supermovetime = 4294967295
+;pausemovetime = 4294967295
+sprpriority = -1
+scale = 1 * Const(Size.xScale), 2 * Const(Size.yScale)
+;trans = add
+;alpha = 128,256
+;remappal = 7187,1
+angle = 90
+;xangle = 0
+;yangle = 0
+ownpal = 1
+ignorehitpause = 1
+
+[State 985, BG Line]
+type = ModifyExplod
+trigger1 = var(6) = [16,20]
+ID = 7465
+scale = 1 * Const(Size.xScale), (2 + 3*(var(6)-16)) * Const(Size.yScale)
+
+[State 985, BG Line]
+type = ModifyExplod
+trigger1 = var(6) = [24,28]
+ID = 7465
+scale = (1 - 0.25*(var(6)-24)) * Const(Size.xScale), (14) * Const(Size.yScale)
+
+[State 985, BG Portrait]
+type = RemoveExplod
+triggerall = NumExplod(9980)
+trigger1 = var(6) = 12
+trigger2 = var(6) = 44
+ID = 9980
+
+[State 985, BG Portrait]
+type = Explod
+trigger1 = !NumExplod(9980)
+trigger1 = var(6) = 6
+anim = 9980
+ID = 9980
+space = Screen
+pos = (ScreenWidth * 0.5) - (Const720p(600) * facing), ScreenHeight
+facing = facing
+removetime = -2
+;supermovetime = 4294967295
+;pausemovetime = 4294967295
+sprpriority = -2
+vel = 100 * facing ,0
+scale = 1 * fvar(3), 1 * fvar(3)
+;trans = add
+;alpha = 128,256
+;remappal = 7187,1
+;angle = 90
+;xangle = 0
+;yangle = 0
+ownpal = 1
+ignorehitpause = 1
+
+[State 985, BG Portrait]
+type = Explod
+trigger1 = !NumExplod(9980)
+trigger1 = var(6) = 12
+anim = 9980
+ID = 9980
+space = Screen
+pos = (ScreenWidth * 0.5), ScreenHeight
+facing = facing
+removetime = -2
+;supermovetime = 4294967295
+;pausemovetime = 4294967295
+sprpriority = -2
+vel = 2 * facing ,0
+scale = 1 * fvar(3), 1 * fvar(3)
+trans = add
+alpha = 256,0
+;remappal = 7187,1
+;angle = 90
+;xangle = 0
+;yangle = 0
+ownpal = 1
+ignorehitpause = 1
+
+[State 985, BG Portrait]
+type = ModifyExplod
+trigger1 = NumExplod(9980)
+trigger1 = var(6) = [30,44]
+ID = 9980
+trans = add
+alpha = 256 - 18*(var(6)-30), 18*(var(6)-30)
+
+;-----------------
+
+[State 985, BG PAL]
+type = BGPALFX
+triggerall = var(10) = 0
+trigger1 = var(6) = [0,8]
+time = 1
+add = 0,0,0
+mul = 256 - 8*(var(6) - 0), 256 - 8*(var(6) - 0), 256 - 8*(var(6) - 0)
+color = 256
+invertall = 0
+
+[State 985, BG PAL]
+type = BGPALFX
+triggerall = var(10) = 0
+trigger1 = var(6) > 8
+time = 1
+add = 0,0,0
+mul = 192,192,192
+color = 256
+invertall = 0
+
+[State 985, BG PAL]
+type = BGPALFX
+triggerall = var(10) = 1
+trigger1 = var(6) = [0,8]
+time = 1
+add = 0,0,0
+mul = 256 - 8*(var(6) - 0), 256 - 20*(var(6) - 0), 256 - 20*(var(6) - 0)
+color = 256
+invertall = 0
+
+[State 985, BG PAL]
+type = BGPALFX
+triggerall = var(10) = 1
+trigger1 = var(6) > 8
+time = 1
+add = 0,0,0
+mul = 192,96,96
+color = 256
+invertall = 0
+
+[State 985, HitDef Normal]
+type = HitDef
+trigger1 = AnimElemTime(1) >= 0 && AnimElemTime(2) < 0
+attr = A,HP
+hitFlag = MAF
+guardFlag =
+priority = 4, Hit
+damage = 10,7
+getPower = 0,0
+givePower = 0,0
+pauseTime = 1,10
+guard.pauseTime = 0, 10
+animType = DiagUp
+air.type = Low
+ground.hitTime = 22
+ground.slideTime = 22
+guard.hitTime = 22
+air.hitTime = 60
+ground.velocity = -25 * Const(size.xscale), -30  * Const(size.yscale)
+ground.cornerPush.velOff = 0 * Const(size.xscale)
+guard.velocity = -40 * Const(size.xscale)
+guard.cornerPush.velOff = 0 * Const(size.xscale)
+air.velocity = -25 * Const(size.xscale), -30 * Const(size.yscale)
+airGuard.cornerPush.velOff = 0
+yAccel = Const(Movement.yaccel) * Const(Size.yScale)
+fall = 1
+air.fall = 1
+fall.recover = 1
+fall.recoverTime = 38
+forceStand = 0
+hitSound = S2,13
+guardSound = S2,0
+sparkNo = -1 + 0 * (var(53) := 7453)
+guard.SparkNo = -1 + 0 * (var(54) := 7431)
+sparkXY = Floor(P2BodyDist x) + 0 * (var(55) := Floor(P2BodyDist x)), Floor(P2Dist y + Enemynear,Const(size.mid.pos.y)) + 0 * (var(56) := Floor(P2Dist y + Enemynear,Const(size.mid.pos.y)))
+;envShake.time = 14
+;envShake.ampl = 4
+;envShake.freq = 120
+;p1sprpriority = 3
+ID = StateNo
+NoChainID = StateNo
+
+
+[State Safe Remove]
+type = DestroySelf
+trigger1 = !NumExplod
+trigger2 = var(6) > 4294967295
+trigger3 = AnimTime >= 0
+recursive = 1
+removeexplods  = 1
+
+[State Counter-Run]
+type = varadd
+trigger1 = var(6) < 4294967295
+var(6) = 1
+
+
+
+
+
+
+; Landing Dust
+[Statedef 7015]
+type    = A                      ;State-type: S-stand, C-crouch, A-air, L-liedown
+movetype= I                      ;Move-type: A-attack, I-idle, H-gethit
+physics = N                      ;Physics: S-stand, C-crouch, A-air, N = No Physics
+juggle  = 0                      ;Number of air juggle points move takes
+;Commonly-used controllers:
+velset = 0,0                     ;Set velocity (x,y) (Def: no change)
+ctrl = 0                         ;Set ctrl (Def: no change)
+Anim = 9741						;Empty Anim
+sprpriority = 0
+
+[State 7015, Land-Dust]
+type = Explod
+trigger1 = time = 0 
+anim = 7015
+ID = 7015
+space = stage
+pos =  0 * facing * Const(size.xscale),0 * Const(size.yscale)
+bindID = ID
+bindtime = 1
+facing = facing
+removetime = -2
+supermovetime = 65535
+pausemovetime = 65535
+scale = 1.0 * Const(size.xscale),1.0 * Const(size.yscale)
+;trans = add
+;alpha = 256,128
+sprpriority = 2
+ownpal = 1
+
+[State 7015, Dust grow]
+type = ModifyExplod
+trigger1 = NumExplod(7015)
+trigger1 = time = [8,30]
+ID = 7015
+scale = (1.0 + 0.01*(time-8)) * Const(size.xscale), (1.0 + 0.01*(time-8)) * Const(size.yscale)
+trans = add
+alpha = 224 - 8*(time-8), 128 + 8*(time-8)
+
+[State Safe Remove]
+type = DestroySelf
+trigger1 = var(6) > 30
+recursive = 1
+removeexplods  = 1
+
+[State Counter-Run]
+type = varadd
+trigger1 = var(6) < 4294967295
+var(6) = 1
+
+; Air Jump Dust
+[Statedef 7017]
+type    = A                      ;State-type: S-stand, C-crouch, A-air, L-liedown
+movetype= I                      ;Move-type: A-attack, I-idle, H-gethit
+physics = N                      ;Physics: S-stand, C-crouch, A-air, N = No Physics
+juggle  = 0                      ;Number of air juggle points move takes
+;Commonly-used controllers:
+velset = 0,0                     ;Set velocity (x,y) (Def: no change)
+ctrl = 0                         ;Set ctrl (Def: no change)
+Anim = 9741						;Empty Anim
+sprpriority = 0
+
+[State 7019, Degree]
+type = varset
+trigger1 = !time
+var(35) = Const(size.shadowoffset)
+
+[State 7017, AirJump_Dust]
+type = Explod
+trigger1 = time = 0 
+anim = 7017
+ID = 7017
+space = stage
+pos =  0 * facing * Const(size.xscale),0 * Const(size.yscale)
+bindID = ID
+bindtime = 1
+facing = facing
+removetime = 16
+supermovetime = 65535
+pausemovetime = 65535
+scale = 1.25 * Const(size.xscale), 1.25 * Const(size.yscale)
+angle = var(35)
+sprpriority = 2
+ownpal = 1
+
+[State 7017, AirJump_Dust]
+type = ModifyExplod
+trigger1 = NumExplod(7017)
+trigger1 = time = [0,16]
+ID = 7017
+trans = add
+alpha = 256 - time*16, 256
+scale = 1.25 * Const(size.xscale), (1.25 + 0.15*time) * Const(size.yscale)
+
+[State 7017, AirJump_wind]
+type = Explod
+trigger1 = time = 0 
+anim = 7520
+ID = 7520
+space = stage
+pos =  0 * facing * Const(size.xscale),0 * Const(size.yscale)
+bindID = ID
+bindtime = 1
+facing = facing
+removetime = 31
+supermovetime = 65535
+pausemovetime = 65535
+scale = 0.25 * Const(size.xscale), 1 * Const(size.yscale)
+angle = var(35) - 90
+sprpriority = 2
+ownpal = 1
+
+[State 7017, AirJump_Dust]
+type = ModifyExplod
+trigger1 = NumExplod(7520)
+trigger1 = time = [0,31]
+ID = 7520
+scale = 0.25 * Const(size.xscale), (1 + 0.015*time) * Const(size.yscale)
+
+[State 7017, Explod]
+type = Explod
+trigger1 = time = 0
+anim = 7018
+ID = 7018
+space = stage
+bindID = ID
+pos = 0 * facing * Const(Size.xScale), 0 * Const(Size.yScale)
+facing = facing
+bindtime = 1
+removetime = -2
+supermovetime = 4294967295
+pausemovetime = 4294967295
+sprpriority = 3
+scale = 2 * Const(Size.xScale), 1.5 * Const(Size.yScale)
+angle = var(35)
+;vel = 0.5 * Const(Velocity.run.fwd.x) * facing * Const(Size.xScale), 0
+;accel = -0.5 * facing * Const(Size.xScale), 0
+;xangle = 0 + (((ScreenPos y - (ScreenHeight / 2.0)) / (ScreenHeight / 2.0)) * 10.0)
+;yangle = 0 - ((Pos x * facing / (GameWidth/2))*18.0)
+ownpal = 1
+;remappal = 6001,5
+ignorehitpause = 1
+
+[State Safe Remove]
+type = DestroySelf
+trigger1 = var(6) > 31
+recursive = 1
+removeexplods  = 1
+
+[State Counter-Run]
+type = varadd
+trigger1 = var(6) < 4294967295
+var(6) = 1
+
+
+
+
+; Air Jump Burst
+[Statedef 7019]
+type    = A                      ;State-type: S-stand, C-crouch, A-air, L-liedown
+movetype= I                      ;Move-type: A-attack, I-idle, H-gethit
+physics = N                      ;Physics: S-stand, C-crouch, A-air, N = No Physics
+juggle  = 0                      ;Number of air juggle points move takes
+;Commonly-used controllers:
+velset = 0,0                     ;Set velocity (x,y) (Def: no change)
+ctrl = 0                         ;Set ctrl (Def: no change)
+Anim = 9741						;Empty Anim
+sprpriority = 0
+
+[State 7019, Degree]
+type = varset
+trigger1 = !time
+var(35) = Const(size.shadowoffset)
+
+[State 7019, AirJump_Dust]
+type = Explod
+triggerall = !NumExplod(7019)
+trigger1 = time = 0 
+anim = 7019
+ID = 7019
+space = stage
+pos =  0 * facing * Const(size.xscale),0 * Const(size.yscale)
+bindID = ID
+bindtime = 1
+facing = facing
+removetime = -2
+supermovetime = 65535
+pausemovetime = 65535
+scale = 1 * Const(size.xscale), 1 * Const(size.yscale)
+angle = var(35)
+sprpriority = 2
+ownpal = 1
+
+;[State 7019, AirJump_Dust]
+;type = ModifyExplod
+;trigger1 = NumExplod(7019)
+;trigger1 = time = [0,16]
+;ID = 7019
+;trans = add
+;alpha = 256 - time*16, 256
+;scale = 1.25 * Const(size.xscale), (1.25 + 0.15*time) * Const(size.yscale)
+
+
+
+[State Safe Remove]
+type = DestroySelf
+trigger1 = !NumExplod
+recursive = 1
+removeexplods  = 1
+
+[State Counter-Run]
+type = varadd
+trigger1 = var(6) < 4294967295
+var(6) = 1
+
+
+; Million_Arthur_Arcana_Blood_Aura
+[Statedef 7020]
+type    = A                      ;State-type: S-stand, C-crouch, A-air, L-liedown
+movetype= I                      ;Move-type: A-attack, I-idle, H-gethit
+physics = N                      ;Physics: S-stand, C-crouch, A-air, N = No Physics
+juggle  = 0                      ;Number of air juggle points move takes
+;Commonly-used controllers:
+velset = 0,0                     ;Set velocity (x,y) (Def: no change)
+ctrl = 0                         ;Set ctrl (Def: no change)
+Anim = 9741						;Empty Anim
+sprpriority = 0
+
+;0 Blue 1 Red 2 Purple 3 Yellow 4 Green
+[State 7020, Color]
+type = varset
+trigger1 = time = 0
+var(1) = Floor(Const(size.proj.doscale))
+
+;how long 0 is auto
+[State 7020, LowHongTime]
+type = varset
+trigger1 = time = 0
+var(2) = Floor(Const(size.ground.front))
+
+[State 7020, PosFix]
+type = BindToParent
+trigger1 = 1
+time = 1
+facing = 1
+pos = 0,0
+
+[State 7020, Stateus]
+type = varset
+trigger1 = var(5) = 0
+trigger1 = var(6) > 24
+trigger1 = var(6) := 1
+var(5) = 1
+
+[State 7020, Stateus_fixed_time]
+type = varset
+triggerall = var(2)
+triggerall = var(5) = 1
+trigger1 = var(6) > var(2)
+trigger1 = var(6) := 1
+var(5) = 2
+
+[State 7020, Stateus_auto]
+type = varset
+triggerall = !var(2)
+triggerall = var(5) = 1
+trigger1 = !((Parent,var(19) & 2) || (Parent,var(19) & 16))
+trigger1 = var(6) := 1
+var(5) = 2
+
+
+[State 7020, Explod_back]
+type = Explod
+triggerall = !NumExplod(7020)
+trigger1 = time = 0
+anim = 7020
+ID = 7020
+space = stage
+bindID = ID
+pos = 0 * facing * Const(Size.xScale), 0 * Const(Size.yScale)
+facing = facing
+bindtime = -1
+removetime = -1
+supermovetime = 4294967295
+pausemovetime = 4294967295
+sprpriority = -3
+scale = 1 * Const(Size.xScale), 1 * Const(Size.yScale)
+;angle = 0
+;vel = 0.5 * Const(Velocity.run.fwd.x) * facing * Const(Size.xScale), 0
+;accel = -0.5 * facing * Const(Size.xScale), 0
+;xangle = 0 + (((ScreenPos y - (ScreenHeight / 2.0)) / (ScreenHeight / 2.0)) * 10.0)
+;yangle = 0 - ((Pos x * facing / (GameWidth/2))*18.0)
+ownpal = 1
+remappal = 7020,var(1)
+ignorehitpause = 1
+
+[State 7020, Explod_back]
+type = Explod
+triggerall = !NumExplod(7021)
+trigger1 = time = 16
+anim = 7020
+ID = 7021
+space = stage
+bindID = ID
+pos = 0 * facing * Const(Size.xScale), 0 * Const(Size.yScale)
+facing = -facing
+bindtime = -1
+removetime = -1
+supermovetime = 4294967295
+pausemovetime = 4294967295
+sprpriority = 3
+scale = 1 * Const(Size.xScale), 1 * Const(Size.yScale)
+;angle = 0
+;vel = 0.5 * Const(Velocity.run.fwd.x) * facing * Const(Size.xScale), 0
+;accel = -0.5 * facing * Const(Size.xScale), 0
+;xangle = 0 + (((ScreenPos y - (ScreenHeight / 2.0)) / (ScreenHeight / 2.0)) * 10.0)
+;yangle = 0 - ((Pos x * facing / (GameWidth/2))*18.0)
+ownpal = 1
+remappal = 7020,var(1)
+ignorehitpause = 1
+
+[State 7020, Explod_fadein]
+type = ModifyExplod
+triggerall = NumExplod(7020)
+trigger1 = var(5) = 0
+trigger1 = var(6) = [0,8]
+ID = 7020
+trans = add
+alpha = 32 * var(6), 256
+
+[State 7020, Explod_fadein]
+type = ModifyExplod
+triggerall = NumExplod(7021)
+trigger1 = var(5) = 0
+trigger1 = var(6) = [16,24]
+ID = 7021
+trans = add
+alpha = 32 * (var(6)-16), 256
+
+[State 7020, Explod_fadeout]
+type = ModifyExplod
+triggerall = NumExplod(7020)
+trigger1 = var(5) = 2
+trigger1 = var(6) = [0,32]
+ID = 7020
+trans = add
+alpha = 256 - (8 * var(6)), 256
+
+[State 7020, Explod_fadeout]
+type = ModifyExplod
+triggerall = NumExplod(7021)
+trigger1 = var(5) = 2
+trigger1 = var(6) = [0,32]
+ID = 7021
+trans = add
+alpha = 256 - (8 * var(6)), 256
+
+[State Safe Remove]
+type = DestroySelf
+trigger1 = !NumExplod
+trigger2 = var(5) = 2 && var(6) >= 32
+recursive = 1
+removeexplods  = 1
+
+[State Counter-Run]
+type = varadd
+trigger1 = var(6) < 4294967295
+var(6) = 1
+
+;Jump - Dust
+[Statedef 7042]
+type    = A                      ;State-type: S-stand, C-crouch, A-air, L-liedown
+movetype= I                      ;Move-type: A-attack, I-idle, H-gethit
+physics = N                      ;Physics: S-stand, C-crouch, A-air, N = No Physics
+juggle  = 0                      ;Number of air juggle points move takes
+;Commonly-used controllers:
+velset = 0,0                     ;Set velocity (x,y) (Def: no change)
+ctrl = 0                         ;Set ctrl (Def: no change)
+Anim = 9741						;Empty Anim
+sprpriority = 0                  ;Set p1's sprite layering priority to 2 (in front)
+
+[State 7042, Vel]
+type = velset
+trigger1 = time = 0
+x = Const(size.head.pos.x) * Const(Size.xScale) / 8.0
+y = Const(Size.head.pos.y) * Const(Size.yScale) / 8.0
+
+[State 7042, vel-slow-down]
+type = velmul
+trigger1 = 1
+x = 0.85
+y = 0.85
+
+[State 7042, Jump-Dust-01]
+type = Explod
+trigger1 = var(6) = 0
+anim = 7042
+ID = 7042
+space = stage
+bindID = ID
+pos = 0 * facing * Const(Size.xScale), 0 * Const(Size.yScale)
+facing = facing
+bindtime = -1
+removetime = -2
+supermovetime = 4294967295
+pausemovetime = 4294967295
+sprpriority = 2
+scale = 1 * Const(Size.xScale), 1 * Const(Size.yScale)
+angle = 0
+;xangle = 0
+;yangle = 0
+ownpal = 1
+ignorehitpause = 1
+
+
+[State 7042, Jump-Dust-01]
+type = ModifyExplod
+triggerall = NumExplod(7042)
+trigger1 = var(6) = [0,12]
+ID = 7042
+trans = add
+alpha = 256 - 24*(var(6) - 0), 256
+scale = (1 + 0.01*(var(6) - 0)) * Const(Size.xScale), (1 + 0.01*(var(6) - 0)) * Const(Size.yScale)
+
+[State 7042, Jump-Dust-02]
+type = Explod
+trigger1 = var(6) = 4
+anim = 7043
+ID = 7043
+space = stage
+bindID = ID
+pos = 0 * facing * Const(Size.xScale), 0 * Const(Size.yScale)
+facing = facing
+bindtime = -1
+removetime = 14
+supermovetime = 4294967295
+pausemovetime = 4294967295
+sprpriority = 2
+scale = 1 * Const(Size.xScale), 1 * Const(Size.yScale)
+angle = 0
+;xangle = 0
+;yangle = 0
+ownpal = 1
+ignorehitpause = 1
+
+[State 7042, Jump-Dust-02]
+type = ModifyExplod
+triggerall = NumExplod(7043)
+trigger1 = var(6) = [4,5]
+ID = 7043
+trans = add
+alpha = 64*(var(6)-3), 256
+
+[State 7042, Jump-Dust-02]
+type = ModifyExplod
+triggerall = NumExplod(7043)
+trigger1 = var(6) = [6,18]
+ID = 7043
+trans = add
+alpha = (256 - 32*(var(6)-6)), 256
+scale = (1+ 0.01*(var(6)-6)) * Const(Size.xScale), (1+ 0.01*(var(6)-6)) * Const(Size.yScale)
+
+
+[State Safe Remove]
+type = DestroySelf
+trigger1 = var(6) > 20
+recursive = 1
+removeexplods  = 1
+
+[State Counter-Run]
+type = varadd
+trigger1 = var(6) < 4294967295
+var(6) = 1
+
+
+; Wind circle
+[Statedef 7050]
+type    = A                      ;State-type: S-stand, C-crouch, A-air, L-liedown
+movetype= I                      ;Move-type: A-attack, I-idle, H-gethit
+physics = N                      ;Physics: S-stand, C-crouch, A-air, N = No Physics
+juggle  = 0                      ;Number of air juggle points move takes
+;Commonly-used controllers:
+velset = 0,0                     ;Set velocity (x,y) (Def: no change)
+ctrl = 0                         ;Set ctrl (Def: no change)
+Anim = 9741						;Empty Anim
+sprpriority = 0
+
+[State 7050, Degree]
+type = varset
+trigger1 = !time
+var(35) = Const(size.shadowoffset)
+
+[State 7050, Fade_in]
+type = varset
+trigger1 = !time
+var(11) = Const(size.head.pos.x)
+
+[State 7050, Fade_out]
+type = varset
+trigger1 = !time
+var(12) = Const(size.head.pos.y)
+
+[State 7050, Last how long]
+type = varset
+trigger1 = !time
+var(13) = Const(size.ground.front)
+
+[State 7050, Relative-Size]
+type = varset
+trigger1 = !time
+fvar(11) = 1.0
+
+[State 7050, Scale_Step_in]
+type = varset
+trigger1 = !time
+fvar(12) = 2.0 / var(11)
+
+
+
+[State 7431, Explod-1]
+type = Explod
+trigger1 = var(6) = 0
+anim = 7071
+ID = 7071
+space = stage
+pos = -600*Sin(var(35)*(Pi/180.0)) * facing * Const(size.xscale) * fvar(11), -600*Cos(var(35)*(Pi/180.0)) * Const(size.yscale) * fvar(11)
+bindID = ID
+bindtime = 1
+facing = facing
+removetime = -1
+;vel = var(35) * facing * Const(size.xscale) / 8.0 ,var(56) * Const(size.yscale) / 8.0
+;accel = -var(35) * facing * Const(size.xscale) / 128.0 ,-var(56) * Const(size.yscale) / 128.0
+supermovetime = 65535
+pausemovetime = 65535
+scale = 1.25 * Const(size.xscale) * fvar(11), 1.25 * Const(size.yscale) * fvar(11)
+angle = var(35)
+sprpriority = 4
+ownpal = 1
+remappal = 6001, 0
+ignorehitpause = Const(Size.Proj.DoScale)
+
+[State 7431, Explod-2]
+type = Explod
+trigger1 = var(6) = 0
+anim = 7052
+ID = 7052
+space = stage
+pos = -450*Sin(var(35)*(Pi/180.0)) * facing * Const(size.xscale) * fvar(11), -450*Cos(var(35)*(Pi/180.0)) * Const(size.yscale) * fvar(11)
+bindID = ID
+bindtime = 1
+facing = facing
+removetime = -1
+;vel = var(35) * facing * Const(size.xscale) / 8.0 ,var(56) * Const(size.yscale) / 8.0
+;accel = -var(35) * facing * Const(size.xscale) / 128.0 ,-var(56) * Const(size.yscale) / 128.0
+supermovetime = 65535
+pausemovetime = 65535
+scale = 1 * Const(size.xscale) * fvar(11), 1 * Const(size.yscale) * fvar(11)
+angle = var(35)
+sprpriority = 4
+ownpal = 1
+remappal = 6001, 0
+ignorehitpause = Const(Size.Proj.DoScale)
+
+[State 7431, Explod-3]
+type = Explod
+trigger1 = var(6) = 0
+anim = 7051
+ID = 7051
+space = stage
+pos = -280*Sin(var(35)*(Pi/180.0)) * facing * Const(size.xscale) * fvar(11), -290*Cos(var(35)*(Pi/180.0)) * Const(size.yscale) * fvar(11)
+bindID = ID
+bindtime = 1
+facing = facing
+removetime = -1
+;vel = var(35) * facing * Const(size.xscale) / 8.0 ,var(56) * Const(size.yscale) / 8.0
+;accel = -var(35) * facing * Const(size.xscale) / 128.0 ,-var(56) * Const(size.yscale) / 128.0
+supermovetime = 65535
+pausemovetime = 65535
+scale = 0.5 * Const(size.xscale) * fvar(11), 0.5 * Const(size.yscale) * fvar(11)
+angle = var(35)
+sprpriority = 4
+ownpal = 1
+remappal = 6001, 0
+ignorehitpause = Const(Size.Proj.DoScale)
+
+[State 7431, Explod-4]
+type = Explod
+trigger1 = var(6) = 0
+anim = 7072
+ID = 7072
+space = stage
+pos = -150*Sin(var(35)*(Pi/180.0)) * facing * Const(size.xscale) * fvar(11), -150*Cos(var(35)*(Pi/180.0)) * Const(size.yscale) * fvar(11)
+bindID = ID
+bindtime = 1
+facing = facing
+removetime = -1
+;vel = var(35) * facing * Const(size.xscale) / 8.0 ,var(56) * Const(size.yscale) / 8.0
+;accel = -var(35) * facing * Const(size.xscale) / 128.0 ,-var(56) * Const(size.yscale) / 128.0
+supermovetime = 65535
+pausemovetime = 65535
+scale = 0.4 * Const(size.xscale) * fvar(11), 0.4 * Const(size.yscale) * fvar(11)
+angle = var(35)
+sprpriority = 4
+ownpal = 1
+remappal = 6001, 0
+ignorehitpause = Const(Size.Proj.DoScale)
+
+;-- State Control --
+[State 7050, Go to Stage1]
+type = VarSet
+trigger1 = var(5) = 0
+trigger1 = var(6) > var(11)
+trigger1 = var(6) := 1
+var(5) = 1
+
+[State 7050, Go to Stage1]
+type = VarSet
+trigger1 = var(5) = 1
+trigger1 = var(6) > var(13)
+trigger1 = var(6) := 1
+var(5) = 2
+
+;-- Scale --
+[State 7431, fvar]
+type = varset
+trigger1 = var(5) = 0
+trigger1 = var(6) <= var(11)
+fvar(11) = 1 + (var(11) - var(6)) * fvar(12)
+
+[State 7431, fvar]
+type = varset
+trigger1 = var(5) = 1
+fvar(11) = 1
+
+
+
+;Fade In
+[State 7431, Explod-1]
+type = ModifyExplod
+triggerall = NumExplod(7071)
+triggerall = var(5) = 0
+trigger1 = var(6) = [0,var(11)]
+ID = 7071
+scale = 1.25 * Const(size.xscale) * fvar(11), 1.25 * Const(size.yscale) * fvar(11)
+trans = add
+alpha = 64*var(6), 256
+
+[State 7431, Explod-2]
+type = ModifyExplod
+triggerall = NumExplod(7052)
+triggerall = var(5) = 0
+trigger1 = var(6) = [0,var(11)]
+ID = 7052
+scale = 1 * Const(size.xscale) * fvar(11), 1 * Const(size.yscale) * fvar(11)
+trans = add
+alpha = 64*var(6), 256
+
+[State 7431, Explod-3]
+type = ModifyExplod
+triggerall = NumExplod(7051)
+triggerall = var(5) = 0
+trigger1 = var(6) = [0,var(11)]
+ID = 7051
+scale = 0.5 * Const(size.xscale) * fvar(11), 0.5 * Const(size.yscale) * fvar(11)
+trans = add
+alpha = 64*var(6), 256
+
+[State 7431, Explod-4]
+type = ModifyExplod
+triggerall = NumExplod(7072)
+triggerall = var(5) = 0
+trigger1 = var(6) = [0,var(11)]
+ID = 7072
+scale = 0.4 * Const(size.xscale) * fvar(11), 0.4 * Const(size.yscale) * fvar(11)
+trans = add
+alpha = 64*var(6), 256
+
+;Stay
+[State 7431, Explod-1]
+type = ModifyExplod
+triggerall = NumExplod(7071)
+triggerall = var(5) = 1
+trigger1 = var(6) = [1,var(13)]
+ID = 7071
+scale = 1.25 * Const(size.xscale) * fvar(11), 1.25 * Const(size.yscale) * fvar(11)
+trans = add
+alpha = 256, 256
+
+[State 7431, Explod-2]
+type = ModifyExplod
+triggerall = NumExplod(7052)
+triggerall = var(5) = 1
+trigger1 = var(6) = [1,var(13)]
+ID = 7052
+scale = 1 * Const(size.xscale) * fvar(11), 1 * Const(size.yscale) * fvar(11)
+trans = add
+alpha = 256, 256
+
+[State 7431, Explod-3]
+type = ModifyExplod
+triggerall = NumExplod(7051)
+triggerall = var(5) = 1
+trigger1 = var(6) = [1,var(13)]
+ID = 7051
+scale = 0.5 * Const(size.xscale) * fvar(11), 0.5 * Const(size.yscale) * fvar(11)
+trans = add
+alpha = 256, 256
+
+[State 7431, Explod-4]
+type = ModifyExplod
+triggerall = NumExplod(7072)
+triggerall = var(5) = 1
+trigger1 = var(6) = [1,var(13)]
+ID = 7072
+scale = 0.4 * Const(size.xscale) * fvar(11), 0.4 * Const(size.yscale) * fvar(11)
+trans = add
+alpha = 256, 256
+
+;FadeOut
+[State 7431, Explod-1]
+type = ModifyExplod
+triggerall = NumExplod(7071)
+triggerall = var(5) = 2
+trigger1 = var(6) = [1,var(12)]
+ID = 7071
+scale = 1.25 * Const(size.xscale) * fvar(11), 1.25 * Const(size.yscale) * fvar(11)
+trans = add
+alpha = 256 - (var(6)*(256/12)), 256
+
+[State 7431, Explod-2]
+type = ModifyExplod
+triggerall = NumExplod(7052)
+triggerall = var(5) = 2
+trigger1 = var(6) = [1,var(12)]
+ID = 7052
+scale = 1 * Const(size.xscale) * fvar(11), 1 * Const(size.yscale) * fvar(11)
+trans = add
+alpha = 256 - (var(6)*(256/12)), 256
+
+[State 7431, Explod-3]
+type = ModifyExplod
+triggerall = NumExplod(7051)
+triggerall = var(5) = 2
+trigger1 = var(6) = [1,var(12)]
+ID = 7051
+scale = 0.5 * Const(size.xscale) * fvar(11), 0.5 * Const(size.yscale) * fvar(11)
+trans = add
+alpha = 256 - (var(6)*(256/12)), 256
+
+[State 7431, Explod-4]
+type = ModifyExplod
+triggerall = NumExplod(7072)
+triggerall = var(5) = 2
+trigger1 = var(6) = [1,var(12)]
+ID = 7072
+scale = 0.4 * Const(size.xscale) * fvar(11), 0.4 * Const(size.yscale) * fvar(11)
+trans = add
+alpha = 256 - (var(6)*(256/12)), 256
+
+[State Safe Remove]
+type = DestroySelf
+trigger1 = var(5) = 2 && var(6) > var(12)
+recursive = 1
+removeexplods  = 1
+
+[State Counter-Run]
+type = varadd
+trigger1 = var(6) < 4294967295
+var(6) = 1
+
+
+
+; Run Dust
+[Statedef 7100]
+type    = S                      ;State-type: S-stand, C-crouch, A-air, L-liedown
+movetype= I                      ;Move-type: A-attack, I-idle, H-gethit
+physics = N                      ;Physics: S-stand, C-crouch, A-air, N = No Physics
+juggle  = 0                      ;Number of air juggle points move takes
+;Commonly-used controllers:
+velset = 0,0                     ;Set velocity (x,y) (Def: no change)
+ctrl = 0                         ;Set ctrl (Def: no change)
+Anim = 9741						;Empty Anim
+sprpriority = 0                  ;Set p1's sprite layering priority to 2 (in front)
+
+[State 7100, Run-Dust-01]
+type = Explod
+trigger1 = var(6) = 0
+anim = 7100
+ID = 7100
+space = stage
+bindID = ID
+pos = 0 * facing * Const(Size.xScale), 0 * Const(Size.yScale)
+facing = facing
+bindtime = 1
+removetime = -2
+supermovetime = 4294967295
+pausemovetime = 4294967295
+sprpriority = 2
+scale = 2 * Const(Size.xScale), 2 * Const(Size.yScale)
+angle = 0
+;xangle = 0
+;yangle = 0
+ownpal = 1
+ignorehitpause = 1
+
+[State 7100, Run-Dust-01-grow]
+type = ModifyExplod
+trigger1 = var(6) = [1,24]
+ID = 7100
+scale = (2 + (var(6)/16.0)) * Const(Size.xScale), (2 - (var(6)/16.0)) * Const(Size.yScale)
+
+[State 7100, Run-Dust-02]
+type = Explod
+trigger1 = var(6) = 2
+anim = 7101
+ID = 7101
+space = stage
+bindID = ID
+pos = 0 * facing * Const(Size.xScale), 0 * Const(Size.yScale)
+facing = facing
+bindtime = 1
+removetime = -2
+supermovetime = 4294967295
+pausemovetime = 4294967295
+sprpriority = 2
+scale = 3 * Const(Size.xScale), 3 * Const(Size.yScale)
+angle = 0
+;xangle = 0
+;yangle = 0
+ownpal = 1
+ignorehitpause = 1
+
+[State Safe Remove]
+type = DestroySelf
+trigger1 = var(6) >= 48
+recursive = 1
+removeexplods  = 1
+
+[State Counter-Run]
+type = varadd
+trigger1 = var(6) < 4294967295
+var(6) = 1
+
+
+
+;Clash FX
+[Statedef 7140]
+type = A
+physics = N
+sprpriority = 0
+anim = 9741
+ctrl = 0
+
+[State 7140, Degree]
+type = varset
+trigger1 = !time
+var(35) = Const(size.shadowoffset)
+
+
+
+[State 7140, Snd-FX]
+type = PlaySnd
+trigger1 = !Time
+value = 2,100 + Random%3
+persistent = 0
+
+[State 7140, BGPALFX]
+type = BGPalFX
+triggerall = var(5) = 0
+trigger1 = var(6) < 20
+time = 1
+add = 0,0,0
+mul = 64,64,64
+invertall = 0
+color = 256
+ignorehitpause = 1
+
+[State 7140, BGPALFX]
+type = BGPalFX
+triggerall = var(5) = 0
+trigger1 = var(6) = [20,24]
+time = 1
+add = 0,0,0
+mul = 64 + 48*(var(6)-20),64 + 48*(var(6)-20),64 + 48*(var(6)-20)
+invertall = 0
+color = 256
+ignorehitpause = 1
+
+[State 7140, Mid_Circle]
+type = Explod
+trigger1 = !NumExplod(7140)
+trigger1 = !var(6)
+anim = 7140
+ID = 7140
+space = stage
+bindID = ID
+pos = 0 * facing * Const(Size.xScale), 0 * Const(Size.yScale)
+facing = facing
+bindtime = -1
+removetime = 26
+supermovetime = 4294967295
+pausemovetime = 4294967295
+sprpriority = -2
+scale = 1 * Const(Size.xScale), 1 * Const(Size.yScale)
+trans = add
+alpha = 256,256
+angle = var(35)
+;xangle = 0
+;yangle = 0
+;remappal = 6022,PalNo - 1
+ownpal = 1
+ignorehitpause = 1
+
+[State 7140, Mid_Circle]
+type = ModifyExplod
+trigger1 = NumExplod(7140)
+trigger1 = var(6) = [8,16]
+ID = 7140
+trans = add
+alpha = 256-16*(var(6)-8),256
+
+[State 7140, Mid_Circle]
+type = ModifyExplod
+trigger1 = NumExplod(7140)
+trigger1 = var(6) = [18,26]
+ID = 7140
+trans = add
+alpha = 128-16*(var(6)-18),256
+
+[State 7140, Mid_Light]
+type = Explod
+trigger1 = !NumExplod(7001)
+trigger1 = !var(6)
+anim = 7001
+ID = 7001
+space = stage
+bindID = ID
+pos = 0 * facing * Const(Size.xScale), 0 * Const(Size.yScale)
+facing = facing
+bindtime = -1
+removetime = 8
+supermovetime = 4294967295
+pausemovetime = 4294967295
+sprpriority = 2
+scale = 1 * Const(Size.xScale), 1 * Const(Size.yScale)
+trans = add
+alpha = 256,256
+angle = 0
+;xangle = 0
+;yangle = 0
+remappal = 6001,0
+ownpal = 1
+ignorehitpause = 1
+
+[State 7140, Mid_Sun]
+type = Explod
+trigger1 = !NumExplod(7010)
+trigger1 = !var(6)
+anim = 7010
+ID = 7010
+space = stage
+bindID = ID
+pos = 0 * facing * Const(Size.xScale), 0 * Const(Size.yScale)
+facing = facing
+bindtime = -1
+removetime = 14
+supermovetime = 4294967295
+pausemovetime = 4294967295
+sprpriority = 3
+trans = add
+alpha = 256,256
+scale = 1.5 * Const(Size.xScale), 1.5 * Const(Size.yScale)
+angle = var(35)
+;xangle = 0
+;yangle = 0
+remappal = 6001,0
+ownpal = 1
+ignorehitpause = 1
+
+[State 7140, Mid_Light]
+type = ModifyExplod
+trigger1 = NumExplod(7001)
+trigger1 = var(6) = [0,8]
+ID = 7001
+trans = add
+alpha = 256 - 32*var(6), 256
+
+[State 7140, Mid_Sun]
+type = ModifyExplod
+trigger1 = NumExplod(7010)
+trigger1 = var(6) = [6,14]
+ID = 7010
+trans = add
+alpha = 256 - 32*(var(6)-6), 256
+
+
+[State 7140, Lighting]
+type = Explod
+trigger1 = !var(6)
+anim = 7143 + Random%3
+ID = 7144
+space = stage
+bindID = ID
+pos = 0 * facing * Const(Size.xScale), 0 * Const(Size.yScale)
+facing = facing
+bindtime = -1
+removetime = 32
+supermovetime = 4294967295
+pausemovetime = 4294967295
+sprpriority = 2
+scale = 2.6 * Const(Size.xScale), 2.6 * Const(Size.yScale)
+trans = add
+alpha = 256,256
+angle = var(35) + 40
+;xangle = 0
+;yangle = 0
+;remappal = 6022,PalNo - 1
+ownpal = 1
+ignorehitpause = 1
+
+[State 7140, Lighting]
+type = Explod
+trigger1 = !var(6)
+anim = 7143 + Random%3
+ID = 7144
+space = stage
+bindID = ID
+pos = 0 * facing * Const(Size.xScale), 0 * Const(Size.yScale)
+facing = facing
+bindtime = -1
+removetime = 32
+supermovetime = 4294967295
+pausemovetime = 4294967295
+sprpriority = 2
+scale = 2.6 * Const(Size.xScale), 2.6 * Const(Size.yScale)
+trans = add
+alpha = 256,256
+angle = var(35) - 10
+;xangle = 0
+;yangle = 0
+;remappal = 7187,1
+ownpal = 1
+ignorehitpause = 1
+
+[State 7140, Lighting]
+type = Explod
+trigger1 = !var(6)
+anim = 7143 + Random%3
+ID = 7144
+space = stage
+bindID = ID
+pos = 0 * facing * Const(Size.xScale), 0 * Const(Size.yScale)
+facing = facing
+bindtime = -1
+removetime = 32
+supermovetime = 4294967295
+pausemovetime = 4294967295
+sprpriority = 2
+scale = 2.6 * Const(Size.xScale), 2.6 * Const(Size.yScale)
+trans = add
+alpha = 256,256
+angle = var(35) + 170
+;xangle = 0
+;yangle = 0
+;remappal = 6022,PalNo - 1
+ownpal = 1
+ignorehitpause = 1
+
+[State 7140, Lighting]
+type = Explod
+trigger1 = !var(6)
+anim = 7143 + Random%3
+ID = 7144
+space = stage
+bindID = ID
+pos = 0 * facing * Const(Size.xScale), 0 * Const(Size.yScale)
+facing = facing
+bindtime = -1
+removetime = 32
+supermovetime = 4294967295
+pausemovetime = 4294967295
+sprpriority = 2
+scale = 2.6 * Const(Size.xScale), 2.6 * Const(Size.yScale)
+trans = add
+alpha = 256,256
+angle = var(35) + 220
+;xangle = 0
+;yangle = 0
+;remappal = 6022,PalNo - 1
+ownpal = 1
+ignorehitpause = 1
+
+[State 7140, Lighting]
+type = ModifyExplod
+triggerall = NumExplod(7144)
+trigger1 = var(6) = [1,26]
+ID = 7144
+scale = 2.6 * Const(Size.xScale), (2.6 + 0.02*(var(6))) * Const(Size.yScale)
+trans = add
+alpha = 256,256
+
+[State 7140, Lighting]
+type = ModifyExplod
+triggerall = NumExplod(7144)
+trigger1 = var(6) = [27,32]
+ID = 7144
+;scale = 2.6 * Const(Size.xScale), (2.6 + 0.04*(var(6)-10)) * Const(Size.yScale)
+trans = add
+alpha = 256 - 32*(var(6)-26),256
+
+[State 7140, Side_Circle]
+type = Explod
+trigger1 = !var(6)
+anim = 7130
+ID = 7130
+space = stage
+bindID = ID
+pos = 0 * facing * Const(Size.xScale), 0 * Const(Size.yScale)
+facing = facing
+bindtime = -1
+removetime = 16
+supermovetime = 4294967295
+pausemovetime = 4294967295
+sprpriority = -2
+scale = 2.75 * Const(Size.xScale), 2.75 * Const(Size.yScale)
+angle = 0
+xangle = 45 + (((ScreenPos y - (ScreenHeight / 2.0)) / (ScreenHeight / 2.0)) * 10.0)
+yangle = -70 - ((Pos x * facing / (GameWidth/2))*18.0)
+remappal = 6001,5
+ownpal = 1
+ignorehitpause = 1
+
+[State 7140, Side_Circle]
+type = ModifyExplod
+triggerall = NumExplod(7130)
+trigger1 = var(6) = [1,16]
+ID = 7130
+scale = (2.75 + 0.025*(var(6))) * Const(Size.xScale), (2.75 + 0.025*(var(6))) * Const(Size.yScale)
+trans = add
+alpha = 256 - 16*(var(6)), 256
+
+[State 7140, Side_Circle]
+type = Explod
+trigger1 = !var(6)
+anim = 7130
+ID = 7131
+space = stage
+bindID = ID
+pos = 20 * facing * Const(Size.xScale), 0 * Const(Size.yScale)
+facing = facing
+bindtime = -1
+removetime = 16
+supermovetime = 4294967295
+pausemovetime = 4294967295
+sprpriority = -2
+scale = 3 * Const(Size.xScale), 3 * Const(Size.yScale)
+angle = 0
+xangle = 45 + (((ScreenPos y - (ScreenHeight / 2.0)) / (ScreenHeight / 2.0)) * 10.0)
+yangle = -70 - ((Pos x * facing / (GameWidth/2))*18.0)
+remappal = 6001,5
+ownpal = 1
+ignorehitpause = 1
+
+[State 7140, Side_Circle]
+type = ModifyExplod
+triggerall = NumExplod(7131)
+trigger1 = var(6) = [1,16]
+ID = 7131
+scale = (3 + 0.025*(var(6))) * Const(Size.xScale), (3 + 0.025*(var(6))) * Const(Size.yScale)
+trans = add
+alpha = 256 - 16*(var(6)), 256
+
+[State 7140, Pause]
+type = Pause
+trigger1 = !time
+time = 24
+movetime = 24
+endcmdbuftime = 24
+pausebg = 1
+ignorehitpause = 1
+
+[State Safe Remove]
+type = DestroySelf
+trigger1 = NumExplod = 0
+recursive = 1
+removeexplods  = 1
+
+[State Counter-Run]
+type = varadd
+trigger1 = var(6) < 4294967295
+var(6) = 1
+ignorehitpause = 1
+
+
+; Last Arc FX
+[Statedef 7150]
+type = A
+physics = N
+sprpriority = 0
+anim = 9741
+ctrl = 0
+
+[State 7050, Degree]
+type = varset
+trigger1 = !time
+var(35) = Const(size.shadowoffset)
+
+[State 7150, Phase]
+type = varset
+triggerall = var(5) = 0
+trigger1 = var(6) > 62
+trigger1 = var(6) := 1
+trigger2 = Parent,MoveType != A
+trigger2 = var(6) := 1
+var(5) = 1
+
+[State 7150, Snd-FX]
+type = PlaySnd
+trigger1 = !time
+value = 5, 980
+channel = 5
+
+
+[State 7150,BG]
+type = BGPalFX
+triggerall = !NumHelper(4010)
+trigger1 = var(5) = 0
+trigger1 = var(6) = [0,4]
+time = 1
+add = 0,0,0
+mul = 256 - 40*var(6),256 - 40*var(6),256 - 40*var(6)
+invertall = 0
+color = 256
+
+[State 7150,BG]
+type = BGPalFX
+triggerall = !NumHelper(4010)
+trigger1 = var(5) = 0
+trigger1 = var(6) > 4
+time = 1
+add = 0,0,0
+mul = 96,96,96
+invertall = 0
+color = 256
+
+[State 7150,BG]
+type = BGPalFX
+triggerall = !NumHelper(4010)
+trigger1 = var(5) = 1
+trigger1 = var(6) = [1,12]
+time = 1
+add = 0,0,0
+mul = 96 + 12*var(6),96 + 12*var(6),96 + 12*var(6)
+invertall = 0
+color = 256
+
+
+[State 7150, Line]
+type = Explod
+triggerall = var(5) = 0
+trigger1 = var(6) = 0
+anim = 7465
+ID = 7465
+space = stage
+bindID = ID
+pos = 0 * facing * Const(Size.xScale), 0 * Const(Size.yScale)
+facing = facing
+bindtime = -1
+removetime = 26
+supermovetime = 4294967295
+pausemovetime = 4294967295
+sprpriority = 3
+scale = 4 * Const(Size.xScale), 6 * Const(Size.yScale)
+;remappal = 6001,0
+angle = 0
+;xangle = 0
+;yangle = 0
+ownpal = 1
+ignorehitpause = 1
+
+[State 7150, Line]
+type = ModifyExplod
+triggerall = NumExplod(7465)
+triggerall = var(5) = 0
+trigger1 = var(6) = [0,12]
+ID = 7465
+scale = (6 - 0.45*(var(6))) * Const(Size.xScale), 6 * Const(Size.yScale)
+trans = add
+alpha = 64 + (16*var(6)) ,256
+
+[State 7150, Line]
+type = ModifyExplod
+triggerall = NumExplod(7465)
+triggerall = var(5) = 0
+trigger1 = var(6) = [13,26]
+ID = 7465
+scale = (0.6) * Const(Size.xScale), 6 * Const(Size.yScale)
+trans = add
+alpha = 256 - 16*(var(6)-12) ,256
+
+
+[State 7150, Lighting]
+type = Explod
+triggerall = var(5) = 0
+trigger1 = var(6) = 6
+anim = 7143
+ID = 7143
+space = stage
+bindID = ID
+pos = 0 * facing * Const(Size.xScale), 200 * Const(Size.yScale)
+facing = facing
+bindtime = -1
+removetime = 8
+supermovetime = 4294967295
+pausemovetime = 4294967295
+sprpriority = 3
+scale = 3 * Const(Size.xScale), 3 * Const(Size.yScale)
+trans = add
+alpha = 256,256
+remappal = 7130,4
+angle = 0
+;xangle = 0
+;yangle = 0
+ownpal = 1
+ignorehitpause = 1
+
+[State 7150, Lighting]
+type = ModifyExplod
+triggerall = NumExplod(7143)
+triggerall = var(5) = 0
+trigger1 = var(6) = [10,14]
+ID = 7143
+trans = add
+alpha = 256 - 32*(var(6)-10),256
+
+[State 7150, Lighting]
+type = Explod
+triggerall = var(5) = 0
+trigger1 = var(6) = 12
+anim = 7144
+ID = 7144
+space = stage
+bindID = ID
+pos = 0 * facing * Const(Size.xScale), 400 * Const(Size.yScale)
+facing = facing
+bindtime = -1
+removetime = 8
+supermovetime = 4294967295
+pausemovetime = 4294967295
+sprpriority = 3
+scale = 4 * Const(Size.xScale), 3 * Const(Size.yScale)
+trans = add
+alpha = 256,256
+remappal = 7130,4
+angle = 0
+;xangle = 0
+;yangle = 0
+ownpal = 1
+ignorehitpause = 1
+
+[State 7150, Lighting]
+type = ModifyExplod
+triggerall = NumExplod(7144)
+triggerall = var(5) = 0
+trigger1 = var(6) = [16,20]
+ID = 7144
+trans = add
+alpha = 256 - 32*(var(6)-16),256
+
+[State 7150, Lighting]
+type = Explod
+triggerall = var(5) = 0
+trigger1 = var(6) = 18
+anim = 7142
+ID = 7142
+space = stage
+bindID = ID
+pos = 0 * facing * Const(Size.xScale), 300 * Const(Size.yScale)
+facing = facing
+bindtime = -1
+removetime = 8
+supermovetime = 4294967295
+pausemovetime = 4294967295
+sprpriority = 3
+scale = 1 * Const(Size.xScale), 3 * Const(Size.yScale)
+trans = add
+alpha = 256,256
+remappal = 7130,4
+angle = 0
+;xangle = 0
+;yangle = 0
+ownpal = 1
+ignorehitpause = 1
+
+[State 7150, Lighting]
+type = ModifyExplod
+triggerall = NumExplod(7142)
+triggerall = var(5) = 0
+trigger1 = var(6) = [22,26]
+ID = 7142
+trans = add
+alpha = 256 - 32*(var(6)-22),256
+
+[State 7150, Lighting]
+type = Explod
+triggerall = var(5) = 0
+trigger1 = var(6) = 24
+anim = 7145
+ID = 7145
+space = stage
+bindID = ID
+pos = 0 * facing * Const(Size.xScale), 200 * Const(Size.yScale)
+facing = facing
+bindtime = -1
+removetime = 8
+supermovetime = 4294967295
+pausemovetime = 4294967295
+sprpriority = 3
+scale = 3 * Const(Size.xScale), 3 * Const(Size.yScale)
+trans = add
+alpha = 256,256
+remappal = 7130,4
+angle = 0
+;xangle = 0
+;yangle = 0
+ownpal = 1
+ignorehitpause = 1
+
+[State 7150, Lighting]
+type = ModifyExplod
+triggerall = NumExplod(7145)
+triggerall = var(5) = 0
+trigger1 = var(6) = [26,32]
+ID = 7145
+trans = add
+alpha = 256 - 32*(var(6)-26),256
+
+[State 7150, Lighting]
+type = Explod
+triggerall = var(5) = 0
+trigger1 = var(6) = 0
+anim = 7130
+ID = 7130
+space = stage
+bindID = ID
+pos = 0 * facing * Const(Size.xScale), 0 * Const(Size.yScale)
+facing = facing
+bindtime = -1
+removetime = 12
+supermovetime = 4294967295
+pausemovetime = 4294967295
+sprpriority = 3
+scale = 0.8 * Const(Size.xScale), 0.8 * Const(Size.yScale)
+trans = add
+alpha = 160,256
+;remappal = 7130,4
+angle = 0
+;xangle = 0
+;yangle = 0
+ownpal = 1
+ignorehitpause = 1
+
+[State 7150, Lighting]
+type = ModifyExplod
+triggerall = NumExplod(7130)
+triggerall = var(5) = 0
+trigger1 = var(6) = [0,8]
+ID = 7130
+scale = (0.8 + 0.06*var(6)) * Const(Size.xScale), (0.8 + 0.06*var(6)) * Const(Size.yScale)
+trans = add
+alpha = 160,256
+
+[State 7150, Lighting]
+type = ModifyExplod
+triggerall = NumExplod(7130)
+triggerall = var(5) = 0
+trigger1 = var(6) = [9,12]
+ID = 7130
+scale = (1.28 + 0.02*(var(6)-8)) * Const(Size.xScale), (1.28 + 0.02*(var(6)-8)) * Const(Size.yScale)
+trans = add
+alpha = (160 - 32*(var(6)-8)) ,256
+
+[State 7150, SpotLight]
+type = Explod
+triggerall = var(5) = 0
+trigger1 = var(6) = 0
+anim = 7001
+ID = 7001
+space = stage
+bindID = ID
+pos = 0 * facing * Const(Size.xScale), 0 * Const(Size.yScale)
+facing = facing
+bindtime = -1
+removetime = 36
+supermovetime = 4294967295
+pausemovetime = 4294967295
+sprpriority = 3
+scale = 0.45 * Const(Size.xScale), 0.45 * Const(Size.yScale)
+trans = add
+alpha = 128,256
+remappal = 6001,6
+angle = 0
+;xangle = 0
+;yangle = 0
+ownpal = 1
+ignorehitpause = 1
+
+[State 7150, SpotLight]
+type = ModifyExplod
+triggerall = NumExplod(7001)
+triggerall = var(5) = 0
+trigger1 = var(6) = [0,8]
+ID = 7001
+scale = (0.45 + 0.05*(var(6))) * Const(Size.xScale), (0.45 + 0.05*(var(6))) * Const(Size.yScale)
+trans = add
+alpha = 128,256
+
+[State 7150, SpotLight]
+type = ModifyExplod
+triggerall = NumExplod(7001)
+triggerall = var(5) = 0
+trigger1 = var(6) = [24,36]
+ID = 7001
+trans = add
+alpha = 128 - 8*(var(6)-24),256
+
+
+[State 7150, Wind]
+type = Explod
+triggerall = var(5) = 0
+trigger1 = var(6) = 0
+anim = 7155
+ID = 7155
+space = stage
+bindID = ID
+pos = -80*Sin(var(35)*(Pi/180.0)) * facing * Const(size.xscale), -80*Cos(var(35)*(Pi/180.0)) * Const(size.yscale)
+facing = facing
+bindtime = -1
+removetime = 36
+supermovetime = 4294967295
+pausemovetime = 4294967295
+sprpriority = 3
+scale = 0.5 * Const(Size.xScale), 0.5 * Const(Size.yScale)
+;remappal = 6001,6
+angle = var(35)
+;xangle = 0
+;yangle = 0
+ownpal = 1
+ignorehitpause = 1
+
+[State 7150, Wind]
+type = ModifyExplod
+triggerall = NumExplod(7155)
+triggerall = var(5) = 0
+trigger1 = var(6) = [0,8]
+ID = 7155
+scale = (0.5 + 0.04*(var(6))) * Const(Size.xScale), 0.5 * Const(Size.yScale)
+
+[State 7150, Wind]
+type = ModifyExplod
+triggerall = NumExplod(7155)
+triggerall = var(5) = 0
+trigger1 = var(6) = [9,16]
+ID = 7155
+scale = (0.82 + 0.008*(var(6)-8)) * Const(Size.xScale), 0.5 * Const(Size.yScale)
+
+
+[State 7150, Wind]
+type = Explod
+triggerall = var(5) = 0
+trigger1 = var(6) = 0
+anim = 7156
+ID = 7156
+space = stage
+bindID = ID
+pos = 0*Sin(var(35)*(Pi/180.0)) * facing * Const(size.xscale), 0*Cos(var(35)*(Pi/180.0)) * Const(size.yscale)
+facing = facing
+bindtime = -1
+removetime = 36
+supermovetime = 4294967295
+pausemovetime = 4294967295
+sprpriority = 3
+scale = 0.6 * Const(Size.xScale), 0.6 * Const(Size.yScale)
+;remappal = 6001,6
+angle = var(35)
+;xangle = 0
+;yangle = 0
+ownpal = 1
+ignorehitpause = 1
+
+[State 7150, Wind]
+type = ModifyExplod
+triggerall = NumExplod(7156)
+triggerall = var(5) = 0
+trigger1 = var(6) = [0,8]
+ID = 7156
+scale = (0.6 + 0.04*(var(6))) * Const(Size.xScale), 0.6 * Const(Size.yScale)
+
+[State 7150, Wind]
+type = ModifyExplod
+triggerall = NumExplod(7156)
+triggerall = var(5) = 0
+trigger1 = var(6) = [9,16]
+ID = 7156
+scale = (0.92 + 0.01*(var(6)-8)) * Const(Size.xScale), 0.6 * Const(Size.yScale)
+
+
+
+[State 7150, Wind]
+type = Explod
+triggerall = var(5) = 0
+trigger1 = var(6) = 0
+anim = 7157
+ID = 7157
+space = stage
+bindID = ID
+pos = 120*Sin(var(35)*(Pi/180.0)) * facing * Const(size.xscale), 120*Cos(var(35)*(Pi/180.0)) * Const(size.yscale)
+facing = facing
+bindtime = -1
+removetime = 36
+supermovetime = 4294967295
+pausemovetime = 4294967295
+sprpriority = 3
+scale = 0.4 * Const(Size.xScale), 0.4 * Const(Size.yScale)
+;remappal = 6001,6
+angle = var(35)
+;xangle = 0
+;yangle = 0
+ownpal = 1
+ignorehitpause = 1
+
+[State 7150, Wind]
+type = ModifyExplod
+triggerall = NumExplod(7157)
+triggerall = var(5) = 0
+trigger1 = var(6) = [0,8]
+ID = 7157
+scale = (0.4 + 0.048*(var(6))) * Const(Size.xScale), 0.4 * Const(Size.yScale)
+
+[State 7150, Wind]
+type = ModifyExplod
+triggerall = NumExplod(7157)
+triggerall = var(5) = 0
+trigger1 = var(6) = [9,16]
+ID = 7157
+scale = (0.784 + 0.01*(var(6)-8)) * Const(Size.xScale), 0.4 * Const(Size.yScale)
+
+
+[State Safe Remove]
+type = DestroySelf
+trigger1 = var(5) = 1 && var(6) > 12
+recursive = 1
+removeexplods  = 1
+
+[State Counter-Run]
+type = varadd
+trigger1 = var(6) < 4294967295
+var(6) = 1
+ignorehitpause = 1
+
+
+
+
+
+
+;Heat Blaster 1
+[Statedef 7180]
+type = A
+physics = N
+sprpriority = 0
+anim = 9741
+ctrl = 0
+
+[State Parent]
+type = BindToParent
+trigger1 = 1
+time = 1
+facing = 1
+pos = 0, Parent,Const(Size.mid.pos.y) * Parent,Const(Size.yScale)
+
+[State 7180, Mid]
+type = Explod
+trigger1 = !NumExplod(7180)
+trigger1 = !var(6)
+anim = 7180
+ID = 7180
+space = stage
+bindID = ID
+pos = 0 * facing * Const(Size.xScale), 0 * Const(Size.yScale)
+facing = facing
+bindtime = -1
+removetime = -2
+supermovetime = 4294967295
+pausemovetime = 4294967295
+sprpriority = 2
+scale = 0.5 * Const(Size.xScale), 0.5 * Const(Size.yScale)
+trans = add
+alpha = 128,256
+angle = 0
+;xangle = 0
+;yangle = 0
+ownpal = 1
+ignorehitpause = 1
+
+[State 7180, Mid]
+type = ModifyExplod
+trigger1 = NumExplod(7180)
+trigger1 = var(6) = [2,10]
+ID = 7180
+scale = (0.5 + 0.375*(var(6)-2)) * Const(Size.xScale), (0.5 + 0.375*(var(6)-2)) * Const(Size.yScale)
+trans = add
+alpha = 128,256
+
+[State 7180, Light-1]
+type = Explod
+trigger1 = !NumExplod(7181)
+trigger1 = !var(6)
+anim = 7181
+ID = 7181
+space = stage
+bindID = ID
+pos = 0 * facing * Const(Size.xScale), 0 * Const(Size.yScale)
+facing = facing
+bindtime = -1
+removetime = -2
+supermovetime = 4294967295
+pausemovetime = 4294967295
+sprpriority = 2
+scale = 1.8 * Const(Size.xScale), 1.8 * Const(Size.yScale)
+trans = add
+alpha = 128,256
+angle = 50
+;xangle = 0
+;yangle = 0
+ownpal = 1
+ignorehitpause = 1
+
+[State 7180, Light-2]
+type = Explod
+trigger1 = !var(6)
+anim = 7181
+ID = 7181
+space = stage
+bindID = ID
+pos = 0 * facing * Const(Size.xScale), 0 * Const(Size.yScale)
+facing = facing
+bindtime = -1
+removetime = -2
+supermovetime = 4294967295
+pausemovetime = 4294967295
+sprpriority = 2
+scale = 2 * Const(Size.xScale), 1.8 * Const(Size.yScale)
+trans = add
+alpha = 128,256
+angle = 140
+;xangle = 0
+;yangle = 0
+ownpal = 1
+ignorehitpause = 1
+
+[State 7180, Light-3]
+type = Explod
+trigger1 = !var(6)
+anim = 7181
+ID = 7181
+space = stage
+bindID = ID
+pos = 0 * facing * Const(Size.xScale), 0 * Const(Size.yScale)
+facing = facing
+bindtime = -1
+removetime = -2
+supermovetime = 4294967295
+pausemovetime = 4294967295
+sprpriority = 2
+scale = 1.8 * Const(Size.xScale), 1.8 * Const(Size.yScale)
+trans = add
+alpha = 128,256
+angle = 210
+;xangle = 0
+;yangle = 0
+ownpal = 1
+ignorehitpause = 1
+
+[State 7180, Light-4]
+type = Explod
+trigger1 = !var(6)
+anim = 7181
+ID = 7181
+space = stage
+bindID = ID
+pos = 0 * facing * Const(Size.xScale), 0 * Const(Size.yScale)
+facing = facing
+bindtime = -1
+removetime = -2
+supermovetime = 4294967295
+pausemovetime = 4294967295
+sprpriority = 2
+scale = 0.6 * Const(Size.xScale), 3 * Const(Size.yScale)
+trans = add
+alpha = 128,256
+angle = 260
+;xangle = 0
+;yangle = 0
+ownpal = 1
+ignorehitpause = 1
+
+[State 7180, Light-5]
+type = Explod
+trigger1 = !var(6)
+anim = 7181
+ID = 7181
+space = stage
+bindID = ID
+pos = 0 * facing * Const(Size.xScale), 0 * Const(Size.yScale)
+facing = facing
+bindtime = -1
+removetime = -2
+supermovetime = 4294967295
+pausemovetime = 4294967295
+sprpriority = 2
+scale = 2 * Const(Size.xScale), 1.8 * Const(Size.yScale)
+trans = add
+alpha = 128,256
+angle = 325
+;xangle = 0
+;yangle = 0
+ownpal = 1
+ignorehitpause = 1
+
+[State 7180, Light-6]
+type = Explod
+trigger1 = !var(6)
+anim = 7181
+ID = 7181
+space = stage
+bindID = ID
+pos = 0 * facing * Const(Size.xScale), 0 * Const(Size.yScale)
+facing = facing
+bindtime = -1
+removetime = -2
+supermovetime = 4294967295
+pausemovetime = 4294967295
+sprpriority = 2
+scale = 0.8 * Const(Size.xScale), 1.8 * Const(Size.yScale)
+trans = add
+alpha = 128,256
+angle = 350
+;xangle = 0
+;yangle = 0
+ownpal = 1
+ignorehitpause = 1
+
+[State 7180, Light]
+type = ModifyExplod
+trigger1 = NumExplod(7181)
+trigger1 = var(6) = [2,10]
+ID = 7181
+trans = add
+alpha = 128 - 12*(var(6)-2),256
+
+[State Safe Remove]
+type = DestroySelf
+trigger1 = !NumExplod
+trigger2 = var(6) > 600
+recursive = 1
+removeexplods  = 1
+
+[State Counter-Run]
+type = varadd
+trigger1 = var(6) < 4294967295
+var(6) = 1
+
+
+
+
+
+;Moon Drive FX
+[Statedef 7190]
+type = A
+physics = N
+sprpriority = 0
+anim = 9741
+ctrl = 0
+
+[State Parent]
+type = BindToParent
+trigger1 = 1
+time = 1
+facing = 1
+pos = 0, Parent,Const(Size.mid.pos.y) * Parent,Const(Size.yScale)
+
+[State 7190, SND-FX]
+type = PlaySnd
+trigger1 = !time
+value = 5, 990
+abspan = 0
+volumescale = 100
+
+[State 7190, SND-FX-Boost]
+type = PlaySnd
+trigger1 = !time
+value = 5, 990
+abspan = 0
+volumescale = 100
+
+;------ Phase ---------
+[State 7190, End]
+type = varset
+triggerall = var(5) = 0 && var(6)
+trigger1 = Parent,Anim = 990
+trigger1 = Parent,AnimTime >= -8
+trigger1 = var(6):=1
+trigger2 = Parent,Anim != 990
+trigger2 = var(6):=1
+var(5) = -1
+
+
+[State 7190, BG Color]
+type = Explod
+triggerall = var(5) = 0
+trigger1 = !NumExplod(7187)
+trigger1 = !var(6)
+anim = 7187
+ID = 7187
+space = stage
+bindID = ID
+pos = 0 * facing * Const(Size.xScale), 0 * Const(Size.yScale)
+facing = facing
+bindtime = -1
+removetime = -1
+supermovetime = 4294967295
+pausemovetime = 4294967295
+sprpriority = 2
+scale = 6 * Const(Size.xScale), 6 * Const(Size.yScale)
+trans = add
+alpha = 128,256
+;angle = 90
+;xangle = 0
+;yangle = 0
+ownpal = 1
+ignorehitpause = 1
+
+[State 7190, BG Color]
+type = ModifyExplod
+triggerall = var(5) = -1
+trigger1 = NumExplod(7187)
+trigger1 = var(6) = [1,8]
+ID = 7187
+trans = add
+alpha = 128 - 16*var(6), 256
+
+[State 7190, Star]
+type = Explod
+triggerall = var(5) = 0
+trigger1 = !NumExplod(7463)
+trigger1 = !var(6)
+anim = 7463
+ID = 7463
+space = stage
+bindID = ID
+pos = 0 * facing * Const(Size.xScale), 0 * Const(Size.yScale)
+facing = facing
+bindtime = -1
+removetime = 32
+supermovetime = 4294967295
+pausemovetime = 4294967295
+sprpriority = 3
+scale = 6 * Const(Size.xScale), 0.5 * Const(Size.yScale)
+angle = 90
+;xangle = 0
+;yangle = 0
+ownpal = 1
+ignorehitpause = 1
+
+[State 7190, Star]
+type = ModifyExplod
+triggerall = var(5) = 0
+trigger1 = NumExplod(7463)
+trigger1 = var(6) = [0,8]
+ID = 7463
+scale = (6 - 0.7*(var(6))) * Const(Size.xScale), (0.5 + 1*var(6)) * Const(Size.yScale)
+
+[State 7190, Star]
+type = ModifyExplod
+triggerall = var(5) = 0
+trigger1 = NumExplod(7463)
+trigger1 = var(6) = [9,32]
+ID = 7463
+scale = (0.4 - 0.016*(var(6)-9)) * Const(Size.xScale), 8.5 * Const(Size.yScale)
+
+
+[State 7190, Ring]
+type = Explod
+triggerall = var(5) = 0
+trigger1 = var(6) = 2
+anim = 7130
+ID = 7130
+space = stage
+bindID = ID
+pos = 0 * facing * Const(Size.xScale), 0 * Const(Size.yScale)
+facing = facing
+bindtime = 1
+removetime = 24
+supermovetime = 4294967295
+pausemovetime = 4294967295
+sprpriority = 3
+scale = 1 * Const(Size.xScale), 1 * Const(Size.yScale)
+angle = 0
+trans = add
+alpha = 192,256
+;xangle = 0 + (((ScreenPos y - (ScreenHeight / 2.0)) / (ScreenHeight / 2.0)) * 10.0)
+;yangle = 0 - ((Pos x * facing / (GameWidth/2))*18.0)
+ownpal = 1
+remappal = 6001,5
+ignorehitpause = 1
+
+[State 7190, Ring]
+type = ModifyExplod
+triggerall = var(5) = 0
+trigger1 = NumExplod(7130)
+trigger1 = var(6) = [2,10]
+ID = 7130
+scale = (1+0.05*(var(6)-2)) * Const(Size.xScale), (1+0.05*(var(6)-2)) * Const(Size.yScale)
+trans = add
+alpha = 192,256
+
+[State 7190, Ring]
+type = ModifyExplod
+triggerall = var(5) = 0
+trigger1 = NumExplod(7130)
+trigger1 = var(6) = [11,26]
+ID = 7130
+scale = (1.4+0.01*(var(6)-11)) * Const(Size.xScale), (1.4+0.01*(var(6)-11)) * Const(Size.yScale)
+trans = add
+alpha = (192 - 12*(var(6)-11)),256
+
+[State 7190, outter Ring]
+type = Explod
+triggerall = var(5) = 0
+trigger1 = var(6) = 2
+anim = 7188
+ID = 7189
+space = stage
+bindID = ID
+pos = 0 * facing * Const(Size.xScale), 0 * Const(Size.yScale)
+facing = facing
+bindtime = -1
+removetime = 24
+supermovetime = 4294967295
+pausemovetime = 4294967295
+sprpriority = 3
+scale = 4 * Const(Size.xScale), 4 * Const(Size.yScale)
+remappal = 7187,2
+;angle = 90
+;xangle = 0
+;yangle = 0
+ownpal = 1
+ignorehitpause = 1
+
+[State 7190, Ring]
+type = ModifyExplod
+triggerall = var(5) = 0
+trigger1 = NumExplod(7189)
+trigger1 = var(6) = [2,10]
+ID = 7189
+scale = (4+0.05*(var(6)-2)) * Const(Size.xScale), (4+0.05*(var(6)-2)) * Const(Size.yScale)
+
+[State 7190, Ring]
+type = ModifyExplod
+triggerall = var(5) = 0
+trigger1 = NumExplod(7189)
+trigger1 = var(6) = [11,26]
+ID = 7189
+scale = (4.4+0.01*(var(6)-11)) * Const(Size.xScale), (4.4+0.01*(var(6)-11)) * Const(Size.yScale)
+
+
+[State 7190, Particles]
+type = Explod
+triggerall = var(5) = 0
+trigger1 = var(6) = 2
+anim = 7136
+ID = 7136
+space = stage
+bindID = ID
+pos = 0 * facing * Const(Size.xScale), 0 * Const(Size.yScale)
+facing = facing
+bindtime = -1
+removetime = -2
+supermovetime = 4294967295
+pausemovetime = 4294967295
+sprpriority = -2
+scale = 0.5 * Const(Size.xScale), 0.5 * Const(Size.yScale)
+;remappal = 6001,0
+;angle = Random%360
+;xangle = 0
+;yangle = 0
+ownpal = 1
+ignorehitpause = 1
+
+[State 7190, Ring]
+type = ModifyExplod
+triggerall = var(5) = 0
+trigger1 = NumExplod(7136)
+trigger1 = var(6) = [2,10]
+ID = 7136
+scale = (0.5+0.025*(var(6)-2)) * Const(Size.xScale), (0.5+0.025*(var(6)-2)) * Const(Size.yScale)
+
+[State 7190, Ring]
+type = ModifyExplod
+triggerall = var(5) = 0
+trigger1 = NumExplod(7136)
+trigger1 = var(6) = [11,26]
+ID = 7136
+scale = (0.7+0.005*(var(6)-11)) * Const(Size.xScale), (0.7+0.005*(var(6)-11)) * Const(Size.yScale)
+trans = add
+alpha = 256 - 16*(var(6)-11), 16*(var(6)-11)
+
+[State Safe Remove]
+type = DestroySelf
+trigger1 = !NumExplod
+trigger2 = var(6) > 600
+trigger3 = var(5) = -1 && var(6) >= 8
+recursive = 1
+removeexplods  = 1
+
+[State Counter-Run]
+type = varadd
+trigger1 = var(6) < 4294967295
+var(6) = 1
+
+
+
+; Power Release FX
+[Statedef 7197]
+type = A
+physics = N
+sprpriority = 0
+anim = 9741
+ctrl = 0
+
+[State Parent]
+type = BindToParent
+trigger1 = 1
+time = 1
+facing = 1
+pos = 0, Parent,Const(Size.mid.pos.y) * Parent,Const(Size.yScale)
+
+[State 7019, Degree]
+type = varset
+trigger1 = !time
+var(35) = Random%360
+
+;---- Pahse
+[State 7197, Phase]
+type = varset
+trigger1 = var(5) = 0
+trigger1 = var(6) > 30
+trigger1 = var(6) := 1
+var(5) = 1
+
+[State 7019, Snd-FX]
+type = PlaySnd
+trigger1 = var(5) = 0
+trigger1 = var(6) = 10
+value = 5, 990
+channel = 5
+
+[State 7197, Particles]
+type = Explod
+triggerall = var(5) = 0
+trigger1 = var(6) = 0
+anim = 7197
+ID = 7197
+space = stage
+bindID = ID
+pos = 0 * facing * Const(Size.xScale), 0 * Const(Size.yScale)
+facing = facing
+bindtime = -1
+removetime = 30
+supermovetime = 4294967295
+pausemovetime = 4294967295
+sprpriority = 2
+scale = 3 * Const(Size.xScale), 3 * Const(Size.yScale)
+;remappal = 6001,0
+angle = var(35)
+;xangle = 0
+;yangle = 0
+ownpal = 1
+ignorehitpause = 1
+
+[State 7197, Particles]
+type = ModifyExplod
+triggerall = NumExplod(7197)
+triggerall = var(5) = 0
+trigger1 = var(6) = [0,30]
+ID = 7197
+scale = (3 - 0.1*(var(6))) * Const(Size.xScale), (3 - 0.1*(var(6))) * Const(Size.yScale)
+
+[State 7197, Particles]
+type = Explod
+triggerall = var(5) = 0
+trigger1 = var(6) = 0
+anim = 7136
+ID = 7136
+space = stage
+bindID = ID
+pos = 0 * facing * Const(Size.xScale), 0 * Const(Size.yScale)
+facing = facing
+bindtime = -1
+removetime = 30
+supermovetime = 4294967295
+pausemovetime = 4294967295
+sprpriority = 2
+scale = 1 * Const(Size.xScale), 1 * Const(Size.yScale)
+trans = add
+alpha = 64,192
+;remappal = 6001,0
+angle = var(35)
+;xangle = 0
+;yangle = 0
+ownpal = 1
+ignorehitpause = 1
+
+[State 7197, Particles]
+type = ModifyExplod
+trigger1 = NumExplod(7136)
+triggerall = var(5) = 0
+trigger1 = var(6) = [0,30]
+ID = 7136
+scale = (1 - 0.033*(var(6))) * Const(Size.xScale), (1 - 0.033*(var(6))) * Const(Size.yScale)
+trans = add
+alpha = 64,192
+
+[State 7197, Particles]
+type = Explod
+triggerall = var(5) = 1
+trigger1 = var(6) = 1
+anim = 7463
+ID = 7463
+space = stage
+bindID = ID
+pos = 0 * facing * Const(Size.xScale), 0 * Const(Size.yScale)
+facing = facing
+bindtime = -1
+removetime = 30
+supermovetime = 4294967295
+pausemovetime = 4294967295
+sprpriority = 2
+scale = 1 * Const(Size.xScale), 1 * Const(Size.yScale)
+trans = add
+alpha = 192,256
+;remappal = 6001,0
+angle = 90
+;xangle = 0
+;yangle = 0
+ownpal = 1
+ignorehitpause = 1
+
+[State 7197, Particles]
+type = ModifyExplod
+triggerall = NumExplod(7463)
+triggerall = var(5) = 1
+trigger1 = var(6) = [1,15]
+ID = 7463
+scale = 1 * Const(Size.xScale), (1 + 0.3*var(6)) * Const(Size.yScale)
+trans = add
+alpha = 192,256
+
+[State 7197, Particles]
+type = ModifyExplod
+triggerall = NumExplod(7463)
+triggerall = var(5) = 1
+trigger1 = var(6) = [16,30]
+ID = 7463
+scale = (1 - 0.0666*(var(6)-15)) * Const(Size.xScale), (5.5) * Const(Size.yScale)
+trans = add
+alpha = 192,256
+
+[State 7197, Particles]
+type = Explod
+triggerall = var(5) = 1
+trigger1 = var(6) = 1
+anim = 7130
+ID = 7130
+space = stage
+bindID = ID
+pos = 0 * facing * Const(Size.xScale), 0 * Const(Size.yScale)
+facing = facing
+bindtime = -1
+removetime = 30
+supermovetime = 4294967295
+pausemovetime = 4294967295
+sprpriority = 2
+scale = 0.6 * Const(Size.xScale), 0.6 * Const(Size.yScale)
+trans = add
+alpha = 256,256
+;remappal = 6001,0
+angle = 90
+;xangle = 0
+;yangle = 0
+ownpal = 1
+ignorehitpause = 1
+
+[State 7197, Particles]
+type = ModifyExplod
+triggerall = NumExplod(7130)
+triggerall = var(5) = 1
+trigger1 = var(6) = [1,20]
+ID = 7130
+scale = (0.6 + 0.05*(var(6))) * Const(Size.xScale), (0.6 + 0.05*(var(6))) * Const(Size.yScale)
+trans = add
+alpha = 256,256
+
+[State 7197, Particles]
+type = ModifyExplod
+triggerall = NumExplod(7130)
+triggerall = var(5) = 1
+trigger1 = var(6) = [21,30]
+ID = 7130
+scale = (1.6 + 0.005*(var(6)-20)) * Const(Size.xScale), (1.6 + 0.005*(var(6)-20)) * Const(Size.yScale)
+trans = add
+alpha = (256 - 24*(var(6)-20)),256
+
+[State 7197, Particles]
+type = Explod
+triggerall = var(5) = 1
+trigger1 = var(6) = 1
+anim = 7001
+ID = 7001
+space = stage
+bindID = ID
+pos = 0 * facing * Const(Size.xScale), 0 * Const(Size.yScale)
+facing = facing
+bindtime = -1
+removetime = 30
+supermovetime = 4294967295
+pausemovetime = 4294967295
+sprpriority = 2
+scale = 0.25 * Const(Size.xScale), 0.25 * Const(Size.yScale)
+trans = add
+alpha = 192,256
+remappal = 6001,6
+angle = 0
+;xangle = 0
+;yangle = 0
+ownpal = 1
+ignorehitpause = 1
+
+[State 7197, Particles]
+type = ModifyExplod
+triggerall = NumExplod(7001)
+triggerall = var(5) = 1
+trigger1 = var(6) = [0,20]
+ID = 7001
+scale = (0.25 + 0.015*(var(6))) * Const(Size.xScale), (0.25 + 0.015*(var(6))) * Const(Size.yScale)
+trans = add
+alpha = 256,256
+
+[State 7197, Particles]
+type = ModifyExplod
+triggerall = NumExplod(7001)
+triggerall = var(5) = 1
+trigger1 = var(6) = [21,30]
+ID = 7001
+scale = (0.55 + 0.005*(var(6)-20)) * Const(Size.xScale), (0.55 + 0.005*(var(6)-20)) * Const(Size.yScale)
+trans = add
+alpha = (256 - 24*(var(6)-20)),256
+
+[State Safe Remove]
+type = DestroySelf
+trigger1 = !NumExplod
+trigger2 = var(5) = 1 && var(6) >= 30
+recursive = 1
+removeexplods  = 1
+
+[State Counter-Run]
+type = varadd
+trigger1 = var(6) < 4294967295
+var(6) = 1
+
+
+
+
+;MBTL EX FX -----
+[Statedef 7200]
+type = A
+physics = N
+movetype = I
+velset = 0,0
+anim = 9741
+sprpriority = 0
+
+[State ScreenRatioVar]
+type = varset
+trigger1 = !time
+fvar(3) = (1.77778 / (ScreenWidth/ScreenHeight))
+
+[State 7200, Last how long]
+type = varset
+trigger1 = !time
+var(13) = Const(size.ground.front)
+
+[State 7200, State]
+type = varset
+trigger1 = var(5) = 0
+trigger1 = var(6) >= var(13)
+trigger1 = var(6) := 1
+var(5) = 1
+
+[State 7200, SND-FX]
+type = PlaySnd
+trigger1 = !time
+value = 7, 503
+channel = 7
+abspan = 0
+
+[State 7200, BG-PAL]
+type = BGPalFX
+trigger1 = var(5) = 0
+trigger1 = var(6) = [0,4]
+time = 1
+add = 0,0,0
+mul = (256 - 64*var(6)), (256 - 64*var(6)), (256 - 64*var(6))
+color = 256
+
+[State 7200, BG-PAL]
+type = BGPalFX
+trigger1 = var(5) = 0
+trigger1 = var(6) = [5,var(13)-1]
+time = 1
+add = 0,0,0
+mul = 0,0,0
+color = 256
+
+[State 7200, BG-PAL]
+type = BGPalFX
+trigger1 = var(5) = 1
+trigger1 = var(6) = [1,8]
+time = 1
+add = 0,0,0
+mul = 32*var(6), 32*var(6), 32*var(6)
+color = 256
+
+[State 7200, NoFG]
+type = AssertSpecial
+trigger1 = var(5) = 0
+trigger1 = var(6) = [3,65]
+flag = NoFG
+
+[State 7200, Light]
+type = Explod
+trigger1 = !NumExplod(7463)
+trigger1 = var(5) = 0
+trigger1 = var(6) = 1
+anim = 7463
+ID = 7463
+space = stage
+bindID = ID
+pos = 0 * facing * Const(Size.xScale), 0 * Const(Size.yScale)
+facing = facing
+bindtime = 1
+removetime = 15
+supermovetime = 4294967295
+pausemovetime = 4294967295
+sprpriority = 3
+scale = 1 * Const(Size.xScale), 1 * Const(Size.yScale)
+angle = 90
+;xangle = 0 + (((ScreenPos y - (ScreenHeight / 2.0)) / (ScreenHeight / 2.0)) * 10.0)
+;yangle = 0 - ((Pos x * facing / (GameWidth/2))*18.0)
+ownpal = 1
+;remappal = 6001,0
+ignorehitpause = 1
+
+[State 7200, Light]
+type = ModifyExplod
+trigger1 = NumExplod(7463)
+trigger1 = var(5) = 0
+trigger1 = var(6) = [1,8]
+ID = 7463
+scale = 1 * Const(Size.xScale), (0.75 * var(6)) * Const(Size.yScale)
+
+[State 7200, NoFG]
+type = ModifyExplod
+trigger1 = NumExplod(7463)
+trigger1 = var(5) = 0
+trigger1 = var(6) = [9,16]
+ID = 7463
+scale = (0.125 * (16-var(6))) * Const(Size.xScale), 6 * Const(Size.yScale)
+
+[State 7200, Circle]
+type = Explod
+trigger1 = !NumExplod(7466)
+trigger1 = var(5) = 0
+trigger1 = var(6) = 1
+anim = 7466
+ID = 7466
+space = stage
+bindID = ID
+pos = 0 * facing * Const(Size.xScale), 0 * Const(Size.yScale)
+facing = facing
+bindtime = 1
+removetime = 37
+supermovetime = 4294967295
+pausemovetime = 4294967295
+sprpriority = 3
+scale = 0.5 * Const(Size.xScale), 0.5 * Const(Size.yScale)
+angle = 0
+;xangle = 0 + (((ScreenPos y - (ScreenHeight / 2.0)) / (ScreenHeight / 2.0)) * 10.0)
+;yangle = 0 - ((Pos x * facing / (GameWidth/2))*18.0)
+ownpal = 1
+remappal = 7465,1
+ignorehitpause = 1
+
+[State 7200, Circle]
+type = ModifyExplod
+trigger1 = NumExplod(7466)
+trigger1 = var(5) = 0
+trigger1 = var(6) = [1,10]
+ID = 7466
+scale = (0.2 * var(6)) * Const(Size.xScale), (0.2 * var(6)) * Const(Size.yScale)
+
+[State 7200, Circle]
+type = ModifyExplod
+trigger1 = NumExplod(7466)
+trigger1 = var(5) = 0
+trigger1 = var(6) = [11,38]
+ID = 7466
+scale = (2 + (0.01 * (var(6)-10))) * Const(Size.xScale), (2 + (0.01 * (var(6)-10))) * Const(Size.yScale)
+trans = add
+alpha = (232 - 6*(var(6)-10)) ,256
+
+[State 7200, Circle2]
+type = Explod
+trigger1 = !NumExplod(7132)
+trigger1 = var(5) = 0
+trigger1 = var(6) = 1
+anim = 7132;7431
+ID = 7132
+space = stage
+bindID = ID
+pos = 0 * facing * Const(Size.xScale), 0 * Const(Size.yScale)
+facing = facing
+bindtime = 1
+removetime = 37
+supermovetime = 4294967295
+pausemovetime = 4294967295
+sprpriority = 3
+scale = 1 * Const(Size.xScale), 1 * Const(Size.yScale)
+angle = 135
+;xangle = 0 + (((ScreenPos y - (ScreenHeight / 2.0)) / (ScreenHeight / 2.0)) * 10.0)
+;yangle = 0 - ((Pos x * facing / (GameWidth/2))*18.0)
+ownpal = 1
+remappal = 6001,4
+ignorehitpause = 1
+
+[State 7200, Circle]
+type = ModifyExplod
+trigger1 = NumExplod(7132)
+trigger1 = var(5) = 0
+trigger1 = var(6) = [1,10]
+ID = 7132
+scale = (0.075 * var(6)) * Const(Size.xScale), (0.075 * var(6)) * Const(Size.yScale)
+
+[State 7200, Circle]
+type = ModifyExplod
+trigger1 = NumExplod(7132)
+trigger1 = var(5) = 0
+trigger1 = var(6) = [11,38]
+ID = 7132
+scale = (0.75 + (0.005 * (var(6)-10))) * Const(Size.xScale), (0.75 + (0.005 * (var(6)-10))) * Const(Size.yScale)
+trans = add
+alpha = (232 - 6*(var(6)-10)) ,256
+
+
+;[State 7200, BG]
+;type = Explod
+;trigger1 = !NumExplod(7220)
+;trigger1 = var(5) = 0
+;trigger1 = var(6) = 4
+;anim = 7220
+;ID = 7220
+;space = screen
+;facing = facing
+;pos = Floor(ScreenWidth * IFElse(facing = 1, 0.7, 0.3)), Floor(ScreenHeight * 0.3)
+;removetime = -2
+;scale = 1.25 * fvar(3), 1.25 * fvar(3)
+;supermovetime = 4294967295
+;;pausemovetime = 4294967295
+;sprpriority = -20
+;angle = 0
+;ontop = 0
+;shadow = 0
+;ownpal = 1
+;remappal = 7220,0
+;ignorehitpause = 1
+
+[State 7200, BG]
+type = Explod
+trigger1 = !NumExplod(7220)
+trigger1 = var(5) = 0
+trigger1 = var(6) = 4
+anim = 7220
+ID = 7220
+space = screen
+facing = facing
+pos = Floor(ScreenWidth * IFElse(facing = 1, 0.7, 0.3)), Floor(ScreenHeight * 0.3)
+removetime = -2
+scale = 1 * fvar(3), 1 * fvar(3)
+supermovetime = 4294967295
+pausemovetime = 4294967295
+sprpriority = -20
+angle = 0
+ontop = 0
+shadow = 0
+ownpal = 1
+;remappal = 7220,0
+ignorehitpause = 1
+
+[State 7200, BG]
+type = ModifyExplod
+trigger1 = NumExplod(7220)
+trigger1 = var(5) = 0
+trigger1 = var(6) = [4,12]
+ID = 7220
+trans = add
+;alpha = (32 * (var(6) - 4)), 256 - (32 * (var(6) - 4))
+alpha = (28 * (var(6) - 4)), 256 - (28 * (var(6) - 4))
+
+[State 7200, BG]
+type = ModifyExplod
+trigger1 = NumExplod(7220)
+trigger1 = var(5) = 0
+trigger1 = var(6) = [var(13)-16, var(13)]
+ID = 7220
+trans = add
+;alpha = (16 * (var(13) - var(6))), 256 - (16 * (var(13) - var(6)))
+alpha = (14 * (var(13) - var(6))), 256 - (14 * (var(13) - var(6)))
+
+[State 7200, Portrait]
+type = Explod
+trigger1 = !NumExplod(7200)
+trigger1 = var(5) = 0
+trigger1 = var(6) = 8
+anim = 7200
+ID = 7200
+space = screen
+facing = facing
+pos = Floor(ScreenWidth * IFElse(facing = 1, 0.7, 0.3)), Floor(ScreenHeight * 0.5)
+removetime = -2
+scale = 0.9 * fvar(3), 0.9 * fvar(3)
+supermovetime = 4294967295
+pausemovetime = 4294967295
+sprpriority = -9
+angle = 0
+ontop = 0
+shadow = 0
+ownpal = 1
+;remappal = 7190,var(10) + 1
+ignorehitpause = 1
+
+[State 7200, Portrait]
+type = Explod
+trigger1 = !NumExplod(7201) && AnimExist(7201)
+trigger1 = var(5) = 0
+trigger1 = var(6) = 8
+anim = 7201
+ID = 7201
+space = screen
+facing = facing
+pos = Floor(ScreenWidth * IFElse(facing = 1, 0.7, 0.3)), Floor(ScreenHeight * 0.5)
+removetime = -2
+scale = 0.9 * fvar(3), 0.9 * fvar(3)
+supermovetime = 4294967295
+pausemovetime = 4294967295
+sprpriority = -8
+angle = 0
+ontop = 0
+shadow = 0
+ownpal = 1
+;remappal = 7190,var(10) + 1
+ignorehitpause = 1
+
+[State 7200, Portrait]
+type = ModifyExplod
+trigger1 = NumExplod(7200)
+trigger1 = var(5) = 0
+trigger1 = var(6) = [8,12]
+ID = 7200
+trans = Add
+alpha = (48*(var(6)-8)), (256 - (48*(var(6)-8)))
+
+[State 7200, Portrait]
+type = ModifyExplod
+trigger1 = NumExplod(7201)
+trigger1 = var(5) = 0
+trigger1 = var(6) = [8,12]
+ID = 7201
+trans = Add
+alpha = 64*(var(6)-8), 256
+
+
+[State 7200, Portrait]
+type = ModifyExplod
+trigger1 = NumExplod(7200)
+trigger1 = var(5) = 0
+trigger1 = var(6) = [52,60]
+ID = 7200
+trans = Add
+alpha = (192 - 24*(var(6)-52)), 64 + 24*(var(6)-52)
+
+[State 7200, Portrait]
+type = ModifyExplod
+trigger1 = NumExplod(7201)
+trigger1 = var(5) = 0
+trigger1 = var(6) = [52,60]
+ID = 7201
+trans = Add
+alpha = (256 - 32*(var(6)-52)), 256
+
+[State 7200, Safe]
+type = RemoveExplod
+trigger1 = NumExplod
+trigger1 = var(5) >= 1
+
+
+[State 7200, End]
+type = DestroySelf
+trigger1 = var(5) = 1 && var(6) > 8
+removeexplods = 1
+recursive = 1
+
+
+[State 7200, Debug]
+type = displaytoclipboard
+trigger1 = 1
+text = "var(5)=%d | counter=%d | Angle=%d | NumExplod=%d"
+params = var(5), var(6), var(35), NumExplod
+ignorehitpause = 1
+
+[State 7200, Run Counter]
+type = varadd
+trigger1 = var(6) < 16777215
+var(6) = 1
+ignorehitpause = 1
+
+
+
+
+;Moon Skill FX -----
+[Statedef 7202]
+type = A
+physics = N
+movetype = I
+velset = 0,0
+anim = 9741
+sprpriority = 0
+
+
+[State 7202, Light]
+type = Explod
+trigger1 = !NumExplod(7463)
+trigger1 = var(5) = 0
+trigger1 = var(6) = 0
+anim = 7463
+ID = 7463
+space = stage
+bindID = ID
+pos = 0 * facing * Const(Size.xScale), 0 * Const(Size.yScale)
+facing = facing
+bindtime = 1
+removetime = 16
+supermovetime = 4294967295
+pausemovetime = 4294967295
+sprpriority = 3
+scale = 1 * Const(Size.xScale), 1.5 * Const(Size.yScale)
+angle = 90
+;xangle = 0 + (((ScreenPos y - (ScreenHeight / 2.0)) / (ScreenHeight / 2.0)) * 10.0)
+;yangle = 0 - ((Pos x * facing / (GameWidth/2))*18.0)
+ownpal = 1
+remappal = 6001,5
+ignorehitpause = 1
+
+[State 7202, Light]
+type = ModifyExplod
+trigger1 = NumExplod(7463)
+trigger1 = var(5) = 0
+trigger1 = var(6) = [0,4]
+ID = 7463
+scale = 1 * Const(Size.xScale), (1.5 + (1 * var(6))) * Const(Size.yScale)
+
+[State 7202, Light]
+type = ModifyExplod
+trigger1 = NumExplod(7463)
+trigger1 = var(5) = 0
+trigger1 = var(6) = [8,16]
+ID = 7463
+scale = (1 - 0.12*(var(6)-8)) * Const(Size.xScale), 5.5 * Const(Size.yScale)
+
+
+[State 7022, Circle]
+type = Explod
+trigger1 = !NumExplod(7466)
+trigger1 = var(5) = 0
+trigger1 = var(6) = 6
+anim = 7466
+ID = 7466
+space = stage
+bindID = ID
+pos = 0 * facing * Const(Size.xScale), 0 * Const(Size.yScale)
+facing = facing
+bindtime = 1
+removetime = 8
+supermovetime = 4294967295
+pausemovetime = 4294967295
+sprpriority = 3
+scale = 2.5 * Const(Size.xScale), 2.5 * Const(Size.yScale)
+angle = 45
+trans = add
+alpha = 192, 256
+;xangle = 0 + (((ScreenPos y - (ScreenHeight / 2.0)) / (ScreenHeight / 2.0)) * 10.0)
+;yangle = 0 - ((Pos x * facing / (GameWidth/2))*18.0)
+ownpal = 1
+remappal = 7465,2
+ignorehitpause = 1
+
+[State 7022, Circle]
+type = ModifyExplod
+trigger1 = NumExplod(7466)
+trigger1 = var(5) = 0
+trigger1 = var(6) = [6,14]
+ID = 7466
+trans = add
+alpha = (192 - 24*(var(6)-6)), 256
+
+[State 7022, Circle2]
+type = Explod
+trigger1 = var(5) = 0
+trigger1 = var(6) = 0
+anim = 7130
+ID = 7130
+space = stage
+bindID = ID
+pos = 0 * facing * Const(Size.xScale), 0 * Const(Size.yScale)
+facing = facing
+bindtime = 1
+removetime = 16
+supermovetime = 4294967295
+pausemovetime = 4294967295
+sprpriority = 3
+scale = 0.5 * Const(Size.xScale), 0.5 * Const(Size.yScale)
+angle = 0
+trans = add
+alpha = 128,256
+;xangle = 0 + (((ScreenPos y - (ScreenHeight / 2.0)) / (ScreenHeight / 2.0)) * 10.0)
+;yangle = 0 - ((Pos x * facing / (GameWidth/2))*18.0)
+ownpal = 1
+remappal = 6001,5
+ignorehitpause = 1
+
+[State 7022, Circle2]
+type = ModifyExplod
+trigger1 = var(5) = 0
+trigger1 = var(6) = [0,4]
+ID = 7130
+scale = (0.5 + 0.15*var(6)) * Const(Size.xScale), (0.5 + 0.15*var(6)) * Const(Size.yScale)
+trans = add
+alpha = 128, 256
+
+[State 7022, Circle2]
+type = ModifyExplod
+trigger1 = var(5) = 0
+trigger1 = var(6) = [8,16]
+ID = 7130
+trans = add
+alpha = (128 - 16*(var(6) - 8)) ,256
+
+[State 7022, Circle_Star]
+type = Explod
+trigger1 = var(5) = 0
+trigger1 = var(6) = 0
+anim = 7136
+ID = 7136
+space = stage
+bindID = ID
+pos = 0 * facing * Const(Size.xScale), 0 * Const(Size.yScale)
+facing = facing
+bindtime = 1
+removetime = 16
+supermovetime = 4294967295
+pausemovetime = 4294967295
+sprpriority = -2
+scale = 0.25 * Const(Size.xScale), 0.25 * Const(Size.yScale)
+angle = 0
+;xangle = 0 + (((ScreenPos y - (ScreenHeight / 2.0)) / (ScreenHeight / 2.0)) * 10.0)
+;yangle = 0 - ((Pos x * facing / (GameWidth/2))*18.0)
+ownpal = 1
+;remappal = 6001,5
+ignorehitpause = 1
+
+[State 7022, Circle_Star]
+type = ModifyExplod
+trigger1 = var(5) = 0
+trigger1 = var(6) = [0,4]
+ID = 7136
+scale = (0.25 + 0.075*var(6)) * Const(Size.xScale), (0.25 + 0.075*var(6)) * Const(Size.yScale)
+
+[State 7022, Circle_Star]
+type = ModifyExplod
+trigger1 = var(5) = 0
+trigger1 = var(6) = [8,16]
+ID = 7136
+trans = add
+alpha = (256 - 32*(var(6) - 8)) ,(0 + 32*(var(6) - 8))
+
+[State 7202, End]
+type = DestroySelf
+trigger1 = !NumExplod
+removeexplods = 1
+recursive = 1
+
+
+[State 7202, Debug]
+type = displaytoclipboard
+trigger1 = 1
+text = "var(5)=%d | counter=%d | Angle=%d | NumExplod=%d"
+params = var(5), var(6), var(35), NumExplod
+ignorehitpause = 1
+
+[State 7202, Run Counter]
+type = varadd
+trigger1 = var(6) < 16777215
+var(6) = 1
+ignorehitpause = 1
+
+
+
+
+;Super FX -----
+[Statedef 7206]
+type = A
+physics = N
+movetype = I
+velset = 0,0
+anim = 9741
+sprpriority = 0
+
+[State 7206, Color]
+type = varset
+trigger1 = time = 0
+var(2) = root,var(2)
+
+[State ScreenRatioVar]
+type = varset
+trigger1 = !time
+fvar(3) = (1.77778 / (ScreenWidth/ScreenHeight))
+
+[State 7206, Last how long]
+type = varset
+trigger1 = !time
+var(13) = Const(size.ground.front)
+
+[State 7206, State]
+type = varset
+trigger1 = var(5) = 0
+trigger1 = var(6) >= var(13)
+trigger1 = var(6) := 1
+var(5) = 1
+
+[State 7206, BGPAL]
+type = BGPalFx
+trigger1 = var(5) = 0
+trigger1 = var(6) = [0,8]
+time = 1
+add = 0,0,0
+mul = 256 - 32*var(6),256 - 32*var(6),256 - 32*var(6)
+color = 256
+
+[State 7206, NoFG]
+type = AssertSpecial
+trigger1 = var(5) = 0
+trigger1 = var(6) > 5
+flag = noFG
+
+[State 7206, BG-PAL]
+type = BGPalFX
+trigger1 = var(5) = 0
+trigger1 = var(6) = [5,var(13)-1]
+time = 1
+add = 0,0,0
+mul = 0,0,0
+color = 256
+
+[State 7206, BG-PAL]
+type = BGPalFX
+trigger1 = var(5) = 1
+trigger1 = var(6) = [1,8]
+time = 1
+add = 0,0,0
+mul = 32*var(6), 32*var(6), 32*var(6)
+color = 256
+
+[State 7206, SND-FX]
+type = PlaySnd
+trigger1 = time = 7
+value = 7, 504
+channel = 7
+abspan = 0
+
+[State 7206, Light]
+type = Explod
+trigger1 = !NumExplod(7463)
+trigger1 = var(5) = 0
+trigger1 = var(6) = 0
+anim = 7463
+ID = 7463
+space = stage
+bindID = ID
+pos = 0 * facing * Const(Size.xScale), 0 * Const(Size.yScale)
+facing = facing
+bindtime = 1
+removetime = 30
+supermovetime = 4294967295
+pausemovetime = 4294967295
+sprpriority = 3
+scale = 1 * Const(Size.xScale), 1 * Const(Size.yScale)
+angle = 90
+;xangle = 0 + (((ScreenPos y - (ScreenHeight / 2.0)) / (ScreenHeight / 2.0)) * 10.0)
+;yangle = 0 - ((Pos x * facing / (GameWidth/2))*18.0)
+ownpal = 1
+remappal = 6001,4
+ignorehitpause = 1
+
+[State 7206, Light]
+type = ModifyExplod
+trigger1 = NumExplod(7463)
+trigger1 = var(5) = 0
+trigger1 = var(6) = [0,18]
+ID = 7463
+scale = (1 + 0.02777*(var(6))) * Const(Size.xScale), (0 + 0.444*(var(6))) * Const(Size.yScale)
+
+[State 7206, Light]
+type = ModifyExplod
+trigger1 = NumExplod(7463)
+trigger1 = var(5) = 0
+trigger1 = var(6) = [19,30]
+ID = 7463
+scale = (1.5 - 0.125*(var(6)-18)) * Const(Size.xScale), 8 * Const(Size.yScale)
+
+[State 7206, BG]
+type = Explod
+trigger1 = !NumExplod(7001)
+trigger1 = var(5) = 0
+trigger1 = var(6) = 7
+anim = 7001
+ID = 7001
+space = stage
+bindID = ID
+pos = 0 * facing * Const(Size.xScale), 0 * Const(Size.yScale)
+facing = facing
+bindtime = 1
+removetime = 38
+supermovetime = 4294967295
+pausemovetime = 4294967295
+sprpriority = 3
+scale = 1 * Const(Size.xScale), 1 * Const(Size.yScale)
+angle = 0
+trans = add
+alpha = 128, 256
+;xangle = 0 + (((ScreenPos y - (ScreenHeight / 2.0)) / (ScreenHeight / 2.0)) * 10.0)
+;yangle = 0 - ((Pos x * facing / (GameWidth/2))*18.0)
+ownpal = 1
+remappal = 6001,1
+ignorehitpause = 1
+
+[State 7206, BG]
+type = ModifyExplod
+trigger1 = NumExplod(7001)
+trigger1 = var(5) = 0
+trigger1 = var(6) = [7,23]
+ID = 7001
+scale = (0.0625*(var(6)-7)) * Const(Size.xScale), (0.0625*(var(6)-7)) * Const(Size.yScale)
+trans = add
+alpha = (8*(var(6)-7)), 256
+
+[State 7206, BG]
+type = ModifyExplod
+trigger1 = NumExplod(7001)
+trigger1 = var(5) = 0
+trigger1 = var(6) = [24,28]
+ID = 7001
+scale = 1 * Const(Size.xScale), 1 * Const(Size.yScale)
+trans = add
+alpha = 128,256
+
+[State 7206, BG]
+type = ModifyExplod
+trigger1 = NumExplod(7001)
+trigger1 = var(5) = 0
+trigger1 = var(6) = [29,45]
+ID = 7001
+scale = (1 + (0.04*(var(6)-29))) * Const(Size.xScale), (1 + (0.04*(var(6)-29))) * Const(Size.yScale)
+trans = add
+alpha = 128-(8*(var(6)-29)), 256
+
+[State 7206, Crescent]
+type = Explod
+trigger1 = var(5) = 0
+trigger1 = var(6) = 4
+anim = 7208
+ID = 7208
+space = stage
+bindID = ID
+pos = 0 * facing * Const(Size.xScale), 0 * Const(Size.yScale)
+facing = facing
+bindtime = 1
+removetime = 41
+supermovetime = 4294967295
+pausemovetime = 4294967295
+sprpriority = 3
+scale = 1.1 * Const(Size.xScale), 1.1 * Const(Size.yScale)
+;angle = 90
+;xangle = 0 + (((ScreenPos y - (ScreenHeight / 2.0)) / (ScreenHeight / 2.0)) * 10.0)
+;yangle = 0 - ((Pos x * facing / (GameWidth/2))*18.0)
+ownpal = 1
+;remappal = 6001,0
+ignorehitpause = 1
+
+[State 7206, Crescent]
+type = Explod
+trigger1 = var(5) = 0
+trigger1 = var(6) = 4
+anim = 7209
+ID = 7208
+space = stage
+bindID = ID
+pos = 0 * facing * Const(Size.xScale), 0 * Const(Size.yScale)
+facing = facing
+bindtime = 1
+removetime = 41
+supermovetime = 4294967295
+pausemovetime = 4294967295
+sprpriority = 3
+scale = 1.1 * Const(Size.xScale), 1.1 * Const(Size.yScale)
+;angle = 90
+;xangle = 0 + (((ScreenPos y - (ScreenHeight / 2.0)) / (ScreenHeight / 2.0)) * 10.0)
+;yangle = 0 - ((Pos x * facing / (GameWidth/2))*18.0)
+ownpal = 1
+remappal = 6001,1
+ignorehitpause = 1
+
+[State 7206, Crescent]
+type = ModifyExplod
+trigger1 = NumExplod(7208)
+trigger1 = var(5) = 0
+trigger1 = var(6) = [4,14]
+ID = 7208
+scale = (5.1 - 0.4*(var(6)-4)) * Const(Size.xScale), (5.1 - 0.4*(var(6)-4)) * Const(Size.yScale)
+
+[State 7206, Crescent]
+type = ModifyExplod
+trigger1 = NumExplod(7208)
+trigger1 = var(5) = 0
+trigger1 = var(6) = [29,45]
+ID = 7208
+trans = add
+alpha = (256 - 16*(var(6)-29)), 256
+
+
+[State 7206, BG]
+type = Explod
+trigger1 = !NumExplod(7220)
+trigger1 = var(5) = 0
+trigger1 = var(6) = 12
+anim = 7220
+ID = 7220
+space = screen
+facing = facing
+pos = Floor(ScreenWidth * IFElse(facing = 1, 0.7, 0.3)), Floor(ScreenHeight * 0.3)
+removetime = -2
+scale = 1 * fvar(3), 1 * fvar(3)
+supermovetime = 4294967295
+pausemovetime = 4294967295
+sprpriority = -20
+angle = 0
+ontop = 0
+shadow = 0
+ownpal = 1
+;remappal = 7220,0
+ignorehitpause = 1
+
+[State 7206, BG]
+type = ModifyExplod
+trigger1 = NumExplod(7220)
+trigger1 = var(5) = 0
+trigger1 = var(6) = [12,20]
+ID = 7220
+trans = add
+;alpha = (32 * (var(6) - 12)), 256 - (32 * (var(6) - 12))
+alpha = (28 * (var(6) - 12)), 256 - (28 * (var(6) - 12))
+
+[State 7206, BG]
+type = ModifyExplod
+trigger1 = NumExplod(7220)
+trigger1 = var(5) = 0
+trigger1 = var(6) = [var(13)-16, var(13)]
+ID = 7220
+trans = add
+;alpha = (16 * (var(13) - var(6))), 256 - (16 * (var(13) - var(6)))
+alpha = (14 * (var(13) - var(6))), 256 - (14 * (var(13) - var(6)))
+
+[State 7206, Portrait]
+type = Explod
+trigger1 = !NumExplod(7206)
+trigger1 = var(5) = 0
+trigger1 = var(6) = 7
+anim = 7206
+ID = 7206
+space = screen
+facing = facing
+pos = Floor(ScreenWidth * IFElse(facing = 1, 0.7, 0.3)), Floor(ScreenHeight * 0.5)
+removetime = -2
+scale = 0.9 * fvar(3), 0.9 * fvar(3)
+supermovetime = 4294967295
+pausemovetime = 4294967295
+sprpriority = -10
+angle = 0
+ontop = 0
+shadow = 0
+ownpal = 1
+;remappal = 7190,var(10) + 1
+ignorehitpause = 1
+
+[State 7206, Portrait_light]
+type = Explod
+trigger1 = var(5) = 0
+trigger1 = var(6) = 7
+anim = 7207
+ID = 7207
+space = screen
+facing = facing
+pos = Floor(ScreenWidth * IFElse(facing = 1, 0.7, 0.3)), Floor(ScreenHeight * 0.5)
+removetime = -2
+scale = 0.9 * fvar(3), 0.9 * fvar(3)
+supermovetime = 4294967295
+pausemovetime = 4294967295
+sprpriority = -10
+angle = 0
+ontop = 0
+shadow = 0
+ownpal = 1
+remappal = 7207, var(2)
+ignorehitpause = 1
+
+[State 7206, Portrait]
+type = ModifyExplod
+trigger1 = NumExplod(7206)
+trigger1 = var(5) = 0
+trigger1 = var(6) = [7,15]
+ID = 7206
+trans = add
+alpha = (24*(var(6)-7)), 256-(24*(var(6)-7))
+
+[State 7206, Portrait]
+type = ModifyExplod
+trigger1 = NumExplod(7206)
+trigger1 = var(5) = 0
+trigger1 = var(6) = [120,136]
+ID = 7206
+trans = add
+alpha = 192 - 12*(var(6)-120), 64 + 12*(var(6)-120)
+
+[State 7206, Sword]
+type = ModifyExplod
+trigger1 = NumExplod(7207)
+trigger1 = var(5) = 0
+trigger1 = var(6) = [7,15]
+ID = 7207
+trans = add
+alpha = (32*(var(6)-7)), 256
+
+[State 7206, Sword]
+type = ModifyExplod
+trigger1 = NumExplod(7207)
+trigger1 = var(5) = 0
+trigger1 = var(6) = [120,136]
+ID = 7207
+trans = add
+alpha = 256 - 16*(var(6)-120), 256
+
+[State 7206, Safe]
+type = RemoveExplod
+trigger1 = NumExplod
+trigger1 = var(5) >= 1
+
+
+[State 7206, End]
+type = DestroySelf
+trigger1 = var(5) = 1 && var(6) > 8
+trigger2 = NumHelper(3110)
+trigger2 = Helper(3110),StateNo = 3111 || (Helper(3110), var(5) = 5 && Helper(3110), var(6) = 16)
+removeexplods = 1
+recursive = 1
+ignorehitpause = 1
+
+
+[State 7206, Debug]
+type = displaytoclipboard
+trigger1 = 1
+text = "var(5)=%d | counter=%d | Angle=%d | NumExplod=%d"
+params = var(5), var(6), var(35), NumExplod
+ignorehitpause = 1
+
+[State 7206, Run Counter]
+type = varadd
+trigger1 = var(6) < 16777215
+var(6) = 1
+ignorehitpause = 1
+
+
+
+;==================== Hit Sparks  ==============
+; Guard Spark
+[Statedef 7431]
+type = A
+physics = N
+sprpriority = 0
+anim = 9741
+ctrl = 0
+
+;--------- Explods -----------
+
+[State 7431, Explod-0]
+type = Explod
+trigger1 = var(6) = 0
+anim = 7431
+ID = 7429
+space = stage
+pos = 0 * facing * Const(size.xscale), 0 * Const(size.yscale)
+bindID = ID
+bindtime = 1
+facing = facing
+removetime = -1
+;vel = var(35) * facing * Const(size.xscale) / 8.0 ,var(56) * Const(size.yscale) / 8.0
+;accel = -var(35) * facing * Const(size.xscale) / 128.0 ,-var(56) * Const(size.yscale) / 128.0
+supermovetime = 65535
+pausemovetime = 65535
+scale = 2 * Const(size.xscale), 2 * Const(size.yscale)
+angle = 180
+yangle = 70 - ((Pos x * facing / (GameWidth/2))*18.0)
+sprpriority = 4
+ownpal = 1
+;remappal = 7431 + Random%4, 0
+ignorehitpause = Const(Size.Proj.DoScale)
+
+[State 7431, Explod-1]
+type = Explod
+trigger1 = var(6) = 0
+anim = 7431
+ID = 7430
+space = stage
+pos = 0 * facing * Const(size.xscale), 0 * Const(size.yscale)
+bindID = ID
+bindtime = 1
+facing = facing
+removetime = -2
+;vel = var(35) * facing * Const(size.xscale) / 8.0 ,var(56) * Const(size.yscale) / 8.0
+;accel = -var(35) * facing * Const(size.xscale) / 128.0 ,-var(56) * Const(size.yscale) / 128.0
+supermovetime = 65535
+pausemovetime = 65535
+scale = 4 * Const(size.xscale), 4 * Const(size.yscale)
+angle = 0
+yangle = 70 - ((Pos x * facing / (GameWidth/2))*18.0)
+yangle = Floor((Const720p(Pos x)/16.0) + 0)
+sprpriority = 4
+ownpal = 1
+;remappal = 7431 + Random%4, 0
+ignorehitpause = Const(Size.Proj.DoScale)
+
+[State 7431, Explod-2]
+type = Explod
+trigger1 = var(6) = 0
+anim = 7431
+ID = 7431
+space = stage
+pos = 0 * facing * Const(size.xscale), 0 * Const(size.yscale)
+bindID = ID
+bindtime = 1
+facing = facing
+removetime = -2
+;vel = var(35) * facing * Const(size.xscale) / 8.0 ,var(56) * Const(size.yscale) / 8.0
+;accel = -var(35) * facing * Const(size.xscale) / 128.0 ,-var(56) * Const(size.yscale) / 128.0
+supermovetime = 65535
+pausemovetime = 65535
+scale = 6 * Const(size.xscale), 6 * Const(size.yscale)
+angle = 180
+yangle = 70 - ((Pos x * facing / (GameWidth/2))*18.0)
+sprpriority = 4
+ownpal = 1
+;remappal = 7431 + Random%4, 0
+ignorehitpause = Const(Size.Proj.DoScale)
+
+[State 7431, Explod-0]
+type = ModifyExplod
+trigger1 = var(6) = [4,12]
+ID = 7429
+scale = (1 + 0.6*(var(6)-3)) * Const(size.xscale), (1 + 0.6*(var(6)-3)) * Const(size.yscale)
+ignorehitpause = 1
+
+[State 7431, Explod-0]
+type = ModifyExplod
+trigger1 = var(6) = [4,12]
+ID = 7430
+scale = (4 + 0.4*(var(6)-3)) * Const(size.xscale), (4 + 0.4*(var(6)-3)) * Const(size.yscale)
+ignorehitpause = 1
+[State 7431, Explod-0]
+type = ModifyExplod
+trigger1 = var(6) = [4,12]
+ID = 7431
+scale = (6 + 0.2*(var(6)-3)) * Const(size.xscale), (6 + 0.2*(var(6)-3)) * Const(size.yscale)
+ignorehitpause = 1
+
+[State 7431, Explod-Blue]
+type = Explod
+trigger1 = var(6) = 0
+anim = 7432
+ID = 7432
+space = stage
+pos = 0 * facing * Const(size.xscale), 0 * Const(size.yscale)
+bindID = ID
+bindtime = 1
+facing = facing
+removetime = -2
+;vel = var(35) * facing * Const(size.xscale) / 8.0 ,var(56) * Const(size.yscale) / 8.0
+;accel = -var(35) * facing * Const(size.xscale) / 128.0 ,-var(56) * Const(size.yscale) / 128.0
+supermovetime = 65535
+pausemovetime = 65535
+scale = 4 * Const(size.xscale), 4 * Const(size.yscale)
+angle = 0
+yangle = 70 - ((Pos x * facing / (GameWidth/2))*18.0)
+sprpriority = 4
+ownpal = 1
+;remappal = 7431 + Random%4, 0
+ignorehitpause = Const(Size.Proj.DoScale)
+
+[State 7431, Explod-0]
+type = ModifyExplod
+trigger1 = var(6) = [8,12]
+ID = 7432
+trans = add
+alpha = 256 - (var(6)-7)*32, 256
+
+[State 7431, Explod-white]
+type = Explod
+trigger1 = var(6) = 0
+anim = 7433
+ID = 7433
+space = stage
+pos = 0 * facing * Const(size.xscale), 0 * Const(size.yscale)
+bindID = ID
+bindtime = 1
+facing = facing
+removetime = 8
+;vel = var(35) * facing * Const(size.xscale) / 8.0 ,var(56) * Const(size.yscale) / 8.0
+;accel = -var(35) * facing * Const(size.xscale) / 128.0 ,-var(56) * Const(size.yscale) / 128.0
+supermovetime = 65535
+pausemovetime = 65535
+scale = 4 * Const(size.xscale), 4 * Const(size.yscale)
+angle = 0
+yangle = 70 - ((Pos x * facing / (GameWidth/2))*18.0)
+sprpriority = 4
+ownpal = 1
+;remappal = 7431 + Random%4, 0
+ignorehitpause = Const(Size.Proj.DoScale)
+
+[State 7431, Explod-0]
+type = ModifyExplod
+trigger1 = var(6) = [1,8]
+ID = 7433
+trans = add
+alpha = 192 - var(6)*24, 256
+
+
+[State 7431, End]
+type = DestroySelf
+trigger1 = var(6) >= 12
+removeexplods = 1
+recursive = 1
+
+[State 7431, Debug]
+type = displaytoclipboard
+trigger1 = 1
+text = "var(5)=%d | Pos x= %d"
+params = var(5), Pos x
+ignorehitpause = Const(Size.Proj.DoScale)
+
+[State 7431, Run Counter]
+type = varadd
+trigger1 = var(6) < 16777215
+var(6) = 1
+ignorehitpause = Const(Size.Proj.DoScale)
+
+
+
+
+
+
+;Shield Spark
+[Statedef 7436]
+type = A
+physics = N
+sprpriority = 0
+anim = 9741
+ctrl = 0
+
+[State 7436, Angle]
+type = varset
+trigger1 = !time
+var(35) = Random%360
+
+[State 7436]
+type = PlaySnd
+trigger1 = !Time
+value = 2,100 + Random%3
+persistent = 0
+
+
+;--------- Explods -----------
+[State 7436, Explod-blue_circle]
+type = Explod
+trigger1 = var(6) = 0
+anim = 7130
+ID = 7130
+space = stage
+pos = 0 * facing * Const(size.xscale), 0 * Const(size.yscale)
+bindID = ID
+bindtime = 1
+facing = facing
+removetime = 16
+;vel = var(35) * facing * Const(size.xscale) / 8.0 ,var(56) * Const(size.yscale) / 8.0
+;accel = -var(35) * facing * Const(size.xscale) / 128.0 ,-var(56) * Const(size.yscale) / 128.0
+supermovetime = 65535
+pausemovetime = 65535
+scale = 0.5 * Const(size.xscale), 0.5 * Const(size.yscale)
+angle = 0
+sprpriority = 3
+ownpal = 1
+remappal = 6001,5
+ignorehitpause = Const(Size.Proj.DoScale)
+
+[State 7436, Explod-blue_circle]
+type = ModifyExplod
+trigger1 = NumExplod(7130)
+trigger1 = var(6) = [1,8]
+ID = 7130
+scale = (0.5 + 0.1*(var(6))) * Const(size.xscale), (0.5 + 0.1*(var(6))) * Const(size.yscale)
+
+[State 7436, Explod-blue_circle]
+type = ModifyExplod
+trigger1 = NumExplod(7130)
+trigger1 = var(6) = [9,16]
+ID = 7130
+scale = (1.3 + 0.01*(var(6)-8)) * Const(size.xscale), (1.3 + 0.01*(var(6)-8)) * Const(size.yscale)
+trans = add
+alpha = 256 - 32*(var(6)-8), 256
+
+
+[State 7436, BG Particles]
+type = Explod
+trigger1 = var(6)= 0
+anim = 7197
+ID = 7197
+space = stage
+bindID = ID
+pos = 0 * facing * Const(Size.xScale), 0 * Const(Size.yScale)
+facing = facing
+bindtime = -1
+removetime = 36
+;supermovetime = 4294967295
+;pausemovetime = 4294967295
+sprpriority = 3
+scale = 0.6 * Const(Size.xScale), 0.6 * Const(Size.yScale)
+trans = add
+alpha = 256,256
+remappal = 7190,3
+angle = var(35)
+;xangle = 0
+;yangle = 0
+ownpal = 1
+ignorehitpause = 1
+
+[State 7436, Explod-Particles]
+type = ModifyExplod
+trigger1 = NumExplod(7197)
+trigger1 = var(6) = [1,8]
+ID = 7197
+scale = (0.6 + 0.2*(var(6))) * Const(size.xscale), (0.6 + 0.2*(var(6))) * Const(size.yscale)
+trans = add
+alpha = 256,256
+
+[State 7436, Explod-Particles]
+type = ModifyExplod
+trigger1 = NumExplod(7197)
+trigger1 = var(6) = [9,36]
+ID = 7197
+scale = (2.2 + 0.01*(var(6)-8)) * Const(size.xscale), (2.2 + 0.01*(var(6)-8)) * Const(size.yscale)
+trans = add
+alpha = 256 - 14*(var(6)-8),256
+
+[State 7436, BG Line]
+type = Explod
+trigger1 = var(6)= 0
+anim = 7465
+ID = 7465
+space = stage
+bindID = ID
+pos = 0 * facing * Const(Size.xScale), 0 * Const(Size.yScale)
+facing = facing
+bindtime = -1
+removetime = 12
+;supermovetime = 4294967295
+;pausemovetime = 4294967295
+sprpriority = 3
+scale = 2 * Const(Size.xScale), 1 * Const(Size.yScale)
+trans = add
+alpha = 256,256
+angle = var(35)
+;xangle = 0
+;yangle = 0
+ownpal = 1
+ignorehitpause = 1
+
+[State 7436, BG Line]
+type = Explod
+trigger1 = var(6)= 0
+anim = 7465
+ID = 7465
+space = stage
+bindID = ID
+pos = 0 * facing * Const(Size.xScale), 0 * Const(Size.yScale)
+facing = facing
+bindtime = -1
+removetime = 12
+;supermovetime = 4294967295
+;pausemovetime = 4294967295
+sprpriority = 3
+scale = 2 * Const(Size.xScale), 1 * Const(Size.yScale)
+trans = add
+alpha = 256,256
+angle = var(35) + 90
+;xangle = 0
+;yangle = 0
+ownpal = 1
+ignorehitpause = 1
+
+[State 7436, BG Line]
+type = ModifyExplod
+triggerall = NumExplod(7465)
+trigger1 = var(6)= [1,4]
+ID = 7465
+scale = 2 * Const(Size.xScale), (1 + 0.5*var(6)) * Const(Size.yScale)
+trans = add
+alpha = 256,256
+
+[State 7436, BG Line]
+type = ModifyExplod
+triggerall = NumExplod(7465)
+trigger1 = var(6)= [9,12]
+ID = 7465
+scale = (2 - 0.45*(var(6)-8)) * Const(Size.xScale), 3 * Const(Size.yScale)
+trans = add
+alpha = 256,256
+
+
+[State 7436, BG White]
+type = Explod
+trigger1 = var(6)= 0
+anim = 7184
+ID = 7184
+space = stage
+bindID = ID
+pos = 0 * facing * Const(Size.xScale), 0 * Const(Size.yScale)
+facing = facing
+bindtime = -1
+removetime = 12
+;supermovetime = 4294967295
+;pausemovetime = 4294967295
+sprpriority = 4
+scale = 2 * Const(Size.xScale), 2 * Const(Size.yScale)
+trans = add
+alpha = 128,256
+angle = Random%360
+;xangle = 0
+;yangle = 0
+ownpal = 1
+ignorehitpause = 1
+
+[State 7436, Explod-white]
+type = ModifyExplod
+trigger1 = NumExplod(7184)
+trigger1 = var(6) = [1,3]
+ID = 7184
+trans = add
+alpha = 128 + 32*(var(6)+1), 256
+
+[State 7436, Explod-white]
+type = ModifyExplod
+trigger1 = NumExplod(7184)
+trigger1 = var(6) = [9,12]
+ID = 7184
+trans = add
+alpha = 256 - 64*(var(6)-8), 256
+
+
+
+
+[State 7436, BG PAL]
+type = BGPALFX
+trigger1 = var(6) <= 20
+time = 1
+add = 0,0,0
+mul = 128,128,128
+color = 256
+invertall = 0
+
+[State 7436, BG PAL]
+type = BGPALFX
+trigger1 = var(6) = [21,24]
+time = 1
+add = 0,0,0
+mul = 128+32*(var(6)-20), 128+32*(var(6)-20), 128+32*(var(6)-20)
+color = 256
+invertall = 0
+
+
+
+[State 7436, End]
+type = DestroySelf
+trigger1 = var(6) >= 36
+trigger2 = !NumExplod
+removeexplods = 1
+recursive = 1
+
+[State 7436, Debug]
+type = displaytoclipboard
+trigger1 = 1
+text = "var(5)=%d | Pos x= %d"
+params = var(5), Pos x
+ignorehitpause = Const(Size.Proj.DoScale)
+
+[State 7436, Run Counter]
+type = varadd
+trigger1 = var(6) < 16777215
+var(6) = 1
+ignorehitpause = Const(Size.Proj.DoScale)
+
+
+
+; Hit Spark - Light Punch
+[Statedef 7451]
+type = A
+physics = N
+sprpriority = 0
+anim = 9741
+ctrl = 0
+
+;--------- Explods -----------
+
+[State 7451, Explod-1]
+type = Explod
+trigger1 = var(6) = 0
+anim = 7180
+ID = 7180
+space = stage
+pos = 0 * facing * Const(size.xscale), 0 * Const(size.yscale)
+bindID = ID
+bindtime = 1
+facing = facing
+removetime = 3
+;vel = var(35) * facing * Const(size.xscale) / 8.0 ,var(56) * Const(size.yscale) / 8.0
+;accel = -var(35) * facing * Const(size.xscale) / 128.0 ,-var(56) * Const(size.yscale) / 128.0
+supermovetime = 65535
+pausemovetime = 65535
+scale = 2 * Const(size.xscale), 2 * Const(size.yscale)
+trans = add
+alpha = 192,256
+angle = Random%360
+sprpriority = 4
+ownpal = 1
+;remappal = 7451 + Random%4, 0
+ignorehitpause = Const(Size.Proj.DoScale)
+
+[State 7451, Explod-2]
+type = Explod
+trigger1 = var(6) = 2
+anim = 7452
+ID = 7452
+space = stage
+pos = 0 * facing * Const(size.xscale), 0 * Const(size.yscale)
+bindID = ID
+bindtime = 1
+facing = facing
+removetime = -2
+;vel = var(35) * facing * Const(size.xscale) / 8.0 ,var(56) * Const(size.yscale) / 8.0
+;accel = -var(35) * facing * Const(size.xscale) / 128.0 ,-var(56) * Const(size.yscale) / 128.0
+supermovetime = 65535
+pausemovetime = 65535
+scale = 2 * Const(size.xscale), 2 * Const(size.yscale)
+angle = Random%360
+sprpriority = 4
+ownpal = 1
+;remappal = 7451 + Random%4, 0
+ignorehitpause = Const(Size.Proj.DoScale)
+
+
+[State 7451, End]
+type = DestroySelf
+trigger1 = var(6) >= 14
+trigger2 = !NumExplod
+removeexplods = 1
+recursive = 1
+
+[State 7451, Debug]
+type = displaytoclipboard
+trigger1 = 1
+text = "var(5)=%d | var(35)=%d | NumExplod=%d | counter=%d"
+params = var(5), var(35), NumExplod,var(6)
+ignorehitpause = Const(Size.Proj.DoScale)
+
+[State 7451, Run Counter]
+type = varadd
+trigger1 = var(6) < 16777215
+var(6) = 1
+ignorehitpause = Const(Size.Proj.DoScale)
+
+
+
+
+; Hit Spark - Mid Punch
+[Statedef 7452]
+type = A
+physics = N
+sprpriority = 0
+anim = 9741
+ctrl = 0
+
+[State 7452, Degree]
+type = varset
+trigger1 = !time
+var(35) = Const(size.shadowoffset)
+
+[State 7452, Explod-center]
+type = Explod
+trigger1 = !time
+anim = 7180
+ID = 7180
+space = stage
+pos = 0 * facing * Const(size.xscale), 0 * Const(size.yscale)
+bindID = ID
+bindtime = 1
+facing = facing
+removetime = 8
+;vel = var(35) * facing * Const(size.xscale) / 8.0 ,var(56) * Const(size.yscale) / 8.0
+;accel = -var(35) * facing * Const(size.xscale) / 128.0 ,-var(56) * Const(size.yscale) / 128.0
+supermovetime = 65535
+pausemovetime = 65535
+scale = 1.6 * Const(size.xscale), 1.6 * Const(size.yscale)
+angle = Random%360
+sprpriority = 2
+ownpal = 1
+remappal = 6001, 0
+ignorehitpause = 1
+
+[State 7452, Explod-center]
+type = ModifyExplod
+trigger1 = NumExplod(7180)
+trigger1 = time = [0,8]
+ID = 7180
+scale = (2.4 - 0.2*time) * Const(size.xscale), (2.4 - 0.2*time) * Const(size.yscale)
+trans = add
+alpha = 256 - 16*time,256
+
+[State 7452, Explod-Yellow]
+type = Explod
+trigger1 = !time
+anim = 7122
+ID = 7122
+space = stage
+pos = 0 * facing * Const(size.xscale), 0 * Const(size.yscale)
+bindID = ID
+bindtime = 1
+facing = facing
+removetime = -2
+;vel = var(35) * facing * Const(size.xscale) / 8.0 ,var(56) * Const(size.yscale) / 8.0
+;accel = -var(35) * facing * Const(size.xscale) / 128.0 ,-var(56) * Const(size.yscale) / 128.0
+supermovetime = 65535
+pausemovetime = 65535
+scale = 1 * Const(size.xscale), 1 * Const(size.yscale)
+angle = var(35) - 180
+sprpriority = 2
+ownpal = 1
+remappal = 6001, 103
+ignorehitpause = 1
+
+[State 7452, Explod-Purple]
+type = Explod
+trigger1 = !time
+anim = 7121
+ID = 7122
+space = stage
+pos = 0 * facing * Const(size.xscale), 0 * Const(size.yscale)
+bindID = ID
+bindtime = 1
+facing = facing
+removetime = -2
+;vel = var(35) * facing * Const(size.xscale) / 8.0 ,var(56) * Const(size.yscale) / 8.0
+;accel = -var(35) * facing * Const(size.xscale) / 128.0 ,-var(56) * Const(size.yscale) / 128.0
+supermovetime = 65535
+pausemovetime = 65535
+scale = 1 * Const(size.xscale), 1 * Const(size.yscale)
+angle = var(35) - 135
+sprpriority = 2
+ownpal = 1
+remappal = 6001, 102
+ignorehitpause = 1
+
+[State 7452, Explod-Blue]
+type = Explod
+trigger1 = !time
+anim = 7122
+ID = 7122
+space = stage
+pos = 0 * facing * Const(size.xscale), 0 * Const(size.yscale)
+bindID = ID
+bindtime = 1
+facing = facing
+removetime = -2
+;vel = var(35) * facing * Const(size.xscale) / 8.0 ,var(56) * Const(size.yscale) / 8.0
+;accel = -var(35) * facing * Const(size.xscale) / 128.0 ,-var(56) * Const(size.yscale) / 128.0
+supermovetime = 65535
+pausemovetime = 65535
+scale = 1 * Const(size.xscale), 1 * Const(size.yscale)
+angle = var(35)
+sprpriority = -2
+ownpal = 1
+remappal = 6001, 101
+ignorehitpause = 1
+
+[State 7452, Explod-Blue-white]
+type = Explod
+trigger1 = !time
+anim = 7120
+ID = 7120
+space = stage
+pos = 0 * facing * Const(size.xscale), 0 * Const(size.yscale)
+bindID = ID
+bindtime = 1
+facing = facing
+removetime = -2
+;vel = var(35) * facing * Const(size.xscale) / 8.0 ,var(56) * Const(size.yscale) / 8.0
+;accel = -var(35) * facing * Const(size.xscale) / 128.0 ,-var(56) * Const(size.yscale) / 128.0
+supermovetime = 65535
+pausemovetime = 65535
+scale = 1 * Const(size.xscale), 1 * Const(size.yscale)
+angle = var(35)
+sprpriority = -1
+ownpal = 1
+remappal = 6001, 0
+ignorehitpause = 1
+
+[State 7452, Explod-01]
+type = ModifyExplod
+trigger1 = NumExplod(7120)
+trigger1 = time = [0,6]
+ID = 7120
+scale = (0.5 + 0.25*time) * Const(size.xscale), (0.25 + 0.15*time) * Const(size.yscale)
+trans = add
+alpha = 256,256
+
+[State 7452, Explod-01]
+type = ModifyExplod
+trigger1 = NumExplod(7120)
+trigger1 = time = [7,14]
+ID = 7120
+scale = (2 + 0.02*(time-6)) * Const(size.xscale), (1.15 + 0.01*(time-6)) * Const(size.yscale)
+trans = add
+alpha = (256 - 32*(time-6)),256
+
+[State 7452, Explod-01]
+type = ModifyExplod
+trigger1 = NumExplod(7122)
+trigger1 = time = [0,6]
+ID = 7122
+scale = (0.5 + 0.25*time) * Const(size.xscale), (0.5 + 0.25*time) * Const(size.yscale)
+trans = add
+alpha = 192,256
+
+[State 7452, Explod-01]
+type = ModifyExplod
+trigger1 = NumExplod(7122)
+trigger1 = time = [7,14]
+ID = 7122
+scale = (2 + 0.02*(time-6)) * Const(size.xscale), (2 + 0.02*(time-6)) * Const(size.yscale)
+trans = add
+alpha = (192 - 24*(time-6)),256
+
+
+[State 7452, End]
+type = DestroySelf
+trigger1 = !NumExplod
+removeexplods = 1
+recursive = 1
+
+[State 7452, Debug]
+type = displaytoclipboard
+trigger1 = 1
+text = "var(5)=%d | var(35)=%d | NumExplod=%d | counter=%d"
+params = var(5), var(35), NumExplod,var(6)
+ignorehitpause = 1
+
+[State 7452, Run Counter]
+type = varadd
+trigger1 = var(6) < 16777215
+var(6) = 1
+ignorehitpause = 1
+
+
+
+; Hit Spark - Grab
+[Statedef 7458]
+type = A
+physics = N
+sprpriority = 0
+anim = 9741
+ctrl = 0
+
+[State 7458, Degree]
+type = varset
+trigger1 = !time
+var(35) = Random%360
+
+;--------- Explods -----------
+
+[State 7458, Explod-1]
+type = Explod
+trigger1 = var(6) = 0
+anim = 7180
+ID = 7180
+space = stage
+pos = 0 * facing * Const(size.xscale), 0 * Const(size.yscale)
+bindID = ID
+bindtime = 1
+facing = facing
+removetime = 6
+;vel = var(35) * facing * Const(size.xscale) / 8.0 ,var(56) * Const(size.yscale) / 8.0
+;accel = -var(35) * facing * Const(size.xscale) / 128.0 ,-var(56) * Const(size.yscale) / 128.0
+supermovetime = 65535
+pausemovetime = 65535
+scale = 1 * Const(size.xscale), 1 * Const(size.yscale)
+trans = add
+alpha = 192,256
+angle = Random%360
+sprpriority = 2
+ownpal = 1
+remappal = 6001, 1
+ignorehitpause = 1
+
+[State 7458, Explod-1]
+type = Explod
+trigger1 = var(6) = 0
+anim = 7180
+ID = 7181
+space = stage
+pos = 0 * facing * Const(size.xscale), 0 * Const(size.yscale)
+bindID = ID
+bindtime = 1
+facing = facing
+removetime = 4
+;vel = var(35) * facing * Const(size.xscale) / 8.0 ,var(56) * Const(size.yscale) / 8.0
+;accel = -var(35) * facing * Const(size.xscale) / 128.0 ,-var(56) * Const(size.yscale) / 128.0
+supermovetime = 65535
+pausemovetime = 65535
+scale = 1 * Const(size.xscale), 1 * Const(size.yscale)
+trans = add
+alpha = 256,256
+angle = Random%360
+sprpriority = 3
+ownpal = 1
+remappal = 6001, 0
+ignorehitpause = 1
+
+[State 7458, Explod-1]
+type = ModifyExplod
+trigger1 = NumExplod(7181)
+trigger1 = var(6) = [0,4]
+ID = 7181
+scale = (0.8 + (0.5*var(6))) * Const(size.xscale), (0.8 + (0.5*var(6))) * Const(size.yscale)
+trans = add
+alpha = 256 - 24*var(6), 256
+
+[State 7458, Explod-1]
+type = ModifyExplod
+trigger1 = NumExplod(7180)
+trigger1 = var(6) = [0,6]
+ID = 7180
+scale = (1.2 + (0.6*var(6))) * Const(size.xscale), (1.2 + (0.6*var(6))) * Const(size.yscale)
+trans = add
+alpha = 192 - 24*var(6) , 256
+
+
+[State 7458, Explod-Ring]
+type = Explod
+trigger1 = var(6) = 0
+anim = 7132;7183
+ID =  7132;7183
+space = stage
+pos = 0 * facing * Const(size.xscale), 0 * Const(size.yscale)
+bindID = ID
+bindtime = 1
+facing = facing
+removetime = 10
+;vel = var(35) * facing * Const(size.xscale) / 8.0 ,var(56) * Const(size.yscale) / 8.0
+;accel = -var(35) * facing * Const(size.xscale) / 128.0 ,-var(56) * Const(size.yscale) / 128.0
+supermovetime = 65535
+pausemovetime = 65535
+scale = 8 * Const(size.xscale), 8 * Const(size.yscale)
+trans = add
+alpha = 256,256
+angle = var(35)
+sprpriority = 3
+ownpal = 1
+remappal = 6001,4
+ignorehitpause = 1
+
+[State 7458, Explod-Ring]
+type = ModifyExplod
+triggerall = NumExplod(7132)
+trigger1 = var(6) = [0,10]
+ID = 7132
+scale = (0.3 + 0.075*var(6)) * Const(size.xscale), (0.3 + 0.075*var(6)) * Const(size.yscale)
+trans = add
+alpha = 256 - 64*IFElse(var(6)<7,0,var(6)-6), 256
+
+[State 7458, Explod-Ring]
+type = Explod
+trigger1 = var(6) = 0
+anim = 7132;7183
+ID = 7133;7183
+space = stage
+pos = 0 * facing * Const(size.xscale), 0 * Const(size.yscale)
+bindID = ID
+bindtime = 1
+facing = facing
+removetime = 10
+;vel = var(35) * facing * Const(size.xscale) / 8.0 ,var(56) * Const(size.yscale) / 8.0
+;accel = -var(35) * facing * Const(size.xscale) / 128.0 ,-var(56) * Const(size.yscale) / 128.0
+supermovetime = 65535
+pausemovetime = 65535
+scale = 8 * Const(size.xscale), 8 * Const(size.yscale)
+trans = add
+alpha = 256,256
+angle = var(35) + 180
+sprpriority = 3
+ownpal = 1
+remappal = 6001,4
+ignorehitpause = 1
+
+[State 7458, Explod-Ring]
+type = ModifyExplod
+triggerall = NumExplod(7133)
+trigger1 = var(6) = [0,10]
+ID = 7133
+scale = (0.1 + 0.06*var(6)) * Const(size.xscale), (0.1 + 0.06*var(6)) * Const(size.yscale)
+trans = add
+alpha = 256 - 64*IFElse(var(6)<7,0,var(6)-6), 256
+
+
+[State 7458, Explod-Line]
+type = Explod
+trigger1 = var(6) = 0
+anim = 7120
+ID = 7120
+space = stage
+pos = 0 * facing * Const(size.xscale), 0 * Const(size.yscale)
+bindID = ID
+bindtime = 1
+facing = facing
+removetime = 6
+;vel = var(35) * facing * Const(size.xscale) / 8.0 ,var(56) * Const(size.yscale) / 8.0
+;accel = -var(35) * facing * Const(size.xscale) / 128.0 ,-var(56) * Const(size.yscale) / 128.0
+supermovetime = 65535
+pausemovetime = 65535
+scale = 0.25 * Const(size.xscale), 1 * Const(size.yscale)
+trans = add
+alpha = 256,256
+angle = var(35) + 40
+sprpriority = 3
+ownpal = 1
+remappal = 6001, 0
+ignorehitpause = 1
+
+[State 7458, Explod-Line]
+type = Explod
+trigger1 = var(6) = 0
+anim = 7120
+ID = 7120
+space = stage
+pos = 0 * facing * Const(size.xscale), 0 * Const(size.yscale)
+bindID = ID
+bindtime = 1
+facing = facing
+removetime = 6
+;vel = var(35) * facing * Const(size.xscale) / 8.0 ,var(56) * Const(size.yscale) / 8.0
+;accel = -var(35) * facing * Const(size.xscale) / 128.0 ,-var(56) * Const(size.yscale) / 128.0
+supermovetime = 65535
+pausemovetime = 65535
+scale = 0.25 * Const(size.xscale), 1 * Const(size.yscale)
+trans = add
+alpha = 256,256
+angle = var(35) + 130
+sprpriority = 3
+ownpal = 1
+remappal = 6001, 0
+ignorehitpause = 1
+
+[State 7458, Explod-Line]
+type = Explod
+trigger1 = var(6) = 0
+anim = 7120
+ID = 7120
+space = stage
+pos = 0 * facing * Const(size.xscale), 0 * Const(size.yscale)
+bindID = ID
+bindtime = 1
+facing = facing
+removetime = 6
+;vel = var(35) * facing * Const(size.xscale) / 8.0 ,var(56) * Const(size.yscale) / 8.0
+;accel = -var(35) * facing * Const(size.xscale) / 128.0 ,-var(56) * Const(size.yscale) / 128.0
+supermovetime = 65535
+pausemovetime = 65535
+scale = 0.25 * Const(size.xscale), 1 * Const(size.yscale)
+trans = add
+alpha = 256,256
+angle = var(35) + 160
+sprpriority = 3
+ownpal = 1
+remappal = 6001, 0
+ignorehitpause = 1
+
+[State 7458, Explod-Line]
+type = Explod
+trigger1 = var(6) = 0
+anim = 7120
+ID = 7120
+space = stage
+pos = 0 * facing * Const(size.xscale), 0 * Const(size.yscale)
+bindID = ID
+bindtime = 1
+facing = facing
+removetime = 6
+;vel = var(35) * facing * Const(size.xscale) / 8.0 ,var(56) * Const(size.yscale) / 8.0
+;accel = -var(35) * facing * Const(size.xscale) / 128.0 ,-var(56) * Const(size.yscale) / 128.0
+supermovetime = 65535
+pausemovetime = 65535
+scale = 0.25 * Const(size.xscale), 1 * Const(size.yscale)
+trans = add
+alpha = 256,256
+angle = var(35) + 250
+sprpriority = 3
+ownpal = 1
+remappal = 6001, 0
+ignorehitpause = 1
+
+[State 7458, Explod-Line]
+type = Explod
+trigger1 = var(6) = 0
+anim = 7120
+ID = 7120
+space = stage
+pos = 0 * facing * Const(size.xscale), 0 * Const(size.yscale)
+bindID = ID
+bindtime = 1
+facing = facing
+removetime = 6
+;vel = var(35) * facing * Const(size.xscale) / 8.0 ,var(56) * Const(size.yscale) / 8.0
+;accel = -var(35) * facing * Const(size.xscale) / 128.0 ,-var(56) * Const(size.yscale) / 128.0
+supermovetime = 65535
+pausemovetime = 65535
+scale = 0.25 * Const(size.xscale), 1 * Const(size.yscale)
+trans = add
+alpha = 256,256
+angle = var(35) + 300
+sprpriority = 3
+ownpal = 1
+remappal = 6001, 0
+ignorehitpause = 1
+
+[State 7458, Explod-Line]
+type = ModifyExplod
+trigger1 = NumExplod(7120)
+trigger1 = var(6) = [0,6]
+ID = 7120
+scale = (0.042 * var(6)) * Const(size.xscale), (0.18 * var(6)) * Const(size.yscale)
+trans = add
+
+
+[State 7458, End]
+type = DestroySelf
+trigger1 = !NumExplod
+removeexplods = 1
+recursive = 1
+
+[State 7458, Debug]
+type = displaytoclipboard
+trigger1 = 1
+text = "var(5)=%d | var(35)=%d | NumExplod=%d | counter=%d"
+params = var(5), var(35), NumExplod,var(6)
+ignorehitpause = Const(Size.Proj.DoScale)
+
+[State 7458, Run Counter]
+type = varadd
+trigger1 = var(6) < 16777215
+var(6) = 1
+ignorehitpause = Const(Size.Proj.DoScale)
+
+
+
+; Hit Spark - Light Slash
+[Statedef 7462]
+type = A
+physics = N
+sprpriority = 0
+anim = 9741
+ctrl = 0
+
+[State 7462, level]
+type = varset
+trigger1 = time = 0
+var(10) = Parent,var(10)
+
+[State 7462, random angle]
+type = varset
+trigger1 = time = 0
+var(35) = (random%360)
+
+
+[State 7464, no shadow]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+;--------- Explods -----------
+
+[State 7462, Explod-cross]
+type = Explod
+trigger1 = var(6) = 0
+anim = 7463
+ID = 7463
+space = stage
+pos = 0 * facing * Const(size.xscale), 0 * Const(size.yscale)
+bindID = ID
+bindtime = 1
+facing = facing
+removetime = 10
+;vel = var(35) * facing * Const(size.xscale) / 8.0 ,var(56) * Const(size.yscale) / 8.0
+;accel = -var(35) * facing * Const(size.xscale) / 128.0 ,-var(56) * Const(size.yscale) / 128.0
+supermovetime = 65535
+pausemovetime = 65535
+scale = 1 * Const(size.xscale), 1 * Const(size.yscale)
+angle = var(35)
+sprpriority = 4
+ownpal = 1
+;remappal = 7462 + Random%4, 0
+ignorehitpause = Const(Size.Proj.DoScale)
+
+[State 7462, Explod-1]
+type = ModifyExplod
+triggerall = NumExplod(7463)
+trigger1 = var(6) = [0,4]
+ID = 7463
+scale = (0.8 + var(6)*0.5) * Const(size.xscale), (0.8) * Const(size.yscale)
+
+[State 7462, Explod-1]
+type = ModifyExplod
+triggerall = NumExplod(7463)
+trigger1 = var(6) = [5,9]
+ID = 7463
+scale = (2.8) * Const(size.xscale), (0.8 - 0.16*(var(6)-4)) * Const(size.yscale)
+
+
+
+[State 7462, Explod-Line]
+type = Explod
+trigger1 = var(6) = 1
+anim = 7464
+ID = 7464
+space = stage
+pos = 0 * facing * Const(size.xscale), 0 * Const(size.yscale)
+bindID = ID
+bindtime = 1
+facing = facing
+removetime = 16
+;vel = var(35) * facing * Const(size.xscale) / 8.0 ,var(56) * Const(size.yscale) / 8.0
+;accel = -var(35) * facing * Const(size.xscale) / 128.0 ,-var(56) * Const(size.yscale) / 128.0
+supermovetime = 65535
+pausemovetime = 65535
+scale = 3 * Const(size.xscale), 6 * Const(size.yscale)
+angle = var(35)
+sprpriority = 5
+ownpal = 1
+;remappal = 7462 + Random%4, 0
+ignorehitpause = Const(Size.Proj.DoScale)
+
+[State 7462, Explod-Line]
+type = ModifyExplod
+triggerall = NumExplod(7464)
+trigger1 = var(6) = [1,3]
+ID = 7464
+scale = 3 * Const(size.xscale), (2 + 3*(var(6)-1)) * Const(size.yscale)
+
+[State 7462, Explod-Line]
+type = ModifyExplod
+triggerall = NumExplod(7464)
+trigger1 = var(6) = [9,14]
+ID = 7464
+scale = (3 - 0.41*(var(6)-8)) * Const(size.xscale), 8 * Const(size.yscale)
+
+
+[State 7462, Explod-BackLine]
+type = Explod
+trigger1 = var(6) = 2
+anim = 7465
+ID = 7465
+space = stage
+pos = 0 * facing * Const(size.xscale), 0 * Const(size.yscale)
+bindID = ID
+bindtime = 1
+facing = facing
+removetime = 18
+;vel = var(35) * facing * Const(size.xscale) / 8.0 ,var(56) * Const(size.yscale) / 8.0
+;accel = -var(35) * facing * Const(size.xscale) / 128.0 ,-var(56) * Const(size.yscale) / 128.0
+supermovetime = 65535
+pausemovetime = 65535
+scale = 1 * Const(size.xscale), 0.6 * Const(size.yscale)
+angle = var(35)
+sprpriority = -1
+ownpal = 1
+;remappal = 7462 + Random%4, 0
+ignorehitpause = Const(Size.Proj.DoScale)
+
+[State 7462, Explod-Line]
+type = ModifyExplod
+triggerall = NumExplod(7465)
+trigger1 = var(6) = [3,8]
+ID = 7465
+scale = (1 + 0.1*(var(6)-2)) * Const(size.xscale), (0.6 + 0.4*(var(6)-2)) * Const(size.yscale)
+
+[State 7462, Explod-Line]
+type = ModifyExplod
+triggerall = NumExplod(7465)
+trigger1 = var(6) = [12,18]
+ID = 7465
+scale = (1.6 - 0.2*(var(6)-12)) * Const(size.xscale), (3) * Const(size.yscale)
+
+[State 7462, End]
+type = DestroySelf
+trigger1 = var(6) > 20
+trigger2 = !NumExplod
+removeexplods = 1
+recursive = 1
+
+
+[State 7462, Debug]
+type = displaytoclipboard
+trigger1 = 1
+text = "var(5)=%d | var(35)=%d | NumExplod=%d | counter=%d"
+params = var(5), var(35), NumExplod,var(6)
+ignorehitpause = Const(Size.Proj.DoScale)
+
+[State 7462, Run Counter]
+type = varadd
+trigger1 = var(6) < 16777215
+var(6) = 1
+ignorehitpause = Const(Size.Proj.DoScale)
+
+
+
+
+
+; Hit Spark - Mid Slash
+[Statedef 7463]
+type = A
+physics = N
+sprpriority = 0
+anim = 9741
+ctrl = 0
+
+[State 7463, level]
+type = varset
+trigger1 = time = 0
+var(10) = Parent,var(10)
+
+[State 7463, random angle]
+type = varset
+trigger1 = time = 0
+var(35) = (random%360)
+
+
+[State 7464, no shadow]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+;--------- Explods -----------
+
+[State 7463, Explod-cross]
+type = Explod
+trigger1 = var(6) = 0
+anim = 7463
+ID = 7463
+space = stage
+pos = 0 * facing * Const(size.xscale), 0 * Const(size.yscale)
+bindID = ID
+bindtime = 1
+facing = facing
+removetime = 10
+;vel = var(35) * facing * Const(size.xscale) / 8.0 ,var(56) * Const(size.yscale) / 8.0
+;accel = -var(35) * facing * Const(size.xscale) / 128.0 ,-var(56) * Const(size.yscale) / 128.0
+supermovetime = 65535
+pausemovetime = 65535
+scale = 1 * Const(size.xscale), 1 * Const(size.yscale)
+angle = var(35)
+sprpriority = 4
+ownpal = 1
+;remappal = 7463 + Random%4, 0
+ignorehitpause = Const(Size.Proj.DoScale)
+
+[State 7463, Explod-1]
+type = ModifyExplod
+triggerall = NumExplod(7463)
+trigger1 = var(6) = [0,4]
+ID = 7463
+scale = (0.8 + var(6)*0.5) * Const(size.xscale), (0.8) * Const(size.yscale)
+
+[State 7463, Explod-1]
+type = ModifyExplod
+triggerall = NumExplod(7463)
+trigger1 = var(6) = [5,9]
+ID = 7463
+scale = (2.8) * Const(size.xscale), (0.8 - 0.16*(var(6)-4)) * Const(size.yscale)
+
+
+
+[State 7463, Explod-Line]
+type = Explod
+trigger1 = var(6) = 1
+anim = 7464
+ID = 7464
+space = stage
+pos = 0 * facing * Const(size.xscale), 0 * Const(size.yscale)
+bindID = ID
+bindtime = 1
+facing = facing
+removetime = 16
+;vel = var(35) * facing * Const(size.xscale) / 8.0 ,var(56) * Const(size.yscale) / 8.0
+;accel = -var(35) * facing * Const(size.xscale) / 128.0 ,-var(56) * Const(size.yscale) / 128.0
+supermovetime = 65535
+pausemovetime = 65535
+scale = 6 * Const(size.xscale), 6 * Const(size.yscale)
+angle = var(35)
+sprpriority = 5
+ownpal = 1
+;remappal = 7463 + Random%4, 0
+ignorehitpause = Const(Size.Proj.DoScale)
+
+[State 7463, Explod-Line]
+type = ModifyExplod
+triggerall = NumExplod(7464)
+trigger1 = var(6) = [1,3]
+ID = 7464
+scale = 6 * Const(size.xscale), (6 + 8*(var(6)-1)) * Const(size.yscale)
+
+[State 7463, Explod-Line]
+type = ModifyExplod
+triggerall = NumExplod(7464)
+trigger1 = var(6) = [9,14]
+ID = 7464
+scale = (6 - 0.82*(var(6)-8)) * Const(size.xscale), 22 * Const(size.yscale)
+
+
+[State 7463, Explod-BackLine]
+type = Explod
+trigger1 = var(6) = 2
+anim = 7465
+ID = 7465
+space = stage
+pos = 0 * facing * Const(size.xscale), 0 * Const(size.yscale)
+bindID = ID
+bindtime = 1
+facing = facing
+removetime = 18
+;vel = var(35) * facing * Const(size.xscale) / 8.0 ,var(56) * Const(size.yscale) / 8.0
+;accel = -var(35) * facing * Const(size.xscale) / 128.0 ,-var(56) * Const(size.yscale) / 128.0
+supermovetime = 65535
+pausemovetime = 65535
+scale = 3 * Const(size.xscale), 3 * Const(size.yscale)
+angle = var(35)
+sprpriority = -1
+ownpal = 1
+;remappal = 7463 + Random%4, 0
+ignorehitpause = Const(Size.Proj.DoScale)
+
+[State 7463, Explod-Line]
+type = ModifyExplod
+triggerall = NumExplod(7465)
+trigger1 = var(6) = [3,8]
+ID = 7465
+scale = (3 + 0.2*(var(6)-2)) * Const(size.xscale), (3 + 0.6*(var(6)-2)) * Const(size.yscale)
+
+[State 7463, Explod-Line]
+type = ModifyExplod
+triggerall = NumExplod(7465)
+trigger1 = var(6) = [12,18]
+ID = 7465
+scale = (4.2 - 0.65*(var(6)-12)) * Const(size.xscale), (6.6) * Const(size.yscale)
+
+[State 7463, End]
+type = DestroySelf
+trigger1 = var(6) > 20
+trigger2 = !NumExplod
+removeexplods = 1
+recursive = 1
+
+
+
+[State 7463, Debug]
+type = displaytoclipboard
+trigger1 = 1
+text = "var(5)=%d | var(35)=%d | NumExplod=%d | counter=%d"
+params = var(5), var(35), NumExplod,var(6)
+ignorehitpause = Const(Size.Proj.DoScale)
+
+[State 7463, Run Counter]
+type = varadd
+trigger1 = var(6) < 16777215
+var(6) = 1
+ignorehitpause = Const(Size.Proj.DoScale)
+
+
+
+
+
+; Hit Spark - Heavy Slash
+[Statedef 7464]
+type = A
+physics = N
+sprpriority = 0
+anim = 9741
+ctrl = 0
+
+[State 7464, level]
+type = varset
+trigger1 = time = 0
+var(10) = Parent,var(10)
+
+[State 7464, random angle]
+type = varset
+trigger1 = time = 0
+var(35) = (random%360)
+
+
+[State 7464, no shadow]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+;--------- Explods -----------
+
+[State 7464, Explod-cross]
+type = Explod
+trigger1 = !NumExplod(7463)
+trigger1 = var(6) = 0
+anim = 7463
+ID = 7463
+space = stage
+pos = 0 * facing * Const(size.xscale), 0 * Const(size.yscale)
+bindID = ID
+bindtime = 1
+facing = facing
+removetime = 18
+;vel = var(35) * facing * Const(size.xscale) / 8.0 ,var(56) * Const(size.yscale) / 8.0
+;accel = -var(35) * facing * Const(size.xscale) / 128.0 ,-var(56) * Const(size.yscale) / 128.0
+supermovetime = 65535
+pausemovetime = 65535
+scale = 1 * Const(size.xscale), 1 * Const(size.yscale)
+angle = var(35)
+sprpriority = 4
+ownpal = 1
+;remappal = 7464 + Random%4, 0
+ignorehitpause = Const(Size.Proj.DoScale)
+
+[State 7464, Explod-1]
+type = ModifyExplod
+triggerall = NumExplod(7463)
+trigger1 = var(6) = [0,4]
+ID = 7463
+scale = (1 + var(6)*0.6) * Const(size.xscale), (1) * Const(size.yscale)
+
+[State 7464, Explod-1]
+type = ModifyExplod
+triggerall = NumExplod(7463)
+trigger1 = var(6) = [5,11]
+ID = 7463
+scale = (3.4) * Const(size.xscale), (1 - 0.128*(var(6)-4)) * Const(size.yscale)
+
+
+
+[State 7464, Explod-Line]
+type = Explod
+trigger1 = !NumExplod(7464)
+trigger1 = var(6) = 1
+anim = 7464
+ID = 7464
+space = stage
+pos = 0 * facing * Const(size.xscale), 0 * Const(size.yscale)
+bindID = ID
+bindtime = 1
+facing = facing
+removetime = 18
+;vel = var(35) * facing * Const(size.xscale) / 8.0 ,var(56) * Const(size.yscale) / 8.0
+;accel = -var(35) * facing * Const(size.xscale) / 128.0 ,-var(56) * Const(size.yscale) / 128.0
+supermovetime = 65535
+pausemovetime = 65535
+scale = 6 * Const(size.xscale), 6 * Const(size.yscale)
+angle = var(35)
+sprpriority = 5
+ownpal = 1
+;remappal = 7464 + Random%4, 0
+ignorehitpause = Const(Size.Proj.DoScale)
+
+[State 7464, Explod-Line]
+type = ModifyExplod
+triggerall = NumExplod(7464)
+trigger1 = var(6) = [1,3]
+ID = 7464
+scale = 6 * Const(size.xscale), (6 + 8*(var(6)-1)) * Const(size.yscale)
+
+[State 7464, Explod-Line]
+type = ModifyExplod
+triggerall = NumExplod(7464)
+trigger1 = var(6) = [9,14]
+ID = 7464
+scale = (6 - 0.9*(var(6)-8)) * Const(size.xscale), 22 * Const(size.yscale)
+
+
+[State 7464, Explod-BackLine]
+type = Explod
+trigger1 = !NumExplod(7465)
+trigger1 = var(6) = 2
+anim = 7465
+ID = 7465
+space = stage
+pos = 0 * facing * Const(size.xscale), 0 * Const(size.yscale)
+bindID = ID
+bindtime = 1
+facing = facing
+removetime = -2
+;vel = var(35) * facing * Const(size.xscale) / 8.0 ,var(56) * Const(size.yscale) / 8.0
+;accel = -var(35) * facing * Const(size.xscale) / 128.0 ,-var(56) * Const(size.yscale) / 128.0
+supermovetime = 32
+pausemovetime = 32
+scale = 3 * Const(size.xscale), 3 * Const(size.yscale)
+angle = var(35)
+sprpriority = -1
+ownpal = 1
+;remappal = 7464 + Random%4, 0
+ignorehitpause = Const(Size.Proj.DoScale)
+
+[State 7464, Explod-Line]
+type = ModifyExplod
+trigger1 = NumExplod(7465)
+trigger1 = var(6) = [3,8]
+ID = 7465
+scale = (3 + 0.3*(var(6)-2)) * Const(size.xscale), (3 + 1*(var(6)-2)) * Const(size.yscale)
+
+[State 7464, Explod-Line]
+type = ModifyExplod
+trigger1 = NumExplod(7465)
+trigger1 = var(6) = [12,17]
+ID = 7465
+scale = (4.8 - 1*(var(6)-12)) * Const(size.xscale), (9) * Const(size.yscale)
+ignorehitpause = 1
+
+
+[State 7464, Explod-Circle]
+type = Explod
+trigger1 = !NumExplod(7466)
+trigger1 = var(6) = 0
+anim = 7466
+ID = 7466
+space = stage
+pos = 0 * facing * Const(size.xscale), 0 * Const(size.yscale)
+bindID = ID
+bindtime = 1
+facing = facing
+removetime = -2
+;vel = var(35) * facing * Const(size.xscale) / 8.0 ,var(56) * Const(size.yscale) / 8.0
+;accel = -var(35) * facing * Const(size.xscale) / 128.0 ,-var(56) * Const(size.yscale) / 128.0
+supermovetime = 65535
+pausemovetime = 65535
+scale = 1.4 * Const(size.xscale), 1.4 * Const(size.yscale)
+angle = Random%360;var(35)
+sprpriority = 3
+ownpal = 1
+;remappal = 7464 + Random%4, 0
+ignorehitpause = Const(Size.Proj.DoScale)
+
+
+[State 7464, Explod-Circle]
+type = ModifyExplod
+trigger1 = NumExplod(7466)
+trigger1 = var(6) = [0,3]
+ID = 7466
+scale = (1.4 + 0.3*var(6)) * Const(size.xscale), (1.4 + 0.3*var(6)) * Const(size.yscale)
+
+[State 7464, Explod-Circle]
+type = ModifyExplod
+trigger1 = NumExplod(7466)
+trigger1 = var(6) >= 4
+ID = 7466
+scale = (2.3 + 0.01*(var(6)-3)) * Const(size.xscale), (2.3 + 0.01*(var(6)-3)) * Const(size.yscale)
+
+[State 7464, End]
+type = DestroySelf
+trigger1 = var(6) > 33
+trigger2 = !NumExplod
+removeexplods = 1
+recursive = 1
+
+
+[State 7463, Debug]
+type = displaytoclipboard
+trigger1 = 1
+text = "var(5)=%d | var(35)=%d | NumExplod=%d | counter=%d"
+params = var(5), var(35), NumExplod,var(6)
+ignorehitpause = Const(Size.Proj.DoScale)
+
+[State 7463, Run Counter]
+type = varadd
+trigger1 = var(6) < 16777215
+var(6) = 1
+ignorehitpause = Const(Size.Proj.DoScale)
+
+
+
+; Gold Hit Spark - Mid Slash
+[Statedef 7465]
+type = A
+physics = N
+sprpriority = 0
+anim = 9741
+ctrl = 0
+
+[State 7465, Color]
+type = varset
+trigger1 = time = 0
+var(2) = root,var(2)
+
+[State 7465, level]
+type = varset
+trigger1 = time = 0
+var(10) = root,var(10)
+
+[State 7465, random angle]
+type = varset
+trigger1 = time = 0
+var(35) = (random%360)
+
+
+[State 7464, no shadow]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+;--------- Explods -----------
+
+[State 7465, Explod-cross]
+type = Explod
+trigger1 = var(6) = 0
+anim = 7463
+ID = 7463
+space = stage
+pos = 0 * facing * Const(size.xscale), 0 * Const(size.yscale)
+bindID = ID
+bindtime = 1
+facing = facing
+removetime = 10
+;vel = var(35) * facing * Const(size.xscale) / 8.0 ,var(56) * Const(size.yscale) / 8.0
+;accel = -var(35) * facing * Const(size.xscale) / 128.0 ,-var(56) * Const(size.yscale) / 128.0
+supermovetime = 65535
+pausemovetime = 65535
+scale = 1 * Const(size.xscale), 1 * Const(size.yscale)
+angle = var(35)
+sprpriority = 4
+ownpal = 1
+;remappal = 7465,12
+ignorehitpause = Const(Size.Proj.DoScale)
+
+[State 7465, Explod-1]
+type = ModifyExplod
+triggerall = NumExplod(7463)
+trigger1 = var(6) = [0,4]
+ID = 7463
+scale = (0.8 + var(6)*0.5) * Const(size.xscale), (0.8) * Const(size.yscale)
+
+[State 7465, Explod-1]
+type = ModifyExplod
+triggerall = NumExplod(7463)
+trigger1 = var(6) = [5,9]
+ID = 7463
+scale = (2.8) * Const(size.xscale), (0.8 - 0.16*(var(6)-4)) * Const(size.yscale)
+
+
+
+[State 7465, Explod-Line]
+type = Explod
+trigger1 = var(6) = 1
+anim = 7464
+ID = 7464
+space = stage
+pos = 0 * facing * Const(size.xscale), 0 * Const(size.yscale)
+bindID = ID
+bindtime = 1
+facing = facing
+removetime = 16
+;vel = var(35) * facing * Const(size.xscale) / 8.0 ,var(56) * Const(size.yscale) / 8.0
+;accel = -var(35) * facing * Const(size.xscale) / 128.0 ,-var(56) * Const(size.yscale) / 128.0
+supermovetime = 65535
+pausemovetime = 65535
+scale = 6 * Const(size.xscale), 6 * Const(size.yscale)
+angle = var(35)
+sprpriority = 5
+ownpal = 1
+;remappal = 7465 + Random%4, 0
+ignorehitpause = Const(Size.Proj.DoScale)
+
+[State 7465, Explod-Line]
+type = ModifyExplod
+triggerall = NumExplod(7464)
+trigger1 = var(6) = [1,3]
+ID = 7464
+scale = 6 * Const(size.xscale), (6 + 8*(var(6)-1)) * Const(size.yscale)
+
+[State 7465, Explod-Line]
+type = ModifyExplod
+triggerall = NumExplod(7464)
+trigger1 = var(6) = [9,14]
+ID = 7464
+scale = (6 - 0.82*(var(6)-8)) * Const(size.xscale), 22 * Const(size.yscale)
+
+
+[State 7465, Explod-BackLine]
+type = Explod
+trigger1 = var(6) = 2
+anim = 7465
+ID = 7465
+space = stage
+pos = 0 * facing * Const(size.xscale), 0 * Const(size.yscale)
+bindID = ID
+bindtime = 1
+facing = facing
+removetime = 18
+;vel = var(35) * facing * Const(size.xscale) / 8.0 ,var(56) * Const(size.yscale) / 8.0
+;accel = -var(35) * facing * Const(size.xscale) / 128.0 ,-var(56) * Const(size.yscale) / 128.0
+supermovetime = 65535
+pausemovetime = 65535
+scale = 3 * Const(size.xscale), 3 * Const(size.yscale)
+angle = var(35)
+sprpriority = -1
+ownpal = 1
+remappal = 7465, var(2)
+ignorehitpause = Const(Size.Proj.DoScale)
+
+[State 7465, Explod-Line]
+type = ModifyExplod
+triggerall = NumExplod(7465)
+trigger1 = var(6) = [3,8]
+ID = 7465
+scale = (3 + 0.2*(var(6)-2)) * Const(size.xscale), (3 + 0.6*(var(6)-2)) * Const(size.yscale)
+
+[State 7465, Explod-Line]
+type = ModifyExplod
+triggerall = NumExplod(7465)
+trigger1 = var(6) = [12,18]
+ID = 7465
+scale = (4.2 - 0.65*(var(6)-12)) * Const(size.xscale), (6.6) * Const(size.yscale)
+
+[State 7465, End]
+type = DestroySelf
+trigger1 = var(6) > 20
+trigger2 = !NumExplod
+removeexplods = 1
+recursive = 1
+
+
+
+[State 7465, Debug]
+type = displaytoclipboard
+trigger1 = 1
+text = "var(5)=%d | var(35)=%d | NumExplod=%d | counter=%d"
+params = var(5), var(35), NumExplod,var(6)
+ignorehitpause = Const(Size.Proj.DoScale)
+
+[State 7465, Run Counter]
+type = varadd
+trigger1 = var(6) < 16777215
+var(6) = 1
+ignorehitpause = Const(Size.Proj.DoScale)
+
+
+
+
+; Gold Hit Spark - Heavy Slash
+[Statedef 7466]
+type = A
+physics = N
+sprpriority = 0
+anim = 9741
+ctrl = 0
+
+[State 7466, Color]
+type = varset
+trigger1 = time = 0
+var(2) = root,var(2)
+
+[State 7466, level]
+type = varset
+trigger1 = time = 0
+var(10) = root,var(10)
+
+[State 7466, random angle]
+type = varset
+trigger1 = time = 0
+var(35) = (random%360)
+
+
+[State 7466, no shadow]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+;--------- Explods -----------
+
+[State 7466, Explod-cross]
+type = Explod
+trigger1 = !NumExplod(7463)
+trigger1 = var(6) = 0
+anim = 7463
+ID = 7463
+space = stage
+pos = 0 * facing * Const(size.xscale), 0 * Const(size.yscale)
+bindID = ID
+bindtime = 1
+facing = facing
+removetime = 18
+;vel = var(35) * facing * Const(size.xscale) / 8.0 ,var(56) * Const(size.yscale) / 8.0
+;accel = -var(35) * facing * Const(size.xscale) / 128.0 ,-var(56) * Const(size.yscale) / 128.0
+supermovetime = 65535
+pausemovetime = 65535
+scale = 1 * Const(size.xscale), 1 * Const(size.yscale)
+angle = var(35)
+sprpriority = 4
+ownpal = 1
+;remappal = 7464 + Random%4, 0
+ignorehitpause = Const(Size.Proj.DoScale)
+
+[State 7466, Explod-1]
+type = ModifyExplod
+triggerall = NumExplod(7463)
+trigger1 = var(6) = [0,4]
+ID = 7463
+scale = (1 + var(6)*0.6) * Const(size.xscale), (1) * Const(size.yscale)
+
+[State 7466, Explod-1]
+type = ModifyExplod
+triggerall = NumExplod(7463)
+trigger1 = var(6) = [5,11]
+ID = 7463
+scale = (3.4) * Const(size.xscale), (1 - 0.128*(var(6)-4)) * Const(size.yscale)
+
+
+
+[State 7466, Explod-Line]
+type = Explod
+trigger1 = !NumExplod(7464)
+trigger1 = var(6) = 1
+anim = 7464
+ID = 7464
+space = stage
+pos = 0 * facing * Const(size.xscale), 0 * Const(size.yscale)
+bindID = ID
+bindtime = 1
+facing = facing
+removetime = 18
+;vel = var(35) * facing * Const(size.xscale) / 8.0 ,var(56) * Const(size.yscale) / 8.0
+;accel = -var(35) * facing * Const(size.xscale) / 128.0 ,-var(56) * Const(size.yscale) / 128.0
+supermovetime = 65535
+pausemovetime = 65535
+scale = 6 * Const(size.xscale), 6 * Const(size.yscale)
+angle = var(35)
+sprpriority = 5
+ownpal = 1
+;remappal = 7464 + Random%4, 0
+ignorehitpause = Const(Size.Proj.DoScale)
+
+[State 7466, Explod-Line]
+type = ModifyExplod
+triggerall = NumExplod(7464)
+trigger1 = var(6) = [1,3]
+ID = 7464
+scale = 6 * Const(size.xscale), (6 + 8*(var(6)-1)) * Const(size.yscale)
+
+[State 7466, Explod-Line]
+type = ModifyExplod
+triggerall = NumExplod(7464)
+trigger1 = var(6) = [9,14]
+ID = 7464
+scale = (6 - 0.9*(var(6)-8)) * Const(size.xscale), 22 * Const(size.yscale)
+
+
+[State 7466, Explod-BackLine]
+type = Explod
+trigger1 = !NumExplod(7465)
+trigger1 = var(6) = 2
+anim = 7465
+ID = 7465
+space = stage
+pos = 0 * facing * Const(size.xscale), 0 * Const(size.yscale)
+bindID = ID
+bindtime = 1
+facing = facing
+removetime = -2
+;vel = var(35) * facing * Const(size.xscale) / 8.0 ,var(56) * Const(size.yscale) / 8.0
+;accel = -var(35) * facing * Const(size.xscale) / 128.0 ,-var(56) * Const(size.yscale) / 128.0
+supermovetime = 32
+pausemovetime = 32
+scale = 3 * Const(size.xscale), 3 * Const(size.yscale)
+angle = var(35)
+sprpriority = -1
+ownpal = 1
+remappal = 7465, var(2)
+ignorehitpause = Const(Size.Proj.DoScale)
+
+[State 7466, Explod-Line]
+type = ModifyExplod
+trigger1 = NumExplod(7465)
+trigger1 = var(6) = [3,8]
+ID = 7465
+scale = (3 + 0.3*(var(6)-2)) * Const(size.xscale), (3 + 1*(var(6)-2)) * Const(size.yscale)
+
+[State 7466, Explod-Line]
+type = ModifyExplod
+trigger1 = NumExplod(7465)
+trigger1 = var(6) = [12,17]
+ID = 7465
+scale = (4.8 - 1*(var(6)-12)) * Const(size.xscale), (9) * Const(size.yscale)
+ignorehitpause = 1
+
+
+[State 7466, Explod-Circle]
+type = Explod
+trigger1 = !NumExplod(7466)
+trigger1 = var(6) = 0
+anim = 7466
+ID = 7466
+space = stage
+pos = 0 * facing * Const(size.xscale), 0 * Const(size.yscale)
+bindID = ID
+bindtime = 1
+facing = facing
+removetime = -2
+;vel = var(35) * facing * Const(size.xscale) / 8.0 ,var(56) * Const(size.yscale) / 8.0
+;accel = -var(35) * facing * Const(size.xscale) / 128.0 ,-var(56) * Const(size.yscale) / 128.0
+supermovetime = 65535
+pausemovetime = 65535
+scale = 1.4 * Const(size.xscale), 1.4 * Const(size.yscale)
+angle = Random%360;var(35)
+sprpriority = 3
+ownpal = 1
+remappal = 7465, var(2)
+ignorehitpause = Const(Size.Proj.DoScale)
+
+
+[State 7466, Explod-Circle]
+type = ModifyExplod
+trigger1 = NumExplod(7466)
+trigger1 = var(6) = [0,3]
+ID = 7466
+scale = (1.4 + 0.3*var(6)) * Const(size.xscale), (1.4 + 0.3*var(6)) * Const(size.yscale)
+
+[State 7466, Explod-Circle]
+type = ModifyExplod
+trigger1 = NumExplod(7466)
+trigger1 = var(6) >= 4
+ID = 7466
+scale = (2.3 + 0.01*(var(6)-3)) * Const(size.xscale), (2.3 + 0.01*(var(6)-3)) * Const(size.yscale)
+
+[State 7466, End]
+type = DestroySelf
+trigger1 = var(6) > 33
+trigger2 = !NumExplod
+removeexplods = 1
+recursive = 1
+
+
+[State 7466 Debug]
+type = displaytoclipboard
+trigger1 = 1
+text = "var(5)=%d | var(35)=%d | NumExplod=%d | counter=%d"
+params = var(5), var(35), NumExplod,var(6)
+ignorehitpause = Const(Size.Proj.DoScale)
+
+[State 7466, Run Counter]
+type = varadd
+trigger1 = var(6) < 16777215
+var(6) = 1
+ignorehitpause = Const(Size.Proj.DoScale)
+
+
+
+
+
+
+
+; MBTL Shield
+[Statedef 7470]
+type = A
+physics = N
+sprpriority = 0
+anim = 9741
+ctrl = 0
+
+[State 7470, Parent]
+type = varset
+trigger1 = !time
+var(40) = Parent,ID
+
+
+[State 7470, no shadow]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+[State 7470, SndFX]
+type = PlaySnd
+trigger1 = time = 0
+value = 0, 7470
+
+
+;--------- Phase -------------
+[State 7470, End]
+type = varset
+triggerall = var(5) = 0
+trigger1 = PlayerIDExist(var(40)) = 0
+trigger1 = var(6):=1
+trigger2 = PlayerIDExist(var(40))
+trigger2 = (PlayerID(var(40)),Anim = [710,712]) || !(PlayerID(var(40)),StateNo = [700,702])
+trigger2 = var(6):=1
+var(5) = -1
+
+[State 7470, angle]
+type = varset
+trigger1 = var(5) = 0
+var(35) = -var(6) * 16
+
+[State 7470, Bind]
+type = BindtoParent
+trigger1 = PlayerIDExist(var(40))
+time = 1
+facing = 1
+pos = PlayerID(var(40)),var(Const(Size.head.pos.x)), PlayerID(var(40)),var(Const(Size.head.pos.y))
+ignorehitpause = 1
+
+;--------- Explods -----------
+
+[State 7470, Explod-Line]
+type = Explod
+trigger1 = var(5) = 0
+trigger1 = var(6)%6 = 0
+anim = 7465
+ID = 7465
+space = stage
+pos = 0 * facing * Const(size.xscale), 0 * Const(size.yscale)
+bindID = ID
+bindtime = -1
+facing = facing
+removetime = 4
+;vel = var(35) * facing * Const(size.xscale) / 8.0 ,var(56) * Const(size.yscale) / 8.0
+;accel = -var(35) * facing * Const(size.xscale) / 128.0 ,-var(56) * Const(size.yscale) / 128.0
+supermovetime = 16777215
+pausemovetime = 16777215
+scale = 1.6 * Const(size.xscale), 0.8 * Const(size.yscale)
+angle = 90 + Const(size.mid.pos.x)
+trans = add
+alpha = 192,256
+sprpriority = 3
+ownpal = 1
+;remappal = 7470 + Random%4, 0
+ignorehitpause = 1
+
+[State 7470, Explod-Spiral]
+type = Explod
+trigger1 = !NumExplod(7470)
+trigger1 = var(5) = 0
+trigger1 = var(6) = 0
+anim = 7470
+ID = 7470
+space = stage
+pos = 0 * facing * Const(size.xscale), 0 * Const(size.yscale)
+bindID = ID
+bindtime = -1
+facing = facing
+removetime = -1
+;vel = var(35) * facing * Const(size.xscale) / 8.0 ,var(56) * Const(size.yscale) / 8.0
+;accel = -var(35) * facing * Const(size.xscale) / 128.0 ,-var(56) * Const(size.yscale) / 128.0
+supermovetime = 16777215
+pausemovetime = 16777215
+scale = 0.6 * Const(size.xscale), 0.6 * Const(size.yscale)
+angle = var(35)
+xangle = Const(size.mid.pos.x) + (((ScreenPos y - (ScreenHeight / 2.0)) / (ScreenHeight / 2.0)) * 10.0)
+yangle = Const(size.mid.pos.y) - ((Pos x * facing / (GameWidth/2))*18.0)
+sprpriority = 3
+ownpal = 1
+;remappal = 7470 + Random%4, 0
+ignorehitpause = 1
+
+[State 7470, Explod-Spiral]
+type = ModifyExplod
+trigger1 = NumExplod(7470)
+trigger1 = var(5) = 0
+trigger1 = var(6)
+ID = 7470
+angle = var(35)
+
+[State 7470, Explod-Spiral]
+type = ModifyExplod
+trigger1 = NumExplod(7470)
+trigger1 = var(5) = -1
+trigger1 = var(6)
+ID = 7470
+scale = (0.6 + 0.1*var(6)) * Const(size.xscale), (0.6 + 0.1*var(6)) * Const(size.yscale)
+angle = var(35) - var(6) * 16
+trans = add
+alpha = 256 -32*var(6) ,256
+
+[State 7470, Explod-ball]
+type = Explod
+trigger1 = !NumExplod(7186)
+trigger1 = var(5) = 0
+trigger1 = var(6) = 0
+anim = 7186
+ID = 7186
+space = stage
+pos = 0 * facing * Const(size.xscale), 0 * Const(size.yscale)
+bindID = ID
+bindtime = -1
+facing = facing
+removetime = -1
+;vel = var(35) * facing * Const(size.xscale) / 8.0 ,var(56) * Const(size.yscale) / 8.0
+;accel = -var(35) * facing * Const(size.xscale) / 128.0 ,-var(56) * Const(size.yscale) / 128.0
+supermovetime = 16777215
+pausemovetime = 16777215
+trans = add
+alpha = 128, 256
+scale = 1.8 * Const(size.xscale), 1.8 * Const(size.yscale)
+angle = var(35)
+xangle = Const(size.mid.pos.x) + (((ScreenPos y - (ScreenHeight / 2.0)) / (ScreenHeight / 2.0)) * 10.0)
+yangle = Const(size.mid.pos.y) - ((Pos x * facing / (GameWidth/2))*18.0)
+sprpriority = 3
+ownpal = 1
+;remappal = 7470 + Random%4, 0
+ignorehitpause = 1
+
+[State 7470, End]
+type = DestroySelf
+trigger1 = var(5) = -1
+trigger1 = var(6) > 8
+removeexplods = 1
+recursive = 1
+
+
+[State 7470, Debug]
+type = displaytoclipboard
+trigger1 = 1
+text = "var(5)=%d | counter=%d | Parent=%d | NumExplod=%d"
+params = var(5), var(6), var(40), NumExplod
+ignorehitpause = 1
+
+[State 7470, Run Counter]
+type = varadd
+trigger1 = var(6) < 16777215
+var(6) = 1
+ignorehitpause = 1
+
+
+
+;Charge spark
+[Statedef 7476]
+type = A
+physics = N
+sprpriority = 0
+anim = 9741
+ctrl = 0
+
+[State 7476, Random_Angle]
+type = varset
+trigger1 = !time
+var(35) = Random%360
+
+[State 7476, SND_FX]
+type = PlaySnd
+trigger1 = !time
+value = 7, 7476
+volumescale = 75
+channel = 3
+;abspan = 0
+
+[State 7476, Explod-spiral]
+type = Explod
+trigger1 = !NumExplod(7476)
+trigger1 = var(5) = 0
+trigger1 = var(6) = 0
+anim = 7476
+ID = 7476
+space = stage
+pos = 0 * facing * Const(size.xscale), 0 * Const(size.yscale)
+bindID = ID
+bindtime = -1
+facing = facing
+removetime = -2
+;vel = var(35) * facing * Const(size.xscale) / 8.0 ,var(56) * Const(size.yscale) / 8.0
+;accel = -var(35) * facing * Const(size.xscale) / 128.0 ,-var(56) * Const(size.yscale) / 128.0
+supermovetime = 16777215
+pausemovetime = 16777215
+trans = add
+alpha = 256, 256
+scale = 4 * Const(size.xscale), 4 * Const(size.yscale)
+angle = var(35)
+;xangle = Const(size.mid.pos.x) + (((ScreenPos y - (ScreenHeight / 2.0)) / (ScreenHeight / 2.0)) * 10.0)
+;yangle = Const(size.mid.pos.y) - ((Pos x * facing / (GameWidth/2))*18.0)
+sprpriority = 5
+ownpal = 1
+;remappal = 7470 + Random%4, 0
+ignorehitpause = 1
+
+[State 7476, Explod-spiral]
+type = ModifyExplod
+trigger1 = NumExplod(7476)
+trigger1 = var(5) = 0
+trigger1 = var(6) = [0,2]
+ID = 7476
+trans = add
+alpha = 128 + 64*var(6) , 256
+scale = (4 - 1*(var(6))) * Const(size.xscale), (4 - 1*(var(6))) * Const(size.yscale)
+angle = var(35) - 50*var(6)
+ignorehitpause = 1
+
+[State 7476, Explod-spiral]
+type = ModifyExplod
+trigger1 = NumExplod(7476)
+trigger1 = var(5) = 0
+trigger1 = var(6) = [3,6]
+ID = 7476
+trans = add
+alpha = 256,256
+scale = (2 - 0.5*(var(6)-2)) * Const(size.xscale), (2 - 0.5*(var(6)-2)) * Const(size.yscale)
+angle = var(35) - 50*var(6)
+ignorehitpause = 1
+
+[State 7476, Explod-line]
+type = Explod
+trigger1 = var(5) = 0
+trigger1 = var(6) = 6
+anim = 7477
+ID = 7477
+space = stage
+pos = 0 * facing * Const(size.xscale), 0 * Const(size.yscale)
+bindID = ID
+bindtime = -1
+facing = facing
+removetime = -2
+;vel = var(35) * facing * Const(size.xscale) / 8.0 ,var(56) * Const(size.yscale) / 8.0
+;accel = -var(35) * facing * Const(size.xscale) / 128.0 ,-var(56) * Const(size.yscale) / 128.0
+supermovetime = 16777215
+pausemovetime = 16777215
+scale = 1 * Const(size.xscale), 2 * Const(size.yscale)
+angle = var(35)
+;xangle = Const(size.mid.pos.x) + (((ScreenPos y - (ScreenHeight / 2.0)) / (ScreenHeight / 2.0)) * 10.0)
+;yangle = Const(size.mid.pos.y) - ((Pos x * facing / (GameWidth/2))*18.0)
+sprpriority = 5
+ownpal = 1
+;remappal = 7470 + Random%4, 0
+ignorehitpause = 1
+
+[State 7476, Explod-line]
+type = Explod
+trigger1 = var(5) = 0
+trigger1 = var(6) = 6
+anim = 7477
+ID = 7477
+space = stage
+pos = 0 * facing * Const(size.xscale), 0 * Const(size.yscale)
+bindID = ID
+bindtime = -1
+facing = facing
+removetime = -2
+;vel = var(35) * facing * Const(size.xscale) / 8.0 ,var(56) * Const(size.yscale) / 8.0
+;accel = -var(35) * facing * Const(size.xscale) / 128.0 ,-var(56) * Const(size.yscale) / 128.0
+supermovetime = 16777215
+pausemovetime = 16777215
+scale = 1 * Const(size.xscale), 2 * Const(size.yscale)
+angle = var(35) + 90
+;xangle = Const(size.mid.pos.x) + (((ScreenPos y - (ScreenHeight / 2.0)) / (ScreenHeight / 2.0)) * 10.0)
+;yangle = Const(size.mid.pos.y) - ((Pos x * facing / (GameWidth/2))*18.0)
+sprpriority = 5
+ownpal = 1
+;remappal = 7470 + Random%4, 0
+ignorehitpause = 1
+
+[State 7476, Explod-line]
+type = ModifyExplod
+triggerall = NumExplod(7477)
+trigger1 = var(5) = 0
+trigger1 = var(6) = [6,7]
+ID = 7477
+trans = add
+alpha = 192,256
+scale = (0.3 + 0.3*(var(6)-6)) * Const(size.xscale), (0.5 + 0.6*(var(6)-6)) * Const(size.yscale)
+
+[State 7476, Explod-line]
+type = ModifyExplod
+triggerall = NumExplod(7477)
+trigger1 = var(5) = 0
+trigger1 = var(6) = [8,15]
+ID = 7477
+trans = add
+alpha = (192 - 16*(var(6)-8)),256
+scale = (1 - 0.14*(var(6)-8)) * Const(size.xscale), (2) * Const(size.yscale)
+
+[State 7476, End]
+type = DestroySelf
+trigger1 = time >= 16
+removeexplods = 1
+recursive = 1
+
+
+[State 7476, Debug]
+type = displaytoclipboard
+trigger1 = 1
+text = "var(5)=%d | counter=%d | Angle=%d | NumExplod=%d"
+params = var(5), var(6), var(35), NumExplod
+ignorehitpause = 1
+
+[State 7476, Run Counter]
+type = varadd
+trigger1 = var(6) < 16777215
+var(6) = 1
+ignorehitpause = 1
+
+
+
+
+
+
+;MBTL Zoom Helper -----
+[Statedef 7663]
+type = A
+physics = N
+movetype = I
+velset = 0,0
+anim = 9741
+sprpriority = 0
+
+;Only use this helper with player or a player helper
+;Super zoom in effect.
+;var(5)	Camera Action State	-1 mean exit and close (0 is zoom in 1 is stay 2 is zoom out 3 is destroy)
+;var(6)	Camera Counter for var(5) State
+;var(7) Camera Counter for shake
+;var(8) Focus Point x
+;var(9) Focus Point y
+;var(10) is Parent Var(10)
+;var(11) is zoom in / fade in time
+;var(12) is zoom out / fade out time
+;var(13) Enable Absolute zoom or not
+;Var(40) is Parent ID or Target ID
+;--------------------------------------
+;fvar(12) is Perentage of how much the camera will travel towards Parent
+;fvar(13) is (Target zoom level - 1)
+;fvar(5) is zoom in step values
+;fvar(15) is zoom out step values
+;fvar(21) is (1 - Camzer zoom level)
+;fvar(22) final value of relative zoom factor which used in zoom controller
+
+;---------- Parent Check ----------------
+
+[State Parent Check 1]
+type = varset
+trigger1 = var(40) = 0
+trigger1 = PlayerIDExist(Const(size.proj.doscale))
+var(40) = Const(size.proj.doscale)
+ignoreHitPause = 1
+
+[State Parent Check 2]
+type = varset
+trigger1 = var(40)
+trigger1 = PlayerIDExist(Const(size.proj.doscale)) = 0
+var(40) = 0
+ignoreHitPause = 1
+
+[State Var]; Zoom in time
+type = varset
+trigger1 = !time
+var(11) = Const(size.head.pos.x)
+ignoreHitPause = 1
+
+[State Var]; zoom out time
+type = varset
+trigger1 = !time
+var(12) = Const(size.head.pos.y)
+ignoreHitPause = 1
+
+[State Var]; Absolute zoom or not
+type = varset
+trigger1 = !time
+var(13) = Const(size.ground.front)
+ignoreHitPause = 1
+
+[State Var]; How much to travel towards parent
+type = varset
+trigger1 = !time
+fvar(12) = Const(size.shadowoffset) / 1000.0
+ignoreHitPause = 1
+
+[State Var]; Zoom in How much
+type = varset
+trigger1 = !time
+fvar(13) = Const(size.ground.back) / 1000.0
+ignoreHitPause = 1
+
+
+;------- Control system camera -----------
+[State 7663, bound]
+type = screenbound
+trigger1 = 1
+value = 0
+movecamera = 1,1
+ignoreHitPause = 1
+
+;------- set config values -----------
+[State 7663, get-var10]
+type = varset
+trigger1 = !time
+var(10) = parent,var(10)
+persistent = 0
+
+;---- Uncommint compensation to allow AbsZoom ----
+[State 7663, compensation zoom var]
+type = varset
+triggerall = var(13)
+trigger1 = !time
+trigger1 = CameraZoom > 0 && CameraZoom < 1
+fvar(21) = (1 / CameraZoom) - 1
+
+[State 7663, compensation zoom var]
+type = varset
+triggerall = var(13)
+trigger1 = !time
+trigger1 = CameraZoom >= 1
+fvar(21) = 0
+
+;---- Uncommint compensation to allow Abszoom ----
+
+
+;------------- INIT Finished -----------------
+
+;------------- Camera Phase control var(5) ---------
+[State 7663, Exit for unexpected reasons]
+type = varset
+triggerall = var(5) != -1
+trigger1 = !var(40); Parent or Target not existed
+trigger1 = var(6) := 1
+trigger2 = Parent,MoveType = H
+trigger2 = var(6) := 1
+trigger3 = !((Parent,StateNo = 199) || (Parent,StateNo = 260) || (Parent,StateNo = [980,990]) || (Parent,StateNo = [1000,4999]))
+trigger3 = var(6) := 1
+var(5) = -1
+
+[State 7663, Change zoom State 1]; stay
+type = varset
+trigger1 = var(5) = 0
+trigger1 = var(6) >= var(11)
+trigger1 = var(6):= 1
+var(5) = 1
+
+[State 7663, Change zoom State 2 zoom out]; no super charge helper found zoom out
+type = varset
+trigger1 = var(5) = [1,2]
+trigger1 = !(Parent,var(19) & 256)
+trigger1 = var(6):= 1
+var(5) = 3
+
+;--------------- Pos Move and Binds ---------------
+[State 7663, Init Pos]; alway zoom from camera pos to view it smoothly.
+type = posset
+trigger1 = !time
+x = 0;camera always in middle of the screen
+y = CameraPos y
+
+[State 7663, fly to parent fad in];zoom in in 20 frames
+type = velset
+triggerall = PlayerIDExist(var(40))
+trigger1 = var(5) = 0
+trigger1 = var(6) = 0
+x = (((PlayerID(var(40)),Pos x - Pos x) * facing) * fvar(12)) / var(11)
+y =  ((PlayerID(var(40)),Pos y - Pos y) * fvar(12)) / var(11)
+;x = (ParentDist x * fvar(12)) / var(11)
+;y = (ParentDist y * fvar(12)) / var(11)
+
+[State 7663, fly to parent fad in];stop
+type = velset
+trigger1 = var(5) = 1
+trigger1 = var(6) = 1
+x = 0
+y = 0
+
+[State 7663, fly to center];zoom out in 10 frames
+type = velset
+trigger1 = var(5) = 3 || var(5) = -1
+trigger1 = var(6) = 1
+x = -facing * Pos x / (var(12)*1.0)
+y = -(Pos y - CameraPos y) / (var(12)*1.0)
+
+
+;----------------- Compute zoom factor fvar(22) ---------------------
+
+[State 7663, Zoom in]; in 20 frames
+type = VarSet
+trigger1 = var(5) = 0
+trigger1 = var(6) = [0,var(11)]
+fvar(22) = 1 + var(6) * ((fvar(21) + fvar(13)) / (var(11)*1.0))
+
+[State 7663, Snapshot fvar22]
+type = varset
+triggerall = fvar(23) != fvar(22)
+trigger1 = var(5) = 3 || var(5) = -1
+trigger1 = var(6) = 1
+fvar(23) = fvar(22)
+
+[State 7663, Zoom out]; in 10 frames
+type = VarSet
+trigger1 = var(5) = 3 || var(5) = -1
+trigger1 = var(6) = [1,var(12)]
+fvar(22) = fvar(23) - ((fvar(23) - 1) / (var(12)*1.0)) * var(6)
+
+;---------------- Apply Zoom -------
+[State 7663, Apply Zoom]
+type = zoom
+triggerall = fvar(22); needs to be >= 1
+trigger1 = time >= 0
+scale = fvar(22)
+pos = ((pos x) / fvar(22)) * CameraZoom, ((pos y) -  (CameraPos y / fvar(22))) * CameraZoom
+ignorehitpause = 1
+
+
+;---------------- End --------------
+[State 7663, end]
+type = destroyself
+trigger1 = var(5) = -1
+trigger1 = var(6) > var(12)
+trigger2 = var(5) = 3
+trigger2 = var(6) > var(12)
+
+[State 7663, Debug 1]
+type = displaytoclipboard
+trigger1 = 1
+text = "X=%d, Y=%d, CameraY=%d, fvar(22)=%d ,CAMZOM=%d, fvar(21)=%d"  
+params = pos x, pos y, CameraPos y ,fvar(22) , CameraZoom, fvar(21)
+ignorehitpause = 1
+
+[State 7663, Debug 2]
+type = appendtoclipboard
+trigger1 = 1
+text = "\nActSTAT=%d, COUNT=%d, var(12)=%d, fvar(15)=%d, fvar(13)=%d"  
+params = var(5),var(6),var(12),fvar(15),fvar(13)
+ignorehitpause = 1
+
+
+;------- Run Counter must put at end--------
+[State 7663, Run Counter]
+type = varadd
+trigger1 = var(6) < 16777215
+var(6) = 1
+ignorehitpause = 1
+
+[State 7663, Counter var7 add 1]
+type = varadd
+trigger1 = var(7) != 0
+trigger1 = var(7) < 16777215
+var(7) = 1
+
+
+
+
+;MBTL Charge Helper -----
+[Statedef 7740]
+type = A
+physics = N
+movetype = I
+velset = 0,0
+anim = 9741
+sprpriority = -3
+
+[State 7740, Bind]
+type = BindToParent
+trigger1 = 1
+time = 1
+facing = 1
+pos = 0,0
+
+[State 7740, noPush]
+type = PlayerPush
+trigger1 = 1
+value = 0
+
+[State 7740, noHit]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+
+;Mirror Player
+[State 7740, PlayAnim]
+type = ChangeAnim
+trigger1 = Anim != Parent,Anim
+trigger2 = AnimElemNo(0) != Parent,AnimElemNo(0)
+value = Parent,Anim
+elem = Parent,AnimElemNo(0)
+
+;no need to add scale here.
+[State 7740, Scale]
+type = AngleDraw
+trigger1 = 1
+value = 0
+scale = 1.12, 1.03
+
+[State 7740, Pal]
+type = PalFX
+trigger1 = 1
+time = 1
+add = 0,64,256
+mul = 0,128,256
+color = 256
+
+[State 7740, Trans]
+type = Trans
+trigger1 = time%32 = [0,15]
+trans = add
+alpha = 8*(time%32),256
+
+[State 7740, Trans]
+type = Trans
+trigger1 = time%32 = [16,31]
+trans = add
+alpha = 128 - 8*(time%32 - 16),256
+
+;Explods----
+[State 7740, Charge explod base]
+type = Explod
+trigger1 = !NumExplod(7046)
+trigger1 = time = 0
+anim = 7046
+ID = 7046
+space = stage
+bindID = ID
+pos = 0 * facing * Const(Size.xScale), 0 * Const(Size.yScale)
+facing = facing
+bindtime = -1
+removetime = -1
+supermovetime = 4294967295
+pausemovetime = 4294967295
+sprpriority = 2
+scale = 0.4 * Const(Size.xScale), 1.6 * Const(Size.yScale)
+trans = add
+alpha = 128,256
+;remappal = 7187,1 + var(10)
+angle = 0
+;xangle = 0
+;yangle = 0
+ownpal = 1
+ignorehitpause = 1
+
+[State 7740, Charge explod base]
+type = ModifyExplod
+triggerall = Parent,StateNo = 740
+trigger1 = NumExplod(7046)
+trigger1 = time = [0,128]
+ID = 7046
+scale = (0.2 + 0.00625*time) * Const(Size.xScale), (0.4 + 0.0125*time) * Const(Size.yScale)
+trans = add
+alpha = 1*time,256
+
+
+[State 7740, Charge explod blueBG]
+type = Explod
+trigger1 = time = 0
+anim = 7480
+ID = 7480
+space = stage
+bindID = ID
+pos = 0 * facing * Const(Size.xScale), 0 * Const(Size.yScale)
+facing = facing
+bindtime = -1
+removetime = -1
+supermovetime = 4294967295
+pausemovetime = 4294967295
+sprpriority = -2
+scale = 3 * Const(Size.xScale), 3 * Const(Size.yScale)
+trans = add
+alpha = 128,256
+;remappal = 7480,0
+angle = 0
+;xangle = 0
+;yangle = 0
+ownpal = 1
+ignorehitpause = 1
+
+[State 7740, Charge explod blueBG]
+type = ModifyExplod
+triggerall = Parent,StateNo = 740
+trigger1 = NumExplod(7480)
+trigger1 = time%128 = [0,63]
+ID = 7480
+trans = add
+alpha = 64 + time%128 ,256
+
+[State 7740, Charge explod blueBG]
+type = ModifyExplod
+triggerall = Parent,StateNo = 740
+trigger1 = NumExplod(7480)
+trigger1 = time%128 = [64,127]
+ID = 7480
+trans = add
+alpha = 128 - ((time%128)-64) ,256
+
+
+
+[State 7740, end]
+type = destroyself
+trigger1 = !((Parent,StateNo = [740,741]) || (Parent,StateNo = 500))
+removeexplods = 1
+recursive = 1
+
+;------- Run Counter must put at end--------
+[State 7740, Run Counter]
+type = varadd
+trigger1 = var(6) < 16777215
+var(6) = 1
+ignorehitpause = 1
+
+
+
+;MBTL Charge Aura Helper -----
+[Statedef 7483]
+type = A
+physics = N
+movetype = I
+velset = 0,0
+anim = 9741
+sprpriority = -2
+
+;[State 7483, Type]
+;type = varset
+;trigger1 = time = 0
+;var(10) = random%2
+
+[State 7483, Charge Aura]
+type = Explod
+trigger1 = time = 0
+anim = 7483 + Random%6
+ID = 7483
+space = stage
+bindID = ID
+pos = 0 * facing * Const(Size.xScale), 0 * Const(Size.yScale)
+vel = 0, -5 * Const(Size.yScale)
+accel = 0, 0.06 * Const(Size.yScale)
+facing = facing
+bindtime = 1
+removetime = -2
+supermovetime = 4294967295
+pausemovetime = 4294967295
+sprpriority = -2
+scale = 1 * Const(Size.xScale), 1 * Const(Size.yScale)
+remappal = 7480,0
+;angle = 30
+xangle = (Random%80 - 40) + (((ScreenPos y - (ScreenHeight / 2.0)) / (ScreenHeight / 2.0)) * 10.0)
+yangle = 70 - ((Pos x * facing / (GameWidth/2))*18.0)
+ownpal = 1
+ignorehitpause = 1
+
+;[State 7483, Charge Aura]
+;type = ModifyExplod
+;triggerall = var(10) = 0
+;trigger1 = NumExplod(7483)
+;trigger1 = time = [0,128]
+;ID = 7483
+;scale = (0 + 0.005*time) * Const(Size.xScale), (0.0 + 0.012*time) * Const(Size.yScale)
+
+
+[State 7483, end]
+type = destroyself
+trigger1 = !NumExplod
+removeexplods = 1
+recursive = 1
+
+;------- Run Counter must put at end--------
+[State 7483, Run Counter]
+type = varadd
+trigger1 = var(6) < 16777215
+var(6) = 1
+ignorehitpause = 1
+
+
+
+;MBTL MoonDrive Aura Helper -----
+[Statedef 7490]
+type = A
+physics = N
+movetype = I
+velset = 0,0
+anim = 9741
+sprpriority = -2
+
+;0 white 1 bule 2 red 3 yellow
+[State 7020, Color]
+type = varset
+trigger1 = time = 0
+var(1) = Floor(Const(size.proj.doscale))
+
+;how long 0 is auto
+[State 7020, LowHongTime]
+type = varset
+trigger1 = time = 0
+var(2) = Floor(Const(size.ground.front))
+
+[State 7490, Bind]
+type = BindToParent
+trigger1 = 1
+time = 1
+facing = 1
+pos = 0, 0
+
+;--------- Phase
+[State 7490, End]
+type = varset
+triggerall = var(5) = 0
+trigger1 = !(Parent,var(19) & 2) 
+trigger1 = var(6) := 1
+var(5) = -1
+
+
+
+[State 7490, Fog_FX_0]
+type = Explod
+triggerall = var(5) = 0
+trigger1 = time%256 = 0
+anim = 7490
+ID = 7490
+space = stage
+bindID = ID
+pos = 0 * facing * Const(Size.xScale), 0 * Const(Size.yScale)
+;vel = 0, -1 * Const(Size.yScale)
+;accel = 0, 0.1 * Const(Size.yScale)
+facing = facing
+bindtime = -1
+removetime = -2
+supermovetime = 4294967295
+pausemovetime = 4294967295
+sprpriority = 3
+scale = 1 * Const(Size.xScale), 1 * Const(Size.yScale)
+remappal = 6001,var(1)
+angle = 0;random%360
+;xangle = 0
+;yangle = 0
+ownpal = 1
+ignorehitpause = 1
+
+[State 7490, Fog_FX_0]
+type = Explod
+triggerall = var(5) = 0
+trigger1 = time%256 = 64
+anim = 7491
+ID = 7491
+space = stage
+bindID = ID
+pos = 0 * facing * Const(Size.xScale), 0 * Const(Size.yScale)
+;vel = 0, -1 * Const(Size.yScale)
+;accel = 0, 0.1 * Const(Size.yScale)
+facing = facing
+bindtime = -1
+removetime = -2
+supermovetime = 4294967295
+pausemovetime = 4294967295
+sprpriority = 3
+scale = 1 * Const(Size.xScale), 1 * Const(Size.yScale)
+remappal = 6001,var(1)
+angle = 0;random%360
+;xangle = 0
+;yangle = 0
+ownpal = 1
+ignorehitpause = 1
+
+[State 7490, Fog_FX_0]
+type = Explod
+triggerall = var(5) = 0
+trigger1 = time%256 = 128
+anim = 7492
+ID = 7492
+space = stage
+bindID = ID
+pos = 0 * facing * Const(Size.xScale), 0 * Const(Size.yScale)
+;vel = 0, -1 * Const(Size.yScale)
+;accel = 0, 0.1 * Const(Size.yScale)
+facing = facing
+bindtime = -1
+removetime = -2
+supermovetime = 4294967295
+pausemovetime = 4294967295
+sprpriority = 3
+scale = 1 * Const(Size.xScale), 1 * Const(Size.yScale)
+remappal = 6001,var(1)
+angle = 0;random%360
+;xangle = 0
+;yangle = 0
+ownpal = 1
+ignorehitpause = 1
+
+[State 7490, Fog_FX_0]
+type = Explod
+triggerall = var(5) = 0
+trigger1 = time%256 = 192
+anim = 7493
+ID = 7493
+space = stage
+bindID = ID
+pos = 0 * facing * Const(Size.xScale), 0 * Const(Size.yScale)
+;vel = 0, -1 * Const(Size.yScale)
+;accel = 0, 0.1 * Const(Size.yScale)
+facing = facing
+bindtime = -1
+removetime = -2
+supermovetime = 4294967295
+pausemovetime = 4294967295
+sprpriority = 3
+scale = 1 * Const(Size.xScale), 1 * Const(Size.yScale)
+remappal = 6001,var(1)
+angle = 0;random%360
+;xangle = 0
+;yangle = 0
+ownpal = 1
+ignorehitpause = 1
+
+
+[State 7490, End]
+type = DestroySelf
+trigger1 = var(5) = -1 && !NumExplod
+;trigger3 = (Parent,StateNo = [3000,4099])
+removeexplods = 1
+recursive = 1
+
+;------- Run Counter must put at end--------
+[State 7490, Run Counter]
+type = varadd
+trigger1 = var(6) < 16777215
+var(6) = 1
+ignorehitpause = 1
+
+
+
+
+
+
+;Heat Particles
+[Statedef 8510]
+type = A
+physics = N
+anim = 9741
+ctrl = 0
+
+[State 8510, Type]
+type = varset
+trigger1 = !time
+var(1) = Const(size.proj.doscale)
+
+[State Parent]
+type = BindToParent
+trigger1 = (Parent,StateType = A || Parent,StateType = S)
+time = 1
+pos = 0, Parent,Const(Size.mid.pos.y) * Parent,Const(Size.yScale)
+
+[State Parent]
+type = BindToParent
+trigger1 = (Parent,StateType = C || Parent,StateType = L)
+time = 1
+pos = 0, Parent,Const(Size.mid.pos.y) * Parent,Const(Size.yScale) / 2
+
+;------ Phase -----
+[State 8510, End]
+type = varset
+trigger1 = var(5) = 0
+trigger1 = !NumHelper(8500)
+trigger1 = time
+trigger1 = var(6):=1
+var(5) = -1
+
+[State 8510, BG PAL]
+type = BGPALFX
+triggerall = var(1) = 0
+trigger1 = var(5) = 0
+time = 1
+add = 0,0,0
+mul = 192,192,192
+color = 256
+invertall = 0
+
+[State 8510, BG PAL]
+type = BGPALFX
+triggerall = var(1) = 0
+trigger1 = var(5) = -1
+trigger1 = var(6) = [1,16]
+time = 1
+add = 0,0,0
+mul = 192 + 4*var(6), 192 + 4*var(6), 192 + 4*var(6)
+color = 256
+invertall = 0
+
+[State 8510, BG PAL]
+type = BGPALFX
+triggerall = var(1) = 1
+trigger1 = var(5) = 0
+time = 1
+add = 0,0,0
+mul = 192,96,96
+color = 256
+invertall = 0
+
+[State 8510, BG PAL]
+type = BGPALFX
+triggerall = var(1) = 1
+trigger1 = var(5) = -1
+trigger1 = var(6) = [1,16]
+time = 1
+add = 0,0,0
+mul = 192 + 4*var(6),96 + 10*var(6),96 + 10*var(6)
+color = 256
+invertall = 0
+
+
+[State 8510, BG Color]
+type = Explod
+trigger1 = var(5) = 0
+trigger1 = !var(6)
+anim = 7187
+ID = 7187
+space = stage
+bindID = ID
+pos = 0 * facing * Const(Size.xScale), 0 * Const(Size.yScale)
+facing = facing
+bindtime = -1
+removetime = -1
+;supermovetime = 4294967295
+;pausemovetime = 4294967295
+sprpriority = -2
+scale = 6 * Const(Size.xScale), 6 * Const(Size.yScale)
+trans = add
+alpha = 128,256
+remappal = 7187,1 + var(1)
+angle = 0
+;xangle = 0
+;yangle = 0
+ownpal = 1
+ignorehitpause = 1
+
+[State 8510, BG Color]
+type = ModifyExplod
+trigger1 = var(5) = -1
+trigger1 = var(6) = [1,16]
+ID = 7187
+trans = add
+alpha = 128 - 8*var(6), 256
+
+[State 8510, BG Particles]
+type = Explod
+triggerall = var(5) = 0
+trigger1 = var(6)%46 = 0
+anim = 7196
+ID = 7196
+space = stage
+bindID = ID
+pos = 0 * facing * Const(Size.xScale), 0 * Const(Size.yScale)
+facing = facing
+bindtime = -1
+removetime = -2
+;supermovetime = 4294967295
+;pausemovetime = 4294967295
+sprpriority = -1
+scale = 4 * Const(Size.xScale), 4 * Const(Size.yScale)
+;trans = add
+;alpha = 256,256
+remappal = 7187,1 + var(1)
+angle = Random%360
+;xangle = 0
+;yangle = 0
+ownpal = 1
+ignorehitpause = 1
+
+[State 8510, BG Particles]
+type = Explod
+triggerall = var(5) = 0
+trigger1 = time && var(6)
+trigger1 = (var(6) -23)%46 = 0
+anim = 7196
+ID = 7198
+space = stage
+bindID = ID
+pos = 0 * facing * Const(Size.xScale), 0 * Const(Size.yScale)
+facing = facing
+bindtime = -1
+removetime = -2
+;supermovetime = 4294967295
+;pausemovetime = 4294967295
+sprpriority = -1
+scale = 4 * Const(Size.xScale), 4 * Const(Size.yScale)
+;trans = add
+;alpha = 256,256
+remappal = 7187,1 + var(1)
+angle = Random%360
+;xangle = 0
+;yangle = 0
+ownpal = 1
+ignorehitpause = 1
+
+[State 8510, BG Particles]
+type = ModifyExplod
+trigger1 = NumExplod(7196)
+trigger1 = var(6)%46 = [0,46]
+ID = 7196
+scale = (4 - 0.076*(var(6)%46)) * Const(Size.xScale), (4 - 0.076*(var(6)%46)) * Const(Size.yScale)
+
+[State 8510, BG Particles]
+type = ModifyExplod
+trigger1 = NumExplod(7198)
+trigger1 = (var(6) -23)%46 = [0,46]
+ID = 7198
+scale = (4 - 0.076*((var(6) -23)%46)) * Const(Size.xScale), (4 - 0.076*((var(6) -23)%46)) * Const(Size.yScale)
+
+
+[State 8150, X]
+type = varset
+triggerall = var(5) = 0
+trigger1 = time % 3 = 0
+var(11) = random%400 - 200
+
+[State 8150, X]
+type = varset
+triggerall = var(5) = 0
+trigger1 = time % 3 = 0
+var(11) = IFElse(var(11)>=0,var(11)+100,var(11)-100)
+
+[State 8150, X]
+type = varset
+triggerall = var(5) = 0
+trigger1 = time % 3 = 0
+var(12) = random%400 - 200
+
+[State 8150, Y]
+type = varset
+triggerall = var(5) = 0
+trigger1 = time % 3 = 0
+var(12) = IFElse(var(12)>=0,var(12)+100,var(12)-100)
+
+[State 8510, BG Particle-Single]
+type = Explod
+triggerall = var(5) = 0
+trigger1 = time % 3 = 0
+anim = 7432
+ID = 7432
+space = stage
+bindID = ID
+pos = var(11) * facing * Const(Size.xScale),  var(12) * Const(Size.yScale)
+facing = facing
+bindtime = 1
+removetime = 60
+;supermovetime = 4294967295
+;pausemovetime = 4294967295
+sprpriority = IFElse(Random<500,-1,2)
+vel = -(var(11)/60.0) * facing * Const(Size.xScale),  -(var(12)/60.0) * Const(Size.yScale)
+scale = 0.25 * Const(Size.xScale), 0.25 * Const(Size.yScale)
+;trans = add
+;alpha = 256,256
+remappal = 7187,1 + var(1)
+;angle = Random%360
+;xangle = 0
+;yangle = 0
+ownpal = 1
+ignorehitpause = 1
+
+
+[State 8510, End]
+type = DestroySelf
+trigger1 = var(5) = -1 && var(6) >= 60
+trigger2 = !NumExplod
+;trigger3 = (Parent,StateNo = [3000,4099])
+removeexplods = 1
+recursive = 1
+
+
+[State 8510, Debug]
+type = displaytoclipboard
+trigger1 = 1
+text = "var(5)=%d | counter=%d | Type=%d | NumExplod=%d"
+params = var(5), var(6), var(1), NumExplod
+ignorehitpause = 1
+
+[State 8510, Run Counter]
+type = varadd
+trigger1 = var(6) < 16777215
+var(6) = 1
+
+
+;Heat Gauge
+[Statedef 8500]
+type = A
+physics = N
+anim = 9741
+ctrl = 0
+
+[State 8500, Facing]
+type = Turn
+triggerall = !PrevStateNo
+trigger1 = !time
+trigger1 = facing != IFElse(Teamside=1,1,-1)
+
+[State 8500, Type]
+type = varset
+triggerall = !PrevStateNo
+trigger1 = !time
+var(10) = Const(size.shadowoffset)
+
+[State 8500, FULL]
+type = varset
+triggerall = !PrevStateNo
+trigger1 = !time
+var(25) = Power
+
+;--------------- Vars --------------------------
+[State 8500, Base X - P1]
+type = varset
+triggerall = Const(size.proj.doscale) = 0
+triggerall = !PrevStateNo
+trigger1 = !time
+fvar(1) = IFElse(Teamside=1, Helper(9999),fvar(5) ,ScreenWidth - Helper(9999),fvar(5))
+
+[State 8500, Base Y - P1]
+type = varset
+triggerall = Const(size.proj.doscale) = 0
+triggerall = !PrevStateNo
+trigger1 = !time
+fvar(2) = Floor(ScreenHeight * Helper(9999),fvar(6))
+
+[State 8500, Base X - P3]
+type = varset
+triggerall = Const(size.proj.doscale) = 1
+triggerall = !PrevStateNo
+trigger1 = !time
+fvar(1) = IFElse(Teamside=1, Helper(9999),fvar(7) ,ScreenWidth - Helper(9999),fvar(7))
+
+[State 8500, Base Y - P3]
+type = varset
+triggerall = Const(size.proj.doscale) = 1
+triggerall = !PrevStateNo
+trigger1 = !time
+fvar(2) =  Floor(ScreenHeight * Helper(9999),fvar(8))
+
+[State 8500, Meter]
+type = varadd
+triggerall = !(Parent,StateNo = [980,990])
+trigger1 = var(25) > 0
+var(25) = -IFElse(Parent,var(1)>=10000,4,8)
+
+[State 8500, Meter]
+type = varadd
+triggerall = !(Parent,StateNo = [980,990])
+trigger1 = var(25) > 0
+trigger1 = Parent,MoveType = H && Parent,StateNo = 5000
+trigger1 = Parent,Time = 1
+var(25) = -100
+
+[State 8500, EX]
+type = varadd
+triggerall = var(25)
+trigger1 = (Parent,StateNo = [1000,2999])
+trigger1 = !(Parent,PrevStateNo = [5000,5099])
+trigger1 = NumHelper(7200)
+trigger1 = Helper(7200),Time < 2
+var(25) = -1000
+ignorehitpause = 1
+
+[State 8500, Super]
+type = varadd
+triggerall = var(25)
+trigger1 = (Parent,StateNo = [3000,3999])
+trigger1 = !(Parent,PrevStateNo = [5000,5099])
+trigger1 = NumHelper(7206)
+trigger1 = Helper(7206),Time < 2
+var(25) = -3000
+ignorehitpause = 1
+
+[State 8500, Ultra_Last_Arc]
+type = varadd
+triggerall = var(25)
+trigger1 = (Parent,StateNo = [4000,4999])
+trigger1 = Parent,Time < 2
+var(25) = -4000
+ignorehitpause = 1
+
+
+
+;------- Explods -----------
+
+
+[State 8500, Gauge frame]
+type = Explod
+trigger1 = !NumExplod(8501)
+anim = 8501
+ID = 8501
+space = screen
+facing = facing
+pos = fvar(1),fvar(2)
+removetime = -1
+scale = 1.0, 1.0
+supermovetime = 4294967295
+pausemovetime = 4294967295
+sprpriority = 1
+ontop = 1
+shadow = 0
+ownpal = 1
+;remappal = 8500,0
+ignorehitpause = 1
+
+[State 8500, Text]
+type = Explod
+trigger1 = !NumExplod(8506)
+anim = 8506
+ID = 8506
+space = screen
+facing = 1
+pos = fvar(1) + IFElse(TeamSide=1,-Const720p(20),Const720p(20)),fvar(2)
+removetime = -1
+scale = 1.0, 1.0
+supermovetime = 4294967295
+pausemovetime = 4294967295
+sprpriority = 1
+ontop = 1
+shadow = 0
+ownpal = 1
+;remappal = 8500,0
+ignorehitpause = 1
+
+[State 8500, Gauge Aura]
+type = Explod
+trigger1 = !NumExplod(8500)
+anim = 8500
+ID = 8500
+space = screen
+facing = facing
+pos = fvar(1),fvar(2)
+removetime = -1
+scale = 1.0, 1.0
+supermovetime = 4294967295
+pausemovetime = 4294967295
+sprpriority = 1
+ontop = 1
+shadow = 0
+ownpal = 1
+remappal = 8500,var(10)
+ignorehitpause = 1
+
+[State 8500, Gauge Meter]
+type = Explod
+trigger1 = !NumExplod(8502)
+anim = 8502
+ID = 8502
+space = screen
+facing = facing
+pos = fvar(1),fvar(2)
+removetime = -1
+scale = 1.0, 1.0
+supermovetime = 4294967295
+pausemovetime = 4294967295
+sprpriority = 1
+ontop = 1
+shadow = 0
+ownpal = 1
+remappal = 8502,var(10)
+ignorehitpause = 1
+
+[State 8500, Gauge Meter]
+type = ModifyExplod
+trigger1 = NumExplod(8502)
+trigger1 = var(25)
+ID = 8502
+scale = var(25)/4000.0, 1.0
+
+
+[State 8500, Gauge Lighting]
+type = Explod
+trigger1 = var(6)%60 = 0
+anim = 7190 + Random%4
+ID = 7190
+space = screen
+facing = facing
+pos = fvar(1) + Const720p(50)*facing ,fvar(2)
+removetime = -2
+scale = 1.0, 0.5
+supermovetime = 4294967295
+pausemovetime = 4294967295
+sprpriority = 1
+angle = 120
+ontop = 1
+shadow = 0
+ownpal = 1
+remappal = 7190,var(10) + 1
+ignorehitpause = 1
+
+[State 8500, Gauge Lighting]
+type = Explod
+trigger1 = var(6)%60 = 0
+anim = 7190 + Random%4
+ID = 7190
+space = screen
+facing = facing
+pos = fvar(1) + Const720p(140)*facing ,fvar(2) - Const720p(20)
+removetime = -2
+scale = 1.0, 0.5
+supermovetime = 4294967295
+pausemovetime = 4294967295
+sprpriority = 1
+angle = 70
+ontop = 1
+shadow = 0
+ownpal = 1
+remappal = 7190,var(10) + 1
+ignorehitpause = 1
+
+[State 8500, Gauge Lighting]
+type = Explod
+trigger1 = var(6)%60 = 0
+anim = 7190 + Random%4
+ID = 7190
+space = screen
+facing = facing
+pos = fvar(1) + Const720p(180)*facing ,fvar(2)
+removetime = -2
+scale = 1.0, 0.5
+supermovetime = 4294967295
+pausemovetime = 4294967295
+sprpriority = 1
+angle = -120
+ontop = 1
+shadow = 0
+ownpal = 1
+remappal = 7190,var(10) + 1
+ignorehitpause = 1
+
+;---------------------------------------
+
+[State 8500, Sync_Heat_Flag]
+type = ParentVarSet
+trigger1 = !time
+trigger1 = !(Parent,var(19) & 16)
+var(19) = Parent,var(19) + 16
+
+[State 8500, Sync_Heat_Flag]
+type = ParentVarSet
+trigger1 = var(25) <= 1
+trigger1 = (Parent,var(19) & 16)
+var(19) = Parent,var(19) - 16
+
+[State 8500, Sync_Meter]
+type = ParentVarSet
+trigger1 = var(25)
+trigger1 = Parent,var(25) != var(25)
+var(25) = var(25)
+
+[State 8500, SyncPower]
+type = PowerSet
+trigger1 = var(25) <= 0
+value = 0
+
+[State 8500, Sync_Red_Heat_Flag]
+type = ParentVarSet
+trigger1 = !time
+trigger1 = !(Parent,var(19) & 4)
+trigger1 = var(10)
+var(19) = Parent,var(19) + 4
+
+[State 8500, Sync_Red_Heat_Flag]
+type = ParentVarSet
+triggerall = (Parent,var(19) & 4)
+trigger1 = var(10) = 0
+trigger2 = RoundState != [2,3]
+trigger3 = var(6) >= 4294967295
+trigger4 = var(25) <= 0
+var(19) = Parent,var(19) - 4
+
+[State 8500, End]
+type = DestroySelf
+trigger1 = RoundState != [2,3]
+trigger2 = var(6) >= 4294967295
+trigger3 = var(25) <= 0
+removeexplods = 1
+recursive = 1
+
+[State 8500, Debug]
+type = displaytoclipboard
+trigger1 = 1
+text = "\nvar(10)=%d | var(6)=%d | Heat=%d | fvar(1)=%d | fvar(2)=%d"
+params = var(10),var(6),var(25), fvar(1),fvar(2)
+ignorehitpause = 1
+
+
+[State 8500, Run Counter]
+type = varadd
+trigger1 = var(6) < 4294967295
+var(6) = 1
+ignorehitpause = 1
+
+
+;Moon Gauge
+[Statedef 8550]
+type = A
+physics = N
+anim = 9741
+ctrl = 0
+
+[State 8550, Facing]
+type = Turn
+triggerall = !PrevStateNo
+trigger1 = !time
+trigger1 = facing != IFElse(Teamside=1,1,-1)
+
+
+
+[State 8550, FULL]
+type = varset
+triggerall = !PrevStateNo && Parent,RoundsExisted = 0
+trigger1 = !time
+var(24) = 2000
+
+[State 8550, FULL]
+type = varset
+triggerall = !PrevStateNo && Parent,RoundsExisted
+trigger1 = !time
+var(24) = Parent,var(24)
+
+;--------------- Vars --------------------------
+[State 8550, Base X - P1]
+type = varset
+triggerall = Const(size.proj.doscale) = 0
+triggerall = !PrevStateNo
+trigger1 = !time
+fvar(1) = IFElse(Teamside=1,Helper(9999),fvar(1), ScreenWidth - Helper(9999),fvar(1))
+
+[State 8550, Base Y - P1]
+type = varset
+triggerall = Const(size.proj.doscale) = 0
+triggerall = !PrevStateNo
+trigger1 = !time
+fvar(2) = Floor(Helper(9999),fvar(2))
+
+[State 8550, Base X P3]
+type = varset
+triggerall = Const(size.proj.doscale) = 1
+triggerall = !PrevStateNo
+trigger1 = !time
+fvar(1) = IFElse(Teamside=1,Helper(9999),fvar(3), ScreenWidth - Helper(9999),fvar(3))
+
+[State 8550, Base Y P3]
+type = varset
+triggerall = Const(size.proj.doscale) = 1
+triggerall = !PrevStateNo
+trigger1 = !time
+fvar(2) = Floor(Helper(9999),fvar(4))
+
+;Conditions to add Moon
+[State 8550, Moon Gauge]
+type = varadd
+triggerall = var(24) < 2000
+triggerall = var(5) = 0
+triggerall = !(Parent,StateNo = [500,599])
+trigger1 = Enemynear,time < 2
+trigger1 = Parent,MoveHit = 1
+trigger1 = Enemynear,GetHitVar(HitCount) < 2
+trigger1 = var(6) := 1
+trigger2 = Enemynear,time < 2
+trigger2 = (Parent,StateNo = 801 || Parent,StateNo = 811) && Parent,Time < 2
+trigger2 = var(6) := 1
+trigger3 = !(Parent,PrevStateNo = [5000,5299])
+trigger3 = Parent,StateNo = 5000 || Parent,StateNo = 5010 || Parent,StateNo = 5020
+trigger3 = Parent,Time < 2
+trigger3 = var(6) := 1
+var(24) = 200
+
+[State 8550, var(24) cap]
+type = varset
+trigger1 = var(24) > 2000
+var(24) = 2000
+
+[State 8550, var(24) Moon drive]
+type = varadd
+triggerall = !(Parent,StateNo = [980,990])
+trigger1 = var(5) = 1 && RoundState = 2
+var(24) = -1
+
+[State 8550, var(24) Moon drive]
+type = PowerAdd
+triggerall = !(Parent,StateNo = [980,990])
+trigger1 = var(5) = 1 && RoundState = 2
+trigger1 = var(24)
+value = 1
+
+[State 8550, var(24) Moon drive]
+type = varset
+triggerall = !(Parent,StateNo = [980,990])
+triggerall = var(5) = 1 && RoundState = 2
+trigger1 = var(24)%200 = 0
+var(6) = 1
+
+
+
+
+;---- Phase ----------------
+[State 8550, Change Phase]
+type = varset
+trigger1 = var(5) = 0
+trigger1 = Parent,StateNo = 990
+trigger1 = var(6) := 1
+var(5) = 1
+
+[State 8550, Change Phase]
+type = varset
+trigger1 = var(5) = 1
+trigger1 = var(24) <= 0
+trigger1 = var(6) := 1
+var(5) = 0
+
+;------- Explods -----------
+
+[State 8550, Gauge frame]
+type = Explod
+trigger1 = !NumExplod(8550)
+anim = 8550
+ID = 8550
+space = screen
+facing = facing
+pos = fvar(1), fvar(2)
+removetime = -1
+scale = 1.0, 1.0
+supermovetime = 4294967295
+pausemovetime = 4294967295
+sprpriority = -10
+;ontop = 1
+shadow = 0
+ownpal = 1
+;remappal = 8500,0
+ignorehitpause = 1
+
+[State 8550, Gauge Meter]
+type = RemoveExplod
+triggerall = NumExplod(8560)
+trigger1 = 1
+ID = 8560
+ignorehitpause = 1
+
+[State 8550, Gauge Meter Yellow]
+type = Explod
+triggerall = !NumExplod(8560)
+trigger1 = 1
+anim = 8560 + Floor(var(24) / 200.0) + 20*(var(5) = 1)
+ID = 8560
+space = screen
+facing = facing
+pos = fvar(1), fvar(2)
+removetime = -1
+scale = 1.0, 1.0
+supermovetime = 4294967295
+pausemovetime = 4294967295
+sprpriority = -9
+;ontop = 1
+shadow = 0
+ownpal = 1
+;remappal = 8561,0
+ignorehitpause = 1
+
+[State 8550, Gauge Aura-01]
+type = RemoveExplod
+triggerall = NumExplod(8573)
+trigger1 = var(5) = 0
+trigger1 = var(24) < 1000
+trigger2 = (Parent,StateNo = [980,990])
+trigger2 = var(5) = 1 && var(6) = 1
+ID = 8573
+
+[State 8550, Gauge Aura-01]
+type = Explod
+triggerall = !NumExplod(8573)
+trigger1 = var(24) >= 1000
+trigger1 = var(6) <= 1
+trigger2 = var(5) = 1 && var(6) = 1
+anim = 8573
+ID = 8573
+space = screen
+facing = facing
+pos = fvar(1), fvar(2)
+removetime = -1
+scale = 1.0, 1.0
+supermovetime = 4294967295
+pausemovetime = 4294967295
+sprpriority = -9
+;ontop = 1
+shadow = 0
+ownpal = 1
+remappal = 8573,var(5)
+ignorehitpause = 1
+
+
+[State 8550, Gauge Aura-02]
+type = RemoveExplod
+triggerall = !NumExplod(8576)
+trigger1 = var(24) < 2000
+ID = 8576
+
+[State 8550, Gauge Aura-02]
+type = Explod
+triggerall = !NumExplod(8576)
+triggerall = var(24) >= 2000
+trigger1 = var(6) <= 1
+trigger2 = var(6) % 120 = 1
+anim = 8576
+ID = 8576
+space = screen
+facing = facing
+pos = fvar(1), fvar(2)
+vel = 0.25 * facing, 0.25
+removetime = -2
+scale = 0.25, 0.25
+supermovetime = 4294967295
+pausemovetime = 4294967295
+sprpriority = -9
+;ontop = 1
+shadow = 0
+ownpal = 1
+remappal = 8573,0
+ignorehitpause = 1
+
+[State 8550, Gauge Aura-02]
+type = ModifyExplod
+triggerall = NumExplod(8576)
+trigger1 = (var(6) % 120) = [1,120]
+ID = 8576
+scale = 0.25 + (var(6) % 120)/400.0, 0.25 + (var(6) % 120)/400.0
+
+
+;----- Sync
+[State 8550, Sync from parent]
+type = VarSet
+triggerall = var(24) != Parent,var(24)
+trigger1 = ((Parent,StateNo = [700,702]) || (Parent,StateNo = [740,741]))
+trigger2 = (Parent,StateNo = [500,599]) || Parent,StateNo = 280
+trigger2 = Parent,Time < 2 && !(Parent,PrevStateNo = [5000,5099])
+var(24) = Parent,var(24)
+
+[State 8550, Fix Moon Var]
+type = VarSet
+trigger1 = var(24) < 0
+var(24) = 0
+
+[State 8550, Sync to parent]
+type = ParentVarSet
+triggerall = var(24) != Parent,var(24)
+trigger1 = !((Parent,StateNo = [700,702]))
+var(24) = var(24)
+
+[State 8550, Fix Moon Var]
+type = VarSet
+trigger1 = var(24) < 0
+var(24) = 0
+
+[State 8550, Sync]
+type = ParentVarSet
+trigger1 = var(5) = 1
+trigger1 = !(Parent,var(19) & 2)
+var(19) = Parent,var(19) + 2
+
+[State 8550, Sync]
+type = ParentVarSet
+trigger1 = var(5) = 0
+trigger1 = (Parent,var(19) & 2)
+var(19) = Parent,var(19) - 2
+
+
+[State 8550, End]
+type = DestroySelf
+trigger1 = RoundState != [2,3]
+trigger2 = var(6) >= 4294967295
+removeexplods = 1
+recursive = 1
+
+[State 8550, Image var]
+type = varset
+trigger1 = var(25) != (8560 + Floor(var(24) / 200.0) + 20*(var(5) = 1))
+var(25) = (8560 + Floor(var(24) / 200.0) + 20*(var(5) = 1))
+
+[State 8550, Debug]
+type = displaytoclipboard
+trigger1 = 1
+text = "var(5)=%d | var(6)=%d | fvar(1)=%d | fvar(2)=%d | ANIM=%d"
+params = var(5),var(6),fvar(1),fvar(2), var(25)
+ignorehitpause = 1
+
+[State 8550, Run Counter]
+type = varadd
+trigger1 = var(6) < 4294967295
+var(6) = 1
+ignorehitpause = 1
+
+
+
+;Launcher Portrait
+[Statedef 9992]
+type = A
+physics = N
+MoveType = I
+sprpriority = 0
+anim = 9741
+ctrl = 0
+
+[State ScreenRatioVar]
+type = varset
+trigger1 = !time
+fvar(3) = (1.77778 / (ScreenWidth/ScreenHeight))
+
+;12= Portrait fade in, 18 = Portait full, 8 = fade out
+
+[State 9992, Portrait-Launcher-1]
+type = Explod
+triggerall = !NumExplod(9992)
+trigger1 = var(6) = 0
+anim = 9992
+ID = 9992
+space = screen
+facing = facing
+pos = IFElse(facing=1,Const720p(100-240), ScreenWidth - Const720p(100-240)), ScreenHeight + Const720p(362.64)
+removetime = 12
+scale = Const720p(1.0) * fvar(3), Const720p(1.0) * fvar(3)
+vel = facing * Const720p(20), Const720p(-30.22); ratio 1.511
+supermovetime = 4294967295
+pausemovetime = 4294967295
+sprpriority = -3
+angle = 0
+ontop = 0
+shadow = 0
+ownpal = 1
+;remappal = 7190,var(10) + 1
+ignorehitpause = 1
+
+[State 9992, Portrait-Launcher-1]
+type = ModifyExplod
+triggerall = NumExplod(9992)
+trigger1 = var(6) = [0,8]
+ID = 9992
+trans = add
+alpha = (32 * var(6)), 256 - (32 * var(6))
+
+[State 9992, Portrait-Launcher-2]
+type = Explod
+trigger1 = var(6) = 12
+anim = 9992
+ID = 9992
+space = screen
+facing = facing
+pos = IFElse(facing=1,Const720p(100), ScreenWidth - Const720p(100)), ScreenHeight
+removetime = 26
+scale = Const720p(1.0) * fvar(3), Const720p(1.0) * fvar(3)
+vel = facing * Const720p(1), Const720p(-1.511)
+supermovetime = 4294967295
+pausemovetime = 4294967295
+sprpriority = -3
+angle = 0
+ontop = 0
+shadow = 0
+ownpal = 1
+;remappal = 7190,var(10) + 1
+ignorehitpause = 1
+
+[State 9992, Portrait-Launcher-2]
+type = ModifyExplod
+trigger1 = NumExplod(9992)
+trigger1 = var(6) = [30,38]
+ID = 9992
+trans = add
+alpha = 256 - (32 * (var(6)-30)), (32 * (var(6)-30))
+
+
+
+[State Safe Remove]
+type = DestroySelf
+trigger1 = !NumExplod
+trigger2 = var(6) > 38
+recursive = 1
+removeexplods  = 1
+
+[State Counter-Run]
+type = varadd
+trigger1 = var(6) < 4294967295
+var(6) = 1
+
+
+
+;Moon Drive Active Portrait
+[Statedef 9993]
+type = A
+physics = N
+MoveType = I
+sprpriority = 0
+anim = 9741
+ctrl = 0
+
+;8= Portrait fade in, 14 = Portait full, 40 = fade out
+
+[State 9993, BG]
+type = BGPALFX
+trigger1 = var(6) = [0,4]
+time = 1
+add = 0,0,0
+mul = 256 - 32*var(6), 256 - 32*var(6), 256 - 32*var(6)
+color = 256 - 16*var(6)
+invertall = 0
+
+[State 9993, BG]
+type = BGPALFX
+trigger1 = var(6) = [5,41]
+time = 1
+add = 0,0,0
+mul = 128,128,128
+color = 192
+invertall = 0
+
+[State 9993, BG]
+type = BGPALFX
+trigger1 = var(6) = [42,50]
+time = 1
+add = 0,0,0
+mul = 128 + 16*(var(6)-42), 128 + 16*(var(6)-42), 128 + 16*(var(6)-42)
+color = 192 + 8*(var(6)-42)
+invertall = 0
+
+[State 9993, Line]
+type = Explod
+triggerall = !NumExplod(7464)
+trigger1 = var(6) = 0
+anim = 7464
+ID = 7464
+space = screen
+facing = facing
+pos = ScreenWidth * 0.5, ScreenHeight * 0.5
+removetime = 50
+scale = Const720p(2.0), Const720p(10.0)
+supermovetime = 4294967295
+pausemovetime = 4294967295
+sprpriority = 1
+angle = -28
+ontop = 0
+shadow = 0
+ownpal = 1
+;remappal = 7190,var(10) + 1
+ignorehitpause = 1
+
+[State 9993, Line]
+type = ModifyExplod
+triggerall = NumExplod(7464)
+trigger1 = var(6) = [0,8]
+ID = 7464
+scale = Const720p(4 - 0.25*(var(6))), Const720p(0 + 1.25*(var(6)))
+
+[State 9993, Line]
+type = ModifyExplod
+triggerall = NumExplod(7464)
+trigger1 = var(6) = [41,50]
+ID = 7464
+scale = Const720p(2 - 0.2*(var(6)-40)), Const720p(10)
+
+
+[State 9993, Portrait-Active]
+type = Explod
+triggerall = !NumExplod(9993)
+trigger1 = var(6) = 8
+anim = 9993
+ID = 9993
+space = screen
+facing = facing
+pos = ScreenWidth * 0.5 - facing*Const720p(30), ScreenHeight * 0.5 + Const720p(56.42179396)
+removetime = 42
+scale = Const720p(1.0), Const720p(1.0)
+vel = facing * Const720p(1), Const720p(-1.8807264)
+supermovetime = 4294967295
+pausemovetime = 4294967295
+sprpriority = -2
+angle = 0
+ontop = 0
+shadow = 0
+ownpal = 1
+;remappal = 7190,var(10) + 1
+ignorehitpause = 1
+
+[State 9993, Portrait-Active]
+type = ModifyExplod
+triggerall = NumExplod(9993)
+trigger1 = var(6) = [8,16]
+ID = 9993
+trans = add
+alpha = 32*(var(6)-8), 256 - 32*(var(6)-8)
+
+[State 9993, Portrait-Active]
+type = ModifyExplod
+triggerall = NumExplod(9993)
+trigger1 = var(6) = [42,50]
+ID = 9993
+trans = add
+alpha = 256 - 32*(var(6)-42), 32*(var(6)-42)
+
+[State Safe Remove]
+type = DestroySelf
+trigger1 = !NumExplod
+trigger2 = var(6) > 50
+recursive = 1
+removeexplods  = 1
+
+[State Counter-Run]
+type = varadd
+trigger1 = var(6) < 4294967295
+var(6) = 1
+
+;Moon Drive Passive Portrait
+[Statedef 9994]
+type = A
+physics = N
+MoveType = I
+sprpriority = 0
+anim = 9741
+ctrl = 0
+
+;8= Portrait fade in, 14 = Portait full, 40 = fade out
+
+[State 9994, Turn]
+type = Turn
+trigger1 = time < 2
+trigger1 = Enemynear,facing = facing
+
+
+[State 9994, Portrait-Active]
+type = Explod
+triggerall = !NumExplod(9994)
+trigger1 = var(6) = 8
+anim = 9994
+ID = 9994
+space = screen
+facing = facing
+pos = ScreenWidth * 0.5 - facing*Const720p(30), ScreenHeight * 0.5 - Const720p(56.42179396)
+removetime = 42
+scale = Const720p(1.0), Const720p(1.0)
+vel = facing * Const720p(1), Const720p(1.8807264)
+supermovetime = 4294967295
+pausemovetime = 4294967295
+sprpriority = -3
+angle = 0
+ontop = 0
+shadow = 0
+ownpal = 1
+;remappal = 7190,var(10) + 1
+ignorehitpause = 1
+
+[State 9994, Portrait-Active]
+type = ModifyExplod
+triggerall = NumExplod(9994)
+trigger1 = var(6) = [8,16]
+ID = 9994
+trans = add
+alpha = 32*(var(6)-8), 256 - 32*(var(6)-8)
+
+[State 9994, Portrait-Active]
+type = ModifyExplod
+triggerall = NumExplod(9994)
+trigger1 = var(6) = [42,50]
+ID = 9994
+trans = add
+alpha = 256 - 32*(var(6)-42), 32*(var(6)-42)
+
+[State Safe Remove]
+type = DestroySelf
+trigger1 = var(6) > 50
+recursive = 1
+removeexplods  = 1
+
+[State Counter-Run]
+type = varadd
+trigger1 = var(6) < 4294967295
+var(6) = 1
+
+
+
+
+;Moon Drive Passive Portrait
+[Statedef 9996]
+type = A
+physics = N
+MoveType = I
+sprpriority = 0
+anim = 9741
+ctrl = 0
+
+[State ScreenRatioVar]
+type = varset
+trigger1 = !time
+fvar(3) = (1.77778 / (ScreenWidth/ScreenHeight))
+
+[State 9996, Portrait]
+type = Explod
+triggerall = !NumExplod(9996)
+trigger1 = var(6) = 0
+anim = 9996
+ID = 9996
+space = screen
+facing = facing
+pos = ScreenWidth * IFElse(facing=1,0.02,0.97), ScreenHeight * 0.95
+removetime = 64
+scale = 0.85 * fvar(3), 0.85 * fvar(3)
+supermovetime = 4294967295
+pausemovetime = 4294967295
+sprpriority = -20
+angle = 0
+ontop = 0
+shadow = 0
+ownpal = 1
+;remappal = 7190,var(10) + 1
+ignorehitpause = 1
+
+[State 9996, Portrait]
+type = ModifyExplod
+triggerall = NumExplod(9996)
+trigger1 = var(6) = [0,16]
+ID = 9996
+scale = (0.83 + 0.002*var(6)) * fvar(3), (0.83 + 0.002*var(6)) * fvar(3)
+trans = add
+alpha = (16 * var(6)), 256 - (16 * var(6))
+
+[State 9996, Portrait]
+type = ModifyExplod
+triggerall = NumExplod(9996)
+trigger1 = var(6) = [17,24]
+ID = 9996
+scale = (0.862 + 0.002*(var(6)-16)) * fvar(3), (0.862 + 0.002*(var(6)-16)) * fvar(3)
+trans = add
+alpha = 256,0
+
+[State 9996, Portrait]
+type = ModifyExplod
+triggerall = NumExplod(9996)
+trigger1 = var(6) = [32,64]
+ID = 9996
+trans = add
+alpha = 256 - (8 * (var(6)-32)), (8 * (var(6)-32))
+
+[State Safe Remove]
+type = DestroySelf
+trigger1 = !NumExplod
+recursive = 1
+removeexplods  = 1
+
+[State Counter-Run]
+type = varadd
+trigger1 = var(6) < 4294967295
+var(6) = 1
+

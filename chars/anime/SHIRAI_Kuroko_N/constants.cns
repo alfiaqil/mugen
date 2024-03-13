@@ -1,0 +1,82 @@
+[Data]
+life			= 1500;jambu;1000		;Amount of life to start with
+power			= 7000;jambu;5000		;Amount of maximum power
+attack			= 100		;attack power (more is stronger)
+defence			= 100		;defensive power (more is stronger)
+fall.defence_up		= 50		;Percentage to increase defense everytime player is knocked down
+liedown.time		= 60		;Time which player lies down for, before getting up
+airjuggle			= 15		;Number of points for juggling
+sparkno			= 2		;Default hit spark number for HitDefs
+guard.sparkno		= 40		;Default guard spark number
+KO.echo			= 1		;1 to enable echo on KO
+Volumescale		= 100		;Volume offset (negative for softer)
+IntPersistIndex		= 0		;if you set to 40 or 60 the var will reset during rounds
+FloatPersistIndex		= 0		;if you set to 40 or 60 the var will reset during rounds
+
+
+[Size]
+xscale			= 1.1;jambu;1.14		;Horizontal scaling factor.
+yscale			= 1.1;jambu;1.14		;Vertical scaling factor.
+ground.back		= 60		;Player width (back, ground)
+ground.front		= 50		;Player width (front, ground)
+air.back			= 46		;Player width (back, air)
+air.front			= 48		;Player width (front, air)
+height			= 332		;Height of player (for opponent to jump over)
+attack.dist		= 660		;Default attack distance
+proj.attack.dist		= 400		;Default attack distance for projectiles
+proj.doscale		= 0		;Set to 1 to scale projectiles too   
+head.pos			= 11, -296	;Approximate position of head
+mid.pos			= 0, -192		;Approximate position of midsection
+shadowoffset		= 0		;Number of pixels to vertically offset the shadow
+draw.offset		= 0,0		;Player drawing offset in pixels (x, y)
+
+[Velocity]
+walk.fwd			= 8		;Walk forward
+walk.back			= -6		;Walk backward
+run.fwd			= 22, 0		;Run forward (x, y)
+run.back			= -17,-15	;Hop backward (x, y)
+jump.neu			= 0, -32	;Neutral jumping velocity (x, y)
+jump.back			= -9,-32	;Jump back Speed (x, y)
+jump.fwd			= 12,-32	;Jump forward Speed (x, y)
+runjump.back		= -10,-32	;Running jump speeds (opt)
+runjump.fwd		= 12,-32	;.
+airjump.neu		= 0, -32	;.
+airjump.back		= -10	;Air jump speeds (opt)
+airjump.fwd		= 12		;.
+air.gethit.groundrecover = -.6,-14		;Velocity for ground recovery state (x, y) **MUGEN 1.0**
+air.gethit.airrecover.mul = 0.5, 0.5	;Multiplier for air recovery velocity (x, y) **MUGEN 1.0**
+air.gethit.airrecover.add = 2, -34		;Velocity offset for air recovery (x, y) **MUGEN 1.0**
+air.gethit.airrecover.fwd = 12			;Extra x-velocity for holding forward during air recovery **MUGEN 1.0**
+air.gethit.airrecover.back = -10		;Extra x-velocity for holding back during air recovery **MUGEN 1.0**
+air.gethit.airrecover.up = -8			;Extra y-velocity for holding up during air recovery **MUGEN 1.0**
+air.gethit.airrecover.down = 6			;Extra y-velocity for holding down during air recovery **MUGEN 1.0**
+
+[Movement]
+airjump.num		= 1;jambu;0		;Number of air jumps allowed (opt) use stateno = 45
+airjump.height		= 35		;Minimum distance from ground before you can air jump (opt)
+yaccel			= 1.84		;Vertical acceleration (AKA Gravity when scale is 1)
+stand.friction		= 0.8		;Friction coefficient when standing
+crouch.friction		= 0.6		;Friction coefficient when crouching
+stand.friction.threshold = 8          ;If player's speed drops below this threshold while standing, stop his movement **MUGEN 1.0**
+crouch.friction.threshold = .2        ;If player's speed drops below this threshold while crouching, stop his movement **MUGEN 1.0**
+air.gethit.groundlevel	= 100          ;Y-position at which a falling player is considered to hit the ground **MUGEN 1.0**
+air.gethit.groundrecover.ground.threshold = -80 ;Y-position below which falling player can use the recovery command **MUGEN 1.0**
+air.gethit.groundrecover.groundlevel = 40   ;Y-position at which player in the ground recovery state touches the ground **MUGEN 1.0**
+air.gethit.airrecover.threshold = -4  ;Y-velocity above which player may use the air recovery command **MUGEN 1.0**
+air.gethit.airrecover.yaccel = 1.84   ;Vertical acceleration for player in the air recovery state **MUGEN 1.0**
+air.gethit.trip.groundlevel	= -20      ;Y-position at which player in the tripped state touches the ground **MUGEN 1.0**
+down.bounce.offset		= 0, 80            ;Offset for player bouncing off the ground (x, y) **MUGEN 1.0**
+down.bounce.yaccel		= 1.6              ;Vertical acceleration for player bouncing off the ground **MUGEN 1.0**
+down.bounce.groundlevel	= 48          ;Y-position at which player bouncing off the ground touches the ground again **MUGEN 1.0**
+down.friction.threshold	= .2          ;If the player's speed drops below this threshold while lying down, stop his movement **MUGEN 1.0**
+
+
+[Quotes]
+victory1		= "Don't worry, you are OK, and get ready for interrogation."
+victory2		= "This is SHIRAI Kuroko, suspecter is under control, Please contect Anti-Skill."
+victory3		= "This is judgement, Please send the rope quickly."
+victory4		= "It doesn't matter, But is this too easy?"
+
+
+victory10		= "O Ne Sama! O Ne Sama! Kuroko... Kuroko... AAAAAaa..."
+victory11		= "O Ne Sama! O Ne Sama! My Sweet O Ne Sama!! AAAAaaa.."

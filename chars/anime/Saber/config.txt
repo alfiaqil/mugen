@@ -1,0 +1,72 @@
+;Beterhans's Dengiki Bunko / MBTL Character config file
+
+; Config_Helper
+[Statedef 9999]
+type		= A
+movetype	= I
+physics		= N
+ctrl		= 0
+anim		= 9741
+
+[State 9999, Moon-Gauge-P1-X]
+type = varset
+trigger1 = !time
+fvar(1) = 120
+; 120 Means from Left Edge walk 120 pixels to the right
+
+[State 9999, Moon-Gauge-P1-Y]
+type = varset
+trigger1 = !time
+fvar(2) = 120
+; 120 Means from Top Edge walk 120 pixels downwards.
+
+[State 9999, Moon-Gauge-P3-X]
+type = varset
+trigger1 = !time
+fvar(3) = 200
+; 200 Means from Left Edge walk 120 pixels to the right
+
+[State 9999, Moon-Gauge-P3-Y]
+type = varset
+trigger1 = !time
+fvar(4) = 120
+; 120 Means from Top Edge walk 120 pixels downwards.
+
+[State 9999, Heat-Gauge-P1-X]
+type = varset
+trigger1 = !time
+fvar(5) = 40
+; 40 Means from Left Edge walk 40 pixels to the right
+
+[State 9999, Heat-Gauge-P1-Y]
+type = varset
+trigger1 = !time
+fvar(6) = 0.95
+; 0.95 Means 95% ScreenHeight from top to bottom.   0 is on top 1 is at bottom. no matter 16:9 or 4:3
+
+[State 9999, Heat-Gauge-P3-X]
+type = varset
+trigger1 = !time
+fvar(7) = 340
+; 340 Means from Left Edge walk 40 pixels to the right
+
+[State 9999, Heat-Gauge-P3-Y]
+type = varset
+trigger1 = !time
+fvar(8) = 0.95
+; 0.95 Means 95% ScreenHeight from top to bottom.   0 is on top 1 is at bottom. no matter 16:9 or 4:3
+
+[State 9999, Max_Allowed_Air_Jump_Normal]
+type = varset
+trigger1 = !time
+var(15) = 1
+; Max_Allowed_Air_Jump at normal state
+
+[State 9999, End]
+type = DestroySelf
+trigger1 = RoundState = 0 || RoundState > 2
+trigger2 = Root,StateNo = 5900
+ignorehitpause = 1
+
+
+

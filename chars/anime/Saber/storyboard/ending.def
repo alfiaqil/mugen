@@ -1,0 +1,60 @@
+;----------------------------------------------------------
+[Info]
+localcoord = 1280,720
+
+[SceneDef]
+spr = story.sff
+font0 = f-6x9.def
+font1 = name14.def
+font2 = enter48.def
+snd = sound.snd
+;startscene=1
+
+[Scene 0]
+; Fade parameters
+fadein.time	= 20       ;30 ticks (0.5 seconds) for fade-in
+fadeout.time	= 10      ;30 ticks for fade-out
+
+; Music
+;bgm = bgm.mp3
+;bgm.loop = 1
+;bgm.loopstart= 2460
+;bgm.loopend= 708120
+;bgm.volume= 50
+
+; Layers
+layerall.pos	= 0,0
+
+; Layer Start
+layer0.anim	= 101
+layer0.offset	= 640,260
+
+layer1.starttime= 96
+layer1.font	= 1,0,1,224,224,224
+layer1.text	= "Saber:\n\nThanks for the hard work Player.\n\nIt was a big challenge, but I had so much fun."
+layer1.offset	= 180,540
+layer1.endtime	= -1
+sound1.value	= 101,0
+sound1.starttime	= 96
+
+
+; Total time
+end.time = 800
+
+
+
+
+
+; Black
+[Begin Action 0]
+0,1, 0,0, -1
+
+; White
+[Begin Action 1]
+0,0, 0,0, -1
+
+; Ending BG
+[Begin Action 101]
+101,0, 0,0, 256, , AS0D256, 1,1
+Interpolate Blend
+101,0, 0,0, -1, , AS160D96, 1,1

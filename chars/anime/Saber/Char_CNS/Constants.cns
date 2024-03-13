@@ -1,0 +1,138 @@
+; KFM's constants and state file.
+; There are comments scattered through this file, so you may like to
+; take a look if would like to learn more about the cns.
+
+[Data]
+;Amount of life to start with
+life = 1500;jambu;1000
+power = 7000;jambu;4000
+;attack power (more is stronger)
+attack = 100
+;defensive power (more is stronger)
+defence = 100
+;Percentage to increase defense everytime player is knocked down
+fall.defence_up = 50
+;Time which player lies down for, before getting up
+liedown.time = 60
+;Number of points for juggling
+airjuggle = 15
+;Default hit spark number for HitDefs
+sparkno = 2
+;Default guard spark number
+guard.sparkno = 40
+;1 to enable echo on KO
+KO.echo = 0
+;Volume offset (negative for softer)
+volume = 0
+;Variables with this index and above will not have their values
+;reset to 0 between rounds or matches. There are 60 int variables,
+;indexed from 0 to 59, and 40 float variables, indexed from 0 to 39.
+;If omitted, then it defaults to 60 and 40 for integer and float
+;variables repectively, meaning that none are persistent, i.e. all
+;are reset. If you want your variables to persist between matches,
+;you need to override state 5900 from common1.cns.
+IntPersistIndex = 0;60
+FloatPersistIndex = 0;40
+
+[Size]
+xscale = 1.1           ;Horizontal scaling factor.
+yscale = 1.1           ;Vertical scaling factor.
+ground.back = 80     ;Player width (back, ground)
+ground.front = 70    ;Player width (front, ground)
+air.back = 61        ;Player width (back, air)
+air.front = 41       ;Player width (front, air)
+height = 250;350         ;Height of player (for opponent to jump over)
+attack.dist = 860    ;Default attack distance
+proj.attack.dist = 500 ;Default attack distance for projectiles
+proj.doscale = 1     ;Set to 1 to scale projectiles too
+head.pos = 14, -313 ;Approximate position of head
+mid.pos = 0, -207  ;Approximate position of midsection
+shadowoffset = 0     ;Number of pixels to vertically offset the shadow
+draw.offset = 0,0    ;Player drawing offset in pixels (x, y). Recommended 0,0
+
+[Velocity]
+walk.fwd  = 7      ;Walk forward
+walk.back = -6     ;Walk backward
+run.fwd  = 30, 0   ;Run forward (x, y)
+run.back = -20,-15.2 ;Hop backward (x, y)
+jump.neu = 0,-36   ;Neutral jumping velocity (x, y)
+jump.back = -8,-36 ;Jump back Speed (x, y)
+jump.fwd = 10, -36  ;Jump forward Speed (x, y)
+runjump.back = -10.2,-32.4 ;Running jump speeds (opt)
+runjump.fwd = 16,-32.4    ;.
+airjump.neu = 0,-36     ;.
+airjump.back = -10      ;Air jump speeds (opt)
+airjump.fwd = 12          ;.
+air.gethit.groundrecover = -12, 0    ;Velocity for ground recovery state (x, y) **MUGEN 1.0**
+air.gethit.airrecover.mul = 0.5, 0.2     ;Multiplier for air recovery velocity (x, y) **MUGEN 1.0**
+air.gethit.airrecover.add = 0, -22     ;Velocity offset for air recovery (x, y) **MUGEN 1.0**
+air.gethit.airrecover.back = -6       ;Extra x-velocity for holding back during air recovery **MUGEN 1.0**
+air.gethit.airrecover.fwd = 12         ;Extra x-velocity for holding forward during air recovery **MUGEN 1.0**
+air.gethit.airrecover.up = -8         ;Extra y-velocity for holding up during air recovery **MUGEN 1.0**
+air.gethit.airrecover.down = 6        ;Extra y-velocity for holding down during air recovery **MUGEN 1.0**
+
+[Movement]
+airjump.num = 1;jambu;0      ;Number of air jumps allowed (opt)
+airjump.height = 140 ;Minimum distance from ground before you can air jump (opt)
+yaccel = 2;1.76         ;Vertical acceleration
+stand.friction = .85  ;Friction coefficient when standing
+crouch.friction = .82 ;Friction coefficient when crouching
+stand.friction.threshold = 8          ;If player's speed drops below this threshold while standing, stop his movement **MUGEN 1.0**
+crouch.friction.threshold = .2        ;If player's speed drops below this threshold while crouching, stop his movement **MUGEN 1.0**
+air.gethit.groundlevel = 0          ;Y-position at which a falling player is considered to hit the ground **MUGEN 1.0**
+air.gethit.groundrecover.ground.threshold = -120 ;Y-position below which falling player can use the recovery command **MUGEN 1.0**
+air.gethit.groundrecover.groundlevel = 0   ;Y-position at which player in the ground recovery state touches the ground **MUGEN 1.0**
+air.gethit.airrecover.threshold = -4  ;Y-velocity above which player may use the air recovery command **MUGEN 1.0**
+air.gethit.airrecover.yaccel = 1.4    ;Vertical acceleration for player in the air recovery state **MUGEN 1.0**
+air.gethit.trip.groundlevel = 40      ;Y-position at which player in the tripped state touches the ground **MUGEN 1.0**
+down.bounce.offset = 0, 20            ;Offset for player bouncing off the ground (x, y) **MUGEN 1.0**
+down.bounce.yaccel = 1.6              ;Vertical acceleration for player bouncing off the ground **MUGEN 1.0**
+down.bounce.groundlevel = 20          ;Y-position at which player bouncing off the ground touches the ground again **MUGEN 1.0**
+down.friction.threshold = 0.2          ;If the player's speed drops below this threshold while lying down, stop his movement **MUGEN 1.0**
+
+;Default language victory quotes **MUGEN 1.0**
+;The default language victory quotes must be implemented in English.
+[Quotes]
+; Up to 100 victory quotes can be specified per language (victory0 - victory99)
+victory0 = "It would seem I was able to end this without injuring you. Do try to be more careful next time."
+victory1 = "There do not seem to be any other servants here.\nI only hope I was not left behind..."
+victory2 = "I do not require a guide. I am sufficiently familar with Japan's towns. Though the one I know is much smaller."
+victory3 = "I have heard tales of late-night restaurants that serve delicious meals. Would you be so kind as to point me in the right driection? Perhaps even recommand one such establishment?"
+
+victory10 = "Your skills are impressive. I am honored to have met a player such as yourself."
+victory11 = "Wonderfully done. Stay focused and let's keep up the good work."
+victory12 = "You have unusual abilities. That was an enlightenting experience, to be sure."
+
+victory11 = "There is no escape, demon. Those who would threaten humanity shall be sent back to the shadows whence they came."
+
+
+;Alternate language victory quotes (optional).
+;0 or more alternate language sections may be added, preceded by the
+;ISO 639-1 code followed by a ".", e.g. "[ja.Quotes]".
+;See language setting in mugen.cfg.
+[ja.Quotes]
+victory0 = "私はあなたを傷つけることなくこれを終わらせることができたようです。 次回はもっと気をつけてください。"
+victory1 = "ここにはサーバントいがいないようです。\n取り残されていないことを願っています..."
+victory2 = "ガイドは必要ありません。 私は日本の町に十分精通しています。 私が知っているものははるかに小さいですが。"
+victory3 = "この町は眠っていないようです。 美味しいお食事を提供する深夜のレストランの話を聞いたことがあります。 私を正しい方向に向けてくれませんか？ おそらく、そのような施設の1つをお勧めしますか？"
+
+victory10 = "あなたのスキルは印象的です。 あなたのような選手に出会えたことを光栄に思います。"
+victory11 = "素晴らしくできました。 集中力を保ち、良い仕事を続けましょう。"
+victory12 = "あなたには異常な能力があります。 確かに、それは啓発的な経験でした。"
+
+victory11 = "逃げ場はありません、悪魔。 人類を脅かす者は、彼らが来た影に送り返されます。"
+
+
+[zh.Quotes]
+victory0 = "看来我可以在不伤害你的情况下结束这一切。 下次一定要多加小心。 "
+victory1 = "这里没有看到有其他从者，希望我不是唯一一个被拉下的."
+victory2 = "我不需要向导。 我对日本的城镇足够熟悉。 虽然我知道的那个挺小的。"
+victory3 = "这个镇似乎夜生活丰富,我听说附近有很多好吃的餐馆。 您能帮我指个方向吗？ 或者推荐一家？"
+
+victory10 = "你的技艺令人印象深刻。 我很荣幸能遇到像你这样的对手。"
+victory11 = "完美。 保持注意力，让我们继续努力。"
+victory12 = "你有不寻常的能力。 可以肯定，那是一次启发性的经历。 "
+
+victory11 = "恶魔,无路可逃。 那些威胁人类的将被遣返回他们自己的黑暗。"
+
+

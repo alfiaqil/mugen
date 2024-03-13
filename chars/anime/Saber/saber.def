@@ -1,0 +1,47 @@
+
+[Info]
+name			= "Saber"		;Artoria Pendragon (アルトリア・ペンドラゴン)
+displayname		= "MBTL Saber"	;From Melty Blood Type Lumina
+versiondate		= 10,28,2022	;Version of character (MM-DD-YYYY or X.XX)
+mugenversion	= 1.1			;Version of M.U.G.E.N character works on (X.XX)
+author			= "Beterhans"	;Character author name
+pal.defaults	= 1				;Default palettes in order of preference (up to 4)
+;localcoord		= 1280,720		;Local coordinate space width and height
+localcoord = 1700      ;jambu;Local coordinate space width and height
+
+; Files for the player
+[Files]
+cmd				= command.def					;Command set
+cns				= Char_CNS/Constants.cns		;Constants
+st				= MBTL_Common/MBTL_Helpers.cns	;MBTL Common helpers
+st1				= MBTL_Common/monitor.st
+st2				= Char_CNS/system.cns			;System States
+st3				= Char_CNS/moves.cns			;Attack Moves				
+st4				= Char_CNS/Helper.cns
+st5				= Char_CNS/State-23.cns
+st6				= config.txt
+stcommon		= MBTL_Common/common.cns		;Common states (from data/ or motif)
+sprite			= saber.sff						;Sprite
+anim			= saber.air						;Animation
+sound			= saber.snd						;Sound
+ai				= saber.ai						;AI hints data (not used)
+
+; Maps character selection buttons to palette numbers.
+[Palette Keymap]
+x = 1 ;Press button X to select palette 1, etc.
+y = 2
+z = 3
+a = 4
+b = 5
+c = 6
+x2 = 7 ;Hold Start and press button X for palette 7, etc.
+y2 = 8
+z2 = 9
+a2 = 10
+b2 = 11
+c2 = 12
+
+; Arcade mode
+[Arcade]
+intro.storyboard	= storyboard/introduction.def
+ending.storyboard	= storyboard/ending.def
