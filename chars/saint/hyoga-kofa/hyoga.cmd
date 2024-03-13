@@ -291,6 +291,7 @@ value = 3020
 triggerall = command = "Aurora del Nord"
 triggerall = power >= 1000
 triggerall = statetype != A
+triggerall = P2BodyDist X > 20
 trigger1 = ctrl
 trigger2=(stateno=[200,499]) && movecontact
 
@@ -301,6 +302,7 @@ value = 3000
 triggerall = command = "Vortice Fulminate Dell'Aurora"
 triggerall = power >= 2000
 triggerall = statetype != A
+triggerall = P2BodyDist X > 20
 trigger1 = ctrl
 trigger2=(stateno=[200,499]) && movecontact
 
@@ -311,6 +313,7 @@ value = 3030
 triggerall = command = "Polvere di Diamanti"
 triggerall = power >= 1000
 triggerall = statetype != A
+triggerall = P2BodyDist X > 20
 trigger1 = ctrl
 trigger2=(stateno=[200,499]) && movecontact
 
@@ -321,6 +324,7 @@ value = 3300
 triggerall = command = "Polvere Senza Armatura"
 triggerall = power >= 3000
 triggerall = statetype != A
+triggerall = P2BodyDist X > 20
 trigger1 = ctrl
 trigger2=(stateno=[200,499]) && movecontact
 
@@ -331,6 +335,7 @@ value = 3200
 triggerall = command = "Sacro Aquarius"
 triggerall = power >= 2000
 triggerall = statetype != A
+triggerall = P2BodyDist X > 20
 trigger1 = ctrl
 trigger2=(stateno=[200,499]) && movecontact
 
@@ -341,6 +346,7 @@ value = 3400
 triggerall = command = "Aquarius Senza Armatura"
 triggerall = power >= 3000
 triggerall = statetype != A
+triggerall = P2BodyDist X > 20
 trigger1 = ctrl
 trigger2=(stateno=[200,499]) && movecontact
 
@@ -351,6 +357,7 @@ value = 3100
 triggerall = command = "Sacro Aquarius Oro"
 triggerall = power >= 3000
 triggerall = statetype != A
+triggerall = P2BodyDist X > 20
 trigger1 = ctrl
 trigger2=(stateno=[200,499]) && movecontact
 

@@ -1,0 +1,154 @@
+;------------------------------------------------------------------------------------------
+[Info]
+name= "Kota Pokemon"
+author= Mugen Gamer
+;------------------------------------------------------------------------------------------
+[Camera]
+startx= 0
+starty= 0
+boundleft= 110;jambu;10
+boundright= -110;jambu;-5
+boundhigh= 0
+boundlow= -9
+verticalfollow= .60
+floortension=60
+tension= 50
+overdrawhigh 	= 120
+overdrawlow 	= 120
+cuthigh 	= 0
+cutlow 		= 5
+zoomout	= .5 ; .5
+zoomin	= .8
+;------------------------------------------------------------------------------------------
+[PlayerInfo]
+;--- Player 1 ---
+p1startx = -70          
+p1starty = 0            
+p1startz = 0            
+p1facing = 1            
+ ;------------------------------------------------------------------------------------------
+;--- Player 2 ---
+p2startx = 70
+p2starty = 0
+p2startz = 0
+p2facing = -1
+ ;------------------------------------------------------------------------------------------
+;--- Common ---
+leftbound  = -1000 
+rightbound =  1000 
+topbound  =  0     
+botbound  =  0
+;------------------------------------------------------------------------------------------
+[Scaling]
+topz     = 0       
+botz     = 50      
+topscale = 1       
+botscale = 1.2
+;------------------------------------------------------------------------------------------
+[Bound]
+screenleft = 15  
+screenright = 15  
+;------------------------------------------------------------------------------------------
+[StageInfo]
+zoffset = 220
+autoturn = 1
+resetBG = 1
+hires = 1
+localcoord = 427;jambu
+;------------------------------------------------------------------------------------------
+[Shadow]
+intensity = 160
+color = 32,64,128
+yscale = .2
+fade.range = 0,0
+;------------------------------------------------------------------------------------------
+;[Reflection]
+intensity = 1
+;------------------------------------------------------------------------------------------
+[Music]
+bgmusic=sound\Pokemon Sword.mp3
+bgmvolume= 255
+;------------------------------------------------------------------------------------------
+[BGDef]
+spr =Pokemon Sword.sff
+debugbg=0
+;------------------------------------------------------------------------------------------
+
+
+  [BG Céu 0]
+type = normal
+spriteno =0,0
+start = 0,0
+delta = 2,2
+mask =0
+tile = 1,0
+scalestart = 10,1
+
+[bg Sol]
+type = normal
+spriteno =3,0
+start = 0,0
+delta = 2,2
+mask = 1
+layerno = 0
+layerno = 1
+
+[BG Nuvens]
+type = Normal
+spriteno = 2,0
+start = 0,100
+delta= 2,2
+tile=1,0
+mask=1
+trans=add
+velocity = .3
+
+
+[BG Base]
+type = normal
+spriteno 	=0, 1
+Delta=2,2
+mask=1
+
+[BG Charizard]
+type = anim
+actionno = 1
+start = 200,80
+delta = 2,2
+mask = 1
+velocity = -0.6
+tile = 1, 0
+tilespacing = 1500, 0
+scalestart = 0.95,0.95
+
+
+
+[Begin Action 1]
+15,0, 0,0, 12
+15,1, 0,2, 12
+15,0, 0,4, 12
+15,1, 0,6, 12
+15,0, 0,4, 12
+15,1, 0,2, 12
+
+[BG Pikachu]
+type=anim
+actionno=3
+layerno=0
+start=0,0
+delta=2,2
+mask=1
+
+[Begin action 3]
+5,0,0,0,3
+5,1,0,0,3
+5,2,0,0,3
+5,3,0,0,3
+5,4,0,0,3
+5,5,0,0,3
+5,6,0,0,3
+5,7,0,0,3
+5,8,0,0,3
+5,9,0,0,3
+5,10,0,0,3
+5,11,0,0,3
