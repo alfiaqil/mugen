@@ -1,0 +1,142 @@
+
+[Info]
+name = "SS5-Final Battle Stage"
+Author =OldGamer
+[Camera]
+startx = 0
+starty = 0
+boundleft = -90
+boundright = 90
+boundhigh = -230
+boundlow = 0
+verticalfollow = 1
+tension = 60
+zoomin=1
+zoomout=.7
+
+[PlayerInfo]
+p1startx = -80         
+p1starty = 0            
+p1startz = 0           
+p1facing = 1          
+p2startx = 80
+p2starty = 0
+p2startz = 0
+p2facing = -1
+leftbound  = -1000
+rightbound =  1000
+topbound  =  0    
+botbound  =  0     
+
+[Scaling]
+topz     = 0       
+botz     = 50     
+topscale = 1    
+botscale = 1.2
+
+[Bound]
+screenleft = 20    
+screenright = 20   
+
+[StageInfo]
+zoffset = 230
+autoturn = 1
+resetBG = 1
+localcoord = 427;jambu
+
+[Shadow]
+intensity = 0
+color = 40,48,40
+yscale = 0.4
+fade.range = -400,-100
+
+[Reflection]
+intensity = 0
+
+[Music]
+bgmusic = SS5-Final Battle Stage.mp3
+bgvolume = 255
+
+[BGdef]
+spr = SS5-Final Battle Stage.sff
+debugbg = 0
+
+[BG Sky]
+type  = normal
+spriteno = 1, 0
+layerno = 0
+start = 0, 0
+delta = 0.47,0.93
+trans = none
+mask  = 0
+
+[BG Floor]
+type  = anim
+actionno = 0
+layerno = 0
+start = 0, 0
+delta = 1,1
+trans = none
+mask  = 1
+
+[BG Left Fighters]
+type  = anim
+actionno = 2
+layerno = 0
+start = 0, 0
+delta = 1,1
+trans = none
+mask  = 1
+
+[BG Horse Riders]
+type  = normal
+spriteno = 3, 0
+layerno = 0
+start = 0, 0
+delta = 1,1
+trans = none
+mask  = 1
+
+[BG Right Fighters]
+type  = anim
+actionno = 4
+layerno = 0
+start = 0, 0
+delta = 1,1
+trans = none
+mask  = 1
+
+[BG Front Fighter]
+type  = normal
+spriteno = 5, 0
+layerno = 1
+start = 0, 0
+delta = 1,1
+trans = none
+mask  = 1
+
+[Begin action 0]
+0,1, 0,0, 12
+0,2, 0,0, 12
+0,3, 0,0, 12
+0,4, 0,0, 12
+
+[Begin action 2]
+2,1, 0,0, 12
+2,2, 0,0, 12
+2,3, 0,0, 12
+2,4, 0,0, 12
+2,5, 0,0, 12
+2,6, 0,0, 12
+2,7, 0,0, 12
+2,8, 0,0, 12
+
+[Begin action 4]
+4,1, 0,0, 12
+4,2, 0,0, 12
+4,3, 0,0, 12
+4,4, 0,0, 12
+4,5, 0,0, 12
+4,6, 0,0, 12
+4,7, 0,0, 12
+4,8, 0,0, 12

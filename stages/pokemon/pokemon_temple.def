@@ -1,0 +1,798 @@
+; Definition of ashie's stage
+; *** denotes values you should change/check for each stage.
+; The term "background" is used to mean both backgrounds and foregrounds.
+
+;--------------------------------------------------------
+[Info]
+ ;Name of the stage.
+name = "Pokemon Temple"
+
+;--------------------------------------------------------
+[Camera]
+ ;Camera starting position: Usually 0 for both
+ ;***
+startx = 0
+starty = 0
+
+ ;Left and right bound of camera
+ ;You may want to fiddle a bit with these values to make sure the
+ ;background doesn't move too far or too little
+ ;***
+boundleft = -152
+boundright = 152
+
+ ;High and low bound of camera
+ ;High is a negative number. Make is more negative if you want to
+ ;camera to be able to move higher.
+ ;Low should usually be 0.
+ ;If omitted, defaults to -25 and 0 respectively
+ ;***
+boundhigh = -3
+boundlow = 0
+
+ ;This is how much the camera will move vertically towards the
+ ;highest player. Valid values are from 0 to 1. A value of 0 will mean
+ ;the camera does not move up at all. A value of 1 will makes the camera
+ ;follow the highest player.
+ ;Typically .2 for normal-sized backgrounds. You may need to pull this
+ ;value up for taller backgrounds.
+verticalfollow = .2
+
+ ;Minimum vertical distance the highest player has to be from the floor,
+ ;before the camera starts to move up to follow him. For extremely
+ ;tall stages, a floor tension of about 20-30 coupled with a
+ ;vertical-follow of .8 allows the camera to follow the action.
+floortension = 0
+
+ ;Horizontal distance player is from edge before camera starts to move
+ ;left or right. Typically 50 or 60.
+tension = 60
+
+
+;--------------------------------------------------------
+[PlayerInfo]
+;--- Player 1 ---
+ ;Player 1 starting coordinates.
+ ;p1startx is typically -70 and p2startx is 70.
+ ;p1starty and p1startz should be 0.
+p1startx = -70          ;Starting x coordinates
+p1starty = 0            ;Starting y coordinates
+p1startz = 0            ;Starting z coordinates
+p1facing = 1            ;Direction player faces: 1=right, -1=left
+
+;--- Player 2 ---
+p2startx = 70
+p2starty = 0
+p2startz = 0
+p2facing = -1
+
+;--- Common ---
+ ;Don't change these values.
+leftbound  = -1000 ;Left bound (x-movement)
+rightbound =  1000 ;Right bound
+topbound  =  0     ;Top bound (z-movement)
+botbound  =  0     ;Bottom bound
+
+;--------------------------------------------------------
+[Scaling]
+ ;No need to change these values
+topz     = 0       ;Top z-coordinate for scaling
+botz     = 50      ;Bottom z-coordinate for scaling
+topscale = 1       ;Scale to use at top
+botscale = 1.2     ;Scale to use at bottom
+
+;--------------------------------------------------------
+[Bound]
+ ;Distance from left/right edge of screen that player can move to
+ ;Typically 15
+screenleft = 25    ;Dist from left of screen that player can move to
+screenright = 25   ;Right edge
+
+;--------------------------------------------------------
+[StageInfo]
+ ;Z offset for drawing
+ ;Adjust this value to move the ground level up/down in the screen.
+ ;It's the position where the players stand at.
+ ;Up - smaller, Down - larger
+ ;***
+zoffset = 210
+
+ ;Leave this at 1. It makes the players face each other
+autoturn = 1
+
+ ;Set the following to 1 to have the background be reset between
+ ;rounds.
+resetBG = 1
+localcoord = 427;jambu
+
+;--------------------------------------------------------
+[Shadow]
+ ;This is the shadow color given in r,g,b. Valid values for each
+ ;range from 0 (lightest) to 255 (darkest).
+ ;Defaults to 92,92,92 if omitted.
+color = 32,32,32
+
+ ;This is the scale factor of the shadow. Use a big scale factor
+ ;to make the shadow longer. You can use a NEGATIVE scale factor
+ ;to make the shadow fall INTO the screen.
+ ;Defaults to 0.4 if omitted.
+yscale = -.1
+
+ ;Set to 1 to draw "reflection" shadows. Defaults to 0.
+reflect = 1
+
+;--------------------------------------------------------
+[Music]
+ ;Put a filename for a MOD, MP3 or MIDI here, or just leave it
+ ;blank if you don't want music. If an invalid filename is
+ ;given, then no music will play. To play CD audio, put
+ ;the track number followed by ".da". Using a track number of
+ ;0 will play a random audio track. For example, to play
+ ;track 3 from a music CD, use:
+ ;  bgmusic = 3.da
+;bgmusic = sound/
+bgmusic = Pkmn_Trainer.mp3
+
+ ;Adjust the volume. 0 is normal, negative for softer, and
+ ;positive for louder (only for mp3, mods and CDA)
+;bgvolume = 0
+bgvolume = 255
+
+;========================================================
+;--------------------------------------------------------
+; Background definition
+; ***
+;-------------------------------------
+; [BG x]
+; type = ?       "Normal"/"Parallax"/"Height"  (def: "normal")
+; spriteno = ?, ? Sprite group and number: groupno, imgno  (req'd)
+; start = ?, ?   Starting location (integer)  (def: 0, 0)
+; delta = ?, ?   Change in location per camera unit moved (float)  (def: 1,1)
+; trans = ?      Transparency settings: "none"/"add"/"sub"/"avg" (def: "none")
+; mask = ?       Masking (int): 0 - off, 1 - on  (def: 0)
+; velocity = ?, ? Velocity: x, y (float): speed background moves (def: 0, 0)
+; tile = ?, ?    Tiling: xtile, ytile (int): 0 - off, 1 - infinite,
+;                        >1 - tile that number of times  (def: 0, 0)
+; tilespacing = ?, ? Tiling: x, y (int) : space between tiles (def: 0, 0)
+;  Parallax-only:
+; xscale = ?, ?    Top xscale, bottom xscale (float) (if used, then no tiling)
+; width = ?, ?     Top width, bottom width (int)  (if used, then tiles;
+;                             use either this or above, but not both)
+; yscalestart = ?  Starting y-scale (float, in percent)  (def: 100)
+; yscaledelta = ?  Change in y-scale per unit (float, in percent)  (def: 0)
+;-------------------------------------
+
+;-------------------------------------
+; Main background definition
+[BGdef]
+ ;Filename of sprite data
+spr = pokemon_temple.sff
+
+ ;Set to 1 if you want to clear the screen to magenta before
+ ;drawing layer 0 (the default background). Good for spotting "holes"
+ ;in your background.
+ ;Remember to turn this off when you are done debugging the background,
+ ;because it slows down performance.
+debugbg = 1
+
+;----------
+; Start each background element with the following:
+; Make sure it's "[BG n]", where n is anything you like (it's only used to
+; report errors.) For example, you could use:  [BG TheFloor]
+; Specify as many as you like. This is an example of a normal background:
+[BG 0]
+
+ ;The background type goes here: for now, only NORMAL and PARALLAX
+ ;If this line is omitted, the type will be assumed to be normal.
+type  = normal
+
+ ;The sprite number to use for the background (from the SFF specified above)
+ ;It's the group-number, followed by a comma, then the sprite-number
+ ;*** Do not omit this line.
+spriteno = 0,0
+
+ ;This is the layer number, which determines where the sprite is drawn to.
+ ;Valid values are 0 and 1.
+ ;0 for background (behind characters), 1 for foreground (in front)
+ ;If this line is omitted, the default value of 0 will be assumed.
+layerno = 0                
+
+ ;This is the starting location of the background in the format
+ ;x, y
+ ;If this line is omitted, the default value of 0,0 will be assumed.
+start = 0, 0
+
+ ;These are the number of pixels the background moves for every single unit
+ ;of camera movement, in the format
+ ;x, y
+ ;For the main background (eg. the floor the players stand on) you'll want
+ ;to use a delta of 1,1. Things farther away should have a smaller delta,
+ ;like 0.5 for example. Things near the camera should have a larget delta.
+ ;If this line is omitted, the default value of 1,1 will be assumed.
+delta = .5,.5
+
+ ;Here is the transparency setting of the background.
+ ;Valid values are:
+ ;"none" for normal drawing
+ ;"add" for colour addition (like a spotlight effect)
+ ;"sub" for colour subtraction (like a shadow effect)
+ ;If this line is omitted, it's assumed that there will be no transparency.
+trans = none
+
+ ;Mask means whether or not to draw colour zero of a sprite.
+ ;If you turn masking off, the background will take less CPU power to draw,
+ ;so remember to turn it off on sprites that don't use it.
+ ;If this line is omitted, it's assumed that there will be no masking.
+mask  = 0
+
+ ;The format for tiling is x,y. For each of them, the value is:
+ ;0 to use no tiling, 1 to tile, n where (n>1) to tile n times.
+ ;If this line is omitted, it's assumed that there will be no tiling.
+tile  = 0, 0
+
+ ;This is the x and y space between each tile, for tiled backgrounds
+ ;If omitted, default value is 0,0
+tilespacing = 0,0
+
+ ;This defines the drawing space, or "window" of the background. It's
+ ;given in the form
+ ;x1,y1, x2,y2
+ ;where (x1,y1)-(x2,y2) define a rectangular box.
+ ;Make the window smaller if you only want to draw part of the background.
+ ;You normally do not have to change this setting. Value values range from
+ ;0-319 for x, and 0-239 for y. The values are 0,0, 319,239 by default (full
+ ;screen).
+window = 0,0, 319, 239
+
+ ;Similar to the delta parameter, this one affects the movement of
+ ;the window. Defaults to 0,0
+windowdelta = 0,0
+
+[BG layer1]
+type  = normal
+spriteno = 0,1
+start = 0,0
+mask = 1
+
+[BG noctowl]
+type  = anim
+actionno = 26
+start = -38,115
+mask = 1
+
+[begin action 26]
+26,0,0,0, 80
+26,1,0,0, 10
+
+[BG machoke]
+type  = anim
+actionno = 14
+start = -18,177
+mask = 1
+
+[begin action 14]
+14,0,0,0, 80
+14,1,0,0, 10
+
+[BG mew2]
+type  = anim
+actionno = 5
+start = 30,180
+mask = 1
+
+[begin action 5]
+5,0,0,0, 50
+5,1,0,0, 50
+
+[BG pikachu]
+type  = anim
+actionno = 1
+start = 46,185
+mask = 1
+
+[begin action 1]
+1,0,0,0, 10
+1,1,0,0, 10
+1,2,0,0, 10
+1,3,0,0, 10
+1,4,0,0, 10
+1,5,0,0, 10
+1,4,0,0, 10
+1,5,0,0, 10
+1,4,0,0, 10
+1,5,0,0, 10
+1,6,0,0, 10
+
+[BG charmander]
+type  = anim
+actionno = 2
+start = 70,188
+mask = 1
+
+[begin action 2]
+2,0,0,0, 10
+2,1,0,0, 10
+2,0,0,0, 10
+2,1,0,0, 10
+2,0,0,0, 10
+2,1,0,0, 10
+2,0,0,0, 10
+2,1,0,0, 10
+2,2,0,0, 10
+2,3,0,0, 10
+
+[BG squitle]
+type  = anim
+actionno = 3
+start = 98,190
+mask = 1
+
+[begin action 3]
+3,0,0,0, 10
+3,1,0,0, 10
+3,0,0,0, 10
+3,1,0,0, 10
+3,0,0,0, 10
+3,1,0,0, 10
+3,2,0,0, 10
+
+[BG abra]
+type  = anim
+start = 290,150
+mask = 1
+actionno = 8
+
+[begin action 8]
+8,0,0,0, 60
+8,2,0,0, 10
+8,0,0,0, 10
+8,1,0,0, 10
+8,0,0,0, 10
+8,1,0,0, 60
+
+[BG celebi]
+type  = anim
+start = 218,118
+mask = 1
+actionno = 24
+
+[begin action 24]
+24,0,0,0, 60
+24,1,0,0, 60
+
+[BG venusaur]
+type  = anim
+start = 240,190
+mask = 1
+actionno = 9
+
+[begin action 9]
+9,0,0,0, 60
+9,1,0,0, 60
+9,2,0,0, 60
+
+[BG scizor]
+type  = normal
+spriteno = 25,0
+start = 190,192
+mask = 1
+
+[BG wigglytuff]
+type  = anim
+actionno = 4
+start = 265,190
+mask = 1
+
+[begin action 4]
+4,0,0,0, 10
+4,1,0,0, 10
+
+[BG psyduck]
+type  = anim
+start = 330,214
+mask = 1
+actionno = 6
+layerno = 1
+
+[begin action 6]
+6,3,-5,0,15
+6,4,-10,0,15
+6,3,-15,0,15
+6,4,-25,0,15
+6,3,-30,0,15
+6,4,-35,0,15
+6,3,-40,0,15
+6,4,-45,0,15
+6,3,-50,0,15
+6,4,-55,0,15
+6,3,-60,0,15
+6,3,-65,0,15
+6,4,-70,0,15
+6,3,-75,0,15
+6,4,-80,0,15
+6,3,-85,0,15
+6,4,-90,0,15
+6,3,-95,0,15
+6,4,-100,0,15
+6,3,-105,0,15
+6,4,-110,0,15
+6,3,-115,0,15
+6,4,-120,0,15
+6,3,-125,0,15
+6,4,-130,0,15
+6,0,-130,0, 10
+6,1,-130,0, 35
+6,2,-130,0, 10
+6,0,-130,0, 10
+6,0,-130,0, 10
+6,1,-130,0, 35
+6,2,-130,0, 10
+6,0,-130,0, 10
+6,0,-130,0, 10
+6,1,-130,0, 35
+6,2,-130,0, 10
+6,0,-130,0, 10
+6,3,-135,0,15
+6,4,-140,0,15
+6,3,-145,0,15
+6,4,-150,0,15
+6,3,-155,0,15
+6,4,-160,0,15
+6,3,-165,0,15
+6,4,-170,0,15
+6,3,-175,0,15
+6,4,-180,0,15
+6,3,-185,0,15
+6,4,-190,0,15
+6,3,-195,0,15
+6,4,-200,0,15
+6,0,-200,0, 10
+6,1,-200,0, 35
+6,2,-200,0, 10
+6,0,-200,0, 10
+6,0,-200,0, 10
+6,1,-200,0, 35
+6,2,-200,0, 10
+6,0,-200,0, 10
+6,0,-200,0, 10
+6,1,-200,0, 35
+6,2,-200,0, 10
+6,0,-200,0, 10
+6,3,-205,0,15
+6,4,-210,0,15
+6,3,-215,0,15
+6,4,-220,0,15
+6,3,-225,0,15
+6,4,-230,0,15
+6,3,-235,0,15
+6,4,-240,0,15
+6,3,-245,0,15
+6,4,-250,0,15
+6,3,-255,0,15
+6,4,-260,0,15
+6,3,-265,0,15
+6,4,-270,0,15
+6,3,-275,0,15
+6,4,-280,0,15
+6,3,-285,0,15
+6,4,-290,0,15
+6,3,-295,0,15
+6,4,-300,0,15
+6,0,-300,0, 10
+6,1,-300,0, 35
+6,2,-300,0, 10
+6,0,-300,0, 10
+6,0,-300,0, 10
+6,1,-300,0, 35
+6,2,-300,0, 10
+6,0,-300,0, 10
+6,0,-300,0, 10
+6,1,-300,0, 35
+6,2,-300,0, 10
+6,0,-300,0, 10
+6,3,-305,0,15
+6,4,-310,0,15
+6,3,-315,0,15
+6,4,-320,0,15
+6,3,-325,0,15
+6,4,-330,0,15
+6,3,-335,0,15
+6,4,-340,0,15
+6,3,-345,0,15
+6,4,-350,0,15
+6,3,-355,0,15
+6,4,-360,0,15
+6,3,-365,0,15
+6,4,-370,0,15
+6,3,-375,0,15
+6,4,-380,0,15
+6,3,-385,0,15
+6,4,-390,0,15
+6,3,-395,0,15
+6,4,-400,0,15
+6,0,-400,0, 10
+6,1,-400,0, 35
+6,2,-400,0, 10
+6,0,-400,0, 10
+6,0,-400,0, 10
+6,1,-400,0, 35
+6,2,-400,0, 10
+6,0,-400,0, 10
+6,0,-400,0, 10
+6,1,-400,0, 35
+6,2,-400,0, 10
+6,0,-400,0, 10
+6,3,-405,0,15
+6,4,-410,0,15
+6,3,-415,0,15
+6,4,-420,0,15
+6,3,-425,0,15
+6,4,-430,0,15
+6,3,-435,0,15
+6,4,-440,0,15
+6,3,-445,0,15
+6,4,-450,0,15
+6,3,-455,0,15
+6,4,-460,0,15
+6,3,-465,0,15
+6,4,-470,0,15
+6,3,-475,0,15
+6,4,-480,0,15
+6,3,-485,0,15
+6,4,-490,0,15
+6,3,-495,0,15
+6,4,-500,0,15
+6,0,-500,0, 10
+6,1,-500,0, 35
+6,2,-500,0, 10
+6,0,-500,0, 10
+6,0,-500,0, 10
+6,1,-500,0, 35
+6,2,-500,0, 10
+6,0,-500,0, 10
+6,0,-500,0, 10
+6,1,-500,0, 35
+6,2,-500,0, 10
+6,0,-500,0, 10
+6,3,-505,0,15
+6,4,-510,0,15
+6,3,-515,0,15
+6,4,-520,0,15
+6,3,-525,0,15
+6,4,-530,0,15
+6,3,-535,0,15
+6,4,-540,0,15
+6,3,-545,0,15
+6,4,-550,0,15
+6,3,-555,0,15
+6,4,-560,0,15
+6,3,-565,0,15
+6,4,-570,0,15
+6,3,-575,0,15
+6,4,-580,0,15
+6,3,-585,0,15
+6,4,-590,0,15
+6,3,-595,0,15
+6,4,-600,0,15
+6,3,-605,0,15
+6,4,-610,0,15
+6,3,-615,0,15
+6,4,-620,0,15
+6,3,-625,0,15
+6,4,-630,0,15
+6,3,-635,0,15
+6,4,-640,0,15
+
+[BG kangaskhan]
+type  = anim
+start = -195,165
+mask = 1
+actionno = 19
+
+[begin action 19]
+19,0,0,0, 90
+19,1,0,0, 20
+
+[BG cleffa]
+type  = anim
+start = -178,172
+mask = 1
+actionno = 22
+
+[begin action 22]
+22,0,0,0, 90
+22,1,0,0, 60
+
+[BG suicune]
+type  = anim
+start = -128,157
+mask = 1
+actionno = 18
+
+[begin action 18]
+18,0,0,0, 90
+18,1,0,0, 20
+
+[BG vulpix]
+type  = normal
+spriteno = 27,0
+start = -96,136
+mask = 1
+
+[BG entei]
+type  = anim
+start = -110,173
+mask = 1
+actionno = 17
+
+[begin action 17]
+17,0,0,0, 80
+17,1,0,0, 20
+
+[BG teddiursa]
+type  = normal
+spriteno = 23,0
+start =  -130,180
+mask = 1
+
+[BG raikou]
+type  = anim
+start = -85,179
+mask = 1
+actionno = 16
+
+[begin action 16]
+16,0,0,0, 27
+16,1,0,0, 27
+
+[BG hitmonlee]
+type  = normal
+spriteno = 31,0
+start = -61,178
+mask = 1
+
+[BG wooper]
+type  = anim
+start = -15,179
+mask = 1
+actionno = 13
+
+[begin action 13]
+13,0,0,0, 30
+13,1,0,0, 30
+
+[BG pichu]
+type  = anim
+start = 8,181
+mask = 1
+actionno = 7
+
+[begin action 7]
+7,0,0,0, 30
+7,1,0,0, 30
+
+[BG arcanine]
+type  = anim
+actionno = 21
+start = 150,193
+mask = 1
+
+[begin action 21]
+21,0,0,0, 80
+21,1,0,0, 20
+21,2,0,0, 50
+
+[BG meowth]
+type  = anim
+actionno = 10
+start = 180,195
+mask = 1
+
+[begin action 10]
+10,0,0,0, 30
+10,1,0,0, 30
+
+[BG pidgey]
+type  = anim
+actionno = 11
+start = 110,80
+mask = 1
+
+[begin action 11]
+11,0,0,0, 10
+11,1,0,0, 10
+11,2,0,0, 10
+11,0,0,1, 10
+11,1,0,1, 10
+11,2,0,1, 10
+11,0,0,2, 10
+11,1,0,2, 10
+11,2,0,2, 10
+11,0,0,3, 10
+11,1,0,3, 10
+11,2,0,3, 10
+11,0,0,2, 10
+11,1,0,2, 10
+11,2,0,2, 10
+11,0,0,1, 10
+11,1,0,1, 10
+11,2,0,1, 10
+11,0,0,0, 10
+11,1,0,0, 10
+11,2,0,0, 10
+
+[BG snorlax]
+type  = normal
+spriteno = 12,0
+start =160,129
+mask = 1
+
+[BG nidoking]
+type  = normal
+spriteno = 29,0
+start = -262,158
+mask = 1
+
+[BG nidoqueen]
+type  = normal
+spriteno = 28,0
+start = -292,158
+mask = 1
+
+[BG gengar]
+type  = anim
+actionno = 20
+start = -280,178
+mask = 1
+
+[begin action 20]
+20,0,0,0, 50
+20,1,0,0, 15
+
+[BG totodile]
+type  = normal
+spriteno = 32,0
+start = -240,175
+mask = 1
+
+[BG eevee]
+type  = anim
+actionno = 15
+start = -250,180
+mask = 1
+
+[begin action 15]
+15,0,0,0, 15
+15,1,0,0, 15
+
+[BG slowpoke]
+type  = normal
+spriteno = 30,0
+start = -292,182
+mask = 1
+
+[BG gastly]
+type  = anim
+actionno = 33
+start = -260,80
+trans = add
+mask = 1
+
+[begin action 33]
+33,0,0,0, 10
+33,0,-2,0, 10,,A2
+33,0,-2,-2, 10
+33,0,-4,-2, 10,,A2
+33,0,-4,-4, 10
+33,0,-6,-4, 10,,A2
+33,0,-6,-6, 10
+33,0,-8,-6, 10,,A2
+33,0,-6,-6, 10
+33,0,-4,-6, 10,,A2
+33,0,-4,-4, 10
+33,0,-4,-2, 10,,A2
+33,0,-2,-2, 10
+33,0,-2,0, 10,,A2
+
+
+
