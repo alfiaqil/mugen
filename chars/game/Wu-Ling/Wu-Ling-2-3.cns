@@ -1,9 +1,9 @@
 
 ;-----------------------------------------------------------------------------
-[Statedef -2];íŠÄ‹ƒXƒe[ƒg(‘Šè‚És“®‚ğ§Œä‚³‚ê‚Ä‚àŠÖŒW–³‚­í‚ÉÀs‚³‚ê‚é)
+[Statedef -2];ï¿½íï¿½Äï¿½ï¿½Xï¿½eï¿½[ï¿½g(ï¿½ï¿½ï¿½ï¿½Ésï¿½ï¿½ï¿½ğ§Œä‚³ï¿½ï¿½Ä‚ï¿½ï¿½ÖŒWï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Éï¿½ï¿½sï¿½ï¿½ï¿½ï¿½ï¿½)
 ;-----------------------------------------------------------------------------
 
-;UŒ‚—Í•â³—p
+;ï¿½Uï¿½ï¿½ï¿½Í•â³ï¿½p
 
 [State -2, VarSet]
 type = VarSet
@@ -19,45 +19,45 @@ trigger2 = enemy,GethitVar(hitcount) = 0
 var(3) = 0
 
 ;---------------------------------------------------------------------------
-; ƒXƒvƒ‰ƒCƒg‚ğÁ–Å
+; ï¿½Xï¿½vï¿½ï¿½ï¿½Cï¿½gï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
-[State -2, ÕŒ‚”g‚ğÁ‚·]
+[State -2, ï¿½ÕŒï¿½ï¿½gï¿½ï¿½ï¿½ï¿½ï¿½ï¿½]
 type = RemoveExplod
 trigger1 = movetype = H
 ID = 1000
 
-[State -2, Tiger‚ÌƒXƒvƒ‰ƒCƒg‚ğÁ–Å]
+[State -2, Tigerï¿½ÌƒXï¿½vï¿½ï¿½ï¿½Cï¿½gï¿½ï¿½ï¿½ï¿½ï¿½ï¿½]
 type = RemoveExplod
 triggerall = NumExplod(10100) > 0
 trigger1 = stateno != 3010
 ID = 10100
 
-[State -2, Fox‚ÌƒXƒvƒ‰ƒCƒg‚ğÁ–Å]
+[State -2, Foxï¿½ÌƒXï¿½vï¿½ï¿½ï¿½Cï¿½gï¿½ï¿½ï¿½ï¿½ï¿½ï¿½]
 type = RemoveExplod
 triggerall = NumExplod(10110) > 0
 trigger1 = stateno != 3020
 ID = 10110
 
-[State -2, Fox‚ÌƒXƒvƒ‰ƒCƒg‚ğÁ–Å]
+[State -2, Foxï¿½ÌƒXï¿½vï¿½ï¿½ï¿½Cï¿½gï¿½ï¿½ï¿½ï¿½ï¿½ï¿½]
 type = RemoveExplod
 triggerall = NumExplod(10111) > 0
 trigger1 = stateno != 3021
 ID = 10111
 
-[State -2, Ox‚ÌƒXƒvƒ‰ƒCƒg‚ğÁ–Å]
+[State -2, Oxï¿½ÌƒXï¿½vï¿½ï¿½ï¿½Cï¿½gï¿½ï¿½ï¿½ï¿½ï¿½ï¿½]
 type = RemoveExplod
 triggerall = NumExplod(10131) > 0
 trigger1 = stateno != 3040
 ID = 10131
 
-[State -2, Hawk‚ÌƒXƒvƒ‰ƒCƒg‚ğÁ–Å]
+[State -2, Hawkï¿½ÌƒXï¿½vï¿½ï¿½ï¿½Cï¿½gï¿½ï¿½ï¿½ï¿½ï¿½ï¿½]
 type = RemoveExplod
 triggerall = NumExplod(10151) > 0
 trigger1 = stateno != 3060
 ID = 10151
 
 ;---------------------------------------------------------------------------
-; ‚Q’iƒWƒƒƒ“ƒvverƒŠƒZƒbƒg
+; ï¿½Qï¿½iï¿½Wï¿½ï¿½ï¿½ï¿½ï¿½vverï¿½ï¿½ï¿½Zï¿½bï¿½g
 
 [State -2, VarSet]
 type = VarSet
@@ -66,7 +66,7 @@ trigger1 = StateNo != 50
 var(7) = 0
 
 ;---------------------------------------------------------------------------
-; b_’Êíó‘ÔŠm”FiƒoƒbƒNƒXƒeƒbƒv§Œä—pj
+; ï¿½bï¿½_ï¿½Êï¿½ï¿½ÔŠmï¿½Fï¿½iï¿½oï¿½bï¿½Nï¿½Xï¿½eï¿½bï¿½vï¿½ï¿½ï¿½ï¿½pï¿½j
 
 [State -2, VarSet]
 type = VarSet
@@ -88,9 +88,9 @@ trigger2 = !((helper(10000),StateNo = 10010) || (helper(10000),StateNo = 10020))
 var(13) = 0
 
 ;---------------------------------------------------------------------------
-; b_ƒAƒ^ƒbƒNiPeccaryj‚ÌƒXƒp[ƒN•\¦
+; ï¿½bï¿½_ï¿½Aï¿½^ï¿½bï¿½Nï¿½iPeccaryï¿½jï¿½ÌƒXï¿½pï¿½[ï¿½Nï¿½\ï¿½ï¿½
 
-[State -2, ƒXƒp[ƒN•\¦iƒqƒbƒgj]
+[State -2, ï¿½Xï¿½pï¿½[ï¿½Nï¿½\ï¿½ï¿½ï¿½iï¿½qï¿½bï¿½gï¿½j]
 type = Explod
 trigger1 = ProjHitTime(10161) = 1
 trigger1 = enemy,stateno = 5000 || enemy,stateno = 5020
@@ -105,7 +105,7 @@ ownpal = 1
 ignorehitpause = 1
 persistent = 1
 
-[State -2, ƒXƒp[ƒN•\¦iƒK[ƒhj]
+[State -2, ï¿½Xï¿½pï¿½[ï¿½Nï¿½\ï¿½ï¿½ï¿½iï¿½Kï¿½[ï¿½hï¿½j]
 type = Explod
 trigger1 = ProjGuardedTime(10161) = 1
 trigger1 = enemy,stateno = 150 || enemy,stateno = 152 || enemy,stateno = 154
@@ -120,7 +120,7 @@ ownpal = 1
 ignorehitpause = 1
 persistent = 1
 
-[State -2, ƒXƒvƒ‰ƒCƒg•\¦1];‰Î‰Ô
+[State -2, ï¿½Xï¿½vï¿½ï¿½ï¿½Cï¿½gï¿½\ï¿½ï¿½1];ï¿½Î‰ï¿½
 type = Explod
 trigger1 = NumExplod(7022) = 0
 trigger1 = ProjHitTime(10161) = 1
@@ -142,7 +142,7 @@ ignorehitpause = 1
 
 ;-----------------------------------------------------------------------------
 
-[State -2];BeastForce•\¦
+[State -2];BeastForceï¿½\ï¿½ï¿½
 type = Explod
 triggerall = NumExplod(7063) = 0
 trigger1 = Stateno = [3000,3001]
@@ -161,12 +161,12 @@ ownpal = 1
 removetime = -2
 supermove = 1
 
-[State -2];Counter•\¦
+[State -2];Counterï¿½\ï¿½ï¿½
 type = Explod
 trigger1 = Movehit && var(10)
 trigger1 = p2movetype = H || numtarget
 trigger1 = !(hitdefattr=SCA,AT)
-trigger1 = Stateno != 701; •¥‚¢¬Œ÷
+trigger1 = Stateno != 701; ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 trigger1 = Stateno != 711
 trigger1 = Stateno != 740
 trigger1 = Stateno != [3000,3099]
@@ -182,7 +182,7 @@ ownpal = 1
 removetime = -2
 supermove = 1
 
-[State -2];ƒJƒEƒ“ƒ^[”»’è
+[State -2];ï¿½Jï¿½Eï¿½ï¿½ï¿½^ï¿½[ï¿½ï¿½ï¿½ï¿½
 type = varset
 triggerall = numenemy
 trigger1 = enemynear,movetype = A
@@ -190,7 +190,7 @@ var(10) = 1
 persistent = 1
 ignorehitpause = 1
 
-[State -2];ƒJƒEƒ“ƒ^[”»’è‰Šú‰»
+[State -2];ï¿½Jï¿½Eï¿½ï¿½ï¿½^ï¿½[ï¿½ï¿½ï¿½è‰ï¿½ï¿½ï¿½ï¿½
 type = varset
 triggerall = numenemy
 trigger1 = enemynear,movetype != A
@@ -199,9 +199,9 @@ var(10) = 0
 
 
 ;-----------------------------------------------------------------------------
-;b_ƒZƒŒƒNƒg
+;ï¿½bï¿½_ï¿½Zï¿½ï¿½ï¿½Nï¿½g
 
-[State -2];iTigerj
+[State -2];ï¿½iTigerï¿½j
 type = Explod
 trigger1 = NumExplod(7090) = 0 || NumExplod(7092) = 0
 trigger1 = NumExplod(7070) = 0
@@ -226,7 +226,7 @@ trigger3 = StateNo = 750
 trigger4 = StateNo = 20180
 ID = 7070
 
-[State -2];iFoxj
+[State -2];ï¿½iFoxï¿½j
 type = Explod
 trigger1 = NumExplod(7090) = 0 || NumExplod(7092) = 0
 trigger1 = NumExplod(7071) = 0
@@ -251,7 +251,7 @@ trigger3 = StateNo = 750
 trigger4 = StateNo = 20180
 ID = 7071
 
-[State -2];iSnakej
+[State -2];ï¿½iSnakeï¿½j
 type = Explod
 trigger1 = NumExplod(7090) = 0 || NumExplod(7092) = 0
 trigger1 = NumExplod(7072) = 0
@@ -276,7 +276,7 @@ trigger3 = StateNo = 750
 trigger4 = StateNo = 20180
 ID = 7072
 
-[State -2];iOxj
+[State -2];ï¿½iOxï¿½j
 type = Explod
 trigger1 = NumExplod(7090) = 0 || NumExplod(7092) = 0
 trigger1 = NumExplod(7073) = 0
@@ -301,7 +301,7 @@ trigger3 = StateNo = 750
 trigger4 = StateNo = 20180
 ID = 7073
 
-[State -2];iWolfj
+[State -2];ï¿½iWolfï¿½j
 type = Explod
 trigger1 = NumExplod(7090) = 0 || NumExplod(7092) = 0
 trigger1 = NumExplod(7074) = 0
@@ -326,7 +326,7 @@ trigger3 = StateNo = 750
 trigger4 = StateNo = 20180
 ID = 7074
 
-[State -2];iHawkj
+[State -2];ï¿½iHawkï¿½j
 type = Explod
 trigger1 = NumExplod(7090) = 0 || NumExplod(7092) = 0
 trigger1 = NumExplod(7075) = 0
@@ -351,7 +351,7 @@ trigger3 = StateNo = 750
 trigger4 = StateNo = 20180
 ID = 7075
 
-[State -2];iPeccaryj
+[State -2];ï¿½iPeccaryï¿½j
 type = Explod
 trigger1 = NumExplod(7090) = 0 || NumExplod(7092) = 0
 trigger1 = NumExplod(7076) = 0
@@ -377,7 +377,7 @@ trigger4 = StateNo = 20180
 ID = 7076
 
 ;-----------------------------------------------------------------------------
-;ƒr[ƒXƒgƒQ[ƒWŠÖ˜A
+;ï¿½rï¿½[ï¿½Xï¿½gï¿½Qï¿½[ï¿½Wï¿½Ö˜A
 
 [State -2, 2]
 type = varset
@@ -385,40 +385,40 @@ trigger1 = var(11) = 0
 trigger1 = var(4) != 0
 var(4) = 0
 
-[State -2, 1];ƒZƒbƒg
+[State -2, 1];ï¿½Zï¿½bï¿½g
 type = varset
 trigger1 = stateno = 750
 trigger1 = var(4) = 0
 var(4) = 1000
 
-[State -2, 3];•Ï”‚ğ‘Œ¸
+[State -2, 3];ï¿½Ïï¿½ï¿½ğ‘Œï¿½
 type = varadd
 trigger1 = var(4) != 0
 trigger1 = RoundState = 2
 ignorehitpause = 1
 var(4) = -1
 
-[State -2, 3];•Ï”‚ğ‘Œ¸
+[State -2, 3];ï¿½Ïï¿½ï¿½ğ‘Œï¿½
 type = varadd
 trigger1 = Stateno = 760
 trigger1 = MoveType != H
 trigger1 = Time = 1
 var(4) = -200
 
-[State -2, 3];•Ï”‚ğ‘Œ¸
+[State -2, 3];ï¿½Ïï¿½ï¿½ğ‘Œï¿½
 type = varadd
 trigger1 = Stateno = 3000
 trigger1 = MoveType != H
 trigger1 = Time = 1
 var(4) = -330
 
-[State -2, 2];ƒŠƒZƒbƒg
+[State -2, 2];ï¿½ï¿½ï¿½Zï¿½bï¿½g
 type = varset
 trigger1 = var(4) = 0
 trigger2 = var(4) <= -1
 var(4) = 0
 
-[State -2, 1];ƒŠƒZƒbƒg
+[State -2, 1];ï¿½ï¿½ï¿½Zï¿½bï¿½g
 type = varset
 trigger1 = stateno != 750
 trigger1 = var(11) = 1
@@ -427,7 +427,7 @@ var(11) = 0
 
 ;-------------------
 
-[State -2, 1];˜g
+[State -2, 1];ï¿½g
 type = Explod
 trigger1 = NumExplod(7090) = 0
 trigger1 = var(4) <= 1000
@@ -444,7 +444,7 @@ ontop = ifelse(fvar(3),0,1)
 removetime = 99999
 supermove = 1
 
-[State -2, 2];–_
+[State -2, 2];ï¿½_
 type = Explod
 trigger1 = NumExplod(7094) = 0
 trigger1 = var(4) <= 1000
@@ -461,7 +461,7 @@ ontop = ifelse(fvar(3),0,1)
 removetime = 99999
 supermove = 1
 
-[State -2, 1];˜gi“_–Åj
+[State -2, 1];ï¿½gï¿½iï¿½_ï¿½Åj
 type = Explod
 trigger1 = NumExplod(7092) = 0
 trigger1 = var(4) > 0
@@ -477,7 +477,7 @@ ontop = ifelse(fvar(3),0,1)
 removetime = 99999
 supermove = 1
 
-[State -2, 2];–_i“_–Å—pj
+[State -2, 2];ï¿½_ï¿½iï¿½_ï¿½Åï¿½ï¿½pï¿½j
 type = Explod
 trigger1 = NumExplod(7096) = 0
 trigger1 = var(4) > 0
@@ -493,28 +493,28 @@ ontop = ifelse(fvar(3),0,1)
 removetime = 99999
 supermove = 1
 
-[State -2, 3];ƒQ[ƒW’l•Ï‰»
+[State -2, 3];ï¿½Qï¿½[ï¿½Wï¿½lï¿½Ï‰ï¿½
 type = ModifyExplod
 trigger1 = NumExplod(7094) = 1
 ID = 7094
 ignorehitpause = 1
 scale = Var(4)/1000.0,1.0
 
-[State -2, 3];ƒQ[ƒW’l•Ï‰»
+[State -2, 3];ï¿½Qï¿½[ï¿½Wï¿½lï¿½Ï‰ï¿½
 type = ModifyExplod
 trigger1 = NumExplod(7096) = 1
 ID = 7096
 ignorehitpause = 1
 scale = Var(4)/1000.0,1.0
 
-[State -2, 4];–_‚ğÁ‚·
+[State -2, 4];ï¿½_ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 type = RemoveExplod
 triggerall = NumExplod(7094) = 1
 trigger1 = var(4) <= 300
 trigger2 = StateNo = 20180
 ID = 7094
 
-[State -2, 4];–_‚ğÁ‚·
+[State -2, 4];ï¿½_ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 type = RemoveExplod
 triggerall = NumExplod(7096) = 1
 trigger1 = var(4) <= 1000
@@ -524,14 +524,14 @@ trigger3 = var(4) <= -1
 trigger4 = StateNo = 20180
 ID = 7096
 
-[State -2, 4];˜g‚ğÁ‚·
+[State -2, 4];ï¿½gï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 type = RemoveExplod
 triggerall = NumExplod(7090) = 1
 trigger1 = var(4) <= 300
 trigger2 = StateNo = 20180
 ID = 7090
 
-[State -2, 4];˜g‚ğÁ‚·
+[State -2, 4];ï¿½gï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 type = RemoveExplod
 triggerall = NumExplod(7092) = 1
 trigger1 = var(4) <= 1000
@@ -542,7 +542,7 @@ trigger4 = StateNo = 20180
 ID = 7092
 
 ;---------------------------------------------------------------------------
-;¬ƒWƒƒƒ“ƒvVerƒŠƒZƒbƒg
+;ï¿½ï¿½ï¿½Wï¿½ï¿½ï¿½ï¿½ï¿½vVerï¿½ï¿½ï¿½Zï¿½bï¿½g
 
 [State -2, VarSet]
 type = VarSet
@@ -551,59 +551,59 @@ var(5) = 0
 
 ;---------------------------------------------------------------------------
 ;---------------------------------------------------------------------------
-;StateNo 5900‚É‚Â‚¢‚Ä
+;StateNo 5900ï¿½É‚Â‚ï¿½ï¿½ï¿½
 ;
-;5900”Ô‚ÌƒXƒe[ƒg‚ÍA2‡–ÚˆÈ~‚Ìƒ‰ƒEƒ“ƒhƒR[ƒ‹’†‚ÉŒÄ‚Ño‚³‚ê‚Ü‚·B
-;‚±‚ÌƒXƒe[ƒg‚ÅVar‚âFVar‚ğ‰Šú‰»‚µ‚Ä‚¢‚Ü‚·B
-;‚È‚Ì‚ÅTurn Mode‚Å‚ÍA‰“oê‚Å‚à2‡–Ú‚È‚Ì‚ÅƒCƒ“ƒgƒ‚ª‚ ‚è‚Ü‚¹‚ñB
+;5900ï¿½Ô‚ÌƒXï¿½eï¿½[ï¿½gï¿½ÍA2ï¿½ï¿½ï¿½ï¿½ï¿½ÚˆÈ~ï¿½Ìƒï¿½ï¿½Eï¿½ï¿½ï¿½hï¿½Rï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ÉŒÄ‚Ñoï¿½ï¿½ï¿½ï¿½Ü‚ï¿½ï¿½B
+;ï¿½ï¿½ï¿½ÌƒXï¿½eï¿½[ï¿½gï¿½ï¿½Varï¿½ï¿½FVarï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½Ü‚ï¿½ï¿½B
+;ï¿½È‚Ì‚ï¿½Turn Modeï¿½Å‚ÍAï¿½ï¿½ï¿½oï¿½ï¿½Å‚ï¿½2ï¿½ï¿½ï¿½ï¿½ï¿½Ú‚È‚Ì‚ÅƒCï¿½ï¿½ï¿½gï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½B
 
-[State -2, “ñl–Ú‚ÌƒCƒ“ƒgƒ]
-type = ChangeState             ;“ñl–Ú‚Å‚àƒCƒ“ƒgƒ‚ğì‚é
-value = 190                    ;ƒCƒ“ƒgƒ‚Ö
-triggerall = RoundsExisted = 0 ;©•ª‚ª‰Qí
-triggerall = TeamMode = Turns  ;ƒ^[ƒ“ƒ‚[ƒh
-trigger1 = stateno = 5900      ;5900”Ô
+[State -2, ï¿½ï¿½lï¿½Ú‚ÌƒCï¿½ï¿½ï¿½gï¿½ï¿½]
+type = ChangeState             ;ï¿½ï¿½lï¿½Ú‚Å‚ï¿½ï¿½Cï¿½ï¿½ï¿½gï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+value = 190                    ;ï¿½Cï¿½ï¿½ï¿½gï¿½ï¿½ï¿½ï¿½
+triggerall = RoundsExisted = 0 ;ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Qï¿½í
+triggerall = TeamMode = Turns  ;ï¿½^ï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½h
+trigger1 = stateno = 5900      ;5900ï¿½ï¿½
 
-[State -2, Ÿ—˜ƒoƒO‰ğÁ]
-type = CtrlSet                 ;•à‚«ƒoƒO‘Îô
-trigger1 = RoundState = 4      ;Ÿ—˜ƒ|[ƒY
-trigger1 = Win && Ctrl = 1     ;“®‚¯‚éê‡
-value = 0                      ;§Œä•s”\‚É
+[State -2, ï¿½ï¿½ï¿½ï¿½ï¿½oï¿½Oï¿½ï¿½ï¿½ï¿½]
+type = CtrlSet                 ;ï¿½ï¿½ï¿½ï¿½ï¿½oï¿½Oï¿½Îï¿½
+trigger1 = RoundState = 4      ;ï¿½ï¿½ï¿½ï¿½ï¿½|ï¿½[ï¿½Yï¿½ï¿½
+trigger1 = Win && Ctrl = 1     ;ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ê‡
+value = 0                      ;ï¿½ï¿½ï¿½ï¿½sï¿½\ï¿½ï¿½
 
 ;----------------------------------------------------------------------------
-;–¢Š®¬‚È‘ŠèƒLƒƒƒ‰‚É‚æ‚Á‚ÄA•s‹ï‡‚ª‹N‚«‚Ä‚à©ŒÈ‰ğŒˆ‚·‚éƒVƒXƒeƒ€(‰¼)
-[State -2, YÀ•W©ŒÈC•œ]
+;ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È‘ï¿½ï¿½ï¿½Lï¿½ï¿½ï¿½ï¿½ï¿½É‚ï¿½ï¿½ï¿½ÄAï¿½sï¿½ï‡ï¿½ï¿½ï¿½Nï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½ï¿½È‰ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Vï¿½Xï¿½eï¿½ï¿½(ï¿½ï¿½)
+[State -2, Yï¿½ï¿½ï¿½Wï¿½ï¿½ï¿½ÈCï¿½ï¿½]
 type = PosSet
 triggerall = RoundState = 2
-trigger1 = stateno = [0,12]      ;—§‚¿•‹ü‚İ
-trigger1 = floor(Pos Y) = [-2,3] ;—§‚¿ˆÊ’u‚ª‹Í‚©‚É‚¸‚ê‚Ä‚¢‚½‚ç‚·‚®C³
+trigger1 = stateno = [0,12]      ;ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½İï¿½
+trigger1 = floor(Pos Y) = [-2,3] ;ï¿½ï¿½ï¿½ï¿½ï¿½Ê’uï¿½ï¿½ï¿½Í‚ï¿½ï¿½É‚ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½ï¿½ç‚·ï¿½ï¿½ï¿½Cï¿½ï¿½
 y = 0
 
-[State -2, YÀ•W©“®C³]
+[State -2, Yï¿½ï¿½ï¿½Wï¿½ï¿½ï¿½ï¿½ï¿½Cï¿½ï¿½]
 type = PosAdd
 triggerall = RoundState = 2
-triggerall = Life < LifeMax  ;ƒgƒŒ[ƒjƒ“ƒO‚ÅCtrl+I‚ğg‚¤‚Æ‚«‚É”z—¶
-trigger1 = stateno = [0,30]  ;•à‚«‚àŠÜ‚ß‚é
-trigger1 = floor(Pos Y) < -2 ;—§‚¿ˆÊ’u‚ª‘å‚«‚­‚¸‚ê‚Ä‚¢‚½‚çˆÚ“®‚·‚é
+triggerall = Life < LifeMax  ;ï¿½gï¿½ï¿½ï¿½[ï¿½jï¿½ï¿½ï¿½Oï¿½ï¿½Ctrl+Iï¿½ï¿½ï¿½gï¿½ï¿½ï¿½Æ‚ï¿½ï¿½É”zï¿½ï¿½
+trigger1 = stateno = [0,30]  ;ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ü‚ß‚ï¿½
+trigger1 = floor(Pos Y) < -2 ;ï¿½ï¿½ï¿½ï¿½ï¿½Ê’uï¿½ï¿½ï¿½å‚«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½ï¿½ï¿½Ú“ï¿½ï¿½ï¿½ï¿½ï¿½
 y = 2
 
-[State -2, YÀ•W©“®C³]
+[State -2, Yï¿½ï¿½ï¿½Wï¿½ï¿½ï¿½ï¿½ï¿½Cï¿½ï¿½]
 type = PosAdd
 triggerall = RoundState = 2
 triggerall = Life < LifeMax
 trigger1 = stateno = [0,30]
-trigger1 = floor(Pos Y) > 2 ;“¯‚¶‚­
+trigger1 = floor(Pos Y) > 2 ;ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 y = -2
 
 ;----------------------------------------------------------------------------
-;ô
+;ï¿½ï¿½
 ;----------------------------------------------------------------------------
 
 ;---------------------------------------------------------------------------------
-[Statedef -3];íŠÄ‹ƒXƒe[ƒg(p2stateno‚È‚Ç‚Å‘Šè‚És“®‚ğ§Œä‚³‚ê‚½‚ÍÀs‚µ‚È‚¢)
+[Statedef -3];ï¿½íï¿½Äï¿½ï¿½Xï¿½eï¿½[ï¿½g(p2statenoï¿½È‚Ç‚Å‘ï¿½ï¿½ï¿½Ésï¿½ï¿½ï¿½ğ§Œä‚³ï¿½ê‚½ï¿½ï¿½ï¿½Íï¿½ï¿½sï¿½ï¿½ï¿½È‚ï¿½)
 ;---------------------------------------------------------------------------------
 
-[State -3, ƒ_ƒ[ƒWƒ{ƒCƒX]
+[State -3, ï¿½_ï¿½ï¿½ï¿½[ï¿½Wï¿½{ï¿½Cï¿½X]
 type = PlaySnd
 triggerall = Time = 1
 triggerall = Alive && random < 750
@@ -613,7 +613,7 @@ value = 6,0
 channel = 0
 
 ;---------------------------------------------------------------------------
-; ƒ^ƒbƒO”»•Ê
+; ï¿½^ï¿½bï¿½Oï¿½ï¿½ï¿½ï¿½
 
 [State -3, Check Partner]
 type = VarSet
@@ -625,7 +625,7 @@ fvar(3) = ID >partner,ID
 ;AI
 ;--------------------------------------------------------------------------------------
 
-[State -3, AIƒtƒ‰ƒOƒZƒbƒg]
+[State -3, AIï¿½tï¿½ï¿½ï¿½Oï¿½Zï¿½bï¿½g]
 type = VarSet
 triggerall = !var(59)
 triggerall = RoundState = [1,2]
@@ -683,13 +683,13 @@ trigger51 = Command = "AI50"
 Trigger52 = NumHelper(20000+ID)
 Trigger52 = Helper(20000+ID),Var(59)
 Trigger52 = RoundState < 2 || (RoundState = 2 && ctrl)
-;trigger53  = 1;íAI‹N“®—p
-var(59) = 10;©AIƒŒƒxƒ‹i1`10A0‚Åoffj
+;trigger53  = 1;ï¿½íAIï¿½Nï¿½ï¿½ï¿½p
+var(59) = 10;ï¿½ï¿½AIï¿½ï¿½ï¿½xï¿½ï¿½ï¿½i1ï¿½`10ï¿½A0ï¿½ï¿½offï¿½j
 
-[State -3, •¥‚¢—¦ƒZƒbƒg]
+[State -3, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Zï¿½bï¿½g]
 type = VarSet
 trigger1 = 1
-var(58) = 10;©i1`10‚­‚ç‚¢A0‚Åoffj
+var(58) = 10;ï¿½ï¿½ï¿½i1ï¿½`10ï¿½ï¿½ï¿½ç‚¢ï¿½A0ï¿½ï¿½offï¿½j
 
 [State -3, off]
 Type = VarSet
@@ -697,7 +697,7 @@ TriggerAll = Var(59) >= 1
 Trigger1 = RoundState >= 3
 var(59) = 0
 
-[State -3, ƒ_ƒEƒ“UŒ‚‹óU‚è”»’fƒZƒbƒg]
+[State -3, ï¿½_ï¿½Eï¿½ï¿½ï¿½Uï¿½ï¿½ï¿½ï¿½Uï¿½è”»ï¿½fï¿½Zï¿½bï¿½g]
 type = VarSet
 Trigger1 = var(57) = 0 && roundstate = 2
 Trigger1 = EnemyNear(var(55)),statetype = L
@@ -705,7 +705,7 @@ Trigger1 = StateNo = 200 || StateNo = 440
 Trigger1 = !movehit
 var(57) = 1
 
-[State -3, ƒŠƒZƒbƒg]
+[State -3, ï¿½ï¿½ï¿½Zï¿½bï¿½g]
 type = VarSet
 Trigger1 = var(57) = 1 && roundstate = 2
 Trigger1 = EnemyNear(var(55)),movetype != H
@@ -714,24 +714,24 @@ Trigger2 = movehit
 var(57) = 0
 ignorehitpause = 1
 
-[State -3, ’nã‹ò‚ç‚¢ƒJƒEƒ“ƒg]
+[State -3, ï¿½nï¿½ï¿½ï¿½ç‚¢ï¿½Jï¿½Eï¿½ï¿½ï¿½g]
 type = VarAdd
 trigger1 = (stateno = 5000 && Time = 1) || (stateno = 5010 && Time = 1)
 var(56) = 1
 
-[State -3, ƒŠƒZƒbƒg]
+[State -3, ï¿½ï¿½ï¿½Zï¿½bï¿½g]
 type = VarSet
 Triggerall = var(56) != 0
 trigger1 = movetype != H
 Trigger2 = stateno = 0
 var(56) = 0
 
-[State -3, ƒ^ƒbƒO‚Ì¶€Šm”F]
+[State -3, ï¿½^ï¿½bï¿½Oï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½ï¿½mï¿½F]
 type = VarSet
 trigger1 = var(59) != 0 && roundstate = 2
 var(55) = ifelse((!EnemyNear,Alive && NumEnemy = 2),1,0)
 
-[State -3, —§‚¿ãKA“¥‚İ‚İK‹óU‚è”»’fƒZƒbƒg]
+[State -3, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Kï¿½Aï¿½ï¿½ï¿½İï¿½ï¿½ï¿½Kï¿½ï¿½Uï¿½è”»ï¿½fï¿½Zï¿½bï¿½g]
 type = VarAdd
 Triggerall = var(52) = 1
 Trigger1 = StateNo = 230
@@ -746,7 +746,7 @@ trigger2 = EnemyNear(var(55)),statetype != L && EnemyNear(var(55)),statetype = S
 trigger2 = P2BodyDist X = [0,60]
 var(54) = 1
 
-[State -3, ƒ_ƒEƒ“UŒ‚ƒqƒbƒg”»’fƒZƒbƒg]
+[State -3, ï¿½_ï¿½Eï¿½ï¿½ï¿½Uï¿½ï¿½ï¿½qï¿½bï¿½gï¿½ï¿½ï¿½fï¿½Zï¿½bï¿½g]
 type = VarSet
 Trigger1 = var(53) = 0 && roundstate = 2
 Trigger1 = EnemyNear(var(55)),statetype = L
@@ -754,13 +754,13 @@ Trigger1 = movehit
 var(53) = 1
 ignorehitpause = 1
 
-[State -3, ƒŠƒZƒbƒg]
+[State -3, ï¿½ï¿½ï¿½Zï¿½bï¿½g]
 type = VarSet
 Trigger1 = var(53) = 1 && roundstate = 2
 Trigger1 = EnemyNear(var(55)),movetype != H
 var(53) = 0
 
-[State -3, ƒRƒ“ƒ{”»’fƒZƒbƒg]
+[State -3, ï¿½Rï¿½ï¿½ï¿½{ï¿½ï¿½ï¿½fï¿½Zï¿½bï¿½g]
 type = VarSet
 Triggerall = var(52) = 0 && roundstate = 2
 Trigger1 = StateNo = 200
@@ -768,16 +768,16 @@ Trigger2 = StateNo = 210
 var(52) = 1
 ignorehitpause = 1
 
-[State -3, ƒŠƒZƒbƒg]
+[State -3, ï¿½ï¿½ï¿½Zï¿½bï¿½g]
 type = VarSet
 Trigger1 = var(52) != 0 && roundstate = 2
 Trigger1 = movetype != A
 var(52) = 0
 
 ;------------------------------------------------------------------------------
-;•¥‚¢
+;ï¿½ï¿½ï¿½ï¿½
 
-[State -3, •¥‚¢(—§‚¿)]
+[State -3, ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½)]
 type = ChangeState
 value = 700
 triggerall = var(59) != 0 && roundstate = 2
@@ -803,7 +803,7 @@ trigger3 = P2BodyDist X = [-10,60]
 trigger3 = P2BodyDist Y = [-90,-31]
 trigger3 = Random <= var(58)*20
 
-[State -3, •¥‚¢(‹ü‚İ)]
+[State -3, ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½)]
 type = ChangeState
 value = 710
 triggerall = var(59) != 0 && roundstate = 2
@@ -822,7 +822,7 @@ Trigger2 = EnemyNear(var(55)),MoveType = A
 trigger2 = P2BodyDist X = [41,60]
 trigger2 = Random <= var(58)*10
 
-[State -3, ”½Œ‚‹Z]
+[State -3, ï¿½ï¿½ï¿½ï¿½ï¿½Z]
 type = ChangeState
 value = 740
 triggerall = var(59) != 0 && roundstate = 2
@@ -833,9 +833,9 @@ trigger1 = EnemyNear(var(55)),StateType != A
 trigger1 = Random <= var(59)*30
 
 ;------------------------------------------------------------------------------
-;ƒK[ƒh
+;ï¿½Kï¿½[ï¿½h
 
-[State -3, —§‚¿ƒK[ƒh]
+[State -3, ï¿½ï¿½ï¿½ï¿½ï¿½Kï¿½[ï¿½h]
 Type = ChangeState
 Value = 120
 TriggerAll = var(59) != 0 && RoundState = 2
@@ -847,9 +847,9 @@ Trigger2 = P2BodyDist X > 90 || EnemyNear(var(55)),Time > 50
 Trigger2 = Random <= var(59)*20
 
 ;------------------------------------------------------------------------------
-;‹ò‚ç‚¢”²‚¯
+;ï¿½ï¿½ç‚¢ï¿½ï¿½ï¿½ï¿½
 
-[State -3, ‹ò‚ç‚¢”²‚¯]
+[State -3, ï¿½ï¿½ç‚¢ï¿½ï¿½ï¿½ï¿½]
 Type = ChangeState
 Value = 5045
 TriggerAll = var(59) != 0 && RoundState = 2
@@ -864,7 +864,7 @@ Trigger2 = var(56) >= 2
 Trigger2 = Random <= var(59)*40
 
 ;------------------------------------------------------------------------------
-;ƒr[ƒXƒg¢Š«
+;ï¿½rï¿½[ï¿½Xï¿½gï¿½ï¿½ï¿½ï¿½
 
 [State -3, Beast]
 type = ChangeState
@@ -892,7 +892,7 @@ Trigger2 = EnemyNear(var(55)),statetype = L
 trigger2 = power >= 2300
 trigger2 = Random <= 30
 
-[State -3, “Z™’e(‚Ä‚ñ‚µ‚¾‚ñ)]
+[State -3, ï¿½Zï¿½ï¿½ï¿½e(ï¿½Ä‚ñ‚µ‚ï¿½ï¿½ï¿½)]
 type = ChangeState
 value = 760
 triggerall = var(59) != 0 && roundstate = 2
@@ -904,7 +904,7 @@ triggerall = ctrl
 trigger1 = P2BodyDist X > 140
 trigger1 = Random <= var(59)*30
 
-[State -3, °ìE“eÕ”giRabbitj]
+[State -3, ï¿½ï¿½ï¿½ï¿½Eï¿½eï¿½Õ”gï¿½iRabbitï¿½j]
 type = ChangeState
 value = 3000
 triggerall = var(59) != 0 && roundstate = 2
@@ -928,9 +928,9 @@ trigger2 = Random <= var(59)*10
 trigger2 = ctrl
 
 ;-------------------------------------------------------------------------
-;b_ƒAƒ^ƒbƒN
+;ï¿½bï¿½_ï¿½Aï¿½^ï¿½bï¿½N
 
-[State -3, iFoxj]
+[State -3, ï¿½iFoxï¿½j]
 type = ChangeState
 value = 3020
 triggerall = var(59) != 0 && roundstate = 2
@@ -943,7 +943,7 @@ triggerall = NumHelper(10161) = 0
 triggerall = NumProjID(3000) = 0
 triggerall = var(11) = 0
 triggerall = var(12) = 6
-trigger1 = P2BodyDist X = [0,110]    ;˜AŒW—p
+trigger1 = P2BodyDist X = [0,110]    ;ï¿½Aï¿½Wï¿½p
 trigger1 = P2BodyDist Y = [-80,0]
 trigger1 = var(53) = 0
 trigger1 = movehit
@@ -951,7 +951,7 @@ trigger1 = p2movetype = H
 trigger1 = stateno = 210 || stateno = 240 || stateno = 260
 trigger1 = power >= 1000
 trigger1 = Random <= var(59)*40
-Trigger2 = EnemyNear(var(55)),StateType != A    ;ƒJƒEƒ“ƒ^[
+Trigger2 = EnemyNear(var(55)),StateType != A    ;ï¿½Jï¿½Eï¿½ï¿½ï¿½^ï¿½[
 Trigger2 = EnemyNear(var(55)),MoveType = A
 trigger2 = P2BodyDist X = [0,100]
 trigger2 = power >= 1000
@@ -964,7 +964,7 @@ trigger3 = power >= 1300
 trigger3 = Random <= var(59)*50
 Trigger3 = Ctrl
 
-[State -3, iTigerj]
+[State -3, ï¿½iTigerï¿½j]
 type = ChangeState
 value = 3010
 triggerall = var(59) != 0 && roundstate = 2
@@ -975,7 +975,7 @@ triggerall = NumProjID(3000) = 0
 triggerall = var(11) = 0
 triggerall = var(12) = 0
 triggerall = statetype != A
-trigger1 = P2BodyDist X = [0,80]    ;˜AŒW—p
+trigger1 = P2BodyDist X = [0,80]    ;ï¿½Aï¿½Wï¿½p
 trigger1 = var(53) = 0
 trigger1 = movehit
 trigger1 = p2movetype = H
@@ -994,7 +994,7 @@ trigger3 = power >= 1300
 trigger3 = Random <= var(59)*10
 Trigger3 = Ctrl
 
-[State -3, iOxj]
+[State -3, ï¿½iOxï¿½j]
 type = ChangeState
 value = 3040
 triggerall = var(59) != 0 && roundstate = 2
@@ -1005,7 +1005,7 @@ triggerall = NumProjID(3000) = 0
 triggerall = var(11) = 0
 triggerall = var(12) = 4
 triggerall = statetype != A
-trigger1 = P2BodyDist X = [0,100]    ;˜AŒW—p
+trigger1 = P2BodyDist X = [0,100]    ;ï¿½Aï¿½Wï¿½p
 trigger1 = movehit
 trigger1 = p2movetype = H
 trigger1 = stateno = 210 || stateno = 240 || stateno = 260
@@ -1023,7 +1023,7 @@ trigger3 = power >= 1300
 trigger3 = Random <= var(59)*40
 Trigger3 = Ctrl
 
-[State -3, iSnakej]
+[State -3, ï¿½iSnakeï¿½j]
 type = ChangeState
 value = 3030
 triggerall = var(59) != 0 && roundstate = 2
@@ -1035,33 +1035,33 @@ triggerall = var(11) = 0
 triggerall = var(12) = 5
 triggerall = movetype != H
 triggerall = statetype != A
-Trigger1 = EnemyNear(var(55)),MoveType = A    ;ƒJƒEƒ“ƒ^[
+Trigger1 = EnemyNear(var(55)),MoveType = A    ;ï¿½Jï¿½Eï¿½ï¿½ï¿½^ï¿½[
 Trigger1 = EnemyNear(var(55)),StateType != L
 trigger1 = P2BodyDist X = [101,130]
 Trigger1 = EnemyNear(var(55)),vel x > 3
 trigger1 = power >= 1800
 trigger1 = Random <= var(59)*30
 Trigger1 = Ctrl || stateno = 100
-trigger2 = P2BodyDist X = [91,150]    ;‘Î‹ó—p
+trigger2 = P2BodyDist X = [91,150]    ;ï¿½Î‹ï¿½p
 Trigger2 = EnemyNear(var(55)),vel x > 3
 Trigger2 = EnemyNear(var(55)),StateType = A
 trigger2 = power >= 1300
 trigger2 = Random <= var(59)*50
 Trigger2 = Ctrl
-trigger3 = P2BodyDist X = [0,30]    ;˜AŒW—p
+trigger3 = P2BodyDist X = [0,30]    ;ï¿½Aï¿½Wï¿½p
 trigger3 = var(53) = 0
 trigger3 = movehit
 trigger3 = stateno = 210 || stateno = 240
 trigger3 = power >= 1000
 trigger3 = Random <= var(59)*50
-trigger4 = P2BodyDist X = [0,60]    ;˜AŒW—p
+trigger4 = P2BodyDist X = [0,60]    ;ï¿½Aï¿½Wï¿½p
 trigger4 = EnemyNear(var(55)),statetype != L
 trigger4 = movehit
 trigger4 = stateno = 440
 trigger4 = power >= 1300
 trigger4 = Random <= var(59)*20
 
-[State -3, iPeccaryj]
+[State -3, ï¿½iPeccaryï¿½j]
 type = ChangeState
 value = 3070
 triggerall = var(59) != 0 && roundstate = 2
@@ -1073,20 +1073,20 @@ triggerall = var(11) = 0
 triggerall = var(12) = 1
 triggerall = statetype != A
 triggerall = movetype != H
-Trigger1 = EnemyNear(var(55)),MoveType = A    ;ƒJƒEƒ“ƒ^[
+Trigger1 = EnemyNear(var(55)),MoveType = A    ;ï¿½Jï¿½Eï¿½ï¿½ï¿½^ï¿½[
 Trigger1 = EnemyNear(var(55)),StateType != L 
 trigger1 = power >= 2000
 trigger1 = P2BodyDist X = [100,150]
 trigger1 = Random <= var(59)*8
 Trigger1 = Ctrl
-trigger2 = P2BodyDist X = [0,80]    ;˜AŒW—p
+trigger2 = P2BodyDist X = [0,80]    ;ï¿½Aï¿½Wï¿½p
 trigger2 = var(53) = 0
 trigger2 = movehit
 trigger2 = stateno = 210 || stateno = 240
 trigger2 = power >= 2000
 trigger2 = Random <= var(59)*10
 
-[State -3,iHawkj ]
+[State -3,ï¿½iHawkï¿½j ]
 type = ChangeState
 value = 3060
 triggerall = var(59) != 0 && roundstate = 2
@@ -1110,7 +1110,7 @@ trigger2 = stateno = [600,649]
 trigger2 = movehit
 trigger2 = Random <= var(59)*50
 
-[State -3, iWolfj]
+[State -3, ï¿½iWolfï¿½j]
 type = ChangeState
 value = 3050
 triggerall = var(59) != 0 && roundstate = 2
@@ -1139,9 +1139,9 @@ Trigger3 = EnemyNear(var(55)),vel x = 0
 trigger3 = Random <= var(59)*50
 
 ;-------------------------------------------------------------------------
-;•KE‹Z
+;ï¿½Kï¿½Eï¿½Z
 
-[State -3, ‰_(‚Ğ‚Î‚è)]
+[State -3, ï¿½_ï¿½ï¿½(ï¿½Ğ‚Î‚ï¿½)]
 type = ChangeState
 value = 1050
 triggerall = var(59) != 0
@@ -1149,7 +1149,7 @@ triggerall = roundstate = 2
 triggerall = statetype != A
 triggerall = movetype != H
 triggerall = EnemyNear(var(55)),statetype != L
-trigger1 = P2BodyDist X = [0,50]    ;˜AŒW—p
+trigger1 = P2BodyDist X = [0,50]    ;ï¿½Aï¿½Wï¿½p
 trigger1 = var(53) = 0
 trigger1 = ((stateno = 261) && (AnimElemtime(5) > 3)) || ((stateno = 250) && (AnimElemtime(6) > 3))
 trigger1 = movehit && (P2stateno = [5000,5199])
@@ -1182,7 +1182,7 @@ trigger5 = stateno = 230
 trigger5 = movehit
 Trigger5 = Random <= var(59)*30
 
-[State -3, ‘í–Ø’¹(‚«‚Â‚Â‚«)]
+[State -3, ï¿½ï¿½Ø’ï¿½(ï¿½ï¿½ï¿½Â‚Â‚ï¿½)]
 type = ChangeState
 value = 1200
 triggerall = var(59) != 0
@@ -1191,7 +1191,7 @@ triggerall = statetype != A
 triggerall = movetype != H
 triggerall = EnemyNear(var(55)),statetype != L
 Trigger1 = EnemyNear(var(55)),StateType != A
-trigger1 = P2BodyDist X = [51,90]    ;˜AŒW—p
+trigger1 = P2BodyDist X = [51,90]    ;ï¿½Aï¿½Wï¿½p
 trigger1 = var(53) = 0
 trigger1 = ((stateno = 260) && (AnimElemtime(6) > 3)) || ((stateno = 250) && (AnimElemtime(6) > 3))
 trigger1 = movehit
@@ -1203,7 +1203,7 @@ trigger2 = movecontact
 trigger2 = p2bodydist X = [0,70]
 trigger2 = Random <= Var(59)*50
 
-[State -1, ‰(‚Â‚Î‚ß)]
+[State -1, ï¿½ï¿½(ï¿½Â‚Î‚ï¿½)]
 type = ChangeState
 value = 1100
 triggerall = var(59) != 0
@@ -1211,13 +1211,13 @@ triggerall = roundstate = 2
 triggerall = statetype != A
 triggerall = movetype != H
 triggerall = EnemyNear(var(55)),statetype != L
-trigger1 = P2BodyDist X = [51,120]    ;˜AŒW—p
+trigger1 = P2BodyDist X = [51,120]    ;ï¿½Aï¿½Wï¿½p
 trigger1 = var(53) = 0
 trigger1 = (stateno = 261) && (AnimElemtime(5) > 3)
 trigger1 = movecontact
 trigger1 = Random <= var(59)*50
 
-[State -1, ãÅ‰(‚©‚í‚¹‚İ)]
+[State -1, ï¿½Åï¿½(ï¿½ï¿½ï¿½í‚¹ï¿½ï¿½)]
 type = ChangeState
 value = 1000
 triggerall = var(59) != 0
@@ -1236,7 +1236,7 @@ trigger2 = Ctrl && Time = 0
 
 ;------------------------------------------------------------------------------
 
-[State -3, “Š‚°]
+[State -3, ï¿½ï¿½ï¿½ï¿½]
 type  = ChangeState
 value = 800
 triggerall = var(59) != 0
@@ -1255,7 +1255,7 @@ trigger2 = stateno = [100,101]
 
 ;------------------------------------------------------------------------------
 
-[State -3, ƒoƒbƒNƒXƒeƒbƒv]
+[State -3, ï¿½oï¿½bï¿½Nï¿½Xï¿½eï¿½bï¿½v]
 type = ChangeState
 value = 105
 TriggerAll = var(59) != 0 && RoundState = 2
@@ -1283,9 +1283,9 @@ Trigger5 = (EnemyNear(var(55)),StateNo = 5120) || (EnemyNear(var(55)),StateNo = 
 Trigger5 = Random <= var(59)*40
 
 ;------------------------------------------------------------------------------
-;ˆÚ“®
+;ï¿½Ú“ï¿½
 
-[State -3, ƒ_ƒbƒVƒ…]
+[State -3, ï¿½_ï¿½bï¿½Vï¿½ï¿½]
 type = ChangeState
 value = 100
 Triggerall = var(59) != 0 && RoundState = 2
@@ -1303,10 +1303,10 @@ trigger2 = P2StateNo = 720
 trigger2 = Random <= var(59)*50
 
 ;------------------------------------------------------------------------------
-;’ÊíUŒ‚
+;ï¿½Êï¿½Uï¿½ï¿½
 
 ;[0,30]
-[State -3, —§‚¿ãƒpƒ“ƒ`]
+[State -3, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½pï¿½ï¿½ï¿½`]
 type = ChangeState
 value = 200
 triggerall = var(59) != 0
@@ -1330,7 +1330,7 @@ trigger3 = Random <= Var(59)*10
 trigger3 = ctrl
 
 ;[0,35]
-[State -3, —§‚¿ãƒLƒbƒN]
+[State -3, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Lï¿½bï¿½N]
 type = ChangeState
 value = 230
 triggerall = var(59) != 0
@@ -1359,7 +1359,7 @@ trigger3 = Random <= Var(59)*30
 trigger3 = ctrl
 
 ;[0,65]
-[State -3, —§‚¿‹­ƒpƒ“ƒ`]
+[State -3, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½pï¿½ï¿½ï¿½`]
 type = ChangeState
 value = 210
 triggerall = var(59) != 0
@@ -1408,7 +1408,7 @@ trigger8 = Random <= Var(59)*50
 trigger8 = stateno = [100,101]
 
 ;[0,105]
-[State -3, “¥‚İ‚İƒLƒbƒN]
+[State -3, ï¿½ï¿½ï¿½İï¿½ï¿½İƒLï¿½bï¿½N]
 type = ChangeState
 value = 260
 triggerall = var(59) != 0
@@ -1430,7 +1430,7 @@ trigger2 = P2BodyDist X = [81,90]
 trigger2 = Random <= Var(59)*5
 trigger2 = ctrl
 
-[State -3, “¥‚İ‚İƒLƒbƒNi’Ç‰Áj]
+[State -3, ï¿½ï¿½ï¿½İï¿½ï¿½İƒLï¿½bï¿½Nï¿½iï¿½Ç‰ï¿½ï¿½j]
 type = ChangeState
 value = 261
 triggerall = var(59) != 0
@@ -1447,7 +1447,7 @@ trigger1 = (P2MoveType = H && P2StateNo != [120,155])
 trigger1 = Random <= Var(59)*50
 
 ;[0,130]
-[State -3, “¥‚İ‚İƒpƒ“ƒ`]
+[State -3, ï¿½ï¿½ï¿½İï¿½ï¿½İƒpï¿½ï¿½ï¿½`]
 type = ChangeState
 value = 250
 triggerall = var(59) != 0
@@ -1462,7 +1462,7 @@ trigger1 = p2bodydist X = [0,100]
 trigger1 = Random <= Var(59)*50
 
 ;[0,65]
-[State -3, ’†’iUŒ‚]
+[State -3, ï¿½ï¿½ï¿½iï¿½Uï¿½ï¿½]
 type = ChangeState
 value = 280
 triggerall = var(59) != 0
@@ -1476,7 +1476,7 @@ trigger1 = stateno = 200 || stateno = 210
 trigger1 = MoveGuarded
 trigger1 = Random <= Var(59)*5
 
-[State -3, ÅI˜A‘±]
+[State -3, ï¿½ÅIï¿½Aï¿½ï¿½]
 type = ChangeState
 value = 270
 triggerall = var(59) != 0
@@ -1489,9 +1489,9 @@ trigger1 = movehit
 trigger1 = Random <= Var(59)*50
 
 ;------------------------------------------------------------------------------
-;‹ü‚İUŒ‚
+;ï¿½ï¿½ï¿½İUï¿½ï¿½
 
-[State -3, ‚µ‚á‚ª‚İãƒpƒ“ƒ`]
+[State -3, ï¿½ï¿½ï¿½á‚ªï¿½İï¿½pï¿½ï¿½ï¿½`]
 type = ChangeState
 value = 400
 triggerall = var(59) != 0
@@ -1508,7 +1508,7 @@ trigger1 = Random <= Var(59)*30
 trigger1 = ctrl
 
 ;[0,35]
-[State -3, ‚µ‚á‚ª‚İãƒLƒbƒN]
+[State -3, ï¿½ï¿½ï¿½á‚ªï¿½İï¿½Lï¿½bï¿½N]
 type = ChangeState
 value = 430
 triggerall = var(59) != 0
@@ -1525,7 +1525,7 @@ trigger2 = movecontact
 trigger2 = Random <= Var(59)*30
 
 ;[0,65]
-[State -3, ‚µ‚á‚ª‚İ‹­ƒLƒbƒN]
+[State -3, ï¿½ï¿½ï¿½á‚ªï¿½İ‹ï¿½ï¿½Lï¿½bï¿½N]
 type = ChangeState
 value = 440
 triggerall = var(59) != 0
@@ -1549,9 +1549,9 @@ trigger3 = Random <= Var(59)*10
 trigger3 = ctrl
 
 ;------------------------------------------------------------------------------
-;‹ó’†UŒ‚
+;ï¿½ó’†Uï¿½ï¿½
 
-[State -3, ƒWƒƒƒ“ƒv‹­ƒLƒbƒN]
+[State -3, ï¿½Wï¿½ï¿½ï¿½ï¿½ï¿½vï¿½ï¿½ï¿½Lï¿½bï¿½N]
 type = ChangeState
 value = 640
 triggerall = var(59) != 0
@@ -1576,7 +1576,7 @@ trigger3 = P2BodyDist Y = [31,90]
 trigger3 = ctrl || StateNo = 600
 trigger3 = Random <= Var(59)*30
 
-[State -3, ƒWƒƒƒ“ƒvãƒpƒ“ƒ`]
+[State -3, ï¿½Wï¿½ï¿½ï¿½ï¿½ï¿½vï¿½ï¿½pï¿½ï¿½ï¿½`]
 type = ChangeState
 value = 600
 triggerall = var(59) != 0
@@ -1598,7 +1598,7 @@ Trigger2 = !inguarddist
 trigger2 = Random <= Var(59)*50
 
 ;[0,50]
-[State -3, ƒWƒƒƒ“ƒv‹­ƒpƒ“ƒ`]
+[State -3, ï¿½Wï¿½ï¿½ï¿½ï¿½ï¿½vï¿½ï¿½ï¿½pï¿½ï¿½ï¿½`]
 type = ChangeState
 value = 610
 triggerall = var(59) != 0
@@ -1615,7 +1615,7 @@ trigger2 = P2BodyDist X = [0,50]
 trigger2 = P2BodyDist Y = [-40,30]
 trigger2 = Random <= Var(59)*20
 trigger2 = ctrl
-trigger3 = var(5) = 1;¬ƒWƒƒƒ“ƒv
+trigger3 = var(5) = 1;ï¿½ï¿½ï¿½Wï¿½ï¿½ï¿½ï¿½ï¿½v
 trigger3 = P2BodyDist X = [-10,50]
 trigger3 = P2BodyDist Y = [31,60]
 trigger3 = Random <= Var(59)*30
@@ -1623,7 +1623,7 @@ trigger3 = ctrl
 
 ;------------------------------------------------------------------------------
 
-[State -3, ƒWƒƒƒ“ƒv§Œä]
+[State -3, ï¿½Wï¿½ï¿½ï¿½ï¿½ï¿½vï¿½ï¿½ï¿½ï¿½]
 Type = ChangeState
 Value = 0
 TriggerAll = Var(59) != 0 && RoundState = 2
@@ -1637,7 +1637,7 @@ Trigger3 = EnemyNear(var(55)),MoveType != A
 Trigger3 = p2bodydist x = [0,180]
 trigger4 = (P2StateNo = [720,730]) && (EnemyNear(var(55)),MoveType = I)
 
-[State -3, ƒWƒƒƒ“ƒv(AI)]
+[State -3, ï¿½Wï¿½ï¿½ï¿½ï¿½ï¿½v(AI)]
 Type = ChangeState
 Value = 41
 TriggerAll = Var(59) != 0 && RoundState = 2
@@ -1670,7 +1670,7 @@ Trigger5 = EnemyNear(var(55)),MoveType = A
 Trigger5 = Random <= var(59)*5
 Trigger5 = Ctrl
 
-[State -3, ƒWƒƒƒ“ƒv(AI¬ƒWƒƒƒ“ƒv)]
+[State -3, ï¿½Wï¿½ï¿½ï¿½ï¿½ï¿½v(AIï¿½ï¿½ï¿½Wï¿½ï¿½ï¿½ï¿½ï¿½v)]
 Type = ChangeState
 Value = 42
 TriggerAll = Var(59) != 0 && RoundState = 2
@@ -1682,7 +1682,7 @@ Trigger1 = EnemyNear(var(55)),MoveType != A
 Trigger1 = EnemyNear(var(55)),backedgebodydist > 10
 Trigger1 = Random <= var(59)*10
 
-[State -3, ƒWƒƒƒ“ƒv]
+[State -3, ï¿½Wï¿½ï¿½ï¿½ï¿½ï¿½v]
 Type = ChangeState
 Value = 40
 TriggerAll = Var(59) != 0 && RoundState = 2
@@ -1710,7 +1710,7 @@ Trigger1 = inguarddist
 Trigger1 = Random <= 10
 
 ;------------------------------------------------------------------------------
-;b_ƒZƒŒƒNƒg
+;ï¿½bï¿½_ï¿½Zï¿½ï¿½ï¿½Nï¿½g
 
 [State -3]
 type = VarSet
@@ -1738,7 +1738,7 @@ var(12) = -1
 
 ;------------------------------------------------------------------------------
 
-[State -3, AI‹N“®—pƒwƒ‹ƒp[]
+[State -3, AIï¿½Nï¿½ï¿½ï¿½pï¿½wï¿½ï¿½ï¿½pï¿½[]
 type = helper
 trigger1 = var(59) = 0
 trigger1 = !NumHelper(20000+ID)
@@ -1756,7 +1756,7 @@ pausemovetime = 9999999
 supermovetime = 9999999
 persistent = 0
 
-[State -3, ŠÖŒW–³‚¢ƒXƒe[ƒg‚És‚©‚È‚¢‚æ‚¤‚É]
+[State -3, ï¿½ÖŒWï¿½ï¿½ï¿½ï¿½ï¿½Xï¿½eï¿½[ï¿½gï¿½Ésï¿½ï¿½ï¿½È‚ï¿½ï¿½æ‚¤ï¿½ï¿½]
 type = changestate
 trigger1 = ishelper(20000)
 trigger1 = ishelper(20000+root,ID)
@@ -1764,13 +1764,13 @@ trigger1 = stateno != 20000
 value = 20000
 
 ;---------------------------------------------------------------------------
-; AI‹N“®—pƒwƒ‹ƒp[
+; AIï¿½Nï¿½ï¿½ï¿½pï¿½wï¿½ï¿½ï¿½pï¿½[
 
 [Statedef 20000]
 anim = 20000
 Ctrl = 0
 
-[State 20000,–³“G]
+[State 20000,ï¿½ï¿½ï¿½G]
 Type = NotHitBy
 Trigger1 = 1
 Value = SCA, NT, ST, HT ,NA, SA, HA ,NP, SP, HP
@@ -1779,7 +1779,7 @@ SuperMoveTime = 99999
 PauseMoveTime = 99999
 IgnoreHitPause = 1
 
-[State 20000, ŠÔˆá‚¢‚Å–{‘Ì‚ª—ˆ‚½‚ç—§‚¿‚ÖˆÚs]
+[State 20000, ï¿½Ôˆá‚¢ï¿½Å–{ï¿½Ì‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ç—§ï¿½ï¿½ï¿½ÖˆÚs]
 type = selfstate
 trigger1 = !ishelper
 value = 0
@@ -1791,7 +1791,7 @@ IgnoreHitPause = 1
 supermovetime = 99999999
 pausemovetime = 99999999
 
-[State 20000, ƒvƒŒƒCƒ„[”»’è1]
+[State 20000, ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½1]
 type = varset
 trigger1 = command = "up" && root,command = "up"
 trigger2 = command = "down" && root,command = "down"
@@ -1806,7 +1806,7 @@ trigger10 = command = "z" && root,command = "z"
 trigger11 = command = "start" && root,command = "start"
 var(59) = -1
 
-[State 20000, ƒvƒŒƒCƒ„[”»’è2]
+[State 20000, ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½2]
 type = varset
 triggerAll = RoundState = 0
 trigger1 = command = "holdup" && root,command = "holdup"
@@ -1815,7 +1815,7 @@ trigger3 = command = "holdback" && root,command = "holdback"
 trigger4 = command = "holdfwd" && root,command = "holdfwd"
 var(59) = -1
 
-[State 20000, —§‚Á‚½‚çÁ¸]
+[State 20000, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½]
 Type = DestroySelf
 triggerAll = isHelper
 Trigger1 = root,var(59) || var(59) = -1
@@ -1831,7 +1831,7 @@ trigger10 = command = "y" && root,command = "y"
 trigger11 = command = "z" && root,command = "z"
 trigger12 = command = "start" && root,command = "start"
 
-[State 20000, Ì×¸ŞON]
+[State 20000, ï¿½×¸ï¿½ON]
 type = varset
 triggerall = var(59) != -1
 trigger1 = root,command = "up"
@@ -1848,7 +1848,7 @@ trigger11 = root,command = "start"
 var(59) = 1
 
 
-;‚±‚Ì‰ºAˆêsˆÈã‹ó‚¯‚é–I
+;ï¿½ï¿½ï¿½Ì‰ï¿½ï¿½Aï¿½ï¿½sï¿½Èï¿½ó‚¯‚é–ï¿½I
 
 
 
