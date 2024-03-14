@@ -344,35 +344,35 @@ time=1
 ;=======================================
 ; Combo vars
 ;=======================================
-;[State -1, Combo1]
-;type = Varset
-;trigger1 = 1
-;var(39) = 0
+[State -1, Combo1]
+type = Varset
+trigger1 = 1
+var(39) = 0
 
-;[State -1, Combo2]
-;type = Varset
-;trigger1 = (stateno = 200) && movecontact
-;trigger2 = (stateno = 250) && movecontact
-;trigger3 = (stateno = 400) && movecontact
-;trigger4 = (stateno = 420) && movecontact
-;trigger5 = (stateno = 500) && movecontact
-;trigger6 = (stateno = 320) && movecontact
-;trigger7 = (stateno = 300) && movecontact
-;trigger8 = (stateno = 301) && movecontact
-;ignorehitpause = 1
-;var(39) = var(39) | 1
+[State -1, Combo2]
+type = Varset
+trigger1 = (stateno = 200) && movecontact
+trigger2 = (stateno = 250) && movecontact
+trigger3 = (stateno = 400) && movecontact
+trigger4 = (stateno = 420) && movecontact
+trigger5 = (stateno = 500) && movecontact
+trigger6 = (stateno = 320) && movecontact
+trigger7 = (stateno = 300) && movecontact
+trigger8 = (stateno = 301) && movecontact
+ignorehitpause = 1
+var(39) = var(39) | 1
 
-;[State -1, fakeCombo]
-;type = Varset
-;trigger1 = 1
-;var(42) = 0
+[State -1, fakeCombo]
+type = Varset
+trigger1 = 1
+var(42) = 0
 
-;[State -1, Combo2]
-;type = Varset
-;trigger1 = (stateno = 500) && animelemtime(5) > 1 && animelemtime(7) <= 0
-;trigger2 = (stateno = 500) && movecontact
-;ignorehitpause = 1
-;var(42) = var(42) | 1
+[State -1, Combo2]
+type = Varset
+trigger1 = (stateno = 500) && animelemtime(5) > 1 && animelemtime(7) <= 0
+trigger2 = (stateno = 500) && movecontact
+ignorehitpause = 1
+var(42) = var(42) | 1
 
 ;=======================================
 ; LDM
@@ -876,3 +876,64 @@ value = 670
 triggerall = command = "b"
 triggerall = vel x = 0
 trigger1 = statetype = A && ctrl
+
+;---------------------------------------------------------------------------
+JAMBU AI
+;---------------------------------------------------------------------------
+[State -1, AI Guard]
+type = ChangeState
+value = 120
+triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
+triggerall = AILevel * AILevel * AILevel * 2 > random
+triggerall = InGuardDist
+trigger1 = ctrl
+
+[State -1, AI Taunt]
+type = ChangeState
+value = 195
+triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
+triggerall = p2bodydist x > 100 && statetype != A
+triggerall = p2movetype = H && Life >= P2Life
+trigger1 = ctrl
+
+[State -1, AI Crouch 1]
+type = ChangeState
+value = 11
+triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
+triggerall = p2bodydist x > 100 && statetype != A
+trigger1 = ctrl
+
+[State -1, AI LowHit]
+type = ChangeState
+value = 430
+triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
+triggerall = AILevel * AILevel * AILevel > random
+triggerall = p2bodydist x < 50 && statetype != A
+trigger1 = ctrl
+trigger2 = movehit && animtime >= 0
+
+[State -1, AI MediumHit]
+type = ChangeState
+value = 210
+triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
+triggerall = AILevel * AILevel * AILevel > random
+triggerall = p2bodydist x < 50 && statetype != A
+trigger1 = ctrl
+trigger2 = movehit && animtime >= 0
+
+[State -1, AI FollowUp]
+type = ChangeState
+value = 1000
+triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
+triggerall = AILevel * AILevel * AILevel * 2 > random
+triggerall = p2bodydist x < 50 && statetype != A
+trigger1 = movehit && animtime >= 0
+
+[State -1, AI Crouch 2]
+type = ChangeState
+value = 11
+triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
+triggerall = statetype != A
+trigger1 = ctrl
+;---------------------------------------------------------------------------
+;---------------------------------------------------------------------------
