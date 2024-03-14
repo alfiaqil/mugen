@@ -715,7 +715,7 @@ triggerall = p2bodydist x > 200 && statetype != A
 triggerall = p2movetype = H && Life >= P2Life
 trigger1 = ctrl
 
-;uniq, numproj
+;uniq, spam numproj
 [State -1, AI Range]
 type = ChangeState
 value = 1550
