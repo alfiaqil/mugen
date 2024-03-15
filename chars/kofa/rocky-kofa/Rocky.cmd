@@ -867,7 +867,7 @@ trigger1 = ctrl
 type = ChangeState
 value = 1700
 triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
-triggerall = AILevel * AILevel * AILevel> random
+triggerall = AILevel * AILevel * 2> random
 triggerall = p2bodydist x < 20 && statetype != A
 trigger1 = ctrl
 
