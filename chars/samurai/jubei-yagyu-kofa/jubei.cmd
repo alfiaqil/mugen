@@ -715,12 +715,11 @@ triggerall = p2bodydist x > 200 && statetype != A
 triggerall = p2movetype = H && Life >= P2Life
 trigger1 = ctrl
 
-;uniq, spam numproj
 [State -1, AI Range]
 type = ChangeState
 value = 1550
 triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
-triggerall = AILevel * AILevel * AILevel> random
+triggerall = AILevel * AILevel * 2> random
 triggerall = p2bodydist x > 100 && statetype != A
 triggerall = NumProj = 0;
 trigger1 = ctrl

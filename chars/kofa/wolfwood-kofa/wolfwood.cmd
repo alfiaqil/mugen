@@ -706,6 +706,7 @@ value = 3005
 triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
 triggerall = AILevel * AILevel * 2 > random
 triggerall = p2bodydist x > 100 && statetype != A
+triggerall = NumProj = 0;
 trigger1 = ctrl
 
 [State -1, AI LowHit]
