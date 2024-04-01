@@ -1,0 +1,1016 @@
+[Statedef -2]
+
+[State 0, StopSnd]
+type = StopSnd
+trigger1 = anim!=100
+channel = 21
+[State -2, StopSnd]
+type = StopSnd
+trigger1 = time=0
+trigger1=anim!=11110
+channel = 11
+[State -2, StopSnd]
+type = StopSnd
+trigger1 = time=0
+trigger1=anim!=11111
+channel = 9
+
+
+
+;Honorable Death States
+[State -2]
+type = Changestate
+trigger1 = var(33) = 1
+trigger1 = alive = 0
+trigger1 = stateno != 851
+trigger1 = stateno != 5150
+value = 851
+
+[State -2]
+type = PowerAdd
+trigger1 = roundstate = 0
+trigger1 = var(33) = 1
+value = 3000
+
+[State -2]
+type = VarSet
+trigger1 = roundstate = 0
+trigger1 = var(33) = 1
+v = 33
+value = 0
+
+
+
+[State -2, Remove Explod]
+type = RemoveExplod
+trigger1 = stateno = 700 && numexplod(20213) = 1
+id = 20213
+ignorehitpause = 1
+pausemovetime = -1
+supermovetime = -1
+
+[State -2, Remove Explod]
+type = RemoveExplod
+trigger1 = stateno = 700 && numexplod(20214) = 1
+id = 20214
+ignorehitpause = 1
+pausemovetime = -1
+supermovetime = -1
+
+[State -2, Remove Explod]
+type = RemoveExplod
+trigger1 = stateno = 700 && numexplod(20215) = 1
+id = 20215
+ignorehitpause = 1
+pausemovetime = -1
+supermovetime = -1
+
+[State -2, Remove Explod]
+type = RemoveExplod
+trigger1 = stateno = 700 && numexplod(20233) = 1
+id = 20233
+ignorehitpause = 1
+pausemovetime = -1
+supermovetime = -1
+
+[State -2, Remove Explod]
+type = RemoveExplod
+trigger1 = stateno = 700 && numexplod(20234) = 1
+id = 20234
+ignorehitpause = 1
+pausemovetime = -1
+supermovetime = -1
+
+[State -2, Remove Explod]
+type = RemoveExplod
+trigger1 = stateno = 710 && numexplod(20412) = 1
+id = 20412
+ignorehitpause = 1
+pausemovetime = -1
+supermovetime = -1
+
+[State -2, Remove Explod]
+type = RemoveExplod
+trigger1 = stateno = 710 && numexplod(20413) = 1
+id = 20413
+ignorehitpause = 1
+pausemovetime = -1
+supermovetime = -1
+
+[State -2, Remove Explod]
+type = RemoveExplod
+trigger1 = stateno = 710 && numexplod(20414) = 1
+id = 20414
+ignorehitpause = 1
+pausemovetime = -1
+supermovetime = -1
+
+[State -2, Remove Explod]
+type = RemoveExplod
+trigger1 = stateno = 710 && numexplod(20423) = 1
+id = 20423
+ignorehitpause = 1
+pausemovetime = -1
+supermovetime = -1
+
+[State -2, Remove Explod]
+type = RemoveExplod
+trigger1 = stateno = 710 && numexplod(20423) = 1
+id = 20423
+ignorehitpause = 1
+pausemovetime = -1
+supermovetime = -1
+
+[State -2, Remove Explod]
+type = RemoveExplod
+trigger1 = stateno = 52 && numexplod(20602) = 1
+id = 20602
+ignorehitpause = 1
+pausemovetime = -1
+supermovetime = -1
+
+[State -2, Remove Explod]
+type = RemoveExplod
+trigger1 = stateno = 52 && numexplod(20603) = 1
+id = 20603
+ignorehitpause = 1
+pausemovetime = -1
+supermovetime = -1
+
+[State -2, Remove Explod]
+type = RemoveExplod
+trigger1 = stateno = 52 && numexplod(20607) = 1
+id = 20607
+ignorehitpause = 1
+pausemovetime = -1
+supermovetime = -1
+
+[State -2, Remove Explod]
+type = RemoveExplod
+trigger1 = stateno = 52 && numexplod(20608) = 1
+id = 20608
+ignorehitpause = 1
+pausemovetime = -1
+supermovetime = -1
+
+[State -2, Remove Explod]
+type = RemoveExplod
+trigger1 = stateno = 52 && numexplod(20609) = 1
+id = 20609
+ignorehitpause = 1
+pausemovetime = -1
+supermovetime = -1
+
+[State -2, Remove Explod]
+type = RemoveExplod
+trigger1 = stateno = 52 && numexplod(20622) = 1
+id = 20622
+ignorehitpause = 1
+pausemovetime = -1
+supermovetime = -1
+
+[State -2, Remove Explod]
+type = RemoveExplod
+trigger1 = stateno = 52 && numexplod(20623) = 1
+id = 20623
+ignorehitpause = 1
+pausemovetime = -1
+supermovetime = -1
+
+[State -2, Remove Explod]
+type = RemoveExplod
+trigger1 = stateno = 52 && numexplod(20624) = 1
+id = 20624
+ignorehitpause = 1
+pausemovetime = -1
+supermovetime = -1
+
+[State -2, Remove Explod]
+type = RemoveExplod
+trigger1 = stateno = 52 && numexplod(20633) = 1
+id = 20633
+ignorehitpause = 1
+pausemovetime = -1
+supermovetime = -1
+
+[State -2, Remove Explod]
+type = RemoveExplod
+trigger1 = stateno = 52 && numexplod(20634) = 1
+id = 20634
+ignorehitpause = 1
+pausemovetime = -1
+supermovetime = -1
+
+[State -2, Remove Explod]
+type = RemoveExplod
+trigger1 = stateno = 52 && numexplod(20635) = 1
+id = 20635
+ignorehitpause = 1
+pausemovetime = -1
+supermovetime = -1
+
+[State -2, Remove Explod]
+type = RemoveExplod
+trigger1 = stateno = 52 && numexplod(20266) = 1
+id = 20266
+ignorehitpause = 1
+pausemovetime = -1
+supermovetime = -1
+
+[State -2, Remove Explod]
+type = RemoveExplod
+trigger1 = stateno = 52 && numexplod(20267) = 1
+id = 20267
+ignorehitpause = 1
+pausemovetime = -1
+supermovetime = -1
+
+[State -2, Remove Explod]
+type = RemoveExplod
+trigger1 = stateno = 52 && numexplod(20268) = 1
+id = 20268
+ignorehitpause = 1
+pausemovetime = -1
+supermovetime = -1
+
+[State -2, Remove Explod]
+type = RemoveExplod
+trigger1 = stateno = 841 && numexplod(20846) = 1
+id = 20846
+ignorehitpause = 1
+pausemovetime = -1
+supermovetime = -1
+
+[State -2, Remove Explod]
+type = RemoveExplod
+trigger1 = stateno = 841 && numexplod(20847) = 1
+id = 20847
+ignorehitpause = 1
+pausemovetime = -1
+supermovetime = -1
+
+[State -2, Remove Explod]
+type = RemoveExplod
+trigger1 = stateno = 841 && numexplod(20848) = 1
+id = 20848
+ignorehitpause = 1
+pausemovetime = -1
+supermovetime = -1
+
+[State -2, Remove Explod]
+type = RemoveExplod
+trigger1 = stateno = 904 && numexplod(20233) = 1
+id = 20233
+ignorehitpause = 1
+pausemovetime = -1
+supermovetime = -1
+
+[State -2, Remove Explod]
+type = RemoveExplod
+trigger1 = stateno = 904 && numexplod(20234) = 1
+id = 20234
+ignorehitpause = 1
+pausemovetime = -1
+supermovetime = -1
+
+[State -2, Remove Explod]
+type = RemoveExplod
+trigger1 = stateno = 905 && numexplod(20213) = 1
+id = 20213
+ignorehitpause = 1
+pausemovetime = -1
+supermovetime = -1
+
+[State -2, Remove Explod]
+type = RemoveExplod
+trigger1 = stateno = 905 && numexplod(20214) = 1
+id = 20214
+ignorehitpause = 1
+pausemovetime = -1
+supermovetime = -1
+
+[State -2, Remove Explod]
+type = RemoveExplod
+trigger1 = stateno = 905 && numexplod(20215) = 1
+id = 20215
+ignorehitpause = 1
+pausemovetime = -1
+supermovetime = -1
+
+[State -2, Remove Explod]
+type = RemoveExplod
+trigger1 = stateno = 906 && numexplod(20412) = 1
+id = 20412
+ignorehitpause = 1
+pausemovetime = -1
+supermovetime = -1
+
+[State -2, Remove Explod]
+type = RemoveExplod
+trigger1 = stateno = 906 && numexplod(20413) = 1
+id = 20413
+ignorehitpause = 1
+pausemovetime = -1
+supermovetime = -1
+
+[State -2, Remove Explod]
+type = RemoveExplod
+trigger1 = stateno = 906 && numexplod(20414) = 1
+id = 20414
+ignorehitpause = 1
+pausemovetime = -1
+supermovetime = -1
+
+
+[State -2, Remove Explod]
+type = RemoveExplod
+trigger1 = stateno = 907 && numexplod(20904) = 1
+id = 20904
+ignorehitpause = 1
+pausemovetime = -1
+supermovetime = -1
+
+[State -2, Remove Explod]
+type = RemoveExplod
+trigger1 = stateno = 907 && numexplod(20905) = 1
+id = 20905
+ignorehitpause = 1
+pausemovetime = -1
+supermovetime = -1
+
+[State -2, Remove Explod]
+type = RemoveExplod
+trigger1 = stateno = 907 && numexplod(20906) = 1
+id = 20906
+ignorehitpause = 1
+pausemovetime = -1
+supermovetime = -1
+
+
+[State -2, Sound 1]
+type = VarRandom
+triggerall = var(11) != 1
+trigger1 = Stateno = 200 && (AnimElem = 3)
+trigger2 = Stateno = 210 && (AnimElem = 5)
+trigger3 = Stateno = 220 && (AnimElem = 6)
+trigger4 = Stateno = 230 && (AnimElem = 4)
+trigger5 = Stateno = 240 && (AnimElem = 4)
+trigger6 = Stateno = 250 && (AnimElem = 2)
+trigger7 = Stateno = 260 && (AnimElem = 8)
+trigger8 = Stateno = 400 && (AnimElem = 3)
+trigger9 = Stateno = 410 && (AnimElem = 4)
+trigger10= Stateno = 420 && (AnimElem = 4)
+trigger11= Stateno = 430 && (AnimElem = 3)
+trigger12= Stateno = 440 && (AnimElem = 3)
+trigger13= Stateno = 600 && (AnimElem = 2)
+trigger14= Stateno = 610 && (AnimElem = 2)
+trigger15= Stateno = 620 && (AnimElem = 4)
+trigger16= Stateno = 630 && (AnimElem = 4)
+trigger17= Stateno = 640 && (AnimElem = 2)
+trigger18= Stateno = 605 && (AnimElem = 4)
+trigger19= Stateno = 221 && (AnimElem = 3)
+trigger20= Stateno = 441 && (AnimElem = 2)
+trigger21 = Stateno = 900 && (AnimElem = 3)
+v = 1
+range = 0,1
+
+[State -2, Sound a]
+type = PlaySnd
+triggerall = var(1) = 0
+triggerall = var(11) != 1
+trigger1 = Stateno = 200 && (AnimElem = 3)
+trigger2 = Stateno = 210 && (AnimElem = 5)
+trigger3 = Stateno = 220 && (AnimElem = 6)
+trigger4 = Stateno = 230 && (AnimElem = 4)
+trigger5 = Stateno = 240 && (AnimElem = 4)
+trigger6 = Stateno = 250 && (AnimElem = 2)
+trigger7 = Stateno = 260 && (AnimElem = 8)
+trigger8 = Stateno = 400 && (AnimElem = 2)
+trigger9 = Stateno = 410 && (AnimElem = 4)
+trigger10= Stateno = 420 && (AnimElem = 4)
+trigger11= Stateno = 430 && (AnimElem = 3)
+trigger12= Stateno = 440 && (AnimElem = 3)
+trigger13= Stateno = 600 && (AnimElem = 2)
+trigger14= Stateno = 610 && (AnimElem = 2)
+trigger15= Stateno = 620 && (AnimElem = 4)
+trigger16= Stateno = 630 && (AnimElem = 4)
+trigger17= Stateno = 640 && (AnimElem = 2)
+trigger18= Stateno = 605 && (AnimElem = 4)
+trigger19= Stateno = 221 && (AnimElem = 3)
+trigger20= Stateno = 441 && (AnimElem = 2)
+trigger21 = Stateno = 900 && (AnimElem = 3)
+value = 7,1
+volume = 255
+
+[State -2, Sound b]
+type = PlaySnd
+triggerall = var(1) = 1
+triggerall = var(11) != 1
+trigger1 = Stateno = 200 && (AnimElem = 3)
+trigger2 = Stateno = 210 && (AnimElem = 5)
+trigger3 = Stateno = 220 && (AnimElem = 6)
+trigger4 = Stateno = 230 && (AnimElem = 4)
+trigger5 = Stateno = 240 && (AnimElem = 4)
+trigger6 = Stateno = 250 && (AnimElem = 2)
+trigger7 = Stateno = 260 && (AnimElem = 8)
+trigger8 = Stateno = 400 && (AnimElem = 3)
+trigger9 = Stateno = 410 && (AnimElem = 4)
+trigger10= Stateno = 420 && (AnimElem = 4)
+trigger11= Stateno = 430 && (AnimElem = 3)
+trigger12= Stateno = 440 && (AnimElem = 3)
+trigger13= Stateno = 600 && (AnimElem = 2)
+trigger14= Stateno = 610 && (AnimElem = 2)
+trigger15= Stateno = 620 && (AnimElem = 4)
+trigger16= Stateno = 630 && (AnimElem = 4)
+trigger17= Stateno = 640 && (AnimElem = 2)
+trigger18= Stateno = 605 && (AnimElem = 4)
+trigger19= Stateno = 221 && (AnimElem = 3)
+trigger20= Stateno = 441 && (AnimElem = 2)
+trigger21 = Stateno = 900 && (AnimElem = 3)
+value = 7,2
+volume = 255
+
+[State -2, Sound Weak]
+type = VarRandom
+triggerall = var(11) = 1
+trigger1 = Stateno = 200 && (AnimElem = 3)
+trigger2 = Stateno = 240 && (AnimElem = 4)
+trigger3 = Stateno = 250 && (AnimElem = 2)
+trigger4 = Stateno = 400 && (AnimElem = 3)
+trigger5 = Stateno = 430 && (AnimElem = 3)
+trigger6 = Stateno = 600 && (AnimElem = 2)
+trigger7 = Stateno = 640 && (AnimElem = 2)
+trigger8 = Stateno = 210 && (AnimElem = 5)
+trigger9 = Stateno = 230 && (AnimElem = 4)
+trigger10= Stateno = 260 && (AnimElem = 8)
+trigger11= Stateno = 410 && (AnimElem = 4)
+trigger12= Stateno = 440 && (AnimElem = 3)
+trigger13= Stateno = 610 && (AnimElem = 2)
+trigger14= Stateno = 620 && (AnimElem = 4)
+trigger15= Stateno = 605 && (AnimElem = 4)
+trigger16= Stateno = 441 && (AnimElem = 2)
+trigger17 = Stateno = 900 && (AnimElem = 3)
+v = 1
+range = 0,1
+
+[State -2, Sound]
+type = PlaySnd
+triggerall = var(1) = 0
+triggerall = var(11) = 1
+trigger1 = Stateno = 200 && (AnimElem = 3)
+trigger2 = Stateno = 240 && (AnimElem = 4)
+trigger3 = Stateno = 250 && (AnimElem = 2)
+trigger4 = Stateno = 400 && (AnimElem = 3)
+trigger5 = Stateno = 430 && (AnimElem = 3)
+trigger6 = Stateno = 600 && (AnimElem = 2)
+trigger7 = Stateno = 640 && (AnimElem = 2)
+trigger8 = Stateno = 210 && (AnimElem = 5)
+trigger9 = Stateno = 230 && (AnimElem = 4)
+trigger10= Stateno = 260 && (AnimElem = 8)
+trigger11= Stateno = 410 && (AnimElem = 4)
+trigger12= Stateno = 440 && (AnimElem = 3)
+trigger13= Stateno = 610 && (AnimElem = 2)
+trigger14= Stateno = 620 && (AnimElem = 4)
+trigger15= Stateno = 605 && (AnimElem = 4)
+trigger16= Stateno = 441 && (AnimElem = 2)
+trigger17 = Stateno = 900 && (AnimElem = 3)
+value = 7,4
+volume = 255
+
+[State -2, Sound]
+type = PlaySnd
+triggerall = var(1) = 1
+triggerall = var(11) = 1
+trigger1 = Stateno = 200 && (AnimElem = 3)
+trigger2 = Stateno = 240 && (AnimElem = 4)
+trigger3 = Stateno = 250 && (AnimElem = 2)
+trigger4 = Stateno = 400 && (AnimElem = 3)
+trigger5 = Stateno = 430 && (AnimElem = 3)
+trigger6 = Stateno = 600 && (AnimElem = 2)
+trigger7 = Stateno = 640 && (AnimElem = 2)
+trigger8 = Stateno = 210 && (AnimElem = 5)
+trigger9 = Stateno = 230 && (AnimElem = 4)
+trigger10= Stateno = 260 && (AnimElem = 8)
+trigger11= Stateno = 410 && (AnimElem = 4)
+trigger12= Stateno = 440 && (AnimElem = 3)
+trigger13= Stateno = 610 && (AnimElem = 2)
+trigger14= Stateno = 620 && (AnimElem = 4)
+trigger15= Stateno = 605 && (AnimElem = 4)
+trigger16= Stateno = 441 && (AnimElem = 2)
+trigger17 = Stateno = 900 && (AnimElem = 3)
+value = 7,5
+volume = 255
+
+[State -2, Sound Strong]
+type = PlaySnd
+triggerall = var(11) = 1
+trigger1 = Stateno = 220 && (AnimElem = 6)
+trigger2 = Stateno = 420 && (AnimElem = 4)
+trigger3 = Stateno = 630 && (AnimElem = 4)
+trigger4 = Stateno = 221 && (AnimElem = 3)
+value = 7,3
+volume = 255
+
+[State -2, Hit]
+type = VarRandom
+trigger1 = stateno = 5000 && Time = 1
+v = 9
+range = 4
+
+[State -2, Hit]
+type = PlaySnd
+triggerall = Time = 1 && var(9) < 4 && life != 0
+trigger1 = stateno = 5001 && anim != 5000 && anim != 5010 
+trigger2 = stateno = 5040
+trigger2 = random < 400
+trigger3 = stateno = 5050
+value = 10, (var(9))
+volume = 255
+
+[State -2, Jump]
+type = PlaySnd
+triggerall = Time = 4
+trigger1 = stateno = 40
+trigger2 = stateno = 105
+trigger3 = stateno = 1505
+value = 15, 8
+
+[State -2, Land]
+type = PlaySnd
+triggerall = Time = 1
+trigger1 = stateno = 52 ;Jump land
+trigger2 = stateno = 106 ;Run-back land
+value = 15, 16
+
+;Water Dust from Sela's Sogetsu
+[State -2]
+type = Projectile
+trigger1 =  vel X > 0
+trigger1 =  Random < 600
+trigger1 =  numhelper = 0
+trigger1 = AnimElem = 1
+projanim = 10100
+projheightbound = -240, 100
+projedgebound = 100
+projscreenbound = 100
+offset = 5,-68
+velocity = -0.5,0.4
+projremovetime = 100
+
+[State -2]
+type = Projectile
+trigger1 =  vel X > 0
+trigger1 = Random <= 600
+trigger1 =  numhelper = 0
+trigger1 = AnimElem = 3
+projanim = 10100
+projheightbound = -240, 100
+projedgebound = 100
+projscreenbound = 100
+offset = 25,-48
+velocity = -0.2,0.7
+projremovetime = 70
+
+[State -2]
+type = Projectile
+trigger1 = Random <= 600
+trigger1 =  vel X > 0
+trigger1 =  numhelper = 0
+trigger1 = AnimElem = 5
+projanim = 10100
+projheightbound = -240, 100
+projedgebound = 100
+projscreenbound = 100
+offset = 10,-32
+velocity = -0.6,0.7
+projremovetime = 45
+
+[State -2]
+type = Projectile
+trigger1 =  vel X > 0
+trigger1 =  numhelper = 0
+trigger1 = Random <= 600
+trigger1 = AnimElem = 6
+projanim = 10100
+projheightbound = -240, 100
+projedgebound = 100
+projscreenbound = 100
+offset = -10,-52
+velocity = -0.5,0.2
+projremovetime = 75
+
+[State -2]
+type = Projectile
+triggerall = vel X > 0
+triggerall =  numhelper = 0
+triggerall = Random <= 600
+trigger1 = AnimElem = 5       
+projanim = 10100
+projheightbound = -240, 100
+projedgebound = 100
+projscreenbound = 100
+offset = -30,-80
+velocity = -0.2,0.4
+projremovetime = 100
+
+[State -2]
+type = Projectile
+triggerall =  vel X < 0
+triggerall =  numhelper = 0
+triggerall =  Random < 600
+trigger1 = AnimElem = 1
+projanim = 10100
+projheightbound = -240, 100
+projedgebound = 100
+projscreenbound = 100
+offset = 5,-68
+velocity = 0.5,0.4
+projremovetime = 100
+
+[State -2]
+type = Projectile
+triggerall =  vel X < 0
+triggerall =  numhelper = 0
+triggerall = Random <= 600
+trigger1 = AnimElem = 3
+projanim = 10100
+projheightbound = -240, 100
+projedgebound = 100
+projscreenbound = 100
+offset = 25,-48
+velocity = 0.2,0.7
+projremovetime = 70
+
+[State -2]
+type = Projectile
+triggerall = Random <= 600
+triggerall =  vel X < 0
+triggerall =  numhelper = 0
+trigger1 = AnimElem = 5
+projanim = 10100
+projheightbound = -240, 100
+projedgebound = 100
+projscreenbound = 100
+offset = 10,-32
+velocity = 0.6,0.7
+projremovetime = 45
+
+[State -2]
+type = Projectile
+triggerall =  vel X < 0
+triggerall =  numhelper = 0
+triggerall = Random <= 600
+trigger1 = AnimElem = 6
+projanim = 10100
+projheightbound = -240, 100
+projedgebound = 100
+projscreenbound = 100
+offset = -10,-52
+velocity = 0.5,0.2
+projremovetime = 75
+
+[State -2]
+type = Projectile
+triggerall = vel X < 0
+triggerall =  numhelper = 0
+triggerall = Random <= 600
+trigger1 = AnimElem = 5          
+projanim = 10100
+projheightbound = -240, 100
+projedgebound = 100
+projscreenbound = 100
+offset = -30,-80
+velocity = 0.2,0.4
+projremovetime = 100
+
+[State -2]
+type = Projectile
+triggerall =  Random < 800
+triggerall = Animelem = 2
+trigger1 = stateno = 52
+trigger2 = stateno = 106
+projanim = 10101
+offset = 20,-20
+velocity = 0,0.5
+projremovetime = 35
+
+[State -2]
+type = Projectile
+triggerall =  Random < 800
+triggerall = Animelem = 2
+trigger1 = stateno = 52
+trigger2 = stateno = 106
+projanim = 10101
+offset = 30,-35
+velocity = 0,0.7
+projremovetime = 35
+
+
+[State -2, Dust]
+type = Projectile
+triggerall = Random >= 700
+triggerall = Animelem = 5     
+trigger1 = stateno = 1000
+trigger2 = stateno = 1010
+trigger3 = stateno = 1020
+trigger4 = stateno = 1600
+projanim = 10100
+offset = 30,-90
+velocity = 0,-0.6
+projremovetime = 65
+
+[State -2, Dust]
+type = Projectile
+triggerall = Random >= 700
+triggerall = Animelem = 5
+trigger1 = stateno = 1000
+trigger2 = stateno = 1010
+trigger3 = stateno = 1020
+trigger4 = stateno = 1600
+projanim = 10100
+offset = 0,-80
+velocity = 0,-0.5
+projremovetime = 65
+
+[State -2, Dust]
+type = Projectile
+triggerall = Random >= 700
+triggerall = Animelem = 5        
+trigger1 = stateno = 1000
+trigger2 = stateno = 1010
+trigger3 = stateno = 1020
+trigger4 = stateno = 1600
+projanim = 10101
+offset = -20,-80
+velocity = 0,-0.7
+projremovetime = 65
+
+[State -2, Dust]
+type = Projectile
+triggerall = Random >= 700
+triggerall = Animelem = 5
+trigger1 = stateno = 1000
+trigger2 = stateno = 1010
+trigger3 = stateno = 1020
+trigger4 = stateno = 1600
+projanim = 10101
+offset = 20,-80
+velocity = 0,-0.6
+projremovetime = 65
+
+[State -2, Dust]
+type = Projectile
+triggerall = Random >= 700
+triggerall = Animelem = 5
+trigger1 = stateno = 1000
+trigger2 = stateno = 1010
+trigger3 = stateno = 1020
+trigger4 = stateno = 1600
+projanim = 10101
+offset = 50,-100
+velocity = 0,-0.9
+projremovetime = 65
+
+
+
+[State -2, 8]
+type = VarSet
+trigger1 = NumExplod(15000) = 1
+v = 25
+value = 1
+ignorehitpause = 1
+
+[State -2, 8]
+type = VarSet
+trigger1 = NumExplod(20000) = 1
+v = 26
+value = 1
+ignorehitpause = 1
+
+[State -2, Water Explod 1]
+type = Explod
+triggerall = p2movetype = H
+trigger1 = projhit1006 = 1 && numexplod(100001) = 0
+trigger2 = projhit1013 = 1 && numexplod(100001) = 0
+trigger3 = projhit1013 = 1, =22 && numexplod(100001) = 0
+trigger4 = projhit1013 = 1, =35 && numexplod(100001) = 0
+trigger5 = projhit1007 = 1 && numexplod(100001) = 0
+trigger6 = projhit1014 = 1 && numexplod(100001) = 0
+trigger7 = projhit1014 = 1, =22 && numexplod(100001) = 0
+trigger8 = projhit1014 = 1, =35 && numexplod(100001) = 0
+trigger9 = projhit1008 = 1 && numexplod(100001) = 0
+trigger10= projhit1015 = 1 && numexplod(100001) = 0
+trigger11= projhit1015 = 1, =22 && numexplod(100001) = 0
+trigger12= projhit1015 = 1, =35 && numexplod(100001) = 0
+trigger13= projhit1103 = 1 && numexplod(100001) = 0
+trigger14= projhit1103 = 1, =22 && numexplod(100001) = 0
+trigger15= projhit1104 = 1 && numexplod(100001) = 0
+trigger16= projhit1104 = 1, =22 && numexplod(100001) = 0
+trigger17= projhit1105 = 1 && numexplod(100001) = 0
+trigger18= projhit1105 = 1, =22 && numexplod(100001) = 0
+trigger19= projhit1305 = 1 && numexplod(100001) = 0
+trigger20= projhit1305 = 1, =22 && numexplod(100001) = 0
+trigger21= projhit1305 = 1, =35 && numexplod(100001) = 0
+trigger22= projhit6001 = 1 && numexplod(100001) = 0
+trigger23= projhit6001 = 1, =22 && numexplod(100001) = 0
+trigger24= projhit6001 = 1, =35 && numexplod(100001) = 0
+trigger25= projhit6101 = 1 && numexplod(100001) = 0
+trigger26= projhit6101 = 1, =22 && numexplod(100001) = 0
+trigger27= projhit6101 = 1, =35 && numexplod(100001) = 0   
+trigger28= projhit6101 = 1, =50 && numexplod(100001) = 0
+trigger29= projhit6101 = 1, =65 && numexplod(100001) = 0
+anim = 10000
+id = 100001
+postype = p2
+pos = -20,-70
+sprpriority = 5
+bindtime = 20
+removetime = 20
+facing = 1
+ontop = 1
+ownpal = 1
+ignorehitpause = 1
+
+[State -2,Water Explod 2]
+type = Explod
+triggerall = p2movetype = H
+trigger1 = projhit1006 = 1, =7 && numexplod(100002) = 0
+trigger2 = projhit1013 = 1, =7 && numexplod(100002) = 0
+trigger3 = projhit1013 = 1, =25 && numexplod(100002) = 0
+trigger4 = projhit1013 = 1, =38 && numexplod(100002) = 0
+trigger5 = projhit1007 = 1, =7 && numexplod(100002) = 0
+trigger6 = projhit1014 = 1, =7 && numexplod(100002) = 0
+trigger7 = projhit1014 = 1, =25 && numexplod(100002) = 0
+trigger8 = projhit1014 = 1, =38 && numexplod(100002) = 0
+trigger9 = projhit1008 = 1, =7 && numexplod(100002) = 0
+trigger10= projhit1015 = 1, =7 && numexplod(100002) = 0
+trigger11= projhit1015 = 1, =25 && numexplod(100002) = 0
+trigger12= projhit1015 = 1, =38 && numexplod(100002) = 0
+trigger13= projhit1103 = 1, =7 && numexplod(100002) = 0
+trigger14= projhit1103 = 1, =25 && numexplod(100002) = 0
+trigger15= projhit1104 = 1, =7 && numexplod(100002) = 0
+trigger16= projhit1104 = 1, =25 && numexplod(100002) = 0
+trigger17= projhit1105 = 1, =7 && numexplod(100002) = 0
+trigger18= projhit1105 = 1, =25 && numexplod(100002) = 0
+trigger19= projhit1305 = 1, =7 && numexplod(100002) = 0
+trigger20= projhit1305 = 1, =25 && numexplod(100002) = 0
+trigger21= projhit1305 = 1, =38 && numexplod(100002) = 0
+trigger22= projhit6001 = 1, =7 && numexplod(100002) = 0
+trigger23= projhit6001 = 1, =25 && numexplod(100002) = 0
+trigger24= projhit6001 = 1, =38 && numexplod(100002) = 0
+trigger25= projhit6101 = 1, =7  && numexplod(100002) = 0
+trigger26= projhit6101 = 1, =25 && numexplod(100002) = 0
+trigger27= projhit6101 = 1, =38 && numexplod(100002) = 0
+trigger28= projhit6101 = 1, =53 && numexplod(100002) = 0
+trigger29= projhit6101 = 1, =68 && numexplod(100002) = 0
+anim = 10000                              
+id = 100002
+postype = p2
+pos = -5,-20
+sprpriority = 5
+bindtime = 20
+removetime = 20
+facing = 1
+ontop = 1
+ownpal = 1
+ignorehitpause = 1
+
+[State -2, Water Explod 3]
+type = Explod
+triggerall = p2movetype = H
+trigger1 = projhit1006 = 1, =14 && numexplod(100003) = 0
+trigger2 = projhit1013 = 1, =14 && numexplod(100003) = 0
+trigger3 = projhit1013 = 1, =27 && numexplod(100003) = 0
+trigger4 = projhit1013 = 1, =41 && numexplod(100003) = 0
+trigger5 = projhit1007 = 1, =14 && numexplod(100003) = 0
+trigger6 = projhit1014 = 1, =14 && numexplod(100003) = 0
+trigger7 = projhit1014 = 1, =27 && numexplod(100003) = 0
+trigger8 = projhit1014 = 1, =41 && numexplod(100003) = 0
+trigger9 = projhit1008 = 1, =14 && numexplod(100003) = 0
+trigger10= projhit1015 = 1, =14 && numexplod(100003) = 0
+trigger11= projhit1015 = 1, =27 && numexplod(100003) = 0
+trigger12= projhit1015 = 1, =41 && numexplod(100003) = 0
+trigger13= projhit1103 = 1, =14 && numexplod(100003) = 0
+trigger14= projhit1103 = 1, =27 && numexplod(100003) = 0
+trigger15= projhit1104 = 1, =14 && numexplod(100003) = 0
+trigger16= projhit1104 = 1, =27 && numexplod(100003) = 0
+trigger17= projhit1105 = 1, =14 && numexplod(100003) = 0
+trigger18= projhit1105 = 1, =27 && numexplod(100003) = 0
+trigger19= projhit1305 = 1, =14 && numexplod(100003) = 0
+trigger20= projhit1305 = 1, =27 && numexplod(100003) = 0
+trigger21= projhit1305 = 1, =41 && numexplod(100003) = 0
+trigger22= projhit6001 = 1, =14 && numexplod(100003) = 0
+trigger23= projhit6001 = 1, =27 && numexplod(100003) = 0
+trigger24= projhit6001 = 1, =41 && numexplod(100003) = 0
+trigger25= projhit6101 = 1, =14 && numexplod(100003) = 0
+trigger26= projhit6101 = 1, =27 && numexplod(100003) = 0
+trigger27= projhit6101 = 1, =41 && numexplod(100003) = 0
+trigger28= projhit6101 = 1, =56 && numexplod(100003) = 0
+trigger29= projhit6101 = 1, =71 && numexplod(100003) = 0
+anim = 10000                    
+id = 100003
+postype = p2
+pos = -40,-20
+sprpriority = 5
+bindtime = 20
+removetime = 20
+facing = 1
+ontop = 1
+ownpal = 1
+ignorehitpause = 1
+
+[State -2, Water Explod 4]
+type = Explod
+triggerall = p2movetype = H
+trigger1 = projhit1006 = 1, =17 && numexplod(100004) = 0
+trigger2 = projhit1013 = 1, =17 && numexplod(100004) = 0
+trigger3 = projhit1013 = 1, =30 && numexplod(100004) = 0
+trigger4 = projhit1013 = 1, =44 && numexplod(100004) = 0
+trigger5 = projhit1007 = 1, =17 && numexplod(100004) = 0
+trigger6 = projhit1014 = 1, =17 && numexplod(100004) = 0
+trigger7 = projhit1014 = 1, =30 && numexplod(100004) = 0
+trigger8 = projhit1014 = 1, =44 && numexplod(100004) = 0
+trigger9 = projhit1008 = 1, =17 && numexplod(100004) = 0
+trigger10= projhit1015 = 1, =17 && numexplod(100004) = 0
+trigger11= projhit1015 = 1, =30 && numexplod(100004) = 0
+trigger12= projhit1015 = 1, =44 && numexplod(100004) = 0
+trigger13= projhit1103 = 1, =17 && numexplod(100004) = 0
+trigger14= projhit1103 = 1, =30 && numexplod(100004) = 0
+trigger15= projhit1104 = 1, =17 && numexplod(100004) = 0
+trigger16= projhit1104 = 1, =30 && numexplod(100004) = 0
+trigger17= projhit1105 = 1, =17 && numexplod(100004) = 0
+trigger18= projhit1105 = 1, =30 && numexplod(100004) = 0
+trigger19= projhit1305 = 1, =17 && numexplod(100004) = 0
+trigger20= projhit1305 = 1, =30 && numexplod(100004) = 0
+trigger21= projhit1305 = 1, =44 && numexplod(100004) = 0
+trigger22= projhit6001 = 1, =17 && numexplod(100004) = 0
+trigger23= projhit6001 = 1, =30 && numexplod(100004) = 0
+trigger24= projhit6001 = 1, =44 && numexplod(100004) = 0
+trigger25= projhit6101 = 1, =17  && numexplod(100004) = 0
+trigger26= projhit6101 = 1, =30 && numexplod(100004) = 0
+trigger27= projhit6101 = 1, =44 && numexplod(100004) = 0
+trigger28= projhit6101 = 1, =59 && numexplod(100004) = 0
+trigger29= projhit6101 = 1, =74 && numexplod(100004) = 0
+anim = 10000                  
+id = 100004
+postype = p2
+pos = 0,-80
+sprpriority = 5
+bindtime = 20
+removetime = 20
+facing = 1
+ontop = 1
+ownpal = 1
+ignorehitpause = 1
+
+[State -2, Water Explod 5]
+type = Explod
+triggerall = p2movetype = H
+trigger1 = projhit1006 = 1, =19 && numexplod(100005) = 0
+trigger2 = projhit1013 = 1, =19 && numexplod(100005) = 0
+trigger3 = projhit1013 = 1, =33 && numexplod(100005) = 0
+trigger4 = projhit1013 = 1, =47 && numexplod(100005) = 0
+trigger5 = projhit1007 = 1, =19 && numexplod(100005) = 0
+trigger6 = projhit1014 = 1, =19 && numexplod(100005) = 0
+trigger7 = projhit1014 = 1, =33 && numexplod(100005) = 0
+trigger8 = projhit1014 = 1, =47 && numexplod(100005) = 0
+trigger9 = projhit1008 = 1, =19 && numexplod(100005) = 0
+trigger10 = projhit1015 = 1, =19 && numexplod(100005) = 0
+trigger11 = projhit1015 = 1, =33 && numexplod(100005) = 0
+trigger12 = projhit1015 = 1, =47 && numexplod(100005) = 0
+trigger13 = projhit1103 = 1, =19 && numexplod(100005) = 0
+trigger14 = projhit1103 = 1, =33 && numexplod(100005) = 0
+trigger15 = projhit1104 = 1, =19 && numexplod(100005) = 0
+trigger16 = projhit1104 = 1, =33 && numexplod(100005) = 0
+trigger17 = projhit1105 = 1, =19 && numexplod(100005) = 0
+trigger18 = projhit1105 = 1, =33 && numexplod(100005) = 0
+trigger19 = projhit1305 = 1, =19 && numexplod(100005) = 0
+trigger20 = projhit1305 = 1, =33 && numexplod(100005) = 0
+trigger21 = projhit1305 = 1, =47 && numexplod(100005) = 0
+trigger22= projhit6001 = 1, =19 && numexplod(100005) = 0
+trigger23= projhit6001 = 1, =33 && numexplod(100005) = 0
+trigger24= projhit6001 = 1, =47 && numexplod(100005) = 0
+trigger25= projhit6101 = 1, =19  && numexplod(100005) = 0
+trigger26= projhit6101 = 1, =33 && numexplod(100005) = 0
+trigger27= projhit6101 = 1, =47 && numexplod(100005) = 0
+trigger28= projhit6101 = 1, =62 && numexplod(100005) = 0
+trigger29= projhit6101 = 1, =77 && numexplod(100005) = 0
+anim = 10000                                       
+id = 100005
+postype = p2
+pos = -30, -40
+sprpriority = 5
+bindtime = 20
+removetime = 20
+facing = 1
+ontop = 1
+ownpal = 1
+ignorehitpause = 1
+
+;Master Arts Disable
+[State -2]
+type = VarAdd
+trigger1 = movetype != A && P2movetype != H
+trigger2 = var(15) = 1 && command != "holdfwd"
+v = 15
+value = -1

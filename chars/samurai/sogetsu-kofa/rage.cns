@@ -1,0 +1,555 @@
+;---------------------------------------------------------------------------
+; RAGE_EXPLOSION by KGENJURO
+[Statedef 7000]
+type    = S
+movetype= A
+physics = S
+ctrl = 0
+velset = 0,0,0
+anim = 2000
+
+[State 7100, 1]
+type = PlaySnd
+trigger1 = Time = 0
+value = 0, 10
+
+[State 7100, 1]
+type = PlaySnd
+trigger1 = AnimElem = 4
+value = 20, 6
+;Volume = 255
+             
+[State 7000, 1]
+type = SuperPause
+trigger1 = AnimElem = 1
+pos = 0, -60
+time = 40              
+anim = S18000
+
+[State 7000, 2]
+type = PowerAdd
+trigger1 = AnimElem = 2
+value = 3000
+
+[State 7000, 5]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+time = 50
+
+[State 7000, 6]
+type = varset
+trigger1 = time = 0
+v = 30
+value = 1
+
+[State 7000, 7]
+type = varset
+trigger1 = time = 0
+v = 31
+value = 1300 - (life)
+
+[State 7000, 8]
+type = Explod
+trigger1 = time = 0
+anim = 15001
+id = 15001
+pos = -320,0
+postype = right
+sprpriority = -2
+supermove = 1
+removetime = 40
+bindtime = 40
+
+[State Projectile]
+type = Projectile
+trigger1 = AnimElem = 2
+projID = 6001
+projanim = 2300
+projremanim = 2300
+projhitanim = 2300
+projpriority = 255
+projremovetime = 26
+projhits = 1
+offset = -120,0
+velocity = 0
+guardflag = MA
+attr = S, HP
+damage = 40 + (10 * var(23)) + (10 * var(11)), 20 + (10 * var(11))
+animtype = Heavy
+pausetime = 10,20
+hitsound   = S20,0
+guardsound= S20,0
+sparkno = -1
+guard.sparkno = -1
+sparkxy = 0,0
+ground.type = High
+ground.slidetime = 80
+ground.hittime = 40
+ground.velocity = -9
+air.velocity = -5,-9
+palfx.add = -200,-70,40     
+palfx.mul = 232,256,256
+palfx.sinadd = 10,0,40,2
+palfx.invertall = 0
+palfx.color = 0
+palfx.time = 60
+air.juggle = 15
+
+[State 7000, 10]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+
+;---------------------------------------------------------------------------
+;RAGE ATTACK!!!
+[Statedef 7100]
+type    = S
+movetype= A
+physics = S
+juggle  = 0
+poweradd= 0
+ctrl = 0
+velset = 0,0,0
+anim = 2100
+
+[State 7100, 1]
+type = PlaySnd
+trigger1 = Time = 0
+value = 0, 8
+
+[State 7100, 1]
+type = PlaySnd
+trigger1 = Time = 0
+value = 15, 0
+
+[State 7100, 1]
+type = EnvColor
+trigger1 = Time = 0
+value = 255,255,255
+time = 100
+under = 1
+
+[State 7100, 2]
+type = AfterImage
+trigger1 = time = 0
+time = 80
+timegap = 1
+framegap = 2
+length = 20
+palbright = 0,0,0
+paladd = 0,0,0
+palmul = 1,1,1
+
+[State 7100, 2]
+type = BGPalFX
+trigger1 = time = 0
+add = -155,-155,-155
+time = 5
+
+[State 7100, 3]
+type = VarSet
+trigger1 = Time = 0
+v = 30
+value = 2
+
+[State 7100, 4]
+type = VelSet
+trigger1 = Time > 14
+x = 14
+
+[State 7100, 5]
+type = PlayerPush
+trigger1 = Time > 12
+value = 0
+
+[State 7100, 6]
+type = SprPriority
+trigger1 = Time > 12
+value = 5
+
+[State 7100, 7]
+type = HitDef
+trigger1 = AnimElem = 1
+attr = S, NA
+animtype  = Heavy
+damage    = 0,0
+getpower = 0
+givepower = 0
+guardflag = MA
+hitflag = MAF
+priority = 8, Hit
+pausetime = 0,150
+guard.pausetime = 0,8
+sparkno = -1
+sparkxy = -10,-50
+guard.sparkno = S30040
+hitsound   = S15, 3
+guardsound = S15, 7
+ground.type = High
+ground.slidetime = 22
+ground.hittime  = 22
+ground.velocity = 0, -5
+air.velocity = 0, -5
+fall.recover = 0
+
+
+[State 7100, 2]
+type = Explod
+triggerall = numexplod(2120) = 0
+trigger1 = time = 0
+anim = 2120
+id = 2120
+postype = p1
+pos = 20, 0
+sprpriority = 5
+bindtime = 50
+removetime = 50
+facing = 1
+ontop = 1
+ownpal = 1
+ignorehitpause = 1
+
+[State 7100, 8]
+type = ChangeState
+triggerall = MoveHit
+trigger1 = 1
+value = 7200
+ctrl = 0
+
+[State 7100,9]
+type = ChangeState
+triggerall = MoveGuarded
+trigger1 = 1
+value = 7300
+ctrl = 0
+
+[State 7100, 10]
+type = ChangeState
+trigger1 = Time >= 100
+value = 0
+ctrl = 1
+
+;---------------------------------------------------------------------------
+[Statedef 7200]
+type    = S
+movetype= A
+physics = S
+juggle  = 0
+poweradd= 0
+ctrl = 0
+anim = 2100
+velset = 28,0,0
+
+[State 7200, 1]
+type = NotHitBy
+trigger1 = Time >= 0
+value = SCA
+time = 1
+
+[State 7100, 1]
+type = PlaySnd
+trigger1 = Time = 45
+value = 20, 9
+
+[State 7100, 1]
+type = PlaySnd
+trigger1 = Time = 10
+value = 20, 12
+
+[State 7100, 1]
+type = PlaySnd
+trigger1 = Time = 50
+value = 0, 1
+
+[State 7200, 2]
+type = PlayerPush
+trigger1 = Time >= 0
+value = 0
+
+[State Line]
+type = Explod
+triggerall = numexplod(2130) = 0
+trigger1 = time = 0
+anim = 2130
+id = 2130
+postype = p2
+pos = 0,-60   
+sprpriority = 5
+bindtime = 30
+facing = -1
+ontop = 1
+ownpal = 1
+ignorehitpause = 1
+
+[State 7200, 3]
+type = Projectile
+trigger1 = Time = 95 && life < 600
+projid = 2500   
+projanim = 2500
+projhitanim = -1
+projremanim = -1
+projremovetime = 10
+projshadow = -1
+projsprpriority = 5
+numhits = 4
+offset = 0, -55
+postype = p2
+velocity = 0, 0
+remvelocity = 0, 0
+accel = 0, 0
+attr = S, SP
+damage    = 850 - (life)
+getpower  = 0
+givepower = 500
+priority = 8, Hit
+hitflag = MAF
+guardflag = MA
+pausetime = 2,2
+sparkno = -1
+guard.sparkno = S30040
+sparkxy = 0, 0
+hitsound   = S20, 11
+guardsound = 6,0
+ground.type = Trip
+ground.velocity = 1, -4
+fall = 1
+air.velocity = 1,-4
+fall.recover = 0
+
+[State 7200, 4]
+type = Projectile
+trigger1 = Time = 95 && life >= 600
+projid = 2500
+projanim = 2500
+projhitanim = -1
+projremanim = -1
+projremovetime = 10
+projshadow = -1
+projsprpriority = 5
+numhits = 4
+offset = 0, -55
+postype = p2
+velocity = 0, 0
+remvelocity = 0, 0
+accel = 0, 0
+attr = S, SP
+damage    = 200
+getpower  = 0
+givepower = 150
+hitflag = MAF
+guardflag = MA
+priority = 8, Hit
+pausetime = 2,2
+sparkno = -1
+guard.sparkno = S30040
+sparkxy = 0, 0
+hitsound   = S20, 11
+guardsound = 6,0
+ground.type = Trip
+ground.velocity = 1, -4
+fall = 1
+air.velocity = 1,-4
+fall.recover = 0
+
+
+
+[State Little Blood 1]
+type = Explod
+trigger1 = time = 30
+trigger2 = time = 45
+trigger3 = time = 60
+trigger4 = time = 75
+anim = 10530
+id = 1
+postype = p2
+pos = 0,-90
+sprpriority = 5
+bindtime = 1
+removetime = 32
+facing = -1
+ontop = 1
+ownpal = 1
+ignorehitpause = 1
+
+[State Little Blood 2]
+type = Explod
+trigger1 = time = 30
+trigger2 = time = 45
+trigger3 = time = 60
+trigger4 = time = 75
+anim = 10531
+id = 2
+postype = p2
+pos = 0,-90
+sprpriority = 5
+bindtime = 1
+removetime = 32
+facing = -1
+ontop = 1
+ownpal = 1
+ignorehitpause = 1
+
+[State Little Blood 3]
+type = Explod
+trigger1 = time = 30
+trigger2 = time = 45
+trigger3 = time = 60
+trigger4 = time = 75
+anim = 10532
+id = 3
+postype = p2
+pos = 0,-90
+sprpriority = 5
+bindtime = 1
+removetime = 32
+facing = -1
+ontop = 1
+ownpal = 1
+ignorehitpause = 1
+
+[State Big Blood 1]
+type = Explod
+trigger1 = time = 60
+trigger2 = time = 90
+anim = 10550
+id = 4
+postype = p2
+pos = 0,-60
+sprpriority = 5
+bindtime = 1
+removetime = 32
+facing = -1
+ontop = 1
+ownpal = 1
+ignorehitpause = 1
+
+[State Big Blood 1]
+type = Explod
+trigger1 = time = 60
+trigger3 = time = 80
+anim = 10510
+id = 5
+postype = p2
+pos = 0,-50
+sprpriority = 5
+bindtime = 1
+removetime = 32
+facing = -1
+ontop = 1
+ownpal = 1
+ignorehitpause = 1
+
+[State Big Blood 1]
+type = Explod
+trigger1 = time = 70
+trigger3 = time = 90
+anim = 10510
+id = 5
+postype = p2
+pos = 0,-50
+sprpriority = 5
+bindtime = 1
+removetime = 32
+facing = 1
+ontop = 1
+ownpal = 1
+ignorehitpause = 1
+
+[State Big Blood 1]
+type = Explod
+trigger1 = time = 60
+trigger2 = time = 70
+trigger3 = time = 80
+trigger4 = time = 90
+anim = 10500
+id = 5
+postype = p2
+pos = 0,-60
+sprpriority = 5
+bindtime = 1
+removetime = 32
+facing = -1
+ontop = 1
+ownpal = 1
+ignorehitpause = 1
+
+[State 7200, 5]
+type = EnvColor
+trigger1 = time = 65
+value = 255,255,255
+time = 80
+under = 1
+ignorehitpause = 1
+
+[State 7200, 6]
+type = Pause
+trigger1 = time = 95 || time = 96 || time = 97 || time = 98 || time = 99
+time = 8 - (8 * (win))
+
+[State 7200, 7]
+type = Pause
+trigger1 = time = 100 || time = 101 || time = 102 || time = 103 || time = 104
+time = 6 - (6 * (win))
+
+[State 7200, 8]
+type = Pause
+trigger1 = time = 105 || time = 106 || time = 107 || time = 108 || time = 109
+time = 4 - (4 * (win))
+
+[State 7200, 9]
+type = Pause
+trigger1 = time = 110 || time = 111 || time = 112 || time = 113 || time = 114
+time = 2 - (2 * (win))
+
+[State 7200, 10]
+type = Pause
+trigger1 = time = 115 || time = 116 || time = 117 || time = 118 || time = 119
+time = 1 - (win)
+
+[State 7200, 11]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+;---------------------------------------------------------------------------
+[Statedef 7300]
+movetype= I
+ctrl = 0
+anim = 2110
+
+[State 7100, 1]
+type = PlaySnd
+trigger1 = Time = 0
+value = 0, 12
+
+[State 7300, 3]
+type = VelSet
+trigger1 = Time = 0
+x = -4
+y = -3
+
+[State 7300, 3]
+type = VelSet
+trigger1 = Time = 20
+x = -4
+y = 3
+
+[State 7100, 2]
+type = RemoveExplod
+triggerall = numexplod(2120) = 1
+ID = 2120
+trigger1 = time = 0
+
+[State 7300, 3]
+type = AfterImageTime
+trigger1 = Time = 0
+time = 0
+
+[State 7300, 2]
+type = ChangeState
+trigger1 = Pos Y >= -13 && Vel Y > 0
+value = 52
