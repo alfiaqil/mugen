@@ -1309,6 +1309,7 @@ triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
 triggerall = AILevel * AILevel * AILevel * 2 > random
 triggerall = InGuardDist
 trigger1 = ctrl
+trigger2 = EnemyNear,NumProj && statetype != A
 
 [State -1, AI Taunt]
 type = ChangeState

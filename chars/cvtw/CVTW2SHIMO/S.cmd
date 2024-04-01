@@ -1170,31 +1170,6 @@ triggerAll = StateType != A
 triggerAll = StateNo != [200,699]
 trigger1 = ctrl 
 
-;---------------------------------------------------------------------------
-JAMBU AI
-;---------------------------------------------------------------------------
-;uniq, animtime trigger
-[State -1, AI Guard]
-type = ChangeState
-value = 120
-triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
-triggerall = AILevel * AILevel * AILevel * 2 > random
-triggerall = InGuardDist
-trigger1 = ctrl
-trigger2 = animtime >= 0
-
-;uniq, animtime trigger
-[State -1, AI Taunt]
-type = ChangeState
-value = 4950
-triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
-triggerall = p2bodydist x > 100 && statetype != A
-triggerall = p2movetype = H && Life >= P2Life
-trigger1 = ctrl
-trigger2 = animtime >= 0
-
-;uniq, attack AI, never jump
-
 ;==============================================================
 ;==================================CVTW2/AI==============MEMO==
 ;==============================================================
@@ -1263,3 +1238,28 @@ triggerAll = RoundState = 2 && StateType != A
 triggerAll = (P2BodyDist x = [0,70]) && EnemyNear, vel y >= 0 
 triggerAll = P2MOVETYPE != H
 trigger1 = ctrl && Random < (739 * (AILevel ** 2 / 64.0))
+
+;---------------------------------------------------------------------------
+JAMBU AI
+;---------------------------------------------------------------------------
+;uniq, animtime trigger
+[State -1, AI Guard]
+type = ChangeState
+value = 120
+triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
+triggerall = AILevel * AILevel * AILevel * 2 > random
+triggerall = InGuardDist
+trigger1 = ctrl
+trigger2 = animtime >= 0
+
+;uniq, animtime trigger
+[State -1, AI Taunt]
+type = ChangeState
+value = 4950
+triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
+triggerall = p2bodydist x > 100 && statetype != A
+triggerall = p2movetype = H && Life >= P2Life
+trigger1 = ctrl
+trigger2 = animtime >= 0
+
+;uniq, attack AI, never jump
