@@ -27,20 +27,20 @@ triggerall = p2bodydist x > 100 && statetype != A
 triggerall = NumProj = 0;
 trigger1 = ctrl
 
-[State -1, AI Forward]
-type = ChangeState
-value = 112
-triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
-triggerall = AILevel * AILevel * AILevel > random
-triggerall = p2bodydist x > 100 && statetype != A
-trigger1 = ctrl
-
 [State -1, AI Grab]
 type = ChangeState
 value = 
 triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
 triggerall = AILevel * AILevel * 2> random
 triggerall = p2bodydist x < 20 && statetype != A
+trigger1 = ctrl
+
+[State -1, AI Forward]
+type = ChangeState
+value = 112
+triggerall = RoundState = 2 && Alive && AILevel && NumEnemy
+triggerall = AILevel * AILevel * AILevel > random
+triggerall = p2bodydist x > 100 && statetype != A
 trigger1 = ctrl
 
 [State -1, AI LowHit]
